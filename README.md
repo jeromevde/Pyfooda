@@ -1,4 +1,4 @@
 
 
 # Todo
-- fix missing energy stuff
+filter the data correctly
