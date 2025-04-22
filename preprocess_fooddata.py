@@ -1,8 +1,9 @@
 #%%
 import pandas as pd
 from nutrients_drv import get_nutrients_with_drv_df
+import os 
 
-fooddata_folder = "/Users/jerome/Downloads/FoodData_Central_csv_2024-10-31"
+fooddata_folder = "/Users/jf41043/Downloads/FoodData_Central_csv_2024-10-31"
 
 #%% --- Load food and category data ---
 food_df = pd.read_csv(f'{fooddata_folder}/food.csv', usecols=['fdc_id', 'data_type', 'food_category_id', 'description'])
@@ -41,8 +42,8 @@ df = food_nutrients
 #%% --- Clean and process data ---
 df['name'] = df['name'].str.replace(r'\s*\(.*\)', '', regex=True)
 df['name'] = df['name'].str.split(',').str[0].str.strip()
-df = df.rename(columns={"name": "nutrienName"})
-df = df.groupby(['foodName', 'nutrienName'], sort=False).agg({
+df = df.rename(columns={"name": "nutrientName"})
+df = df.groupby(['foodName', 'nutrientName'], sort=False).agg({
     'data_type': 'first',
     'amount': 'mean',
     'unit_name': 'first',
@@ -57,11 +58,11 @@ df['foodName'] = df['foodName'].str.strip()
 df['unit_name'] = df['unit_name'].str.lower()
 df = df.sort_values(by=['foodName', 'nutrient_order'])
 df['portion_gram_weight'] = df['portion_gram_weight']
-df = df.drop_duplicates(subset=['foodName', 'nutrienName'])
+df = df.drop_duplicates(subset=['foodName', 'nutrientName'])
 
 df = df[df['drv'].notna()]
 
-# --- Filter food types ---
+#%% --- Filter food types ---
 df = df[
     (df["data_type"]=="foundation_food") |  
     (df["data_type"]=="branded_food") | 
@@ -69,21 +70,23 @@ df = df[
     (df["data_type"]=="survey_fndds_food") 
     ]
 
-# --- Filter foods by minimum nutrients ---
+#%% --- Filter foods by minimum nutrients ---
 min_nutrients = 11
 nutrient_counts = df[df['amount'] != ''].groupby('foodName').size()
 selected_foods = nutrient_counts[nutrient_counts >= min_nutrients].index
 df = df[df['foodName'].isin(selected_foods)]
 print(f"Selected {len(df['foodName'].unique())} foods with at least {min_nutrients} non-missing nutrients.")
 
-# --- Create and save foods-by-nutrient pivot CSV ---
-pivot_df = df.pivot_table(index='foodName', columns='nutrienName', values='amount', aggfunc='first').reset_index()
+#%% --- Create and save foods-by-nutrient pivot CSV ---
+pivot_df = df.pivot_table(index=['foodName', 'portion_unit_name', 'portion_gram_weight'], columns='nutrientName', values='amount', aggfunc='first').reset_index()
+if not os.path.exists("data"):
+    os.makedirs("data")
 pivot_df.to_csv('data/foods.csv', index=False)
 
-# --- Create and save nutrient details CSV based on nutrient_df ---
-nutrient_details_df = nutrient_df.rename(columns={"name": "nutrienName"})
-nutrient_details_cols = ['nutrienName', 'category', 'unit_name', 'drv', 'nutrient_id', 'nutrient_order']
-nutrient_details = nutrient_details_df[nutrient_details_cols].drop_duplicates(subset=['nutrienName']).set_index('nutrienName').sort_index()
+#%% --- Create and save nutrient details CSV based on nutrient_df ---
+nutrient_details_df = nutrient_df.rename(columns={"name": "nutrientName"})
+nutrient_details_cols = ['nutrientName', 'category', 'unit_name', 'drv', 'nutrient_id', 'nutrient_order']
+nutrient_details = nutrient_details_df[nutrient_details_cols].drop_duplicates(subset=['nutrientName']).set_index('nutrientName').sort_index()
 nutrient_details.to_csv('data/nutrients.csv')
 
 print("CSV files 'foods_by_nutrient.csv' and 'nutrient_details.csv' created")
