@@ -54,7 +54,7 @@ df = df[df['drv'].notna()]
 
 
 #%% --- GROUP ---
-index_cols = ['foodName', 'data_type', 'food_category', 'portion_unit_name', 'portion_gram_weight', 'nutrient_order']
+index_cols = ['foodName', 'data_type', 'food_category', 'portion_unit_name', 'portion_gram_weight']
 columns_col = 'nutrientName'
 df[index_cols + [columns_col]] = df[index_cols + [columns_col]].fillna('') # so the pivot doesn't remove rows with na values
 pivot_df = df.pivot_table(
@@ -63,12 +63,10 @@ pivot_df = df.pivot_table(
     values='amount',
     aggfunc='first'
 ).reset_index()
-
-pivot_df = pivot_df.sort_values(by=['foodName', 'nutrient_order'])
 nutrient_cols = [col for col in pivot_df.columns if col not in index_cols]
+pivot_df = pivot_df[index_cols +list(nutrient_df["nutrientName"].unique())] # preserve nutrient order
 number_nutrients = ((pivot_df[nutrient_cols] != "") & (pivot_df[nutrient_cols].notna())).sum(axis=1)
 pivot_df.insert(loc=5, column='number_of_nutrients', value=number_nutrients)
-
 
 
 #%% --- save NUTRIENT DETAILS ---
@@ -92,11 +90,11 @@ if not os.path.exists("data"):
 pivot_df.to_csv('data/foods.csv', index=False)
 pivot_df.to_excel('data/foods.xlsx', index=False)
 
+
 nutrient_df.to_csv('data/nutrients.csv')
 nutrient_df.to_excel('data/nutrients.xlsx')
 
 
 
-# %%
-
 # Todo handle nutrient order !!!
+# %%
