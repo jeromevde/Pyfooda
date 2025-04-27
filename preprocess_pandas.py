@@ -76,12 +76,7 @@ nutrient_details = nutrient_df[nutrient_details_cols].drop_duplicates(subset=['n
 
 
 # %% --- FILTER FOODS ---
-pivot_df = pivot_df[
-    (pivot_df["data_type"]=="foundation_food") |  
-    (pivot_df["data_type"]=="survey_fndds_food") | 
-    (pivot_df["data_type"]=="sr_legacy_food") |
-    ((pivot_df["data_type"]=="branded_food") & (pivot_df["foodName"].str.len() < 45))
-    ]
+pivot_df = pivot_df[pivot_df["foodName"].str.len() < 45]
 
 
 #%% --- SAVE ---
