@@ -36,8 +36,8 @@ def get_nutrients_with_drv():
         {'nutrient_id': 1177, 'name': 'Folate, total', 'unit_name': 'UG', 'category': 'Vitamins', 'drv': 400.0},
         {'nutrient_id': 1178, 'name': 'Vitamin B-12', 'unit_name': 'UG', 'category': 'Vitamins', 'drv': 2.4},
         {'nutrient_id': 1180, 'name': 'Choline, total', 'unit_name': 'MG', 'category': 'Vitamins', 'drv': 550.0},
-        {'nutrient_id': 1183, 'name': 'Vitamin K (Menaquinone-4)', 'unit_name': 'UG', 'category': 'Vitamins', 'drv': 50.0},
-        {'nutrient_id': 1185, 'name': 'Vitamin K (phylloquinone)', 'unit_name': 'UG', 'category': 'Vitamins', 'drv': 120.0},
+        {'nutrient_id': 1183, 'name': 'Vitamin K2 MK-4', 'unit_name': 'UG', 'category': 'Vitamins', 'drv': 50.0},
+        {'nutrient_id': 1185, 'name': 'Vitamin K1', 'unit_name': 'UG', 'category': 'Vitamins', 'drv': 120.0},
         {'nutrient_id': 2068, 'name': 'Vitamin E', 'unit_name': 'MG', 'category': 'Vitamins', 'drv': 15.0},
         {'nutrient_id': 2067, 'name': 'Vitamin A', 'unit_name': 'UG', 'category': 'Vitamins', 'drv': 900.0},
         {'nutrient_id': 1087, 'name': 'Calcium', 'unit_name': 'MG', 'category': 'Minerals', 'drv': 1000.0},
@@ -59,4 +59,4 @@ def get_nutrients_with_drv_df():
     """
     Return a DataFrame of the nutrients with non-zero DRV values.
     """
-    return pd.DataFrame(get_nutrients_with_drv())
+    return pd.DataFrame(get_nutrients_with_drv()).rename(columns={"category": "nutrient_category", "name": "nutrientName"})
