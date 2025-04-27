@@ -72,7 +72,7 @@ pivot_df.insert(loc=5, column='number_of_nutrients', value=number_nutrients)
 
 
 #%% --- save NUTRIENT DETAILS ---
-nutrient_details_cols = ['nutrientName', 'nutrient_category', 'unit_name', 'drv', 'nutrient_id', 'nutrient_order']
+nutrient_details_cols = ['nutrientName', 'nutrient_category', 'unit_name', 'drv', 'nutrient_id']
 nutrient_details = nutrient_df[nutrient_details_cols].drop_duplicates(subset=['nutrientName']).set_index('nutrientName').sort_index()
 
 
@@ -98,3 +98,5 @@ nutrient_df.to_excel('data/nutrients.xlsx')
 
 
 # %%
+
+# Todo handle nutrient order !!!
