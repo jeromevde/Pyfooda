@@ -5,22 +5,23 @@ import os
 
 fooddata_folder = "/Users/jerome/Downloads/FoodData_Central_csv_2024-10-31"
 
-#%% --- Load food data ---
+#%% --- FOOD DATA ---
 food_df = pd.read_csv(f'{fooddata_folder}/food.csv', usecols=['fdc_id', 'data_type', 'food_category_id', 'description'])
 food_df = food_df.rename(columns={"description": "foodName"})
 
-#%% --- Load and merge food category data ---
-food_category_df = pd.read_csv(f'{fooddata_folder}/food_category.csv', usecols=['id', 'description']).rename(columns={"id": "category_id", "description": "food_category"})
+#%% --- CATEGORY DATA ---
+food_category_df = pd.read_csv(f'{fooddata_folder}/food_category.csv', usecols=['id', 'description'])
+food_category_df = food_category_df.rename(columns={"id": "category_id", "description": "food_category"})
 wweia_categories = pd.read_csv(f'{fooddata_folder}/wweia_food_category.csv')
 wweia_categories=wweia_categories.rename(columns={"wweia_food_category": "category_id","wweia_food_category_description": "food_category"})
 food_category_df = pd.concat([wweia_categories, food_category_df])
 food_df['category_id_int'] = pd.to_numeric(food_df['food_category_id'], errors='coerce')
 food_df = pd.merge(food_df, food_category_df[['category_id', 'food_category']], left_on='category_id_int', right_on='category_id', how='left')
-food_df['food_category'] = food_df['food_category'].fillna(food_df['food_category_id'])
+food_df['food_category'] = food_df['food_category'].fillna(food_df['food_category_id']) # category_id sometimes already contains the food_category
 food_df = food_df.drop(columns=['category_id_int', 'category_id'], errors='ignore')
 
 
-#%% --- Load and merge nutrient data ---
+#%% --- NUTRIENT DATA ---
 food_nutrient_df = pd.read_csv(f'{fooddata_folder}/food_nutrient.csv', usecols=['id', 'fdc_id', 'nutrient_id', 'amount'])
 nutrient_df = get_nutrients_with_drv_df()
 nutrient_df["nutrient_order"] = nutrient_df.index
@@ -28,14 +29,17 @@ food_nutrients = pd.merge(food_df, food_nutrient_df, on='fdc_id', how='left')
 food_nutrients = pd.merge(food_nutrients, nutrient_df, on='nutrient_id', how='left')
 
 #%% --- Convert energy values from kJ to kcal where needed ---
-energy_mask = food_nutrients['nutrient_category'] == 'Energy'
-food_nutrients.loc[energy_mask & (food_nutrients['unit_name'] == 'kJ'), 'amount'] = food_nutrients.loc[energy_mask & (food_nutrients['unit_name'] == 'kJ'), 'amount'] / 4.184
-food_nutrients.loc[energy_mask & (food_nutrients['unit_name'] == 'kJ'), 'unit_name'] = 'KCAL'
+mask = (food_nutrients['nutrient_category'] == 'Energy') & (food_nutrients['unit_name'] == 'kJ')
+food_nutrients.loc[mask , 'amount'] = food_nutrients.loc[mask, 'amount'] / 4.184
+food_nutrients.loc[mask, 'unit_name'] = 'KCAL'
 
-#%% --- Merge with portion data ---
-food_portion_df = pd.read_csv(f'{fooddata_folder}/food_portion.csv', usecols=['fdc_id', 'amount', 'gram_weight', 'measure_unit_id'])
+#%% --- PORTION DATA ---
+food_portion_cols = ['fdc_id', 'amount', 'gram_weight', 'measure_unit_id']
+food_portion_df = pd.read_csv(f'{fooddata_folder}/food_portion.csv', usecols=food_portion_cols)
 food_portion_df = food_portion_df.rename(columns={"amount": "portion_amount", "gram_weight": "portion_gram_weight"})
-measure_unit_df = pd.read_csv(f'{fooddata_folder}/measure_unit.csv', usecols=['id', 'name']).rename(columns={"id": "measure_unit_id", "name": "portion_unit_name"})
+measure_unit_cols = ['id', 'name']
+measure_unit_df = pd.read_csv(f'{fooddata_folder}/measure_unit.csv', usecols=measure_unit_cols)
+measure_unit_df = measure_unit_df.rename(columns={"id": "measure_unit_id", "name": "portion_unit_name"})
 food_portion_df = pd.merge(food_portion_df, measure_unit_df, on='measure_unit_id', how='left')
 food_portion_df["portion_gram_weight"] = food_portion_df["portion_gram_weight"] / food_portion_df["portion_amount"]
 food_portion_df = food_portion_df[["fdc_id", "portion_gram_weight", "portion_unit_name"]]
@@ -69,7 +73,7 @@ pivot_df.insert(loc=5, column='number_of_nutrients', value=number_nutrients)
 
 
 
-#%% --- NUTRIENT DETAILS ---
+#%% --- save NUTRIENT DETAILS ---
 nutrient_details_cols = ['nutrientName', 'nutrient_category', 'unit_name', 'drv', 'nutrient_id', 'nutrient_order']
 nutrient_details = nutrient_df[nutrient_details_cols].drop_duplicates(subset=['nutrientName']).set_index('nutrientName').sort_index()
 
