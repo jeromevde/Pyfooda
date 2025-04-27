@@ -93,8 +93,4 @@ pivot_df.to_excel('data/foods.xlsx', index=False)
 
 nutrient_df.to_csv('data/nutrients.csv')
 nutrient_df.to_excel('data/nutrients.xlsx')
-
-
-
-# Todo handle nutrient order !!!
 # %%
