@@ -54,7 +54,7 @@ df = df[df['drv'].notna()]
 
 
 #%% --- GROUP ---
-index_cols = ['foodName', 'data_type', 'food_category', 'portion_unit_name', 'portion_gram_weight']
+index_cols = ['foodName', 'data_type', 'food_category', 'portion_unit_name', 'portion_gram_weight', 'nutrient_order']
 columns_col = 'nutrientName'
 df[index_cols + [columns_col]] = df[index_cols + [columns_col]].fillna('') # so the pivot doesn't remove rows with na values
 pivot_df = df.pivot_table(
@@ -64,11 +64,8 @@ pivot_df = df.pivot_table(
     aggfunc='first'
 ).reset_index()
 
-df['foodName'] = df['foodName'].str.strip()
-df['unit_name'] = df['unit_name'].str.lower()
-df = df.sort_values(by=['foodName', 'nutrient_order'])
+pivot_df = pivot_df.sort_values(by=['foodName', 'nutrient_order'])
 nutrient_cols = [col for col in pivot_df.columns if col not in index_cols]
-# TODO fix this
 number_nutrients = ((pivot_df[nutrient_cols] != "") & (pivot_df[nutrient_cols].notna())).sum(axis=1)
 pivot_df.insert(loc=5, column='number_of_nutrients', value=number_nutrients)
 
@@ -80,11 +77,11 @@ nutrient_details = nutrient_df[nutrient_details_cols].drop_duplicates(subset=['n
 
 
 # %% --- FILTER FOODS ---
-df = df[
-    (df["data_type"]=="foundation_food") |  
-    (df["data_type"]=="survey_fndds_food") | 
-    (df["data_type"]=="sr_legacy_food") |
-    ((df["data_type"]=="branded_food") & (df["foodName"].str.len() < 45))
+pivot_df = pivot_df[
+    (pivot_df["data_type"]=="foundation_food") |  
+    (pivot_df["data_type"]=="survey_fndds_food") | 
+    (pivot_df["data_type"]=="sr_legacy_food") |
+    ((pivot_df["data_type"]=="branded_food") & (pivot_df["foodName"].str.len() < 45))
     ]
 
 
