@@ -1,3 +1,4 @@
+#%%
 import polars as pl
 from nutrients_drv import get_nutrients_with_drv_df  # Assuming this returns a Pandas DataFrame
 import os
@@ -9,6 +10,10 @@ food_df = pl.read_csv(
     f"{fooddata_folder}/food.csv",
     columns=["fdc_id", "data_type", "food_category_id", "description"]
 ).rename({"description": "foodName"})
+food_df = food_df.with_columns([
+    pl.col("foodName").str.replace('"', '').str.strip_chars(),
+    pl.col("food_category_id").cast(pl.Int64, strict=False).alias("category_id")
+])
 
 # --- CATEGORY DATA ---
 food_category_df = pl.read_csv(
@@ -24,17 +29,18 @@ wweia_categories = pl.read_csv(
 })
 
 food_category_df = pl.concat([wweia_categories, food_category_df])
+food_category_df = food_category_df.with_columns([
+    pl.col("category_id").cast(pl.Int64, strict=False)
+])
 
-food_df = food_df.with_columns(
-    pl.col("food_category_id").cast(pl.Float64, strict=False).alias("category_id_int")
-).join(
+food_df = food_df.join(
     food_category_df.select(["category_id", "food_category"]),
-    left_on="category_id_int",
+    left_on="category_id",
     right_on="category_id",
     how="left"
 ).with_columns(
     pl.col("food_category").fill_null(pl.col("food_category_id"))
-).drop(["category_id_int", "category_id"])
+).drop(["category_id", "category_id"])
 
 # --- NUTRIENT DATA ---
 food_nutrient_df = pl.read_csv(
@@ -120,7 +126,7 @@ pivot_df = df.group_by(index_cols).agg(
 nutrient_cols = [col for col in pivot_df.columns if col not in index_cols]
 number_nutrients = pivot_df.select(
     pl.sum_horizontal(
-        [(pl.col(col) != "") & pl.col(col).is_not_null() for col in nutrient_cols]
+        [pl.col(col).is_not_null() for col in nutrient_cols]
     ).alias("number_of_nutrients")
 )
 pivot_df = pivot_df.with_columns(number_nutrients["number_of_nutrients"]).select(
@@ -148,3 +154,4 @@ pivot_df.write_excel("data/foods.xlsx")
 
 nutrient_df.write_csv("data/nutrients.csv")
 nutrient_df.write_excel("data/nutrients.xlsx")
+# %%

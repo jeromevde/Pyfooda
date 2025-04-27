@@ -8,6 +8,7 @@ fooddata_folder = "/Users/jerome/Downloads/FoodData_Central_csv_2024-10-31"
 #%% --- FOOD DATA ---
 food_df = pd.read_csv(f'{fooddata_folder}/food.csv', usecols=['fdc_id', 'data_type', 'food_category_id', 'description'])
 food_df = food_df.rename(columns={"description": "foodName"})
+food_df['foodName'] = food_df['foodName'].str.replace('"', '', regex=False).str.strip()
 
 #%% --- CATEGORY DATA ---
 food_category_df = pd.read_csv(f'{fooddata_folder}/food_category.csv', usecols=['id', 'description'])
