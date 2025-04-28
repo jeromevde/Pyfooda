@@ -39,8 +39,8 @@ if check_version_exists "$current_version"; then
         git config --global user.email 'actions@github.com'
         git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
         git add pyfooda/VERSION
-        git commit -m "Bump version to $new_version [skip ci]"
-        git push
+        git commit -m "Bump version to $new_version [skip ci]" >&2
+        git push >&2
         echo "[BUMP] Commit and push complete." >&2
     fi
     printf "%s" "$new_version"
