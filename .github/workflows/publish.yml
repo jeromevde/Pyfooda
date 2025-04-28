@@ -10,16 +10,35 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Fetch all history for version bumping
+    
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.11'
+    
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install build twine
+    
+    - name: Make bump script executable
+      run: chmod +x .github/workflows/bump_version.sh
+    
+    - name: Check and bump version if needed
+      id: version_check
+      run: |
+        NEW_VERSION=$(./.github/workflows/bump_version.sh)
+        echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
+    
+    - name: Checkout again if version was bumped
+      if: steps.version_check.outputs.version != ''
+      uses: actions/checkout@v3
+    
     - name: Build package
       run: python -m build
+    
     - name: Publish to PyPI
       env:
         # __token__ is a special username for PyPI API tokens
