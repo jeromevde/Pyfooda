@@ -23,7 +23,7 @@ echo "[BUMP] Current version: $current_version" >&2
 latest_version=$(get_latest_version)
 echo "[BUMP] Latest version on PyPI: $latest_version" >&2
 
-if [ "$current_version" = "$latest_version" ]; then
+if [ "$current_version" -le "$latest_version" ]; then
     new_version=$(bump_version "$latest_version")
     echo "[BUMP] Current version matches PyPI. Bumping to $new_version" >&2
     printf "%s" "$new_version" > pyfooda/VERSION
