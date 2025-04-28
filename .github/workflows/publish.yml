@@ -43,12 +43,11 @@ jobs:
         echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
 
     - name: Checkout latest commit
-      if: steps.version_check.outputs.version != ''
       run: |
         echo "[WORKFLOW] Fetching and checking out latest commit..."
         git fetch origin main
         git checkout origin/main
-
+        
     - name: Build package
       if: steps.version_check.outputs.version != ''
       run: |
