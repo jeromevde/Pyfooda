@@ -21,8 +21,8 @@ bump_version() {
     echo "$major.$minor.$new_patch"
 }
 
-# Read current version
-current_version=$(cat VERSION)
+# Read current version and trim whitespace
+current_version=$(cat VERSION | tr -d ' \t\n\r')
 
 # Check if version exists on PyPI
 if check_version_exists "$current_version"; then
@@ -30,8 +30,8 @@ if check_version_exists "$current_version"; then
     new_version=$(bump_version "$current_version")
     echo "Version $current_version exists on PyPI. Bumping to $new_version"
     
-    # Update VERSION file
-    echo "$new_version" > VERSION
+    # Update VERSION file (without trailing newline)
+    printf "%s" "$new_version" > VERSION
     
     # If running in GitHub Actions, commit and push
     if [ -n "$GITHUB_ACTIONS" ]; then
@@ -42,11 +42,11 @@ if check_version_exists "$current_version"; then
         git push
     fi
     
-    # Return new version
-    echo "$new_version"
+    # Return new version (without trailing newline)
+    printf "%s" "$new_version"
     exit 0
 else
     echo "Version $current_version is available for publishing"
-    echo "$current_version"
+    printf "%s" "$current_version"
     exit 0
 fi 
