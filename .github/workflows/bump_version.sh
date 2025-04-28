@@ -1,14 +1,8 @@
 #!/bin/bash
 
-# Function to check if version exists on PyPI
-check_version_exists() {
-    local version=$1
-    local response=$(curl -s "https://pypi.org/pypi/pyfooda/$version/json")
-    if [[ $response == *"$version"* ]]; then
-        return 0  # Version exists
-    else
-        return 1  # Version doesn't exist
-    fi
+# Function to get the latest version from PyPI (pure bash)
+get_latest_version() {
+    curl -s "https://pypi.org/pypi/pyfooda/json" | sed -n 's/.*"version": *"\([^"]*\)".*/\1/p' | head -1
 }
 
 # Bumps patch version (e.g., 0.1.1 -> 0.1.2)
@@ -25,11 +19,13 @@ bump_version() {
 current_version=$(cat pyfooda/VERSION | tr -d ' \t\n\r')
 echo "[BUMP] Current version: $current_version" >&2
 
-# Check if version exists on PyPI
-echo "[BUMP] Checking if version $current_version exists on PyPI..." >&2
-if check_version_exists "$current_version"; then
-    new_version=$(bump_version "$current_version")
-    echo "[BUMP] Version $current_version exists on PyPI. Bumping to $new_version" >&2
+# Get latest version from PyPI
+latest_version=$(get_latest_version)
+echo "[BUMP] Latest version on PyPI: $latest_version" >&2
+
+if [ "$current_version" = "$latest_version" ]; then
+    new_version=$(bump_version "$latest_version")
+    echo "[BUMP] Current version matches PyPI. Bumping to $new_version" >&2
     printf "%s" "$new_version" > pyfooda/VERSION
     echo "[BUMP] Updated pyfooda/VERSION to $new_version" >&2
 
@@ -46,7 +42,7 @@ if check_version_exists "$current_version"; then
     printf "%s" "$new_version"
     exit 0
 else
-    echo "[BUMP] Version $current_version does not exist on PyPI. No bump needed. Returning un-bumped version." >&2
+    echo "[BUMP] Current version does not match PyPI. No bump needed. Returning un-bumped version." >&2
     # Output the un-bumped version string to stdout
     printf "%s" "$current_version"
     exit 0
