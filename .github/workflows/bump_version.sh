@@ -22,10 +22,10 @@ echo "[BUMP] Current version: $current_version" >&2
 # Get latest version from PyPI
 latest_version=$(get_latest_version)
 echo "[BUMP] Latest version on PyPI: $latest_version" >&2
+new_version=$(bump_version "$latest_version")
 
-if [ "$current_version" -le "$latest_version" ]; then
-    new_version=$(bump_version "$latest_version")
-    echo "[BUMP] Current version matches PyPI. Bumping to $new_version" >&2
+if [ "$current_version" != "$new_version" ]; then
+    echo "[BUMP] Current version of "$current_version" is outdated, using $new_version" >&2
     printf "%s" "$new_version" > pyfooda/VERSION
     echo "[BUMP] Updated pyfooda/VERSION to $new_version" >&2
 
@@ -42,7 +42,7 @@ if [ "$current_version" -le "$latest_version" ]; then
     printf "%s" "$new_version"
     exit 0
 else
-    echo "[BUMP] Current version does not match PyPI. No bump needed. Returning un-bumped version." >&2
+    echo "[BUMP] Current version of $current_version is up-to-date." >&2
     # Output the un-bumped version string to stdout
     printf "%s" "$current_version"
     exit 0
