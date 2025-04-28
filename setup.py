@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 def get_version():
-    with open('VERSION') as f:
+    with open('pyfooda/VERSION') as f:
         return f.read().strip()
 
 setup(

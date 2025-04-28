@@ -22,7 +22,7 @@ bump_version() {
 }
 
 # Read current version and trim whitespace
-current_version=$(cat VERSION | tr -d ' \t\n\r')
+current_version=$(cat pyfooda/VERSION | tr -d ' \t\n\r')
 
 # Check if version exists on PyPI
 if check_version_exists "$current_version"; then
@@ -31,14 +31,14 @@ if check_version_exists "$current_version"; then
     echo "Version $current_version exists on PyPI. Bumping to $new_version" >&2
     
     # Update VERSION file (without trailing newline)
-    printf "%s" "$new_version" > VERSION
+    printf "%s" "$new_version" > pyfooda/VERSION
     
     # If running in GitHub Actions, commit and push
     if [ -n "$GITHUB_ACTIONS" ]; then
         git config --global user.name 'GitHub Actions'
         git config --global user.email 'actions@github.com'
         git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-        git add VERSION
+        git add pyfooda/VERSION
         git commit -m "Bump version to $new_version [skip ci]" >&2
         git push >&2
     fi
