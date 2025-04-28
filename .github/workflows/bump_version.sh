@@ -11,14 +11,14 @@ check_version_exists() {
     fi
 }
 
-# Function to bump version
+# Bumps patch version (e.g., 0.1.1 -> 0.1.2)
 bump_version() {
-    local version=$1
-    local major=$(echo $version | cut -d. -f1)
-    local minor=$(echo $version | cut -d. -f2)
-    local patch=$(echo $version | cut -d. -f3)
-    local new_patch=$((patch + 1))
-    echo "$major.$minor.$new_patch"
+    local version=$1                    # Input version string
+    local major=$(echo $version | cut -d. -f1)    # Get major version
+    local minor=$(echo $version | cut -d. -f2)    # Get minor version
+    local patch=$(echo $version | cut -d. -f3)    # Get patch version
+    local new_patch=$((patch + 1))               # Increment patch
+    echo "$major.$minor.$new_patch"              # Return new version
 }
 
 # Read current version and trim whitespace
