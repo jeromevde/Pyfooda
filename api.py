@@ -55,3 +55,13 @@ def find_closest_matches(partialName):
     mask = foods_df['foodName'].str.lower().str.contains(partialName.lower(), na=False)
     matches = foods_df[mask]['foodName'].tolist()
     return matches[:10]
+
+def get_fooddata_df():
+    """Return the fooddata DataFrame."""
+    ensure_data_loaded()
+    return foods_df
+
+def get_drv_df():
+    """Return the DRV DataFrame."""
+    ensure_data_loaded()
+    return nutrients_df

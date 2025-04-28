@@ -1,0 +1,46 @@
+,nutrient_id,nutrientName,unit_name,nutrient_category,drv,nutrient_order
+0,2047,Energy,KCAL,Energy,2500.0,0
+1,2048,Energy,KCAL,Energy,2500.0,1
+2,1008,Energy,KCAL,Energy,2500.0,2
+3,1062,Energy,kJ,Energy,2500.0,3
+4,1005,Carbohydrate,G,Carbohydrates,320.0,4
+5,1063,"Sugars, Total",G,Carbohydrates,50.0,5
+6,1079,Fiber,G,Carbohydrates,30.0,6
+7,2000,Total Sugars,G,Carbohydrates,50.0,7
+8,2033,Fiber (AOAC 2011.25),G,Carbohydrates,28.0,8
+9,1004,Total fat,G,Lipids,80.0,9
+10,1253,Cholesterol,MG,Lipids,300.0,10
+11,1258,"Fatty acids, total saturated",G,Lipids,20.0,11
+12,1272,DHA,G,Lipids,0.25,12
+13,1278,EPA,G,Lipids,0.25,13
+14,1404,ALA,G,Lipids,1.5,14
+15,1003,Protein,G,Proteins,160.0,15
+16,1106,"Vitamin A, RAE",UG,Vitamins,900.0,16
+17,1109,Vitamin E,MG,Vitamins,15.0,17
+18,1114,Vitamin D (D2 + D3),UG,Vitamins,20.0,18
+19,1158,Vitamin E,MG_ATE,Vitamins,15.0,19
+20,1162,Vitamin C,MG,Vitamins,90.0,20
+21,1165,Thiamin,MG,Vitamins,1.2,21
+22,1166,Riboflavin,MG,Vitamins,1.3,22
+23,1167,Niacin,MG,Vitamins,16.0,23
+24,1170,Pantothenic acid,MG,Vitamins,5.0,24
+25,1175,Vitamin B-6,MG,Vitamins,1.7,25
+26,1177,"Folate, total",UG,Vitamins,400.0,26
+27,1178,Vitamin B-12,UG,Vitamins,2.4,27
+28,1180,Choline,MG,Vitamins,550.0,28
+29,1183,Vitamin K2 MK-4,UG,Vitamins,50.0,29
+30,1185,Vitamin K1,UG,Vitamins,120.0,30
+31,2068,Vitamin E,MG,Vitamins,15.0,31
+32,2067,Vitamin A,UG,Vitamins,900.0,32
+33,1087,Calcium,MG,Minerals,1000.0,33
+34,1089,Iron,MG,Minerals,10.0,34
+35,1090,Magnesium,MG,Minerals,420.0,35
+36,1091,Phosphorus,MG,Minerals,700.0,36
+37,1092,Potassium,MG,Minerals,3400.0,37
+38,1093,Sodium,MG,Minerals,1500.0,38
+39,1095,Zinc,MG,Minerals,11.0,39
+40,1098,Copper,MG,Minerals,0.9,40
+41,1100,Iodine,UG,Minerals,150.0,41
+42,1101,Manganese,MG,Minerals,2.3,42
+43,1102,Molybdenum,UG,Minerals,45.0,43
+44,1103,Selenium,UG,Minerals,55.0,44
