@@ -28,6 +28,8 @@ jobs:
     
     - name: Check and bump version if needed
       id: version_check
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         NEW_VERSION=$(./.github/workflows/bump_version.sh)
         echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
