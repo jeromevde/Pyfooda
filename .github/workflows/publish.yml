@@ -1,5 +1,8 @@
 name: Publish to PyPI
 
+permissions:
+  contents: write
+
 on:
   push:
     branches:
@@ -17,34 +20,48 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: '3.11'
-    
-    - name: Install dependencies
+
+    - name: Install build tools
       run: |
+        echo "[WORKFLOW] Installing build and publish dependencies..."
         python -m pip install --upgrade pip
         pip install build twine
-    
+
     - name: Make bump script executable
-      run: chmod +x .github/workflows/bump_version.sh
-    
-    - name: Check and bump version if needed
+      run: |
+        echo "[WORKFLOW] Making bump_version.sh executable..."
+        chmod +x .github/workflows/bump_version.sh
+
+    - name: Version bump (if needed)
       id: version_check
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
+        echo "[WORKFLOW] Running bump_version.sh..."
         NEW_VERSION=$(./.github/workflows/bump_version.sh)
+        echo "[WORKFLOW] Version to use: $NEW_VERSION"
         echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
-    
-    - name: Checkout again if version was bumped
+
+    - name: Checkout latest commit
       if: steps.version_check.outputs.version != ''
-      uses: actions/checkout@v3
-    
+      run: |
+        echo "[WORKFLOW] Fetching and checking out latest commit..."
+        git fetch origin main
+        git checkout origin/main
+
     - name: Build package
-      run: python -m build
-    
+      if: steps.version_check.outputs.version != ''
+      run: |
+        echo "[WORKFLOW] Building package..."
+        python -m build
+
     - name: Publish to PyPI
+      if: steps.version_check.outputs.version != ''
       env:
-        # __token__ is a special username for PyPI API tokens
-        # The actual account is determined by the API token
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+      run: |
+        echo "[WORKFLOW] Publishing to PyPI..."
+        python -m twine upload dist/*
+        echo "[WORKFLOW] Publish complete."
       run: python -m twine upload dist/* 

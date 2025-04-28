@@ -23,31 +23,31 @@ bump_version() {
 
 # Read current version and trim whitespace
 current_version=$(cat pyfooda/VERSION | tr -d ' \t\n\r')
+echo "[BUMP] Current version: $current_version"
 
 # Check if version exists on PyPI
+echo "[BUMP] Checking if version $current_version exists on PyPI..."
 if check_version_exists "$current_version"; then
-    # Bump version
     new_version=$(bump_version "$current_version")
-    echo "Version $current_version exists on PyPI. Bumping to $new_version" >&2
-    
-    # Update VERSION file (without trailing newline)
+    echo "[BUMP] Version $current_version exists on PyPI. Bumping to $new_version"
     printf "%s" "$new_version" > pyfooda/VERSION
-    
-    # If running in GitHub Actions, commit and push
+    echo "[BUMP] Updated pyfooda/VERSION to $new_version"
+
     if [ -n "$GITHUB_ACTIONS" ]; then
+        echo "[BUMP] Committing and pushing version bump..."
         git config --global user.name 'GitHub Actions'
         git config --global user.email 'actions@github.com'
         git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
         git add pyfooda/VERSION
-        git commit -m "Bump version to $new_version [skip ci]" >&2
-        git push >&2
+        git commit -m "Bump version to $new_version [skip ci]"
+        git push
+        echo "[BUMP] Commit and push complete."
     fi
-    
-    # Return new version (without trailing newline)
     printf "%s" "$new_version"
     exit 0
 else
-    echo "Version $current_version is available for publishing" >&2
+    echo "[BUMP] Version $current_version does not exist on PyPI. No bump needed."
     printf "%s" "$current_version"
     exit 0
+fi
 fi 
