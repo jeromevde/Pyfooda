@@ -9,7 +9,7 @@ from scipy.spatial.distance import cdist
 import re
 from tqdm import tqdm  # Import tqdm for progress bar
 
-df = pd.read_csv('data/fooddata.csv').head(10000)
+df = pd.read_excel('data/clustering.xlsx')
 
 df['original_foodName'] = df['foodName']
 
@@ -17,7 +17,48 @@ df['foodName'] = df['foodName'].fillna('unknown')
 
 df['foodName'] = df['foodName'].str.lower().apply(lambda x: re.sub(r'[^\w\s]', '', x))
 
-nutrient_cols = list(df.columns[6:])[:-1]
+nutrient_cols = [
+    'Energy',
+    'Carbohydrate',
+    'Sugars, Total',
+    'Fiber',
+    'Total Sugars',
+    'Fiber (AOAC 2011.25)',
+    'Total fat',
+    'Cholesterol',
+    'Fatty acids, total saturated',
+    'DHA',
+    'EPA',
+    'ALA',
+    'Protein',
+    'Vitamin A, RAE',
+    'Vitamin E',
+    'Vitamin D (D2 + D3)',
+    'Vitamin C',
+    'Thiamin',
+    'Riboflavin',
+    'Niacin',
+    'Pantothenic acid',
+    'Vitamin B-6',
+    'Folate, total',
+    'Vitamin B-12',
+    'Choline',
+    'Vitamin K2 MK-4',
+    'Vitamin K1',
+    'Vitamin A',
+    'Calcium',
+    'Iron',
+    'Magnesium',
+    'Phosphorus',
+    'Potassium',
+    'Sodium',
+    'Zinc',
+    'Copper',
+    'Iodine',
+    'Manganese',
+    'Molybdenum',
+    'Selenium']
+
 
 print("imputting missing values")
 imputer = SimpleImputer(strategy='constant', fill_value=0)
@@ -28,7 +69,7 @@ scaler = StandardScaler()
 df[nutrient_cols] = scaler.fit_transform(df[nutrient_cols])
 
 print("tfidf")
-tfidf = TfidfVectorizer(max_features=1000, min_df=5)
+tfidf = TfidfVectorizer(max_features=1000, min_df=1) # TODO update
 tfidf_matrix = tfidf.fit_transform(df['foodName'])
 
 print("onehot")
