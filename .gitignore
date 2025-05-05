@@ -1,3 +1,7 @@
+# Specific
+pyfooda/data/fooddata.xlsx
+pyfooda/data/nutrients.xlsx
+
 # Python
 __pycache__/
 *.py[cod]

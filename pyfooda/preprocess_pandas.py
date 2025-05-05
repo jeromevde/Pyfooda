@@ -3,7 +3,7 @@ import pandas as pd
 from nutrients_drv import get_nutrients_with_drv_df
 import os 
 
-fooddata_folder = "/Users/jerome/Downloads/FoodData_Central_csv_2024-10-31"
+fooddata_folder = "/Users/jf41043/Downloads/FoodData_Central_csv_2024-10-31"
 
 #%% --- FOOD DATA ---
 food_df = pd.read_csv(f'{fooddata_folder}/food.csv', usecols=['fdc_id', 'data_type', 'food_category_id', 'description'])
