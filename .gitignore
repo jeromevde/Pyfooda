@@ -20,9 +20,6 @@ wheels/
 .installed.cfg
 *.egg
 
-# Excel files
-*.xlsx
-*.xls
 
 
 # OS files
