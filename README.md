@@ -22,6 +22,7 @@ pip install git+https://github.com/yourusername/pyfooda.git
 - **Simple**: Query food categories, nutrients, and portion information with a few lines of code.
 - **Search**: Find foods by partial name.
 - **DataFrames**: Access the raw fooddata and DRV DataFrames for custom analysis.
+- **🆕 Agentic Aggregation**: Merge similar food items into a lightweight database using AI-powered workflow (see [AGGREGATION_PLAN.md](AGGREGATION_PLAN.md))
 
 ## Example
 
@@ -69,6 +70,42 @@ Returns the fooddata DataFrame containing all food items and their nutrient valu
 
 ### `get_drv_df()`
 Returns the DRV (Dietary Reference Values) DataFrame containing nutrient reference values.
+
+## Food Aggregation (New!)
+
+The current database has 295,943 food items, which is overwhelming for everyday use. The new **agentic aggregation workflow** intelligently merges similar items into a lightweight database.
+
+### Quick Start
+
+#### V2 (Enhanced - Recommended)
+With rate limiting, checkpointing, and resume functionality:
+
+```bash
+# Install dependencies
+pip install -r requirements_aggregation.txt
+
+# FREE tier (patient, but $0 cost)
+export OPENROUTER_API_KEY="your-key"
+python aggregate_foods_v2.py --sample 1000 \
+  --model google/gemini-flash-1.5-8b \
+  --rate-limit 15 --use-llm
+
+# Best value (fast and cheap - ~$0.03 for 1000 items)
+python aggregate_foods_v2.py --sample 1000 \
+  --model deepseek/deepseek-r1-distill-qwen-32b \
+  --rate-limit 60 --use-llm
+
+# Resume from checkpoint if interrupted
+python aggregate_foods_v2.py --resume checkpoints/checkpoint_iter_3.pkl --use-llm
+```
+
+#### V1 (Basic)
+For quick tests without rate limiting:
+```bash
+python aggregate_foods.py --sample 1000 --use-llm
+```
+
+See [AGGREGATION_PLAN.md](AGGREGATION_PLAN.md) and [MODEL_COMPARISON.md](MODEL_COMPARISON.md) for full documentation.
 
 ## License
 
