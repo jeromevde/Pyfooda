@@ -305,3 +305,197 @@ A:
 ---
 
 **Status:** ✅ Implementation complete, ready for testing!
+
+---
+
+## 🆕 V2 Features (Rate Limiting + Checkpointing)
+
+### New Capabilities
+
+#### 1. **Rate Limiting for Free Tier**
+- Respects API rate limits (e.g., 15 req/min for Gemini Flash)
+- Automatic throttling to stay within limits
+- Patient processing for $0 cost runs
+
+#### 2. **Checkpoint/Resume**
+- Saves progress every N merges (configurable)
+- Resume from any checkpoint after interruption
+- Graceful handling of Ctrl+C
+
+#### 3. **Progress Tracking**
+- Real-time ETA calculations
+- API call counting
+- Current processing rate display
+
+### Usage Examples
+
+#### FREE Tier (Gemini Flash - $0 cost)
+```bash
+# Will take ~4 days for 295k items, but completely FREE
+export OPENROUTER_API_KEY="your-key"
+python aggregate_foods_v2.py \
+  --model google/gemini-flash-1.5-8b \
+  --rate-limit 15 \
+  --checkpoint-every 100 \
+  --use-llm
+```
+
+**Perfect for overnight/weekend runs!**
+
+#### Best Value (DeepSeek R1 - ~$2.50 for 295k items)
+```bash
+python aggregate_foods_v2.py \
+  --model deepseek/deepseek-r1-distill-qwen-32b \
+  --rate-limit 60 \
+  --checkpoint-every 500 \
+  --use-llm
+```
+
+**Fast (2 hours) and dirt cheap!**
+
+#### Resume from Interruption
+```bash
+# If interrupted, just resume from last checkpoint
+python aggregate_foods_v2.py \
+  --resume checkpoints/checkpoint_iter_3.pkl \
+  --use-llm
+```
+
+### Checkpoint Structure
+
+Checkpoints are saved in `./checkpoints/`:
+```
+checkpoints/
+├── checkpoint_iter_1.pkl        # Binary checkpoint
+├── merge_history_iter_1.json    # Human-readable history
+├── checkpoint_iter_2.pkl
+├── merge_history_iter_2.json
+└── ...
+```
+
+Each checkpoint contains:
+- Current DataFrame state
+- All merges performed so far
+- Iteration number
+- API call count
+- Timestamp
+
+### Rate Limiting Strategies
+
+#### Ultra-Patient (FREE)
+```bash
+--model google/gemini-flash-1.5-8b --rate-limit 15
+```
+- **Cost:** $0
+- **Time:** ~4 days for 295k items
+- **Strategy:** Run overnight for 4 nights
+
+#### Moderate (Free tier with buffer)
+```bash
+--model google/gemini-flash-1.5-8b --rate-limit 10
+```
+- **Cost:** $0
+- **Time:** ~6 days
+- **Safer:** Less likely to hit rate limits
+
+#### Paid Tier (Fast)
+```bash
+--model deepseek/deepseek-r1-distill-qwen-32b --rate-limit 60
+```
+- **Cost:** ~$2.50 for 295k items
+- **Time:** ~2 hours
+- **Sweet spot:** Fast AND cheap
+
+#### No Limits (Fastest)
+```bash
+--model qwen/qwen-2.5-7b-instruct --rate-limit 0
+```
+- **Cost:** ~$4 for 295k items
+- **Time:** ~1 hour
+- **For:** When time is more valuable than money
+
+### Multi-Day Workflow Example
+
+**Goal:** Process 295k items for $0 using free tier
+
+**Day 1:**
+```bash
+# Start processing (will save checkpoints)
+python aggregate_foods_v2.py \
+  --model google/gemini-flash-1.5-8b \
+  --rate-limit 15 \
+  --checkpoint-every 100 \
+  --use-llm
+
+# Let it run overnight...
+# Ctrl+C in the morning
+```
+
+**Day 2:**
+```bash
+# Resume from where we left off
+python aggregate_foods_v2.py \
+  --resume checkpoints/checkpoint_iter_X.pkl \
+  --use-llm
+
+# Repeat for 3-4 days total
+```
+
+**Result:** Complete database aggregation for $0!
+
+### Error Recovery
+
+**If process crashes:**
+```bash
+# Find latest checkpoint
+ls -lt checkpoints/
+
+# Resume
+python aggregate_foods_v2.py --resume checkpoints/checkpoint_iter_5.pkl --use-llm
+```
+
+**If you want to change model mid-run:**
+```bash
+# Resume with different model
+python aggregate_foods_v2.py \
+  --resume checkpoints/checkpoint_iter_5.pkl \
+  --model deepseek/deepseek-r1-distill-qwen-32b \
+  --rate-limit 60 \
+  --use-llm
+```
+
+---
+
+## Model Recommendations (Updated)
+
+See [MODEL_COMPARISON.md](MODEL_COMPARISON.md) for full comparison.
+
+**Quick Reference:**
+
+| Use Case | Model | Rate Limit | Cost (295k) | Time |
+|----------|-------|------------|-------------|------|
+| **$0 Budget** | `google/gemini-flash-1.5-8b` | 15/min | FREE | 4 days |
+| **Best Value** | `deepseek/deepseek-r1-distill-qwen-32b` | 60/min | ~$2.50 | 2 hours |
+| **Balanced** | `qwen/qwen-2.5-7b-instruct` | 0 (fast) | ~$4 | 1 hour |
+| **Quality** | `anthropic/claude-3.5-haiku` | 60/min | ~$36 | 2 hours |
+
+---
+
+## Implementation Comparison
+
+### V1 (Original)
+- ✅ Basic workflow
+- ❌ No rate limiting
+- ❌ No checkpoints
+- ❌ Loses progress on interruption
+- **Best for:** Small samples (<10k items)
+
+### V2 (Enhanced)
+- ✅ Rate limiting
+- ✅ Checkpoint/resume
+- ✅ Graceful interruption
+- ✅ Progress tracking
+- **Best for:** Production runs, free tier, large datasets
+
+**Use V2 for anything over 1000 items!**
+
