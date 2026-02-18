@@ -1,119 +1,138 @@
-# FoodData Central Python API
+# Pyfooda
 
-This package provides a simple, ready-to-use Python API for accessing and querying relevant data from the [USDA FoodData Central](https://fdc.nal.usda.gov/) database—**no API key required**. All data is processed locally from CSV files and exposed through a clean Python interface.
+A compact Python API for **USDA FoodData Central** with an LLM-powered
+pipeline that compresses ~296k raw food items into a clean everyday
+nutrition database.
 
-## Installation
+## Repository structure
 
-You can install the package from PyPI:
+```
+pyfooda/                       # Installable Python package (end-user API)
+  api.py                       #   lookup functions
+  data/
+    fooddata.csv               #   296k preprocessed USDA foods
+    nutrients.csv              #   nutrient metadata + daily reference values
 
-```bash
-pip install pyfooda
+scripts/                       # Data pipeline (not part of the package)
+  build_fooddata.py            #   Step 1 — raw USDA CSV → fooddata.csv
+  aggregate.py                 #   Step 2 — fooddata.csv → foods_aggregated.json
+  aggregator.py                #   aggregation engine (used by aggregate.py)
+  aggregation_prompt.txt       #   tweakable LLM prompt
+  nutrients_drv.py             #   nutrient definitions + DRVs
+  requirements.txt             #   pipeline dependencies
 ```
 
-Or install directly from the repository:
+---
+
+## 1 · Install the package
 
 ```bash
-pip install git+https://github.com/yourusername/pyfooda.git
+pip install pyfooda          # from PyPI
+# or
+pip install -e .             # editable install from source
 ```
 
-## Features
+The package ships with the preprocessed USDA data — no downloads needed.
 
-- **No API key required**: Works entirely offline with preprocessed FoodData Central CSV files.
-- **Simple**: Query food categories, nutrients, and portion information with a few lines of code.
-- **Search**: Find foods by partial name.
-- **DataFrames**: Access the raw fooddata and DRV DataFrames for custom analysis.
-- **🆕 Agentic Aggregation**: Merge similar food items into a lightweight database using AI-powered workflow (see [AGGREGATION_PLAN.md](AGGREGATION_PLAN.md))
-
-## Example
+## 2 · Use the lookup API
 
 ```python
 import pyfooda as pf
 
-# Find up to 10 foods matching a partial name
-print(pf.find_closest_matches('apple'))
+pf.find_closest_matches("cheddar")           # up to 10 partial-name matches
+pf.get_nutrients("Cheddar Cheese")           # dict of nutrient values
+pf.get_category("Cheddar Cheese")            # "Cheese"
+pf.get_portion_gram_weight("Cheddar Cheese") # grams per portion
+pf.get_portion_unit_name("Cheddar Cheese")   # e.g. "cup, shredded"
 
-# Get the category of a food
-print(pf.get_category('Apple, raw'))
-
-# Get all nutrient values for a food
-nutrients = pf.get_nutrients('Apple, raw')
-print(nutrients)
-
-# Get portion information
-print(pf.get_portion_gram_weight('Apple, raw'))  # e.g., 138.0
-print(pf.get_portion_unit_name('Apple, raw'))    # e.g., "medium"
-
-# Get the raw DataFrames
-fooddata_df = pf.get_fooddata_df()
-drv_df = pf.get_drv_df()
+df  = pf.get_fooddata_df()   # full 296k × 44 DataFrame
+drv = pf.get_drv_df()        # daily reference values per nutrient
 ```
 
-## API Reference
+| Function | Returns |
+|----------|---------|
+| `get_category(name)` | Food category (`str`) |
+| `get_nutrients(name)` | `dict[nutrient → value]` or `None` |
+| `get_portion_gram_weight(name)` | `float` or `None` |
+| `get_portion_unit_name(name)` | `str` or `None` |
+| `find_closest_matches(partial)` | `list[str]` (max 10) |
+| `get_fooddata_df()` | Full food DataFrame |
+| `get_drv_df()` | Nutrient DRV DataFrame |
 
-### `get_category(foodName)`
-Returns the food category for the given food name (case-insensitive). Returns `'Other'` if not found.
+---
 
-### `get_nutrients(foodName)`
-Returns a dictionary of nutrient values for the given food name. Returns `None` if not found.
+## 3 · Data pipeline (for contributors / rebuilding)
 
-### `get_portion_gram_weight(foodName)`
-Returns the portion gram weight (float) for the given food name. Returns `None` if not found.
+The `scripts/` directory contains the full pipeline that produces the
+data shipped with the package. You only need this if you want to
+rebuild from a newer USDA release or re-run the aggregation.
 
-### `get_portion_unit_name(foodName)`
-Returns the portion unit name (string) for the given food name. Returns `None` if not found.
-
-### `find_closest_matches(partialName)`
-Returns a list of up to 10 food names that contain the given partial name (case-insensitive).
-
-### `get_fooddata_df()`
-Returns the fooddata DataFrame containing all food items and their nutrient values.
-
-### `get_drv_df()`
-Returns the DRV (Dietary Reference Values) DataFrame containing nutrient reference values.
-
-## Food Aggregation (New!)
-
-The current database has 295,943 food items, which is overwhelming for everyday use. The new **agentic aggregation workflow** intelligently merges similar items into a lightweight database.
-
-### Quick Start
-
-#### V2 (Enhanced - Recommended)
-With rate limiting, checkpointing, and resume functionality:
+### Prerequisites
 
 ```bash
-# Install dependencies
-pip install -r requirements_aggregation.txt
-
-# FREE tier (patient, but $0 cost)
-export OPENROUTER_API_KEY="your-key"
-python aggregate_foods_v2.py --sample 1000 \
-  --model google/gemini-flash-1.5-8b \
-  --rate-limit 15 --use-llm
-
-# Best value (fast and cheap - ~$0.03 for 1000 items)
-python aggregate_foods_v2.py --sample 1000 \
-  --model deepseek/deepseek-r1-distill-qwen-32b \
-  --rate-limit 60 --use-llm
-
-# Resume from checkpoint if interrupted
-python aggregate_foods_v2.py --resume checkpoints/checkpoint_iter_3.pkl --use-llm
+pip install -r scripts/requirements.txt
 ```
 
-#### V1 (Basic)
-For quick tests without rate limiting:
+### Step 1 — Build `fooddata.csv` from raw USDA download
+
+1. Download the CSV bundle from
+   [FoodData Central](https://fdc.nal.usda.gov/download-datasets)
+2. Extract it (e.g. `~/Downloads/FoodData_Central_csv_2024-10-31/`)
+3. Run:
+
 ```bash
-python aggregate_foods.py --sample 1000 --use-llm
+python scripts/build_fooddata.py ~/Downloads/FoodData_Central_csv_2024-10-31
 ```
 
-See [AGGREGATION_PLAN.md](AGGREGATION_PLAN.md) and [MODEL_COMPARISON.md](MODEL_COMPARISON.md) for full documentation.
+This reads the raw USDA tables (`food.csv`, `food_nutrient.csv`,
+`food_category.csv`, etc.), joins and pivots them, and writes the
+result to `pyfooda/data/fooddata.csv` + `pyfooda/data/nutrients.csv`.
+
+### Step 2 — Aggregate into a compact everyday database
+
+The raw database has **295,943 items** — dozens of entries for
+"cheddar cheese" alone. The aggregator uses an LLM to classify each
+food as:
+
+| Action | Meaning |
+|--------|---------|
+| **CREATE** | Start a new generic food (e.g. "Cheddar Cheese") |
+| **ADD** | Merge into an existing generic (nutrients averaged) |
+| **IGNORE** | Skip (supplements, additives, unidentifiable) |
+
+The LLM sees each food's name, category, **nutrient profile**, and
+the closest existing entries, so it makes nutritionally-informed
+decisions (e.g. "Tonic Water" ≠ "Lime Juice").
+
+```bash
+export OPENROUTER_API_KEY="sk-or-..."
+
+# Quick test — first 1000 items (~20 API calls, ~2 min)
+python scripts/aggregate.py test
+
+# Full run — all 296k items
+python scripts/aggregate.py full
+
+# Resume after interruption
+python scripts/aggregate.py full --resume
+```
+
+**Output:**
+
+| File | Description |
+|------|-------------|
+| `pyfooda/data/foods_aggregated.json` | Generic name, averaged nutrients, source USDA IDs |
+| `pyfooda/data/foods_aggregated.csv` | Flat CSV for quick inspection |
+
+### Tweaking the aggregation
+
+Edit `scripts/aggregation_prompt.txt` to change how the LLM classifies
+foods. For example you could add:
+
+- *"Merge all yogurt flavors into a single Yogurt entry"*
+- *"Keep organic and conventional separate"*
+- *"Ignore all baby food"*
 
 ## License
 
-## Test package
-
-```
-pip install -e .
-python -c "import pyfooda; print(pyfooda.__version__)"
-```
-
-MIT License
+MIT

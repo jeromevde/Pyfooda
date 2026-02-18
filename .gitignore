@@ -1,6 +1,7 @@
-# Specific
-pyfooda/data/fooddata.xlsx
-pyfooda/data/nutrients.xlsx
+# Generated outputs
+pyfooda/data/foods_aggregated.json
+pyfooda/data/foods_aggregated.csv
+checkpoints/
 
 # Python
 __pycache__/
