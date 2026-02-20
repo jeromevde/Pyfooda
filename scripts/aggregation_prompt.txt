@@ -52,5 +52,4 @@ Guidelines:
 - Keep meaningful distinctions: "Whole Milk" ≠ "Skim Milk", "White Rice" ≠ "Brown Rice"
 - Cooking method matters when it changes nutrients significantly: "Fried Chicken" ≠ "Grilled Chicken"
 - Baby food, pet food → IGNORE
-
 Respond ONLY with the decision lines, one per item. No explanations.

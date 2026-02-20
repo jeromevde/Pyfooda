@@ -10,7 +10,7 @@ def ensure_data_loaded():
     """Load the CSV files into DataFrames if not already loaded."""
     global foods_df, nutrients_df
     if foods_df is None:
-        data_path = pkg_resources.resource_filename('pyfooda', 'data/fooddata.csv')
+        data_path = pkg_resources.resource_filename('pyfooda', 'data/foods_aggregated.csv')
         foods_df = pd.read_csv(data_path)
     if nutrients_df is None:
         data_path = pkg_resources.resource_filename('pyfooda', 'data/nutrients.csv')
