@@ -633,6 +633,8 @@ class FoodAggregator:
         if pd.notna(pun) and str(pun).strip():
             entry['portion_unit_names'].append(str(pun))
 
+        return True
+
     # -- persistence ------------------------------------------------------------
 
     def _save_checkpoint(self):

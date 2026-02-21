@@ -46,13 +46,28 @@ def main():
 
     args = parser.parse_args()
 
-    # Determine limit
+    # Determine limit and input file
     if args.limit:
         limit = args.limit
     elif args.mode == "test":
-        limit = 1000
+        limit = None  # test uses a small curated dataset, no limit needed
     else:
         limit = None
+
+    # Test mode uses a curated test dataset if available
+    input_path = args.input
+    output_path = args.output
+    checkpoint_dir = args.checkpoint_dir
+    if args.mode == "test":
+        test_csv = os.path.join(repo_root, "tests", "test_fooddata.csv")
+        if os.path.exists(test_csv):
+            input_path = test_csv
+        else:
+            print(f"  Warning: {test_csv} not found, run build_test_dataset.py first")
+            print(f"  Falling back to first 2000 items from fooddata.csv")
+            limit = 2000
+        output_path = os.path.join(repo_root, "tests", "test_aggregated.json")
+        checkpoint_dir = os.path.join(repo_root, "tests", "checkpoints")
 
     print("=" * 60)
     print("  Food Aggregation — Tool-based approach")
@@ -63,12 +78,13 @@ def main():
     print(f"  Batch size     : {args.batch_size}")
     print(f"  Search top-k   : {args.search_top_k}")
     print(f"  Custom prompt  : {args.prompt or '(default)'}")
-    print(f"  Output         : {args.output}")
+    print(f"  Input          : {input_path}")
+    print(f"  Output         : {output_path}")
     print("=" * 60)
 
     # Load source data
     print("\nLoading source data …")
-    df = pd.read_csv(args.input)
+    df = pd.read_csv(input_path)
     print(f"  {len(df)} foods loaded")
 
     # Create aggregator
@@ -78,7 +94,7 @@ def main():
         batch_size=args.batch_size,
         search_top_k=args.search_top_k,
         prompt_path=args.prompt,
-        checkpoint_dir=args.checkpoint_dir,
+        checkpoint_dir=checkpoint_dir,
     )
 
     # Resume?
@@ -93,7 +109,7 @@ def main():
     agg.run(limit=limit, resume_from=resume_from)
 
     # Save
-    agg.save(args.output)
+    agg.save(output_path)
 
 
 if __name__ == "__main__":

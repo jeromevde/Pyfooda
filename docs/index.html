@@ -251,6 +251,10 @@ let foodNames = [];
 let foodNamesLower = [];
 let idf = {};
 
+/* Source-name → food-index reverse map (for brand-name search) */
+let sourceNameIndex = {};  // token -> Set of food indices
+let sourceNameKeys = [];   // sorted keys for binary-search prefix lookup
+
 const dataBase = './data/';
 
 async function init() {
@@ -262,7 +266,7 @@ async function init() {
     foodNames = foods.map(f => f.n);
     foodNamesLower = foodNames.map(n => n.toLowerCase());
 
-    buildIDF();
+    buildIndex();
 
     document.getElementById('loading').style.display = 'none';
     document.getElementById('app').style.display = '';
@@ -274,13 +278,13 @@ async function init() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  BM25-lite search                                                   */
+/*  Search engine: BM25 + prefix matching + source-name lookup         */
 /* ------------------------------------------------------------------ */
 let docTokens = [];
 let docLens = [];
 let avgDL = 0;
 
-function buildIDF() {
+function buildIndex() {
   const N = foodNamesLower.length;
   const df = {};
   docTokens = [];
@@ -301,6 +305,28 @@ function buildIDF() {
   for (const [t, freq] of Object.entries(df)) {
     idf[t] = Math.log((N - freq + 0.5) / (freq + 0.5) + 1);
   }
+
+  /* Build source-name reverse index: extract unique tokens from each
+     food's source_names array, map token → set of food indices.
+     This lets "nutella" find "Hazelnut Spread" because one of its
+     sources was named "NUTELLA ...". */
+  sourceNameIndex = {};
+  for (let i = 0; i < foods.length; i++) {
+    const sources = foods[i].s;
+    if (!sources) continue;
+    const seen = new Set();
+    for (const sn of sources) {
+      const tokens = sn.toLowerCase().split(/[\s,\-\/\(\)]+/).filter(t => t.length >= 3);
+      for (const t of tokens) {
+        if (seen.has(t)) continue;
+        seen.add(t);
+        if (!sourceNameIndex[t]) sourceNameIndex[t] = new Set();
+        sourceNameIndex[t].add(i);
+      }
+    }
+  }
+  /* Sort keys for binary-search prefix lookup */
+  sourceNameKeys = Object.keys(sourceNameIndex).sort();
 }
 
 function search(query, n = 15) {
@@ -308,8 +334,9 @@ function search(query, n = 15) {
   if (!q) return [];
   const qTokens = q.split(/\s+/);
   const k1 = 1.5, b = 0.75;
-  const candidates = [];
+  const scores = new Float32Array(foods.length);
 
+  /* --- Pass 1: BM25 on generic names (exact token match) --- */
   for (let i = 0; i < foods.length; i++) {
     const tokens = docTokens[i];
     const dl = docLens[i];
@@ -320,15 +347,73 @@ function search(query, n = 15) {
       const idfVal = idf[qt] || 0;
       score += idfVal * (tf * (k1 + 1)) / (tf + k1 * (1 - b + b * dl / avgDL));
     }
-    if (score <= 0) continue;
+    scores[i] = score;
+  }
 
+  /* --- Pass 2: Prefix matching on generic names --- */
+  for (let i = 0; i < foods.length; i++) {
+    const tokens = docTokens[i];
+    let prefixHits = 0;
+    for (const qt of qTokens) {
+      if (qt.length < 2) continue;
+      for (const t of tokens) {
+        if (t.startsWith(qt) && t !== qt) {
+          prefixHits++;
+          break;
+        }
+      }
+    }
+    if (prefixHits > 0) {
+      /* Give prefix matches a decent score, scaled by how many query
+         tokens matched as prefix — but less than an exact BM25 hit */
+      const boost = prefixHits * 3.0 * (qTokens.length > 0 ? prefixHits / qTokens.length : 1);
+      scores[i] = Math.max(scores[i], boost);
+    }
+  }
+
+  /* --- Pass 3: Source-name lookup (brand → generic) --- */
+  for (const qt of qTokens) {
+    if (qt.length < 3) continue;
+
+    /* Exact token match in source names */
+    const exact = sourceNameIndex[qt];
+    if (exact) {
+      for (const i of exact) {
+        if (scores[i] < 1.5) scores[i] = Math.max(scores[i], 1.5);
+      }
+    }
+
+    /* Prefix match via binary search on sorted keys */
+    let lo = 0, hi = sourceNameKeys.length;
+    while (lo < hi) {
+      const mid = (lo + hi) >> 1;
+      if (sourceNameKeys[mid] < qt) lo = mid + 1; else hi = mid;
+    }
+    for (let k = lo; k < sourceNameKeys.length; k++) {
+      const key = sourceNameKeys[k];
+      if (!key.startsWith(qt)) break;
+      if (key === qt) continue; /* already handled above */
+      for (const i of sourceNameIndex[key]) {
+        if (scores[i] < 0.8) scores[i] = Math.max(scores[i], 0.8);
+      }
+    }
+  }
+
+  /* --- Collect and rank --- */
+  const candidates = [];
+  for (let i = 0; i < foods.length; i++) {
+    if (scores[i] <= 0) continue;
+
+    let s = scores[i];
     const nl = foodNamesLower[i];
-    if (nl === q) score += 100;
-    else if (nl.startsWith(q + ' ') || nl.startsWith(q)) score += 20;
-    else if (qTokens.every(t => nl.includes(t))) score += 10;
-    score += 8 / (1 + tokens.length);
+    /* Exact name match bonus */
+    if (nl === q) s += 100;
+    else if (nl.startsWith(q + ' ') || nl.startsWith(q)) s += 20;
+    else if (qTokens.every(t => nl.includes(t))) s += 10;
+    /* Prefer shorter, more generic names */
+    s += 8 / (1 + docTokens[i].length);
 
-    candidates.push({ idx: i, score });
+    candidates.push({ idx: i, score: s });
   }
 
   candidates.sort((a, b) => b.score - a.score);
