@@ -1,9 +1,13 @@
 import pandas as pd
 from importlib import resources
+from rank_bm25 import BM25Okapi
 
 # Global variables to store DataFrames, initialized as None
 foods_df = None
 nutrients_df = None
+_bm25_index = None
+_food_names = None
+_food_names_lower = None
 
 def _data_path(filename: str) -> str:
     """Return the filesystem path to a data file shipped with the package."""
@@ -11,9 +15,13 @@ def _data_path(filename: str) -> str:
 
 def ensure_data_loaded():
     """Load the CSV files into DataFrames if not already loaded."""
-    global foods_df, nutrients_df
+    global foods_df, nutrients_df, _bm25_index, _food_names, _food_names_lower
     if foods_df is None:
         foods_df = pd.read_csv(_data_path('foods_aggregated.csv'))
+        # Build BM25 search index over food names
+        _food_names = foods_df['foodName'].dropna().tolist()
+        _food_names_lower = [n.lower() for n in _food_names]
+        _bm25_index = BM25Okapi([n.split() for n in _food_names_lower])
     if nutrients_df is None:
         nutrients_df = pd.read_csv(_data_path('nutrients.csv'))
 
@@ -61,13 +69,40 @@ def get_portion_unit_name(foodName):
     val = row['portion_unit_name'].iloc[0]
     return val if pd.notna(val) else None
 
-def find_closest_matches(partialName):
-    """Return up to 10 food names that contain the partial name."""
+def find_closest_matches(partialName, n=10):
+    """Return up to *n* food names ranked by relevance (BM25 + brevity).
+
+    Uses BM25 for term-importance scoring, then re-ranks with bonuses
+    for exact matches, prefix matches, and shorter (more generic) names.
+    """
     ensure_data_loaded()
-    # Case-insensitive partial match; na=False handles potential NaN values
-    mask = foods_df['foodName'].str.lower().str.contains(partialName.lower(), na=False)
-    matches = foods_df[mask]['foodName'].tolist()
-    return matches[:10]
+    q = partialName.lower()
+    q_tokens = q.split()
+    scores = _bm25_index.get_scores(q_tokens)
+
+    # Gather all candidates with a positive BM25 score
+    candidates = []
+    for i in range(len(_food_names)):
+        if scores[i] <= 0:
+            continue
+        nl = _food_names_lower[i]
+        s = float(scores[i])
+        # Exact match bonus
+        if nl == q:
+            s += 100
+        # Name starts with query
+        elif nl.startswith(q + ' ') or nl == q:
+            s += 20
+        # All query tokens present in name
+        elif all(t in nl for t in q_tokens):
+            s += 10
+        # Brevity: prefer shorter, more generic names
+        word_count = len(nl.split())
+        s += 8.0 / (1 + word_count)
+        candidates.append((s, i))
+
+    candidates.sort(key=lambda x: -x[0])
+    return [_food_names[i] for _, i in candidates[:n]]
 
 def get_fooddata_df():
     """Return the fooddata DataFrame."""

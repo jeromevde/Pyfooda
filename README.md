@@ -39,7 +39,7 @@ The package ships with the preprocessed USDA data — no downloads needed.
 ```python
 import pyfooda as pf
 
-pf.find_closest_matches("cheddar")           # up to 10 partial-name matches
+pf.find_closest_matches("cheddar")           # ranked by relevance (BM25)
 pf.get_nutrients("Cheddar Cheese")           # dict of nutrient values
 pf.get_category("Cheddar Cheese")            # "Cheese"
 pf.get_portion_gram_weight("Cheddar Cheese") # grams per portion
@@ -55,7 +55,7 @@ drv = pf.get_drv_df()        # daily reference values per nutrient
 | `get_nutrients(name)` | `dict[nutrient → value]` or `None` |
 | `get_portion_gram_weight(name)` | `float` or `None` |
 | `get_portion_unit_name(name)` | `str` or `None` |
-| `find_closest_matches(partial)` | `list[str]` (max 10) |
+| `find_closest_matches(partial, n=10)` | `list[str]` ranked by relevance |
 | `get_fooddata_df()` | Full food DataFrame |
 | `get_drv_df()` | Nutrient DRV DataFrame |
 

@@ -10,6 +10,7 @@ setup(
     packages=find_packages(),
     install_requires=[
         "pandas>=2.0.0",
+        "rank-bm25>=0.2.2",
     ],
     author="Jerome",
     description="Python API for USDA FoodData Central with LLM-powered food aggregation",
