@@ -131,6 +131,32 @@ def _avg_nutrients(existing: dict, new_row: pd.Series, count: int) -> dict:
     return merged
 
 
+# Energy-based nutrient guard: reject additions that are too far from the group
+# Uses MAD (Median Absolute Deviation) — robust even under 50% contamination.
+# Falls back to a fixed ±150 kcal band when MAD is near zero (uniform groups).
+
+_ENERGY_MAD_THRESHOLD = 3.5   # multiples of MAD
+_ENERGY_FIXED_BAND = 150      # kcal, fallback when MAD < 10
+_ENERGY_MIN_COUNT = 3         # don't gate until we have this many sources
+
+
+def _is_energy_compatible(entry: dict, new_energy: float) -> bool:
+    """Return True if new_energy is compatible with the group's energy profile."""
+    energies = entry.get('_source_energies', [])
+    if len(energies) < _ENERGY_MIN_COUNT:
+        return True  # too few samples to judge
+
+    arr = np.array(energies, dtype=float)
+    median = float(np.median(arr))
+    mad = float(np.median(np.abs(arr - median)))
+
+    if mad < 10:
+        # Very homogeneous group — use fixed band
+        return abs(new_energy - median) <= _ENERGY_FIXED_BAND
+    else:
+        return abs(new_energy - median) <= _ENERGY_MAD_THRESHOLD * mad
+
+
 # Key nutrients shown in prompt (compact fingerprint for LLM comparison)
 _PROMPT_NUTRIENT_COLS = ['Energy', 'Carbohydrate', 'Protein', 'Total fat', 'Sugars, Total']
 _PROMPT_NUTRIENT_SHORT = ['kcal', 'carb', 'prot', 'fat', 'sugar']
@@ -403,14 +429,18 @@ class FoodAggregator:
                     name_key = name.strip().lower()
                     # Check if same generic name was already created in this batch
                     if name_key in batch_created:
-                        self._do_add(batch_created[name_key], row)
-                        self.stats['added'] += 1
+                        if not self._do_add(batch_created[name_key], row):
+                            self.stats['ignored'] += 1  # energy-rejected
+                        else:
+                            self.stats['added'] += 1
                     else:
                         # Also check if search index has a very close match
                         existing = self.index.search(name, top_k=1)
                         if existing and existing[0]['score'] > 0.85:
-                            self._do_add(existing[0]['id'], row)
-                            self.stats['added'] += 1
+                            if not self._do_add(existing[0]['id'], row):
+                                self.stats['ignored'] += 1
+                            else:
+                                self.stats['added'] += 1
                         else:
                             self._do_create(name, row)
                             batch_created[name_key] = self._next_id - 1
@@ -428,20 +458,30 @@ class FoodAggregator:
                             key = target_name.strip().lower()
                             target = batch_created.get(key)
                     if target and target in self.db:
-                        self._do_add(target, row)
-                        self.stats['added'] += 1
+                        if not self._do_add(target, row):
+                            # Energy-rejected: create as new entry
+                            create_name = target_name or f['name']
+                            self._do_create(create_name, row)
+                            batch_created[create_name.strip().lower()] = self._next_id - 1
+                            self.stats['created'] += 1
+                        else:
+                            self.stats['added'] += 1
                     else:
                         # Couldn't resolve — treat as CREATE with the target_name
                         create_name = target_name or f['name']
                         name_key = create_name.strip().lower()
                         if name_key in batch_created:
-                            self._do_add(batch_created[name_key], row)
-                            self.stats['added'] += 1
+                            if not self._do_add(batch_created[name_key], row):
+                                self.stats['ignored'] += 1
+                            else:
+                                self.stats['added'] += 1
                         else:
                             existing = self.index.search(create_name, top_k=1)
                             if existing and existing[0]['score'] > 0.85:
-                                self._do_add(existing[0]['id'], row)
-                                self.stats['added'] += 1
+                                if not self._do_add(existing[0]['id'], row):
+                                    self.stats['ignored'] += 1
+                                else:
+                                    self.stats['added'] += 1
                             else:
                                 self._do_create(create_name, row)
                                 batch_created[name_key] = self._next_id - 1
@@ -478,6 +518,10 @@ class FoodAggregator:
         pun = row.get('portion_unit_name', '')
         portion_units = [str(pun)] if pd.notna(pun) and str(pun).strip() else []
 
+        # Track source energies for outlier gating
+        energy_val = row.get('Energy', np.nan)
+        source_energies = [float(energy_val)] if pd.notna(energy_val) else []
+
         self.db[fid] = {
             'id': fid,
             'generic_name': generic_name,
@@ -487,17 +531,28 @@ class FoodAggregator:
             'source_names': [str(row.get('foodName', ''))],
             'portion_gram_weights': portion_weights,
             'portion_unit_names': portion_units,
+            '_source_energies': source_energies,
             'count': 1,
         }
         self.index.add(fid, generic_name)
 
-    def _do_add(self, target_id: int, row: pd.Series):
+    def _do_add(self, target_id: int, row: pd.Series) -> bool:
+        """Add a source food to an existing group. Returns False if rejected."""
         entry = self.db[target_id]
+
+        # Energy-based outlier gate
+        new_energy = row.get('Energy', np.nan)
+        if pd.notna(new_energy) and not _is_energy_compatible(entry, float(new_energy)):
+            return False
+
         entry['nutrients'] = _avg_nutrients(entry['nutrients'], row, entry['count'])
         entry['count'] += 1
         src_id = int(row.name) if isinstance(row.name, (int, np.integer)) else 0
         entry['source_ids'].append(src_id)
         entry['source_names'].append(str(row.get('foodName', '')))
+        # Track energy for future gating
+        if pd.notna(new_energy):
+            entry.setdefault('_source_energies', []).append(float(new_energy))
         # Collect serving size
         pgw = row.get('portion_gram_weight', np.nan)
         if pd.notna(pgw):
@@ -545,8 +600,14 @@ class FoodAggregator:
         out = Path(output_path)
         out.parent.mkdir(parents=True, exist_ok=True)
 
+        # Strip internal fields before saving
+        clean = []
+        for entry in self.db.values():
+            e = {k: v for k, v in entry.items() if not k.startswith('_')}
+            clean.append(e)
+
         with open(out, 'w') as f:
-            json.dump(list(self.db.values()), f, indent=2, default=str)
+            json.dump(clean, f, indent=2, default=str)
         print(f'  Saved {len(self.db)} generic foods -> {output_path}')
 
         csv_path = str(out).replace('.json', '.csv')
