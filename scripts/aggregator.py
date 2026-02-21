@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 """
 Food Aggregation Engine - Tool-based approach
 
@@ -93,6 +95,17 @@ class FoodSearchIndex:
                     'score': round(float(scores[i]), 3),
                 })
         return results
+
+    def rename(self, food_id: int, new_name: str):
+        """Update the name of an existing entry in the index."""
+        try:
+            idx = self.ids.index(food_id)
+        except ValueError:
+            return
+        tokens, trigrams = self._tokenize(new_name)
+        self.names[idx] = new_name.lower()
+        self._tokens[idx] = tokens
+        self._trigrams[idx] = trigrams
 
     def __len__(self):
         return len(self.names)
@@ -191,18 +204,39 @@ def load_prompt(path: Optional[str] = None) -> str:
     return p.read_text()
 
 
+def _energy_from_fingerprint(fp: str) -> float | None:
+    """Extract kcal value from a nutrient fingerprint string."""
+    m = re.search(r'kcal=(\d+)', fp)
+    return float(m.group(1)) if m else None
+
+
 def _build_batch_prompt(foods: list[dict]) -> str:
-    """Build a single user message containing a batch of foods to classify."""
+    """Build a single user message containing a batch of foods to classify.
+
+    Adds ⚠️ ENERGY MISMATCH flags to search results whose energy differs
+    from the incoming food by >50%, so the LLM knows not to blindly ADD.
+    """
     lines = []
     for f in foods:
         sr = f['search_results']
+        incoming_energy = _energy_from_fingerprint(f.get('nutrients_str', ''))
+
         if not sr:
             matches_str = '  (no existing entries yet)'
         else:
-            matches_str = '\n'.join(
-                f'    id={m["id"]}  "{m["name"]}"  [{m.get("nutrients", "")}]  (score={m["score"]})'
-                for m in sr
-            )
+            match_lines = []
+            for m in sr:
+                m_energy = _energy_from_fingerprint(m.get('nutrients', ''))
+                warn = ''
+                if incoming_energy and m_energy and incoming_energy > 0 and m_energy > 0:
+                    ratio = abs(incoming_energy - m_energy) / min(incoming_energy, m_energy)
+                    if ratio > 0.5:
+                        warn = '  ⚠️ ENERGY MISMATCH — DO NOT ADD, consider RENAME or CREATE'
+                match_lines.append(
+                    f'    id={m["id"]}  "{m["name"]}"  [{m.get("nutrients", "")}]  (score={m["score"]}){warn}'
+                )
+            matches_str = '\n'.join(match_lines)
+
         nutrients_str = f.get('nutrients_str', '')
         lines.append(
             f'[{f["idx"]}] "{f["name"]}"  category={f["category"]}  [{nutrients_str}]\n'
@@ -275,6 +309,27 @@ def _parse_llm_response(raw: str, batch_size: int) -> list[dict]:
         line = line.strip()
         if not line or line.startswith('#') or line.startswith('//'):
             continue
+
+        # RENAME: [42] RENAME <id> "New Name For Existing" CREATE "New Group Name"
+        rm = re.match(
+            r'\[?(\d+)\]?\s*RENAME\s+(\d+)\s+["\']?([^"\']+?)["\']?'
+            r'(?:\s+(?:CREATE|->)\s+["\']?([^"\']+?)["\']?)?\s*$',
+            line, re.IGNORECASE
+        )
+        if rm:
+            idx = int(rm.group(1))
+            target_id = int(rm.group(2))
+            new_name_existing = rm.group(3).strip()
+            new_name_incoming = rm.group(4).strip() if rm.group(4) else None
+            results.append({
+                'idx': idx,
+                'action': 'RENAME',
+                'target_id': target_id,
+                'new_name_existing': new_name_existing,
+                'new_name_incoming': new_name_incoming,
+            })
+            continue
+
         # Standard: [42] CREATE Apple
         m = re.match(r'\[?(\d+)\]?\s*(CREATE|ADD|IGNORE)\s*(.*)', line, re.IGNORECASE)
         if not m:
@@ -486,6 +541,23 @@ class FoodAggregator:
                                 self._do_create(create_name, row)
                                 batch_created[name_key] = self._next_id - 1
                                 self.stats['created'] += 1
+                elif decision['action'] == 'RENAME':
+                    target_id = decision.get('target_id')
+                    new_name_existing = decision.get('new_name_existing', '')
+                    new_name_incoming = decision.get('new_name_incoming')
+                    if target_id and target_id in self.db and new_name_existing:
+                        # Rename the existing group
+                        self.db[target_id]['generic_name'] = new_name_existing
+                        self.index.rename(target_id, new_name_existing)
+                        self.stats.setdefault('renamed', 0)
+                        self.stats['renamed'] += 1
+                        # Create a new group for the incoming food
+                        create_name = new_name_incoming or f['name']
+                        self._do_create(create_name, row)
+                        batch_created[create_name.strip().lower()] = self._next_id - 1
+                        self.stats['created'] += 1
+                    else:
+                        self.stats['errors'] += 1
                 elif decision['action'] == 'IGNORE':
                     self.stats['ignored'] += 1
 
@@ -641,6 +713,7 @@ class FoodAggregator:
         print(f'  Generic foods created  : {self.stats["created"]}')
         print(f'  Merged into existing   : {self.stats["added"]}')
         print(f'  Ignored                : {self.stats["ignored"]}')
+        print(f'  Renamed existing groups : {self.stats.get("renamed", 0)}')
         print(f'  Parse errors (-> create): {self.stats["errors"]}')
         print(f'  API calls              : {self.stats["api_calls"]}')
         print(f'  Final DB size          : {len(self.db)} entries')
