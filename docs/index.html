@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pyfooda — Food Nutrition Lookup</title>
-<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 <style>
   :root {
     --bg: #fafafa; --surface: #fff; --border: #e0e0e0;
@@ -67,19 +66,29 @@
   #results li .cat {
     font-size: .8rem; color: var(--muted); margin-left: .5rem;
   }
+  #results li .count {
+    font-size: .75rem; color: var(--muted); margin-left: .3rem;
+    opacity: .7;
+  }
 
   /* Detail panel */
   #detail { display: none; margin-top: 1.5rem; }
   #detail.visible { display: block; }
   .food-header {
+    margin-bottom: 1.2rem;
+  }
+  .food-header-top {
     display: flex; justify-content: space-between; align-items: baseline;
-    flex-wrap: wrap; gap: .5rem; margin-bottom: 1.2rem;
+    flex-wrap: wrap; gap: .5rem;
   }
   .food-header h2 { font-size: 1.4rem; font-weight: 600; }
-  .food-header .portion { font-size: 0.85rem; color: var(--muted); margin-top: 0.25rem; }
   .food-header .badge {
     font-size: .8rem; padding: 3px 10px; border-radius: 20px;
     background: var(--accent-light); color: var(--accent); font-weight: 500;
+  }
+  .food-meta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    margin-top: .4rem; font-size: .85rem; color: var(--muted);
   }
 
   /* Nutrient groups */
@@ -106,6 +115,51 @@
     height: 100%; border-radius: 4px;
     transition: width .3s ease;
   }
+
+  /* Source foods panel */
+  .sources-section { margin-top: 1.5rem; }
+  .sources-toggle {
+    display: flex; align-items: center; gap: .5rem;
+    background: none; border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 8px 14px; cursor: pointer; width: 100%;
+    font-size: .9rem; color: var(--text); background: var(--surface);
+    transition: background .15s;
+  }
+  .sources-toggle:hover { background: var(--accent-light); }
+  .sources-toggle .arrow {
+    transition: transform .2s; font-size: .7rem;
+  }
+  .sources-toggle.open .arrow { transform: rotate(90deg); }
+  .sources-toggle .toggle-info {
+    margin-left: auto; font-size: .8rem; color: var(--muted);
+  }
+
+  .sources-list {
+    display: none; margin-top: .5rem;
+    border: 1px solid var(--border); border-radius: var(--radius);
+    background: var(--surface); max-height: 400px; overflow-y: auto;
+  }
+  .sources-list.visible { display: block; }
+  .sources-list .source-item {
+    padding: 6px 14px; font-size: .82rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  .sources-list .source-item:last-child { border-bottom: none; }
+  .sources-list .source-item:nth-child(odd) {
+    background: color-mix(in srgb, var(--surface) 95%, var(--border));
+  }
+
+  .sources-filter {
+    padding: 8px 14px; border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; background: var(--surface); z-index: 1;
+  }
+  .sources-filter input {
+    width: 100%; padding: 6px 10px; border: 1px solid var(--border);
+    border-radius: 4px; font-size: .82rem;
+    background: var(--bg); color: var(--text); outline: none;
+  }
+  .sources-filter input:focus { border-color: var(--accent); }
 
   /* Loading */
   .loading {
@@ -162,73 +216,52 @@
 
 <script>
 /* ------------------------------------------------------------------ */
+/*  Nutrient metadata (embedded to avoid extra fetch)                  */
+/* ------------------------------------------------------------------ */
+const NUTRIENT_META = [
+  { name: "Energy", unit: "KCAL", cat: "Energy", drv: 2500 },
+  { name: "Carbohydrate", unit: "G", cat: "Carbohydrates", drv: 320 },
+  { name: "Sugars, Total", unit: "G", cat: "Carbohydrates", drv: 50 },
+  { name: "Fiber", unit: "G", cat: "Carbohydrates", drv: 30 },
+  { name: "Total fat", unit: "G", cat: "Lipids", drv: 80 },
+  { name: "Cholesterol", unit: "MG", cat: "Lipids", drv: 300 },
+  { name: "Fatty acids, total saturated", unit: "G", cat: "Lipids", drv: 20 },
+  { name: "Protein", unit: "G", cat: "Proteins", drv: 160 },
+  { name: "Vitamin A, RAE", unit: "UG", cat: "Vitamins", drv: 900 },
+  { name: "Vitamin E", unit: "MG", cat: "Vitamins", drv: 15 },
+  { name: "Vitamin D (D2 + D3)", unit: "UG", cat: "Vitamins", drv: 20 },
+  { name: "Vitamin C", unit: "MG", cat: "Vitamins", drv: 90 },
+  { name: "Vitamin B-6", unit: "MG", cat: "Vitamins", drv: 1.7 },
+  { name: "Folate, total", unit: "UG", cat: "Vitamins", drv: 400 },
+  { name: "Vitamin B-12", unit: "UG", cat: "Vitamins", drv: 2.4 },
+  { name: "Calcium", unit: "MG", cat: "Minerals", drv: 1000 },
+  { name: "Iron", unit: "MG", cat: "Minerals", drv: 10 },
+  { name: "Magnesium", unit: "MG", cat: "Minerals", drv: 420 },
+  { name: "Phosphorus", unit: "MG", cat: "Minerals", drv: 700 },
+  { name: "Potassium", unit: "MG", cat: "Minerals", drv: 3400 },
+  { name: "Sodium", unit: "MG", cat: "Minerals", drv: 1500 },
+  { name: "Zinc", unit: "MG", cat: "Minerals", drv: 11 },
+];
+
+/* ------------------------------------------------------------------ */
 /*  Data loading                                                       */
 /* ------------------------------------------------------------------ */
-let foods = [];       // [{foodName, category, nutrients: {name: val}}]
-let nutrientMeta = []; // [{nutrientName, unit_name, nutrient_category, drv}]
+let foods = [];
 let foodNames = [];
 let foodNamesLower = [];
-let idf = {};         // token -> IDF score (for BM25-lite search)
+let idf = {};
 
-const dataBase = window.location.hostname.includes('github.io')
-  ? './data/' : './data/';
-
-function loadCSV(url) {
-  return new Promise((resolve, reject) => {
-    Papa.parse(url, {
-      download: true, header: true, skipEmptyLines: true,
-      complete: r => resolve(r.data),
-      error: e => reject(e),
-    });
-  });
-}
+const dataBase = './data/';
 
 async function init() {
   try {
-    const [foodRows, nutrientRows] = await Promise.all([
-      loadCSV(dataBase + 'foods_aggregated.csv'),
-      loadCSV(dataBase + 'nutrients.csv'),
-    ]);
+    const resp = await fetch(dataBase + 'foods.json');
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    foods = await resp.json();
 
-    // Parse nutrient metadata — deduplicate by nutrientName, keeping first
-    const seen = new Set();
-    nutrientMeta = [];
-    for (const r of nutrientRows) {
-      const name = r.nutrientName;
-      if (!name || seen.has(name)) continue;
-      seen.add(name);
-      nutrientMeta.push({
-        nutrientName: name,
-        unit_name: r.unit_name || '',
-        nutrient_category: r.nutrient_category || 'Other',
-        drv: parseFloat(r.drv) || 0,
-        order: parseInt(r.nutrient_order) || 99,
-      });
-    }
-    nutrientMeta.sort((a, b) => a.order - b.order);
-
-    // Build the set of nutrient columns present in the food CSV
-    const foodCols = new Set(Object.keys(foodRows[0] || {}));
-    const availableNutrients = nutrientMeta.filter(n => foodCols.has(n.nutrientName));
-
-    // Parse foods
-    foods = foodRows.map(r => {
-      const nutrients = {};
-      for (const nm of availableNutrients) {
-        const v = parseFloat(r[nm.nutrientName]);
-        if (!isNaN(v)) nutrients[nm.nutrientName] = v;
-      }
-      return {
-        foodName: r.foodName || '', category: r.category || '', nutrients,
-        portion_gram_weight: parseFloat(r.portion_gram_weight) || null,
-        portion_unit_name: r.portion_unit_name || null,
-      };
-    }).filter(f => f.foodName);
-
-    foodNames = foods.map(f => f.foodName);
+    foodNames = foods.map(f => f.n);
     foodNamesLower = foodNames.map(n => n.toLowerCase());
 
-    // Pre-compute IDF for BM25-lite
     buildIDF();
 
     document.getElementById('loading').style.display = 'none';
@@ -243,13 +276,13 @@ async function init() {
 /* ------------------------------------------------------------------ */
 /*  BM25-lite search                                                   */
 /* ------------------------------------------------------------------ */
-let docTokens = [];   // per-food token arrays
+let docTokens = [];
 let docLens = [];
 let avgDL = 0;
 
 function buildIDF() {
   const N = foodNamesLower.length;
-  const df = {};  // document frequency
+  const df = {};
   docTokens = [];
   docLens = [];
   let totalLen = 0;
@@ -264,7 +297,6 @@ function buildIDF() {
   }
   avgDL = totalLen / N;
 
-  // IDF: log((N - df + 0.5) / (df + 0.5) + 1)
   idf = {};
   for (const [t, freq] of Object.entries(df)) {
     idf[t] = Math.log((N - freq + 0.5) / (freq + 0.5) + 1);
@@ -275,16 +307,12 @@ function search(query, n = 15) {
   const q = query.toLowerCase().trim();
   if (!q) return [];
   const qTokens = q.split(/\s+/);
-
-  // BM25 parameters
   const k1 = 1.5, b = 0.75;
   const candidates = [];
 
   for (let i = 0; i < foods.length; i++) {
     const tokens = docTokens[i];
     const dl = docLens[i];
-
-    // BM25 score
     let score = 0;
     for (const qt of qTokens) {
       const tf = tokens.filter(t => t === qt).length;
@@ -294,13 +322,10 @@ function search(query, n = 15) {
     }
     if (score <= 0) continue;
 
-    // Bonuses
     const nl = foodNamesLower[i];
     if (nl === q) score += 100;
     else if (nl.startsWith(q + ' ') || nl.startsWith(q)) score += 20;
     else if (qTokens.every(t => nl.includes(t))) score += 10;
-
-    // Brevity bonus
     score += 8 / (1 + tokens.length);
 
     candidates.push({ idx: i, score });
@@ -363,7 +388,7 @@ function renderResults() {
   for (let i = 0; i < currentResults.length; i++) {
     const f = foods[currentResults[i].idx];
     const li = document.createElement('li');
-    li.innerHTML = `${esc(f.foodName)}<span class="cat">${esc(f.category)}</span>`;
+    li.innerHTML = `${esc(f.n)}<span class="cat">${esc(f.c)}</span><span class="count">&times;${f.ct}</span>`;
     if (i === activeIdx) li.classList.add('active');
     li.addEventListener('click', () => selectFood(currentResults[i].idx));
     li.addEventListener('mouseenter', () => setActive(i));
@@ -381,7 +406,7 @@ function setActive(i) {
 
 function selectFood(idx) {
   const f = foods[idx];
-  searchInput.value = f.foodName;
+  searchInput.value = f.n;
   resultsList.classList.remove('visible');
   renderDetail(f);
 }
@@ -389,69 +414,130 @@ function selectFood(idx) {
 /* ------------------------------------------------------------------ */
 /*  Nutrient detail rendering                                          */
 /* ------------------------------------------------------------------ */
-
 function renderDetail(food) {
+  const nutrients = food.v;
+
   // Group available nutrients by category
   const groups = {};
-  for (const nm of nutrientMeta) {
-    if (!(nm.nutrientName in food.nutrients)) continue;
-    const cat = nm.nutrient_category;
+  for (const nm of NUTRIENT_META) {
+    if (!(nm.name in nutrients)) continue;
+    const cat = nm.cat;
     if (!groups[cat]) groups[cat] = [];
     groups[cat].push(nm);
   }
 
+  // Header
   let portionHtml = '';
-  if (food.portion_gram_weight) {
-    const unitLabel = food.portion_unit_name && food.portion_unit_name !== 'undetermined'
-      ? ` (${esc(food.portion_unit_name)})` : '';
-    portionHtml = `<div class="portion">Serving: ${food.portion_gram_weight}g${unitLabel}</div>`;
+  if (food.pw) {
+    const unitLabel = food.pu && food.pu !== 'undetermined' ? ` (${esc(food.pu)})` : '';
+    portionHtml = `<span>Serving: ${food.pw}g${unitLabel}</span>`;
   }
 
   let html = `<div class="food-header">
-    <h2>${esc(food.foodName)}</h2>
-    <span class="badge">${esc(food.category)}</span>
-    ${portionHtml}
+    <div class="food-header-top">
+      <h2>${esc(food.n)}</h2>
+      <span class="badge">${esc(food.c)}</span>
+    </div>
+    <div class="food-meta">
+      <span>Averaged from <strong>${food.ct}</strong> source foods</span>
+      ${portionHtml}
+    </div>
   </div>`;
 
+  // Nutrient groups
   const categoryOrder = ['Energy', 'Carbohydrates', 'Lipids', 'Proteins', 'Vitamins', 'Minerals'];
   const orderedCats = categoryOrder.filter(c => groups[c]);
-  // Add any remaining
   for (const c of Object.keys(groups)) {
     if (!orderedCats.includes(c)) orderedCats.push(c);
   }
 
   for (const cat of orderedCats) {
-    const nutrients = groups[cat];
+    const metas = groups[cat];
     html += `<div class="nutrient-group"><h3>${esc(cat)}</h3>`;
-    for (const nm of nutrients) {
-      const val = food.nutrients[nm.nutrientName];
-      const unit = nm.unit_name;
+    for (const nm of metas) {
+      const val = nutrients[nm.name];
       const drv = nm.drv;
       let pct = drv > 0 ? Math.min((val / drv) * 100, 100) : 0;
       let barColor = pct < 15 ? 'var(--muted)' : pct < 50 ? 'var(--green)' : pct < 80 ? 'var(--yellow)' : 'var(--red)';
       let pctLabel = drv > 0 ? ` (${Math.round((val / drv) * 100)}% DV)` : '';
 
       html += `<div class="nutrient-row">
-        <span class="name">${esc(nm.nutrientName)}</span>
-        <span class="value">${formatVal(val)} ${esc(unit)}${pctLabel}</span>
+        <span class="name">${esc(nm.name)}</span>
+        <span class="value">${formatVal(val)} ${esc(nm.unit)}${pctLabel}</span>
         <div class="bar-wrap"><div class="bar-fill" style="width:${pct.toFixed(1)}%;background:${barColor}"></div></div>
       </div>`;
     }
     html += '</div>';
   }
 
+  // Source foods section
+  const sources = food.s || [];
+  if (sources.length > 0) {
+    html += `<div class="sources-section">
+      <button class="sources-toggle" onclick="toggleSources(this)">
+        <span class="arrow">&#9654;</span>
+        <span>Source foods used in aggregation</span>
+        <span class="toggle-info">${sources.length} items</span>
+      </button>
+      <div class="sources-list" id="sources-panel">
+        <div class="sources-filter">
+          <input type="text" placeholder="Filter source foods…" oninput="filterSources(this.value)">
+        </div>
+        <div id="sources-items"></div>
+      </div>
+    </div>`;
+  }
+
   detailPanel.innerHTML = html;
   detailPanel.classList.add('visible');
+
+  if (sources.length > 0) {
+    renderSourceItems(sources);
+  }
+}
+
+let currentSourceNames = [];
+
+function renderSourceItems(names, filter) {
+  currentSourceNames = names;
+  const container = document.getElementById('sources-items');
+  if (!container) return;
+
+  const fl = (filter || '').toLowerCase();
+  const filtered = fl ? names.filter(n => n.toLowerCase().includes(fl)) : names;
+
+  const show = filtered.slice(0, 200);
+  let html = '';
+  for (const name of show) {
+    html += `<div class="source-item">${esc(name)}</div>`;
+  }
+  if (filtered.length > 200) {
+    html += `<div class="source-item" style="color:var(--muted);font-style:italic">&hellip; and ${filtered.length - 200} more (use filter to narrow down)</div>`;
+  }
+  if (filtered.length === 0) {
+    html += `<div class="source-item" style="color:var(--muted);font-style:italic">No matches</div>`;
+  }
+  container.innerHTML = html;
+}
+
+function toggleSources(btn) {
+  btn.classList.toggle('open');
+  document.getElementById('sources-panel').classList.toggle('visible');
+}
+
+function filterSources(q) {
+  renderSourceItems(currentSourceNames, q);
 }
 
 function formatVal(v) {
-  if (v == null || isNaN(v)) return '—';
+  if (v == null || isNaN(v)) return '&mdash;';
   if (v >= 100) return Math.round(v).toLocaleString();
   if (v >= 1) return v.toFixed(1);
   return v.toFixed(2);
 }
 
 function esc(s) {
+  if (s == null) return '';
   const d = document.createElement('div');
   d.textContent = s;
   return d.innerHTML;
