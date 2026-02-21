@@ -472,6 +472,12 @@ class FoodAggregator:
             val = row.get(col, np.nan)
             nutrients[col] = float(val) if pd.notna(val) else None
 
+        # Collect serving size if available
+        pgw = row.get('portion_gram_weight', np.nan)
+        portion_weights = [float(pgw)] if pd.notna(pgw) else []
+        pun = row.get('portion_unit_name', '')
+        portion_units = [str(pun)] if pd.notna(pun) and str(pun).strip() else []
+
         self.db[fid] = {
             'id': fid,
             'generic_name': generic_name,
@@ -479,6 +485,8 @@ class FoodAggregator:
             'nutrients': nutrients,
             'source_ids': [int(row.name) if isinstance(row.name, (int, np.integer)) else 0],
             'source_names': [str(row.get('foodName', ''))],
+            'portion_gram_weights': portion_weights,
+            'portion_unit_names': portion_units,
             'count': 1,
         }
         self.index.add(fid, generic_name)
@@ -490,6 +498,13 @@ class FoodAggregator:
         src_id = int(row.name) if isinstance(row.name, (int, np.integer)) else 0
         entry['source_ids'].append(src_id)
         entry['source_names'].append(str(row.get('foodName', '')))
+        # Collect serving size
+        pgw = row.get('portion_gram_weight', np.nan)
+        if pd.notna(pgw):
+            entry['portion_gram_weights'].append(float(pgw))
+        pun = row.get('portion_unit_name', '')
+        if pd.notna(pun) and str(pun).strip():
+            entry['portion_unit_names'].append(str(pun))
 
     # -- persistence ------------------------------------------------------------
 
@@ -537,9 +552,18 @@ class FoodAggregator:
         csv_path = str(out).replace('.json', '.csv')
         rows = []
         for entry in self.db.values():
+            # Compute median serving size
+            pw = entry.get('portion_gram_weights', [])
+            median_gw = float(np.median(pw)) if pw else None
+            # Most common portion unit name
+            pu = entry.get('portion_unit_names', [])
+            portion_unit = max(set(pu), key=pu.count) if pu else None
+
             row = {
                 'foodName': entry['generic_name'],
                 'category': entry['food_category'],
+                'portion_gram_weight': median_gw,
+                'portion_unit_name': portion_unit,
             }
             if entry['nutrients']:
                 row.update(entry['nutrients'])

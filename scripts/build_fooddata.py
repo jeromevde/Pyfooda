@@ -47,6 +47,7 @@ food_nutrients.loc[mask , 'amount'] = food_nutrients.loc[mask, 'amount'] / 4.184
 food_nutrients.loc[mask, 'unit_name'] = 'KCAL'
 
 #%% --- PORTION DATA ---
+# 1. food_portion.csv — covers SR Legacy & Foundation foods (~15k fdc_ids)
 food_portion_cols = ['fdc_id', 'amount', 'gram_weight', 'measure_unit_id']
 food_portion_df = pd.read_csv(f'{fooddata_folder}/food_portion.csv', usecols=food_portion_cols)
 food_portion_df = food_portion_df.rename(columns={"amount": "portion_amount", "gram_weight": "portion_gram_weight"})
@@ -56,7 +57,27 @@ measure_unit_df = measure_unit_df.rename(columns={"id": "measure_unit_id", "name
 food_portion_df = pd.merge(food_portion_df, measure_unit_df, on='measure_unit_id', how='left')
 food_portion_df["portion_gram_weight"] = food_portion_df["portion_gram_weight"] / food_portion_df["portion_amount"]
 food_portion_df = food_portion_df[["fdc_id", "portion_gram_weight", "portion_unit_name"]]
-food_nutrients = food_nutrients.merge(food_portion_df, on="fdc_id", how="left")
+# Keep first portion per fdc_id (many foods have multiple portion options)
+food_portion_df = food_portion_df.drop_duplicates(subset='fdc_id', keep='first')
+
+# 2. branded_food.csv — covers 99.5% of branded foods (~2M fdc_ids)
+# Do not forget branded food portions which are not in food_portion.csv
+branded_cols = ['fdc_id', 'serving_size', 'serving_size_unit', 'household_serving_fulltext']
+branded_df = pd.read_csv(f'{fooddata_folder}/branded_food.csv', usecols=branded_cols)
+branded_df = branded_df.rename(columns={
+    'serving_size': 'portion_gram_weight',
+    'household_serving_fulltext': 'portion_unit_name',
+})
+# Convert ml to g (approximate 1:1 for most beverages/liquids)
+branded_df.loc[branded_df['serving_size_unit'].isin(['ml', 'MLT']), 'portion_gram_weight'] = \
+    branded_df.loc[branded_df['serving_size_unit'].isin(['ml', 'MLT']), 'portion_gram_weight']
+branded_df = branded_df[['fdc_id', 'portion_gram_weight', 'portion_unit_name']]
+branded_df = branded_df.drop_duplicates(subset='fdc_id', keep='first')
+
+# 3. Merge: prefer food_portion (more specific), fall back to branded
+portion_combined = pd.concat([food_portion_df, branded_df]).drop_duplicates(subset='fdc_id', keep='first')
+
+food_nutrients = food_nutrients.merge(portion_combined, on="fdc_id", how="left")
 
 #%% --- Checkpoint of the joins ---
 df = food_nutrients
@@ -77,7 +98,9 @@ pivot_df = df.pivot_table(
     aggfunc='first'
 ).reset_index()
 nutrient_cols = [col for col in pivot_df.columns if col not in index_cols]
-pivot_df = pivot_df[index_cols +list(nutrient_df["nutrientName"].unique())] # preserve nutrient order
+# Preserve nutrient order — only include nutrients actually present in the pivot
+ordered_nutrients = [n for n in nutrient_df["nutrientName"].unique() if n in pivot_df.columns]
+pivot_df = pivot_df[index_cols + ordered_nutrients]
 number_nutrients = ((pivot_df[nutrient_cols] != "") & (pivot_df[nutrient_cols].notna())).sum(axis=1)
 pivot_df.insert(loc=5, column='number_of_nutrients', value=number_nutrients)
 

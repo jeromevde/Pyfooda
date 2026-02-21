@@ -76,6 +76,7 @@
     flex-wrap: wrap; gap: .5rem; margin-bottom: 1.2rem;
   }
   .food-header h2 { font-size: 1.4rem; font-weight: 600; }
+  .food-header .portion { font-size: 0.85rem; color: var(--muted); margin-top: 0.25rem; }
   .food-header .badge {
     font-size: .8rem; padding: 3px 10px; border-radius: 20px;
     background: var(--accent-light); color: var(--accent); font-weight: 500;
@@ -217,7 +218,11 @@ async function init() {
         const v = parseFloat(r[nm.nutrientName]);
         if (!isNaN(v)) nutrients[nm.nutrientName] = v;
       }
-      return { foodName: r.foodName || '', category: r.category || '', nutrients };
+      return {
+        foodName: r.foodName || '', category: r.category || '', nutrients,
+        portion_gram_weight: parseFloat(r.portion_gram_weight) || null,
+        portion_unit_name: r.portion_unit_name || null,
+      };
     }).filter(f => f.foodName);
 
     foodNames = foods.map(f => f.foodName);
@@ -395,9 +400,17 @@ function renderDetail(food) {
     groups[cat].push(nm);
   }
 
+  let portionHtml = '';
+  if (food.portion_gram_weight) {
+    const unitLabel = food.portion_unit_name && food.portion_unit_name !== 'undetermined'
+      ? ` (${esc(food.portion_unit_name)})` : '';
+    portionHtml = `<div class="portion">Serving: ${food.portion_gram_weight}g${unitLabel}</div>`;
+  }
+
   let html = `<div class="food-header">
     <h2>${esc(food.foodName)}</h2>
     <span class="badge">${esc(food.category)}</span>
+    ${portionHtml}
   </div>`;
 
   const categoryOrder = ['Energy', 'Carbohydrates', 'Lipids', 'Proteins', 'Vitamins', 'Minerals'];
