@@ -538,11 +538,8 @@ class FoodAggregator:
         rows = []
         for entry in self.db.values():
             row = {
-                'id': entry['id'],
-                'generic_name': entry['generic_name'],
-                'food_category': entry['food_category'],
-                'count': entry['count'],
-                'source_ids': ';'.join(str(s) for s in entry['source_ids']),
+                'foodName': entry['generic_name'],
+                'category': entry['food_category'],
             }
             if entry['nutrients']:
                 row.update(entry['nutrients'])
