@@ -23,32 +23,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
       - name: Prepare site
         run: |
           mkdir -p docs/data
-          python -c "
-          import json
-          with open('pyfooda/data/foods_aggregated.json') as f:
-              data = json.load(f)
-          web = []
-          for item in data:
-              web.append({
-                  'n': item['generic_name'],
-                  'c': item['food_category'],
-                  'v': item['nutrients'],
-                  's': item['source_names'],
-                  'ct': item['count'],
-                  'pw': item.get('portion_gram_weight'),
-                  'pu': item.get('portion_unit_name'),
-              })
-          with open('docs/data/foods.json', 'w') as f:
-              json.dump(web, f, separators=(',', ':'))
-          print(f'Generated foods.json: {len(web)} foods')
-          "
+          cp pyfooda/data/foods_aggregated.json docs/data/foods_aggregated.json
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

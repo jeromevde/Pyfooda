@@ -259,11 +259,11 @@ const dataBase = './data/';
 
 async function init() {
   try {
-    const resp = await fetch(dataBase + 'foods.json');
+    const resp = await fetch(dataBase + 'foods_aggregated.json');
     if (!resp.ok) throw new Error('HTTP ' + resp.status);
     foods = await resp.json();
 
-    foodNames = foods.map(f => f.n);
+    foodNames = foods.map(f => f.generic_name);
     foodNamesLower = foodNames.map(n => n.toLowerCase());
 
     buildIndex();
@@ -312,7 +312,7 @@ function buildIndex() {
      sources was named "NUTELLA ...". */
   sourceNameIndex = {};
   for (let i = 0; i < foods.length; i++) {
-    const sources = foods[i].s;
+    const sources = foods[i].source_names;
     if (!sources) continue;
     const seen = new Set();
     for (const sn of sources) {
@@ -473,7 +473,7 @@ function renderResults() {
   for (let i = 0; i < currentResults.length; i++) {
     const f = foods[currentResults[i].idx];
     const li = document.createElement('li');
-    li.innerHTML = `${esc(f.n)}<span class="cat">${esc(f.c)}</span><span class="count">&times;${f.ct}</span>`;
+    li.innerHTML = `${esc(f.generic_name)}<span class="cat">${esc(f.food_category)}</span><span class="count">&times;${f.count}</span>`;
     if (i === activeIdx) li.classList.add('active');
     li.addEventListener('click', () => selectFood(currentResults[i].idx));
     li.addEventListener('mouseenter', () => setActive(i));
@@ -491,7 +491,7 @@ function setActive(i) {
 
 function selectFood(idx) {
   const f = foods[idx];
-  searchInput.value = f.n;
+  searchInput.value = f.generic_name;
   resultsList.classList.remove('visible');
   renderDetail(f);
 }
@@ -500,7 +500,7 @@ function selectFood(idx) {
 /*  Nutrient detail rendering                                          */
 /* ------------------------------------------------------------------ */
 function renderDetail(food) {
-  const nutrients = food.v;
+  const nutrients = food.nutrients;
 
   // Group available nutrients by category
   const groups = {};
@@ -513,18 +513,18 @@ function renderDetail(food) {
 
   // Header
   let portionHtml = '';
-  if (food.pw) {
-    const unitLabel = food.pu && food.pu !== 'undetermined' ? ` (${esc(food.pu)})` : '';
-    portionHtml = `<span>Serving: ${food.pw}g${unitLabel}</span>`;
+  if (food.portion_gram_weight) {
+    const unitLabel = food.portion_unit_name && food.portion_unit_name !== 'undetermined' ? ` (${esc(food.portion_unit_name)})` : '';
+    portionHtml = `<span>Serving: ${food.portion_gram_weight}g${unitLabel}</span>`;
   }
 
   let html = `<div class="food-header">
     <div class="food-header-top">
-      <h2>${esc(food.n)}</h2>
-      <span class="badge">${esc(food.c)}</span>
+      <h2>${esc(food.generic_name)}</h2>
+      <span class="badge">${esc(food.food_category)}</span>
     </div>
     <div class="food-meta">
-      <span>Averaged from <strong>${food.ct}</strong> source foods</span>
+      <span>Averaged from <strong>${food.count}</strong> source foods</span>
       ${portionHtml}
     </div>
   </div>`;
@@ -556,7 +556,7 @@ function renderDetail(food) {
   }
 
   // Source foods section
-  const sources = food.s || [];
+  const sources = food.source_names || [];
   if (sources.length > 0) {
     html += `<div class="sources-section">
       <button class="sources-toggle" onclick="toggleSources(this)">
