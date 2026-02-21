@@ -39,3 +39,5 @@ Thumbs.db
 .vscode/
 *.swp
 *.swo
+# GitHub Pages data (copied at deploy time)
+docs/data/
