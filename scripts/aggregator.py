@@ -115,6 +115,25 @@ class FoodSearchIndex:
 # Nutrient helpers
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# Data-type priority — foundation foods are the gold standard
+# ---------------------------------------------------------------------------
+
+_DATA_TYPE_PRIORITY = {
+    'foundation_food': 0,
+    'sr_legacy_food': 1,
+    'survey_fndds_food': 1,
+    'sub_sample_food': 2,
+    'agricultural_acquisition': 2,
+    'branded_food': 3,
+}
+
+
+def _data_type_rank(dtype: str) -> int:
+    """Return sort rank for a data_type value (lower = higher priority)."""
+    return _DATA_TYPE_PRIORITY.get(str(dtype).strip(), 9)
+
+
 NUTRIENT_COLS = [
     'Energy', 'Carbohydrate', 'Protein', 'Total fat',
     'Fiber', 'Sugars, Total', 'Sodium', 'Calcium', 'Iron',
@@ -405,7 +424,8 @@ class FoodAggregator:
         self.index = FoodSearchIndex()
 
         # Stats
-        self.stats = {'created': 0, 'added': 0, 'ignored': 0, 'errors': 0, 'api_calls': 0}
+        self.stats = {'created': 0, 'added': 0, 'ignored': 0, 'errors': 0, 'api_calls': 0,
+                      'foundation_locked': 0}
         self.processed_count = 0
 
     # -- public -----------------------------------------------------------------
@@ -415,8 +435,17 @@ class FoodAggregator:
         df = self.source_df
         # Filter out rows with missing food names
         df = df[df['foodName'].notna() & (df['foodName'].astype(str) != 'nan')].reset_index(drop=True)
-        # Sort by category so similar foods land in the same batch
-        df = df.sort_values('food_category', na_position='last').reset_index(drop=True)
+
+        # Sort by data_type priority (foundation first, then legacy, then
+        # branded) so foundation foods create groups before lower-quality
+        # sources arrive.  Within the same priority, sort by category so
+        # similar foods still land in the same batch.
+        df['_dtype_rank'] = df['data_type'].apply(_data_type_rank)
+        df = df.sort_values(
+            ['_dtype_rank', 'food_category'],
+            ascending=[True, True],
+            na_position='last',
+        ).reset_index(drop=True)
         if limit:
             df = df.iloc[:limit]
 
@@ -484,18 +513,20 @@ class FoodAggregator:
                     name_key = name.strip().lower()
                     # Check if same generic name was already created in this batch
                     if name_key in batch_created:
-                        if not self._do_add(batch_created[name_key], row):
-                            self.stats['ignored'] += 1  # energy-rejected
-                        else:
+                        result = self._do_add(batch_created[name_key], row)
+                        if result == 'ok':
                             self.stats['added'] += 1
+                        else:
+                            self.stats['ignored'] += 1
                     else:
                         # Also check if search index has a very close match
                         existing = self.index.search(name, top_k=1)
                         if existing and existing[0]['score'] > 0.85:
-                            if not self._do_add(existing[0]['id'], row):
-                                self.stats['ignored'] += 1
-                            else:
+                            result = self._do_add(existing[0]['id'], row)
+                            if result == 'ok':
                                 self.stats['added'] += 1
+                            else:
+                                self.stats['ignored'] += 1
                         else:
                             self._do_create(name, row)
                             batch_created[name_key] = self._next_id - 1
@@ -513,30 +544,36 @@ class FoodAggregator:
                             key = target_name.strip().lower()
                             target = batch_created.get(key)
                     if target and target in self.db:
-                        if not self._do_add(target, row):
+                        result = self._do_add(target, row)
+                        if result == 'ok':
+                            self.stats['added'] += 1
+                        elif result == 'foundation_locked':
+                            # Foundation group — silently ignore lower-quality source
+                            self.stats['ignored'] += 1
+                        else:
                             # Energy-rejected: create as new entry
                             create_name = target_name or f['name']
                             self._do_create(create_name, row)
                             batch_created[create_name.strip().lower()] = self._next_id - 1
                             self.stats['created'] += 1
-                        else:
-                            self.stats['added'] += 1
                     else:
                         # Couldn't resolve — treat as CREATE with the target_name
                         create_name = target_name or f['name']
                         name_key = create_name.strip().lower()
                         if name_key in batch_created:
-                            if not self._do_add(batch_created[name_key], row):
-                                self.stats['ignored'] += 1
-                            else:
+                            result = self._do_add(batch_created[name_key], row)
+                            if result == 'ok':
                                 self.stats['added'] += 1
+                            else:
+                                self.stats['ignored'] += 1
                         else:
                             existing = self.index.search(create_name, top_k=1)
                             if existing and existing[0]['score'] > 0.85:
-                                if not self._do_add(existing[0]['id'], row):
-                                    self.stats['ignored'] += 1
-                                else:
+                                result = self._do_add(existing[0]['id'], row)
+                                if result == 'ok':
                                     self.stats['added'] += 1
+                                else:
+                                    self.stats['ignored'] += 1
                             else:
                                 self._do_create(create_name, row)
                                 batch_created[name_key] = self._next_id - 1
@@ -594,6 +631,7 @@ class FoodAggregator:
         energy_val = row.get('Energy', np.nan)
         source_energies = [float(energy_val)] if pd.notna(energy_val) else []
 
+        dtype = str(row.get('data_type', ''))
         self.db[fid] = {
             'id': fid,
             'generic_name': generic_name,
@@ -604,18 +642,37 @@ class FoodAggregator:
             'portion_gram_weights': portion_weights,
             'portion_unit_names': portion_units,
             '_source_energies': source_energies,
+            '_created_by': dtype,
             'count': 1,
         }
         self.index.add(fid, generic_name)
 
-    def _do_add(self, target_id: int, row: pd.Series) -> bool:
-        """Add a source food to an existing group. Returns False if rejected."""
+    def _do_add(self, target_id: int, row: pd.Series) -> str:
+        """Add a source food to an existing group.
+
+        Returns:
+            'ok'                  – successfully added
+            'energy_rejected'     – energy outlier gate fired
+            'foundation_locked'   – group is foundation-locked, lower source rejected
+
+        Foundation-locked groups:
+        If a group was created by a foundation_food, it already has
+        lab-measured, gold-standard nutrients.  Lower-quality sources
+        (legacy / branded) are rejected to keep the group clean.
+        """
         entry = self.db[target_id]
+
+        # Foundation lock — protect lab-quality groups from dilution
+        created_by = entry.get('_created_by', '')
+        incoming_dtype = str(row.get('data_type', ''))
+        if created_by == 'foundation_food' and incoming_dtype != 'foundation_food':
+            self.stats['foundation_locked'] += 1
+            return 'foundation_locked'
 
         # Energy-based outlier gate
         new_energy = row.get('Energy', np.nan)
         if pd.notna(new_energy) and not _is_energy_compatible(entry, float(new_energy)):
-            return False
+            return 'energy_rejected'
 
         entry['nutrients'] = _avg_nutrients(entry['nutrients'], row, entry['count'])
         entry['count'] += 1
@@ -633,7 +690,7 @@ class FoodAggregator:
         if pd.notna(pun) and str(pun).strip():
             entry['portion_unit_names'].append(str(pun))
 
-        return True
+        return 'ok'
 
     # -- persistence ------------------------------------------------------------
 
@@ -715,6 +772,7 @@ class FoodAggregator:
         print(f'  Generic foods created  : {self.stats["created"]}')
         print(f'  Merged into existing   : {self.stats["added"]}')
         print(f'  Ignored                : {self.stats["ignored"]}')
+        print(f'  Foundation-locked (skip): {self.stats.get("foundation_locked", 0)}')
         print(f'  Renamed existing groups : {self.stats.get("renamed", 0)}')
         print(f'  Parse errors (-> create): {self.stats["errors"]}')
         print(f'  API calls              : {self.stats["api_calls"]}')
