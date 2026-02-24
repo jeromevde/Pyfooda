@@ -161,6 +161,22 @@
   }
   .sources-filter input:focus { border-color: var(--accent); }
 
+  /* Portion selector */
+  .portion-selector {
+    display: flex; align-items: center; gap: .5rem;
+    margin-top: .6rem;
+  }
+  .portion-selector label {
+    font-size: .85rem; color: var(--muted); white-space: nowrap;
+  }
+  .portion-selector select {
+    flex: 1; padding: 6px 10px; border: 1px solid var(--border);
+    border-radius: var(--radius); font-size: .85rem;
+    background: var(--surface); color: var(--text); outline: none;
+    max-width: 340px; cursor: pointer;
+  }
+  .portion-selector select:focus { border-color: var(--accent); }
+
   /* Loading */
   .loading {
     text-align: center; padding: 3rem; color: var(--muted);
@@ -185,7 +201,7 @@
 <div class="container">
   <header>
     <h1>🍎 <span>Pyfooda</span></h1>
-    <p>Search 30k+ everyday foods — nutrition data from USDA FoodData Central</p>
+    <p>Search 30k+ everyday foods — nutrition per 100g from USDA FoodData Central</p>
   </header>
 
   <div id="loading" class="loading">
@@ -261,7 +277,9 @@ async function init() {
   try {
     const resp = await fetch(dataBase + 'foods_aggregated.json');
     if (!resp.ok) throw new Error('HTTP ' + resp.status);
-    foods = await resp.json();
+    const data = await resp.json();
+    // Support both {meta, foods} wrapper and flat array format
+    foods = Array.isArray(data) ? data : (data.foods || []);
 
     foodNames = foods.map(f => f.generic_name);
     foodNamesLower = foodNames.map(n => n.toLowerCase());
@@ -496,10 +514,41 @@ function selectFood(idx) {
   renderDetail(f);
 }
 
+function onPortionChange(sel) {
+  if (!currentFood) return;
+  const grams = parseFloat(sel.value);
+  renderDetail(currentFood, grams);
+}
+
 /* ------------------------------------------------------------------ */
 /*  Nutrient detail rendering                                          */
 /* ------------------------------------------------------------------ */
-function renderDetail(food) {
+let currentFood = null;
+
+function getPortionOptions(food) {
+  const weights = food.portion_gram_weights || [];
+  const units = food.portion_unit_names || [];
+  // Build unique portions: combine weight + unit, dedup by weight
+  const seen = new Map(); // gram_weight -> label
+  for (let i = 0; i < weights.length; i++) {
+    const w = Math.round(weights[i] * 10) / 10;
+    if (w <= 0 || seen.has(w)) continue;
+    const label = units[i] && units[i] !== 'undetermined' ? units[i] : '';
+    seen.set(w, label);
+  }
+  // Sort by weight
+  const options = [];
+  for (const [w, label] of seen) {
+    const display = label ? `${label} (${w}g)` : `${w}g`;
+    options.push({ grams: w, display });
+  }
+  options.sort((a, b) => a.grams - b.grams);
+  return options;
+}
+
+function renderDetail(food, portionGrams) {
+  currentFood = food;
+  const scale = (portionGrams || 100) / 100;
   const nutrients = food.nutrients;
 
   // Group available nutrients by category
@@ -511,12 +560,19 @@ function renderDetail(food) {
     groups[cat].push(nm);
   }
 
-  // Header
-  let portionHtml = '';
-  if (food.portion_gram_weight) {
-    const unitLabel = food.portion_unit_name && food.portion_unit_name !== 'undetermined' ? ` (${esc(food.portion_unit_name)})` : '';
-    portionHtml = `<span>Serving: ${food.portion_gram_weight}g${unitLabel}</span>`;
+  // Portion dropdown
+  const portions = getPortionOptions(food);
+  let portionHtml = `<div class="portion-selector"><label>Portion:</label><select id="portion-select" onchange="onPortionChange(this)">`;
+  portionHtml += `<option value="100"${!portionGrams || portionGrams === 100 ? ' selected' : ''}>Per 100g</option>`;
+  for (const p of portions) {
+    const sel = portionGrams === p.grams ? ' selected' : '';
+    portionHtml += `<option value="${p.grams}"${sel}>${esc(p.display)}</option>`;
   }
+  portionHtml += `</select></div>`;
+
+  const amountLabel = portionGrams && portionGrams !== 100
+    ? ` — showing per ${portionGrams}g serving`
+    : ' — per 100g';
 
   let html = `<div class="food-header">
     <div class="food-header-top">
@@ -525,8 +581,8 @@ function renderDetail(food) {
     </div>
     <div class="food-meta">
       <span>Averaged from <strong>${food.count}</strong> source foods</span>
-      ${portionHtml}
     </div>
+    ${portionHtml}
   </div>`;
 
   // Nutrient groups
@@ -540,11 +596,12 @@ function renderDetail(food) {
     const metas = groups[cat];
     html += `<div class="nutrient-group"><h3>${esc(cat)}</h3>`;
     for (const nm of metas) {
-      const val = nutrients[nm.name];
+      const rawVal = nutrients[nm.name];
+      const val = rawVal != null ? rawVal * scale : null;
       const drv = nm.drv;
-      let pct = drv > 0 ? Math.min((val / drv) * 100, 100) : 0;
+      let pct = (drv > 0 && val != null) ? Math.min((val / drv) * 100, 100) : 0;
       let barColor = pct < 15 ? 'var(--muted)' : pct < 50 ? 'var(--green)' : pct < 80 ? 'var(--yellow)' : 'var(--red)';
-      let pctLabel = drv > 0 ? ` (${Math.round((val / drv) * 100)}% DV)` : '';
+      let pctLabel = (drv > 0 && val != null) ? ` (${Math.round((val / drv) * 100)}% DV)` : '';
 
       html += `<div class="nutrient-row">
         <span class="name">${esc(nm.name)}</span>

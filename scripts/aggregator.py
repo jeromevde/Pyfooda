@@ -812,14 +812,16 @@ class FoodAggregator:
 
     def _save_checkpoint(self):
         path = self.checkpoint_dir / 'aggregation_checkpoint.json'
-        data = {
+        # Use the same {meta, foods} format as the final output so the
+        # checkpoint is directly inspectable / usable as an output file.
+        foods = list(self.db.values())            # keep _* internal fields
+        meta = {
             'processed_count': self.processed_count,
             'next_id': self._next_id,
             'stats': self.stats,
-            'db': self.db,
         }
         with open(path, 'w') as f:
-            json.dump(data, f, default=str)
+            json.dump({'meta': meta, 'foods': foods}, f, indent=2, default=str)
 
     def load_checkpoint(self) -> bool:
         path = self.checkpoint_dir / 'aggregation_checkpoint.json'
@@ -827,10 +829,21 @@ class FoodAggregator:
             return False
         with open(path) as f:
             data = json.load(f)
-        self.processed_count = data['processed_count']
-        self._next_id = data['next_id']
-        self.stats = data['stats']
-        self.db = {int(k): v for k, v in data['db'].items()}
+
+        # Support both new {meta, foods} format and legacy {db, ...} format
+        if 'meta' in data and 'foods' in data:
+            meta = data['meta']
+            self.processed_count = meta['processed_count']
+            self._next_id = meta['next_id']
+            self.stats = meta['stats']
+            self.db = {entry['id']: entry for entry in data['foods']}
+        else:
+            # Legacy format
+            self.processed_count = data['processed_count']
+            self._next_id = data['next_id']
+            self.stats = data['stats']
+            self.db = {int(k): v for k, v in data['db'].items()}
+
         self.index = FoodSearchIndex()
         self._name_to_id = {}
         for fid, entry in self.db.items():
@@ -845,7 +858,7 @@ class FoodAggregator:
     # -- output -----------------------------------------------------------------
 
     def save(self, output_path: str = 'pyfooda/data/foods_aggregated.json'):
-        """Save the compact aggregated database."""
+        """Save the compact aggregated database (same format as checkpoint)."""
         out = Path(output_path)
         out.parent.mkdir(parents=True, exist_ok=True)
 
@@ -855,8 +868,12 @@ class FoodAggregator:
             e = {k: v for k, v in entry.items() if not k.startswith('_')}
             clean.append(e)
 
+        meta = {
+            'processed_count': self.processed_count,
+            'stats': self.stats,
+        }
         with open(out, 'w') as f:
-            json.dump(clean, f, indent=2, default=str)
+            json.dump({'meta': meta, 'foods': clean}, f, indent=2, default=str)
         print(f'  Saved {len(self.db)} generic foods -> {output_path}')
 
         csv_path = str(out).replace('.json', '.csv')
