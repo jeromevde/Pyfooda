@@ -30,82 +30,100 @@ from tqdm import tqdm
 
 import openai
 
+# Lazy-loaded embedding model (shared across instances, loaded once)
+_embedding_model = None
+
+
+def _get_embedding_model():
+    """Load the sentence-transformer model once on first use."""
+    global _embedding_model
+    if _embedding_model is None:
+        from sentence_transformers import SentenceTransformer
+        _embedding_model = SentenceTransformer('BAAI/bge-small-en-v1.5')
+    return _embedding_model
+
 
 # ---------------------------------------------------------------------------
-# Search tool - token overlap + trigram Jaccard (no refit issues)
+# Search tool — embedding-based (sentence-transformers + faiss)
 # ---------------------------------------------------------------------------
 
 
 class FoodSearchIndex:
-    """Lightweight search index over aggregated food names.
+    """Embedding-based search index over aggregated food names.
 
-    Uses token overlap + character trigram Jaccard similarity.
-    O(1) add, O(n) search - n stays small (target ~10-30k generic entries).
+    Uses BAAI/bge-small-en-v1.5 for dense embeddings and faiss for
+    fast approximate nearest-neighbor search.
+
+    Keeps the same interface as the old BM25/trigram index:
+      add(food_id, name)
+      search(query, top_k) -> [{id, name, score}]
+      rename(food_id, new_name)
     """
 
     def __init__(self):
+        import faiss
+
         self.names: list[str] = []
         self.ids: list[int] = []
-        self._trigrams: list[set[str]] = []
-        self._tokens: list[set[str]] = []
+        self._model = _get_embedding_model()
+        self._dim = self._model.get_sentence_embedding_dimension()
+        self._faiss_index = faiss.IndexFlatIP(self._dim)  # inner-product (cosine after normalization)
 
-    def _tokenize(self, text: str):
-        text = text.lower().strip()
-        tokens = set(re.findall(r'\b\w+\b', text))
-        padded = f' {text} '
-        trigrams = {padded[i:i+3] for i in range(len(padded) - 2)}
-        return tokens, trigrams
+    def _embed(self, texts: list[str]) -> np.ndarray:
+        """Encode text(s) into L2-normalized embeddings."""
+        import faiss
+        vecs = self._model.encode(texts, normalize_embeddings=True, show_progress_bar=False)
+        return np.ascontiguousarray(vecs.astype('float32'))
 
     def add(self, food_id: int, name: str):
-        tokens, trigrams = self._tokenize(name)
+        vec = self._embed([name.lower()])
         self.names.append(name.lower())
         self.ids.append(food_id)
-        self._tokens.append(tokens)
-        self._trigrams.append(trigrams)
+        self._faiss_index.add(vec)
 
     def search(self, query: str, top_k: int = 5) -> list[dict]:
         """Return the top-k closest entries as [{id, name, score}]."""
         if not self.names:
             return []
 
-        q_tokens, q_trigrams = self._tokenize(query)
-        scores = []
+        q_vec = self._embed([query.lower()])
+        k = min(top_k, len(self.names))
+        scores, indices = self._faiss_index.search(q_vec, k)
 
-        for i in range(len(self.names)):
-            # Token Jaccard
-            t_inter = len(q_tokens & self._tokens[i])
-            t_union = len(q_tokens | self._tokens[i])
-            token_score = t_inter / t_union if t_union > 0 else 0.0
-
-            # Trigram Jaccard
-            g_inter = len(q_trigrams & self._trigrams[i])
-            g_union = len(q_trigrams | self._trigrams[i])
-            trigram_score = g_inter / g_union if g_union > 0 else 0.0
-
-            score = 0.4 * token_score + 0.6 * trigram_score
-            scores.append(score)
-
-        top_idx = np.argsort(scores)[-top_k:][::-1]
         results = []
-        for i in top_idx:
-            if scores[i] > 0.05:
+        for score, idx in zip(scores[0], indices[0]):
+            if idx < 0:
+                continue
+            cos_sim = float(score)  # already cosine similarity (normalized IP)
+            if cos_sim > 0.3:       # minimum relevance threshold
                 results.append({
-                    'id': self.ids[i],
-                    'name': self.names[i],
-                    'score': round(float(scores[i]), 3),
+                    'id': self.ids[idx],
+                    'name': self.names[idx],
+                    'score': round(cos_sim, 3),
                 })
         return results
 
     def rename(self, food_id: int, new_name: str):
-        """Update the name of an existing entry in the index."""
+        """Update the name of an existing entry in the index.
+
+        faiss IndexFlatIP doesn't support in-place updates, so we
+        rebuild the full index (cheap at <100k entries).
+        """
         try:
-            idx = self.ids.index(food_id)
+            pos = self.ids.index(food_id)
         except ValueError:
             return
-        tokens, trigrams = self._tokenize(new_name)
-        self.names[idx] = new_name.lower()
-        self._tokens[idx] = tokens
-        self._trigrams[idx] = trigrams
+        self.names[pos] = new_name.lower()
+        # Rebuild index
+        self._rebuild()
+
+    def _rebuild(self):
+        """Re-encode all names and rebuild the faiss index from scratch."""
+        import faiss
+        self._faiss_index = faiss.IndexFlatIP(self._dim)
+        if self.names:
+            vecs = self._embed(self.names)
+            self._faiss_index.add(vecs)
 
     def __len__(self):
         return len(self.names)
@@ -528,7 +546,7 @@ class FoodAggregator:
                         else:
                             self.stats['ignored'] += 1
                     # 2. BM25 near-exact match in the full DB
-                    elif (existing := self.index.search(name, top_k=1)) and existing[0]['score'] > 0.85:
+                    elif (existing := self.index.search(name, top_k=1)) and existing[0]['score'] > 0.92:
                         result = self._do_add(existing[0]['id'], row)
                         if result == 'ok':
                             self.stats['added'] += 1
@@ -582,7 +600,7 @@ class FoodAggregator:
                                 self.stats['ignored'] += 1
                         else:
                             existing = self.index.search(name, top_k=1)
-                            if existing and existing[0]['score'] > 0.85:
+                            if existing and existing[0]['score'] > 0.92:
                                 result = self._do_add(existing[0]['id'], row)
                                 if result == 'ok':
                                     self.stats['added'] += 1
@@ -597,7 +615,7 @@ class FoodAggregator:
                         # Resolve name-based ADD by searching the index
                         if not target and target_name:
                             matches = self.index.search(target_name, top_k=1)
-                            if matches and matches[0]['score'] > 0.5 and matches[0]['id'] in valid_add_ids:
+                            if matches and matches[0]['score'] > 0.75 and matches[0]['id'] in valid_add_ids:
                                 target = matches[0]['id']
                             else:
                                 # Also check batch_created for intra-batch names
@@ -628,7 +646,7 @@ class FoodAggregator:
                                     self.stats['ignored'] += 1
                             else:
                                 existing = self.index.search(create_name, top_k=1)
-                                if existing and existing[0]['score'] > 0.85:
+                                if existing and existing[0]['score'] > 0.92:
                                     result = self._do_add(existing[0]['id'], row)
                                     if result == 'ok':
                                         self.stats['added'] += 1
@@ -661,7 +679,7 @@ class FoodAggregator:
                                 self.stats['added'] += 1
                             else:
                                 self.stats['ignored'] += 1
-                        elif (existing := self.index.search(create_name, top_k=1)) and existing[0]['score'] > 0.85:
+                        elif (existing := self.index.search(create_name, top_k=1)) and existing[0]['score'] > 0.92:
                             result = self._do_add(existing[0]['id'], row)
                             if result == 'ok':
                                 self.stats['added'] += 1

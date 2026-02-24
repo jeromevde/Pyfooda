@@ -165,7 +165,7 @@
   },
   {
     "id": 5,
-    "generic_name": "Cooked Ham",
+    "generic_name": "Ham",
     "food_category": "Pork Products",
     "nutrients": {
       "Energy": 121.0,
@@ -210,27 +210,27 @@
     "generic_name": "Apple Pie",
     "food_category": "Baked Products",
     "nutrients": {
-      "Energy": 271.79249270403534,
-      "Carbohydrate": 39.250000000000014,
-      "Protein": 2.2859999999999996,
-      "Total fat": 12.4535,
-      "Fiber": 1.5100000000000002,
+      "Energy": 275.9445506692161,
+      "Carbohydrate": 39.23894736842106,
+      "Protein": 2.435789473684211,
+      "Total fat": 14.220526315789474,
+      "Fiber": 1.3526315789473686,
       "Sugars, Total": null,
-      "Sodium": 213.9,
-      "Calcium": 9.2,
-      "Iron": 0.8314999999999998,
-      "Cholesterol": 5.25,
-      "Fatty acids, total saturated": 5.2688500000000005,
+      "Sodium": 236.94736842105263,
+      "Calcium": 12.368421052631579,
+      "Iron": 0.9442105263157894,
+      "Cholesterol": 3.5789473684210527,
+      "Fatty acids, total saturated": 6.055105263157896,
       "Vitamin A, RAE": 18.666666666666668,
-      "Vitamin C": 0.8544319058641975,
-      "Vitamin D (D2 + D3)": 0.06153846153846154,
+      "Vitamin C": 0.6008223684210525,
+      "Vitamin D (D2 + D3)": 0.06111111111111111,
       "Vitamin E": 1.0066666666666666,
       "Vitamin B-6": 0.04933333333333333,
       "Vitamin B-12": 0.02666666666666667,
-      "Folate, total": 24.125,
+      "Folate, total": 24.190476190476193,
       "Zinc": 0.21333333333333335,
       "Magnesium": 8.333333333333334,
-      "Potassium": 70.69164835164835,
+      "Potassium": 69.48671679197993,
       "Phosphorus": 35.666666666666664
     },
     "source_ids": [
@@ -244,16 +244,15 @@
       44,
       45,
       48,
-      51,
       56,
       57,
       58,
-      59,
       60,
       61,
-      63,
+      62,
       91,
-      210
+      210,
+      211
     ],
     "source_names": [
       "Pie, apple, prepared from recipe",
@@ -266,16 +265,15 @@
       "BAKERY FRESH GOODNESS, APPLE PIE",
       "CARAMEL APPLE CRUMBLE PIE, CARAMEL APPLE",
       "DEEP DISH APPLE PIE",
-      "FRIED APPLE PIE",
       "NO SUGAR ADDED APPLE PIE",
       "OLD FASHIONED APPLE PIE",
       "ORGANIC APPLE PIE",
-      "PIE, APPLE",
       "PIES, APPLE",
       "TABLE TALK PIES, APPLE PIE",
-      "WHOLESOME SNACKS APPLE PIE",
+      "TASTYKAKE, GLAZED APPLE PIE",
       "FRENCH APPLE PIE, FRENCH APPLE",
-      "MARIE CALLENDERS Apple Pie, 42 OZ"
+      "MARIE CALLENDERS Apple Pie, 42 OZ",
+      "OREO COOKIES APPLE PIE 1X10.7 OZ"
     ],
     "portion_gram_weights": [
       28.35,
@@ -286,16 +284,15 @@
       106.0,
       136.0,
       126.0,
-      100.0,
       125.0,
       114.0,
       125.0,
-      111.0,
       128.0,
       125.0,
-      30.0,
+      128.0,
       74.0,
-      119.0
+      119.0,
+      29.0
     ],
     "portion_unit_names": [
       "undetermined",
@@ -307,116 +304,175 @@
       "0.17 PIE",
       "0.1 pie",
       "0.111 pie",
-      "1 PIE",
       "0.2 PIE",
       "1 pie (114g)",
       "1 SLICE",
-      "0.125 PIECES",
       "4.5 ONZ",
       "0.2 OF PIE",
-      "0.25 cup",
+      "4.5 ONZ",
       "74 GRM",
-      "1/10 pie (110g) with sauce (9g)"
+      "1/10 pie (110g) with sauce (9g)",
+      "2 cookies (29g)"
     ],
-    "count": 20
+    "count": 19
   },
   {
     "id": 7,
     "generic_name": "Cooked Lentils",
     "food_category": "Beans, peas, legumes",
     "nutrients": {
-      "Energy": 171.0909090909091,
-      "Carbohydrate": 36.25272727272727,
-      "Protein": 15.096363636363636,
-      "Total fat": 2.1090909090909093,
-      "Fiber": 15.763636363636362,
+      "Energy": 138.33333333333334,
+      "Carbohydrate": 18.808333333333334,
+      "Protein": 7.663333333333334,
+      "Total fat": 4.011666666666667,
+      "Fiber": 5.466666666666668,
       "Sugars, Total": null,
-      "Sodium": 130.27272727272728,
-      "Calcium": 65.36363636363636,
-      "Iron": 4.875454545454546,
-      "Cholesterol": 0.18181818181818182,
-      "Fatty acids, total saturated": 0.29190909090909095,
+      "Sodium": 224.16666666666666,
+      "Calcium": 19.333333333333332,
+      "Iron": 2.5633333333333335,
+      "Cholesterol": 0.3333333333333333,
+      "Fatty acids, total saturated": 0.4785,
       "Vitamin A, RAE": 0.0,
-      "Vitamin C": 1.9570707070707072,
+      "Vitamin C": 1.6944444444444444,
       "Vitamin D (D2 + D3)": 0.0,
       "Vitamin E": 0.93,
       "Vitamin B-6": 0.16066666666666665,
-      "Vitamin B-12": 0.0,
+      "Vitamin B-12": 0.05833333333333333,
       "Folate, total": 163.66666666666666,
       "Zinc": 1.2066666666666668,
       "Magnesium": 34.0,
-      "Potassium": 541.1,
+      "Potassium": 311.4,
       "Phosphorus": 171.0
     },
     "source_ids": [
       11,
       12,
       13,
-      127,
-      129,
-      130,
-      135,
-      136,
-      137,
-      139,
-      143
+      69,
+      70,
+      71
     ],
     "source_names": [
       "Lentils, from dried, no added fat",
       "Lentils, from dried, fat added",
       "Lentils, NFS",
-      "IBERIA LENTILS, 16 OZ",
-      "STEAMED LENTILS",
-      "LEGUME LENTILS",
-      "LA CHOLITA LENTILS, 14 OZ",
-      "ORZO & LENTILS",
-      "BROWN ORGANIC DOUBLE STEAMED LENTILS, BROWN",
-      "LENTEJAS LENTILS",
-      "LENTILS LENTEJAS"
+      "PERUVIAN LENTILS SOFRITO, PERUVIAN LENTILS",
+      "STEAMABLES LENTILS",
+      "LENTILS PROVENCAL"
     ],
     "portion_gram_weights": [
-      40.0,
-      100.0,
-      32.0,
-      40.0,
-      227.0,
-      150.0,
-      32.0,
-      38.0
+      140.0,
+      250.0,
+      255.0
     ],
     "portion_unit_names": [
       "undetermined",
       "undetermined",
       "undetermined",
-      "1/4 cup (Dry) 40g",
-      "0.5 cup",
-      "0.25 cup",
-      "1/4 Cup (40g)",
-      "8 ONZ",
-      "1 container",
-      "1/4 cup",
-      "0.25 cup"
+      "1/2 cup",
+      "1 pouch",
+      "9 ONZ"
     ],
-    "count": 11
+    "count": 6
   },
   {
     "id": 8,
+    "generic_name": "Canned Ham",
+    "food_category": "Cold cuts and cured meats",
+    "nutrients": {
+      "Energy": 167.0,
+      "Carbohydrate": 0.49,
+      "Protein": 20.94,
+      "Total fat": 8.43,
+      "Fiber": 0.0,
+      "Sugars, Total": null,
+      "Sodium": 1068.0,
+      "Calcium": 7.0,
+      "Iron": 1.07,
+      "Cholesterol": 41.0,
+      "Fatty acids, total saturated": 2.81,
+      "Vitamin A, RAE": 0.0,
+      "Vitamin C": 0.0,
+      "Vitamin D (D2 + D3)": 0.7,
+      "Vitamin E": 0.25,
+      "Vitamin B-6": 0.4,
+      "Vitamin B-12": 0.83,
+      "Folate, total": 5.0,
+      "Zinc": 2.32,
+      "Magnesium": 20.0,
+      "Potassium": 351.0,
+      "Phosphorus": 221.0
+    },
+    "source_ids": [
+      17
+    ],
+    "source_names": [
+      "Ham, canned"
+    ],
+    "portion_gram_weights": [],
+    "portion_unit_names": [
+      "undetermined"
+    ],
+    "count": 1
+  },
+  {
+    "id": 9,
+    "generic_name": "Ground Ham",
+    "food_category": "Cold cuts and cured meats",
+    "nutrients": {
+      "Energy": 167.0,
+      "Carbohydrate": 0.49,
+      "Protein": 20.94,
+      "Total fat": 8.43,
+      "Fiber": 0.0,
+      "Sugars, Total": null,
+      "Sodium": 1068.0,
+      "Calcium": 7.0,
+      "Iron": 1.07,
+      "Cholesterol": 41.0,
+      "Fatty acids, total saturated": 2.81,
+      "Vitamin A, RAE": 0.0,
+      "Vitamin C": 0.0,
+      "Vitamin D (D2 + D3)": 0.7,
+      "Vitamin E": 0.25,
+      "Vitamin B-6": 0.4,
+      "Vitamin B-12": 0.83,
+      "Folate, total": 5.0,
+      "Zinc": 2.32,
+      "Magnesium": 20.0,
+      "Potassium": 351.0,
+      "Phosphorus": 221.0
+    },
+    "source_ids": [
+      18
+    ],
+    "source_names": [
+      "Ham, ground"
+    ],
+    "portion_gram_weights": [],
+    "portion_unit_names": [
+      "undetermined"
+    ],
+    "count": 1
+  },
+  {
+    "id": 10,
     "generic_name": "Fruit Yogurt",
     "food_category": "Dairy and Egg Products",
     "nutrients": {
-      "Energy": 99.18738049713193,
-      "Carbohydrate": 18.64,
-      "Protein": 3.98,
-      "Total fat": 1.15,
+      "Energy": 97.94433821967283,
+      "Carbohydrate": 15.157777777777776,
+      "Protein": 3.5177777777777783,
+      "Total fat": 1.0955555555555554,
       "Fiber": 0.0,
       "Sugars, Total": null,
-      "Sodium": 53.0,
-      "Calcium": 138.0,
-      "Iron": 0.06,
-      "Cholesterol": 5.0,
-      "Fatty acids, total saturated": 0.742,
+      "Sodium": 58.666666666666664,
+      "Calcium": 106.88888888888889,
+      "Iron": 0.007500000000000001,
+      "Cholesterol": 4.888888888888889,
+      "Fatty acids, total saturated": 0.6379999999999999,
       "Vitamin A, RAE": 11.0,
-      "Vitamin C": 0.6,
+      "Vitamin C": 0.075,
       "Vitamin D (D2 + D3)": 0.0,
       "Vitamin E": 0.02,
       "Vitamin B-6": 0.037,
@@ -425,40 +481,72 @@
       "Zinc": 0.67,
       "Magnesium": 13.0,
       "Potassium": 177.0,
-      "Phosphorus": 109.0
+      "Phosphorus": 94.11111111111111
     },
     "source_ids": [
-      20
+      20,
+      229,
+      230,
+      234,
+      235,
+      236,
+      237,
+      238,
+      239
     ],
     "source_names": [
-      "Yogurt, fruit, low fat,9 g protein/8 oz"
+      "Yogurt, fruit, low fat,9 g protein/8 oz",
+      "YOPLAIT GO BIG LF YGRT CHRY/PCH MANGO",
+      "YOPLAIT GO BIG LF YGRT MIXED BERRY/STRWBRY",
+      "YOPLAIT LF YGRT MIXED BERRY/STRWBRY",
+      "YOPLAIT LT FF YGRT VANILLA CHERRY",
+      "YOPLAIT ORIGINAL LF YGRT BANANA SPLIT",
+      "YOPLAIT ORIGINAL LF YGRT CHRY SNO CONE",
+      "YOPLAIT ORIGINAL LF YGRT CINN ROLL/STRWBRY",
+      "YOPLAIT ORIGINAL LF YGRT MNTN BLBRY/STRWBRY"
     ],
     "portion_gram_weights": [
+      170.0,
+      113.0,
+      113.0,
+      113.0,
+      170.0,
+      170.0,
+      170.0,
+      170.0,
       170.0
     ],
     "portion_unit_names": [
-      "undetermined"
+      "undetermined",
+      "1 pouch (113g)",
+      "1 pouch (113g)",
+      "1 pouch (113g)",
+      "1 Container",
+      "1 container",
+      "1 container",
+      "1 container (170g)",
+      "1 Container"
     ],
-    "count": 1
+    "count": 9
   },
   {
-    "id": 9,
+    "id": 11,
     "generic_name": "Low Fat Yogurt",
     "food_category": "Dairy and Egg Products",
     "nutrients": {
-      "Energy": 75.93365200764819,
-      "Carbohydrate": 11.575999999999999,
-      "Protein": 4.061999999999999,
-      "Total fat": 1.353,
-      "Fiber": 0.0,
+      "Energy": 74.8433247103813,
+      "Carbohydrate": 11.131176470588231,
+      "Protein": 5.47294117647059,
+      "Total fat": 0.8994117647058825,
+      "Fiber": 0.44235294117647056,
       "Sugars, Total": null,
-      "Sodium": 71.2,
-      "Calcium": 199.5,
-      "Iron": 0.1035,
-      "Cholesterol": 6.2,
-      "Fatty acids, total saturated": 0.9149999999999998,
+      "Sodium": 68.29411764705883,
+      "Calcium": 178.2941176470588,
+      "Iron": 0.05772549019607843,
+      "Cholesterol": 4.9411764705882355,
+      "Fatty acids, total saturated": 0.6247058823529412,
       "Vitamin A, RAE": 14.0,
-      "Vitamin C": 0.1875,
+      "Vitamin C": 0.47424836601307196,
       "Vitamin D (D2 + D3)": 0.0,
       "Vitamin E": 0.03,
       "Vitamin B-6": 0.049,
@@ -466,11 +554,13 @@
       "Folate, total": 11.0,
       "Zinc": 0.89,
       "Magnesium": 17.0,
-      "Potassium": 186.82,
-      "Phosphorus": 175.33333333333334
+      "Potassium": 191.84873949579833,
+      "Phosphorus": 162.8
     },
     "source_ids": [
       21,
+      146,
+      147,
       148,
       149,
       150,
@@ -478,11 +568,18 @@
       154,
       155,
       164,
+      179,
+      180,
+      183,
+      184,
+      185,
       188,
-      205
+      194
     ],
     "source_names": [
       "Yogurt, plain, low fat",
+      "0% FAT YOGURT",
+      "0% NONFAT YOGURT",
       "1 % LOWFAT YOGURT",
       "1% MILKFAT ORIGINAL LOWFAT YOGURT",
       "1.5% MILKFAT LOWFAT YOGURT",
@@ -490,11 +587,18 @@
       "2% FAT YOGURT",
       "2% LOWFAT YOGURT",
       "CREAM TOP YOGURT BLENDED 2% MILK FAT",
+      "NON-FAT YOGURT",
+      "ORIGINAL LOWFAT YOGURT",
+      "PLAIN ORGANIC NONFAT YOGURT",
+      "PROBIOTIC FORMULA FAT FREE YOGURT",
+      "PROBIOTIC NONFAT YOGURT",
       "SQUEEZABLES LOWFAT YOGURT",
-      "Yplt Lt Ygrt Variety Pack 8 Ct"
+      "TRIPLE ZERO NONFAT YOGURT"
     ],
     "portion_gram_weights": [
       170.0,
+      227.0,
+      227.0,
       170.0,
       170.0,
       150.0,
@@ -502,11 +606,18 @@
       227.0,
       227.0,
       227.0,
+      150.0,
+      170.0,
+      170.0,
+      227.0,
+      227.0,
       99.0,
-      170.0
+      150.0
     ],
     "portion_unit_names": [
       "undetermined",
+      "1 cup",
+      "1 cup",
       "1 CONTAINER",
       "1 CONTAINER",
       "1 CONTAINER",
@@ -514,37 +625,42 @@
       "1 cup",
       "1 cup",
       "8 ONZ",
+      "1 CONTAINER",
+      "1 CONT.",
+      "3/4 cup",
+      "1 cup",
+      "1 cup",
       "1 POUCH",
-      "1 Container Blueberry Patch"
+      "1 CONTAINER"
     ],
-    "count": 10
+    "count": 17
   },
   {
-    "id": 10,
+    "id": 12,
     "generic_name": "Lemon Juice",
     "food_category": "Fruits and Fruit Juices",
     "nutrients": {
-      "Energy": 28.767822999180556,
-      "Carbohydrate": 6.107946428571429,
-      "Protein": 0.21142857142857144,
-      "Total fat": 0.06269841269841271,
-      "Fiber": 0.24999999999999992,
+      "Energy": 31.479126832377307,
+      "Carbohydrate": 6.700238095238095,
+      "Protein": 0.22916666666666666,
+      "Total fat": 0.07406250000000002,
+      "Fiber": 0.2805194805194805,
       "Sugars, Total": null,
-      "Sodium": 13.5,
-      "Calcium": 4.350427350427351,
-      "Iron": 0.09017094017094016,
+      "Sodium": 9.114583333333334,
+      "Calcium": 3.5416666666666665,
+      "Iron": 0.090625,
       "Cholesterol": 0.0,
-      "Fatty acids, total saturated": 0.014134615384615384,
+      "Fatty acids, total saturated": 0.015749999999999997,
       "Vitamin A, RAE": 0.5,
-      "Vitamin C": 21.647499999999997,
+      "Vitamin C": 23.5979797979798,
       "Vitamin D (D2 + D3)": 0.0,
       "Vitamin E": 0.17,
       "Vitamin B-6": 0.04375,
       "Vitamin B-12": 0.0,
-      "Folate, total": 19.979166666666668,
+      "Folate, total": 20.227272727272727,
       "Zinc": 0.085,
-      "Magnesium": 7.229166666666667,
-      "Potassium": 80.58119658119656,
+      "Magnesium": 7.318181818181818,
+      "Potassium": 80.95833333333333,
       "Phosphorus": 8.25
     },
     "source_ids": [
@@ -555,13 +671,11 @@
       74,
       75,
       76,
-      77,
       78,
       79,
       80,
       81,
-      82,
-      88
+      82
     ],
     "source_names": [
       "Lemon juice, raw",
@@ -571,26 +685,22 @@
       "100% LEMON JUICE, LEMON",
       "100% ORGANIC LEMON JUICE",
       "100% ORGANIC LEMON JUICE, LEMON",
-      "CELERY LEMON COLD-PRESSED JUICE",
       "LEMON JUICE, LEMON",
       "ORGANIC LEMON JUICE, LEMON",
       "ORIGINAL LEMON JUICE, LEMON",
       "PURE BEET ORGANIC LEMON JUICE, PURE BEET",
-      "ORIGINAL LEMON JUICE",
-      "BLOOD ORANGE LEMON JUICE"
+      "ORIGINAL LEMON JUICE"
     ],
     "portion_gram_weights": [
       244.0,
       31.0,
       31.0,
       31.0,
-      473.0,
       30.0,
       10.0,
       5.0,
       240.0,
-      5.0,
-      480.0
+      5.0
     ],
     "portion_unit_names": [
       "undetermined",
@@ -600,113 +710,182 @@
       "1 ONZ",
       "1 OZA",
       "1 OZA",
-      "16 ONZ",
       "1 OZA",
       "2 tsp",
       "1 tsp",
       "8 OZA"
     ],
-    "count": 14
+    "count": 12
   },
   {
-    "id": 11,
-    "generic_name": "Yogurt Tube",
+    "id": 13,
+    "generic_name": "Plain Yogurt",
     "food_category": "Yogurt, regular",
     "nutrients": {
-      "Energy": 88.0,
-      "Carbohydrate": 17.0325,
-      "Protein": 3.2775,
-      "Total fat": 0.8125,
-      "Fiber": 0.025,
+      "Energy": 85.51515151515152,
+      "Carbohydrate": 10.909696969696972,
+      "Protein": 4.24848484848485,
+      "Total fat": 2.813636363636363,
+      "Fiber": 0.11515151515151513,
       "Sugars, Total": null,
-      "Sodium": 55.0,
-      "Calcium": 146.0,
-      "Iron": 0.025,
-      "Cholesterol": 5.0,
-      "Fatty acids, total saturated": 0.16775,
+      "Sodium": 56.239494949494954,
+      "Calcium": 128.87878787878788,
+      "Iron": 0.13708699902248292,
+      "Cholesterol": 11.618181818181817,
+      "Fatty acids, total saturated": 1.8327878787878793,
       "Vitamin A, RAE": 9.0,
-      "Vitamin C": 6.833333333333333,
+      "Vitamin C": 2.449076458838029,
       "Vitamin D (D2 + D3)": 1.2,
       "Vitamin E": 0.03,
       "Vitamin B-6": 0.045,
       "Vitamin B-12": 0.49,
       "Folate, total": 11.0,
-      "Zinc": 0.71,
-      "Magnesium": 15.0,
-      "Potassium": 175.25,
-      "Phosphorus": 105.0
+      "Zinc": 0.5735,
+      "Magnesium": 13.05,
+      "Potassium": 173.9425800492611,
+      "Phosphorus": 108.78281249999999
     },
     "source_ids": [
       30,
+      31,
+      152,
+      153,
+      156,
+      157,
+      158,
+      160,
+      161,
+      162,
+      163,
+      165,
+      166,
+      167,
+      168,
+      169,
+      170,
+      171,
+      172,
+      173,
+      174,
+      175,
       176,
-      203,
-      204
+      177,
+      178,
+      182,
+      186,
+      187,
+      189,
+      191,
+      192,
+      193,
+      195
     ],
     "source_names": [
       "Yogurt tube",
-      "LOWFAT YOGURT TUBES",
-      "Yplt Kids Variety Pack 4 Ct",
-      "Yplt Kids Variety Pack 8 Ct"
-    ],
-    "portion_gram_weights": [
-      64.0,
-      113.0,
-      113.0
-    ],
-    "portion_unit_names": [
-      "undetermined",
-      "1 TUBE",
-      "1 Container (113 g)",
-      "1 container"
-    ],
-    "count": 4
-  },
-  {
-    "id": 12,
-    "generic_name": "Yogurt, Nonfat",
-    "food_category": "Dairy and Egg Products",
-    "nutrients": {
-      "Energy": 48.0,
-      "Carbohydrate": 6.61,
-      "Protein": 4.85,
-      "Total fat": 0.22,
-      "Fiber": 0.0,
-      "Sugars, Total": null,
-      "Sodium": 50.05,
-      "Calcium": 148.5,
-      "Iron": 0.0,
-      "Cholesterol": 3.2,
-      "Fatty acids, total saturated": 0.44,
-      "Vitamin A, RAE": null,
-      "Vitamin C": 0.0,
-      "Vitamin D (D2 + D3)": null,
-      "Vitamin E": null,
-      "Vitamin B-6": null,
-      "Vitamin B-12": null,
-      "Folate, total": null,
-      "Zinc": 0.437,
-      "Magnesium": 11.1,
-      "Potassium": 158.0,
-      "Phosphorus": 93.1
-    },
-    "source_ids": [
-      31,
-      147
-    ],
-    "source_names": [
       "yogurt, plain, nonfat",
-      "0% NONFAT YOGURT"
+      "100% GRASS-FED COW YOGURT",
+      "100% GRASS-FED COWS CREAMLINE YOGURT",
+      "ALL NATURAL YOGURT",
+      "ALOVE YOGURT",
+      "BLENDED NONFAT YOGURT",
+      "COW YOGURT",
+      "CREAM ON TOP YOGURT",
+      "CREAM ON TOP YOGURT, MAPLE",
+      "CREAM ON TOP YOGURT, WILD BLUEBERRY",
+      "CREAM-ON-TOP BALADI YOGURT",
+      "CREAM-ON-TOP BALADI YOGURT, BALADI",
+      "FARM FRESH PREMIUM YOGURT",
+      "FARM FRESH YOGURT",
+      "FINEST YOGHURT",
+      "GELATIN & YOGURT",
+      "GRASS FED COWS CREAM ON TOP, YOGURT",
+      "GRASS FED COWS CREAM ON TOP, YOGURT, LEMON",
+      "GRASS FED CREAM TOP YOGURT",
+      "GRASS-FED CREAM TOP YOGURT",
+      "GRASS-FED CREAM TOP YOGURT, HONEY PEAR",
+      "LOWFAT YOGURT TUBES",
+      "LOWFAT YOGURT TUBES, BLUEBERRY, STRAWBERRY",
+      "MATZOON YOGURT",
+      "ORIGINAL YOGURT",
+      "SMOOTH OLD-FASHIONED NON-GREEK YOGURT",
+      "SMOOTH YOGURT",
+      "SQUEEZERS LOWFAT YOGURT",
+      "SWISS YOGURT",
+      "SWISS YOGURT FROM WISCONSIN",
+      "TARTE ASIAN YOGURT",
+      "YOGHURT"
     ],
     "portion_gram_weights": [
+      170.0,
+      227.0,
+      170.0,
+      170.0,
+      150.0,
+      170.0,
+      170.0,
+      170.0,
+      170.0,
+      227.0,
+      227.0,
+      227.0,
+      150.0,
+      113.0,
+      142.0,
+      170.0,
+      170.0,
+      170.0,
+      227.0,
+      170.0,
+      64.0,
+      170.0,
+      227.0,
+      227.0,
+      150.0,
+      150.0,
+      56.0,
+      170.0,
+      170.0,
+      170.0,
       227.0
     ],
     "portion_unit_names": [
-      "1 cup"
+      "undetermined",
+      "6 ONZ",
+      "1 cup",
+      "1 CONTAINER",
+      "1 CONTAINER",
+      "1 CONTAINER",
+      "6 ONZ",
+      "1 CONTAINER",
+      "1 CONTAINER",
+      "1 CONTAINER",
+      "1 cup",
+      "1 cup",
+      "6 ONZ",
+      "1 CONTAINER",
+      "4 ONZ",
+      "5 ONZ",
+      "1 CONTAINER",
+      "1 CONTAINER",
+      "6 ONZ",
+      "1 cup",
+      "6 ONZ",
+      "1 TUBE",
+      "3 TUBES",
+      "8 ONZ",
+      "1 cup",
+      "1 CONTAINER",
+      "1 CONTAINER",
+      "2 ONZ",
+      "1 CONTAINER",
+      "1 CONTAINER",
+      "1 CONTAINER",
+      "8 ONZ"
     ],
-    "count": 2
+    "count": 33
   },
   {
-    "id": 13,
+    "id": 14,
     "generic_name": "Apple Rings",
     "food_category": "Baking Decorations & Dessert Toppings",
     "nutrients": {
@@ -752,7 +931,7 @@
     "count": 2
   },
   {
-    "id": 14,
+    "id": 15,
     "generic_name": "APPLE FLAVORED PIE, APPLE",
     "food_category": "Cakes, Cupcakes, Snack Cakes",
     "nutrients": {
@@ -794,7 +973,7 @@
     "count": 1
   },
   {
-    "id": 15,
+    "id": 16,
     "generic_name": "APPLE FRUIT PIE",
     "food_category": "Cakes, Cupcakes, Snack Cakes",
     "nutrients": {
@@ -836,7 +1015,7 @@
     "count": 1
   },
   {
-    "id": 16,
+    "id": 17,
     "generic_name": "APPLE FRUIT PIE, APPLE",
     "food_category": "Cakes, Cupcakes, Snack Cakes",
     "nutrients": {
@@ -878,7 +1057,7 @@
     "count": 1
   },
   {
-    "id": 17,
+    "id": 18,
     "generic_name": "APPLE PIE, FRUITILICIOUS!",
     "food_category": "Cakes, Cupcakes, Snack Cakes",
     "nutrients": {
@@ -920,7 +1099,7 @@
     "count": 1
   },
   {
-    "id": 18,
+    "id": 19,
     "generic_name": "CARAMEL APPLE PIE",
     "food_category": "Cakes, Cupcakes, Snack Cakes",
     "nutrients": {
@@ -962,7 +1141,7 @@
     "count": 1
   },
   {
-    "id": 19,
+    "id": 20,
     "generic_name": "CARAMEL APPLE PIE, GLAZED",
     "food_category": "Cakes, Cupcakes, Snack Cakes",
     "nutrients": {
@@ -1004,7 +1183,7 @@
     "count": 1
   },
   {
-    "id": 20,
+    "id": 21,
     "generic_name": "DOUBLE CRUST APPLE PIE",
     "food_category": "Cakes, Cupcakes, Snack Cakes",
     "nutrients": {
@@ -1046,7 +1225,7 @@
     "count": 1
   },
   {
-    "id": 21,
+    "id": 22,
     "generic_name": "DRAKE'S, FRUIT PIES, APPLE, APPLE",
     "food_category": "Cakes, Cupcakes, Snack Cakes",
     "nutrients": {
@@ -1088,7 +1267,49 @@
     "count": 1
   },
   {
-    "id": 22,
+    "id": 23,
+    "generic_name": "Fried Apple Pie",
+    "food_category": "Cakes, Cupcakes, Snack Cakes",
+    "nutrients": {
+      "Energy": 260.0,
+      "Carbohydrate": 51.0,
+      "Protein": 1.0,
+      "Total fat": 6.0,
+      "Fiber": 1.0,
+      "Sugars, Total": null,
+      "Sodium": 55.0,
+      "Calcium": 0.0,
+      "Iron": 1.44,
+      "Cholesterol": 5.0,
+      "Fatty acids, total saturated": 2.0,
+      "Vitamin A, RAE": null,
+      "Vitamin C": 1.2,
+      "Vitamin D (D2 + D3)": null,
+      "Vitamin E": null,
+      "Vitamin B-6": null,
+      "Vitamin B-12": null,
+      "Folate, total": null,
+      "Zinc": null,
+      "Magnesium": null,
+      "Potassium": null,
+      "Phosphorus": null
+    },
+    "source_ids": [
+      51
+    ],
+    "source_names": [
+      "FRIED APPLE PIE"
+    ],
+    "portion_gram_weights": [
+      100.0
+    ],
+    "portion_unit_names": [
+      "1 PIE"
+    ],
+    "count": 1
+  },
+  {
+    "id": 24,
     "generic_name": "FRUIT PIE, APPLE",
     "food_category": "Cakes, Cupcakes, Snack Cakes",
     "nutrients": {
@@ -1130,21 +1351,21 @@
     "count": 1
   },
   {
-    "id": 23,
+    "id": 25,
     "generic_name": "GLAZED APPLE PIE",
     "food_category": "Cakes, Cupcakes, Snack Cakes",
     "nutrients": {
-      "Energy": 360.5,
-      "Carbohydrate": 47.644999999999996,
-      "Protein": 2.495,
-      "Total fat": 18.064999999999998,
-      "Fiber": 1.25,
+      "Energy": 354.0,
+      "Carbohydrate": 53.1,
+      "Protein": 2.65,
+      "Total fat": 15.04,
+      "Fiber": 0.9,
       "Sugars, Total": null,
-      "Sodium": 269.0,
-      "Calcium": 40.0,
-      "Iron": 1.3399999999999999,
+      "Sodium": 319.0,
+      "Calcium": 18.0,
+      "Iron": 1.27,
       "Cholesterol": 0.0,
-      "Fatty acids, total saturated": 9.45,
+      "Fatty acids, total saturated": 7.96,
       "Vitamin A, RAE": null,
       "Vitamin C": 0.0,
       "Vitamin D (D2 + D3)": null,
@@ -1158,25 +1379,21 @@
       "Phosphorus": null
     },
     "source_ids": [
-      53,
-      62
+      53
     ],
     "source_names": [
-      "GLAZED APPLE PIE",
-      "TASTYKAKE, GLAZED APPLE PIE"
+      "GLAZED APPLE PIE"
     ],
     "portion_gram_weights": [
-      113.0,
-      128.0
+      113.0
     ],
     "portion_unit_names": [
-      "1 PIE",
-      "4.5 ONZ"
+      "1 PIE"
     ],
-    "count": 2
+    "count": 1
   },
   {
-    "id": 24,
+    "id": 26,
     "generic_name": "LIGHTLY GLAZED APPLE PIE",
     "food_category": "Cakes, Cupcakes, Snack Cakes",
     "nutrients": {
@@ -1218,7 +1435,7 @@
     "count": 1
   },
   {
-    "id": 25,
+    "id": 27,
     "generic_name": "MINIS APPLE SNACK PIES",
     "food_category": "Cakes, Cupcakes, Snack Cakes",
     "nutrients": {
@@ -1260,7 +1477,49 @@
     "count": 1
   },
   {
-    "id": 26,
+    "id": 28,
+    "generic_name": "PIE, APPLE",
+    "food_category": "Cakes, Cupcakes, Snack Cakes",
+    "nutrients": {
+      "Energy": 180.0,
+      "Carbohydrate": 29.73,
+      "Protein": 0.9,
+      "Total fat": 8.11,
+      "Fiber": 1.8,
+      "Sugars, Total": null,
+      "Sodium": 81.0,
+      "Calcium": 18.0,
+      "Iron": 0.32,
+      "Cholesterol": 32.0,
+      "Fatty acids, total saturated": 4.5,
+      "Vitamin A, RAE": null,
+      "Vitamin C": 4.3,
+      "Vitamin D (D2 + D3)": null,
+      "Vitamin E": null,
+      "Vitamin B-6": null,
+      "Vitamin B-12": null,
+      "Folate, total": null,
+      "Zinc": null,
+      "Magnesium": null,
+      "Potassium": null,
+      "Phosphorus": null
+    },
+    "source_ids": [
+      59
+    ],
+    "source_names": [
+      "PIE, APPLE"
+    ],
+    "portion_gram_weights": [
+      111.0
+    ],
+    "portion_unit_names": [
+      "0.125 PIECES"
+    ],
+    "count": 1
+  },
+  {
+    "id": 29,
     "generic_name": "Yogurt Dip",
     "food_category": "Dips & Salsa",
     "nutrients": {
@@ -1302,57 +1561,7 @@
     "count": 1
   },
   {
-    "id": 27,
-    "generic_name": "Lentils, Cooked",
-    "food_category": "Entrees, Sides & Small Meals",
-    "nutrients": {
-      "Energy": 127.66666666666667,
-      "Carbohydrate": 18.473333333333333,
-      "Protein": 6.75,
-      "Total fat": 3.323333333333333,
-      "Fiber": 3.4333333333333336,
-      "Sugars, Total": null,
-      "Sodium": 225.33333333333334,
-      "Calcium": 20.333333333333332,
-      "Iron": 1.9566666666666668,
-      "Cholesterol": 0.6666666666666666,
-      "Fatty acids, total saturated": 0.32666666666666666,
-      "Vitamin A, RAE": null,
-      "Vitamin C": 3.5,
-      "Vitamin D (D2 + D3)": 0.0,
-      "Vitamin E": null,
-      "Vitamin B-6": null,
-      "Vitamin B-12": 0.35,
-      "Folate, total": null,
-      "Zinc": null,
-      "Magnesium": null,
-      "Potassium": 252.0,
-      "Phosphorus": null
-    },
-    "source_ids": [
-      69,
-      70,
-      71
-    ],
-    "source_names": [
-      "PERUVIAN LENTILS SOFRITO, PERUVIAN LENTILS",
-      "STEAMABLES LENTILS",
-      "LENTILS PROVENCAL"
-    ],
-    "portion_gram_weights": [
-      140.0,
-      250.0,
-      255.0
-    ],
-    "portion_unit_names": [
-      "1/2 cup",
-      "1 pouch",
-      "9 ONZ"
-    ],
-    "count": 3
-  },
-  {
-    "id": 28,
+    "id": 30,
     "generic_name": "Apple Juice",
     "food_category": "Fruit & Vegetable Juice, Nectars & Fruit Drinks",
     "nutrients": {
@@ -1394,23 +1603,65 @@
     "count": 1
   },
   {
-    "id": 29,
+    "id": 31,
+    "generic_name": "Celery Lemon Juice",
+    "food_category": "Fruit & Vegetable Juice, Nectars & Fruit Drinks",
+    "nutrients": {
+      "Energy": 6.0,
+      "Carbohydrate": 1.27,
+      "Protein": 0.21,
+      "Total fat": 0.0,
+      "Fiber": 0.0,
+      "Sugars, Total": null,
+      "Sodium": 72.0,
+      "Calcium": 13.0,
+      "Iron": 0.08,
+      "Cholesterol": 0.0,
+      "Fatty acids, total saturated": 0.0,
+      "Vitamin A, RAE": null,
+      "Vitamin C": 2.5,
+      "Vitamin D (D2 + D3)": null,
+      "Vitamin E": null,
+      "Vitamin B-6": null,
+      "Vitamin B-12": null,
+      "Folate, total": null,
+      "Zinc": null,
+      "Magnesium": null,
+      "Potassium": 74.0,
+      "Phosphorus": null
+    },
+    "source_ids": [
+      77
+    ],
+    "source_names": [
+      "CELERY LEMON COLD-PRESSED JUICE"
+    ],
+    "portion_gram_weights": [
+      473.0
+    ],
+    "portion_unit_names": [
+      "16 ONZ"
+    ],
+    "count": 1
+  },
+  {
+    "id": 32,
     "generic_name": "Strawberry Yogurt",
     "food_category": "Milk",
     "nutrients": {
       "Energy": 98.0,
-      "Carbohydrate": 16.843333333333334,
-      "Protein": 3.396666666666667,
-      "Total fat": 1.1833333333333333,
+      "Carbohydrate": 18.67,
+      "Protein": 3.11,
+      "Total fat": 0.89,
       "Fiber": 0.0,
       "Sugars, Total": null,
-      "Sodium": 57.666666666666664,
-      "Calcium": 95.66666666666667,
+      "Sodium": 49.0,
+      "Calcium": 111.0,
       "Iron": 0.0,
       "Cholesterol": 4.0,
-      "Fatty acids, total saturated": 0.81,
+      "Fatty acids, total saturated": 0.67,
       "Vitamin A, RAE": null,
-      "Vitamin C": 0.5333333333333333,
+      "Vitamin C": 1.6,
       "Vitamin D (D2 + D3)": null,
       "Vitamin E": null,
       "Vitamin B-6": null,
@@ -1422,29 +1673,61 @@
       "Phosphorus": null
     },
     "source_ids": [
-      87,
-      230,
-      234
+      87
     ],
     "source_names": [
-      "LOWFAT YOGURT, STRAWBERRY, ORIGINAL",
-      "YOPLAIT GO BIG LF YGRT MIXED BERRY/STRWBRY",
-      "YOPLAIT LF YGRT MIXED BERRY/STRWBRY"
+      "LOWFAT YOGURT, STRAWBERRY, ORIGINAL"
     ],
     "portion_gram_weights": [
-      225.0,
-      113.0,
-      113.0
+      225.0
     ],
     "portion_unit_names": [
-      "1 cup",
-      "1 pouch (113g)",
-      "1 pouch (113g)"
+      "1 cup"
     ],
-    "count": 3
+    "count": 1
   },
   {
-    "id": 30,
+    "id": 33,
+    "generic_name": "Blood Orange Lemon Juice",
+    "food_category": "Other Drinks",
+    "nutrients": {
+      "Energy": 19.0,
+      "Carbohydrate": 4.38,
+      "Protein": 0.0,
+      "Total fat": 0.0,
+      "Fiber": null,
+      "Sugars, Total": null,
+      "Sodium": 0.0,
+      "Calcium": null,
+      "Iron": null,
+      "Cholesterol": null,
+      "Fatty acids, total saturated": null,
+      "Vitamin A, RAE": null,
+      "Vitamin C": null,
+      "Vitamin D (D2 + D3)": null,
+      "Vitamin E": null,
+      "Vitamin B-6": null,
+      "Vitamin B-12": null,
+      "Folate, total": null,
+      "Zinc": null,
+      "Magnesium": null,
+      "Potassium": null,
+      "Phosphorus": null
+    },
+    "source_ids": [
+      88
+    ],
+    "source_names": [
+      "BLOOD ORANGE LEMON JUICE"
+    ],
+    "portion_gram_weights": [
+      480.0
+    ],
+    "portion_unit_names": [],
+    "count": 1
+  },
+  {
+    "id": 34,
     "generic_name": "Apple Pie Cheesecake",
     "food_category": "Other Frozen Desserts",
     "nutrients": {
@@ -1486,19 +1769,19 @@
     "count": 1
   },
   {
-    "id": 31,
+    "id": 35,
     "generic_name": "Country Ham",
     "food_category": "Pepperoni, Salami & Cold Cuts",
     "nutrients": {
-      "Energy": 179.0,
-      "Carbohydrate": 1.79,
-      "Protein": 25.0,
-      "Total fat": 8.93,
+      "Energy": 174.5,
+      "Carbohydrate": 1.34,
+      "Protein": 23.66,
+      "Total fat": 8.485,
       "Fiber": 0.0,
       "Sugars, Total": null,
-      "Sodium": 2268.0,
-      "Calcium": 0.0,
-      "Iron": 1.29,
+      "Sodium": 2076.0,
+      "Calcium": 35.5,
+      "Iron": 1.125,
       "Cholesterol": 98.0,
       "Fatty acids, total saturated": 2.68,
       "Vitamin A, RAE": null,
@@ -1514,365 +1797,25 @@
       "Phosphorus": null
     },
     "source_ids": [
-      92
-    ],
-    "source_names": [
-      "COUNTRY HAM"
-    ],
-    "portion_gram_weights": [
-      56.0
-    ],
-    "portion_unit_names": [
-      "2 ONZ"
-    ],
-    "count": 1
-  },
-  {
-    "id": 32,
-    "generic_name": "OLD STYLE COUNTRY HAM, OLD STYLE",
-    "food_category": "Pepperoni, Salami & Cold Cuts",
-    "nutrients": {
-      "Energy": 170.0,
-      "Carbohydrate": 0.89,
-      "Protein": 22.32,
-      "Total fat": 8.04,
-      "Fiber": 0.0,
-      "Sugars, Total": null,
-      "Sodium": 1884.0,
-      "Calcium": 71.0,
-      "Iron": 0.96,
-      "Cholesterol": null,
-      "Fatty acids, total saturated": 2.68,
-      "Vitamin A, RAE": null,
-      "Vitamin C": 0.0,
-      "Vitamin D (D2 + D3)": null,
-      "Vitamin E": null,
-      "Vitamin B-6": null,
-      "Vitamin B-12": null,
-      "Folate, total": null,
-      "Zinc": null,
-      "Magnesium": null,
-      "Potassium": null,
-      "Phosphorus": null
-    },
-    "source_ids": [
+      92,
       93
     ],
     "source_names": [
+      "COUNTRY HAM",
       "OLD STYLE COUNTRY HAM, OLD STYLE"
     ],
     "portion_gram_weights": [
+      56.0,
       112.0
     ],
     "portion_unit_names": [
+      "2 ONZ",
       "4 oz."
     ],
-    "count": 1
-  },
-  {
-    "id": 33,
-    "generic_name": "PRIMA DELLA, TAVERN HAM",
-    "food_category": "Pepperoni, Salami & Cold Cuts",
-    "nutrients": {
-      "Energy": 125.0,
-      "Carbohydrate": 1.79,
-      "Protein": 19.64,
-      "Total fat": 3.57,
-      "Fiber": 0.0,
-      "Sugars, Total": null,
-      "Sodium": 893.0,
-      "Calcium": 0.0,
-      "Iron": 0.64,
-      "Cholesterol": 54.0,
-      "Fatty acids, total saturated": 1.79,
-      "Vitamin A, RAE": null,
-      "Vitamin C": 0.0,
-      "Vitamin D (D2 + D3)": null,
-      "Vitamin E": null,
-      "Vitamin B-6": null,
-      "Vitamin B-12": null,
-      "Folate, total": null,
-      "Zinc": null,
-      "Magnesium": null,
-      "Potassium": null,
-      "Phosphorus": null
-    },
-    "source_ids": [
-      94
-    ],
-    "source_names": [
-      "PRIMA DELLA, TAVERN HAM"
-    ],
-    "portion_gram_weights": [
-      56.0
-    ],
-    "portion_unit_names": [
-      "2 ONZ"
-    ],
-    "count": 1
-  },
-  {
-    "id": 34,
-    "generic_name": "Ham, Spiral Recipe",
-    "food_category": "Pepperoni, Salami & Cold Cuts",
-    "nutrients": {
-      "Energy": 140.0,
-      "Carbohydrate": 8.77,
-      "Protein": 17.54,
-      "Total fat": 3.51,
-      "Fiber": 0.0,
-      "Sugars, Total": null,
-      "Sodium": 1140.0,
-      "Calcium": 0.0,
-      "Iron": 0.63,
-      "Cholesterol": 53.0,
-      "Fatty acids, total saturated": 0.88,
-      "Vitamin A, RAE": null,
-      "Vitamin C": 0.0,
-      "Vitamin D (D2 + D3)": null,
-      "Vitamin E": null,
-      "Vitamin B-6": null,
-      "Vitamin B-12": null,
-      "Folate, total": null,
-      "Zinc": null,
-      "Magnesium": null,
-      "Potassium": null,
-      "Phosphorus": null
-    },
-    "source_ids": [
-      95,
-      96
-    ],
-    "source_names": [
-      "SPIRAL RECIPE HAM WITH NATURAL JUICES",
-      "SPIRAL RECIPE HAM, SPIRAL RECIPE"
-    ],
-    "portion_gram_weights": [
-      57.0,
-      57.0
-    ],
-    "portion_unit_names": [
-      "3 SLICES",
-      "3 slices"
-    ],
     "count": 2
-  },
-  {
-    "id": 35,
-    "generic_name": "TAVERN HAM",
-    "food_category": "Pepperoni, Salami & Cold Cuts",
-    "nutrients": {
-      "Energy": 143.0,
-      "Carbohydrate": 5.36,
-      "Protein": 16.07,
-      "Total fat": 6.25,
-      "Fiber": 0.0,
-      "Sugars, Total": null,
-      "Sodium": 929.0,
-      "Calcium": 0.0,
-      "Iron": 0.64,
-      "Cholesterol": 45.0,
-      "Fatty acids, total saturated": 1.79,
-      "Vitamin A, RAE": null,
-      "Vitamin C": 0.0,
-      "Vitamin D (D2 + D3)": null,
-      "Vitamin E": null,
-      "Vitamin B-6": null,
-      "Vitamin B-12": null,
-      "Folate, total": null,
-      "Zinc": null,
-      "Magnesium": null,
-      "Potassium": null,
-      "Phosphorus": null
-    },
-    "source_ids": [
-      97
-    ],
-    "source_names": [
-      "TAVERN HAM"
-    ],
-    "portion_gram_weights": [
-      56.0
-    ],
-    "portion_unit_names": [
-      "2 ONZ"
-    ],
-    "count": 1
   },
   {
     "id": 36,
-    "generic_name": "TAVERN-STYLE HAM, TAVERN-STYLE",
-    "food_category": "Pepperoni, Salami & Cold Cuts",
-    "nutrients": {
-      "Energy": 125.0,
-      "Carbohydrate": 3.57,
-      "Protein": 17.86,
-      "Total fat": 3.57,
-      "Fiber": 0.0,
-      "Sugars, Total": null,
-      "Sodium": 893.0,
-      "Calcium": 0.0,
-      "Iron": 0.64,
-      "Cholesterol": 54.0,
-      "Fatty acids, total saturated": 1.79,
-      "Vitamin A, RAE": 0.0,
-      "Vitamin C": 0.0,
-      "Vitamin D (D2 + D3)": null,
-      "Vitamin E": null,
-      "Vitamin B-6": null,
-      "Vitamin B-12": null,
-      "Folate, total": null,
-      "Zinc": null,
-      "Magnesium": null,
-      "Potassium": null,
-      "Phosphorus": null
-    },
-    "source_ids": [
-      98
-    ],
-    "source_names": [
-      "TAVERN-STYLE HAM, TAVERN-STYLE"
-    ],
-    "portion_gram_weights": [
-      56.0
-    ],
-    "portion_unit_names": [
-      "2 oz"
-    ],
-    "count": 1
-  },
-  {
-    "id": 37,
-    "generic_name": "ULTRA THIN HAM",
-    "food_category": "Pepperoni, Salami & Cold Cuts",
-    "nutrients": {
-      "Energy": 125.0,
-      "Carbohydrate": 5.36,
-      "Protein": 16.07,
-      "Total fat": 2.68,
-      "Fiber": 0.0,
-      "Sugars, Total": null,
-      "Sodium": 1232.0,
-      "Calcium": 0.0,
-      "Iron": 0.64,
-      "Cholesterol": 54.0,
-      "Fatty acids, total saturated": 0.89,
-      "Vitamin A, RAE": null,
-      "Vitamin C": 0.0,
-      "Vitamin D (D2 + D3)": null,
-      "Vitamin E": null,
-      "Vitamin B-6": null,
-      "Vitamin B-12": null,
-      "Folate, total": null,
-      "Zinc": null,
-      "Magnesium": null,
-      "Potassium": null,
-      "Phosphorus": null
-    },
-    "source_ids": [
-      99
-    ],
-    "source_names": [
-      "ULTRA THIN HAM"
-    ],
-    "portion_gram_weights": [
-      56.0
-    ],
-    "portion_unit_names": [
-      "2 ONZ"
-    ],
-    "count": 1
-  },
-  {
-    "id": 38,
-    "generic_name": "VIRGINIA BRAND HAM",
-    "food_category": "Pepperoni, Salami & Cold Cuts",
-    "nutrients": {
-      "Energy": 107.0,
-      "Carbohydrate": 4.465,
-      "Protein": 16.965,
-      "Total fat": 2.68,
-      "Fiber": 0.0,
-      "Sugars, Total": null,
-      "Sodium": 1098.0,
-      "Calcium": 0.0,
-      "Iron": 0.64,
-      "Cholesterol": 45.0,
-      "Fatty acids, total saturated": 0.89,
-      "Vitamin A, RAE": null,
-      "Vitamin C": 4.3,
-      "Vitamin D (D2 + D3)": null,
-      "Vitamin E": null,
-      "Vitamin B-6": null,
-      "Vitamin B-12": null,
-      "Folate, total": null,
-      "Zinc": null,
-      "Magnesium": null,
-      "Potassium": null,
-      "Phosphorus": null
-    },
-    "source_ids": [
-      100,
-      101
-    ],
-    "source_names": [
-      "VIRGINIA BRAND HAM",
-      "VIRGINIA BRAND HAM, VIRGINIA BRAND"
-    ],
-    "portion_gram_weights": [
-      56.0,
-      56.0
-    ],
-    "portion_unit_names": [
-      "2 ONZ",
-      "2 ONZ"
-    ],
-    "count": 2
-  },
-  {
-    "id": 39,
-    "generic_name": "VIRGINIA HAM",
-    "food_category": "Pepperoni, Salami & Cold Cuts",
-    "nutrients": {
-      "Energy": 111.0,
-      "Carbohydrate": 3.7,
-      "Protein": 18.52,
-      "Total fat": 2.78,
-      "Fiber": 0.0,
-      "Sugars, Total": null,
-      "Sodium": 815.0,
-      "Calcium": 0.0,
-      "Iron": 0.67,
-      "Cholesterol": 56.0,
-      "Fatty acids, total saturated": 0.93,
-      "Vitamin A, RAE": null,
-      "Vitamin C": 0.0,
-      "Vitamin D (D2 + D3)": null,
-      "Vitamin E": null,
-      "Vitamin B-6": null,
-      "Vitamin B-12": null,
-      "Folate, total": null,
-      "Zinc": null,
-      "Magnesium": null,
-      "Potassium": null,
-      "Phosphorus": null
-    },
-    "source_ids": [
-      102
-    ],
-    "source_names": [
-      "VIRGINIA HAM"
-    ],
-    "portion_gram_weights": [
-      54.0
-    ],
-    "portion_unit_names": [
-      "1.9 ONZ"
-    ],
-    "count": 1
-  },
-  {
-    "id": 40,
     "generic_name": "Ham Sub",
     "food_category": "Prepared Subs & Sandwiches",
     "nutrients": {
@@ -1922,21 +1865,21 @@
     "count": 3
   },
   {
-    "id": 41,
+    "id": 37,
     "generic_name": "Lemonade",
     "food_category": "Soda",
     "nutrients": {
-      "Energy": 50.333333333333336,
-      "Carbohydrate": 13.103333333333333,
+      "Energy": 48.5,
+      "Carbohydrate": 12.99,
       "Protein": 0.0,
       "Total fat": 0.0,
-      "Fiber": 0.0,
+      "Fiber": null,
       "Sugars, Total": null,
-      "Sodium": 8.0,
-      "Calcium": 0.0,
-      "Iron": 0.0,
-      "Cholesterol": 0.0,
-      "Fatty acids, total saturated": 0.0,
+      "Sodium": 6.0,
+      "Calcium": null,
+      "Iron": null,
+      "Cholesterol": null,
+      "Fatty acids, total saturated": null,
       "Vitamin A, RAE": null,
       "Vitamin C": 25.0,
       "Vitamin D (D2 + D3)": null,
@@ -1951,29 +1894,25 @@
     },
     "source_ids": [
       106,
-      108,
       109
     ],
     "source_names": [
       "LEMONADE LEMON JUICE, LEMONADE",
-      "ORGANIC LEMON JUICE CONCENTRATE",
       "SIMPLY LEMONADE, LEMON JUICE"
     ],
     "portion_gram_weights": [
-      240.0,
       240.0,
       340.0
     ],
     "portion_unit_names": [
       "8 OZA",
-      "8 OZA",
       "11.5 OZA"
     ],
-    "count": 3
+    "count": 2
   },
   {
-    "id": 42,
-    "generic_name": "Soda",
+    "id": 38,
+    "generic_name": "Lime Soda",
     "food_category": "Soda",
     "nutrients": {
       "Energy": 38.0,
@@ -2014,297 +1953,21 @@
     "count": 1
   },
   {
-    "id": 43,
-    "generic_name": "Nonfat Yogurt",
-    "food_category": "Yogurt",
+    "id": 39,
+    "generic_name": "Lemon Juice Concentrate",
+    "food_category": "Soda",
     "nutrients": {
-      "Energy": 65.33333333333333,
-      "Carbohydrate": 8.755,
-      "Protein": 7.476666666666667,
-      "Total fat": 0.07333333333333332,
-      "Fiber": 1.2166666666666666,
-      "Sugars, Total": null,
-      "Sodium": 58.833333333333336,
-      "Calcium": 129.83333333333334,
-      "Iron": 0.0,
-      "Cholesterol": 2.8333333333333335,
-      "Fatty acids, total saturated": 0.07333333333333332,
-      "Vitamin A, RAE": null,
-      "Vitamin C": 0.7055555555555556,
-      "Vitamin D (D2 + D3)": null,
-      "Vitamin E": null,
-      "Vitamin B-6": null,
-      "Vitamin B-12": null,
-      "Folate, total": null,
-      "Zinc": null,
-      "Magnesium": null,
-      "Potassium": 153.33333333333334,
-      "Phosphorus": null
-    },
-    "source_ids": [
-      146,
-      179,
-      181,
-      183,
-      185,
-      194
-    ],
-    "source_names": [
-      "0% FAT YOGURT",
-      "NON-FAT YOGURT",
-      "ORIGINAL NONFAT YOGURT",
-      "PLAIN ORGANIC NONFAT YOGURT",
-      "PROBIOTIC NONFAT YOGURT",
-      "TRIPLE ZERO NONFAT YOGURT"
-    ],
-    "portion_gram_weights": [
-      227.0,
-      150.0,
-      225.0,
-      170.0,
-      227.0,
-      150.0
-    ],
-    "portion_unit_names": [
-      "1 cup",
-      "1 CONTAINER",
-      "1 cup",
-      "3/4 cup",
-      "1 cup",
-      "1 CONTAINER"
-    ],
-    "count": 6
-  },
-  {
-    "id": 44,
-    "generic_name": "Yogurt",
-    "food_category": "Yogurt",
-    "nutrients": {
-      "Energy": 85.53382352941176,
-      "Carbohydrate": 11.909545454545459,
-      "Protein": 3.9638636363636364,
-      "Total fat": 2.409318181818182,
-      "Fiber": 0.10023310023310027,
-      "Sugars, Total": null,
-      "Sodium": 59.60016835016835,
-      "Calcium": 123.38636363636364,
-      "Iron": 0.10896603396603398,
-      "Cholesterol": 9.95454545454546,
-      "Fatty acids, total saturated": 1.5497727272727282,
-      "Vitamin A, RAE": null,
-      "Vitamin C": 1.5756617934037287,
-      "Vitamin D (D2 + D3)": null,
-      "Vitamin E": null,
-      "Vitamin B-6": null,
-      "Vitamin B-12": null,
-      "Folate, total": null,
-      "Zinc": null,
-      "Magnesium": null,
-      "Potassium": 197.71240963228792,
-      "Phosphorus": 134.27272727272728
-    },
-    "source_ids": [
-      152,
-      153,
-      156,
-      160,
-      161,
-      162,
-      163,
-      165,
-      166,
-      167,
-      168,
-      169,
-      170,
-      171,
-      172,
-      173,
-      174,
-      175,
-      177,
-      178,
-      180,
-      182,
-      184,
-      186,
-      187,
-      189,
-      191,
-      192,
-      193,
-      195,
-      196,
-      206,
-      207,
-      208,
-      229,
-      235,
-      236,
-      237,
-      238,
-      239,
-      240,
-      241,
-      242,
-      243
-    ],
-    "source_names": [
-      "100% GRASS-FED COW YOGURT",
-      "100% GRASS-FED COWS CREAMLINE YOGURT",
-      "ALL NATURAL YOGURT",
-      "COW YOGURT",
-      "CREAM ON TOP YOGURT",
-      "CREAM ON TOP YOGURT, MAPLE",
-      "CREAM ON TOP YOGURT, WILD BLUEBERRY",
-      "CREAM-ON-TOP BALADI YOGURT",
-      "CREAM-ON-TOP BALADI YOGURT, BALADI",
-      "FARM FRESH PREMIUM YOGURT",
-      "FARM FRESH YOGURT",
-      "FINEST YOGHURT",
-      "GELATIN & YOGURT",
-      "GRASS FED COWS CREAM ON TOP, YOGURT",
-      "GRASS FED COWS CREAM ON TOP, YOGURT, LEMON",
-      "GRASS FED CREAM TOP YOGURT",
-      "GRASS-FED CREAM TOP YOGURT",
-      "GRASS-FED CREAM TOP YOGURT, HONEY PEAR",
-      "LOWFAT YOGURT TUBES, BLUEBERRY, STRAWBERRY",
-      "MATZOON YOGURT",
-      "ORIGINAL LOWFAT YOGURT",
-      "ORIGINAL YOGURT",
-      "PROBIOTIC FORMULA FAT FREE YOGURT",
-      "SMOOTH OLD-FASHIONED NON-GREEK YOGURT",
-      "SMOOTH YOGURT",
-      "SQUEEZERS LOWFAT YOGURT",
-      "SWISS YOGURT",
-      "SWISS YOGURT FROM WISCONSIN",
-      "TARTE ASIAN YOGURT",
-      "YOGHURT",
-      "YOGURT, CARROT",
-      "Yplt Orig Vrty Pk Ygrt 8 Ct",
-      "Yplt Orig Ygrt Vrty Pack 12 Ct",
-      "Yplt Orig Ygrt Vrty Pack 8 Ct",
-      "YOPLAIT GO BIG LF YGRT CHRY/PCH MANGO",
-      "YOPLAIT LT FF YGRT VANILLA CHERRY",
-      "YOPLAIT ORIGINAL LF YGRT BANANA SPLIT",
-      "YOPLAIT ORIGINAL LF YGRT CHRY SNO CONE",
-      "YOPLAIT ORIGINAL LF YGRT CINN ROLL/STRWBRY",
-      "YOPLAIT ORIGINAL LF YGRT MNTN BLBRY/STRWBRY",
-      "YOPLAIT ORIGINAL LF YGRT RNBW SHERBET",
-      "YOPLAIT ORIGINAL LF YGRT TROPICAL",
-      "YOPLAIT ORIGINAL LF YGRT WHITE CHOCLTY MOCHA",
-      "Yoplait Original Yogurt Variety Pack 8 Count"
-    ],
-    "portion_gram_weights": [
-      170.0,
-      227.0,
-      170.0,
-      170.0,
-      170.0,
-      170.0,
-      170.0,
-      227.0,
-      227.0,
-      227.0,
-      150.0,
-      113.0,
-      142.0,
-      170.0,
-      170.0,
-      170.0,
-      227.0,
-      170.0,
-      170.0,
-      227.0,
-      170.0,
-      227.0,
-      227.0,
-      150.0,
-      150.0,
-      56.0,
-      170.0,
-      170.0,
-      170.0,
-      227.0,
-      150.0,
-      170.0,
-      170.0,
-      170.0,
-      113.0,
-      170.0,
-      170.0,
-      170.0,
-      170.0,
-      170.0,
-      170.0,
-      170.0,
-      170.0,
-      170.0
-    ],
-    "portion_unit_names": [
-      "6 ONZ",
-      "1 cup",
-      "1 CONTAINER",
-      "6 ONZ",
-      "1 CONTAINER",
-      "1 CONTAINER",
-      "1 CONTAINER",
-      "1 cup",
-      "1 cup",
-      "6 ONZ",
-      "1 CONTAINER",
-      "4 ONZ",
-      "5 ONZ",
-      "1 CONTAINER",
-      "1 CONTAINER",
-      "6 ONZ",
-      "1 cup",
-      "6 ONZ",
-      "3 TUBES",
-      "8 ONZ",
-      "1 CONT.",
-      "1 cup",
-      "1 cup",
-      "1 CONTAINER",
-      "1 CONTAINER",
-      "2 ONZ",
-      "1 CONTAINER",
-      "1 CONTAINER",
-      "1 CONTAINER",
-      "8 ONZ",
-      "1 CONTAINER",
-      "1 Container Strawberry",
-      "1 Container Strawberry",
-      "1 Container Mixed Berry",
-      "1 pouch (113g)",
-      "1 Container",
-      "1 container",
-      "1 container",
-      "1 container (170g)",
-      "1 Container",
-      "1 container",
-      "1 container",
-      "1 container",
-      "1 container (170g)"
-    ],
-    "count": 44
-  },
-  {
-    "id": 45,
-    "generic_name": "ALOVE YOGURT",
-    "food_category": "Yogurt",
-    "nutrients": {
-      "Energy": 88.0,
-      "Carbohydrate": 13.53,
-      "Protein": 3.53,
-      "Total fat": 2.35,
+      "Energy": 54.0,
+      "Carbohydrate": 13.33,
+      "Protein": 0.0,
+      "Total fat": 0.0,
       "Fiber": 0.0,
       "Sugars, Total": null,
-      "Sodium": 50.0,
-      "Calcium": 119.0,
+      "Sodium": 12.0,
+      "Calcium": 0.0,
       "Iron": 0.0,
-      "Cholesterol": 9.0,
-      "Fatty acids, total saturated": 1.47,
+      "Cholesterol": 0.0,
+      "Fatty acids, total saturated": 0.0,
       "Vitamin A, RAE": null,
       "Vitamin C": null,
       "Vitamin D (D2 + D3)": null,
@@ -2318,34 +1981,189 @@
       "Phosphorus": null
     },
     "source_ids": [
-      157
+      108
     ],
     "source_names": [
-      "ALOVE YOGURT"
+      "ORGANIC LEMON JUICE CONCENTRATE"
     ],
     "portion_gram_weights": [
-      170.0
+      240.0
     ],
     "portion_unit_names": [
-      "1 CONTAINER"
+      "8 OZA"
     ],
     "count": 1
   },
   {
-    "id": 46,
-    "generic_name": "Blended Yogurt",
-    "food_category": "Yogurt",
+    "id": 40,
+    "generic_name": "Lentils",
+    "food_category": "Vegetable and Lentil Mixes",
     "nutrients": {
-      "Energy": 80.0,
-      "Carbohydrate": 11.33,
-      "Protein": 8.67,
-      "Total fat": 0.0,
-      "Fiber": 0.0,
+      "Energy": 331.44444444444446,
+      "Carbohydrate": 61.03055555555554,
+      "Protein": 24.586666666666662,
+      "Total fat": 0.6211111111111112,
+      "Fiber": 20.811111111111114,
+      "Sugars, Total": 0.0,
+      "Sodium": 4.277777777777778,
+      "Calcium": 59.66666666666666,
+      "Iron": 9.343888888888888,
+      "Cholesterol": 0.0,
+      "Fatty acids, total saturated": 0.017777777777777778,
+      "Vitamin A, RAE": 0.0,
+      "Vitamin C": 4.81111111111111,
+      "Vitamin D (D2 + D3)": 0.0,
+      "Vitamin E": null,
+      "Vitamin B-6": null,
+      "Vitamin B-12": null,
+      "Folate, total": null,
+      "Zinc": 6.0,
+      "Magnesium": 140.0,
+      "Potassium": 1382.4799999999998,
+      "Phosphorus": 300.0
+    },
+    "source_ids": [
+      110,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      131,
+      132,
+      133,
+      134,
+      138,
+      139,
+      140,
+      141,
+      142,
+      144,
+      145
+    ],
+    "source_names": [
+      "GEFEN LENTILS, 16 OZ",
+      "ARROWHEAD MILLS, ORGANIC GREEN LENTILS",
+      "FRENCH GREEN LENTILS, FRENCH GREEN",
+      "FRENCH GREEN ORGANIC LENTILS, FRENCH GREEN",
+      "FRENCH LENTILS",
+      "FRESH & EASY, GREEN LENTILS",
+      "FRENCH GREEN LENTILS",
+      "LENTILS, MASOOR DAL",
+      "SPROUTED LENTILS",
+      "LENTILS PETITE GOLDEN",
+      "CEDAR PHOENICIA, BROWN LENTILS - BALADY",
+      "BROWN LENTILS, BROWN",
+      "LENTEJAS LENTILS",
+      "BROWN LENTILS",
+      "LENTILS MASSOR DAL",
+      "LENTIL BLEND",
+      "LENTILS IVORY WHITE",
+      "ZIYAD, LARGE WHOLE LENTILS"
+    ],
+    "portion_gram_weights": [
+      32.0,
+      44.0,
+      38.0,
+      50.0,
+      48.0,
+      50.0,
+      35.0,
+      45.0,
+      100.0,
+      35.0,
+      48.0,
+      50.0,
+      32.0,
+      50.0,
+      45.0,
+      45.0,
+      35.0,
+      57.0
+    ],
+    "portion_unit_names": [
+      "1/4 cup (Dry) 32g",
+      "0.25 cup",
+      "1/4 cup",
+      "0.25 cup",
+      "0.25 cup",
+      "0.25 cup",
+      "0.25 cup",
+      "3/4 cup",
+      "0.25 cup",
+      "0.25 cup",
+      "1/4 cup",
+      "1/4 cup",
+      "1/4 cup",
+      "1/4 cup",
+      "0.25 cup",
+      "0.25 cup",
+      "0.25 cup"
+    ],
+    "count": 18
+  },
+  {
+    "id": 41,
+    "generic_name": "Steamed Lentils",
+    "food_category": "Vegetable and Lentil Mixes",
+    "nutrients": {
+      "Energy": 143.5,
+      "Carbohydrate": 24.5,
+      "Protein": 11.335,
+      "Total fat": 0.585,
+      "Fiber": 5.35,
       "Sugars, Total": null,
-      "Sodium": 43.0,
-      "Calcium": 100.0,
-      "Iron": 0.0,
-      "Cholesterol": 3.0,
+      "Sodium": 276.0,
+      "Calcium": 46.5,
+      "Iron": 3.17,
+      "Cholesterol": 0.0,
+      "Fatty acids, total saturated": 0.0,
+      "Vitamin A, RAE": null,
+      "Vitamin C": 6.0,
+      "Vitamin D (D2 + D3)": null,
+      "Vitamin E": null,
+      "Vitamin B-6": null,
+      "Vitamin B-12": null,
+      "Folate, total": null,
+      "Zinc": null,
+      "Magnesium": null,
+      "Potassium": 293.0,
+      "Phosphorus": null
+    },
+    "source_ids": [
+      129,
+      137
+    ],
+    "source_names": [
+      "STEAMED LENTILS",
+      "BROWN ORGANIC DOUBLE STEAMED LENTILS, BROWN"
+    ],
+    "portion_gram_weights": [
+      100.0,
+      150.0
+    ],
+    "portion_unit_names": [
+      "0.5 cup",
+      "1 container"
+    ],
+    "count": 2
+  },
+  {
+    "id": 42,
+    "generic_name": "LEGUME LENTILS",
+    "food_category": "Vegetable and Lentil Mixes",
+    "nutrients": {
+      "Energy": 219.0,
+      "Carbohydrate": 59.38,
+      "Protein": 25.0,
+      "Total fat": 0.0,
+      "Fiber": 28.1,
+      "Sugars, Total": null,
+      "Sodium": 16.0,
+      "Calcium": 0.0,
+      "Iron": 8.44,
+      "Cholesterol": 0.0,
       "Fatty acids, total saturated": 0.0,
       "Vitamin A, RAE": null,
       "Vitamin C": 0.0,
@@ -2356,25 +2174,109 @@
       "Folate, total": null,
       "Zinc": null,
       "Magnesium": null,
-      "Potassium": 107.0,
+      "Potassium": null,
       "Phosphorus": null
     },
     "source_ids": [
-      158
+      130
     ],
     "source_names": [
-      "BLENDED NONFAT YOGURT"
+      "LEGUME LENTILS"
     ],
     "portion_gram_weights": [
-      150.0
+      32.0
     ],
     "portion_unit_names": [
-      "1 CONTAINER"
+      "0.25 cup"
     ],
     "count": 1
   },
   {
-    "id": 47,
+    "id": 43,
+    "generic_name": "LENTILS LENTEJAS",
+    "food_category": "Vegetable and Lentil Mixes",
+    "nutrients": {
+      "Energy": 184.0,
+      "Carbohydrate": 57.89,
+      "Protein": 21.05,
+      "Total fat": 0.0,
+      "Fiber": 36.8,
+      "Sugars, Total": null,
+      "Sodium": 39.0,
+      "Calcium": 211.0,
+      "Iron": 9.47,
+      "Cholesterol": 0.0,
+      "Fatty acids, total saturated": 0.0,
+      "Vitamin A, RAE": null,
+      "Vitamin C": 0.0,
+      "Vitamin D (D2 + D3)": null,
+      "Vitamin E": null,
+      "Vitamin B-6": null,
+      "Vitamin B-12": null,
+      "Folate, total": null,
+      "Zinc": null,
+      "Magnesium": null,
+      "Potassium": null,
+      "Phosphorus": null
+    },
+    "source_ids": [
+      143
+    ],
+    "source_names": [
+      "LENTILS LENTEJAS"
+    ],
+    "portion_gram_weights": [
+      38.0
+    ],
+    "portion_unit_names": [
+      "0.25 cup"
+    ],
+    "count": 1
+  },
+  {
+    "id": 44,
+    "generic_name": "Nonfat Yogurt",
+    "food_category": "Yogurt",
+    "nutrients": {
+      "Energy": 49.0,
+      "Carbohydrate": 8.89,
+      "Protein": 3.11,
+      "Total fat": 0.0,
+      "Fiber": 0.0,
+      "Sugars, Total": null,
+      "Sodium": 51.0,
+      "Calcium": 111.0,
+      "Iron": 0.0,
+      "Cholesterol": 2.0,
+      "Fatty acids, total saturated": 0.0,
+      "Vitamin A, RAE": null,
+      "Vitamin C": 0.0,
+      "Vitamin D (D2 + D3)": null,
+      "Vitamin E": null,
+      "Vitamin B-6": null,
+      "Vitamin B-12": null,
+      "Folate, total": null,
+      "Zinc": null,
+      "Magnesium": null,
+      "Potassium": 138.0,
+      "Phosphorus": null
+    },
+    "source_ids": [
+      181
+    ],
+    "source_names": [
+      "ORIGINAL NONFAT YOGURT"
+    ],
+    "portion_gram_weights": [
+      225.0
+    ],
+    "portion_unit_names": [
+      "1 cup"
+    ],
+    "count": 1
+  },
+  {
+    "id": 45,
     "generic_name": "Strained Yogurt",
     "food_category": "Yogurt",
     "nutrients": {
@@ -2416,23 +2318,23 @@
     "count": 1
   },
   {
-    "id": 48,
-    "generic_name": "Apple Pie Cookie",
-    "food_category": "nan",
+    "id": 46,
+    "generic_name": "Carrot Yogurt",
+    "food_category": "Yogurt",
     "nutrients": {
-      "Energy": null,
-      "Carbohydrate": 72.41,
-      "Protein": 3.45,
-      "Total fat": 24.14,
-      "Fiber": 0.0,
+      "Energy": 60.0,
+      "Carbohydrate": 6.67,
+      "Protein": 2.67,
+      "Total fat": 2.67,
+      "Fiber": 0.7,
       "Sugars, Total": null,
-      "Sodium": 241.0,
-      "Calcium": 7.0,
-      "Iron": 1.66,
-      "Cholesterol": 0.0,
-      "Fatty acids, total saturated": 6.9,
+      "Sodium": 133.0,
+      "Calcium": 100.0,
+      "Iron": 0.24,
+      "Cholesterol": 10.0,
+      "Fatty acids, total saturated": 1.33,
       "Vitamin A, RAE": null,
-      "Vitamin C": 0.1,
+      "Vitamin C": 3.2,
       "Vitamin D (D2 + D3)": null,
       "Vitamin E": null,
       "Vitamin B-6": null,
@@ -2440,39 +2342,39 @@
       "Folate, total": null,
       "Zinc": null,
       "Magnesium": null,
-      "Potassium": 52.0,
+      "Potassium": null,
       "Phosphorus": null
     },
     "source_ids": [
-      211
+      196
     ],
     "source_names": [
-      "OREO COOKIES APPLE PIE 1X10.7 OZ"
+      "YOGURT, CARROT"
     ],
     "portion_gram_weights": [
-      29.0
+      150.0
     ],
     "portion_unit_names": [
-      "2 cookies (29g)"
+      "1 CONTAINER"
     ],
     "count": 1
   },
   {
-    "id": 49,
-    "generic_name": "Ham",
-    "food_category": "nan",
+    "id": 47,
+    "generic_name": "Yogurt Tubes",
+    "food_category": "Yogurt/Yogurt Substitutes",
     "nutrients": {
-      "Energy": 143.0,
-      "Carbohydrate": 6.845000000000001,
-      "Protein": 13.094999999999999,
-      "Total fat": 31.545,
-      "Fiber": 4.15,
+      "Energy": 86.23076923076923,
+      "Carbohydrate": 16.55769230769231,
+      "Protein": 3.56,
+      "Total fat": 0.7223076923076922,
+      "Fiber": 0.0,
       "Sugars, Total": null,
-      "Sodium": 1196.5,
-      "Calcium": 0.0,
-      "Iron": 0.32,
-      "Cholesterol": 43.5,
-      "Fatty acids, total saturated": 3.87,
+      "Sodium": 46.84615384615385,
+      "Calcium": 189.07692307692307,
+      "Iron": 0.0,
+      "Cholesterol": 3.1538461538461537,
+      "Fatty acids, total saturated": 0.5107692307692309,
       "Vitamin A, RAE": null,
       "Vitamin C": 0.0,
       "Vitamin D (D2 + D3)": null,
@@ -2482,30 +2384,74 @@
       "Folate, total": null,
       "Zinc": null,
       "Magnesium": null,
-      "Potassium": 0.0,
-      "Phosphorus": null
+      "Potassium": 135.84615384615384,
+      "Phosphorus": 71.0
     },
     "source_ids": [
-      212,
-      216
+      197,
+      198,
+      199,
+      200,
+      201,
+      202,
+      203,
+      204,
+      205,
+      206,
+      207,
+      208,
+      209
     ],
     "source_names": [
-      "FC MENU MASTER HAM",
-      "HAM,HAM&WATER,SMOKED,XL,FARMLAND,6/5#EXACT"
+      "Yplt Go-Gurt Variety Pack 8 Ct",
+      "Yplt Go-Gurt Vrty JlyRnch 16Ct",
+      "Yplt GoGurt JollyRanch 8Ct",
+      "Yplt GoGurt SourPatch Kids 8Ct",
+      "Yplt GoGurt SourPtch Kid 16 Ct",
+      "Yplt GoGurt SourPtch Kid 32 Ct",
+      "Yplt Kids Variety Pack 4 Ct",
+      "Yplt Kids Variety Pack 8 Ct",
+      "Yplt Lt Ygrt Variety Pack 8 Ct",
+      "Yplt Orig Vrty Pk Ygrt 8 Ct",
+      "Yplt Orig Ygrt Vrty Pack 12 Ct",
+      "Yplt Orig Ygrt Vrty Pack 8 Ct",
+      "Yplt Simply Go-Gurt 16 Ct"
     ],
     "portion_gram_weights": [
-      56.0,
-      84.0
+      170.0,
+      170.0,
+      170.0,
+      170.0,
+      170.0,
+      57.0,
+      113.0,
+      113.0,
+      170.0,
+      170.0,
+      170.0,
+      170.0,
+      170.0
     ],
     "portion_unit_names": [
-      "2 oz",
-      "3 Ounces"
+      "3 tubes(170g)",
+      "3 tubes (170g)",
+      "3 tubes (170g)",
+      "3 tubes (170g)",
+      "3 tubes (170g)",
+      "Per Tube",
+      "1 Container (113 g)",
+      "1 container",
+      "1 Container Blueberry Patch",
+      "1 Container Strawberry",
+      "1 Container Strawberry",
+      "1 Container Mixed Berry",
+      "3 tubes (170g)"
     ],
-    "count": 2
+    "count": 13
   },
   {
-    "id": 50,
-    "generic_name": "Ham Roast",
+    "id": 48,
+    "generic_name": "Ham, Cooked",
     "food_category": "nan",
     "nutrients": {
       "Energy": 188.0,
@@ -2544,5 +2490,59 @@
       "4 OZ"
     ],
     "count": 1
+  },
+  {
+    "id": 49,
+    "generic_name": "Yogurt",
+    "food_category": "nan",
+    "nutrients": {
+      "Energy": null,
+      "Carbohydrate": 15.29,
+      "Protein": 3.53,
+      "Total fat": 1.18,
+      "Fiber": 0.0,
+      "Sugars, Total": null,
+      "Sodium": 62.0,
+      "Calcium": 118.0,
+      "Iron": 0.0,
+      "Cholesterol": 6.0,
+      "Fatty acids, total saturated": 0.59,
+      "Vitamin A, RAE": null,
+      "Vitamin C": 0.0,
+      "Vitamin D (D2 + D3)": null,
+      "Vitamin E": null,
+      "Vitamin B-6": null,
+      "Vitamin B-12": null,
+      "Folate, total": null,
+      "Zinc": null,
+      "Magnesium": null,
+      "Potassium": null,
+      "Phosphorus": 88.0
+    },
+    "source_ids": [
+      240,
+      241,
+      242,
+      243
+    ],
+    "source_names": [
+      "YOPLAIT ORIGINAL LF YGRT RNBW SHERBET",
+      "YOPLAIT ORIGINAL LF YGRT TROPICAL",
+      "YOPLAIT ORIGINAL LF YGRT WHITE CHOCLTY MOCHA",
+      "Yoplait Original Yogurt Variety Pack 8 Count"
+    ],
+    "portion_gram_weights": [
+      170.0,
+      170.0,
+      170.0,
+      170.0
+    ],
+    "portion_unit_names": [
+      "1 container",
+      "1 container",
+      "1 container",
+      "1 container (170g)"
+    ],
+    "count": 4
   }
 ]
