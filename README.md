@@ -107,8 +107,8 @@ decisions (e.g. "Tonic Water" ≠ "Lime Juice").
 ```bash
 export OPENROUTER_API_KEY="sk-or-..."
 
-# Quick test — first 1000 items (~20 API calls, ~2 min)
-python scripts/aggregate.py test
+# Quick test — first ~200 items (~2 API calls)
+python scripts/aggregate.py test --batch-size 30
 
 # Full run — all 296k items
 python scripts/aggregate.py full

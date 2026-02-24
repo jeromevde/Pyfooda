@@ -34,7 +34,7 @@ def main():
         help="'test' = first 1000 items, 'full' = everything (default: test)",
     )
     parser.add_argument("--model", default="google/gemini-2.0-flash-lite-001", help="LLM model")
-    parser.add_argument("--batch-size", type=int, default=200, help="foods per LLM call")
+    parser.add_argument("--batch-size", type=int, default=150, help="foods per LLM call")
     parser.add_argument("--search-top-k", type=int, default=5, help="search results shown to LLM")
     parser.add_argument("--prompt", default=None, help="path to custom prompt file")
     repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))

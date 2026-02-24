@@ -29,6 +29,12 @@ Rules:
 2. **ADD <id>** — Use when an existing entry already represents this food.
    The nutrients will be averaged in. Only ADD if the food is genuinely
    the same everyday item AND has similar nutritional content.
+   ⚠️ CRITICAL: <id> MUST be a numeric id from the "Closest existing entries"
+   list shown for THAT specific food. NEVER use a batch item index ([0], [1],
+   [2]...) as an ADD target — those are item labels, not database ids.
+   If no search results are shown ("no existing entries yet"), you MUST use
+   CREATE, not ADD. For foods in the same batch that are the same generic item,
+   use CREATE with the EXACT SAME generic name — the system merges them.
    Compare the nutrient values — items with very different kcal, carb, fat,
    or sugar profiles are NOT the same food even if names are similar.
    ⚠️ NEVER ADD when you see an ENERGY MISMATCH warning. Use CREATE or RENAME.

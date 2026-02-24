@@ -1,6 +1,86 @@
 [
   {
     "id": 1,
+    "generic_name": "Greek Yogurt",
+    "food_category": "Dairy and Egg Products",
+    "nutrients": {
+      "Energy": 61.0,
+      "Carbohydrate": 3.64,
+      "Protein": 10.3,
+      "Total fat": 0.37,
+      "Fiber": null,
+      "Sugars, Total": 3.27,
+      "Sodium": 36.0,
+      "Calcium": 111.0,
+      "Iron": 0.07,
+      "Cholesterol": 5.0,
+      "Fatty acids, total saturated": 0.108,
+      "Vitamin A, RAE": 1.0,
+      "Vitamin C": null,
+      "Vitamin D (D2 + D3)": 0.0,
+      "Vitamin E": 0.01,
+      "Vitamin B-6": 0.064,
+      "Vitamin B-12": 0.7,
+      "Folate, total": null,
+      "Zinc": 0.53,
+      "Magnesium": 10.7,
+      "Potassium": 141.0,
+      "Phosphorus": 136.0
+    },
+    "source_ids": [
+      0
+    ],
+    "source_names": [
+      "Yogurt, Greek, plain, nonfat"
+    ],
+    "portion_gram_weights": [
+      156.0
+    ],
+    "portion_unit_names": [
+      "container"
+    ],
+    "count": 1
+  },
+  {
+    "id": 2,
+    "generic_name": "Yogurt",
+    "food_category": "Dairy and Egg Products",
+    "nutrients": {
+      "Energy": 77.3185458,
+      "Carbohydrate": 5.574928,
+      "Protein": 3.824172,
+      "Total fat": 4.484,
+      "Fiber": null,
+      "Sugars, Total": 4.0936,
+      "Sodium": 41.78,
+      "Calcium": 126.8,
+      "Iron": 0.0,
+      "Cholesterol": 14.17,
+      "Fatty acids, total saturated": 2.316,
+      "Vitamin A, RAE": null,
+      "Vitamin C": null,
+      "Vitamin D (D2 + D3)": 0.778,
+      "Vitamin E": null,
+      "Vitamin B-6": 0.04506,
+      "Vitamin B-12": null,
+      "Folate, total": null,
+      "Zinc": 0.4283,
+      "Magnesium": 11.45,
+      "Potassium": 164.1,
+      "Phosphorus": 101.2
+    },
+    "source_ids": [
+      1
+    ],
+    "source_names": [
+      "Yogurt, plain, whole milk"
+    ],
+    "portion_gram_weights": [],
+    "portion_unit_names": [],
+    "count": 1
+  },
+  {
+    "id": 3,
     "generic_name": "Apple",
     "food_category": "Fruits and Fruit Juices",
     "nutrients": {
@@ -28,11 +108,11 @@
       "Phosphorus": 9.0
     },
     "source_ids": [
-      0,
-      1,
       2,
       3,
-      4
+      4,
+      5,
+      6
     ],
     "source_names": [
       "Apples, fuji, with skin, raw",
@@ -46,23 +126,65 @@
     "count": 5
   },
   {
-    "id": 2,
+    "id": 4,
+    "generic_name": "Cooked Ham",
+    "food_category": "Pork Products",
+    "nutrients": {
+      "Energy": 121.0,
+      "Carbohydrate": 2.36,
+      "Protein": 19.6,
+      "Total fat": 3.68,
+      "Fiber": null,
+      "Sugars, Total": 2.2,
+      "Sodium": 1030.0,
+      "Calcium": 6.0,
+      "Iron": 0.86,
+      "Cholesterol": null,
+      "Fatty acids, total saturated": 1.25,
+      "Vitamin A, RAE": null,
+      "Vitamin C": null,
+      "Vitamin D (D2 + D3)": null,
+      "Vitamin E": null,
+      "Vitamin B-6": null,
+      "Vitamin B-12": null,
+      "Folate, total": null,
+      "Zinc": 1.76,
+      "Magnesium": 20.3,
+      "Potassium": 484.0,
+      "Phosphorus": 246.0
+    },
+    "source_ids": [
+      7
+    ],
+    "source_names": [
+      "Ham, sliced, restaurant"
+    ],
+    "portion_gram_weights": [
+      16.2
+    ],
+    "portion_unit_names": [
+      "slice"
+    ],
+    "count": 1
+  },
+  {
+    "id": 5,
     "generic_name": "Apple Pie",
     "food_category": "Baked Products",
     "nutrients": {
       "Energy": 270.0556505987723,
-      "Carbohydrate": 37.55368421052632,
-      "Protein": 2.2657894736842104,
-      "Total fat": 12.940526315789473,
-      "Fiber": 1.4105263157894739,
+      "Carbohydrate": 39.34619047619048,
+      "Protein": 2.2942857142857145,
+      "Total fat": 13.538095238095236,
+      "Fiber": 1.3571428571428574,
       "Sugars, Total": null,
-      "Sodium": 223.0,
-      "Calcium": 12.947368421052632,
-      "Iron": 0.901578947368421,
-      "Cholesterol": 5.526315789473684,
-      "Fatty acids, total saturated": 5.857210526315789,
+      "Sodium": 220.85714285714286,
+      "Calcium": 12.047619047619047,
+      "Iron": 0.9380952380952381,
+      "Cholesterol": 5.0,
+      "Fatty acids, total saturated": 5.787952380952381,
       "Vitamin A, RAE": 18.666666666666668,
-      "Vitamin C": 0.8994020061728395,
+      "Vitamin C": 0.8185065770135215,
       "Vitamin D (D2 + D3)": 0.06153846153846154,
       "Vitamin E": 1.0066666666666666,
       "Vitamin B-6": 0.04933333333333333,
@@ -70,29 +192,31 @@
       "Folate, total": 24.125,
       "Zinc": 0.21333333333333335,
       "Magnesium": 8.333333333333334,
-      "Potassium": 71.09647194910353,
+      "Potassium": 69.80156985871272,
       "Phosphorus": 35.666666666666664
     },
     "source_ids": [
-      6,
-      7,
-      8,
-      15,
-      16,
-      17,
-      18,
-      20,
-      21,
-      24,
-      27,
+      9,
+      10,
+      11,
+      31,
       32,
       33,
       34,
-      35,
       36,
       37,
-      38,
-      46
+      40,
+      43,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      80,
+      163,
+      164
     ],
     "source_names": [
       "Pie, apple, prepared from recipe",
@@ -113,7 +237,9 @@
       "PIES, APPLE",
       "TABLE TALK PIES, APPLE PIE",
       "TASTYKAKE, GLAZED APPLE PIE",
-      "FRENCH APPLE PIE, FRENCH APPLE"
+      "FRENCH APPLE PIE, FRENCH APPLE",
+      "MARIE CALLENDERS Apple Pie, 42 OZ",
+      "OREO COOKIES APPLE PIE 1X10.7 OZ"
     ],
     "portion_gram_weights": [
       28.35,
@@ -132,7 +258,9 @@
       128.0,
       125.0,
       128.0,
-      74.0
+      74.0,
+      119.0,
+      29.0
     ],
     "portion_unit_names": [
       "undetermined",
@@ -152,12 +280,96 @@
       "4.5 ONZ",
       "0.2 OF PIE",
       "4.5 ONZ",
-      "74 GRM"
+      "74 GRM",
+      "1/10 pie (110g) with sauce (9g)",
+      "2 cookies (29g)"
     ],
-    "count": 19
+    "count": 21
   },
   {
-    "id": 3,
+    "id": 6,
+    "generic_name": "Lemon Juice",
+    "food_category": "Fruits and Fruit Juices",
+    "nutrients": {
+      "Energy": 31.479126832377307,
+      "Carbohydrate": 6.700238095238095,
+      "Protein": 0.22916666666666666,
+      "Total fat": 0.07406250000000002,
+      "Fiber": 0.2805194805194805,
+      "Sugars, Total": null,
+      "Sodium": 9.114583333333334,
+      "Calcium": 3.5416666666666665,
+      "Iron": 0.090625,
+      "Cholesterol": 0.0,
+      "Fatty acids, total saturated": 0.015749999999999997,
+      "Vitamin A, RAE": 0.5,
+      "Vitamin C": 23.5979797979798,
+      "Vitamin D (D2 + D3)": 0.0,
+      "Vitamin E": 0.17,
+      "Vitamin B-6": 0.04375,
+      "Vitamin B-12": 0.0,
+      "Folate, total": 20.227272727272727,
+      "Zinc": 0.085,
+      "Magnesium": 7.318181818181818,
+      "Potassium": 80.95833333333333,
+      "Phosphorus": 8.25
+    },
+    "source_ids": [
+      19,
+      20,
+      21,
+      22,
+      63,
+      64,
+      65,
+      67,
+      68,
+      69,
+      70,
+      71
+    ],
+    "source_names": [
+      "Lemon juice, raw",
+      "Lemon juice, 100%, NS as to form",
+      "Lemon juice, 100%, canned or bottled",
+      "Lemon juice, 100%, freshly squeezed",
+      "100% LEMON JUICE, LEMON",
+      "100% ORGANIC LEMON JUICE",
+      "100% ORGANIC LEMON JUICE, LEMON",
+      "LEMON JUICE, LEMON",
+      "ORGANIC LEMON JUICE, LEMON",
+      "ORIGINAL LEMON JUICE, LEMON",
+      "PURE BEET ORGANIC LEMON JUICE, PURE BEET",
+      "ORIGINAL LEMON JUICE"
+    ],
+    "portion_gram_weights": [
+      244.0,
+      31.0,
+      31.0,
+      31.0,
+      30.0,
+      10.0,
+      5.0,
+      240.0,
+      5.0
+    ],
+    "portion_unit_names": [
+      "undetermined",
+      "undetermined",
+      "undetermined",
+      "undetermined",
+      "1 ONZ",
+      "1 OZA",
+      "1 OZA",
+      "1 OZA",
+      "2 tsp",
+      "1 tsp",
+      "8 OZA"
+    ],
+    "count": 12
+  },
+  {
+    "id": 7,
     "generic_name": "Apple Rings",
     "food_category": "Baking Decorations & Dessert Toppings",
     "nutrients": {
@@ -185,8 +397,8 @@
       "Phosphorus": null
     },
     "source_ids": [
-      10,
-      11
+      26,
+      27
     ],
     "source_names": [
       "APPLE RINGS",
@@ -203,7 +415,49 @@
     "count": 2
   },
   {
-    "id": 4,
+    "id": 8,
+    "generic_name": "Yogurt Dip",
+    "food_category": "Dips & Salsa",
+    "nutrients": {
+      "Energy": 89.0,
+      "Carbohydrate": 7.14,
+      "Protein": 10.71,
+      "Total fat": 3.57,
+      "Fiber": 0.0,
+      "Sugars, Total": null,
+      "Sodium": 393.0,
+      "Calcium": 71.0,
+      "Iron": 0.0,
+      "Cholesterol": 18.0,
+      "Fatty acids, total saturated": 1.79,
+      "Vitamin A, RAE": null,
+      "Vitamin C": 0.0,
+      "Vitamin D (D2 + D3)": null,
+      "Vitamin E": null,
+      "Vitamin B-6": null,
+      "Vitamin B-12": null,
+      "Folate, total": null,
+      "Zinc": null,
+      "Magnesium": null,
+      "Potassium": 143.0,
+      "Phosphorus": null
+    },
+    "source_ids": [
+      60
+    ],
+    "source_names": [
+      "YOGURT DIP"
+    ],
+    "portion_gram_weights": [
+      28.0
+    ],
+    "portion_unit_names": [
+      "2 Tbsp"
+    ],
+    "count": 1
+  },
+  {
+    "id": 9,
     "generic_name": "Apple Juice",
     "food_category": "Fruit & Vegetable Juice, Nectars & Fruit Drinks",
     "nutrients": {
@@ -231,7 +485,7 @@
       "Phosphorus": null
     },
     "source_ids": [
-      43
+      62
     ],
     "source_names": [
       "APPLE BEVERAGE"
@@ -241,6 +495,406 @@
     ],
     "portion_unit_names": [
       "8 OZA"
+    ],
+    "count": 1
+  },
+  {
+    "id": 10,
+    "generic_name": "Celery Juice",
+    "food_category": "Fruit & Vegetable Juice, Nectars & Fruit Drinks",
+    "nutrients": {
+      "Energy": 6.0,
+      "Carbohydrate": 1.27,
+      "Protein": 0.21,
+      "Total fat": 0.0,
+      "Fiber": 0.0,
+      "Sugars, Total": null,
+      "Sodium": 72.0,
+      "Calcium": 13.0,
+      "Iron": 0.08,
+      "Cholesterol": 0.0,
+      "Fatty acids, total saturated": 0.0,
+      "Vitamin A, RAE": null,
+      "Vitamin C": 2.5,
+      "Vitamin D (D2 + D3)": null,
+      "Vitamin E": null,
+      "Vitamin B-6": null,
+      "Vitamin B-12": null,
+      "Folate, total": null,
+      "Zinc": null,
+      "Magnesium": null,
+      "Potassium": 74.0,
+      "Phosphorus": null
+    },
+    "source_ids": [
+      66
+    ],
+    "source_names": [
+      "CELERY LEMON COLD-PRESSED JUICE"
+    ],
+    "portion_gram_weights": [
+      473.0
+    ],
+    "portion_unit_names": [
+      "16 ONZ"
+    ],
+    "count": 1
+  },
+  {
+    "id": 11,
+    "generic_name": "Juice",
+    "food_category": "Other Drinks",
+    "nutrients": {
+      "Energy": 19.0,
+      "Carbohydrate": 4.38,
+      "Protein": 0.0,
+      "Total fat": 0.0,
+      "Fiber": null,
+      "Sugars, Total": null,
+      "Sodium": 0.0,
+      "Calcium": null,
+      "Iron": null,
+      "Cholesterol": null,
+      "Fatty acids, total saturated": null,
+      "Vitamin A, RAE": null,
+      "Vitamin C": null,
+      "Vitamin D (D2 + D3)": null,
+      "Vitamin E": null,
+      "Vitamin B-6": null,
+      "Vitamin B-12": null,
+      "Folate, total": null,
+      "Zinc": null,
+      "Magnesium": null,
+      "Potassium": null,
+      "Phosphorus": null
+    },
+    "source_ids": [
+      77
+    ],
+    "source_names": [
+      "BLOOD ORANGE LEMON JUICE"
+    ],
+    "portion_gram_weights": [
+      480.0
+    ],
+    "portion_unit_names": [],
+    "count": 1
+  },
+  {
+    "id": 12,
+    "generic_name": "Ham Sub",
+    "food_category": "Prepared Subs & Sandwiches",
+    "nutrients": {
+      "Energy": 167.33333333333334,
+      "Carbohydrate": 20.060000000000002,
+      "Protein": 13.516666666666666,
+      "Total fat": 4.623333333333334,
+      "Fiber": 1.1333333333333335,
+      "Sugars, Total": null,
+      "Sodium": 806.3333333333334,
+      "Calcium": 78.33333333333333,
+      "Iron": 1.5033333333333332,
+      "Cholesterol": 31.666666666666668,
+      "Fatty acids, total saturated": 2.2433333333333336,
+      "Vitamin A, RAE": null,
+      "Vitamin C": 0.2333333333333333,
+      "Vitamin D (D2 + D3)": null,
+      "Vitamin E": null,
+      "Vitamin B-6": null,
+      "Vitamin B-12": null,
+      "Folate, total": null,
+      "Zinc": null,
+      "Magnesium": null,
+      "Potassium": null,
+      "Phosphorus": null
+    },
+    "source_ids": [
+      92,
+      93,
+      94
+    ],
+    "source_names": [
+      "HAM SUB",
+      "HAM SUB WHOLE",
+      "HAM SUB WHOLE, HAM"
+    ],
+    "portion_gram_weights": [
+      255.0,
+      453.0,
+      453.0
+    ],
+    "portion_unit_names": [
+      "1 SANDWICH",
+      "453 GRM",
+      "453 GRM"
+    ],
+    "count": 3
+  },
+  {
+    "id": 13,
+    "generic_name": "Soda",
+    "food_category": "Soda",
+    "nutrients": {
+      "Energy": 47.25,
+      "Carbohydrate": 12.192499999999999,
+      "Protein": 0.0,
+      "Total fat": 0.0,
+      "Fiber": 0.0,
+      "Sugars, Total": null,
+      "Sodium": 8.0,
+      "Calcium": 0.0,
+      "Iron": 0.0,
+      "Cholesterol": 0.0,
+      "Fatty acids, total saturated": 0.0,
+      "Vitamin A, RAE": null,
+      "Vitamin C": 25.0,
+      "Vitamin D (D2 + D3)": null,
+      "Vitamin E": null,
+      "Vitamin B-6": null,
+      "Vitamin B-12": null,
+      "Folate, total": null,
+      "Zinc": null,
+      "Magnesium": null,
+      "Potassium": null,
+      "Phosphorus": null
+    },
+    "source_ids": [
+      95,
+      96,
+      97,
+      98
+    ],
+    "source_names": [
+      "LEMONADE LEMON JUICE, LEMONADE",
+      "LIME CAFFEINE FREE SODA, LIME",
+      "ORGANIC LEMON JUICE CONCENTRATE",
+      "SIMPLY LEMONADE, LEMON JUICE"
+    ],
+    "portion_gram_weights": [
+      240.0,
+      370.0,
+      240.0,
+      340.0
+    ],
+    "portion_unit_names": [
+      "8 OZA",
+      "1 BOTTLE",
+      "8 OZA",
+      "11.5 OZA"
+    ],
+    "count": 4
+  },
+  {
+    "id": 14,
+    "generic_name": "Ham",
+    "food_category": "nan",
+    "nutrients": {
+      "Energy": 107.0,
+      "Carbohydrate": 4.0,
+      "Protein": 12.5,
+      "Total fat": 4.0,
+      "Fiber": 0.0,
+      "Sugars, Total": null,
+      "Sodium": 1321.0,
+      "Calcium": 0.0,
+      "Iron": null,
+      "Cholesterol": 45.0,
+      "Fatty acids, total saturated": 2.0,
+      "Vitamin A, RAE": null,
+      "Vitamin C": 0.0,
+      "Vitamin D (D2 + D3)": null,
+      "Vitamin E": null,
+      "Vitamin B-6": null,
+      "Vitamin B-12": null,
+      "Folate, total": null,
+      "Zinc": null,
+      "Magnesium": null,
+      "Potassium": null,
+      "Phosphorus": null
+    },
+    "source_ids": [
+      167
+    ],
+    "source_names": [
+      "HAM,H&W,CKD,FL,4X6,4/13#"
+    ],
+    "portion_gram_weights": [
+      100.0
+    ],
+    "portion_unit_names": [
+      "56 GR"
+    ],
+    "count": 1
+  },
+  {
+    "id": 15,
+    "generic_name": "Ham",
+    "food_category": "nan",
+    "nutrients": {
+      "Energy": 125.0,
+      "Carbohydrate": 5.95,
+      "Protein": 12.2,
+      "Total fat": 31.545,
+      "Fiber": 4.15,
+      "Sugars, Total": null,
+      "Sodium": 1161.0,
+      "Calcium": 0.0,
+      "Iron": 0.0,
+      "Cholesterol": 43.5,
+      "Fatty acids, total saturated": 3.87,
+      "Vitamin A, RAE": null,
+      "Vitamin C": 0.0,
+      "Vitamin D (D2 + D3)": null,
+      "Vitamin E": null,
+      "Vitamin B-6": null,
+      "Vitamin B-12": null,
+      "Folate, total": null,
+      "Zinc": null,
+      "Magnesium": null,
+      "Potassium": null,
+      "Phosphorus": null
+    },
+    "source_ids": [
+      168,
+      169
+    ],
+    "source_names": [
+      "HAM,H&W30,SMKD,96FF,GM,10/12#,2PC",
+      "HAM,HAM&WATER,SMOKED,XL,FARMLAND,6/5#EXACT"
+    ],
+    "portion_gram_weights": [
+      56.0,
+      84.0
+    ],
+    "portion_unit_names": [
+      "2 OZ",
+      "3 Ounces"
+    ],
+    "count": 2
+  },
+  {
+    "id": 16,
+    "generic_name": "Ham",
+    "food_category": "nan",
+    "nutrients": {
+      "Energy": 107.0,
+      "Carbohydrate": 3.57,
+      "Protein": 16.07,
+      "Total fat": 3.57,
+      "Fiber": 0.0,
+      "Sugars, Total": null,
+      "Sodium": 1232.0,
+      "Calcium": 0.0,
+      "Iron": 0.64,
+      "Cholesterol": 45.0,
+      "Fatty acids, total saturated": 0.89,
+      "Vitamin A, RAE": null,
+      "Vitamin C": 0.0,
+      "Vitamin D (D2 + D3)": null,
+      "Vitamin E": null,
+      "Vitamin B-6": null,
+      "Vitamin B-12": null,
+      "Folate, total": null,
+      "Zinc": null,
+      "Magnesium": null,
+      "Potassium": null,
+      "Phosphorus": null
+    },
+    "source_ids": [
+      172
+    ],
+    "source_names": [
+      "HAM,SMKD,BNLS,WA,DNR,SM,10/15#,2PC"
+    ],
+    "portion_gram_weights": [
+      56.0
+    ],
+    "portion_unit_names": [
+      "2 OUNCES"
+    ],
+    "count": 1
+  },
+  {
+    "id": 17,
+    "generic_name": "Ham",
+    "food_category": "nan",
+    "nutrients": {
+      "Energy": 107.0,
+      "Carbohydrate": 5.36,
+      "Protein": 16.07,
+      "Total fat": 2.68,
+      "Fiber": 0.0,
+      "Sugars, Total": null,
+      "Sodium": 1143.0,
+      "Calcium": 0.0,
+      "Iron": 0.0,
+      "Cholesterol": 54.0,
+      "Fatty acids, total saturated": 0.0,
+      "Vitamin A, RAE": null,
+      "Vitamin C": 0.0,
+      "Vitamin D (D2 + D3)": null,
+      "Vitamin E": null,
+      "Vitamin B-6": null,
+      "Vitamin B-12": null,
+      "Folate, total": null,
+      "Zinc": null,
+      "Magnesium": null,
+      "Potassium": null,
+      "Phosphorus": null
+    },
+    "source_ids": [
+      180
+    ],
+    "source_names": [
+      "HAM,WA,HNY/BRWN SGR,PD,9/11,2PC"
+    ],
+    "portion_gram_weights": [
+      56.0
+    ],
+    "portion_unit_names": [
+      "2 OZ"
+    ],
+    "count": 1
+  },
+  {
+    "id": 18,
+    "generic_name": "Ham",
+    "food_category": "nan",
+    "nutrients": {
+      "Energy": 188.0,
+      "Carbohydrate": 0.0,
+      "Protein": 18.75,
+      "Total fat": 11.61,
+      "Fiber": 0.0,
+      "Sugars, Total": null,
+      "Sodium": 54.0,
+      "Calcium": 0.0,
+      "Iron": 0.0,
+      "Cholesterol": 67.0,
+      "Fatty acids, total saturated": 4.02,
+      "Vitamin A, RAE": null,
+      "Vitamin C": 0.0,
+      "Vitamin D (D2 + D3)": null,
+      "Vitamin E": null,
+      "Vitamin B-6": null,
+      "Vitamin B-12": null,
+      "Folate, total": null,
+      "Zinc": null,
+      "Magnesium": null,
+      "Potassium": null,
+      "Phosphorus": null
+    },
+    "source_ids": [
+      181
+    ],
+    "source_names": [
+      "RST,HAM,BNLS,NTD,SM,3PC,Z"
+    ],
+    "portion_gram_weights": [
+      112.0
+    ],
+    "portion_unit_names": [
+      "4 OZ"
     ],
     "count": 1
   }
