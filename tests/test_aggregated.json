@@ -127,7 +127,7 @@
   },
   {
     "id": 4,
-    "generic_name": "Cooked Ham",
+    "generic_name": "Ham",
     "food_category": "Pork Products",
     "nutrients": {
       "Energy": 121.0,
@@ -288,30 +288,76 @@
   },
   {
     "id": 6,
-    "generic_name": "Lemon Juice",
+    "generic_name": "Fruit Yogurt",
+    "food_category": "Dairy and Egg Products",
+    "nutrients": {
+      "Energy": 98.59369024856596,
+      "Carbohydrate": 18.655,
+      "Protein": 3.545,
+      "Total fat": 1.02,
+      "Fiber": 0.0,
+      "Sugars, Total": null,
+      "Sodium": 51.0,
+      "Calcium": 124.5,
+      "Iron": 0.03,
+      "Cholesterol": 4.5,
+      "Fatty acids, total saturated": 0.706,
+      "Vitamin A, RAE": 11.0,
+      "Vitamin C": 1.1,
+      "Vitamin D (D2 + D3)": 0.0,
+      "Vitamin E": 0.02,
+      "Vitamin B-6": 0.037,
+      "Vitamin B-12": 0.43,
+      "Folate, total": 9.0,
+      "Zinc": 0.67,
+      "Magnesium": 13.0,
+      "Potassium": 162.0,
+      "Phosphorus": 109.0
+    },
+    "source_ids": [
+      16,
+      76
+    ],
+    "source_names": [
+      "Yogurt, fruit, low fat,9 g protein/8 oz",
+      "LOWFAT YOGURT, STRAWBERRY, ORIGINAL"
+    ],
+    "portion_gram_weights": [
+      170.0,
+      225.0
+    ],
+    "portion_unit_names": [
+      "undetermined",
+      "1 cup"
+    ],
+    "count": 2
+  },
+  {
+    "id": 7,
+    "generic_name": "Lemon Juice Concentrate",
     "food_category": "Fruits and Fruit Juices",
     "nutrients": {
-      "Energy": 31.479126832377307,
-      "Carbohydrate": 6.700238095238095,
-      "Protein": 0.22916666666666666,
-      "Total fat": 0.07406250000000002,
-      "Fiber": 0.2805194805194805,
+      "Energy": 30.613592908047973,
+      "Carbohydrate": 6.806727272727273,
+      "Protein": 0.25,
+      "Total fat": 0.07181818181818182,
+      "Fiber": 0.34545454545454546,
       "Sugars, Total": null,
-      "Sodium": 9.114583333333334,
-      "Calcium": 3.5416666666666665,
-      "Iron": 0.090625,
+      "Sodium": 10.727272727272727,
+      "Calcium": 3.939393939393939,
+      "Iron": 0.10606060606060606,
       "Cholesterol": 0.0,
-      "Fatty acids, total saturated": 0.015749999999999997,
+      "Fatty acids, total saturated": 0.01781818181818182,
       "Vitamin A, RAE": 0.5,
-      "Vitamin C": 23.5979797979798,
+      "Vitamin C": 26.60833333333333,
       "Vitamin D (D2 + D3)": 0.0,
       "Vitamin E": 0.17,
       "Vitamin B-6": 0.04375,
       "Vitamin B-12": 0.0,
-      "Folate, total": 20.227272727272727,
+      "Folate, total": 21.34375,
       "Zinc": 0.085,
-      "Magnesium": 7.318181818181818,
-      "Potassium": 80.95833333333333,
+      "Magnesium": 7.71875,
+      "Potassium": 103.14814814814814,
       "Phosphorus": 8.25
     },
     "source_ids": [
@@ -320,13 +366,12 @@
       21,
       22,
       63,
-      64,
-      65,
       67,
-      68,
       69,
       70,
-      71
+      71,
+      77,
+      97
     ],
     "source_names": [
       "Lemon juice, raw",
@@ -334,24 +379,22 @@
       "Lemon juice, 100%, canned or bottled",
       "Lemon juice, 100%, freshly squeezed",
       "100% LEMON JUICE, LEMON",
-      "100% ORGANIC LEMON JUICE",
-      "100% ORGANIC LEMON JUICE, LEMON",
       "LEMON JUICE, LEMON",
-      "ORGANIC LEMON JUICE, LEMON",
       "ORIGINAL LEMON JUICE, LEMON",
       "PURE BEET ORGANIC LEMON JUICE, PURE BEET",
-      "ORIGINAL LEMON JUICE"
+      "ORIGINAL LEMON JUICE",
+      "BLOOD ORANGE LEMON JUICE",
+      "ORGANIC LEMON JUICE CONCENTRATE"
     ],
     "portion_gram_weights": [
       244.0,
       31.0,
-      31.0,
-      31.0,
       30.0,
-      10.0,
       5.0,
       240.0,
-      5.0
+      5.0,
+      480.0,
+      240.0
     ],
     "portion_unit_names": [
       "undetermined",
@@ -360,17 +403,15 @@
       "undetermined",
       "1 ONZ",
       "1 OZA",
-      "1 OZA",
-      "1 OZA",
-      "2 tsp",
       "1 tsp",
+      "8 OZA",
       "8 OZA"
     ],
-    "count": 12
+    "count": 11
   },
   {
-    "id": 7,
-    "generic_name": "Apple Rings",
+    "id": 8,
+    "generic_name": "Dried Apple",
     "food_category": "Baking Decorations & Dessert Toppings",
     "nutrients": {
       "Energy": 117.0,
@@ -415,7 +456,7 @@
     "count": 2
   },
   {
-    "id": 8,
+    "id": 9,
     "generic_name": "Yogurt Dip",
     "food_category": "Dips & Salsa",
     "nutrients": {
@@ -457,8 +498,50 @@
     "count": 1
   },
   {
-    "id": 9,
-    "generic_name": "Apple Juice",
+    "id": 10,
+    "generic_name": "Apple Waffle",
+    "food_category": "Frozen Pancakes, Waffles, French Toast & Crepes",
+    "nutrients": {
+      "Energy": 338.0,
+      "Carbohydrate": 50.77,
+      "Protein": 6.15,
+      "Total fat": 12.31,
+      "Fiber": 1.5,
+      "Sugars, Total": null,
+      "Sodium": 446.0,
+      "Calcium": 31.0,
+      "Iron": 2.22,
+      "Cholesterol": 31.0,
+      "Fatty acids, total saturated": 3.08,
+      "Vitamin A, RAE": null,
+      "Vitamin C": 0.0,
+      "Vitamin D (D2 + D3)": null,
+      "Vitamin E": null,
+      "Vitamin B-6": null,
+      "Vitamin B-12": null,
+      "Folate, total": null,
+      "Zinc": null,
+      "Magnesium": null,
+      "Potassium": 77.0,
+      "Phosphorus": null
+    },
+    "source_ids": [
+      61
+    ],
+    "source_names": [
+      "APPLE PIE BELGIAN WAFFLES"
+    ],
+    "portion_gram_weights": [
+      65.0
+    ],
+    "portion_unit_names": [
+      "1 WAFFLE"
+    ],
+    "count": 1
+  },
+  {
+    "id": 11,
+    "generic_name": "Apple Beverage",
     "food_category": "Fruit & Vegetable Juice, Nectars & Fruit Drinks",
     "nutrients": {
       "Energy": 25.0,
@@ -499,8 +582,58 @@
     "count": 1
   },
   {
-    "id": 10,
-    "generic_name": "Celery Juice",
+    "id": 12,
+    "generic_name": "Organic Lemon Juice",
+    "food_category": "Fruit & Vegetable Juice, Nectars & Fruit Drinks",
+    "nutrients": {
+      "Energy": 38.0,
+      "Carbohydrate": 7.633333333333333,
+      "Protein": 0.0,
+      "Total fat": 0.0,
+      "Fiber": 0.0,
+      "Sugars, Total": null,
+      "Sodium": 0.0,
+      "Calcium": 0.0,
+      "Iron": 0.0,
+      "Cholesterol": 0.0,
+      "Fatty acids, total saturated": 0.0,
+      "Vitamin A, RAE": null,
+      "Vitamin C": 17.0,
+      "Vitamin D (D2 + D3)": null,
+      "Vitamin E": null,
+      "Vitamin B-6": null,
+      "Vitamin B-12": null,
+      "Folate, total": null,
+      "Zinc": null,
+      "Magnesium": null,
+      "Potassium": 0.0,
+      "Phosphorus": null
+    },
+    "source_ids": [
+      64,
+      65,
+      68
+    ],
+    "source_names": [
+      "100% ORGANIC LEMON JUICE",
+      "100% ORGANIC LEMON JUICE, LEMON",
+      "ORGANIC LEMON JUICE, LEMON"
+    ],
+    "portion_gram_weights": [
+      31.0,
+      31.0,
+      10.0
+    ],
+    "portion_unit_names": [
+      "1 OZA",
+      "1 OZA",
+      "2 tsp"
+    ],
+    "count": 3
+  },
+  {
+    "id": 13,
+    "generic_name": "Celery Lemon Juice",
     "food_category": "Fruit & Vegetable Juice, Nectars & Fruit Drinks",
     "nutrients": {
       "Energy": 6.0,
@@ -541,23 +674,23 @@
     "count": 1
   },
   {
-    "id": 11,
-    "generic_name": "Juice",
-    "food_category": "Other Drinks",
+    "id": 14,
+    "generic_name": "Country Ham",
+    "food_category": "Pepperoni, Salami & Cold Cuts",
     "nutrients": {
-      "Energy": 19.0,
-      "Carbohydrate": 4.38,
-      "Protein": 0.0,
-      "Total fat": 0.0,
-      "Fiber": null,
+      "Energy": 174.5,
+      "Carbohydrate": 1.34,
+      "Protein": 23.66,
+      "Total fat": 8.485,
+      "Fiber": 0.0,
       "Sugars, Total": null,
-      "Sodium": 0.0,
-      "Calcium": null,
-      "Iron": null,
-      "Cholesterol": null,
-      "Fatty acids, total saturated": null,
+      "Sodium": 2076.0,
+      "Calcium": 35.5,
+      "Iron": 1.125,
+      "Cholesterol": 98.0,
+      "Fatty acids, total saturated": 2.68,
       "Vitamin A, RAE": null,
-      "Vitamin C": null,
+      "Vitamin C": 0.0,
       "Vitamin D (D2 + D3)": null,
       "Vitamin E": null,
       "Vitamin B-6": null,
@@ -569,19 +702,25 @@
       "Phosphorus": null
     },
     "source_ids": [
-      77
+      81,
+      82
     ],
     "source_names": [
-      "BLOOD ORANGE LEMON JUICE"
+      "COUNTRY HAM",
+      "OLD STYLE COUNTRY HAM, OLD STYLE"
     ],
     "portion_gram_weights": [
-      480.0
+      56.0,
+      112.0
     ],
-    "portion_unit_names": [],
-    "count": 1
+    "portion_unit_names": [
+      "2 ONZ",
+      "4 oz."
+    ],
+    "count": 2
   },
   {
-    "id": 12,
+    "id": 15,
     "generic_name": "Ham Sub",
     "food_category": "Prepared Subs & Sandwiches",
     "nutrients": {
@@ -631,21 +770,21 @@
     "count": 3
   },
   {
-    "id": 13,
-    "generic_name": "Soda",
+    "id": 16,
+    "generic_name": "Lemonade",
     "food_category": "Soda",
     "nutrients": {
-      "Energy": 47.25,
-      "Carbohydrate": 12.192499999999999,
+      "Energy": 48.5,
+      "Carbohydrate": 12.99,
       "Protein": 0.0,
       "Total fat": 0.0,
-      "Fiber": 0.0,
+      "Fiber": null,
       "Sugars, Total": null,
-      "Sodium": 8.0,
-      "Calcium": 0.0,
-      "Iron": 0.0,
-      "Cholesterol": 0.0,
-      "Fatty acids, total saturated": 0.0,
+      "Sodium": 6.0,
+      "Calcium": null,
+      "Iron": null,
+      "Cholesterol": null,
+      "Fatty acids, total saturated": null,
       "Vitamin A, RAE": null,
       "Vitamin C": 25.0,
       "Vitamin D (D2 + D3)": null,
@@ -660,178 +799,40 @@
     },
     "source_ids": [
       95,
-      96,
-      97,
       98
     ],
     "source_names": [
       "LEMONADE LEMON JUICE, LEMONADE",
-      "LIME CAFFEINE FREE SODA, LIME",
-      "ORGANIC LEMON JUICE CONCENTRATE",
       "SIMPLY LEMONADE, LEMON JUICE"
     ],
     "portion_gram_weights": [
-      240.0,
-      370.0,
       240.0,
       340.0
     ],
     "portion_unit_names": [
       "8 OZA",
-      "1 BOTTLE",
-      "8 OZA",
       "11.5 OZA"
-    ],
-    "count": 4
-  },
-  {
-    "id": 14,
-    "generic_name": "Ham",
-    "food_category": "nan",
-    "nutrients": {
-      "Energy": 107.0,
-      "Carbohydrate": 4.0,
-      "Protein": 12.5,
-      "Total fat": 4.0,
-      "Fiber": 0.0,
-      "Sugars, Total": null,
-      "Sodium": 1321.0,
-      "Calcium": 0.0,
-      "Iron": null,
-      "Cholesterol": 45.0,
-      "Fatty acids, total saturated": 2.0,
-      "Vitamin A, RAE": null,
-      "Vitamin C": 0.0,
-      "Vitamin D (D2 + D3)": null,
-      "Vitamin E": null,
-      "Vitamin B-6": null,
-      "Vitamin B-12": null,
-      "Folate, total": null,
-      "Zinc": null,
-      "Magnesium": null,
-      "Potassium": null,
-      "Phosphorus": null
-    },
-    "source_ids": [
-      167
-    ],
-    "source_names": [
-      "HAM,H&W,CKD,FL,4X6,4/13#"
-    ],
-    "portion_gram_weights": [
-      100.0
-    ],
-    "portion_unit_names": [
-      "56 GR"
-    ],
-    "count": 1
-  },
-  {
-    "id": 15,
-    "generic_name": "Ham",
-    "food_category": "nan",
-    "nutrients": {
-      "Energy": 125.0,
-      "Carbohydrate": 5.95,
-      "Protein": 12.2,
-      "Total fat": 31.545,
-      "Fiber": 4.15,
-      "Sugars, Total": null,
-      "Sodium": 1161.0,
-      "Calcium": 0.0,
-      "Iron": 0.0,
-      "Cholesterol": 43.5,
-      "Fatty acids, total saturated": 3.87,
-      "Vitamin A, RAE": null,
-      "Vitamin C": 0.0,
-      "Vitamin D (D2 + D3)": null,
-      "Vitamin E": null,
-      "Vitamin B-6": null,
-      "Vitamin B-12": null,
-      "Folate, total": null,
-      "Zinc": null,
-      "Magnesium": null,
-      "Potassium": null,
-      "Phosphorus": null
-    },
-    "source_ids": [
-      168,
-      169
-    ],
-    "source_names": [
-      "HAM,H&W30,SMKD,96FF,GM,10/12#,2PC",
-      "HAM,HAM&WATER,SMOKED,XL,FARMLAND,6/5#EXACT"
-    ],
-    "portion_gram_weights": [
-      56.0,
-      84.0
-    ],
-    "portion_unit_names": [
-      "2 OZ",
-      "3 Ounces"
     ],
     "count": 2
   },
   {
-    "id": 16,
-    "generic_name": "Ham",
-    "food_category": "nan",
-    "nutrients": {
-      "Energy": 107.0,
-      "Carbohydrate": 3.57,
-      "Protein": 16.07,
-      "Total fat": 3.57,
-      "Fiber": 0.0,
-      "Sugars, Total": null,
-      "Sodium": 1232.0,
-      "Calcium": 0.0,
-      "Iron": 0.64,
-      "Cholesterol": 45.0,
-      "Fatty acids, total saturated": 0.89,
-      "Vitamin A, RAE": null,
-      "Vitamin C": 0.0,
-      "Vitamin D (D2 + D3)": null,
-      "Vitamin E": null,
-      "Vitamin B-6": null,
-      "Vitamin B-12": null,
-      "Folate, total": null,
-      "Zinc": null,
-      "Magnesium": null,
-      "Potassium": null,
-      "Phosphorus": null
-    },
-    "source_ids": [
-      172
-    ],
-    "source_names": [
-      "HAM,SMKD,BNLS,WA,DNR,SM,10/15#,2PC"
-    ],
-    "portion_gram_weights": [
-      56.0
-    ],
-    "portion_unit_names": [
-      "2 OUNCES"
-    ],
-    "count": 1
-  },
-  {
     "id": 17,
-    "generic_name": "Ham",
-    "food_category": "nan",
+    "generic_name": "Lime Soda",
+    "food_category": "Soda",
     "nutrients": {
-      "Energy": 107.0,
-      "Carbohydrate": 5.36,
-      "Protein": 16.07,
-      "Total fat": 2.68,
-      "Fiber": 0.0,
+      "Energy": 38.0,
+      "Carbohydrate": 9.46,
+      "Protein": 0.0,
+      "Total fat": 0.0,
+      "Fiber": null,
       "Sugars, Total": null,
-      "Sodium": 1143.0,
-      "Calcium": 0.0,
-      "Iron": 0.0,
-      "Cholesterol": 54.0,
-      "Fatty acids, total saturated": 0.0,
+      "Sodium": 8.0,
+      "Calcium": null,
+      "Iron": null,
+      "Cholesterol": null,
+      "Fatty acids, total saturated": null,
       "Vitamin A, RAE": null,
-      "Vitamin C": 0.0,
+      "Vitamin C": null,
       "Vitamin D (D2 + D3)": null,
       "Vitamin E": null,
       "Vitamin B-6": null,
@@ -843,37 +844,37 @@
       "Phosphorus": null
     },
     "source_ids": [
-      180
+      96
     ],
     "source_names": [
-      "HAM,WA,HNY/BRWN SGR,PD,9/11,2PC"
+      "LIME CAFFEINE FREE SODA, LIME"
     ],
     "portion_gram_weights": [
-      56.0
+      370.0
     ],
     "portion_unit_names": [
-      "2 OZ"
+      "1 BOTTLE"
     ],
     "count": 1
   },
   {
     "id": 18,
-    "generic_name": "Ham",
-    "food_category": "nan",
+    "generic_name": "Nonfat Yogurt",
+    "food_category": "Yogurt",
     "nutrients": {
-      "Energy": 188.0,
-      "Carbohydrate": 0.0,
-      "Protein": 18.75,
-      "Total fat": 11.61,
-      "Fiber": 0.0,
+      "Energy": 68.8,
+      "Carbohydrate": 9.184000000000001,
+      "Protein": 8.001999999999999,
+      "Total fat": 0.0,
+      "Fiber": 1.46,
       "Sugars, Total": null,
-      "Sodium": 54.0,
-      "Calcium": 0.0,
+      "Sodium": 58.8,
+      "Calcium": 120.6,
       "Iron": 0.0,
-      "Cholesterol": 67.0,
-      "Fatty acids, total saturated": 4.02,
+      "Cholesterol": 2.6,
+      "Fatty acids, total saturated": 0.0,
       "Vitamin A, RAE": null,
-      "Vitamin C": 0.0,
+      "Vitamin C": 0.42000000000000004,
       "Vitamin D (D2 + D3)": null,
       "Vitamin E": null,
       "Vitamin B-6": null,
@@ -881,21 +882,37 @@
       "Folate, total": null,
       "Zinc": null,
       "Magnesium": null,
-      "Potassium": null,
+      "Potassium": 158.6,
       "Phosphorus": null
     },
     "source_ids": [
-      181
+      132,
+      134,
+      136,
+      138,
+      147
     ],
     "source_names": [
-      "RST,HAM,BNLS,NTD,SM,3PC,Z"
+      "NON-FAT YOGURT",
+      "ORIGINAL NONFAT YOGURT",
+      "PLAIN ORGANIC NONFAT YOGURT",
+      "PROBIOTIC NONFAT YOGURT",
+      "TRIPLE ZERO NONFAT YOGURT"
     ],
     "portion_gram_weights": [
-      112.0
+      150.0,
+      225.0,
+      170.0,
+      227.0,
+      150.0
     ],
     "portion_unit_names": [
-      "4 OZ"
+      "1 CONTAINER",
+      "1 cup",
+      "3/4 cup",
+      "1 cup",
+      "1 CONTAINER"
     ],
-    "count": 1
+    "count": 5
   }
 ]

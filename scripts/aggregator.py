@@ -429,6 +429,8 @@ class FoodAggregator:
         self.db: dict[int, dict] = {}
         self._next_id = 1
         self.index = FoodSearchIndex()
+        # Exact name → id lookup (lowercase) for duplicate-name dedup
+        self._name_to_id: dict[str, int] = {}
 
         # Stats
         self.stats = {'created': 0, 'added': 0, 'ignored': 0, 'errors': 0, 'api_calls': 0,
@@ -518,26 +520,39 @@ class FoodAggregator:
                 elif decision['action'] == 'CREATE':
                     name = decision.get('name', f['name'])
                     name_key = name.strip().lower()
-                    # Check if same generic name was already created in this batch
+                    # 1. Intra-batch dedup: same generic name already created this batch
                     if name_key in batch_created:
                         result = self._do_add(batch_created[name_key], row)
                         if result == 'ok':
                             self.stats['added'] += 1
                         else:
                             self.stats['ignored'] += 1
-                    else:
-                        # Also check if search index has a very close match
-                        existing = self.index.search(name, top_k=1)
-                        if existing and existing[0]['score'] > 0.85:
-                            result = self._do_add(existing[0]['id'], row)
-                            if result == 'ok':
-                                self.stats['added'] += 1
-                            else:
-                                self.stats['ignored'] += 1
+                    # 2. BM25 near-exact match in the full DB
+                    elif (existing := self.index.search(name, top_k=1)) and existing[0]['score'] > 0.85:
+                        result = self._do_add(existing[0]['id'], row)
+                        if result == 'ok':
+                            self.stats['added'] += 1
                         else:
+                            self.stats['ignored'] += 1
+                    # 3. Exact name already exists in DB (BM25 missed it) — merge
+                    #    unless that group is foundation-locked, in which case create
+                    #    a separate non-foundation group with the same generic name.
+                    elif name_key in self._name_to_id:
+                        existing_id = self._name_to_id[name_key]
+                        result = self._do_add(existing_id, row)
+                        if result == 'ok':
+                            self.stats['added'] += 1
+                            self.stats.setdefault('name_dedup_merged', 0)
+                            self.stats['name_dedup_merged'] += 1
+                        else:
+                            # Foundation-locked or energy mismatch — create new group
                             self._do_create(name, row)
                             batch_created[name_key] = self._next_id - 1
                             self.stats['created'] += 1
+                    else:
+                        self._do_create(name, row)
+                        batch_created[name_key] = self._next_id - 1
+                        self.stats['created'] += 1
                 elif decision['action'] == 'ADD':
                     target = decision.get('target_id')
                     target_name = decision.get('target_name')
@@ -629,15 +644,45 @@ class FoodAggregator:
                     new_name_incoming = decision.get('new_name_incoming')
                     if target_id and target_id in self.db and new_name_existing:
                         # Rename the existing group
+                        old_name_key = self.db[target_id]['generic_name'].strip().lower()
+                        self._name_to_id.pop(old_name_key, None)
                         self.db[target_id]['generic_name'] = new_name_existing
+                        self._name_to_id[new_name_existing.strip().lower()] = target_id
                         self.index.rename(target_id, new_name_existing)
                         self.stats.setdefault('renamed', 0)
                         self.stats['renamed'] += 1
-                        # Create a new group for the incoming food
+                        # Create or merge a group for the incoming food,
+                        # applying the same name-dedup logic as the CREATE path.
                         create_name = new_name_incoming or f['name']
-                        self._do_create(create_name, row)
-                        batch_created[create_name.strip().lower()] = self._next_id - 1
-                        self.stats['created'] += 1
+                        create_name_key = create_name.strip().lower()
+                        if create_name_key in batch_created:
+                            result = self._do_add(batch_created[create_name_key], row)
+                            if result == 'ok':
+                                self.stats['added'] += 1
+                            else:
+                                self.stats['ignored'] += 1
+                        elif (existing := self.index.search(create_name, top_k=1)) and existing[0]['score'] > 0.85:
+                            result = self._do_add(existing[0]['id'], row)
+                            if result == 'ok':
+                                self.stats['added'] += 1
+                            else:
+                                self.stats['ignored'] += 1
+                        elif create_name_key in self._name_to_id:
+                            existing_id = self._name_to_id[create_name_key]
+                            result = self._do_add(existing_id, row)
+                            if result == 'ok':
+                                self.stats['added'] += 1
+                                self.stats.setdefault('name_dedup_merged', 0)
+                                self.stats['name_dedup_merged'] += 1
+                            else:
+                                # Foundation-locked or energy mismatch — create separate group
+                                self._do_create(create_name, row)
+                                batch_created[create_name_key] = self._next_id - 1
+                                self.stats['created'] += 1
+                        else:
+                            self._do_create(create_name, row)
+                            batch_created[create_name_key] = self._next_id - 1
+                            self.stats['created'] += 1
                     else:
                         self.stats['errors'] += 1
                 elif decision['action'] == 'IGNORE':
@@ -691,6 +736,7 @@ class FoodAggregator:
             'count': 1,
         }
         self.index.add(fid, generic_name)
+        self._name_to_id[generic_name.strip().lower()] = fid
 
     def _do_add(self, target_id: int, row: pd.Series) -> str:
         """Add a source food to an existing group.
@@ -761,8 +807,10 @@ class FoodAggregator:
         self.stats = data['stats']
         self.db = {int(k): v for k, v in data['db'].items()}
         self.index = FoodSearchIndex()
+        self._name_to_id = {}
         for fid, entry in self.db.items():
             self.index.add(fid, entry['generic_name'])
+            self._name_to_id[entry['generic_name'].strip().lower()] = fid
         print(
             f'  Resumed from checkpoint: {self.processed_count} items processed, '
             f'{len(self.db)} generic foods'
@@ -819,6 +867,7 @@ class FoodAggregator:
         print(f'  Ignored                : {self.stats["ignored"]}')
         print(f'  Foundation-locked (skip): {self.stats.get("foundation_locked", 0)}')
         print(f'  ADD id rejected (bad idx): {self.stats.get("add_id_rejected", 0)}')
+        print(f'  Name dedup merged       : {self.stats.get("name_dedup_merged", 0)}')
         print(f'  Renamed existing groups : {self.stats.get("renamed", 0)}')
         print(f'  Parse errors (-> create): {self.stats["errors"]}')
         print(f'  API calls              : {self.stats["api_calls"]}')
