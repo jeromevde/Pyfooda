@@ -2,13 +2,13 @@
   "meta": {
     "processed_count": 244,
     "stats": {
-      "created": 19,
-      "added": 110,
+      "created": 22,
+      "added": 107,
       "ignored": 115,
       "errors": 0,
       "api_calls": 9,
       "foundation_locked": 114,
-      "renamed": 6
+      "renamed": 13
     }
   },
   "foods": [
@@ -489,19 +489,19 @@
       "generic_name": "Low Fat Yogurt",
       "food_category": "Dairy and Egg Products",
       "nutrients": {
-        "Energy": 85.76603511211542,
-        "Carbohydrate": 14.582765957446806,
-        "Protein": 4.242765957446811,
-        "Total fat": 0.9985106382978722,
-        "Fiber": 0.04984504440073901,
+        "Energy": 85.72200845475379,
+        "Carbohydrate": 15.04023255813953,
+        "Protein": 3.8160465116279085,
+        "Total fat": 1.0681395348837202,
+        "Fiber": 0.020287637698898405,
         "Sugars, Total": null,
-        "Sodium": 57.4468085106383,
-        "Calcium": 154.531914893617,
-        "Iron": 0.024909708564276774,
-        "Cholesterol": 4.872340425531916,
-        "Fatty acids, total saturated": 0.6219787234042553,
+        "Sodium": 58.604651162790695,
+        "Calcium": 162.2325581395349,
+        "Iron": 0.02738831089351285,
+        "Cholesterol": 5.023255813953488,
+        "Fatty acids, total saturated": 0.6642558139534883,
         "Vitamin A, RAE": 11.333333333333334,
-        "Vitamin C": 1.1446173840943623,
+        "Vitamin C": 1.1872550999592002,
         "Vitamin D (D2 + D3)": 0.39999999999999997,
         "Vitamin E": 0.02666666666666667,
         "Vitamin B-6": 0.043666666666666666,
@@ -509,8 +509,8 @@
         "Folate, total": 10.333333333333334,
         "Zinc": 0.7566666666666667,
         "Magnesium": 15.0,
-        "Potassium": 162.59779614325066,
-        "Phosphorus": 132.80929866036254
+        "Potassium": 165.99120234604106,
+        "Phosphorus": 131.57302325581392
       },
       "source_ids": [
         20,
@@ -529,10 +529,8 @@
         180,
         184,
         186,
-        187,
         188,
         189,
-        190,
         197,
         198,
         199,
@@ -548,8 +546,6 @@
         209,
         229,
         230,
-        232,
-        233,
         234,
         235,
         236,
@@ -578,10 +574,8 @@
         "ORIGINAL LOWFAT YOGURT",
         "PROBIOTIC FORMULA FAT FREE YOGURT",
         "SMOOTH OLD-FASHIONED NON-GREEK YOGURT",
-        "SMOOTH YOGURT",
         "SQUEEZABLES LOWFAT YOGURT",
         "SQUEEZERS LOWFAT YOGURT",
-        "STRAINED NONFAT YOGURT",
         "Yplt Go-Gurt Variety Pack 8 Ct",
         "Yplt Go-Gurt Vrty JlyRnch 16Ct",
         "Yplt GoGurt JollyRanch 8Ct",
@@ -597,8 +591,6 @@
         "Yplt Simply Go-Gurt 16 Ct",
         "YOPLAIT GO BIG LF YGRT CHRY/PCH MANGO",
         "YOPLAIT GO BIG LF YGRT MIXED BERRY/STRWBRY",
-        "YOPLAIT GRK 100 PRTN FF YGRT CINN SWIRL",
-        "YOPLAIT GRK 100 PRTN FF YGRT LEMON",
         "YOPLAIT LF YGRT MIXED BERRY/STRWBRY",
         "YOPLAIT LT FF YGRT VANILLA CHERRY",
         "YOPLAIT ORIGINAL LF YGRT BANANA SPLIT",
@@ -626,10 +618,8 @@
         170.0,
         227.0,
         150.0,
-        150.0,
         99.0,
         56.0,
-        150.0,
         170.0,
         170.0,
         170.0,
@@ -645,8 +635,6 @@
         170.0,
         113.0,
         113.0,
-        150.0,
-        150.0,
         113.0,
         170.0,
         170.0,
@@ -675,10 +663,8 @@
         "1 CONT.",
         "1 cup",
         "1 CONTAINER",
-        "1 CONTAINER",
         "1 POUCH",
         "2 ONZ",
-        "5.3 ONZ",
         "3 tubes(170g)",
         "3 tubes (170g)",
         "3 tubes (170g)",
@@ -694,8 +680,6 @@
         "3 tubes (170g)",
         "1 pouch (113g)",
         "1 pouch (113g)",
-        "1 container (150g)",
-        "1 container (150g)",
         "1 pouch (113g)",
         "1 Container",
         "1 container",
@@ -707,34 +691,34 @@
         "1 container",
         "1 container (170g)"
       ],
-      "count": 47
+      "count": 43
     },
     {
       "id": 9,
       "generic_name": "Lemon Juice",
       "food_category": "Fruits and Fruit Juices",
       "nutrients": {
-        "Energy": 33.31246016571064,
-        "Carbohydrate": 7.261805555555555,
-        "Protein": 0.22916666666666666,
-        "Total fat": 0.07523809523809524,
-        "Fiber": 0.2933333333333333,
+        "Energy": 29.8610579987253,
+        "Carbohydrate": 6.692666666666667,
+        "Protein": 0.16666666666666666,
+        "Total fat": 0.08777777777777779,
+        "Fiber": 0.31999999999999995,
         "Sugars, Total": null,
-        "Sodium": 10.154761904761905,
-        "Calcium": 3.5833333333333335,
-        "Iron": 0.09107142857142858,
+        "Sodium": 3.6666666666666665,
+        "Calcium": 3.5,
+        "Iron": 0.0375,
         "Cholesterol": 0.0,
-        "Fatty acids, total saturated": 0.016333333333333335,
+        "Fatty acids, total saturated": 0.02205,
         "Vitamin A, RAE": 0.5,
-        "Vitamin C": 24.53375,
+        "Vitamin C": 29.866666666666664,
         "Vitamin D (D2 + D3)": 0.0,
         "Vitamin E": 0.17,
         "Vitamin B-6": 0.04375,
         "Vitamin B-12": 0.0,
-        "Folate, total": 20.525,
+        "Folate, total": 17.25,
         "Zinc": 0.085,
-        "Magnesium": 7.425,
-        "Potassium": 90.0,
+        "Magnesium": 6.25,
+        "Potassium": 90.54166666666666,
         "Phosphorus": 8.25
       },
       "source_ids": [
@@ -743,13 +727,10 @@
         27,
         28,
         74,
-        76,
         78,
-        79,
         80,
-        81,
         82,
-        108
+        109
       ],
       "source_names": [
         "Lemon juice, raw",
@@ -757,24 +738,18 @@
         "Lemon juice, 100%, canned or bottled",
         "Lemon juice, 100%, freshly squeezed",
         "100% LEMON JUICE, LEMON",
-        "100% ORGANIC LEMON JUICE, LEMON",
         "LEMON JUICE, LEMON",
-        "ORGANIC LEMON JUICE, LEMON",
         "ORIGINAL LEMON JUICE, LEMON",
-        "PURE BEET ORGANIC LEMON JUICE, PURE BEET",
         "ORIGINAL LEMON JUICE",
-        "ORGANIC LEMON JUICE CONCENTRATE"
+        "SIMPLY LEMONADE, LEMON JUICE"
       ],
       "portion_gram_weights": [
         244.0,
         31.0,
-        31.0,
         30.0,
-        10.0,
         5.0,
-        240.0,
         5.0,
-        240.0
+        340.0
       ],
       "portion_unit_names": [
         "undetermined",
@@ -783,13 +758,10 @@
         "undetermined",
         "1 ONZ",
         "1 OZA",
-        "1 OZA",
-        "2 tsp",
         "1 tsp",
-        "8 OZA",
-        "8 OZA"
+        "11.5 OZA"
       ],
-      "count": 12
+      "count": 9
     },
     {
       "id": 10,
@@ -926,19 +898,19 @@
       "generic_name": "Organic Lemon Juice",
       "food_category": "Fruit & Vegetable Juice, Nectars & Fruit Drinks",
       "nutrients": {
-        "Energy": 32.0,
-        "Carbohydrate": 6.45,
+        "Energy": 42.0,
+        "Carbohydrate": 9.0575,
         "Protein": 0.0,
         "Total fat": 0.0,
         "Fiber": 0.0,
         "Sugars, Total": null,
-        "Sodium": 0.0,
+        "Sodium": 3.0,
         "Calcium": 0.0,
         "Iron": 0.0,
         "Cholesterol": 0.0,
         "Fatty acids, total saturated": 0.0,
         "Vitamin A, RAE": null,
-        "Vitamin C": 15.5,
+        "Vitamin C": 17.0,
         "Vitamin D (D2 + D3)": null,
         "Vitamin E": null,
         "Vitamin B-6": null,
@@ -950,18 +922,30 @@
         "Phosphorus": null
       },
       "source_ids": [
-        75
+        75,
+        76,
+        79,
+        108
       ],
       "source_names": [
-        "100% ORGANIC LEMON JUICE"
+        "100% ORGANIC LEMON JUICE",
+        "100% ORGANIC LEMON JUICE, LEMON",
+        "ORGANIC LEMON JUICE, LEMON",
+        "ORGANIC LEMON JUICE CONCENTRATE"
       ],
       "portion_gram_weights": [
-        31.0
+        31.0,
+        31.0,
+        10.0,
+        240.0
       ],
       "portion_unit_names": [
-        "1 OZA"
+        "1 OZA",
+        "1 OZA",
+        "2 tsp",
+        "8 OZA"
       ],
-      "count": 1
+      "count": 4
     },
     {
       "id": 14,
@@ -1007,7 +991,49 @@
     },
     {
       "id": 15,
-      "generic_name": "Blood Orange Juice",
+      "generic_name": "Beet Lemon Juice",
+      "food_category": "Fruit & Vegetable Juice, Nectars & Fruit Drinks",
+      "nutrients": {
+        "Energy": 42.0,
+        "Carbohydrate": 9.58,
+        "Protein": 1.25,
+        "Total fat": 0.0,
+        "Fiber": 0.8,
+        "Sugars, Total": null,
+        "Sodium": 79.0,
+        "Calcium": 11.0,
+        "Iron": 0.75,
+        "Cholesterol": 0.0,
+        "Fatty acids, total saturated": 0.0,
+        "Vitamin A, RAE": null,
+        "Vitamin C": 3.8,
+        "Vitamin D (D2 + D3)": null,
+        "Vitamin E": null,
+        "Vitamin B-6": null,
+        "Vitamin B-12": null,
+        "Folate, total": 50.0,
+        "Zinc": null,
+        "Magnesium": 18.0,
+        "Potassium": 204.0,
+        "Phosphorus": null
+      },
+      "source_ids": [
+        81
+      ],
+      "source_names": [
+        "PURE BEET ORGANIC LEMON JUICE, PURE BEET"
+      ],
+      "portion_gram_weights": [
+        240.0
+      ],
+      "portion_unit_names": [
+        "8 OZA"
+      ],
+      "count": 1
+    },
+    {
+      "id": 16,
+      "generic_name": "Blood Orange Lemon Juice",
       "food_category": "Other Drinks",
       "nutrients": {
         "Energy": 19.0,
@@ -1046,8 +1072,8 @@
       "count": 1
     },
     {
-      "id": 16,
-      "generic_name": "Ham Sub",
+      "id": 17,
+      "generic_name": "Ham Sandwich",
       "food_category": "Prepared Subs & Sandwiches",
       "nutrients": {
         "Energy": 188.0,
@@ -1088,12 +1114,12 @@
       "count": 1
     },
     {
-      "id": 17,
+      "id": 18,
       "generic_name": "Lemonade",
       "food_category": "Soda",
       "nutrients": {
-        "Energy": 48.5,
-        "Carbohydrate": 12.99,
+        "Energy": 50.0,
+        "Carbohydrate": 13.33,
         "Protein": 0.0,
         "Total fat": 0.0,
         "Fiber": null,
@@ -1116,25 +1142,21 @@
         "Phosphorus": null
       },
       "source_ids": [
-        106,
-        109
+        106
       ],
       "source_names": [
-        "LEMONADE LEMON JUICE, LEMONADE",
-        "SIMPLY LEMONADE, LEMON JUICE"
+        "LEMONADE LEMON JUICE, LEMONADE"
       ],
       "portion_gram_weights": [
-        240.0,
-        340.0
+        240.0
       ],
       "portion_unit_names": [
-        "8 OZA",
-        "11.5 OZA"
+        "8 OZA"
       ],
-      "count": 2
+      "count": 1
     },
     {
-      "id": 18,
+      "id": 19,
       "generic_name": "Soda",
       "food_category": "Soda",
       "nutrients": {
@@ -1176,8 +1198,100 @@
       "count": 1
     },
     {
-      "id": 19,
-      "generic_name": "Ham (Cooked)",
+      "id": 20,
+      "generic_name": "Orzo and Lentils",
+      "food_category": "Vegetable and Lentil Mixes",
+      "nutrients": {
+        "Energy": 176.0,
+        "Carbohydrate": 20.7,
+        "Protein": 6.61,
+        "Total fat": 7.93,
+        "Fiber": 2.2,
+        "Sugars, Total": null,
+        "Sodium": 141.0,
+        "Calcium": 35.0,
+        "Iron": 1.59,
+        "Cholesterol": 2.0,
+        "Fatty acids, total saturated": 1.32,
+        "Vitamin A, RAE": null,
+        "Vitamin C": 4.0,
+        "Vitamin D (D2 + D3)": null,
+        "Vitamin E": null,
+        "Vitamin B-6": null,
+        "Vitamin B-12": null,
+        "Folate, total": null,
+        "Zinc": null,
+        "Magnesium": null,
+        "Potassium": null,
+        "Phosphorus": null
+      },
+      "source_ids": [
+        136
+      ],
+      "source_names": [
+        "ORZO & LENTILS"
+      ],
+      "portion_gram_weights": [
+        227.0
+      ],
+      "portion_unit_names": [
+        "8 ONZ"
+      ],
+      "count": 1
+    },
+    {
+      "id": 21,
+      "generic_name": "Greek Yogurt",
+      "food_category": "Yogurt",
+      "nutrients": {
+        "Energy": 93.0,
+        "Carbohydrate": 9.11,
+        "Protein": 9.33,
+        "Total fat": 0.0,
+        "Fiber": 0.2333333333333333,
+        "Sugars, Total": null,
+        "Sodium": 46.666666666666664,
+        "Calcium": 73.33333333333333,
+        "Iron": 0.0,
+        "Cholesterol": 2.0,
+        "Fatty acids, total saturated": 0.0,
+        "Vitamin A, RAE": null,
+        "Vitamin C": 0.7999999999999999,
+        "Vitamin D (D2 + D3)": null,
+        "Vitamin E": null,
+        "Vitamin B-6": null,
+        "Vitamin B-12": null,
+        "Folate, total": null,
+        "Zinc": null,
+        "Magnesium": null,
+        "Potassium": 93.0,
+        "Phosphorus": null
+      },
+      "source_ids": [
+        190,
+        232,
+        233
+      ],
+      "source_names": [
+        "STRAINED NONFAT YOGURT",
+        "YOPLAIT GRK 100 PRTN FF YGRT CINN SWIRL",
+        "YOPLAIT GRK 100 PRTN FF YGRT LEMON"
+      ],
+      "portion_gram_weights": [
+        150.0,
+        150.0,
+        150.0
+      ],
+      "portion_unit_names": [
+        "5.3 ONZ",
+        "1 container (150g)",
+        "1 container (150g)"
+      ],
+      "count": 3
+    },
+    {
+      "id": 22,
+      "generic_name": "Ham Deli",
       "food_category": "nan",
       "nutrients": {
         "Energy": 188.0,
