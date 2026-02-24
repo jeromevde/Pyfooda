@@ -35,7 +35,7 @@ def main():
     )
     parser.add_argument("--model", default="google/gemini-2.0-flash-lite-001", help="LLM model")
     parser.add_argument("--batch-size", type=int, default=150, help="foods per LLM call")
-    parser.add_argument("--search-top-k", type=int, default=5, help="search results shown to LLM")
+    parser.add_argument("--search-top-k", type=int, default=8, help="search results shown to LLM")
     parser.add_argument("--prompt", default=None, help="path to custom prompt file")
     repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
     parser.add_argument("--input", default=os.path.join(repo_root, "pyfooda/data/fooddata.csv"), help="input CSV")

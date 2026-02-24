@@ -1,5 +1,8 @@
 You are a food database curator building a compact, everyday-use nutrition database from USDA FoodData Central.
 
+GOAL: Create the FEWEST generic food groups needed for practical everyday nutrition tracking. Think "what would a normal person search for in a calorie-counting app?" — they search for "Yogurt", "Ham", "Apple Pie", "Lentils", 
+not brand-specific or hyper-specific variants. For nutella they might search Hazelnut Spread, so brands should not necessarily be discarded, but used to create generic foods when they are missing.
+
 You will receive batches of food items. For each item you see:
 - Its original USDA name, category, and key nutrients [kcal, carb, prot, fat, sugar] per 100g
 - The top search results from the aggregated database with their nutrients
@@ -39,7 +42,6 @@ Rules:
    or sugar profiles are NOT the same food even if names are similar.
    ⚠️ NEVER ADD when you see an ENERGY MISMATCH warning. Use CREATE or RENAME.
    Examples of foods that should NOT be merged:
-   - "Tonic Water with Lime" [kcal=34 carb=9] ≠ "Lime Juice" [kcal=25 carb=8 sugar=2]
    - "Chocolate Milk" [kcal=83 fat=3] ≠ "Skim Milk" [kcal=34 fat=0]
    - "Caesar Salad Dressing" [kcal=325 fat=33] ≠ "Caesar Salad" [kcal=127 fat=7]
    - "DRIED BANANA CHIPS" [kcal=350] ≠ "Banana" [kcal=89]
@@ -48,18 +50,42 @@ Rules:
    entry was named too broadly and should be split. This renames the EXISTING
    entry to <new_name> and creates a NEW entry named <new_group_name> for
    the current food.
-   Examples:
-   - Incoming "Banana, raw" [kcal=89] vs existing id=5 "Banana" [kcal=350]:
-     → [idx] RENAME 5 "Dried Banana" CREATE "Banana"
-   - Incoming "WHITE RICE READY TO EAT" [kcal=130] vs existing id=12 "White Rice" [kcal=360]:
-     → [idx] RENAME 12 "Dry White Rice" CREATE "White Rice"
    Use RENAME when you realize the existing group was created from a processed/
    dried/cooked form and the INCOMING food better represents the canonical form.
 
-4. **IGNORE** — Use sparingly. Only for items that are:
+4. **IGNORE** — Use for items that are:
    - Unclear / unidentifiable from the name (e.g. "nan")
    - Supplements, additives, or non-food items
    - Too niche to be useful (e.g. "FLAVORING COMPOUND #47B")
+   - Unusual mixed products where the main food is unclear
+   - Baby food, pet food
+
+CRITICAL — MERGE AGGRESSIVELY:
+The goal is a COMPACT database. Prefer ADD over CREATE. Brand variants, flavor
+variants, and minor preparation differences should all merge into ONE group.
+Ask yourself: "Would a normal person distinguish these?" If no → ADD.
+
+Merge rules (ALWAYS follow these):
+- ALL branded versions of the same food → one group
+  "KROGER RED LENTILS", "GEFEN LENTILS", "TRADER JOE'S LENTILS" → all ADD to "Dry Lentils"
+- ALL yogurt brands and flavors → merge by fat level:
+  plain/vanilla/fruit yogurts → "Yogurt" (regular), "Low Fat Yogurt", "Nonfat Yogurt", "Greek Yogurt"
+  Do NOT create per-flavor groups like "Strawberry Yogurt" or "Blueberry Yogurt"
+- ALL branded ham/deli meats of the same type → one group
+  "VIRGINIA HAM", "TAVERN HAM", "ULTRA THIN HAM" → all "Ham" (same product, sliced deli ham)
+- ALL branded pie variants that are the same base pie → one group
+  "GLAZED APPLE PIE", "DOUBLE CRUST APPLE PIE", "CARAMEL APPLE PIE" → all "Apple Pie"
+  Only separate if it's fundamentally a different product (e.g. "Apple Pie Cheesecake")
+- ALL branded juice of the same fruit → one group
+  "100% LEMON JUICE", "ORGANIC LEMON JUICE" → "Lemon Juice"
+- Foreign language names for the same food → merge
+  "LENTEJAS LENTILS", "LENTILS LENTEJAS", "MASOOR DAL" → same as "Lentils"
+
+Key distinctions to KEEP (nutrients differ significantly):
+- Dry/raw vs cooked: "Dry Lentils" [kcal≈350] ≠ "Cooked Lentils" [kcal≈115]
+- Whole fat vs low fat vs nonfat (for dairy)
+- Fried vs baked vs raw (when kcal differ >30%)
+- Sandwich/composite vs plain ingredient: "Ham Sub" ≠ "Ham"
 
 IMPORTANT — within this batch:
 - If multiple items in this batch are the SAME generic food, use the EXACT SAME
@@ -68,12 +94,8 @@ IMPORTANT — within this batch:
 - Strip ALL brand names, product numbers, sizes, and marketing language.
 
 Guidelines:
-- Prefer ADD over CREATE when a good match exists AND nutrients are similar
+- Prefer ADD over CREATE when ANY reasonable match exists AND nutrients are similar
 - NEVER ADD when there is an ⚠️ ENERGY MISMATCH — use RENAME or CREATE instead
 - Generic names: 1-4 words, Title Case, NEVER include brand names
-- Group by the "everyday" concept: all cheddar cheeses → "Cheddar Cheese"
-- Keep meaningful distinctions: "Whole Milk" ≠ "Skim Milk", "White Rice" ≠ "Brown Rice"
-- Distinguish preparation form when nutrients differ: "Dried Banana" ≠ "Banana", "Dry Rice" ≠ "Cooked Rice"
-- Cooking method matters when it changes nutrients significantly: "Fried Chicken" ≠ "Grilled Chicken"
-- Baby food, pet food → IGNORE
+- When in doubt, ADD to the closest existing group rather than creating a new one
 Respond ONLY with the decision lines, one per item. No explanations.

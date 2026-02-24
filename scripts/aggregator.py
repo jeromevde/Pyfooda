@@ -95,7 +95,7 @@ class FoodSearchIndex:
             if idx < 0:
                 continue
             cos_sim = float(score)  # already cosine similarity (normalized IP)
-            if cos_sim > 0.3:       # minimum relevance threshold
+            if cos_sim > 0.25:      # minimum relevance threshold
                 results.append({
                     'id': self.ids[idx],
                     'name': self.names[idx],
@@ -186,12 +186,17 @@ def _avg_nutrients(existing: dict, new_row: pd.Series, count: int) -> dict:
 # Falls back to a fixed ±150 kcal band when MAD is near zero (uniform groups).
 
 _ENERGY_MAD_THRESHOLD = 3.5   # multiples of MAD
-_ENERGY_FIXED_BAND = 150      # kcal, fallback when MAD < 10
+_ENERGY_FIXED_BAND = 200      # kcal, fallback when MAD < 10
 _ENERGY_MIN_COUNT = 3         # don't gate until we have this many sources
 
 
 def _is_energy_compatible(entry: dict, new_energy: float) -> bool:
-    """Return True if new_energy is compatible with the group's energy profile."""
+    """Return True if new_energy is compatible with the group's energy profile.
+
+    Uses the more lenient of MAD-based or fixed band thresholds, so that
+    homogeneous groups (low MAD) still accept branded variants that are
+    within the fixed band (200 kcal).
+    """
     energies = entry.get('_source_energies', [])
     if len(energies) < _ENERGY_MIN_COUNT:
         return True  # too few samples to judge
@@ -200,11 +205,10 @@ def _is_energy_compatible(entry: dict, new_energy: float) -> bool:
     median = float(np.median(arr))
     mad = float(np.median(np.abs(arr - median)))
 
-    if mad < 10:
-        # Very homogeneous group — use fixed band
-        return abs(new_energy - median) <= _ENERGY_FIXED_BAND
-    else:
-        return abs(new_energy - median) <= _ENERGY_MAD_THRESHOLD * mad
+    # Use the more lenient threshold — the fixed band provides a floor
+    # so that groups with low MAD don't become overly restrictive
+    threshold = max(_ENERGY_MAD_THRESHOLD * mad, _ENERGY_FIXED_BAND)
+    return abs(new_energy - median) <= threshold
 
 
 # Key nutrients shown in prompt (compact fingerprint for LLM comparison)
@@ -276,8 +280,10 @@ def _build_batch_prompt(foods: list[dict]) -> str:
                     ratio = abs(incoming_energy - m_energy) / min(incoming_energy, m_energy)
                     if ratio > 0.5:
                         warn = '  ⚠️ ENERGY MISMATCH — DO NOT ADD, consider RENAME or CREATE'
+                count = m.get('count', 1)
+                count_str = f'  ({count} sources)' if count > 1 else ''
                 match_lines.append(
-                    f'    id={m["id"]}  "{m["name"]}"  [{m.get("nutrients", "")}]  (score={m["score"]}){warn}'
+                    f'    id={m["id"]}  "{m["name"]}"  [{m.get("nutrients", "")}]  (score={m["score"]}){count_str}{warn}'
                 )
             matches_str = '\n'.join(match_lines)
 
@@ -425,7 +431,7 @@ class FoodAggregator:
         base_url: str | None = None,
         prompt_path: str | None = None,
         batch_size: int = 50,
-        search_top_k: int = 5,
+        search_top_k: int = 8,
         checkpoint_dir: str = './checkpoints',
     ):
         self.source_df = df.copy().reset_index(drop=True)
@@ -489,11 +495,12 @@ class FoodAggregator:
                 name = str(row.get('foodName', ''))
                 cat = str(row.get('food_category', ''))
                 sr = self.index.search(name, top_k=self.search_top_k)
-                # Enrich search results with nutrient fingerprints
+                # Enrich search results with nutrient fingerprints and counts
                 for m in sr:
                     entry = self.db.get(m['id'])
                     if entry:
                         m['nutrients'] = _nutrient_fingerprint(entry['nutrients'], is_dict=True)
+                        m['count'] = entry.get('count', 1)
                 foods.append({
                     'idx': batch_start + i,
                     'name': name,
@@ -522,13 +529,13 @@ class FoodAggregator:
             # 3. parse & apply — with intra-batch dedup
             decisions = _parse_llm_response(raw, len(foods))
             decisions_by_idx = {d['idx']: d for d in decisions}
-
             # Track CREATEs within this batch so duplicates auto-merge
             batch_created: dict[str, int] = {}   # generic_name_lower -> db id
 
             for f in foods:
                 row = df.iloc[f['idx']]
                 decision = decisions_by_idx.get(f['idx'])
+
 
                 if decision is None:
                     # parse miss — IGNORE unparsed items rather than creating
@@ -545,8 +552,8 @@ class FoodAggregator:
                             self.stats['added'] += 1
                         else:
                             self.stats['ignored'] += 1
-                    # 2. BM25 near-exact match in the full DB
-                    elif (existing := self.index.search(name, top_k=1)) and existing[0]['score'] > 0.92:
+                    # 2. Embedding near-exact match in the full DB
+                    elif (existing := self.index.search(name, top_k=1)) and existing[0]['score'] > 0.88:
                         result = self._do_add(existing[0]['id'], row)
                         if result == 'ok':
                             self.stats['added'] += 1
@@ -600,7 +607,7 @@ class FoodAggregator:
                                 self.stats['ignored'] += 1
                         else:
                             existing = self.index.search(name, top_k=1)
-                            if existing and existing[0]['score'] > 0.92:
+                            if existing and existing[0]['score'] > 0.88:
                                 result = self._do_add(existing[0]['id'], row)
                                 if result == 'ok':
                                     self.stats['added'] += 1
@@ -646,7 +653,7 @@ class FoodAggregator:
                                     self.stats['ignored'] += 1
                             else:
                                 existing = self.index.search(create_name, top_k=1)
-                                if existing and existing[0]['score'] > 0.92:
+                                if existing and existing[0]['score'] > 0.88:
                                     result = self._do_add(existing[0]['id'], row)
                                     if result == 'ok':
                                         self.stats['added'] += 1
@@ -679,7 +686,7 @@ class FoodAggregator:
                                 self.stats['added'] += 1
                             else:
                                 self.stats['ignored'] += 1
-                        elif (existing := self.index.search(create_name, top_k=1)) and existing[0]['score'] > 0.92:
+                        elif (existing := self.index.search(create_name, top_k=1)) and existing[0]['score'] > 0.88:
                             result = self._do_add(existing[0]['id'], row)
                             if result == 'ok':
                                 self.stats['added'] += 1
