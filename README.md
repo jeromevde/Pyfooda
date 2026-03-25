@@ -71,7 +71,8 @@ per 100g; all source portion sizes are preserved.
 ```bash
 export OPENROUTER_API_KEY="sk-or-..."
 
-python scripts/aggregate.py test --batch-size 30   # curated test set
+python scripts/aggregate.py test --batch-size 30   # curated test set (batch mode)
+python scripts/aggregate.py test --streaming        # curated test set (1 item / LLM call)
 python scripts/aggregate.py full                    # all ~296k items
 python scripts/aggregate.py full --resume           # resume from checkpoint
 ```
@@ -88,6 +89,7 @@ and resume when ready.
 | Energy gate | `max(3.5 × MAD, 200 kcal)` rejects nutritional outliers |
 | Embedding dedup | Cosine > 0.88 auto-merges duplicate CREATE names |
 | Intra-batch dedup | Same generic name within a batch → merge, not duplicate |
+| Streaming mode | No intra-batch context, so index-mixups across batch items are eliminated |
 
 ### Tuning
 
