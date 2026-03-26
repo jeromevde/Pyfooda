@@ -711,58 +711,21 @@ class FoodAggregator:
 
 
     def _canonical_group_name(self, entry: dict) -> str | None:
-        """Return canonical label for post-pass merging, or None to keep as-is."""
-        name = str(entry.get('generic_name', '')).lower()
-        cat = str(entry.get('food_category', '')).lower()
+        """Return a generic normalization key for safe post-pass dedup only.
 
-        # Yogurt families
-        if 'yogurt' in name or 'yoghurt' in name or 'matzoon' in name:
-            if 'greek' in name:
-                return 'Greek Yogurt'
-            if 'nonfat' in name or 'fat free' in name or '0%' in name or 'fat-free' in name:
-                return 'Nonfat Yogurt'
-            if 'low fat' in name or 'low-fat' in name or '2%' in name or '1%' in name:
-                return 'Low Fat Yogurt'
-            if 'flavor' in name or 'flavoured' in name or 'flavored' in name or any(k in name for k in ['strawberry', 'blueberry', 'lemon', 'vanilla', 'fruit']):
-                return 'Flavored Yogurt'
-            return 'Whole Milk Yogurt'
+        Important: no dataset-specific hardcoded food families here.
+        """
+        raw = str(entry.get('generic_name', '')).strip()
+        if not raw:
+            return None
 
-        # Lentils
-        if 'lentil' in name or 'lenteja' in name or 'masoor' in name:
-            if any(k in name for k in ['soup', 'medley', 'blend', 'sofrito', 'orzo', 'dish']):
-                return 'Lentil Mix Dish'
-            if any(k in name for k in ['cooked', 'steamed', 'boiled', 'fried']):
-                return 'Cooked Lentils'
-            return 'Dry Lentils'
-
-        # Ham
-        if 'ham' in name:
-            if 'sub' in name or 'sandwich' in name:
-                return 'Ham Sandwich'
-            if 'country ham' in name or 'prosciutto' in name or 'crudo' in name:
-                return 'Country Ham'
-            return 'Ham'
-
-        # Apple pie
-        if 'apple pie' in name or ('pie' in name and 'apple' in name):
-            if any(k in name for k in ['glazed', 'caramel', 'frosted', 'pastry', 'sweetened']):
-                return 'Sweetened Apple Pie'
-            return 'Apple Pie'
-
-        # Lemon drinks
-        if 'lemon' in name:
-            if 'lemonade' in name:
-                return 'Lemonade'
-            if any(k in name for k in ['soda', 'drink', 'beverage', 'mix', 'blend']):
-                return 'Lemon Drink Mix'
-            if 'juice' in name:
-                return 'Lemon Juice'
-
-        # Category hint for pie
-        if 'pie' in cat and 'apple' in name:
-            return 'Apple Pie'
-
-        return None
+        name = raw.lower()
+        # conservative normalization: punctuation/spacing/case only
+        name = re.sub(r'[^a-z0-9\s]', ' ', name)
+        name = re.sub(r'\s+', ' ', name).strip()
+        if not name:
+            return None
+        return name.title()
 
     def _merge_entries(self, base: dict, incoming: dict):
         """Merge incoming aggregated entry into base (weighted nutrients)."""
