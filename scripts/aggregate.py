@@ -50,7 +50,7 @@ def main():
     parser.add_argument("--checkpoint-dir", default=default_checkpoint, help="checkpoint directory")
     parser.add_argument("--resume", action="store_true", help="resume from checkpoint")
     parser.add_argument("--limit", type=int, default=None, help="custom item limit")
-    parser.add_argument("--timeout-seconds", type=int, default=180, help="LLM request timeout per item")
+    parser.add_argument("--timeout-seconds", type=int, default=600, help="LLM request timeout per item")
 
     args = parser.parse_args()
 

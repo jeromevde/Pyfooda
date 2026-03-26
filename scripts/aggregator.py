@@ -301,7 +301,7 @@ def _call_llm_batch(
     model: str,
     temperature: float = 0.05,
     max_retries: int = 3,
-    timeout_seconds: int = 120,
+    timeout_seconds: int = 600,
 ) -> str:
     client = openai.OpenAI(api_key=api_key, base_url=base_url, timeout=timeout_seconds)
     for attempt in range(max_retries):
@@ -427,7 +427,7 @@ class FoodAggregator:
         batch_size: int = 50,
         search_top_k: int = 8,
         checkpoint_dir: str = './checkpoints',
-        timeout_seconds: int = 120,
+        timeout_seconds: int = 600,
     ):
         self.source_df = df.copy().reset_index(drop=True)
         self.model = model
