@@ -100,6 +100,38 @@ and resume when ready.
 Edit `scripts/aggregation_prompt.txt` to change LLM behavior, e.g.:
 *"Merge all yogurt flavors"*, *"Keep organic separate"*, *"Ignore baby food"*.
 
+## Benchmark trace (2026-03-26)
+
+All runs used streaming mode (1 item/call), same prompt, and same test set.
+
+### Full curated test set (244 items)
+
+| Provider / Model | Time | Final groups | Created | Added | Ignored | Parse errors | Renamed |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| OpenRouter `google/gemini-2.0-flash-lite-001` | ~4m10s | 32 | 36 | 175 | 33 | 0 | 80 |
+| Ollama `qwen2.5:3b` | ~27m | 58 | 60 | 151 | 33 | 23 | 43 |
+
+### Controlled speed sample (30 items)
+
+| Provider / Model | Real time | Final groups | Parse errors |
+|---|---:|---:|---:|
+| OpenRouter `google/gemini-2.0-flash-lite-001` | 45.63s | 10 | 0 |
+| Ollama `qwen2.5:3b` | 137.07s | 5 | 11 |
+
+### Stored result artifacts
+
+- OpenRouter full test output:
+  - `tests/test_aggregated.json`
+  - `tests/test_aggregated.csv`
+- Ollama full test output:
+  - `tests/test_aggregated_ollama.json`
+  - `tests/test_aggregated_ollama.csv`
+- 30-item comparison outputs:
+  - `tests/test_aggregated_or_30.json`
+  - `tests/test_aggregated_or_30.csv`
+  - `tests/test_aggregated_ollama_30b.json`
+  - `tests/test_aggregated_ollama_30b.csv`
+
 ## Output format
 
 Both checkpoint and output share the same JSON structure:

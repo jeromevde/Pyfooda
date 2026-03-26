@@ -1,0 +1,11 @@
+foodName,category,portion_gram_weight,portion_unit_name,Energy,Carbohydrate,Protein,Total fat,Fiber,"Sugars, Total",Sodium,Calcium,Iron,Cholesterol,"Fatty acids, total saturated","Vitamin A, RAE",Vitamin C,Vitamin D (D2 + D3),Vitamin E,Vitamin B-6,Vitamin B-12,"Folate, total",Zinc,Magnesium,Potassium,Phosphorus
+Greek Yogurt,Dairy and Egg Products,156.0,container,61.0,3.64,10.3,0.37,,3.27,36.0,111.0,0.07,5.0,0.108,1.0,,0.0,0.01,0.064,0.7,,0.53,10.7,141.0,136.0
+Whole Milk Yogurt,Dairy and Egg Products,,,77.3185458,5.574928,3.824172,4.484,,4.0936,41.78,126.8,0.0,14.17,2.316,,,0.778,,0.04506,,,0.4283,11.45,164.1,101.2
+Apple,Fruits and Fruit Juices,,,61.332695984703626,14.84,0.168,0.15199999999999997,2.08,11.44,0.2,5.4,0.030000000000000006,,,,,,,0.03,,0.0,0.02,4.739999999999999,103.8,9.0
+Dry Lentils,Legumes and Legume Products,192.0,undetermined,296.32125,52.157812500000006,20.2696875,1.38375,9.325,,61.5,40.9625,6.092,0.0,0.15975,1.25,2.25,0.0,0.3,0.31975000000000003,0.0,256.25,2.99825,62.175,665.225,281.9
+Ham,Pork Products,16.2,slice,121.0,2.36,19.6,3.68,,2.2,1030.0,6.0,0.86,,1.25,,,,,,,,1.76,20.3,484.0,246.0
+Apple Pie,Baked Products,28.35,undetermined,280.5286806883365,37.325,2.55,13.89,1.8,,214.0,9.0,1.175,3.5,4.195,25.5,1.1,0.1,0.65,0.059,0.0,26.5,0.20500000000000002,7.5,79.5,32.0
+Cooked Lentils,"Beans, peas, legumes",,undetermined,166.0,18.71,8.38,6.86,7.3,,218.0,18.0,3.1,0.0,0.919,0.0,1.3,0.0,1.34,0.157,0.0,160.0,1.18,33.0,343.0,167.0
+Sweetened Apple Pie,Cakes and pies,,undetermined,316.0,42.6,3.0,16.1,2.6,,333.0,22.0,1.22,0.0,2.457,5.0,1.3,0.0,1.72,0.03,0.08,18.0,0.23,10.0,65.0,43.0
+Low Fat Yogurt,Dairy and Egg Products,170.0,undetermined,81.26195028680688,12.84,4.615,1.35,0.0,,61.5,160.5,0.07,5.5,0.871,12.5,0.7,0.0,0.025,0.043,0.495,10.0,0.78,15.0,205.5,126.5
+Lemon Juice,Fruits and Fruit Juices,244.0,undetermined,20.687380497131933,6.58,0.375,0.1975,0.39999999999999997,,6.75,7.0,0.075,0.0,0.03675,0.5,32.6,0.0,0.17,0.04375,0.0,17.25,0.085,6.25,104.5,8.25

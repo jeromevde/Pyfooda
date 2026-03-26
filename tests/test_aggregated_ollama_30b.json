@@ -1,0 +1,243 @@
+{
+  "meta": {
+    "processed_count": 30,
+    "stats": {
+      "created": 5,
+      "added": 8,
+      "ignored": 17,
+      "errors": 11,
+      "api_calls": 30,
+      "foundation_locked": 3,
+      "renamed": 2,
+      "postpass_merged_groups": 0
+    }
+  },
+  "foods": [
+    {
+      "id": 1,
+      "generic_name": "Lentils Raw Dry Lentils",
+      "food_category": "Dairy and Egg Products",
+      "nutrients": {
+        "Energy": 63.886424299999995,
+        "Carbohydrate": 11.435821333333335,
+        "Protein": 2.462362,
+        "Total fat": 0.9006666666666666,
+        "Fiber": 2.1,
+        "Sugars, Total": 8.9106,
+        "Sodium": 13.13,
+        "Calcium": 43.300000000000004,
+        "Iron": 0.036666666666666674,
+        "Cholesterol": 9.585,
+        "Fatty acids, total saturated": 1.212,
+        "Vitamin A, RAE": 1.0,
+        "Vitamin C": null,
+        "Vitamin D (D2 + D3)": 0.389,
+        "Vitamin E": 0.01,
+        "Vitamin B-6": 0.039676666666666666,
+        "Vitamin B-12": 0.7,
+        "Folate, total": 0.0,
+        "Zinc": 0.17305,
+        "Magnesium": 6.858333333333333,
+        "Potassium": 121.51666666666667,
+        "Phosphorus": 45.53333333333333
+      },
+      "source_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "source_names": [
+        "Yogurt, Greek, plain, nonfat",
+        "Yogurt, plain, whole milk",
+        "Apples, fuji, with skin, raw",
+        "Apples, gala, with skin, raw",
+        "Apples, granny smith, with skin, raw",
+        "Apples, honeycrisp, with skin, raw"
+      ],
+      "portion_gram_weights": [
+        156.0
+      ],
+      "portion_unit_names": [
+        "container"
+      ],
+      "count": 6
+    },
+    {
+      "id": 2,
+      "generic_name": "K1 Apples Red Delicious With Skin Raw Create Red Delicious Apple",
+      "food_category": "Fruits and Fruit Juices",
+      "nutrients": {
+        "Energy": 61.66347992351816,
+        "Carbohydrate": 14.8,
+        "Protein": 0.19,
+        "Total fat": 0.21,
+        "Fiber": 2.0,
+        "Sugars, Total": 11.1,
+        "Sodium": 0.0,
+        "Calcium": 5.0,
+        "Iron": 0.0,
+        "Cholesterol": null,
+        "Fatty acids, total saturated": null,
+        "Vitamin A, RAE": null,
+        "Vitamin C": null,
+        "Vitamin D (D2 + D3)": null,
+        "Vitamin E": null,
+        "Vitamin B-6": 0.021,
+        "Vitamin B-12": null,
+        "Folate, total": 0.0,
+        "Zinc": 0.02,
+        "Magnesium": 4.7,
+        "Potassium": 95.0,
+        "Phosphorus": 9.0
+      },
+      "source_ids": [
+        6
+      ],
+      "source_names": [
+        "Apples, red delicious, with skin, raw"
+      ],
+      "portion_gram_weights": [],
+      "portion_unit_names": [],
+      "count": 1
+    },
+    {
+      "id": 3,
+      "generic_name": "Lemon Drink Mix Create Nonfat Yogurt Create Whole Milk Yogurt Create Low Fat Yogurt Create Greek Yogurt Create Plain Yogurt Create Ghee Create Dairy Product Create Food Category Dairy And Egg Products Create Kcal 166 Create Kcal 52 Create Kcal 40 Create Kcal 80 Create Kcal 3 Create Kcal 64 Create Kcal 61 Create Carb 19 Create Carb 3 Create Carb 1 5 Create Carb 2 5 Create Carb 2 75 Create Carb 1 1 Create Fat 7 Create Fat 0 5 Create Fat 0 8 Create Sugar Create Sugar 9 Create Sugar 11",
+      "food_category": "Beans, peas, legumes",
+      "nutrients": {
+        "Energy": 132.59369024856596,
+        "Carbohydrate": 18.675,
+        "Protein": 6.180000000000001,
+        "Total fat": 4.005,
+        "Fiber": 3.65,
+        "Sugars, Total": null,
+        "Sodium": 135.5,
+        "Calcium": 78.0,
+        "Iron": 1.58,
+        "Cholesterol": 2.5,
+        "Fatty acids, total saturated": 0.8305,
+        "Vitamin A, RAE": 5.5,
+        "Vitamin C": 0.95,
+        "Vitamin D (D2 + D3)": 0.0,
+        "Vitamin E": 0.68,
+        "Vitamin B-6": 0.097,
+        "Vitamin B-12": 0.215,
+        "Folate, total": 84.5,
+        "Zinc": 0.925,
+        "Magnesium": 23.0,
+        "Potassium": 260.0,
+        "Phosphorus": 138.0
+      },
+      "source_ids": [
+        13,
+        20
+      ],
+      "source_names": [
+        "Lentils, NFS",
+        "Yogurt, fruit, low fat,9 g protein/8 oz"
+      ],
+      "portion_gram_weights": [
+        170.0
+      ],
+      "portion_unit_names": [
+        "undetermined",
+        "undetermined"
+      ],
+      "count": 2
+    },
+    {
+      "id": 4,
+      "generic_name": "Ham Luncheon Meat Loaf Type Nonfat Yogurt",
+      "food_category": "Cold cuts and cured meats",
+      "nutrients": {
+        "Energy": 90.16826003824092,
+        "Carbohydrate": 4.305,
+        "Protein": 11.62,
+        "Total fat": 2.9699999999999998,
+        "Fiber": 0.0,
+        "Sugars, Total": null,
+        "Sodium": 631.5,
+        "Calcium": 96.0,
+        "Iron": 0.44999999999999996,
+        "Cholesterol": 29.5,
+        "Fatty acids, total saturated": 1.212,
+        "Vitamin A, RAE": 13.5,
+        "Vitamin C": 0.4,
+        "Vitamin D (D2 + D3)": 0.35,
+        "Vitamin E": 0.115,
+        "Vitamin B-6": 0.2215,
+        "Vitamin B-12": 0.48000000000000004,
+        "Folate, total": 6.0,
+        "Zinc": 1.355,
+        "Magnesium": 18.0,
+        "Potassium": 275.0,
+        "Phosphorus": 207.0
+      },
+      "source_ids": [
+        16,
+        21
+      ],
+      "source_names": [
+        "Ham luncheon meat, loaf type",
+        "Yogurt, plain, low fat"
+      ],
+      "portion_gram_weights": [
+        170.0
+      ],
+      "portion_unit_names": [
+        "undetermined",
+        "undetermined"
+      ],
+      "count": 2
+    },
+    {
+      "id": 5,
+      "generic_name": "Raw Lentils",
+      "food_category": "Legumes and Legume Products",
+      "nutrients": {
+        "Energy": 355.0,
+        "Carbohydrate": 63.225,
+        "Protein": 24.27,
+        "Total fat": 1.615,
+        "Fiber": 10.75,
+        "Sugars, Total": null,
+        "Sodium": 6.5,
+        "Calcium": 41.5,
+        "Iron": 6.949999999999999,
+        "Cholesterol": 0.0,
+        "Fatty acids, total saturated": 0.2665,
+        "Vitamin A, RAE": 2.5,
+        "Vitamin C": 3.1,
+        "Vitamin D (D2 + D3)": 0.0,
+        "Vitamin E": 0.49,
+        "Vitamin B-6": 0.47150000000000003,
+        "Vitamin B-12": 0.0,
+        "Folate, total": 341.5,
+        "Zinc": 3.435,
+        "Magnesium": 53.0,
+        "Potassium": 672.5,
+        "Phosphorus": 287.5
+      },
+      "source_ids": [
+        24,
+        25
+      ],
+      "source_names": [
+        "Lentils, raw",
+        "Lentils, pink or red, raw"
+      ],
+      "portion_gram_weights": [
+        192.0,
+        192.0
+      ],
+      "portion_unit_names": [
+        "undetermined",
+        "undetermined"
+      ],
+      "count": 2
+    }
+  ]
+}
