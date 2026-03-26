@@ -622,6 +622,7 @@ class FoodAggregator:
                 self._save_checkpoint()
 
         pbar.close()
+        self._apply_canonical_postpass()
         self._save_checkpoint()
         self._print_summary()
 
@@ -707,6 +708,124 @@ class FoodAggregator:
             entry['portion_unit_names'].append(str(pun))
 
         return 'ok'
+
+
+    def _canonical_group_name(self, entry: dict) -> str | None:
+        """Return canonical label for post-pass merging, or None to keep as-is."""
+        name = str(entry.get('generic_name', '')).lower()
+        cat = str(entry.get('food_category', '')).lower()
+
+        # Yogurt families
+        if 'yogurt' in name or 'yoghurt' in name or 'matzoon' in name:
+            if 'greek' in name:
+                return 'Greek Yogurt'
+            if 'nonfat' in name or 'fat free' in name or '0%' in name or 'fat-free' in name:
+                return 'Nonfat Yogurt'
+            if 'low fat' in name or 'low-fat' in name or '2%' in name or '1%' in name:
+                return 'Low Fat Yogurt'
+            if 'flavor' in name or 'flavoured' in name or 'flavored' in name or any(k in name for k in ['strawberry', 'blueberry', 'lemon', 'vanilla', 'fruit']):
+                return 'Flavored Yogurt'
+            return 'Whole Milk Yogurt'
+
+        # Lentils
+        if 'lentil' in name or 'lenteja' in name or 'masoor' in name:
+            if any(k in name for k in ['soup', 'medley', 'blend', 'sofrito', 'orzo', 'dish']):
+                return 'Lentil Mix Dish'
+            if any(k in name for k in ['cooked', 'steamed', 'boiled', 'fried']):
+                return 'Cooked Lentils'
+            return 'Dry Lentils'
+
+        # Ham
+        if 'ham' in name:
+            if 'sub' in name or 'sandwich' in name:
+                return 'Ham Sandwich'
+            if 'country ham' in name or 'prosciutto' in name or 'crudo' in name:
+                return 'Country Ham'
+            return 'Ham'
+
+        # Apple pie
+        if 'apple pie' in name or ('pie' in name and 'apple' in name):
+            if any(k in name for k in ['glazed', 'caramel', 'frosted', 'pastry', 'sweetened']):
+                return 'Sweetened Apple Pie'
+            return 'Apple Pie'
+
+        # Lemon drinks
+        if 'lemon' in name:
+            if 'lemonade' in name:
+                return 'Lemonade'
+            if any(k in name for k in ['soda', 'drink', 'beverage', 'mix', 'blend']):
+                return 'Lemon Drink Mix'
+            if 'juice' in name:
+                return 'Lemon Juice'
+
+        # Category hint for pie
+        if 'pie' in cat and 'apple' in name:
+            return 'Apple Pie'
+
+        return None
+
+    def _merge_entries(self, base: dict, incoming: dict):
+        """Merge incoming aggregated entry into base (weighted nutrients)."""
+        base_count = int(base.get('count', 1))
+        inc_count = int(incoming.get('count', 1))
+
+        for col in NUTRIENT_COLS:
+            a = base.get('nutrients', {}).get(col)
+            b = incoming.get('nutrients', {}).get(col)
+            if a is None and b is None:
+                v = None
+            elif a is None:
+                v = b
+            elif b is None:
+                v = a
+            else:
+                v = (float(a) * base_count + float(b) * inc_count) / (base_count + inc_count)
+            base['nutrients'][col] = v
+
+        base['count'] = base_count + inc_count
+        base.setdefault('source_ids', []).extend(incoming.get('source_ids', []))
+        base.setdefault('source_names', []).extend(incoming.get('source_names', []))
+        base.setdefault('portion_gram_weights', []).extend(incoming.get('portion_gram_weights', []))
+        base.setdefault('portion_unit_names', []).extend(incoming.get('portion_unit_names', []))
+        base.setdefault('_source_energies', []).extend(incoming.get('_source_energies', []))
+
+    def _apply_canonical_postpass(self):
+        """Deterministic cleanup pass to collapse known semantic variants."""
+        if not self.db:
+            return
+
+        new_db = {}
+        canonical_to_id = {}
+        next_id = 1
+
+        for _, entry in sorted(self.db.items(), key=lambda kv: kv[0]):
+            target_name = self._canonical_group_name(entry) or entry.get('generic_name', '')
+            key = target_name.strip().lower()
+
+            if key not in canonical_to_id:
+                eid = next_id
+                next_id += 1
+                clone = dict(entry)
+                clone['id'] = eid
+                clone['generic_name'] = target_name
+                new_db[eid] = clone
+                canonical_to_id[key] = eid
+            else:
+                base_id = canonical_to_id[key]
+                self._merge_entries(new_db[base_id], entry)
+
+        old_size = len(self.db)
+        self.db = new_db
+        self._next_id = max(self.db.keys(), default=0) + 1
+
+        # Rebuild search/index maps for consistency
+        self.index = FoodSearchIndex()
+        self._name_to_id = {}
+        for fid, e in self.db.items():
+            self.index.add(fid, e['generic_name'])
+            self._name_to_id[e['generic_name'].strip().lower()] = fid
+
+        self.stats['postpass_merged_groups'] = old_size - len(self.db)
 
     # -- persistence ------------------------------------------------------------
 
@@ -814,4 +933,5 @@ class FoodAggregator:
         print(f'  Parse errors (-> create): {self.stats["errors"]}')
         print(f'  API calls              : {self.stats["api_calls"]}')
         print(f'  Final DB size          : {len(self.db)} entries')
+        print(f'  Post-pass merged groups: {self.stats.get("postpass_merged_groups", 0)}')
         print('=' * 60)
