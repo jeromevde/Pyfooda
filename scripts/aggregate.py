@@ -34,8 +34,11 @@ def main():
         help="'test' = first 1000 items, 'full' = everything (default: test)",
     )
     parser.add_argument("--model", default="google/gemini-2.0-flash-lite-001", help="LLM model")
-    parser.add_argument("--batch-size", type=int, default=150, help="foods per LLM call")
-    parser.add_argument("--streaming", action="store_true", help="process one food per LLM call (equivalent to --batch-size 1)")
+    parser.add_argument("--batch-size", type=int, default=1, help="deprecated (streaming is always used)")
+    parser.add_argument("--streaming", action="store_true", help="deprecated no-op (streaming is default and only mode)")
+    parser.add_argument("--provider", choices=["openrouter", "ollama"], default="openrouter", help="LLM provider")
+    parser.add_argument("--base-url", default=None, help="override OpenAI-compatible base URL")
+    parser.add_argument("--api-key", default=None, help="override API key")
     parser.add_argument("--search-top-k", type=int, default=8, help="search results shown to LLM")
     parser.add_argument("--prompt", default=None, help="path to custom prompt file")
     repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -47,6 +50,7 @@ def main():
     parser.add_argument("--checkpoint-dir", default=default_checkpoint, help="checkpoint directory")
     parser.add_argument("--resume", action="store_true", help="resume from checkpoint")
     parser.add_argument("--limit", type=int, default=None, help="custom item limit")
+    parser.add_argument("--timeout-seconds", type=int, default=180, help="LLM request timeout per item")
 
     args = parser.parse_args()
 
@@ -58,7 +62,13 @@ def main():
     else:
         limit = None
 
-    effective_batch_size = 1 if args.streaming else args.batch_size
+    effective_batch_size = 1
+
+    if args.provider == "ollama":
+        if not args.base_url:
+            args.base_url = "http://localhost:11434/v1"
+        if not args.api_key:
+            args.api_key = "ollama"
 
     # Test mode uses a curated test dataset if available
     input_path = args.input
@@ -84,9 +94,12 @@ def main():
     print(f"  Mode           : {args.mode}")
     print(f"  Items          : {limit or 'ALL'}")
     print(f"  Model          : {args.model}")
-    print(f"  Decision mode  : {'streaming (1 item/call)' if args.streaming else 'batch'}")
+    print("  Decision mode  : streaming (1 item/call)")
     print(f"  Batch size     : {effective_batch_size}")
+    print(f"  Provider       : {args.provider}")
+    print(f"  Base URL       : {args.base_url or '(provider default)'}")
     print(f"  Search top-k   : {args.search_top_k}")
+    print(f"  Timeout (sec)  : {args.timeout_seconds}")
     print(f"  Custom prompt  : {args.prompt or '(default)'}")
     print(f"  Input          : {input_path}")
     print(f"  Output         : {output_path}")
@@ -101,10 +114,13 @@ def main():
     agg = FoodAggregator(
         df,
         model=args.model,
+        api_key=args.api_key,
+        base_url=args.base_url,
         batch_size=effective_batch_size,
         search_top_k=args.search_top_k,
         prompt_path=args.prompt,
         checkpoint_dir=checkpoint_dir,
+        timeout_seconds=args.timeout_seconds,
     )
 
     # Resume?

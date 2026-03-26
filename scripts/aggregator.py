@@ -251,48 +251,40 @@ def _energy_from_fingerprint(fp: str) -> float | None:
     return float(m.group(1)) if m else None
 
 
-def _build_batch_prompt(foods: list[dict]) -> str:
-    """Build a single user message containing a batch of foods to classify.
+def _build_item_prompt(food: dict) -> str:
+    """Build a single-item prompt.
 
-    Adds ⚠️ ENERGY MISMATCH flags to search results whose energy differs
-    from the incoming food by >50%, so the LLM knows not to blindly ADD.
-
-    Also stores the set of valid ADD target ids for each food so the
-    executor can validate that the LLM only ADDs to ids it was actually
-    shown (preventing batch-index confusion).
+    Streaming mode: each LLM call handles exactly one incoming food.
     """
-    lines = []
-    for f in foods:
-        sr = f['search_results']
-        incoming_energy = _energy_from_fingerprint(f.get('nutrients_str', ''))
+    sr = food['search_results']
+    incoming_energy = _energy_from_fingerprint(food.get('nutrients_str', ''))
 
-        # Track which ids are valid ADD targets for this item
-        f['_valid_add_ids'] = {m['id'] for m in sr}
+    # Track valid ADD target ids for guard checks
+    food['_valid_add_ids'] = {m['id'] for m in sr}
 
-        if not sr:
-            matches_str = '  (no existing entries yet — use CREATE only, not ADD)'
-        else:
-            match_lines = []
-            for m in sr:
-                m_energy = _energy_from_fingerprint(m.get('nutrients', ''))
-                warn = ''
-                if incoming_energy and m_energy and incoming_energy > 0 and m_energy > 0:
-                    ratio = abs(incoming_energy - m_energy) / min(incoming_energy, m_energy)
-                    if ratio > 0.5:
-                        warn = '  ⚠️ ENERGY MISMATCH — DO NOT ADD, consider RENAME or CREATE'
-                count = m.get('count', 1)
-                count_str = f'  ({count} sources)' if count > 1 else ''
-                match_lines.append(
-                    f'    id={m["id"]}  "{m["name"]}"  [{m.get("nutrients", "")}]  (score={m["score"]}){count_str}{warn}'
-                )
-            matches_str = '\n'.join(match_lines)
+    if not sr:
+        matches_str = '  (no existing entries yet — use CREATE only, not ADD)'
+    else:
+        match_lines = []
+        for m in sr:
+            m_energy = _energy_from_fingerprint(m.get('nutrients', ''))
+            warn = ''
+            if incoming_energy and m_energy and incoming_energy > 0 and m_energy > 0:
+                ratio = abs(incoming_energy - m_energy) / min(incoming_energy, m_energy)
+                if ratio > 0.5:
+                    warn = '  ⚠️ ENERGY MISMATCH — DO NOT ADD, prefer CREATE'
+            count = m.get('count', 1)
+            count_str = f'  ({count} sources)' if count > 1 else ''
+            match_lines.append(
+                f'    id={m["id"]}  "{m["name"]}"  [{m.get("nutrients", "")}]  (score={m["score"]}){count_str}{warn}'
+            )
+        matches_str = '\n'.join(match_lines)
 
-        nutrients_str = f.get('nutrients_str', '')
-        lines.append(
-            f'[{f["idx"]}] "{f["name"]}"  category={f["category"]}  [{nutrients_str}]\n'
-            f'  Closest existing entries (ADD id must come from this list ONLY):\n{matches_str}'
-        )
-    return '\n\n'.join(lines)
+    nutrients_str = food.get('nutrients_str', '')
+    return (
+        f'[{food["idx"]}] "{food["name"]}"  category={food["category"]}  [{nutrients_str}]\n'
+        f'Closest existing entries (ADD id must come from this list ONLY):\n{matches_str}'
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -309,8 +301,9 @@ def _call_llm_batch(
     model: str,
     temperature: float = 0.05,
     max_retries: int = 3,
+    timeout_seconds: int = 120,
 ) -> str:
-    client = openai.OpenAI(api_key=api_key, base_url=base_url)
+    client = openai.OpenAI(api_key=api_key, base_url=base_url, timeout=timeout_seconds)
     for attempt in range(max_retries):
         try:
             resp = client.chat.completions.create(
@@ -332,79 +325,80 @@ def _call_llm_batch(
                 raise
 
 
-def _parse_llm_response(raw: str, batch_size: int) -> list[dict]:
-    """Parse LLM response lines.
+def _parse_llm_decision(raw: str, expected_idx: int) -> dict | None:
+    """Parse one decision for one item.
 
-    Expected format per line:
-      [<idx>] CREATE <generic_name>
-      [<idx>] ADD <id>
-      [<idx>] IGNORE
+    Accepted forms:
+      [idx] CREATE <name>
+      [idx] ADD <id_or_name>
+      [idx] RENAME <id> <new_name_existing> CREATE <new_name_incoming>
+      [idx] IGNORE
     """
-    # Try JSON first
+    # JSON support
     try:
-        cleaned = raw
+        cleaned = raw.strip()
         if cleaned.startswith('```'):
             cleaned = '\n'.join(cleaned.split('\n')[1:])
         if cleaned.endswith('```'):
             cleaned = '\n'.join(cleaned.split('\n')[:-1])
         parsed = json.loads(cleaned)
-        if isinstance(parsed, list):
+        if isinstance(parsed, dict) and 'action' in parsed:
+            parsed.setdefault('idx', expected_idx)
+            parsed['action'] = str(parsed['action']).upper()
             return parsed
+        if isinstance(parsed, dict) and 'decision' in parsed:
+            raw = str(parsed['decision'])
+        if isinstance(parsed, list) and parsed:
+            cand = parsed[0]
+            if isinstance(cand, dict) and 'action' in cand:
+                cand.setdefault('idx', expected_idx)
+                cand['action'] = str(cand['action']).upper()
+                return cand
     except (json.JSONDecodeError, ValueError):
         pass
 
-    # Line-by-line parsing with regex — flexible patterns
-    results = []
     for line in raw.strip().splitlines():
-        line = line.strip()
+        line = line.strip().lstrip('-').strip()
         if not line or line.startswith('#') or line.startswith('//'):
             continue
 
-        # RENAME: [42] RENAME <id> "New Name For Existing" CREATE "New Group Name"
+        # Accept no-index variant by prefixing expected idx.
+        if re.match(r'^(CREATE|ADD|RENAME|IGNORE)\b', line, re.IGNORECASE):
+            line = f'[{expected_idx}] ' + line
+
         rm = re.match(
             r'\[?(\d+)\]?\s*RENAME\s+(\d+)\s+["\']?([^"\']+?)["\']?'
             r'(?:\s+(?:CREATE|->)\s+["\']?([^"\']+?)["\']?)?\s*$',
             line, re.IGNORECASE
         )
         if rm:
-            idx = int(rm.group(1))
-            target_id = int(rm.group(2))
-            new_name_existing = rm.group(3).strip()
-            new_name_incoming = rm.group(4).strip() if rm.group(4) else None
-            results.append({
-                'idx': idx,
+            return {
+                'idx': expected_idx,
                 'action': 'RENAME',
-                'target_id': target_id,
-                'new_name_existing': new_name_existing,
-                'new_name_incoming': new_name_incoming,
-            })
-            continue
+                'target_id': int(rm.group(2)),
+                'new_name_existing': rm.group(3).strip(),
+                'new_name_incoming': rm.group(4).strip() if rm.group(4) else None,
+            }
 
-        # Standard: [42] CREATE Apple
         m = re.match(r'\[?(\d+)\]?\s*(CREATE|ADD|IGNORE)\s*(.*)', line, re.IGNORECASE)
         if not m:
             continue
-        idx = int(m.group(1))
         action = m.group(2).upper()
         rest = m.group(3).strip()
 
         if action == 'CREATE':
             name = rest.strip().strip('"').strip("'").strip(',').strip()
-            if name:
-                results.append({'idx': idx, 'action': 'CREATE', 'name': name})
-        elif action == 'ADD':
+            return {'idx': expected_idx, 'action': 'CREATE', 'name': name or 'Unknown Food'}
+        if action == 'ADD':
             rest_clean = rest.strip().strip('"').strip("'")
-            # Try numeric ID first
             try:
-                target_id = int(rest_clean.split()[0])
-                results.append({'idx': idx, 'action': 'ADD', 'target_id': target_id})
+                return {'idx': expected_idx, 'action': 'ADD', 'target_id': int(rest_clean.split()[0])}
             except (ValueError, IndexError):
-                # Model gave a name instead of ID — resolve later
-                if rest_clean:
-                    results.append({'idx': idx, 'action': 'ADD', 'target_name': rest_clean})
-        elif action == 'IGNORE':
-            results.append({'idx': idx, 'action': 'IGNORE'})
-    return results
+                return {'idx': expected_idx, 'action': 'ADD', 'target_name': rest_clean}
+        if action == 'IGNORE':
+            return {'idx': expected_idx, 'action': 'IGNORE'}
+
+    return None
 
 
 # ---------------------------------------------------------------------------
@@ -433,19 +427,24 @@ class FoodAggregator:
         batch_size: int = 50,
         search_top_k: int = 8,
         checkpoint_dir: str = './checkpoints',
+        timeout_seconds: int = 120,
     ):
         self.source_df = df.copy().reset_index(drop=True)
         self.model = model
-        self.api_key = api_key or os.getenv('OPENROUTER_API_KEY') or os.getenv('OPENAI_API_KEY', '')
         self.base_url = base_url or os.getenv('OPENROUTER_BASE_URL', 'https://openrouter.ai/api/v1')
+        self.api_key = api_key or os.getenv('OPENROUTER_API_KEY') or os.getenv('OPENAI_API_KEY', '')
         if not self.api_key:
-            raise ValueError(
-                'No API key found. Set OPENROUTER_API_KEY:\n'
-                "  export OPENROUTER_API_KEY='sk-or-...'"
-            )
+            if 'localhost' in self.base_url or '127.0.0.1' in self.base_url:
+                self.api_key = 'ollama'
+            else:
+                raise ValueError(
+                    'No API key found. Set OPENROUTER_API_KEY:\n'
+                    "  export OPENROUTER_API_KEY='sk-or-...'"
+                )
         self.system_prompt = load_prompt(prompt_path)
         self.batch_size = batch_size
         self.search_top_k = search_top_k
+        self.timeout_seconds = int(timeout_seconds)
         self.checkpoint_dir = Path(checkpoint_dir)
         self.checkpoint_dir.mkdir(exist_ok=True)
 
@@ -464,15 +463,11 @@ class FoodAggregator:
     # -- public -----------------------------------------------------------------
 
     def run(self, limit: int | None = None, resume_from: int = 0):
-        """Run the aggregation. limit=None processes all foods."""
+        """Run streaming aggregation (one food per LLM call)."""
         df = self.source_df
-        # Filter out rows with missing food names
         df = df[df['foodName'].notna() & (df['foodName'].astype(str) != 'nan')].reset_index(drop=True)
 
-        # Sort by data_type priority (foundation first, then legacy, then
-        # branded) so foundation foods create groups before lower-quality
-        # sources arrive.  Within the same priority, sort by category so
-        # similar foods still land in the same batch.
+        # Foundation/legacy first; branded later for cleaner base groups.
         df['_dtype_rank'] = df['data_type'].apply(_data_type_rank)
         df = df.sort_values(
             ['_dtype_rank', 'food_category'],
@@ -483,34 +478,29 @@ class FoodAggregator:
             df = df.iloc[:limit]
 
         total = len(df)
-        pbar = tqdm(total=total, initial=resume_from, desc='Aggregating')
+        pbar = tqdm(total=total, initial=resume_from, desc='Aggregating (streaming)')
 
-        for batch_start in range(resume_from, total, self.batch_size):
-            batch_end = min(batch_start + self.batch_size, total)
-            batch_rows = df.iloc[batch_start:batch_end]
+        for idx in range(resume_from, total):
+            row = df.iloc[idx]
+            name = str(row.get('foodName', ''))
+            cat = str(row.get('food_category', ''))
 
-            # 1. build search results for each item
-            foods = []
-            for i, (_, row) in enumerate(batch_rows.iterrows()):
-                name = str(row.get('foodName', ''))
-                cat = str(row.get('food_category', ''))
-                sr = self.index.search(name, top_k=self.search_top_k)
-                # Enrich search results with nutrient fingerprints and counts
-                for m in sr:
-                    entry = self.db.get(m['id'])
-                    if entry:
-                        m['nutrients'] = _nutrient_fingerprint(entry['nutrients'], is_dict=True)
-                        m['count'] = entry.get('count', 1)
-                foods.append({
-                    'idx': batch_start + i,
-                    'name': name,
-                    'category': cat,
-                    'nutrients_str': _nutrient_fingerprint(row),
-                    'search_results': sr,
-                })
+            search_results = self.index.search(name, top_k=self.search_top_k)
+            for m in search_results:
+                entry = self.db.get(m['id'])
+                if entry:
+                    m['nutrients'] = _nutrient_fingerprint(entry['nutrients'], is_dict=True)
+                    m['count'] = entry.get('count', 1)
 
-            # 2. call LLM
-            user_msg = _build_batch_prompt(foods)
+            food = {
+                'idx': idx,
+                'name': name,
+                'category': cat,
+                'nutrients_str': _nutrient_fingerprint(row),
+                'search_results': search_results,
+            }
+
+            user_msg = _build_item_prompt(food)
             try:
                 raw = _call_llm_batch(
                     self.system_prompt,
@@ -518,207 +508,117 @@ class FoodAggregator:
                     api_key=self.api_key,
                     base_url=self.base_url,
                     model=self.model,
+                    timeout_seconds=self.timeout_seconds,
                 )
                 self.stats['api_calls'] += 1
             except Exception as e:
-                print(f'\n  LLM call failed for batch {batch_start}: {e}')
-                self.stats['errors'] += len(foods)
-                pbar.update(len(foods))
+                print(f'\n  LLM call failed for idx {idx}: {e}')
+                self.stats['errors'] += 1
+                self.stats['ignored'] += 1
+                self.processed_count += 1
+                pbar.update(1)
                 continue
 
-            # 3. parse & apply — with intra-batch dedup
-            decisions = _parse_llm_response(raw, len(foods))
-            decisions_by_idx = {d['idx']: d for d in decisions}
-            # Track CREATEs within this batch so duplicates auto-merge
-            batch_created: dict[str, int] = {}   # generic_name_lower -> db id
+            decision = _parse_llm_decision(raw, idx)
+            if decision is None:
+                self.stats['errors'] += 1
+                self.stats['ignored'] += 1
+                self.processed_count += 1
+                pbar.update(1)
+                continue
 
-            for f in foods:
-                row = df.iloc[f['idx']]
-                decision = decisions_by_idx.get(f['idx'])
-
-
-                if decision is None:
-                    # parse miss — IGNORE unparsed items rather than creating
-                    # catch-all entries from category names
-                    self.stats['errors'] += 1
-                    self.stats['ignored'] += 1
-                elif decision['action'] == 'CREATE':
-                    name = decision.get('name', f['name'])
-                    name_key = name.strip().lower()
-                    # 1. Intra-batch dedup: same generic name already created this batch
-                    if name_key in batch_created:
-                        result = self._do_add(batch_created[name_key], row)
-                        if result == 'ok':
-                            self.stats['added'] += 1
-                        else:
-                            self.stats['ignored'] += 1
-                    # 2. Embedding near-exact match in the full DB
-                    elif (existing := self.index.search(name, top_k=1)) and existing[0]['score'] > 0.88:
-                        result = self._do_add(existing[0]['id'], row)
-                        if result == 'ok':
-                            self.stats['added'] += 1
-                        else:
-                            self.stats['ignored'] += 1
-                    # 3. Exact name already exists in DB (BM25 missed it) — merge
-                    #    unless that group is foundation-locked, in which case create
-                    #    a separate non-foundation group with the same generic name.
-                    elif name_key in self._name_to_id:
-                        existing_id = self._name_to_id[name_key]
-                        result = self._do_add(existing_id, row)
-                        if result == 'ok':
-                            self.stats['added'] += 1
-                            self.stats.setdefault('name_dedup_merged', 0)
-                            self.stats['name_dedup_merged'] += 1
-                        else:
-                            # Foundation-locked or energy mismatch — create new group
-                            self._do_create(name, row)
-                            batch_created[name_key] = self._next_id - 1
-                            self.stats['created'] += 1
+            if decision['action'] == 'CREATE':
+                create_name = decision.get('name', name)
+                name_key = create_name.strip().lower()
+                if name_key in self._name_to_id:
+                    existing_id = self._name_to_id[name_key]
+                    result = self._do_add(existing_id, row)
+                    if result == 'ok':
+                        self.stats['added'] += 1
+                        self.stats.setdefault('name_dedup_merged', 0)
+                        self.stats['name_dedup_merged'] += 1
                     else:
-                        self._do_create(name, row)
-                        batch_created[name_key] = self._next_id - 1
+                        self._do_create(create_name, row)
                         self.stats['created'] += 1
-                elif decision['action'] == 'ADD':
-                    target = decision.get('target_id')
-                    target_name = decision.get('target_name')
-                    valid_add_ids = f.get('_valid_add_ids', set())
-
-                    # Guard: reject ADD if the target id was NOT in the search
-                    # results shown to the LLM for this food.  This prevents the
-                    # common failure mode where the LLM confuses batch item
-                    # positions with database IDs (e.g. says ADD 2 meaning
-                    # "merge with item at position 2 in this batch" but db id=2
-                    # is a completely different food).
-                    if target is not None and target not in valid_add_ids:
-                        # LLM used an id that wasn't shown — treat as CREATE
-                        decision = {'action': 'CREATE', 'name': target_name or f['name']}
-                        self.stats.setdefault('add_id_rejected', 0)
-                        self.stats['add_id_rejected'] += 1
-
-                    if decision['action'] == 'CREATE':
-                        # Re-route to CREATE logic below after guard triggered
-                        name = decision.get('name', f['name'])
-                        name_key = name.strip().lower()
-                        if name_key in batch_created:
-                            result = self._do_add(batch_created[name_key], row)
-                            if result == 'ok':
-                                self.stats['added'] += 1
-                            else:
-                                self.stats['ignored'] += 1
-                        else:
-                            existing = self.index.search(name, top_k=1)
-                            if existing and existing[0]['score'] > 0.88:
-                                result = self._do_add(existing[0]['id'], row)
-                                if result == 'ok':
-                                    self.stats['added'] += 1
-                                else:
-                                    self.stats['ignored'] += 1
-                            else:
-                                self._do_create(name, row)
-                                batch_created[name_key] = self._next_id - 1
-                                self.stats['created'] += 1
+                elif (existing := self.index.search(create_name, top_k=1)) and existing[0]['score'] > 0.88:
+                    result = self._do_add(existing[0]['id'], row)
+                    if result == 'ok':
+                        self.stats['added'] += 1
                     else:
-                        # Normal ADD path
-                        # Resolve name-based ADD by searching the index
-                        if not target and target_name:
-                            matches = self.index.search(target_name, top_k=1)
-                            if matches and matches[0]['score'] > 0.75 and matches[0]['id'] in valid_add_ids:
-                                target = matches[0]['id']
-                            else:
-                                # Also check batch_created for intra-batch names
-                                key = target_name.strip().lower()
-                                target = batch_created.get(key)
-                        if target and target in self.db:
-                            result = self._do_add(target, row)
-                            if result == 'ok':
-                                self.stats['added'] += 1
-                            elif result == 'foundation_locked':
-                                # Foundation group — silently ignore lower-quality source
-                                self.stats['ignored'] += 1
-                            else:
-                                # Energy-rejected: create as new entry
-                                create_name = target_name or f['name']
-                                self._do_create(create_name, row)
-                                batch_created[create_name.strip().lower()] = self._next_id - 1
-                                self.stats['created'] += 1
-                        else:
-                            # Couldn't resolve — treat as CREATE with the target_name
-                            create_name = target_name or f['name']
-                            name_key = create_name.strip().lower()
-                            if name_key in batch_created:
-                                result = self._do_add(batch_created[name_key], row)
-                                if result == 'ok':
-                                    self.stats['added'] += 1
-                                else:
-                                    self.stats['ignored'] += 1
-                            else:
-                                existing = self.index.search(create_name, top_k=1)
-                                if existing and existing[0]['score'] > 0.88:
-                                    result = self._do_add(existing[0]['id'], row)
-                                    if result == 'ok':
-                                        self.stats['added'] += 1
-                                    else:
-                                        self.stats['ignored'] += 1
-                                else:
-                                    self._do_create(create_name, row)
-                                    batch_created[name_key] = self._next_id - 1
-                                    self.stats['created'] += 1
-                elif decision['action'] == 'RENAME':
-                    target_id = decision.get('target_id')
-                    new_name_existing = decision.get('new_name_existing', '')
-                    new_name_incoming = decision.get('new_name_incoming')
-                    if target_id and target_id in self.db and new_name_existing:
-                        # Rename the existing group
-                        old_name_key = self.db[target_id]['generic_name'].strip().lower()
-                        self._name_to_id.pop(old_name_key, None)
-                        self.db[target_id]['generic_name'] = new_name_existing
-                        self._name_to_id[new_name_existing.strip().lower()] = target_id
-                        self.index.rename(target_id, new_name_existing)
-                        self.stats.setdefault('renamed', 0)
-                        self.stats['renamed'] += 1
-                        # Create or merge a group for the incoming food,
-                        # applying the same name-dedup logic as the CREATE path.
-                        create_name = new_name_incoming or f['name']
-                        create_name_key = create_name.strip().lower()
-                        if create_name_key in batch_created:
-                            result = self._do_add(batch_created[create_name_key], row)
-                            if result == 'ok':
-                                self.stats['added'] += 1
-                            else:
-                                self.stats['ignored'] += 1
-                        elif (existing := self.index.search(create_name, top_k=1)) and existing[0]['score'] > 0.88:
-                            result = self._do_add(existing[0]['id'], row)
-                            if result == 'ok':
-                                self.stats['added'] += 1
-                            else:
-                                self.stats['ignored'] += 1
-                        elif create_name_key in self._name_to_id:
-                            existing_id = self._name_to_id[create_name_key]
-                            result = self._do_add(existing_id, row)
-                            if result == 'ok':
-                                self.stats['added'] += 1
-                                self.stats.setdefault('name_dedup_merged', 0)
-                                self.stats['name_dedup_merged'] += 1
-                            else:
-                                # Foundation-locked or energy mismatch — create separate group
-                                self._do_create(create_name, row)
-                                batch_created[create_name_key] = self._next_id - 1
-                                self.stats['created'] += 1
+                        self._do_create(create_name, row)
+                        self.stats['created'] += 1
+                else:
+                    self._do_create(create_name, row)
+                    self.stats['created'] += 1
+
+            elif decision['action'] == 'ADD':
+                target = decision.get('target_id')
+                target_name = decision.get('target_name')
+                valid_add_ids = food.get('_valid_add_ids', set())
+
+                if target is not None and target not in valid_add_ids:
+                    self.stats.setdefault('add_id_rejected', 0)
+                    self.stats['add_id_rejected'] += 1
+                    target = None
+
+                if target is None and target_name:
+                    matches = self.index.search(target_name, top_k=1)
+                    if matches and matches[0]['score'] > 0.75 and matches[0]['id'] in valid_add_ids:
+                        target = matches[0]['id']
+
+                if target and target in self.db:
+                    result = self._do_add(target, row)
+                    if result == 'ok':
+                        self.stats['added'] += 1
+                    elif result == 'foundation_locked':
+                        self.stats['ignored'] += 1
+                    else:
+                        create_name = target_name or name
+                        self._do_create(create_name, row)
+                        self.stats['created'] += 1
+                else:
+                    create_name = target_name or name
+                    self._do_create(create_name, row)
+                    self.stats['created'] += 1
+
+            elif decision['action'] == 'RENAME':
+                target_id = decision.get('target_id')
+                new_name_existing = decision.get('new_name_existing', '').strip()
+                new_name_incoming = decision.get('new_name_incoming')
+                if target_id and target_id in self.db and new_name_existing:
+                    old_name_key = self.db[target_id]['generic_name'].strip().lower()
+                    self._name_to_id.pop(old_name_key, None)
+                    self.db[target_id]['generic_name'] = new_name_existing
+                    self._name_to_id[new_name_existing.lower()] = target_id
+                    self.index.rename(target_id, new_name_existing)
+                    self.stats.setdefault('renamed', 0)
+                    self.stats['renamed'] += 1
+
+                    create_name = (new_name_incoming or name).strip()
+                    if create_name.lower() in self._name_to_id:
+                        result = self._do_add(self._name_to_id[create_name.lower()], row)
+                        if result == 'ok':
+                            self.stats['added'] += 1
                         else:
                             self._do_create(create_name, row)
-                            batch_created[create_name_key] = self._next_id - 1
                             self.stats['created'] += 1
                     else:
-                        self.stats['errors'] += 1
-                elif decision['action'] == 'IGNORE':
+                        self._do_create(create_name, row)
+                        self.stats['created'] += 1
+                else:
+                    self.stats['errors'] += 1
                     self.stats['ignored'] += 1
 
-                self.processed_count += 1
+            elif decision['action'] == 'IGNORE':
+                self.stats['ignored'] += 1
+            else:
+                self.stats['errors'] += 1
+                self.stats['ignored'] += 1
 
-            pbar.update(len(foods))
+            self.processed_count += 1
+            pbar.update(1)
 
-            # Checkpoint every 500 items
-            if self.processed_count % 500 < self.batch_size:
+            if self.processed_count % 500 == 0:
                 self._save_checkpoint()
 
         pbar.close()

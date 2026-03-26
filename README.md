@@ -64,17 +64,21 @@ python scripts/build_fooddata.py ~/Downloads/FoodData_Central_csv_2024-10-31
 ### Step 2 — Aggregate
 
 The aggregator uses **sentence-transformers** (BAAI/bge-small-en-v1.5) +
-**FAISS** for semantic search, then sends batches to an LLM that decides
-CREATE / ADD / IGNORE / RENAME for each food. Nutrients are averaged
+**FAISS** for semantic search, then sends each food (streaming, 1 item/call)
+to an LLM that decides CREATE / ADD / IGNORE / RENAME. Nutrients are averaged
 per 100g; all source portion sizes are preserved.
 
 ```bash
 export OPENROUTER_API_KEY="sk-or-..."
 
-python scripts/aggregate.py test --batch-size 30   # curated test set (batch mode)
-python scripts/aggregate.py test --streaming        # curated test set (1 item / LLM call)
-python scripts/aggregate.py full                    # all ~296k items
-python scripts/aggregate.py full --resume           # resume from checkpoint
+# OpenRouter
+export OPENROUTER_API_KEY="sk-or-..."
+python scripts/aggregate.py test --timeout-seconds 240
+python scripts/aggregate.py full --timeout-seconds 240
+python scripts/aggregate.py full --resume
+
+# Local Ollama (OpenAI-compatible endpoint)
+python scripts/aggregate.py test --provider ollama --model qwen2.5:14b
 ```
 
 **Interrupt anytime** — the checkpoint uses the same `{meta, foods}`
@@ -88,8 +92,8 @@ and resume when ready.
 | Foundation lock | Foundation foods create groups; branded items can't dilute them |
 | Energy gate | `max(3.5 × MAD, 200 kcal)` rejects nutritional outliers |
 | Embedding dedup | Cosine > 0.88 auto-merges duplicate CREATE names |
-| Intra-batch dedup | Same generic name within a batch → merge, not duplicate |
-| Streaming mode | No intra-batch context, so index-mixups across batch items are eliminated |
+| Streaming decisions | Exactly one food per LLM call (no intra-batch confusion possible) |
+| ADD-id guard | ADD ids must be from shown nearest-neighbor candidates |
 
 ### Tuning
 
