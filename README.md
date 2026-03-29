@@ -130,6 +130,38 @@ All runs used streaming mode (1 item/call), same prompt, and same test set.
 | OpenRouter `google/gemini-2.0-flash-lite-001` | 45.63s | 10 | 0 |
 | Ollama `qwen2.5:3b` | 137.07s | 5 | 11 |
 
+### Expected aggregation shape for the test dataset (evaluation target)
+
+To keep future model/prompt changes measurable, treat the following as the **reference grouping intent** for the curated test set.
+
+#### Core groups we expect to emerge
+
+- **Yogurt family**
+  - Nonfat yogurt
+  - Whole milk / plain yogurt
+  - Greek yogurt
+  - Flavored/sweetened yogurt (separate from plain when clearly dessert-like)
+- **Apple family**
+  - Raw/fresh apples
+  - Apple pie / sweetened baked apple dessert (separate from fresh fruit)
+- **Lentil family**
+  - Dry lentils (uncooked)
+  - Cooked lentils (separate preparation state)
+- **Lemon family**
+  - Lemon juice
+  - Lemon drink mix / lemonade-style mix (separate from pure juice)
+- **Ham family**
+  - Ham / canned ham entries grouped together when nutritionally aligned
+
+#### Quality checks against this target
+
+- Group names should be short, canonical, and human-readable.
+- No instruction leakage or concatenated garbage names in output labels.
+- Separation should follow **use/nutrition semantics** (e.g., pie ≠ fresh fruit, dry ≠ cooked).
+- Merges should avoid collapsing distinct preparation types into one generic group.
+
+This reference is intentionally practical (not academically perfect): it exists so future AI runs can be compared consistently on stability and usefulness.
+
 ### Standalone pipeline benchmarks (2026-03-29, 30-item test set)
 
 #### Three consolidated versions (cost + speed + subjective quality)
