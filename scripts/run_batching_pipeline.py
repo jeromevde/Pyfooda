@@ -260,6 +260,8 @@ def main():
     eta_seconds = args.estimate_full_size / rate if rate > 0 else math.inf
 
     est_cost = result["api_calls"] * args.estimated_cost_per_call
+    est_full_calls = (args.estimate_full_size / result["processed"] * result["api_calls"]) if result["processed"] > 0 else 0
+    est_full_cost = est_full_calls * args.estimated_cost_per_call
     summary = {
         "mode": args.mode,
         "provider": args.provider,
@@ -275,6 +277,8 @@ def main():
         "eta_full_dataset_hms": time.strftime("%Hh %Mm %Ss", time.gmtime(eta_seconds)) if math.isfinite(eta_seconds) else None,
         "estimated_cost_per_call_usd": args.estimated_cost_per_call,
         "estimated_cost_usd": round(est_cost, 6),
+        "estimated_full_api_calls": round(est_full_calls, 2),
+        "estimated_full_cost_usd": round(est_full_cost, 6),
         "output_json": str(output_path),
     }
 

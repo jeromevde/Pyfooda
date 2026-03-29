@@ -134,11 +134,11 @@ All runs used streaming mode (1 item/call), same prompt, and same test set.
 
 #### Three consolidated versions (cost + speed + subjective quality)
 
-| Pipeline | Provider | Model | Time | API calls | Estimated cost (30 items) | Subjective quality | Notes |
-|---|---|---|---:|---:|---:|---|---|
-| Batching | OpenRouter | `google/gemini-2.0-flash-lite-001` | 5.37s | 4 | ~$0.002 (est.) | **Good** | Best balance (cheap + fast + stable grouping) |
-| Together streaming | Together | `Qwen/Qwen2.5-7B-Instruct-Turbo` | 25.99s | 30 | ~$0.021 (est.) | **Good/OK** | Reliable + available serverless model |
-| Local streaming | Ollama (local) | `qwen2.5:3b` | 107.15s | 30 | ~0 USD (local) | **OK/Fair** | Slowest + noisier parsing, but fully local |
+| Pipeline | Provider | Model | Time | API calls | Estimated cost (30 items) | Estimated cost (full, from test metrics) | Subjective quality | Notes |
+|---|---|---|---:|---:|---:|---:|---|---|
+| Batching | OpenRouter | `google/gemini-2.0-flash-lite-001` | 6.59s | 4 | ~$0.002 (est.) | ~$19.73 (est.) | **Good** | Best balance (cheap + fast + stable grouping) |
+| Together streaming | Together | `Qwen/Qwen2.5-7B-Instruct-Turbo` | 26.72s | 30 | ~$0.021 (est.) | ~$207.20 (est.) | **Good/OK** | Reliable + available serverless model |
+| Local streaming | Ollama (local) | `qwen2.5:3b` | 101.12s | 30 | ~0 USD (local) | $0 API (local) | **OK/Fair** | Slowest + noisier parsing, but fully local |
 
 #### Additional model probe notes
 

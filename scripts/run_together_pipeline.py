@@ -83,6 +83,8 @@ def main():
 
     api_calls = agg.stats.get("api_calls", 0)
     est_cost = api_calls * args.estimated_cost_per_call
+    est_full_calls = (args.estimate_full_size / processed * api_calls) if processed > 0 else 0
+    est_full_cost = est_full_calls * args.estimated_cost_per_call
     summary = {
         "mode": args.mode,
         "provider": "together",
@@ -97,6 +99,8 @@ def main():
         "eta_full_dataset_hms": time.strftime("%Hh %Mm %Ss", time.gmtime(eta_seconds)) if math.isfinite(eta_seconds) else None,
         "estimated_cost_per_call_usd": args.estimated_cost_per_call,
         "estimated_cost_usd": round(est_cost, 6),
+        "estimated_full_api_calls": round(est_full_calls, 2),
+        "estimated_full_cost_usd": round(est_full_cost, 6),
         "output_json": str(output_path),
     }
     metrics_path = output_path.with_suffix(".metrics.json")

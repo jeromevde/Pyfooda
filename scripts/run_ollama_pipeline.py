@@ -73,6 +73,7 @@ def main():
     rate = processed / elapsed if elapsed > 0 else 0
     eta_seconds = args.estimate_full_size / rate if rate > 0 else math.inf
 
+    est_full_calls = (args.estimate_full_size / processed * agg.stats.get("api_calls", 0)) if processed > 0 else 0
     summary = {
         "mode": args.mode,
         "provider": "ollama",
@@ -86,6 +87,8 @@ def main():
         "eta_full_dataset_seconds": round(eta_seconds, 2) if math.isfinite(eta_seconds) else None,
         "eta_full_dataset_hms": time.strftime("%Hh %Mm %Ss", time.gmtime(eta_seconds)) if math.isfinite(eta_seconds) else None,
         "estimated_cost_usd": 0.0,
+        "estimated_full_api_calls": round(est_full_calls, 2),
+        "estimated_full_cost_usd": 0.0,
         "output_json": str(output_path),
     }
 
