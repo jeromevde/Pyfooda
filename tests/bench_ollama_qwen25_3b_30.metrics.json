@@ -1,0 +1,15 @@
+{
+  "mode": "test",
+  "provider": "ollama",
+  "model": "qwen2.5:3b",
+  "input_rows": 30,
+  "processed": 30,
+  "api_calls": 30,
+  "final_groups": 4,
+  "elapsed_seconds": 109.14,
+  "items_per_second": 0.2749,
+  "eta_full_dataset_seconds": 1076883.88,
+  "eta_full_dataset_hms": "11h 08m 03s",
+  "estimated_cost_usd": 0.0,
+  "output_json": "tests/bench_ollama_qwen25_3b_30.json"
+}

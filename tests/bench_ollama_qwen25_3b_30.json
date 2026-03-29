@@ -1,0 +1,202 @@
+{
+  "meta": {
+    "processed_count": 30,
+    "stats": {
+      "created": 4,
+      "added": 9,
+      "ignored": 17,
+      "errors": 10,
+      "api_calls": 30,
+      "foundation_locked": 5,
+      "renamed": 1,
+      "postpass_merged_groups": 0
+    }
+  },
+  "foods": [
+    {
+      "id": 1,
+      "generic_name": "Lentils Nfs Apple Pie",
+      "food_category": "Dairy and Egg Products",
+      "nutrients": {
+        "Energy": 63.886424299999995,
+        "Carbohydrate": 11.435821333333335,
+        "Protein": 2.462362,
+        "Total fat": 0.9006666666666666,
+        "Fiber": 2.1,
+        "Sugars, Total": 8.9106,
+        "Sodium": 13.13,
+        "Calcium": 43.300000000000004,
+        "Iron": 0.036666666666666674,
+        "Cholesterol": 9.585,
+        "Fatty acids, total saturated": 1.212,
+        "Vitamin A, RAE": 1.0,
+        "Vitamin C": null,
+        "Vitamin D (D2 + D3)": 0.389,
+        "Vitamin E": 0.01,
+        "Vitamin B-6": 0.039676666666666666,
+        "Vitamin B-12": 0.7,
+        "Folate, total": 0.0,
+        "Zinc": 0.17305,
+        "Magnesium": 6.858333333333333,
+        "Potassium": 121.51666666666667,
+        "Phosphorus": 45.53333333333333
+      },
+      "source_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "source_names": [
+        "Yogurt, Greek, plain, nonfat",
+        "Yogurt, plain, whole milk",
+        "Apples, fuji, with skin, raw",
+        "Apples, gala, with skin, raw",
+        "Apples, granny smith, with skin, raw",
+        "Apples, honeycrisp, with skin, raw"
+      ],
+      "portion_gram_weights": [
+        156.0
+      ],
+      "portion_unit_names": [
+        "container"
+      ],
+      "count": 6
+    },
+    {
+      "id": 2,
+      "generic_name": "K1 Apples Red Delicious With Skin Raw Create Red Delicious Apple",
+      "food_category": "Fruits and Fruit Juices",
+      "nutrients": {
+        "Energy": 61.66347992351816,
+        "Carbohydrate": 14.8,
+        "Protein": 0.19,
+        "Total fat": 0.21,
+        "Fiber": 2.0,
+        "Sugars, Total": 11.1,
+        "Sodium": 0.0,
+        "Calcium": 5.0,
+        "Iron": 0.0,
+        "Cholesterol": null,
+        "Fatty acids, total saturated": null,
+        "Vitamin A, RAE": null,
+        "Vitamin C": null,
+        "Vitamin D (D2 + D3)": null,
+        "Vitamin E": null,
+        "Vitamin B-6": 0.021,
+        "Vitamin B-12": null,
+        "Folate, total": 0.0,
+        "Zinc": 0.02,
+        "Magnesium": 4.7,
+        "Potassium": 95.0,
+        "Phosphorus": 9.0
+      },
+      "source_ids": [
+        6
+      ],
+      "source_names": [
+        "Apples, red delicious, with skin, raw"
+      ],
+      "portion_gram_weights": [],
+      "portion_unit_names": [],
+      "count": 1
+    },
+    {
+      "id": 3,
+      "generic_name": "Lemon Drink Mix Create Nonfat Yogurt Create Whole Milk Yogurt Create Low Fat Yogurt Create Greek Yogurt Create Plain Yogurt Create Flavored Yogurt Create Food Category Dairy And Egg Products Create Kcal 64 Create Carb 15 Create Prot 0 Create Fat 1 Create Sugar 11",
+      "food_category": "Beans, peas, legumes",
+      "nutrients": {
+        "Energy": 150.0,
+        "Carbohydrate": 6.923333333333333,
+        "Protein": 15.770000000000001,
+        "Total fat": 6.56,
+        "Fiber": 2.433333333333333,
+        "Sugars, Total": null,
+        "Sodium": 826.3333333333334,
+        "Calcium": 11.333333333333334,
+        "Iron": 1.6633333333333333,
+        "Cholesterol": 31.333333333333332,
+        "Fatty acids, total saturated": 1.717666666666667,
+        "Vitamin A, RAE": 4.333333333333333,
+        "Vitamin C": 0.43333333333333335,
+        "Vitamin D (D2 + D3)": 0.4666666666666666,
+        "Vitamin E": 0.5966666666666667,
+        "Vitamin B-6": 0.317,
+        "Vitamin B-12": 0.41,
+        "Folate, total": 55.333333333333336,
+        "Zinc": 1.7733333333333334,
+        "Magnesium": 24.0,
+        "Potassium": 336.6666666666667,
+        "Phosphorus": 219.33333333333334
+      },
+      "source_ids": [
+        13,
+        16,
+        17
+      ],
+      "source_names": [
+        "Lentils, NFS",
+        "Ham luncheon meat, loaf type",
+        "Ham, canned"
+      ],
+      "portion_gram_weights": [],
+      "portion_unit_names": [
+        "undetermined",
+        "undetermined",
+        "undetermined"
+      ],
+      "count": 3
+    },
+    {
+      "id": 4,
+      "generic_name": "K1 Ham Ground Create Ground Ham",
+      "food_category": "Cold cuts and cured meats",
+      "nutrients": {
+        "Energy": 109.8413001912046,
+        "Carbohydrate": 8.723333333333333,
+        "Protein": 10.056666666666667,
+        "Total fat": 3.7100000000000004,
+        "Fiber": 0.0,
+        "Sugars, Total": null,
+        "Sodium": 397.0,
+        "Calcium": 109.33333333333333,
+        "Iron": 0.4033333333333334,
+        "Cholesterol": 17.333333333333332,
+        "Fatty acids, total saturated": 1.5173333333333332,
+        "Vitamin A, RAE": 8.333333333333334,
+        "Vitamin C": 0.4666666666666666,
+        "Vitamin D (D2 + D3)": 0.2333333333333333,
+        "Vitamin E": 0.10000000000000002,
+        "Vitamin B-6": 0.162,
+        "Vitamin B-12": 0.6066666666666667,
+        "Folate, total": 8.333333333333334,
+        "Zinc": 1.2933333333333332,
+        "Magnesium": 16.666666666666668,
+        "Potassium": 254.0,
+        "Phosphorus": 158.0
+      },
+      "source_ids": [
+        18,
+        20,
+        21
+      ],
+      "source_names": [
+        "Ham, ground",
+        "Yogurt, fruit, low fat,9 g protein/8 oz",
+        "Yogurt, plain, low fat"
+      ],
+      "portion_gram_weights": [
+        170.0,
+        170.0
+      ],
+      "portion_unit_names": [
+        "undetermined",
+        "undetermined",
+        "undetermined"
+      ],
+      "count": 3
+    }
+  ]
+}

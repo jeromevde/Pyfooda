@@ -19,6 +19,7 @@ scripts/                       # Data pipeline
   aggregate.py                 #   Step 2 — fooddata.csv → foods_aggregated.json
   run_batching_pipeline.py     #   standalone batched LLM pipeline (argparse)
   run_together_pipeline.py     #   standalone Together streaming pipeline (argparse)
+  run_ollama_pipeline.py       #   standalone local Ollama streaming pipeline (argparse)
   aggregator.py                #   aggregation engine (embedding search + LLM)
   aggregation_prompt.txt       #   tweakable LLM prompt
   nutrients_drv.py             #   nutrient definitions + DRVs
@@ -87,6 +88,9 @@ python scripts/run_batching_pipeline.py --mode test --batch-size 8 --provider op
 
 # Standalone Together streaming pipeline
 python scripts/run_together_pipeline.py --mode test --model Qwen/Qwen2.5-7B-Instruct-Turbo
+
+# Standalone local Ollama streaming pipeline
+python scripts/run_ollama_pipeline.py --mode test --model qwen2.5:3b
 ```
 
 **Interrupt anytime** — the checkpoint uses the same `{meta, foods}`
@@ -128,19 +132,20 @@ All runs used streaming mode (1 item/call), same prompt, and same test set.
 
 ### Standalone pipeline benchmarks (2026-03-29, 30-item test set)
 
-#### Batching pipeline (`scripts/run_batching_pipeline.py`, batch_size=8)
+#### Three consolidated versions (cost + speed + subjective quality)
 
-| Provider | Model | Time | API calls | Final groups | Notes |
-|---|---|---:|---:|---:|---|
-| OpenRouter | `google/gemini-2.0-flash-lite-001` | 11.25s | 4 | 8 | Best balance (cheap + stable grouping) |
-| OpenRouter | `openai/gpt-4o-mini` | 4.70s | 4 | 4 | Fastest, but over-merged on this sample |
+| Pipeline | Provider | Model | Time | API calls | Estimated cost (30 items) | Subjective quality | Notes |
+|---|---|---|---:|---:|---:|---|---|
+| Batching | OpenRouter | `google/gemini-2.0-flash-lite-001` | 11.25s | 4 | Low | **Good** | Best balance (cheap + fast + stable grouping) |
+| Together streaming | Together | `Qwen/Qwen2.5-7B-Instruct-Turbo` | 18.93s | 30 | Medium | **Good/OK** | Reliable + available serverless model |
+| Local streaming | Ollama (local) | `qwen2.5:3b` | 109.14s | 30 | ~0 USD (local) | **OK/Fair** | Slowest + noisier parsing, but fully local |
 
-#### Together pipeline (`scripts/run_together_pipeline.py`, streaming)
+#### Additional model probe notes
 
-| Provider | Model | Time | API calls | Final groups | Notes |
-|---|---|---:|---:|---:|---|
-| Together | `Qwen/Qwen2.5-7B-Instruct-Turbo` | 18.93s | 30 | 6 | Selected Together default (available + reliable) |
-| Together | `meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo` | 208.20s | 0 | 0 | Not available on this account (`model_not_available`) |
+| Provider | Model | Outcome |
+|---|---|---|
+| OpenRouter | `openai/gpt-4o-mini` | very fast (4.70s) but over-merged on this sample |
+| Together | `meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo` | not available on account (`model_not_available`) |
 
 ### Stored result artifacts
 
@@ -154,6 +159,7 @@ All runs used streaming mode (1 item/call), same prompt, and same test set.
   - `tests/bench_batch_or_gpt4omini_30.json/.csv/.metrics.json`
   - `tests/bench_together_qwen25_7b_30.json/.csv/.metrics.json`
   - `tests/bench_together_llama31_8b_30.json/.csv/.metrics.json`
+  - `tests/bench_ollama_qwen25_3b_30.json/.csv/.metrics.json`
 
 ## Output format
 
