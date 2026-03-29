@@ -7,9 +7,11 @@
   "processed": 30,
   "api_calls": 4,
   "final_groups": 8,
-  "elapsed_seconds": 11.25,
-  "items_per_second": 2.666,
-  "eta_full_dataset_seconds": 111026.22,
-  "eta_full_dataset_hms": "06h 50m 26s",
+  "elapsed_seconds": 5.37,
+  "items_per_second": 5.5911,
+  "eta_full_dataset_seconds": 52941.08,
+  "eta_full_dataset_hms": "14h 42m 21s",
+  "estimated_cost_per_call_usd": 0.0005,
+  "estimated_cost_usd": 0.002,
   "output_json": "tests/bench_batch_or_gemini_flashlite_30.json"
 }

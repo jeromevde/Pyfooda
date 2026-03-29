@@ -6,10 +6,10 @@
   "processed": 30,
   "api_calls": 30,
   "final_groups": 4,
-  "elapsed_seconds": 109.14,
-  "items_per_second": 0.2749,
-  "eta_full_dataset_seconds": 1076883.88,
-  "eta_full_dataset_hms": "11h 08m 03s",
+  "elapsed_seconds": 107.15,
+  "items_per_second": 0.28,
+  "eta_full_dataset_seconds": 1057204.21,
+  "eta_full_dataset_hms": "05h 40m 04s",
   "estimated_cost_usd": 0.0,
   "output_json": "tests/bench_ollama_qwen25_3b_30.json"
 }

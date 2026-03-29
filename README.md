@@ -136,9 +136,9 @@ All runs used streaming mode (1 item/call), same prompt, and same test set.
 
 | Pipeline | Provider | Model | Time | API calls | Estimated cost (30 items) | Subjective quality | Notes |
 |---|---|---|---:|---:|---:|---|---|
-| Batching | OpenRouter | `google/gemini-2.0-flash-lite-001` | 11.25s | 4 | Low | **Good** | Best balance (cheap + fast + stable grouping) |
-| Together streaming | Together | `Qwen/Qwen2.5-7B-Instruct-Turbo` | 18.93s | 30 | Medium | **Good/OK** | Reliable + available serverless model |
-| Local streaming | Ollama (local) | `qwen2.5:3b` | 109.14s | 30 | ~0 USD (local) | **OK/Fair** | Slowest + noisier parsing, but fully local |
+| Batching | OpenRouter | `google/gemini-2.0-flash-lite-001` | 5.37s | 4 | ~$0.002 (est.) | **Good** | Best balance (cheap + fast + stable grouping) |
+| Together streaming | Together | `Qwen/Qwen2.5-7B-Instruct-Turbo` | 25.99s | 30 | ~$0.021 (est.) | **Good/OK** | Reliable + available serverless model |
+| Local streaming | Ollama (local) | `qwen2.5:3b` | 107.15s | 30 | ~0 USD (local) | **OK/Fair** | Slowest + noisier parsing, but fully local |
 
 #### Additional model probe notes
 

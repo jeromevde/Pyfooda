@@ -42,10 +42,13 @@ def _resolve_input_output(repo_root: Path, mode: str, output: str | None, checkp
     return input_path, Path(output) if output else default_output, Path(checkpoint_dir) if checkpoint_dir else default_ckpt
 
 
-def _apply_decision(agg: FoodAggregator, food: dict, row: pd.Series, decision: dict):
+def _apply_decision(agg: FoodAggregator, food: dict, row: pd.Series, decision: dict, create_aliases: dict[str, str] | None = None):
     name = food["name"]
     if decision["action"] == "CREATE":
         create_name = decision.get("name", name)
+        if create_aliases is not None:
+            key = create_name.strip().lower()
+            create_name = create_aliases.setdefault(key, create_name)
         name_key = create_name.strip().lower()
         if name_key in agg._name_to_id:
             existing_id = agg._name_to_id[name_key]
@@ -135,7 +138,11 @@ def run_batched(
             chunk.append((idx, row, food))
 
         user_msg = "\n\n".join(_build_item_prompt(food) for _, _, food in chunk)
-        user_msg += "\n\nReturn exactly one decision per item, format: [idx] CREATE <name> | ADD <id> | IGNORE"
+        user_msg += (
+            "\n\nReturn exactly one decision per item, format: [idx] CREATE <name> | ADD <id> | IGNORE"
+            "\nImportant: if multiple incoming items should end up in the SAME group, use the EXACT same CREATE name text for all of them."
+            "\nDo not invent slightly different synonyms for the same target group in one batch."
+        )
 
         try:
             raw = _call_llm_batch(
@@ -169,6 +176,7 @@ def run_batched(
                 except Exception:
                     pass
 
+        create_aliases: dict[str, str] = {}
         for idx, row, food in chunk:
             decision = None
             if idx in line_map:
@@ -179,7 +187,7 @@ def run_batched(
                 agg.stats["errors"] += 1
                 agg.stats["ignored"] += 1
             else:
-                _apply_decision(agg, food, row, decision)
+                _apply_decision(agg, food, row, decision, create_aliases=create_aliases)
             agg.processed_count += 1
 
         if agg.processed_count % 500 == 0:
@@ -210,6 +218,7 @@ def main():
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--timeout-seconds", type=int, default=600)
     parser.add_argument("--estimate-full-size", type=int, default=296000)
+    parser.add_argument("--estimated-cost-per-call", type=float, default=0.0, help="optional rough USD estimate per LLM API call")
     args = parser.parse_args()
 
     repo_root = Path(__file__).resolve().parents[1]
@@ -250,6 +259,7 @@ def main():
     rate = result["processed"] / result["elapsed_seconds"] if result["elapsed_seconds"] > 0 else 0
     eta_seconds = args.estimate_full_size / rate if rate > 0 else math.inf
 
+    est_cost = result["api_calls"] * args.estimated_cost_per_call
     summary = {
         "mode": args.mode,
         "provider": args.provider,
@@ -263,6 +273,8 @@ def main():
         "items_per_second": round(rate, 4),
         "eta_full_dataset_seconds": round(eta_seconds, 2) if math.isfinite(eta_seconds) else None,
         "eta_full_dataset_hms": time.strftime("%Hh %Mm %Ss", time.gmtime(eta_seconds)) if math.isfinite(eta_seconds) else None,
+        "estimated_cost_per_call_usd": args.estimated_cost_per_call,
+        "estimated_cost_usd": round(est_cost, 6),
         "output_json": str(output_path),
     }
 

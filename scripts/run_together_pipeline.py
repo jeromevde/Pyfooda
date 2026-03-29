@@ -34,6 +34,7 @@ def main():
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--timeout-seconds", type=int, default=600)
     parser.add_argument("--estimate-full-size", type=int, default=296000)
+    parser.add_argument("--estimated-cost-per-call", type=float, default=0.0, help="optional rough USD estimate per LLM API call")
     args = parser.parse_args()
 
     repo_root = Path(__file__).resolve().parents[1]
@@ -80,18 +81,22 @@ def main():
     rate = processed / elapsed if elapsed > 0 else 0
     eta_seconds = args.estimate_full_size / rate if rate > 0 else math.inf
 
+    api_calls = agg.stats.get("api_calls", 0)
+    est_cost = api_calls * args.estimated_cost_per_call
     summary = {
         "mode": args.mode,
         "provider": "together",
         "model": args.model,
         "input_rows": int(len(df if limit is None else df.iloc[:limit])),
         "processed": processed,
-        "api_calls": agg.stats.get("api_calls", 0),
+        "api_calls": api_calls,
         "final_groups": len(agg.db),
         "elapsed_seconds": round(elapsed, 2),
         "items_per_second": round(rate, 4),
         "eta_full_dataset_seconds": round(eta_seconds, 2) if math.isfinite(eta_seconds) else None,
         "eta_full_dataset_hms": time.strftime("%Hh %Mm %Ss", time.gmtime(eta_seconds)) if math.isfinite(eta_seconds) else None,
+        "estimated_cost_per_call_usd": args.estimated_cost_per_call,
+        "estimated_cost_usd": round(est_cost, 6),
         "output_json": str(output_path),
     }
     metrics_path = output_path.with_suffix(".metrics.json")
