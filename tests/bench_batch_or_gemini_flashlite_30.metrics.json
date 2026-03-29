@@ -1,0 +1,15 @@
+{
+  "mode": "test",
+  "provider": "openrouter",
+  "model": "google/gemini-2.0-flash-lite-001",
+  "batch_size": 8,
+  "input_rows": 30,
+  "processed": 30,
+  "api_calls": 4,
+  "final_groups": 8,
+  "elapsed_seconds": 11.25,
+  "items_per_second": 2.666,
+  "eta_full_dataset_seconds": 111026.22,
+  "eta_full_dataset_hms": "06h 50m 26s",
+  "output_json": "tests/bench_batch_or_gemini_flashlite_30.json"
+}

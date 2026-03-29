@@ -1,0 +1,14 @@
+{
+  "mode": "test",
+  "provider": "together",
+  "model": "Qwen/Qwen2.5-7B-Instruct-Turbo",
+  "input_rows": 30,
+  "processed": 30,
+  "api_calls": 30,
+  "final_groups": 6,
+  "elapsed_seconds": 18.93,
+  "items_per_second": 1.5845,
+  "eta_full_dataset_seconds": 186814.54,
+  "eta_full_dataset_hms": "03h 53m 34s",
+  "output_json": "tests/bench_together_qwen25_7b_30.json"
+}

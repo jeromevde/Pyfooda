@@ -1,6 +1,7 @@
 # Generated outputs
 checkpoints/
 tests/checkpoints/
+tests/ckpt_*/
 
 
 # Python
@@ -43,3 +44,7 @@ Thumbs.db
 *.swo
 # GitHub Pages data (copied at deploy time)
 docs/data/
+
+# Local secrets
+.env
+.env.*

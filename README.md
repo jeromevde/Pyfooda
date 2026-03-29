@@ -17,6 +17,8 @@ pyfooda/                       # Installable package (end-user API)
 scripts/                       # Data pipeline
   build_fooddata.py            #   Step 1 — raw USDA CSV → fooddata.csv
   aggregate.py                 #   Step 2 — fooddata.csv → foods_aggregated.json
+  run_batching_pipeline.py     #   standalone batched LLM pipeline (argparse)
+  run_together_pipeline.py     #   standalone Together streaming pipeline (argparse)
   aggregator.py                #   aggregation engine (embedding search + LLM)
   aggregation_prompt.txt       #   tweakable LLM prompt
   nutrients_drv.py             #   nutrient definitions + DRVs
@@ -79,6 +81,12 @@ python scripts/aggregate.py full --resume
 
 # Local Ollama (OpenAI-compatible endpoint)
 python scripts/aggregate.py test --provider ollama --model qwen2.5:14b
+
+# Standalone batched pipeline (OpenRouter/Together/Ollama)
+python scripts/run_batching_pipeline.py --mode test --batch-size 8 --provider openrouter
+
+# Standalone Together streaming pipeline
+python scripts/run_together_pipeline.py --mode test --model Qwen/Qwen2.5-7B-Instruct-Turbo
 ```
 
 **Interrupt anytime** — the checkpoint uses the same `{meta, foods}`
@@ -118,19 +126,34 @@ All runs used streaming mode (1 item/call), same prompt, and same test set.
 | OpenRouter `google/gemini-2.0-flash-lite-001` | 45.63s | 10 | 0 |
 | Ollama `qwen2.5:3b` | 137.07s | 5 | 11 |
 
+### Standalone pipeline benchmarks (2026-03-29, 30-item test set)
+
+#### Batching pipeline (`scripts/run_batching_pipeline.py`, batch_size=8)
+
+| Provider | Model | Time | API calls | Final groups | Notes |
+|---|---|---:|---:|---:|---|
+| OpenRouter | `google/gemini-2.0-flash-lite-001` | 11.25s | 4 | 8 | Best balance (cheap + stable grouping) |
+| OpenRouter | `openai/gpt-4o-mini` | 4.70s | 4 | 4 | Fastest, but over-merged on this sample |
+
+#### Together pipeline (`scripts/run_together_pipeline.py`, streaming)
+
+| Provider | Model | Time | API calls | Final groups | Notes |
+|---|---|---:|---:|---:|---|
+| Together | `Qwen/Qwen2.5-7B-Instruct-Turbo` | 18.93s | 30 | 6 | Selected Together default (available + reliable) |
+| Together | `meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo` | 208.20s | 0 | 0 | Not available on this account (`model_not_available`) |
+
 ### Stored result artifacts
 
-- OpenRouter full test output:
-  - `tests/test_aggregated.json`
-  - `tests/test_aggregated.csv`
-- Ollama full test output:
-  - `tests/test_aggregated_ollama.json`
-  - `tests/test_aggregated_ollama.csv`
-- 30-item comparison outputs:
-  - `tests/test_aggregated_or_30.json`
-  - `tests/test_aggregated_or_30.csv`
-  - `tests/test_aggregated_ollama_30b.json`
-  - `tests/test_aggregated_ollama_30b.csv`
+- Previous OpenRouter/Ollama traces:
+  - `tests/test_aggregated.json`, `tests/test_aggregated.csv`
+  - `tests/test_aggregated_ollama.json`, `tests/test_aggregated_ollama.csv`
+  - `tests/test_aggregated_or_30.json`, `tests/test_aggregated_or_30.csv`
+  - `tests/test_aggregated_ollama_30b.json`, `tests/test_aggregated_ollama_30b.csv`
+- New standalone-pipeline traces:
+  - `tests/bench_batch_or_gemini_flashlite_30.json/.csv/.metrics.json`
+  - `tests/bench_batch_or_gpt4omini_30.json/.csv/.metrics.json`
+  - `tests/bench_together_qwen25_7b_30.json/.csv/.metrics.json`
+  - `tests/bench_together_llama31_8b_30.json/.csv/.metrics.json`
 
 ## Output format
 

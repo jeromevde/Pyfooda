@@ -1,0 +1,15 @@
+{
+  "mode": "test",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "batch_size": 8,
+  "input_rows": 30,
+  "processed": 30,
+  "api_calls": 4,
+  "final_groups": 4,
+  "elapsed_seconds": 4.7,
+  "items_per_second": 6.3819,
+  "eta_full_dataset_seconds": 46381.0,
+  "eta_full_dataset_hms": "12h 53m 01s",
+  "output_json": "tests/bench_batch_or_gpt4omini_30.json"
+}

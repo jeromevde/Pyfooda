@@ -1,0 +1,304 @@
+{
+  "meta": {
+    "processed_count": 30,
+    "stats": {
+      "created": 7,
+      "added": 11,
+      "ignored": 12,
+      "errors": 0,
+      "api_calls": 30,
+      "foundation_locked": 8,
+      "name_dedup_merged": 2,
+      "postpass_merged_groups": 1
+    }
+  },
+  "foods": [
+    {
+      "id": 1,
+      "generic_name": "Greek Yogurt",
+      "food_category": "Dairy and Egg Products",
+      "nutrients": {
+        "Energy": 69.15927289999999,
+        "Carbohydrate": 4.607464,
+        "Protein": 7.062086000000001,
+        "Total fat": 2.427,
+        "Fiber": null,
+        "Sugars, Total": 3.6818,
+        "Sodium": 38.89,
+        "Calcium": 118.9,
+        "Iron": 0.035,
+        "Cholesterol": 9.585,
+        "Fatty acids, total saturated": 1.212,
+        "Vitamin A, RAE": 1.0,
+        "Vitamin C": null,
+        "Vitamin D (D2 + D3)": 0.389,
+        "Vitamin E": 0.01,
+        "Vitamin B-6": 0.05453,
+        "Vitamin B-12": 0.7,
+        "Folate, total": null,
+        "Zinc": 0.47915,
+        "Magnesium": 11.075,
+        "Potassium": 152.55,
+        "Phosphorus": 118.6
+      },
+      "source_ids": [
+        0,
+        1
+      ],
+      "source_names": [
+        "Yogurt, Greek, plain, nonfat",
+        "Yogurt, plain, whole milk"
+      ],
+      "portion_gram_weights": [
+        156.0
+      ],
+      "portion_unit_names": [
+        "container"
+      ],
+      "count": 2
+    },
+    {
+      "id": 2,
+      "generic_name": "Dry Lentils",
+      "food_category": "Legumes and Legume Products",
+      "nutrients": {
+        "Energy": 252.88083333333336,
+        "Carbohydrate": 41.008541666666666,
+        "Protein": 16.306458333333335,
+        "Total fat": 3.209166666666667,
+        "Fiber": 8.8,
+        "Sugars, Total": null,
+        "Sodium": 113.66666666666667,
+        "Calcium": 33.30833333333333,
+        "Iron": 5.094666666666668,
+        "Cholesterol": 0.0,
+        "Fatty acids, total saturated": 0.4848,
+        "Vitamin A, RAE": 1.0,
+        "Vitamin C": 2.04,
+        "Vitamin D (D2 + D3)": 0.0,
+        "Vitamin E": 0.8200000000000001,
+        "Vitamin B-6": 0.28500000000000003,
+        "Vitamin B-12": 0.0,
+        "Folate, total": 234.8,
+        "Zinc": 2.3921666666666663,
+        "Magnesium": 52.449999999999996,
+        "Potassium": 557.8166666666667,
+        "Phosphorus": 243.6
+      },
+      "source_ids": [
+        7,
+        11,
+        12,
+        13,
+        24,
+        25
+      ],
+      "source_names": [
+        "Lentils, dry",
+        "Lentils, from dried, no added fat",
+        "Lentils, from dried, fat added",
+        "Lentils, NFS",
+        "Lentils, raw",
+        "Lentils, pink or red, raw"
+      ],
+      "portion_gram_weights": [
+        192.0,
+        192.0
+      ],
+      "portion_unit_names": [
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined"
+      ],
+      "count": 6
+    },
+    {
+      "id": 3,
+      "generic_name": "Ham",
+      "food_category": "Pork Products",
+      "nutrients": {
+        "Energy": 121.0,
+        "Carbohydrate": 2.36,
+        "Protein": 19.6,
+        "Total fat": 3.68,
+        "Fiber": null,
+        "Sugars, Total": 2.2,
+        "Sodium": 1030.0,
+        "Calcium": 6.0,
+        "Iron": 0.86,
+        "Cholesterol": null,
+        "Fatty acids, total saturated": 1.25,
+        "Vitamin A, RAE": null,
+        "Vitamin C": null,
+        "Vitamin D (D2 + D3)": null,
+        "Vitamin E": null,
+        "Vitamin B-6": null,
+        "Vitamin B-12": null,
+        "Folate, total": null,
+        "Zinc": 1.76,
+        "Magnesium": 20.3,
+        "Potassium": 484.0,
+        "Phosphorus": 246.0
+      },
+      "source_ids": [
+        8
+      ],
+      "source_names": [
+        "Ham, sliced, restaurant"
+      ],
+      "portion_gram_weights": [
+        16.2
+      ],
+      "portion_unit_names": [
+        "slice"
+      ],
+      "count": 1
+    },
+    {
+      "id": 4,
+      "generic_name": "Apple",
+      "food_category": "Apples",
+      "nutrients": {
+        "Energy": 59.0,
+        "Carbohydrate": 14.2,
+        "Protein": 0.22500000000000003,
+        "Total fat": 0.15,
+        "Fiber": 2.25,
+        "Sugars, Total": null,
+        "Sodium": 1.0,
+        "Calcium": 5.5,
+        "Iron": 0.08,
+        "Cholesterol": 0.0,
+        "Fatty acids, total saturated": 0.028,
+        "Vitamin A, RAE": 3.0,
+        "Vitamin C": 4.6,
+        "Vitamin D (D2 + D3)": 0.0,
+        "Vitamin E": 0.18,
+        "Vitamin B-6": 0.040499999999999994,
+        "Vitamin B-12": 0.0,
+        "Folate, total": 1.5,
+        "Zinc": 0.03,
+        "Magnesium": 5.0,
+        "Potassium": 102.0,
+        "Phosphorus": 9.5
+      },
+      "source_ids": [
+        9,
+        22
+      ],
+      "source_names": [
+        "Apple, raw",
+        "Apples, raw, golden delicious, with skin"
+      ],
+      "portion_gram_weights": [
+        109.0
+      ],
+      "portion_unit_names": [
+        "undetermined",
+        "undetermined"
+      ],
+      "count": 2
+    },
+    {
+      "id": 5,
+      "generic_name": "Apple Pie",
+      "food_category": "Baked Products",
+      "nutrients": {
+        "Energy": 292.35245379222437,
+        "Carbohydrate": 39.083333333333336,
+        "Protein": 2.6999999999999997,
+        "Total fat": 14.626666666666667,
+        "Fiber": 2.066666666666667,
+        "Sugars, Total": null,
+        "Sodium": 253.66666666666666,
+        "Calcium": 13.333333333333334,
+        "Iron": 1.1900000000000002,
+        "Cholesterol": 2.3333333333333335,
+        "Fatty acids, total saturated": 3.6156666666666673,
+        "Vitamin A, RAE": 18.666666666666668,
+        "Vitamin C": 1.1666666666666667,
+        "Vitamin D (D2 + D3)": 0.06666666666666667,
+        "Vitamin E": 1.0066666666666666,
+        "Vitamin B-6": 0.04933333333333333,
+        "Vitamin B-12": 0.02666666666666667,
+        "Folate, total": 23.666666666666668,
+        "Zinc": 0.21333333333333335,
+        "Magnesium": 8.333333333333334,
+        "Potassium": 74.66666666666667,
+        "Phosphorus": 35.666666666666664
+      },
+      "source_ids": [
+        10,
+        14,
+        15
+      ],
+      "source_names": [
+        "Pie, apple, prepared from recipe",
+        "Pie, apple",
+        "Pie, apple, fast food"
+      ],
+      "portion_gram_weights": [
+        28.35
+      ],
+      "portion_unit_names": [
+        "undetermined",
+        "undetermined",
+        "undetermined"
+      ],
+      "count": 3
+    },
+    {
+      "id": 6,
+      "generic_name": "Lemon Juice",
+      "food_category": "Fruits and Fruit Juices",
+      "nutrients": {
+        "Energy": 20.687380497131933,
+        "Carbohydrate": 6.58,
+        "Protein": 0.375,
+        "Total fat": 0.1975,
+        "Fiber": 0.39999999999999997,
+        "Sugars, Total": null,
+        "Sodium": 6.75,
+        "Calcium": 7.0,
+        "Iron": 0.075,
+        "Cholesterol": 0.0,
+        "Fatty acids, total saturated": 0.03675,
+        "Vitamin A, RAE": 0.5,
+        "Vitamin C": 32.6,
+        "Vitamin D (D2 + D3)": 0.0,
+        "Vitamin E": 0.17,
+        "Vitamin B-6": 0.04375,
+        "Vitamin B-12": 0.0,
+        "Folate, total": 17.25,
+        "Zinc": 0.085,
+        "Magnesium": 6.25,
+        "Potassium": 104.5,
+        "Phosphorus": 8.25
+      },
+      "source_ids": [
+        23,
+        26,
+        27,
+        28
+      ],
+      "source_names": [
+        "Lemon juice, raw",
+        "Lemon juice, 100%, NS as to form",
+        "Lemon juice, 100%, canned or bottled",
+        "Lemon juice, 100%, freshly squeezed"
+      ],
+      "portion_gram_weights": [
+        244.0
+      ],
+      "portion_unit_names": [
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined"
+      ],
+      "count": 4
+    }
+  ]
+}
