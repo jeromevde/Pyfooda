@@ -11,17 +11,21 @@ Return EXACTLY one line, and nothing else:
 Hard constraints:
 - Prefer ADD over CREATE when reasonably similar.
 - ADD id must be one of the shown candidate ids.
+- Use the nutrient fingerprint in the prompt as a primary signal; avoid merging items with clearly different calories/macros.
 - Generic names must be short, generic, title case, no brands, no commas, no product adjectives.
 - Never output raw USDA names as CREATE names.
 - IGNORE only if clearly non-food/unclear/supplement/baby/pet.
 
-Merge policy (aggressive):
-- Brand/flavor variants should merge.
-- Keep distinctions only when nutritionally/semantically important:
+Merge policy (aggressive but nutrition-aware):
+- Brand variants should merge when nutrients/use are similar.
+- Flavored fruit yogurts may merge into one flavored-yogurt bucket (apple/cherry/strawberry can merge).
+- Keep distinctions when nutrition changes materially:
   1) Dry vs cooked legumes
   2) Fat-level differences for yogurt (whole/low-fat/nonfat/greek)
   3) Composite dish vs plain ingredient (e.g., Ham Sub != Ham)
   4) Lemon juice vs lemonade/soda drinks
+  5) Pizza types MUST stay separate by category/style (e.g., cheese pizza, meat pizza, veggie pizza, deep-dish/frozen etc.) when nutrients differ noticeably
+- Do NOT collapse all pizzas into a generic "Pizza" group.
 
 Canonical groups for this domain (reuse these names when applicable):
 - Dry Lentils
