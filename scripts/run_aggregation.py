@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Standalone batched aggregation runner (multi-item per LLM call).
+Standalone aggregation runner (batched multi-item LLM calls).
 
 Example:
-  python scripts/run_batching_pipeline.py --mode test --batch-size 8
-  python scripts/run_batching_pipeline.py --mode full --batch-size 8 --resume
+  python scripts/run_aggregation.py --mode test --batch-size 8
+  python scripts/run_aggregation.py --mode full --batch-size 8 --resume
 """
 
 from __future__ import annotations
@@ -203,11 +203,10 @@ def run_batched(
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Run batched aggregation pipeline")
+    parser = argparse.ArgumentParser(description="Run aggregation pipeline (batched)")
     parser.add_argument("--mode", choices=["test", "full"], default="test")
     parser.add_argument("--model", default="google/gemini-2.0-flash-lite-001")
     parser.add_argument("--batch-size", type=int, default=8)
-    parser.add_argument("--provider", choices=["openrouter", "ollama", "together"], default="openrouter")
     parser.add_argument("--base-url", default=None)
     parser.add_argument("--api-key", default=None)
     parser.add_argument("--search-top-k", type=int, default=8)
@@ -224,12 +223,10 @@ def main():
     repo_root = Path(__file__).resolve().parents[1]
     input_path, output_path, checkpoint_dir = _resolve_input_output(repo_root, args.mode, args.output, args.checkpoint_dir)
 
-    if args.provider == "ollama":
-        args.base_url = args.base_url or "http://localhost:11434/v1"
-        args.api_key = args.api_key or "ollama"
-    elif args.provider == "together":
-        args.base_url = args.base_url or "https://api.together.xyz/v1"
-        args.api_key = args.api_key or __import__("os").getenv("TOGETHER_API_KEY")
+    args.base_url = args.base_url or "https://openrouter.ai/api/v1"
+    args.api_key = args.api_key or os.getenv("OPENROUTER_API_KEY")
+    if not args.api_key:
+        raise ValueError("Missing OPENROUTER_API_KEY (or pass --api-key)")
 
     df = pd.read_csv(input_path)
 
@@ -264,7 +261,7 @@ def main():
     est_full_cost = est_full_calls * args.estimated_cost_per_call
     summary = {
         "mode": args.mode,
-        "provider": args.provider,
+        "provider": "openrouter",
         "model": args.model,
         "batch_size": args.batch_size,
         "input_rows": int(len(df if limit is None else df.iloc[:limit])),

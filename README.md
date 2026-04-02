@@ -16,11 +16,8 @@ pyfooda/                       # Installable package (end-user API)
 
 scripts/                       # Data pipeline
   build_fooddata.py            #   Step 1 — raw USDA CSV → fooddata.csv
-  aggregate.py                 #   Step 2 — fooddata.csv → foods_aggregated.json
-  run_batching_pipeline.py     #   standalone batched LLM pipeline (argparse)
-  run_together_pipeline.py     #   standalone Together streaming pipeline (argparse)
-  run_ollama_pipeline.py       #   standalone local Ollama streaming pipeline (argparse)
-  aggregator.py                #   aggregation engine (embedding search + LLM)
+  run_aggregation.py           #   single standalone batched pipeline (argparse)
+  aggregator.py                #   aggregation engine (search + LLM decision logic)
   aggregation_prompt.txt       #   tweakable LLM prompt
   nutrients_drv.py             #   nutrient definitions + DRVs
 
@@ -64,134 +61,85 @@ different LLM settings. Requires `pip install -r scripts/requirements.txt`.
 python scripts/build_fooddata.py ~/Downloads/FoodData_Central_csv_2024-10-31
 ```
 
-### Step 2 — Aggregate
+### Step 2 — Aggregate (single standalone script)
 
-The aggregator uses **sentence-transformers** (BAAI/bge-small-en-v1.5) +
-**FAISS** for semantic search, then sends each food (streaming, 1 item/call)
-to an LLM that decides CREATE / ADD / IGNORE / RENAME. Nutrients are averaged
-per 100g; all source portion sizes are preserved.
+Use only:
 
 ```bash
 export OPENROUTER_API_KEY="sk-or-..."
-
-# OpenRouter
-export OPENROUTER_API_KEY="sk-or-..."
-python scripts/aggregate.py test --timeout-seconds 240
-python scripts/aggregate.py full --timeout-seconds 240
-python scripts/aggregate.py full --resume
-
-# Local Ollama (OpenAI-compatible endpoint)
-python scripts/aggregate.py test --provider ollama --model qwen2.5:14b
-
-# Standalone batched pipeline (OpenRouter/Together/Ollama)
-python scripts/run_batching_pipeline.py --mode test --batch-size 8 --provider openrouter
-
-# Standalone Together streaming pipeline
-python scripts/run_together_pipeline.py --mode test --model Qwen/Qwen2.5-7B-Instruct-Turbo
-
-# Standalone local Ollama streaming pipeline
-python scripts/run_ollama_pipeline.py --mode test --model qwen2.5:3b
+python scripts/run_aggregation.py --mode test --batch-size 16
+python scripts/run_aggregation.py --mode full --limit 1000 --batch-size 16
 ```
 
-**Interrupt anytime** — the checkpoint uses the same `{meta, foods}`
-JSON format as the output, so you can open it, inspect the results,
-and resume when ready.
+Why batched mode only:
+- streaming variants were tested and kept as historical trace below,
+- but were slower / less reliable for this repo.
+
+#### Batch-size strategy
+
+For `google/gemini-2.0-flash-lite-001`, practical context fit and quality/speed tradeoff on the 244-item curated test set:
+- `batch_size=8`  → slower, more calls
+- `batch_size=24` → fastest but higher parse/noise risk
+- **`batch_size=16` (recommended)** → good quality with strong speed/cost
 
 ### Quality controls
 
 | Mechanism | Purpose |
 |-----------|---------|
-| Foundation lock | Foundation foods create groups; branded items can't dilute them |
+| Foundation lock | Foundation foods create groups; branded items cannot dilute them |
 | Energy gate | `max(3.5 × MAD, 200 kcal)` rejects nutritional outliers |
 | Embedding dedup | Cosine > 0.88 auto-merges duplicate CREATE names |
-| Streaming decisions | Exactly one food per LLM call (no intra-batch confusion possible) |
-| ADD-id guard | ADD ids must be from shown nearest-neighbor candidates |
+| ADD-id guard | ADD ids must come from shown nearest neighbors |
+| Intra-batch naming rule | model must reuse the exact same CREATE name for same target group |
 
-### Tuning
+### Expected aggregation shape for the curated test dataset
 
-Edit `scripts/aggregation_prompt.txt` to change LLM behavior, e.g.:
-*"Merge all yogurt flavors"*, *"Keep organic separate"*, *"Ignore baby food"*.
+Reference intent (used to evaluate quality):
 
-## Benchmark trace (2026-03-26)
+- **Yogurt family**: nonfat / whole-plain / greek / flavored as distinct practical groups
+- **Apple family**: fresh apple separate from pie/dessert forms
+- **Lentil family**: dry lentils separate from cooked lentils
+- **Lemon family**: lemon juice separate from lemonade/drink-mix style products
+- **Ham family**: ham variants grouped when nutritionally aligned
 
-All runs used streaming mode (1 item/call), same prompt, and same test set.
+### Experiments in this PR
 
-### Full curated test set (244 items)
+#### A) Curated test set (244 items), OpenRouter + Gemini Flash-Lite
 
-| Provider / Model | Time | Final groups | Created | Added | Ignored | Parse errors | Renamed |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| OpenRouter `google/gemini-2.0-flash-lite-001` | ~4m10s | 32 | 36 | 175 | 33 | 0 | 80 |
-| Ollama `qwen2.5:3b` | ~27m | 58 | 60 | 151 | 33 | 23 | 43 |
+| Batch size | Time | API calls | Final groups | Parse errors | Estimated full cost (from test metrics) |
+|---|---:|---:|---:|---:|---:|
+| 8  | 138.78s | 31 | 18 | 23 | ~$18.80 |
+| 16 | 107.56s | 16 | 17 | 8  | ~$9.70  |
+| 24 | 85.73s  | 11 | 19 | 26 | ~$6.67  |
 
-### Controlled speed sample (30 items)
+**Finding:** `batch_size=16` is the best usable balance for a production pass.
 
-| Provider / Model | Real time | Final groups | Parse errors |
-|---|---:|---:|---:|
-| OpenRouter `google/gemini-2.0-flash-lite-001` | 45.63s | 10 | 0 |
-| Ollama `qwen2.5:3b` | 137.07s | 5 | 11 |
+#### B) First 1000 rows of real database, OpenRouter + Gemini Flash-Lite, batch=16
 
-### Expected aggregation shape for the test dataset (evaluation target)
+- Processed: 1000
+- Time: 244.79s
+- API calls: 63
+- Final groups: 513
+- Parse errors: 4
+- Estimated full runtime: ~20h07m
+- Estimated full cost: ~$9.32 (using configured per-call estimate)
 
-To keep future model/prompt changes measurable, treat the following as the **reference grouping intent** for the curated test set.
+### Historical trace (streaming attempts, not kept as active pipeline)
 
-#### Core groups we expect to emerge
+| Variant | 30-item speed | Quality summary | Cost expectation |
+|---|---:|---|---:|
+| Together streaming (`Qwen2.5-7B-Turbo`) | ~26.7s | usable but more aggressive merges | higher (~$207 full est. with prior assumptions) |
+| Ollama local streaming (`qwen2.5:3b`) | ~101s | slower + noisier labels/parse behavior | $0 API, but low throughput |
 
-- **Yogurt family**
-  - Nonfat yogurt
-  - Whole milk / plain yogurt
-  - Greek yogurt
-  - Flavored/sweetened yogurt (separate from plain when clearly dessert-like)
-- **Apple family**
-  - Raw/fresh apples
-  - Apple pie / sweetened baked apple dessert (separate from fresh fruit)
-- **Lentil family**
-  - Dry lentils (uncooked)
-  - Cooked lentils (separate preparation state)
-- **Lemon family**
-  - Lemon juice
-  - Lemon drink mix / lemonade-style mix (separate from pure juice)
-- **Ham family**
-  - Ham / canned ham entries grouped together when nutritionally aligned
-
-#### Quality checks against this target
-
-- Group names should be short, canonical, and human-readable.
-- No instruction leakage or concatenated garbage names in output labels.
-- Separation should follow **use/nutrition semantics** (e.g., pie ≠ fresh fruit, dry ≠ cooked).
-- Merges should avoid collapsing distinct preparation types into one generic group.
-
-This reference is intentionally practical (not academically perfect): it exists so future AI runs can be compared consistently on stability and usefulness.
-
-### Standalone pipeline benchmarks (2026-03-29, 30-item test set)
-
-#### Three consolidated versions (cost + speed + subjective quality)
-
-| Pipeline | Provider | Model | Time | API calls | Estimated cost (30 items) | Estimated cost (full, from test metrics) | Subjective quality | Notes |
-|---|---|---|---:|---:|---:|---:|---|---|
-| Batching | OpenRouter | `google/gemini-2.0-flash-lite-001` | 6.59s | 4 | ~$0.002 (est.) | ~$19.73 (est.) | **Good** | Best balance (cheap + fast + stable grouping) |
-| Together streaming | Together | `Qwen/Qwen2.5-7B-Instruct-Turbo` | 26.72s | 30 | ~$0.021 (est.) | ~$207.20 (est.) | **Good/OK** | Reliable + available serverless model |
-| Local streaming | Ollama (local) | `qwen2.5:3b` | 101.12s | 30 | ~0 USD (local) | $0 API (local) | **OK/Fair** | Slowest + noisier parsing, but fully local |
-
-#### Additional model probe notes
-
-| Provider | Model | Outcome |
-|---|---|---|
-| OpenRouter | `openai/gpt-4o-mini` | very fast (4.70s) but over-merged on this sample |
-| Together | `meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo` | not available on account (`model_not_available`) |
+Conclusion from trace: streaming was explored, benchmarked, and documented, but batched OpenRouter is more practical for a usable database.
 
 ### Stored result artifacts
 
-- Previous OpenRouter/Ollama traces:
-  - `tests/test_aggregated.json`, `tests/test_aggregated.csv`
-  - `tests/test_aggregated_ollama.json`, `tests/test_aggregated_ollama.csv`
-  - `tests/test_aggregated_or_30.json`, `tests/test_aggregated_or_30.csv`
-  - `tests/test_aggregated_ollama_30b.json`, `tests/test_aggregated_ollama_30b.csv`
-- New standalone-pipeline traces:
-  - `tests/bench_batch_or_gemini_flashlite_30.json/.csv/.metrics.json`
-  - `tests/bench_batch_or_gpt4omini_30.json/.csv/.metrics.json`
-  - `tests/bench_together_qwen25_7b_30.json/.csv/.metrics.json`
-  - `tests/bench_together_llama31_8b_30.json/.csv/.metrics.json`
-  - `tests/bench_ollama_qwen25_3b_30.json/.csv/.metrics.json`
+- `tests/exp_test244_b8.json/.csv/.metrics.json`
+- `tests/exp_test244_b16.json/.csv/.metrics.json`
+- `tests/exp_test244_b24.json/.csv/.metrics.json`
+- `tests/exp_real1000_b16.json/.csv/.metrics.json`
+- historical streaming artifacts remain for reference (`tests/bench_*`)
 
 ## Output format
 
