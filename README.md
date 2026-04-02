@@ -114,7 +114,7 @@ Reference intent (used to evaluate quality):
 
 **Finding:** `batch_size=16` is the best usable balance for a production pass.
 
-#### B) First 1000 rows of real database, OpenRouter + Gemini Flash-Lite, batch=16
+#### B) First 1000 rows of real database, OpenRouter + Gemini Flash-Lite, batch=16 (offset 0)
 
 - Processed: 1000
 - Time: 244.79s
@@ -123,6 +123,27 @@ Reference intent (used to evaluate quality):
 - Parse errors: 4
 - Estimated full runtime: ~20h07m
 - Estimated full cost: ~$9.32 (using configured per-call estimate)
+
+#### C) 1000-row slice at arbitrary offset (offset 5000), same config
+
+- Processed: 1000
+- Time: 139.25s
+- API calls: 63
+- Final groups: 407
+- Parse errors: 39
+- Estimated full runtime: ~11h27m
+- Estimated full cost: ~$9.32
+
+Assessment:
+- offset sampling is useful to avoid over-fitting to one contiguous block,
+- but this slice is materially harder (mixed prepared/meat/restaurant items), so parse errors jumped.
+- quality remained mostly readable (no major garbage names), but reliability dropped.
+
+Pipeline improvement priorities for high-quality production DB:
+1. **Strict JSON decision schema + repair retry** on parse fail (most direct parse-error reduction).
+2. **Adaptive batch size**: default 16, auto-fallback to 8 for “hard” batches after repeated parse errors.
+3. **Candidate compacting** (shorter prompt with top-k=5) to reduce context pressure in mixed-category chunks.
+4. **Light post-normalization pass** for near-duplicate labels in dense categories (restaurant/mixed dishes).
 
 ### Historical trace (streaming attempts, not kept as active pipeline)
 

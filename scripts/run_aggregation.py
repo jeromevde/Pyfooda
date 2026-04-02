@@ -99,6 +99,7 @@ def run_batched(
     agg: FoodAggregator,
     *,
     limit: int | None,
+    offset: int,
     resume_from: int,
     batch_size: int,
 ):
@@ -106,6 +107,8 @@ def run_batched(
     df = df[df["foodName"].notna() & (df["foodName"].astype(str) != "nan")].reset_index(drop=True)
     df["_dtype_rank"] = df["data_type"].apply(_data_type_rank)
     df = df.sort_values(["_dtype_rank", "food_category"], ascending=[True, True], na_position="last").reset_index(drop=True)
+    if offset:
+        df = df.iloc[offset:].reset_index(drop=True)
     if limit:
         df = df.iloc[:limit]
 
@@ -215,6 +218,7 @@ def main():
     parser.add_argument("--checkpoint-dir", default=None)
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--limit", type=int, default=None)
+    parser.add_argument("--offset", type=int, default=0, help="skip first N sorted rows before processing")
     parser.add_argument("--timeout-seconds", type=int, default=600)
     parser.add_argument("--estimate-full-size", type=int, default=296000)
     parser.add_argument("--estimated-cost-per-call", type=float, default=0.0, help="optional rough USD estimate per LLM API call")
@@ -250,7 +254,7 @@ def main():
     if args.mode == "full":
         limit = limit or None
 
-    result = run_batched(agg, limit=limit, resume_from=resume_from, batch_size=args.batch_size)
+    result = run_batched(agg, limit=limit, offset=args.offset, resume_from=resume_from, batch_size=args.batch_size)
     agg.save(str(output_path))
 
     rate = result["processed"] / result["elapsed_seconds"] if result["elapsed_seconds"] > 0 else 0
@@ -264,6 +268,7 @@ def main():
         "provider": "openrouter",
         "model": args.model,
         "batch_size": args.batch_size,
+        "offset": args.offset,
         "input_rows": int(len(df if limit is None else df.iloc[:limit])),
         "processed": result["processed"],
         "api_calls": result["api_calls"],
