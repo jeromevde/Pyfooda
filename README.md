@@ -147,6 +147,7 @@ Conclusion from trace: streaming was explored, benchmarked, and documented, but 
 ### Stored result artifacts
 
 - `tests/exp_latest_1000_off5000_b16.json/.csv/.metrics.json`
+- `tests/exp_latest_1000_off5000_b16.groups.txt` (quick quality review format: `group: item1, item2, ...`)
 
 ## Output format
 

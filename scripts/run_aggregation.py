@@ -257,6 +257,23 @@ def main():
     result = run_batched(agg, limit=limit, offset=args.offset, resume_from=resume_from, batch_size=args.batch_size)
     agg.save(str(output_path))
 
+    # Human-review friendly grouping trace: Group Name: item1, item2, ...
+    groups_txt = output_path.with_suffix('.groups.txt')
+    lines = []
+    for entry in sorted(agg.db.values(), key=lambda e: str(e.get('generic_name', '')).lower()):
+        gname = entry.get('generic_name', 'Unknown Group')
+        src_names = entry.get('source_names', [])
+        unique_src = []
+        seen = set()
+        for s in src_names:
+            t = str(s).strip()
+            if not t or t.lower() in seen:
+                continue
+            seen.add(t.lower())
+            unique_src.append(t)
+        lines.append(f"{gname}: " + ", ".join(unique_src))
+    groups_txt.write_text("\n".join(lines) + "\n")
+
     rate = result["processed"] / result["elapsed_seconds"] if result["elapsed_seconds"] > 0 else 0
     eta_seconds = args.estimate_full_size / rate if rate > 0 else math.inf
 
@@ -289,6 +306,7 @@ def main():
     print("\nBatching metrics:")
     print(json.dumps(summary, indent=2))
     print(f"Saved metrics -> {metrics_path}")
+    print(f"Saved groups  -> {groups_txt}")
 
 
 if __name__ == "__main__":
