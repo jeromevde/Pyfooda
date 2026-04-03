@@ -17,8 +17,6 @@ pyfooda/                       # Installable package (end-user API)
 scripts/                       # Data pipeline
   build_fooddata.py            #   Step 1 — raw USDA CSV → fooddata.csv
   run_aggregation.py           #   single standalone batched pipeline (argparse)
-  aggregator.py                #   aggregation engine (search + LLM decision logic)
-  aggregation_prompt.txt       #   tweakable LLM prompt
   nutrients_drv.py             #   nutrient definitions + DRVs
 
 docs/                          # Static website (GitHub Pages)
@@ -117,11 +115,11 @@ Reference intent (used to evaluate quality):
 #### B) Real database slice (1000 rows, offset 5000), OpenRouter + Gemini Flash-Lite, batch=16
 
 - Processed: 1000
-- Time: 148.07s
+- Time: 261.16s
 - API calls: 63
-- Final groups: 565
-- Parse errors: 35
-- Estimated full runtime: ~12h10m
+- Final groups: 550
+- Parse errors: 12
+- Estimated full runtime: ~21h28m
 - Estimated full cost: ~$9.32
 
 Assessment:

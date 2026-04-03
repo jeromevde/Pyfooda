@@ -13,6 +13,7 @@ import argparse
 import json
 import math
 import os
+import tempfile
 import time
 from pathlib import Path
 
@@ -26,6 +27,42 @@ from aggregator import (
     _nutrient_fingerprint,
     _parse_llm_decision,
 )
+
+DEFAULT_PROMPT = """You are curating a compact food database for everyday tracking.
+
+You receive ONE incoming food item and nearest existing entries.
+Return EXACTLY one line, and nothing else:
+
+[<idx>] CREATE <generic_name>
+[<idx>] ADD <id>
+[<idx>] RENAME <id> <new_name_for_existing> CREATE <new_name_for_incoming>
+[<idx>] IGNORE
+
+Hard constraints:
+- Prefer ADD over CREATE when reasonably similar.
+- ADD id must be one of the shown candidate ids.
+- Use the nutrient fingerprint in the prompt as a primary signal; avoid merging items with clearly different calories/macros.
+- Generic names must be short, generic, title case, no brands, no commas.
+- Strip brand/proprietary style tokens from group names (e.g., prefer \"Fat Free Salad Dressing\" over \"Thousand Island Dressing Fat Free\").
+- Target name length: 2-4 words (hard max 6 words). If longer, normalize to a shorter canonical label.
+- Never output raw USDA names as CREATE names.
+- IGNORE only if clearly non-food/unclear/supplement/baby/pet.
+
+Merge policy (aggressive but nutrition-aware):
+- Brand variants should merge when nutrients/use are similar.
+- Flavored fruit yogurts may merge into one flavored-yogurt bucket (apple/cherry/strawberry can merge).
+- Keep distinctions when nutrition changes materially:
+  1) Dry vs cooked legumes
+  2) Fat-level differences for yogurt (whole/low-fat/nonfat/greek)
+  3) Composite dish vs plain ingredient (e.g., Ham Sub != Ham)
+  4) Lemon juice vs lemonade/soda drinks
+  5) Pizza types MUST stay separate by category/style (e.g., cheese pizza, meat pizza, veggie pizza, deep-dish/frozen etc.) when nutrients differ noticeably
+- Do NOT collapse all pizzas into a generic \"Pizza\" group.
+- Do NOT create over-specific single-SKU style names; choose a broader nutrition-relevant generic bucket.
+- Normalize trivial wording variants into one canonical name (hyphenation/singular/plural/word order), e.g. \"Non Dairy\" and \"Non-Dairy\" must be the same group.
+
+Return one decision line only.
+"""
 
 
 def _normalized_name_key(name: str) -> str:
@@ -282,6 +319,14 @@ def main():
 
     df = pd.read_csv(input_path)
 
+    prompt_path = args.prompt
+    tmp_prompt = None
+    if not prompt_path:
+        tmp_prompt = tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False)
+        tmp_prompt.write(DEFAULT_PROMPT)
+        tmp_prompt.flush()
+        prompt_path = tmp_prompt.name
+
     agg = FoodAggregator(
         df,
         model=args.model,
@@ -289,7 +334,7 @@ def main():
         base_url=args.base_url,
         batch_size=args.batch_size,
         search_top_k=args.search_top_k,
-        prompt_path=args.prompt,
+        prompt_path=prompt_path,
         checkpoint_dir=str(checkpoint_dir),
         timeout_seconds=args.timeout_seconds,
     )
@@ -355,6 +400,12 @@ def main():
     print(json.dumps(summary, indent=2))
     print(f"Saved metrics -> {metrics_path}")
     print(f"Saved groups  -> {groups_txt}")
+
+    if tmp_prompt is not None:
+        try:
+            os.unlink(tmp_prompt.name)
+        except OSError:
+            pass
 
 
 if __name__ == "__main__":
