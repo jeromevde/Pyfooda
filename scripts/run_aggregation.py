@@ -203,6 +203,43 @@ def _parse_group_only(line: str, expected_idx: int):
     return None
 
 
+def _parse_json_line(raw: str, expected_idx: int):
+    try:
+        cleaned = raw.strip()
+        if cleaned.startswith('```'):
+            cleaned = '\n'.join(cleaned.split('\n')[1:])
+        if cleaned.endswith('```'):
+            cleaned = '\n'.join(cleaned.split('\n')[:-1])
+        obj = json.loads(cleaned)
+    except Exception:
+        return None
+
+    if isinstance(obj, list):
+        for it in obj:
+            if isinstance(it, dict) and int(it.get('idx', -1)) == expected_idx:
+                obj = it
+                break
+        else:
+            return None
+
+    if not isinstance(obj, dict):
+        return None
+    idx_val = int(obj.get('idx', -1))
+    if expected_idx >= 0 and idx_val != expected_idx:
+        return None
+
+    action = str(obj.get('action', '')).upper()
+    if action == 'IGNORE':
+        return {'idx': idx_val, 'action': 'IGNORE'}
+    if action == 'ADD' and obj.get('target_id') is not None:
+        return {'idx': idx_val, 'action': 'ADD', 'target_id': int(obj['target_id'])}
+    if action == 'CREATE' and obj.get('name'):
+        return {'idx': idx_val, 'action': 'CREATE', 'name': str(obj['name'])}
+    if action == 'GROUP' and obj.get('name'):
+        return {'idx': idx_val, 'action': 'CREATE', 'name': str(obj['name'])}
+    return None
+
+
 def run_batched(
     agg: FoodAggregator,
     *,
@@ -252,14 +289,19 @@ def run_batched(
         user_msg = "\n\n".join(_build_item_prompt(food) for _, _, food in chunk)
         if decision_mode == "group":
             user_msg += (
-                "\n\nReturn exactly one decision per item, format: [idx] GROUP <generic_name> | IGNORE"
-                "\nGROUP means: assign this item to a generic group label."
-                "\nThe parser will add to existing group if label exists, otherwise create new group."
+                "\n\nReturn exactly one decision per item as strict JSON object lines."
+                "\nAllowed JSON schemas:"
+                "\n{\"idx\": <idx>, \"action\": \"GROUP\", \"name\": \"<generic_name>\"}"
+                "\n{\"idx\": <idx>, \"action\": \"IGNORE\"}"
                 "\nUse the EXACT same GROUP name for items that belong together in this batch."
             )
         else:
             user_msg += (
-                "\n\nReturn exactly one decision per item, format: [idx] CREATE <name> | ADD <id> | IGNORE"
+                "\n\nReturn exactly one decision per item as strict JSON object lines."
+                "\nAllowed JSON schemas:"
+                "\n{\"idx\": <idx>, \"action\": \"CREATE\", \"name\": \"<generic_name>\"}"
+                "\n{\"idx\": <idx>, \"action\": \"ADD\", \"target_id\": <id>}"
+                "\n{\"idx\": <idx>, \"action\": \"IGNORE\"}"
                 "\nImportant: if multiple incoming items should end up in the SAME group, use the EXACT same CREATE name text for all of them."
                 "\nDo not invent slightly different synonyms for the same target group in one batch."
             )
@@ -283,13 +325,17 @@ def run_batched(
             i = end
             continue
 
-        # parse per line by idx, fallback per-item parse on whole raw
+        # parse per line JSON first; fallback to legacy parser only for backward compatibility
         line_map = {}
         for ln in raw.splitlines():
             ln = ln.strip()
             if not ln:
                 continue
-            if ln.startswith("[") and "]" in ln:
+            parsed = _parse_json_line(ln, expected_idx=-1)
+            # expected_idx=-1 means disabled strict check in this stage; we parse idx later
+            if parsed and parsed.get('idx') is not None:
+                line_map[int(parsed['idx'])] = ln
+            elif ln.startswith("[") and "]" in ln:
                 try:
                     idx = int(ln[1:ln.index("]")])
                     line_map[idx] = ln
@@ -300,7 +346,11 @@ def run_batched(
         for idx, row, food in chunk:
             decision = None
             if idx in line_map:
-                decision = _parse_group_only(line_map[idx], idx) if decision_mode == "group" else _parse_llm_decision(line_map[idx], idx)
+                decision = _parse_json_line(line_map[idx], idx)
+                if decision is None:
+                    decision = _parse_group_only(line_map[idx], idx) if decision_mode == "group" else _parse_llm_decision(line_map[idx], idx)
+            if decision is None:
+                decision = _parse_json_line(raw, idx)
             if decision is None:
                 decision = _parse_group_only(raw, idx) if decision_mode == "group" else _parse_llm_decision(raw, idx)
             if decision is None:
