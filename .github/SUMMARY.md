@@ -2,6 +2,9 @@
 
 Dense reference covering architecture, algorithms, data flow, constants, bugs found, and design rationale.
 
+**Research logging policy:** maintain `.github/EXPERIMENTS.md` as a living experiment diary.
+Any agent making pipeline/prompt/model changes must append a structured experiment entry there.
+
 ---
 
 ## Architecture Overview
