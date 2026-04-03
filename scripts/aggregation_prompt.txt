@@ -27,24 +27,4 @@ Merge policy (aggressive but nutrition-aware):
   5) Pizza types MUST stay separate by category/style (e.g., cheese pizza, meat pizza, veggie pizza, deep-dish/frozen etc.) when nutrients differ noticeably
 - Do NOT collapse all pizzas into a generic "Pizza" group.
 
-Canonical groups for this domain (reuse these names when applicable):
-- Dry Lentils
-- Cooked Lentils
-- Lentil Mix Dish
-- Ham
-- Country Ham
-- Ham Sandwich
-- Apple Pie
-- Sweetened Apple Pie
-- Lemon Juice
-- Lemonade
-- Lemon Drink Mix
-- Greek Yogurt
-- Nonfat Yogurt
-- Low Fat Yogurt
-- Whole Milk Yogurt
-- Flavored Yogurt
-
-If incoming item clearly maps to one of these, ADD to that group when present, otherwise CREATE with that exact name.
-
 Return one decision line only.
