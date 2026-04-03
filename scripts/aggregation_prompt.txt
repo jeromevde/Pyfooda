@@ -13,6 +13,7 @@ Hard constraints:
 - ADD id must be one of the shown candidate ids.
 - Use the nutrient fingerprint in the prompt as a primary signal; avoid merging items with clearly different calories/macros.
 - Generic names must be short, generic, title case, no brands, no commas.
+- Strip brand/proprietary style tokens from group names (e.g., prefer "Fat Free Salad Dressing" over "Thousand Island Dressing Fat Free").
 - Target name length: 2-4 words (hard max 6 words). If longer, normalize to a shorter canonical label.
 - Keep nutritionally meaningful qualifiers when they define the product class (e.g., Low Sodium, Sugar Free, High Protein, Nonfat).
 - Prefer consumer-meaningful generic labels over narrow source wording (e.g., avoid "Corn Cakes" if it is nutritionally a low-sodium chips/crisps product).

@@ -28,6 +28,47 @@ from aggregator import (
 )
 
 
+def _normalized_name_key(name: str) -> str:
+    import re
+    s = str(name).strip().lower()
+    s = re.sub(r"[^a-z0-9\s]", " ", s)
+    s = re.sub(r"\s+", " ", s).strip()
+    return s
+
+
+def _sanitize_generic_name(name: str) -> str:
+    import re
+    s = re.sub(r"\s+", " ", str(name)).strip()
+    # hard cap to reduce overly specific labels
+    words = s.split()
+    if len(words) > 6:
+        s = " ".join(words[:6])
+
+    # normalize dressing labels to generic class when needed
+    low = s.lower()
+    if "dressing" in low and "salad dressing" not in low:
+        qualifier = ""
+        for q in ["fat free", "low fat", "reduced fat", "light"]:
+            if q in low:
+                qualifier = q.title() + " "
+                break
+        s = f"{qualifier}Salad Dressing".strip()
+
+    return s
+
+
+def _find_existing_id_by_name(agg: FoodAggregator, candidate: str):
+    key = _normalized_name_key(candidate)
+    # fast path: exact mapping
+    if key in agg._name_to_id:
+        return agg._name_to_id[key]
+    # fallback scan to catch legacy keys
+    for k, v in agg._name_to_id.items():
+        if _normalized_name_key(k) == key:
+            return v
+    return None
+
+
 def _resolve_input_output(repo_root: Path, mode: str, output: str | None, checkpoint_dir: str | None):
     default_input = repo_root / "pyfooda/data/fooddata.csv"
     default_output = repo_root / "tests/batch_test_aggregated.json" if mode == "test" else repo_root / "pyfooda/data/foods_aggregated_batch.json"
@@ -45,21 +86,24 @@ def _resolve_input_output(repo_root: Path, mode: str, output: str | None, checkp
 def _apply_decision(agg: FoodAggregator, food: dict, row: pd.Series, decision: dict, create_aliases: dict[str, str] | None = None):
     name = food["name"]
     if decision["action"] == "CREATE":
-        create_name = decision.get("name", name)
+        create_name = _sanitize_generic_name(decision.get("name", name))
         if create_aliases is not None:
-            key = create_name.strip().lower()
+            key = _normalized_name_key(create_name)
             create_name = create_aliases.setdefault(key, create_name)
-        name_key = create_name.strip().lower()
-        if name_key in agg._name_to_id:
-            existing_id = agg._name_to_id[name_key]
+        existing_id = _find_existing_id_by_name(agg, create_name)
+        if existing_id is not None:
             result = agg._do_add(existing_id, row)
             if result == "ok":
                 agg.stats["added"] += 1
             else:
                 agg._do_create(create_name, row)
+                # register normalized key for stronger dedup gateway
+                agg._name_to_id[_normalized_name_key(create_name)] = agg._next_id - 1
                 agg.stats["created"] += 1
         else:
             agg._do_create(create_name, row)
+            # register normalized key for stronger dedup gateway
+            agg._name_to_id[_normalized_name_key(create_name)] = agg._next_id - 1
             agg.stats["created"] += 1
 
     elif decision["action"] == "ADD":
@@ -82,10 +126,14 @@ def _apply_decision(agg: FoodAggregator, food: dict, row: pd.Series, decision: d
             elif result == "foundation_locked":
                 agg.stats["ignored"] += 1
             else:
-                agg._do_create(target_name or name, row)
+                cname = _sanitize_generic_name(target_name or name)
+                agg._do_create(cname, row)
+                agg._name_to_id[_normalized_name_key(cname)] = agg._next_id - 1
                 agg.stats["created"] += 1
         else:
-            agg._do_create(target_name or name, row)
+            cname = _sanitize_generic_name(target_name or name)
+            agg._do_create(cname, row)
+            agg._name_to_id[_normalized_name_key(cname)] = agg._next_id - 1
             agg.stats["created"] += 1
 
     elif decision["action"] == "IGNORE":
