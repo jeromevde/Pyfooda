@@ -12,7 +12,9 @@ Hard constraints:
 - Prefer ADD over CREATE when reasonably similar.
 - ADD id must be one of the shown candidate ids.
 - Use the nutrient fingerprint in the prompt as a primary signal; avoid merging items with clearly different calories/macros.
-- Generic names must be short, generic, title case, no brands, no commas, no product adjectives.
+- Generic names must be short, generic, title case, no brands, no commas.
+- Keep nutritionally meaningful qualifiers when they define the product class (e.g., Low Sodium, Sugar Free, High Protein, Nonfat).
+- Prefer consumer-meaningful generic labels over narrow source wording (e.g., avoid "Corn Cakes" if it is nutritionally a low-sodium chips/crisps product).
 - Never output raw USDA names as CREATE names.
 - IGNORE only if clearly non-food/unclear/supplement/baby/pet.
 
@@ -26,5 +28,6 @@ Merge policy (aggressive but nutrition-aware):
   4) Lemon juice vs lemonade/soda drinks
   5) Pizza types MUST stay separate by category/style (e.g., cheese pizza, meat pizza, veggie pizza, deep-dish/frozen etc.) when nutrients differ noticeably
 - Do NOT collapse all pizzas into a generic "Pizza" group.
+- Do NOT create over-specific single-SKU style names; choose a broader nutrition-relevant generic bucket.
 
 Return one decision line only.
