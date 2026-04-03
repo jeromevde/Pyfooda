@@ -1,192 +1,188 @@
 Abalone: Abalone
-Adobo With Noodles: Adobo, with noodles
-Adobo With Rice: Adobo, with rice
+Adobo Noodles: Adobo, with noodles
+Adobo Rice: Adobo, with rice
 Air Popped Popcorn: Popcorn, air-popped, no butter added
-Almond Granola Bar: Snacks, granola bars, hard, almond
 Almond Milk Unsweetened: Almond milk, NFS, Almond milk, sweetened, Almond milk, unsweetened
-Almond Oil: Almond oil, Walnut oil, Wheat germ oil
-Almond Yogurt: Yogurt, almond milk
+Almond Milk Yogurt: Yogurt, almond milk
+Almond Oil: Almond oil, Olive oil, Peanut oil, Walnut oil, Wheat germ oil
 Atole: Atole, Atole de avena
 Atole Chocolate: Atole de chocolate
-Bacon Baked: Pork, cured, bacon, cooked, baked
 Bacon Beef Sticks: Bacon and beef sticks
-Bacon Fat Cooked: Pork, bacon, rendered fat, cooked
-Bacon Microwaved: Pork, cured, bacon, cooked, microwaved
+Bacon Cooked: Pork, cured, bacon, cooked, baked
+Bacon Microwaved: Pork, cured, bacon, cooked, microwaved, Bacon, turkey, microwaved
+Bacon Turkey Low Sodium: Bacon, turkey, low sodium
 Bacon Unprepared: Pork, cured, bacon, unprepared
-Baked Clams: Clams, baked or broiled
+Bagel Chips: Snacks, bagel chips, plain
 Baked Oysters: Oysters, baked or broiled
-Baked Potato Chips: Potato chips, baked, flavored, Potato chips, baked, plain
 Baked Scallops: Scallops, baked or broiled
+Baked Shrimp: Shrimp, baked or broiled
+Baked Shrimp Coated: Shrimp, baked or broiled, coated
+Banana Chips: Snacks, banana chips
 Banana Pudding: Banana pudding, Pudding, bread, Pudding, flavors other than chocolate, NFS
 Barbecue Chicken: Barbecue chicken
-Barbecue Potato Chips: Potato chips, barbecue flavored
-Beef And Vegetables: Restaurant, Chinese, beef and vegetables
-Beef Bologna: Bologna, beef, Oscar Mayer, Bologna (beef)
-Beef Bologna Reduced Sodium: Beef, bologna, reduced sodium, Frankfurter, low sodium
-Beef Chopped Cured Smoked: Beef, chopped, cured, smoked
-Beef Dried: Beef, cured, dried
-Beef Jerky: Snacks, beef jerky, chopped and formed
-Beef Luncheon Meat Jellied: Beef, cured, luncheon meat, jellied, Corned beef loaf, jellied
-Beef Pastrami: Beef, cured, pastrami
-Beef Pork Bologna: Bologna, beef and pork, Mortadella, beef, pork
-Beef Ramen Bowl: Ramen bowl with beef
-Beef Sausage: Beef sausage, Polish sausage, Pork and beef sausage, Pork sausage, Sausage, NFS, Turkey or chicken and pork sausage, Vienna sausage, canned, Frankfurter, beef, heated, Frankfurter, beef, unheated, Frankfurter, meat, Frankfurter, meat, heated, Oscar Mayer, Wieners (beef franks), Sausage, beef, cured, cooked, smoked, Sausage, beef, fresh, cooked, Sausage, smoked link sausage, pork, Sausage, smoked link sausage, pork and beef
+Beef Bologna: Bologna, beef, Bologna, beef, low fat, Bologna, meat and poultry, Luncheon sausage, pork and beef, Oscar Mayer, Bologna (beef)
+Beef Chopped Cured: Beef, chopped, cured, smoked
+Beef Frankfurter Low Fat: Frankfurter, beef, low fat
+Beef Jerky: Beef, cured, dried
+Beef Jerky Chopped: Snacks, beef jerky, chopped and formed
+Beef Pork Bologna: Bologna, beef and pork, Bologna, beef and pork, low fat, Bologna, chicken, pork, beef, Bologna, chicken, turkey, pork, Bologna, pork, Bologna, pork and turkey, lite, Bologna, pork, turkey and beef
+Beef Sausage: Beef sausage, Polish sausage, Pork and beef sausage, Pork sausage, Sausage, NFS, Vienna sausage, canned, Frankfurter, beef, heated, Frankfurter, beef, unheated, Frankfurter, meat, Frankfurter, meat, heated, Liver sausage, liverwurst, pork, Oscar Mayer, Wieners (beef franks), Sausage, beef, cured, cooked, smoked, Sausage, beef, fresh, cooked, Sausage, smoked link sausage, pork, Sausage, smoked link sausage, pork and beef
 Beef Sausage With Cheese: Beef sausage with cheese, Cheesefurter, cheese smokie, pork, beef
-Beef Stick: Snacks, beef sticks, smoked
-Beerwurst Pork: Beerwurst, beer salami, pork
-Beerwurst Pork Beef: Beerwurst, beer salami, pork and beef, Beerwurst, pork and beef, Knackwurst, knockwurst, pork, beef
+Beef Sticks Smoked: Snacks, beef sticks, smoked
+Beef Vegetables Chinese: Restaurant, Chinese, beef and vegetables
+Beerwurst: Beerwurst, beer salami, pork, Beerwurst, beer salami, pork and beef, Beerwurst, pork and beef
 Berliner Sausage: Sausage, Berliner, pork, beef
-Berry Bar: Snack, Mixed Berry Bar
-Bibimbap: Bibimbap, Korean
-Biryani With Meat: Biryani with meat
-Biscayne Codfish: Biscayne codfish, Puerto Rican style
+Bibimbap Korean: Bibimbap, Korean
 Black Bean Soup: Restaurant, Latino, black bean soup
 Blood Sausage: Blood sausage
-Bockwurst Pork Veal: Bockwurst, pork, veal, raw
-Bologna Chicken Pork: Bologna, chicken, pork
-Bologna Lite: Bologna, pork and turkey, lite
-Bologna Mixed Meats: Bologna, chicken, pork, beef, Bologna, chicken, turkey, pork, Bologna, meat and poultry, Bologna, pork, turkey and beef, Frankfurter, meat and poultry, unheated
-Bologna Turkey: Bologna, turkey, Frankfurter, turkey
+Bockwurst: Bockwurst, pork, veal, raw
+Bolillo Roll: Roll, Mexican, bolillo
+Bologna: Bologna, chicken, pork
+Bologna Beef: Lebanon bologna, beef
+Bologna Reduced Sodium: Beef, bologna, reduced sodium, Frankfurter, low sodium
+Bologna Turkey: Bologna, turkey
 Bouillabaisse Soup: Soup, bouillabaisse
 Bran Roll: Roll, bran, NS as to type of bran
-Bratwurst: Bratwurst, Knockwurst, Thuringer, Bratwurst, pork, cooked, Bratwurst, veal, cooked
-Bratwurst Beef Pork: Bratwurst, beef and pork, smoked
+Bratwurst: Bratwurst, Knockwurst, Thuringer, Bratwurst, beef and pork, smoked, Bratwurst, pork, beef, link, Bratwurst, pork, cooked, Bratwurst, veal, cooked, Knackwurst, knockwurst, pork, beef
 Bratwurst Chicken: Bratwurst, chicken, cooked
-Bratwurst Pork Beef: Bratwurst, pork, beef, link
 Bratwurst With Cheese: Bratwurst, with cheese
-Breaded Chicken Tender: Chicken breast tenders, breaded, uncooked
-Breadsticks: Breadsticks, NFS, Breadsticks, soft, NFS, Breadsticks, soft, fast food / restaurant, Breadsticks, soft, frozen
-Breakfast Bar: Breakfast bar, corn flake crust with fruit
+Braunschweiger: Braunschweiger (a liver sausage), pork
+Breaded Chicken Tenders: Chicken breast tenders, breaded, uncooked, APPLEBEE'S, chicken tenders, from kids' menu
+Breadsticks: Breadsticks, NFS, Breadsticks, soft, NFS, Breadsticks, soft, fast food / restaurant
+Brown And Wild Rice Cooked: Rice, brown and wild, cooked, NS as to fat, Rice, brown and wild, cooked, fat added, Rice, brown and wild, cooked, no added fat, Rice, white and wild, cooked, NS as to fat, Rice, white and wild, cooked, fat added, Rice, wild, 100%, cooked, NS as to fat, Rice, wild, 100%, cooked, fat added, Rice, brown, with carrots, NS as to fat, Rice, brown, with carrots, no added fat, Rice, brown, with gravy, fat added
 Brown Rice Chips: Snacks, brown rice chips
 Brown Rice Cooked: Rice, brown, cooked, NS as to fat, Rice, brown, cooked, made with butter, Rice, brown, cooked, made with margarine, Rice, brown, cooked, no added fat
-Brown Wild Rice Cooked: Rice, brown and wild, cooked, NS as to fat, Rice, brown and wild, cooked, fat added, Rice, brown and wild, cooked, no added fat, Flavored rice, brown and wild
-Cake With Glutinous Rice: Cake made with glutinous rice
+Butter Rice: Rice, white, cooked, made with butter, Rice croquette, Rice dessert or salad with fruit, Rice pilaf, Rice with raisins, Rice, brown, with carrots, fat added, Rice, brown, with corn, NS as to fat, Rice, brown, with corn, fat added, Rice, brown, with peas, fat added, Rice, white, with peas, fat added
 Calamari Cooked: Calamari, cooked
+Calamari Fried: Calamari, fried
 Canadian Bacon Cooked: Canadian bacon, cooked, pan-fried
 Canadian Bacon Unprepared: Canadian bacon, unprepared
 Canned Chicken Broth: Chicken, canned, meat only, with broth
 Canned Chicken No Broth: Chicken, canned, no broth, Turkey, canned, meat only, with broth
-Canned Chicken Sausage: Sausage, Vienna, canned, chicken, beef, pork
-Canned Clams: Clams, canned, Oysters, canned
-Canned Crab: Crab, canned, Shrimp, canned
-Canned Luncheon Meat: Luncheon meat, pork, canned
-Canola Oil: Canola oil
+Canned Shrimp: Shrimp, canned
+Canola Oil: Canola oil, Vegetable oil, NFS
 Caramel Popcorn: Popcorn, sugar syrup/caramel, fat-free
-Cereal Bar: Milk and cereal bar, Rice and Wheat cereal bar, Snacks, crisped rice bar, almond
+Cereal Bar: Milk and cereal bar, Snacks, NUTRI-GRAIN FRUIT AND NUT BAR, Snacks, crisped rice bar, almond, Snacks, crisped rice bar, chocolate chip, Snacks, granola bar, fruit-filled, nonfat, Snacks, granola bars, hard, chocolate chip, Snacks, granola bars, soft, uncoated, plain, Snacks, granola bars, soft, uncoated, raisin
+Cereal Bar Rice Wheat: Rice and Wheat cereal bar
 Ceviche: Ceviche
 Cheese Enchilada: ON THE BORDER, cheese enchilada, Restaurant, Mexican, cheese enchilada
 Cheese Filled Pretzels: Pretzels, hard, cheese filled, Pretzels, soft, filled with cheese
 Cheese Pizza Stuffed Crust: Pizza, cheese, stuffed crust
 Cheese Pizza Thick Crust: Pizza, cheese, from frozen, thick crust
 Cheese Pizza Thin Crust: Pizza, cheese, from frozen, thin crust, Pizza, cheese, from school lunch, thin crust
-Cheese Potato Chips: Potato chips, cheese flavored
 Cheese Quesadilla: ON THE BORDER, cheese quesadilla, Restaurant, Mexican, cheese quesadilla
 Cheese Roll: Roll, cheese
 Cheese Tamales: Restaurant, Mexican, cheese tamales
-Chicken And Vegetables: Restaurant, Chinese, chicken and vegetables
+Chicken Biryani: Biryani with chicken
+Chicken Breast Honey Glazed: Oscar Mayer, Chicken Breast (honey glazed)
+Chicken Breast Roll: Chicken breast, roll, oven-roasted
 Chicken Cacciatore: Chicken or turkey cacciatore
 Chicken Cheese Sauce: Chicken or turkey with cheese sauce
-Chicken Chili: Chili with chicken
-Chicken Chili Beans: Chili with chicken and beans
 Chicken Chow Mein: Restaurant, Chinese, chicken chow mein
 Chicken Cordon Bleu: Chicken or turkey cordon bleu
 Chicken Cornbread: Chicken cornbread
-Chicken Cream Sauce: Chicken or turkey with cream sauce
 Chicken Creole: Chicken or turkey creole, without rice
-Chicken Curry: Chicken curry
-Chicken Curry With Rice: Chicken curry with rice, Biryani with chicken, Biryani with vegetables, Flavored rice and pasta mixture, Flavored rice mixture, Flavored rice mixture with cheese, Fish curry with rice
+Chicken Curry: Chicken curry, Fish curry
+Chicken Curry Rice: Chicken curry with rice, Fish curry with rice
+Chicken Dark Meat Raw: Chicken, roasting, dark meat, meat only, raw, Turkey, dark meat, meat and skin, raw
 Chicken Dinner Frozen: Chicken dinner, NFS, frozen meal
 Chicken Divan: Chicken or turkey divan
-Chicken Dumplings: Chicken or turkey with dumplings
 Chicken Feet Boiled: Chicken, feet, boiled
 Chicken Frankfurter: Frankfurter, chicken
 Chicken Fricassee: Chicken fricassee, Puerto Rican style, Chicken or turkey fricassee
-Chicken Giblets Cooked: Chicken, capons, giblets, cooked, simmered
-Chicken Giblets Raw: Chicken, broilers or fryers, giblets, raw, Chicken, capons, giblets, raw, Chicken, roasting, giblets, raw, Chicken, stewing, giblets, raw
+Chicken Giblets Cooked: Chicken, capons, giblets, cooked, simmered, Chicken, roasting, giblets, cooked, simmered, Chicken, stewing, giblets, cooked, simmered, Turkey, whole, giblets, cooked, simmered
+Chicken Giblets Raw: Chicken, broilers or fryers, giblets, raw, Chicken, capons, giblets, raw, Chicken, roasting, giblets, raw, Chicken, stewing, giblets, raw, Turkey, whole, giblets, raw
 Chicken Gizzard Raw: Chicken, gizzard, all classes, raw, Turkey, gizzard, all classes, raw
 Chicken Hash: Chicken or turkey hash
+Chicken Heart Raw: Chicken, heart, all classes, raw
 Chicken Kiev: Chicken kiev
+Chicken Light Meat Raw: Chicken, stewing, light meat, meat only, raw, Turkey, whole, light meat, raw
 Chicken Liver Pate Canned: Pate, chicken liver, canned
-Chicken Meat And Skin: Chicken, stewing, meat and skin, raw
-Chicken Meat Raw: Chicken, broilers or fryers, meat only, raw, Chicken, heart, all classes, raw, Chicken, liver, all classes, raw, Chicken, roasting, dark meat, meat only, raw, Chicken, roasting, meat only, raw, Chicken, stewing, dark meat, meat only, raw, Chicken, stewing, light meat, meat only, raw, Chicken, stewing, meat only, raw
-Chicken Meat Skin Raw: Chicken, capons, meat and skin, raw
-Chicken Mole Sauce: Chicken with mole sauce
-Chicken Mushroom Sauce: Chicken or turkey with mushroom sauce
-Chicken Noodles Gravy: Chicken or turkey and noodles with gravy, Chicken or turkey and rice with cream sauce, Chicken or turkey tetrazzini, Ramen bowl with chicken, Shrimp and noodles with gravy
-Chicken Noodles No Sauce: Chicken or turkey and noodles, no sauce, Chicken or turkey and rice, no sauce
+Chicken Liver Raw: Chicken, liver, all classes, raw, Turkey, all classes, liver, raw
+Chicken Meat Raw: Chicken, broilers or fryers, meat only, raw, Chicken, roasting, meat only, raw, Chicken, stewing, meat only, raw
+Chicken Meat Skin Raw: Chicken, capons, meat and skin, raw, Chicken, stewing, meat and skin, raw
+Chicken Noodles Gravy: Chicken or turkey and noodles with gravy, Ramen bowl with chicken, Ramen bowl with meat and egg, Ramen bowl, NFS, Shrimp and noodles with gravy
+Chicken Noodles No Sauce: Chicken or turkey and noodles, no sauce, Shrimp and noodles, no sauce
 Chicken Parmigiana: Chicken or turkey parmigiana
 Chicken Patty: Chicken or turkey cake, patty, or croquette
 Chicken Patty Cooked: Chicken patty, frozen, cooked
 Chicken Patty Uncooked: Chicken patty, frozen, uncooked
 Chicken Pot Pie: Pot pie, chicken
-Chicken Potatoes Gravy: Chicken or turkey and potatoes with gravy, Chicken with gravy, Turkey with gravy
-Chicken Roll: Chicken breast, roll, oven-roasted
-Chicken Salad Egg: Chicken or turkey salad with egg
-Chicken Skin: Chicken, skin (drumsticks and thighs), raw
-Chicken Skin Raw: Chicken, broilers or fryers, skin only, raw
+Chicken Potatoes Gravy: Chicken or turkey and potatoes with gravy, Chicken or turkey and rice with cream sauce, Chicken or turkey and rice, no sauce, Chicken or turkey with cream sauce, Chicken or turkey with dumplings, Chicken with gravy, Turkey with gravy
+Chicken Salad: Chicken or turkey salad with egg
+Chicken Skin Raw: Chicken, broilers or fryers, skin only, raw, Chicken, skin (drumsticks and thighs), raw
 Chicken Souffle: Chicken or turkey souffle
 Chicken Spread: Chicken spread
 Chicken Stew: Stew, chicken
 Chicken Stew Pasta: Stew, chicken, with pasta
-Chicken Stewed: Chicken, stewing, meat only, cooked, stewed, Turkey, Ground, cooked
-Chicken Strips: DENNY'S, chicken strips
-Chicken Stuffing: Chicken or turkey with stuffing
-Chicken Tenders: APPLEBEE'S, chicken tenders platter, APPLEBEE'S, chicken tenders, from kids' menu, Restaurant, family style, chicken tenders
+Chicken Stewed Meat: Chicken, stewing, meat only, cooked, stewed
+Chicken Stewing Meat Raw: Chicken, stewing, dark meat, meat only, raw
+Chicken Tenders: APPLEBEE'S, chicken tenders platter, DENNY'S, chicken strips, Restaurant, family style, chicken tenders, T.G.I. FRIDAY'S, chicken fingers
+Chicken Tetrazzini: Chicken or turkey tetrazzini
+Chicken Vegetables Chinese: Restaurant, Chinese, chicken and vegetables
 Chili: APPLEBEE'S, chili
+Chili Chicken: Chili with chicken
+Chili Chicken Beans: Chili with chicken and beans
+Chili White: Chili, white
 Chocolate Almond Milk: Almond milk, chocolate
-Chocolate Bar: Formulated bar, POWER BAR, chocolate
 Chocolate Cereal: Cereal, chocolate crispy, Cereal, chocolate puffs, Cereal, other, chocolate
-Chocolate Chip Granola Bar: Snacks, granola bars, hard, chocolate chip
-Chocolate Chip Rice Bar: Snacks, crisped rice bar, chocolate chip
 Chocolate Covered Pretzels: Pretzels, hard, chocolate coated, Snack, Pretzel, hard chocolate coated
+Chocolate Pudding Sugar Free: Pudding, chocolate, ready-to-eat, sugar free
 Chocolate Soy Milk: Soy milk, chocolate
 Chorizo: Chorizo
 Chorizo Sausage: Sausage, pork, chorizo, link or ground, raw
 Cinnamon Toast Cereal: Cereal, cinnamon toast
 Clam Patty: Clam cake or patty
+Clams Baked Broiled: Clams, baked or broiled
+Clams Canned: Clams, canned, Oysters, canned
 Clams Casino: Clams Casino
-Clams Nfs: Clams, NFS
+Clams Fried: Clams, fried
+Clams Nfs: Clams, NFS, Shrimp, NFS
+Clams Raw: Clams, raw
+Clams Steamed Boiled: Clams, steamed or boiled
 Coated Pretzels: Pretzels, hard, coated, NFS, Pretzels, hard, yogurt coated
 Coconut Cream Sweetened: Coconut cream, canned, sweetened
 Coconut Milk: Coconut milk
 Coconut Milk Cooked: Coconut milk, used in cooking
+Coconut Milk Yogurt: Yogurt, coconut milk
 Coconut Oil: Coconut oil
-Coconut Yogurt: Yogurt, coconut milk
-Codfish Salad: Codfish salad, Puerto Rican style, Serenata, Salmon salad
+Coconut Rice: Rice, cooked with coconut milk
+Codfish Salad: Codfish salad, Puerto Rican style, Serenata, Lobster salad, Salmon salad, Seafood salad, Shrimp salad
 Coleslaw: APPLEBEE'S, coleslaw, CRACKER BARREL, coleslaw, DENNY'S, coleslaw, Restaurant, family style, coleslaw
-Congee: Congee, Congee, with meat, poultry, and/or seafood, Congee, with vegetables
+Congee: Congee
 Congee With Egg: Congee, with egg
+Congee With Meat: Congee, with meat, poultry, and/or seafood
+Congee With Vegetables: Congee, with vegetables
 Cooked Crayfish: Crayfish, cooked
-Cooked Rice: Rice, cooked, NFS, Rice, cooked, with milk, Rice, white, cooked, NS as to fat, Rice, white, cooked, glutinous, Rice, white, cooked, made with butter, Rice, white, cooked, made with margarine, Rice, white, cooked, made with oil, Rice, white, cooked, no added fat
+Cooked Rice: Rice, cooked, NFS, Rice, cooked, with milk, Rice, white, cooked, NS as to fat, Rice, white, cooked, no added fat, Rice, white, with carrots, fat added, Rice, white, with corn, fat added, Rice, white, with gravy, fat added
 Cooked Salami Beef: Salami, cooked, beef
 Cooked Salami Beef Pork: Salami, cooked, beef and pork
 Cooked Salami Turkey: Salami, cooked, turkey
 Corn Beverage: Corn beverage
-Corn Cake: Snacks, corn cakes
-Corn Oil: Corn oil
-Corn Snack: Snacks, corn-based, extruded, cones, plain, Snacks, corn-based, extruded, onion-flavor, Snacks, cornnuts, barbecue-flavor
+Corn Chip Onion: Snacks, corn-based, extruded, onion-flavor
+Corn Cone Snacks: Snacks, corn-based, extruded, cones, plain
+Corn Flake Bar: Breakfast bar, corn flake crust with fruit, Snacks, corn cakes
+Corn Oil: Corn oil, Safflower oil, Soybean oil, Sunflower oil
 Corn Tamale: Restaurant, Latino, tamale, corn
 Corned Beef Canned: Beef, cured, corned beef, canned
 Cornish Hen Meat Raw: Chicken, cornish game hens, meat only, raw
-Cottonseed Oil: Cottonseed oil
-Crab: Crab
+Cornnuts Barbecue: Snacks, cornnuts, barbecue-flavor
+Cottonseed Oil: Cottonseed oil, Flaxseed oil
+Crab: Crab, Lobster
 Crab Cake: Crab, cake, Crab cake sandwich
-Crab Salad: Crab salad, Lobster salad, Seafood salad, Shrimp salad, Seafood salad sandwich
-Crab Salad Imitation: Crab salad made with imitation crab
-Crackers Saltine: Crackers, saltine
+Crab Canned: Crab, canned
+Crab Soft Shell: Crab, soft shell
 Creme Brulee: Creme brulee
 Custard: Custard
-Deli Turkey White: Turkey, white, rotisserie, deli cut
 Diet Roll: Roll, diet
 Dirty Rice: Dirty rice
 Dove Cooked: Dove, cooked (includes squab)
+Dried Shrimp: Shrimp, dried
 Dry Salami Pork: Salami, dry or hard, pork
 Dry Salami Pork Beef: Salami, dry or hard, pork, beef
-Duck Breast Meat Raw: Duck, wild, breast, meat only, raw
+Duck Breast Raw: Duck, wild, breast, meat only, raw
 Duck Liver Raw: Duck, domesticated, liver, raw
-Duck Meat And Skin Raw: Duck, domesticated, meat and skin, raw, Duck, wild, meat and skin, raw
 Duck Meat Raw: Duck, domesticated, meat only, raw
-Dukboki: Dukboki or Tteokbokki, Korean
 Dulce De Leche: Dulce de leche
 Egg Bread Roll: Roll, egg bread
 Egg Drop Soup: Soup, egg drop
@@ -195,7 +191,6 @@ Emu Fan Fillet Cooked: Emu, fan fillet, cooked, broiled
 Emu Fan Fillet Raw: Emu, fan fillet, raw
 Emu Flat Fillet Raw: Emu, flat fillet, raw
 Emu Ground Cooked: Emu, ground, cooked, pan-broiled
-Emu Ground Raw: Emu, ground, raw
 Emu Inside Drum Cooked: Emu, inside drums, cooked, broiled
 Emu Inside Drum Raw: Emu, inside drum, raw
 Emu Outside Drum Raw: Emu, outside drum, raw
@@ -203,181 +198,169 @@ Emu Oyster Raw: Emu, oyster, raw
 Emu Rump Cooked: Emu, full rump, cooked, broiled
 Emu Rump Raw: Emu, full rump, raw
 Emu Top Loin Cooked: Emu, top loin, cooked, broiled
-Energy Bar: Snacks, CLIF BAR, mixed flavors, Snacks, NUTRI-GRAIN FRUIT AND NUT BAR
+Energy Bar: Snacks, CLIF BAR, mixed flavors
 Escargot: Escargot
 Extra Cheese Pizza Thick Crust: Pizza, extra cheese, thick crust
 Extra Cheese Pizza Thin Crust: Pizza, extra cheese, thin crust
 Farm Raised Catfish Platter: CRACKER BARREL, farm raised catfish platter
-Fat Free Salad Dressing: Blue or roquefort cheese dressing, fat free, Caesar dressing, fat free, Creamy Italian dressing, fat free, French or Catalina dressing, fat free, Honey mustard dressing, fat free, Italian dressing, fat free, Ranch dressing, fat free, Salad dressing, fat free, NFS, Thousand Island dressing, fat free
+Fat Free Salad Dressing: Blue or roquefort cheese dressing, fat free, Caesar dressing, fat free, Creamy Italian dressing, fat free, French or Catalina dressing, fat free, Honey mustard dressing, fat free, Italian dressing, fat free, Ranch dressing, fat free, Salad dressing, fat free, NFS, Sesame dressing, light, Thousand Island dressing, fat free
 Filled Pretzels: Pretzels, hard, filled, NFS
-Fish Curry: Fish curry
-Fish Noodles Mushroom: Fish and noodles with mushroom sauce
-Fish Patty: Fish, cake or patty
-Fish Ramen Bowl: Ramen bowl with fish
-Fish Rice Cream: Fish and rice with cream sauce
-Fish Rice Mushroom: Fish and rice with mushroom sauce
-Fish Rice Tomato: Fish and rice with tomato-based sauce
-Fish Sandwich: Fish sandwich, NFS, Fish sandwich, from school cafeteria
+Fish: APPLEBEE'S, fish, hand battered
+Fish Cake Patty: Fish, cake or patty, Fish, salmon cake or patty
+Fish Crab Stuffing: Flounder with crab stuffing
+Fish Dish Tomato Sauce: Fish with tomato-based sauce
+Fish Rice Dish: Fish and rice with cream sauce, Fish and rice with tomato-based sauce
+Fish Sandwich: Fish sandwich, NFS, Fish sandwich, from school cafeteria, Fish wrap sandwich
+Fish Sandwich Fried: Fish sandwich, fried, from fast food, Fish sandwich, fried, on wheat bun, Fish sandwich, fried, on white bun
+Fish Sandwich Grilled: Fish sandwich, grilled
+Fish Sauce Puerto Rican: Fried fish with sauce, Puerto Rican style
 Fish Stew: Stew, fish
 Fish Timbale: Fish timbale or mousse
-Fish Tofu Vegetables: Fish, tofu, and vegetables, tempura
-Fish Tomato Sauce: Fish with tomato-based sauce
-Fish Wrap Sandwich: Fish wrap sandwich
+Fish Tofu Vegetable Tempura: Fish, tofu, and vegetables, tempura
 Flan: Flan
-Flavored Cereal: Cereal, K's, flavored, Cereal, O's, flavored, Cereal, O's, honey nut, Cereal, bran flakes, flavored, Cereal, corn flakes, flavored, Cereal, corn squares, flavored, Cereal, crunch, Cereal, flavored puffs, Cereal, frosted oats with marshmallows, Cereal, fruit crispy, Cereal, fruit rings, Cereal, granola, Cereal, other, NFS, Cereal, other, fruit flavored, Cereal, other, honey, Cereal, other, peanut butter, Cereal, ready-to-eat, NFS, Cereal, rice crispy, flavored, Cereal, O's, NFS, Cereal, O's, multigrain, Cereal, corn puffs, Cereal, multigrain, Cereal, oat bunches, Cereal, oat squares, Cereal, reduced sugar, Cereal, shredded wheat, flavored
-Flavored Potato Chips: Potato chips, other flavored, Potato chips, popped, flavored, Potato chips, reduced fat, Potato chips, restructured, flavored, Potato chips, ruffled, barbecue flavored, Potato chips, ruffled, cheese flavored, Potato chips, ruffled, other flavored, Potato chips, sour cream and onion flavored, Potato sticks, flavored, Potato sticks, fry shaped
-Flavored Pretzel Chips: Pretzel chips, hard, flavored, Pretzels, hard, flavored
-Flaxseed Oil: Flaxseed oil
-Flounder Crab Stuffing: Flounder with crab stuffing
-French Fries: APPLEBEE'S, french fries, CRACKER BARREL, steak fries, DENNY'S, french fries, Restaurant, family style, french fries, T.G.I. FRIDAY'S, french fries
+Flavored Cereal: Cereal, K's, flavored, Cereal, O's, flavored, Cereal, O's, honey nut, Cereal, bran flakes, flavored, Cereal, corn flakes, flavored, Cereal, corn squares, flavored, Cereal, crunch, Cereal, flavored puffs, Cereal, frosted oats with marshmallows, Cereal, fruit crispy, Cereal, fruit rings, Cereal, other, NFS, Cereal, other, fruit flavored, Cereal, other, honey, Cereal, ready-to-eat, NFS, Cereal, rice crispy, flavored, Cereal, O's, NFS, Cereal, O's, multigrain, Cereal, corn puffs, Cereal, corn squares, Cereal, multigrain, Cereal, oat bunches, Cereal, oat squares, Cereal, reduced sugar, Cereal, shredded wheat, flavored
+Flavored Rice Brown Wild: Flavored rice, brown and wild
+Flavored Rice Cheese: Flavored rice mixture with cheese
+Flavored Rice Mixture: Flavored rice mixture, Rice dressing
+Flavored Rice Pasta: Flavored rice and pasta mixture
+French Fries: APPLEBEE'S, french fries, CRACKER BARREL, steak fries, DENNY'S, french fries, Restaurant, family style, french fries, T.G.I. FRIDAY'S, french fries, Bacalaitos fritos
 French Roll: Roll, French or Vienna
-Fried Bacalaitos: Bacalaitos fritos
-Fried Calamari: Calamari, fried
-Fried Clams: Clams, fried
+Frescavena: Frescavena
 Fried Crayfish: Crayfish, fried
-Fried Fish: APPLEBEE'S, fish, hand battered
-Fried Fish Sauce: Fried fish with sauce, Puerto Rican style
 Fried Oysters: Oysters, fried
 Fried Scallops: Scallops, fried
-Fried Shrimp: APPLEBEE'S, Double Crunch Shrimp, CRACKER BARREL, country fried shrimp platter, DENNY'S, golden fried shrimp, Shrimp, fried
+Fried Seafood Sandwich: Fried seafood sandwich
+Fried Shrimp: APPLEBEE'S, Double Crunch Shrimp, CRACKER BARREL, country fried shrimp platter, DENNY'S, golden fried shrimp, T.G.I. FRIDAY'S, FRIDAY'S Shrimp, breaded, Shrimp, fried
 Frog Legs: Frog legs
+Fruit And Vegetable Smoothie: Fruit and vegetable smoothie, added protein, Fruit and vegetable smoothie, bottled, Fruit and vegetable smoothie, no dairy, Fruit and vegetable smoothie, non-dairy, Fruit and vegetable smoothie, with dairy
 Fruit Cheese Pizza Medium Crust: Pizza, cheese, with fruit, medium crust
 Fruit Cheese Pizza Thick Crust: Pizza, cheese, with fruit, thick crust
 Fruit Cheese Pizza Thin Crust: Pizza, cheese, with fruit, thin crust
-Fruit Filled Granola Bar: Snacks, granola bar, fruit-filled, nonfat
-Fruit Smoothie: Fruit smoothie, NFS
-Fruit Smoothie Bottled: Fruit smoothie, bottled
-Fruit Smoothie Dairy: Fruit smoothie, with whole fruit and dairy
-Fruit Smoothie Juice Dairy: Fruit smoothie juice drink, with dairy
-Fruit Smoothie Juice Non Dairy: Fruit smoothie juice drink, no dairy
-Fruit Smoothie Light: Fruit smoothie, light
-Fruit Smoothie Non Dairy: Fruit smoothie, with whole fruit, no dairy, Fruit smoothie, with whole fruit, non-dairy
-Fruit Vegetable Smoothie Bottled: Fruit and vegetable smoothie, bottled
-Fruit Vegetable Smoothie Dairy: Fruit and vegetable smoothie, with dairy
-Fruit Vegetable Smoothie Non Dairy: Fruit and vegetable smoothie, no dairy, Fruit and vegetable smoothie, non-dairy
-Fruit Vegetable Smoothie Protein: Fruit and vegetable smoothie, added protein
+Fruit Smoothie: Fruit smoothie, NFS, Fruit smoothie, bottled, Fruit smoothie, light, Fruit smoothie, with whole fruit and dairy, Fruit smoothie, with whole fruit, no dairy, Fruit smoothie, with whole fruit, non-dairy
+Fruit Smoothie Juice Drink: Fruit smoothie juice drink, no dairy, Fruit smoothie juice drink, with dairy
 Garlic Roll: Roll, garlic
 Gefilte Fish: Gefilte fish
 General Tso Chicken: Restaurant, Chinese, general tso's chicken
-Gizzards Puerto Rican: Stewed gizzards, Puerto Rican style
 Gluten Free Cheese Pizza: Pizza, cheese, gluten-free thick crust, Pizza, cheese, gluten-free thin crust
 Gluten Free Coated Pretzels: Pretzels, hard, coated, gluten free
 Gluten Free Flavored Pretzels: Pretzels, hard, flavored, gluten free
-Gluten Free Pretzel Chips: Pretzel chips, hard, gluten free, Pretzels, hard, plain, gluten free
 Gluten Free Pretzels: Pretzels, soft, gluten free
 Gluten Free Roll: Roll, gluten free
+Glutinous Rice: Rice, white, cooked, glutinous
+Glutinous Rice Cake: Cake made with glutinous rice
 Goose Liver Pate Canned: Pate, goose liver, smoked, canned
 Goose Liver Raw: Goose, liver, raw
-Goose Meat And Skin Raw: Goose, domesticated, meat and skin, raw
-Goose Meat Raw: Goose, domesticated, meat only, raw
-Grape Leaves Stuffed Rice: Grape leaves stuffed with rice
-Grilled Fish Sandwich: Fish sandwich, grilled
-Grilled Kielbasa: Kielbasa, fully cooked, grilled
+Goose Meat Raw: Goose, domesticated, meat and skin, raw, Goose, domesticated, meat only, raw
+Granola Cereal: Cereal, granola, Snacks, granola bars, hard, almond, Snacks, granola bars, hard, peanut butter, Snacks, granola bars, hard, plain
 Grilled Scallops: Scallops, grilled
-Ground Chicken Raw: Chicken, ground, raw, Turkey, Ground, raw
+Grilled Shrimp: Shrimp, grilled
+Ground Chicken Raw: Chicken, ground, raw, Emu, ground, raw, Turkey, Ground, raw
 Ground Pork: Pork, ground, Pork, fresh, ground, cooked
 Ground Pork 96 Lean: Pork, ground, 96% lean / 4% fat, raw
-Ground Turkey 85 Lean: Turkey, ground, 85% lean, 15% fat, raw
-Ground Turkey 93 Lean: Turkey, ground, 93% lean, 7% fat, raw
-Ground Turkey Fat Free: Turkey, ground, fat free, raw
-Guinea Hen Meat And Skin Raw: Guinea hen, meat and skin, raw
 Guinea Hen Meat Raw: Guinea hen, meat only, raw
+Guinea Hen Meat Skin Raw: Guinea hen, meat and skin, raw
 Gumbo No Rice: Gumbo, no rice
 Gumbo Rice: Gumbo with rice
 Ham: HORMEL, Cure 81 Ham
-Ham And Cheese Loaf: Ham and cheese loaf or roll
+Ham And Cheese Roll: Ham and cheese loaf or roll
 Ham And Cheese Spread: Ham and cheese spread
 Ham Chopped: Ham, chopped, not canned
 Ham Chopped Canned: Ham, chopped, canned
+Ham Hocks: Pork, ham hocks
 Ham Minced: Ham, minced
 Ham Patties: Pork, cured, ham, patties, unheated
-Ham Salad Spread: Ham salad spread
+Ham Salad: Ham salad spread, Crab salad
+Ham Sliced: Ham, sliced, regular (approximately 11% fat)
+Ham Smoked Low Sodium: Ham, smoked, extra lean, low sodium
 Hard Roll: Roll, hard, NS as to major flour, Roll, white, hard
-Hard Salami: Oscar Mayer, Salami (hard)
 Hash Browns: DENNY'S, hash browns, Restaurant, family style, hash browns
 Haupia: Haupia
 Headcheese Pork: Headcheese, pork
-Honey Glazed Chicken Breast: Oscar Mayer, Chicken Breast (honey glazed)
 Honey Ham: Ham, honey, smoked, cooked
 Honey Roll Sausage: Honey roll sausage, beef
-Horchata Milk: Horchata, made with milk, Horchata, made with water
+Horchata: Horchata, made with milk, Horchata, made with water
 Hot And Sour Soup: Soup, hot and sour
 Idli: Idli
-Indian Dessert: Barfi or Burfi, Indian dessert
-Indian Pudding: Firni, Indian pudding, Pudding, tapioca, made from dry mix, Pudding, tapioca, ready-to-eat
+Imitation Crab Salad: Crab salad made with imitation crab
+Indian Pudding: Barfi or Burfi, Indian dessert, Firni, Indian pudding
 Italian Meatballs: Meatballs, frozen, Italian style
-Italian Salami Pork: Salami, Italian, pork
+Italian Salami: Salami, Italian, pork
 Italian Sausage: Italian sausage, Pickled sausage, Sausage, Italian, pork, mild, raw
 Italian Sausage Sweet: Sausage, Italian, sweet, links
-Italian Sausage Turkey Smoked: Sausage, Italian, turkey, smoked, Sausage, turkey, hot, smoked
-Jambalaya: Jambalaya with meat and rice
+Italian Sausage Turkey: Sausage, Italian, turkey, smoked, Sausage, turkey, hot, smoked
+Jambalaya Rice Dish: Jambalaya with meat and rice
+Kielbasa Grilled: Kielbasa, fully cooked, grilled
+Kielbasa Pan Fried: Kielbasa, fully cooked, pan-fried
 Kielbasa Turkey Beef: Kielbasa, Polish, turkey and beef, smoked
 Kielbasa Unheated: Kielbasa, fully cooked, unheated
 Kung Pao Chicken: Restaurant, Chinese, kung pao chicken
 Lasagne: CARRABBA'S ITALIAN GRILL, lasagne, OLIVE GARDEN, lasagna classico, Restaurant, Italian, lasagna with meat
 Lau Lau: Lau lau
-Lebanon Bologna: Lebanon bologna, beef
 Lemon Chicken: Restaurant, Chinese, lemon chicken
-Light Salad Dressing: Blue or roquefort cheese dressing, light, Caesar dressing, light, Creamy Italian dressing, light, French or Catalina dressing, light, Honey mustard dressing, light, Italian dressing, light, Ranch dressing, light, Salad dressing, light, NFS, Sesame dressing, light
-Lightly Salted Potato Chips: Potato chips, lightly salted, Potato chips, restructured, lightly salted
+Licuado Drink: Licuado or Batido
+Light Salad Dressing: Blue or roquefort cheese dressing, light, Caesar dressing, light, Creamy Italian dressing, light, French or Catalina dressing, light, Honey mustard dressing, light, Italian dressing, light, Ranch dressing, light, Salad dressing, light, NFS, Thousand Island dressing, light
 Lime Souffle: Lime souffle
+Liver Cheese Pork: Liver cheese, pork
 Liver Pate Canned: Pate, liver, not specified, canned
-Liver Sausage Pork: Braunschweiger (a liver sausage), pork, Liver cheese, pork, Liver sausage, liverwurst, pork
 Liverwurst Spread: Liverwurst spread
-Lobster: Lobster
+Loaf Chicken Pork Beef: Dutch brand loaf, chicken, pork and beef
+Lobster Bread Stuffing: Lobster with bread stuffing, baked
 Lobster Gumbo: Lobster gumbo, Shrimp gumbo
-Lobster Sauce: Lobster with sauce, Puerto Rican style
-Lobster Stuffing: Lobster with bread stuffing, baked
+Lobster Sauce Puerto Rican: Lobster with sauce, Puerto Rican style
 Lomi Salmon: Lomi salmon
-Low Fat Beef Frankfurter: Frankfurter, beef, low fat
-Low Fat Meat Poultry Frankfurter: Frankfurter, meat and poultry, low fat
-Luncheon Sausage: Luncheon sausage, pork and beef
+Luncheon Meat Jellied: Beef, cured, luncheon meat, jellied, Corned beef loaf, jellied
+Luncheon Meat Pork: Luncheon meat, pork, canned
 Macaroni And Cheese: CRACKER BARREL, macaroni n' cheese, DENNY'S, macaroni & cheese, from kid's menu
-Meat Egg Ramen Bowl: Ramen bowl with meat and egg
+Margarine Rice: Rice, white, cooked, made with margarine
+Meat Biryani: Biryani with meat
 Meat Fruit Pizza Thick Crust: Pizza with meat and fruit, thick crust
 Meat Fruit Pizza Thin Crust: Pizza with meat and fruit, thin crust
+Meat Poultry Frankfurter: Frankfurter, meat and poultry, unheated
+Meat Poultry Frankfurter Low Fat: Frankfurter, meat and poultry, low fat
 Meatloaf Chicken Turkey: Meat loaf made with chicken or turkey
 Meringues: Meringues
 Mexican Rice: ON THE BORDER, Mexican rice, Restaurant, Mexican, spanish rice
-Mexican Roll: Roll, Mexican, bolillo
 Miso Tofu Soup: Soup, miso or tofu
-Mixed Meat Loaf: Dutch brand loaf, chicken, pork and beef
+Mixed Berry Bar: Snack, Mixed Berry Bar
+Mortadella: Mortadella, beef, pork
 Mousse: Mousse
 Mozzarella Sticks: APPLEBEE'S, mozzarella sticks, DENNY'S, mozzarella cheese sticks, T.G.I. FRIDAY'S, fried mozzarella
 Multigrain Crackers: Crackers, saltine, multigrain
-Multigrain Potato Chips: Potato chips, restructured, multigrain
-Multigrain Roll: Roll, multigrain, Roll, multigrain, hamburger bun, Roll, multigrain, hot dog bun
+Multigrain Hamburger Bun: Roll, multigrain, hamburger bun, Roll, wheat or cracked wheat, hamburger bun, Roll, white, hamburger bun, Roll, whole grain white, hamburger bun, Roll, whole wheat, hamburger bun
+Multigrain Hot Dog Bun: Roll, multigrain, hot dog bun, Roll, wheat or cracked wheat, hot dog bun, Roll, white, hot dog bun, Roll, whole grain white, hot dog bun, Roll, whole wheat, hot dog bun
+Multigrain Roll: Roll, multigrain
 Mussels: Mussels
 New England Sausage: Sausage, New england brand, pork, beef
 Non Dairy Milk: Non-dairy milk, NFS
-Nutritional Powder: Nutritional powder mix (Isopure), Nutritional powder mix (Muscle Milk), Nutritional powder mix (Slim Fast), Nutritional powder mix, NFS, Nutritional powder mix, high protein, NFS, Nutritional powder mix, light (Muscle Milk), Nutritional powder mix, protein, NFS, Nutritional powder mix, protein, light, NFS, Nutritional powder mix, whey based, NFS
+Nutritional Powder: Nutritional powder mix (Isopure), Nutritional powder mix (Muscle Milk), Nutritional powder mix (Slim Fast), Nutritional powder mix, NFS
 Oat Milk: Oat milk
 Oatmeal Roll: Roll, oatmeal
 Octopus: Octopus
-Octopus Salad: Octopus salad, Puerto Rican style
+Octopus Salad Puerto Rican: Octopus salad, Puerto Rican style
+Oil Rice: Rice, white, cooked, made with oil, Rice, white, with lentils, fat added, Spanish rice, fat added
 Olive Loaf: Olive loaf, pork
-Olive Oil: Olive oil
-Onion Rings: APPLEBEE'S, crunchy onion rings, DENNY'S, onion rings, Restaurant, family style, onion rings
+Onion Rings: APPLEBEE'S, crunchy onion rings, CRACKER BARREL, onion rings, thick-cut, DENNY'S, onion rings, Restaurant, family style, onion rings
 Orange Chicken: Restaurant, Chinese, orange chicken
 Ostrich Fan Raw: Ostrich, fan, raw
 Ostrich Ground Cooked: Ostrich, ground, cooked, pan-broiled
 Ostrich Ground Raw: Ostrich, ground, raw
 Ostrich Leg Cooked: Ostrich, inside leg, cooked
-Ostrich Leg Raw: Ostrich, inside leg, raw, Ostrich, outside leg, raw, Ostrich, round, raw, Ostrich, tip trimmed, raw
+Ostrich Leg Outside Raw: Ostrich, outside leg, raw
+Ostrich Leg Raw: Ostrich, inside leg, raw, Ostrich, oyster, raw, Ostrich, round, raw, Ostrich, tenderloin, raw, Ostrich, top loin, raw
 Ostrich Oyster Cooked: Ostrich, oyster, cooked
-Ostrich Strip Cooked: Ostrich, inside strip, cooked, Ostrich, outside strip, cooked, Ostrich, tip trimmed, cooked, Ostrich, top loin, cooked
-Ostrich Strip Raw: Ostrich, inside strip, raw, Ostrich, outside strip, raw, Ostrich, oyster, raw, Ostrich, tenderloin, raw, Ostrich, top loin, raw
+Ostrich Strip Cooked: Ostrich, inside strip, cooked, Ostrich, tip trimmed, cooked, Ostrich, top loin, cooked
+Ostrich Strip Outside Cooked: Ostrich, outside strip, cooked
+Ostrich Strip Outside Raw: Ostrich, outside strip, raw
+Ostrich Strip Raw: Ostrich, inside strip, raw, Ostrich, tip trimmed, raw
 Oyster Crackers: Crackers, oyster
 Oysters Rockefeller: Oysters Rockefeller
-Paella: Paella with seafood, Paella, NFS
-Pan Fried Kielbasa: Kielbasa, fully cooked, pan-fried
-Pastrami Beef Fat Free: Pastrami, beef, 98% fat-free
-Pastrami Turkey: Pastrami, turkey
+Paella Seafood: Paella with seafood, Paella, NFS, Seafood paella, Puerto Rican style
+Pastrami: Beef, cured, pastrami
+Pate Truffle Flavor: Pate, truffle flavor
+Peanut Butter Cereal: Cereal, other, peanut butter
 Peanut Butter Filled Pretzels: Pretzels, hard, peanut butter filled
-Peanut Butter Granola Bar: Snacks, granola bars, hard, peanut butter
-Peanut Oil: Peanut oil, Safflower oil, Sesame oil, Sunflower oil
-Peppered Loaf: Peppered loaf, pork, beef
-Pepperoni: Pepperoni, beef and pork, sliced
+Peppered Loaf Pork Beef: Peppered loaf, pork, beef
+Pepperoni Beef Pork Sliced: Pepperoni, beef and pork, sliced
 Pepperoni Pizza Stuffed Crust: Pizza with pepperoni, stuffed crust
 Pheasant Breast Raw: Pheasant, breast, meat only, raw
 Pheasant Cooked: Pheasant, cooked, total edible
@@ -386,200 +369,197 @@ Pheasant Meat Raw: Pheasant, raw, meat only
 Pheasant Meat Skin Raw: Pheasant, raw, meat and skin
 Pho No Meat: Soup, pho, no meat
 Pho With Meat: Soup, pho, with meat
-Pickle Pimiento Loaf: Pickle and pimiento loaf, pork
-Pickled Pork: Pork, pickled pork hocks
-Pickled Pork Feet: Pork, cured, feet, pickled
-Picnic Loaf: Picnic loaf, pork, beef
-Plain Cereal: Cereal, K's, plain, Cereal, O's, plain, Cereal, bran flakes, plain, Cereal, corn flakes, plain, Cereal, corn squares, Cereal, other, plain, Cereal, plain puffs, Cereal, rice crispy, plain, Cereal, rice squares, Cereal, shredded wheat, plain, Cereal, wheat flakes, Cereal, wheat squares
-Plain Granola Bar: Snacks, granola bars, hard, plain, Snacks, granola bars, soft, uncoated, plain
-Plain Pretzel Chips: Pretzel chips, hard, plain, Pretzels, NFS, Pretzels, hard, NFS, Pretzels, hard, multigrain, Pretzels, hard, plain, lightly salted, Pretzels, hard, plain, salted, Pretzels, hard, plain, unsalted, Pretzels, soft, NFS, Pretzels, soft, from frozen, NFS, Pretzels, soft, from frozen, salted, Pretzels, soft, from frozen, unsalted, Pretzels, soft, from school lunch, Pretzels, soft, multigrain, Pretzels, soft, ready-to-eat, NFS, Snack mix, plain (Chex Mix), Pretzels, soft, Snacks, KRAFT, CORNNUTS, plain, Snacks, bagel chips, plain
-Polish Sausage: Polish sausage, pork
+Pickled Pigs Feet: Pork, pig's feet, pickled, Pork, cured, feet, pickled
+Pickled Pork Hocks: Pork, pickled pork hocks
+Pigs Feet: Pork, pig's feet
+Plain Cereal: Cereal, K's, plain, Cereal, O's, plain, Cereal, bran flakes, plain, Cereal, corn flakes, plain, Cereal, other, plain, Cereal, plain puffs, Cereal, rice crispy, plain, Cereal, rice squares, Cereal, shredded wheat, plain, Cereal, wheat flakes, Cereal, wheat squares
 Polish Sausage Beef Chicken: Sausage, Polish, beef with chicken, hot
+Polish Sausage Pork: Polish sausage, pork
 Polish Sausage Pork Beef: Sausage, Polish, pork and beef, smoked
-Popcorn: Popcorn, NFS
-Popcorn Light: Popcorn, ready-to-eat, flavored, light, Popcorn, ready-to-eat, plain, light
-Popcorn Low Sodium: Popcorn, ready-to-eat, low sodium
-Popped Potato Chips: Potato chips, popped, NFS, Potato chips, popped, plain
+Popcorn: Popcorn, NFS, Popcorn, ready-to-eat, NFS, Popcorn, ready-to-eat, butter flavored, Popcorn, ready-to-eat, cheese flavored, Popcorn, ready-to-eat, kettle, Popcorn, ready-to-eat, low sodium, Popcorn, ready-to-eat, plain
+Popcorn Caramel: Popcorn, caramel coated
+Popcorn Caramel Nuts: Popcorn, caramel coated, with nuts
+Popcorn Chocolate: Popcorn, chocolate coated
+Popcorn Flavored Light: Popcorn, microwave, flavored, light, Popcorn, microwave, low fat and sodium
+Popcorn Movie Theater: Popcorn, movie theater, no butter added
+Popcorn Movie Theater Butter: Popcorn, movie theater, with added butter
+Popcorn Oil: Popcorn, popped in oil, no butter added
+Popcorn Oil Butter: Popcorn, popped in oil, with added butter
+Popcorn Plain Light: Popcorn, microwave, plain, light
+Pork: Pork, NFS, Pork, chop, lean and fat eaten, Pork, roast, Frankfurter, pork
 Pork Backfat Raw: Pork, fresh, backfat, raw
+Pork Bacon Fat: Pork, bacon, rendered fat, cooked
 Pork Barbecue: Barbecue pork, no sauce
-Pork Beef Barbecue Loaf: Barbecue loaf, pork, beef
+Pork Beef Loaf: Barbecue loaf, pork, beef, Picnic loaf, pork, beef
+Pork Beef Sandwich Spread: Sandwich spread, pork, beef
 Pork Beef Sausage: Sausage, pork and beef, fresh, cooked
-Pork Belly: Pork, belly, Pork, fresh, belly, raw
-Pork Bones: Pork, bones, Pork, ears, Pork, ham hocks, Pork, pig's feet
+Pork Belly: Pork, belly
+Pork Belly Raw: Pork, fresh, belly, raw
+Pork Bones: Pork, bones
 Pork Carnitas: Pork, carnitas
-Pork Chop: Pork, chop, NS as to fat eaten, Pork, chop, lean and fat eaten, Pork, chop, lean only eaten, Pork, roast
-Pork Chop Coated: Pork, chop, coated, NS as to fat eaten, Pork, chop, coated, lean and fat eaten, Pork, chop, coated, lean only eaten, Pork, steak, coated
+Pork Chop: Pork, chop, NS as to fat eaten, Pork, chop, lean only eaten
+Pork Chop Coated: Pork, chop, coated, NS as to fat eaten
 Pork Cracklings: Pork, cracklings
-Pork Dehydrated: Pork, oriental style, dehydrated
-Pork Fat Cooked: Pork, fresh, separable fat, cooked
-Pork Fat Raw: Pork, fresh, separable fat, raw
-Pork Frankfurter: Frankfurter, pork
-Pork Loaf: Luxury loaf, pork, Mother's loaf, pork
-Pork Plain: Pork, NFS
+Pork Ears: Pork, ears
+Pork Loaf: Luxury loaf, pork, Mother's loaf, pork, Pickle and pimiento loaf, pork
+Pork Oriental Style: Pork, oriental style, dehydrated
 Pork Ribs: Pork, ribs, Ribs, NFS
 Pork Rinds: Pork skin rinds
 Pork Sausage Cooked: Pork sausage, link/patty, cooked, pan-fried
 Pork Sausage Reduced Fat: Pork sausage, reduced fat
 Pork Sausage Reduced Sodium: Pork sausage, reduced sodium, Pork sausage, reduced sodium, cooked
 Pork Sausage Unprepared: Pork sausage, link/patty, unprepared
+Pork Separable Fat Cooked: Pork, fresh, separable fat, cooked
+Pork Separable Fat Raw: Pork, fresh, separable fat, raw
 Pork Steak: Pork, steak, NS as to fat eaten, Pork, steak, lean and fat eaten, Pork, steak, lean only eaten
 Pork Tamale: Restaurant, Latino, tamale, pork
 Pork Tenderloin: Pork, tenderloin
 Pork Turkey Sausage: Sausage, pork and turkey, pre-cooked
-Potato Chips: Potato chips, NFS, Snacks, banana chips
-Potato Chips Plain: Potato chips, plain, Potato chips, restructured, plain, Potato chips, ruffled, plain, Potato chips, unsalted, Potato sticks, plain, Snacks, corn-based, extruded, chips, plain
+Potato Chips: Potato chips, NFS
+Potato Chips Baked Flavored: Potato chips, baked, flavored
+Potato Chips Baked Plain: Potato chips, baked, plain
+Potato Chips Barbecue: Potato chips, barbecue flavored, Potato chips, ruffled, barbecue flavored
+Potato Chips Cheese: Potato chips, cheese flavored, Potato chips, ruffled, cheese flavored
+Potato Chips Lightly Salted: Potato chips, lightly salted, Potato chips, restructured, lightly salted, Potato chips, unsalted
+Potato Chips Multigrain: Potato chips, restructured, multigrain
+Potato Chips Other Flavored: Potato chips, other flavored, Potato chips, reduced fat, Potato chips, restructured, flavored, Potato chips, ruffled, other flavored, Potato chips, sour cream and onion flavored
+Potato Chips Plain: Potato chips, plain, Potato chips, restructured, plain, Potato chips, ruffled, plain, Snacks, corn-based, extruded, chips, plain
+Potato Chips Popped: Potato chips, popped, NFS, Potato chips, popped, flavored, Potato chips, popped, plain
+Potato Chips Reduced Fat: Potato chips, without salt, reduced fat
+Potato Sticks Flavored: Potato sticks, flavored
+Potato Sticks Fry: Potato sticks, fry shaped
+Potato Sticks Plain: Potato sticks, plain
 Poultry Salad Spread: Poultry salad sandwich spread
-Protein Bar: Formulated Bar, SOUTH BEACH protein bar, Snack, BALANCE, original bar
+Pretzel Chips Flavored: Pretzel chips, hard, flavored, Pretzels, hard, flavored
+Pretzel Chips Gluten Free: Pretzel chips, hard, gluten free, Pretzels, hard, plain, gluten free
+Pretzel Chips Plain: Pretzel chips, hard, plain, Pretzels, NFS, Pretzels, hard, NFS, Pretzels, hard, multigrain, Pretzels, hard, plain, lightly salted, Pretzels, hard, plain, salted, Pretzels, hard, plain, unsalted
+Protein Bar: Snack, BALANCE, original bar
+Protein Bar Chocolate: Formulated bar, POWER BAR, chocolate
+Puerto Rican Codfish Dish: Biscayne codfish, Puerto Rican style
 Pumpernickel Roll: Roll, pumpernickel
 Quail Breast Raw: Quail, breast, meat only, raw
-Quail Cooked: Quail, cooked, total edible
+Quail Cooked: Quail, cooked, total edible, Turkey, Ground, cooked
 Quail Meat Raw: Quail, meat only, raw
 Quail Meat Skin Raw: Quail, meat and skin, raw
-Raisin Granola Bar: Snacks, granola bars, soft, uncoated, raisin
-Ramen Bowl: Ramen bowl, NFS
+Ramen Bowl Beef: Ramen bowl with beef
+Ramen Bowl Fish: Ramen bowl with fish, Fish and noodles with mushroom sauce, Fish and rice with mushroom sauce
+Ramen Bowl Vegetarian: Ramen bowl, vegetarian, Ramen bowl, vegetarian with egg
 Ramen Noodles Water: Soup, ramen noodles, water added
-Raw Clams: Clams, raw
 Raw Oysters: Oysters, raw
-Reduced Fat Crackers: Crackers, saltine, reduced fat, Rice crackers
-Reduced Sodium Crackers: Crackers, saltine, reduced sodium, Snacks, corn cakes, very low sodium
+Reduced Fat Crackers: Crackers, saltine, reduced fat
+Reduced Sodium Crackers: Crackers, saltine, reduced sodium
 Refried Beans: ON THE BORDER, refried beans, Restaurant, Mexican, refried beans
-Rice Brown With Peas Fat Added: Rice, brown, with peas, fat added, Rice, white, with lentils, fat added, Rice, white, with peas, fat added, Spanish rice, fat added
-Rice Brown With Peas No Added: Rice, brown, with peas, no added fat, Rice, white, with peas, no added fat
-Rice Carrots: Rice, brown, with carrots, NS as to fat, Rice, brown, with carrots, fat added, Rice, brown, with carrots, no added fat, Rice, white, with carrots, NS as to fat, Rice, white, with carrots, fat added, Rice, white, with carrots, no added fat
-Rice Coconut Milk: Rice, cooked with coconut milk
-Rice Corn: Rice, brown, with corn, NS as to fat, Rice, brown, with corn, fat added, Rice, brown, with corn, no added fat, Rice, brown, with peas, NS as to fat, Rice, white, with corn, NS as to fat, Rice, white, with corn, fat added, Rice, white, with corn, no added fat
-Rice Croquette: Rice croquette
-Rice Dessert: Rice dessert or salad with fruit
-Rice Gravy: Rice, brown, with gravy, NS as to fat, Rice, brown, with gravy, fat added, Rice, brown, with gravy, no added fat, Rice, white, with gravy, NS as to fat, Rice, white, with gravy, fat added
+Rice Crackers: Rice crackers
 Rice Milk: Rice milk
-Rice Pilaf: Rice pilaf
-Rice Pudding: Pudding, rice, Rice dressing
-Rice With Beans: Rice with stewed beans, Puerto Rican style
-Rice With Lentils: Rice, white, with lentils, NS as to fat, Rice, white, with lentils, no added fat
-Rice With Peas: Rice, white, with peas, NS as to fat
-Rice With Raisins: Rice with raisins
-Rice With Sausage: Rice with vienna sausage, Puerto Rican style
-Rice With Squid: Rice with squid, Puerto Rican style
-Roast Beef Deli: Roast beef, deli style, prepackaged, sliced
+Rice No Fat: Rice, white and wild, cooked, no added fat, Rice, wild, 100%, cooked, no added fat, Rice, brown, with corn, no added fat, Rice, brown, with gravy, NS as to fat, Rice, brown, with gravy, no added fat, Rice, brown, with peas, NS as to fat, Rice, brown, with peas, no added fat, Rice, white, with carrots, NS as to fat, Rice, white, with carrots, no added fat, Rice, white, with corn, NS as to fat, Rice, white, with corn, no added fat, Rice, white, with gravy, NS as to fat, Rice, white, with gravy, no added fat, Rice, white, with lentils, no added fat, Rice, white, with peas, NS as to fat, Rice, white, with peas, no added fat, Spanish rice, NS as to fat, Spanish rice, no added fat
+Rice Pudding: Pudding, rice
+Rice Sausage Dish: Rice with vienna sausage, Puerto Rican style
+Rice Squid Dish: Rice with squid, Puerto Rican style
+Rice Stewed Beans: Rice with stewed beans, Puerto Rican style
+Roast Beef Sliced: Roast beef, deli style, prepackaged, sliced
 Roast Beef Spread: Roast beef spread
-Roll: Roll, NS as to major flour, Roll, white, hoagie, submarine, Roll, white, soft
+Roll: Roll, NS as to major flour, Roll, wheat or cracked wheat, Roll, white, hoagie, submarine, Roll, white, soft, Roll, whole wheat
 Rotisserie Chicken Skin: Chicken, broiler, rotisserie, BBQ, skin
 Ruffed Grouse Breast Raw: Ruffed Grouse, breast meat, skinless, raw
 Rye Roll: Roll, rye
 Salad Dressing: Avocado dressing, Bacon and tomato dressing, Blue or roquefort cheese dressing, Caesar dressing, Coleslaw dressing, Creamy Italian dressing, French or Catalina dressing, Fruit dressing, Honey mustard dressing, Italian dressing, made with vinegar and oil, Korean dressing or marinade, Poppy seed dressing, Ranch dressing, Russian dressing, Salad dressing, NFS, for salads, Sesame dressing, Thousand Island dressing, Tuna salad, made with Italian dressing, Tuna salad, made with creamy dressing
+Salami Hard: Oscar Mayer, Salami (hard)
 Salami Pork Beef Low Sodium: Salami, pork, beef, less sodium
-Salmon Cake: Fish, salmon cake or patty, Salmon cake sandwich
+Salmon Cake Sandwich: Salmon cake sandwich
 Salt Pork Raw: Pork, cured, salt pork, raw
-Sandwich Spread Pork Beef: Sandwich spread, pork, beef
+Saltine Crackers: Crackers, saltine
 Sardine Sandwich: Sardine sandwich
-Scrapple: Scrapple, cooked, Scrapple, pork
-Seafood Paella: Seafood paella, Puerto Rican style
+Scrapple Cooked: Scrapple, cooked, Scrapple, pork
+Seafood Salad Sandwich: Seafood salad sandwich
 Seafood Souffle: Seafood souffle
 Seafood Thermidor: Seafood thermidor
 Seaweed Soup: Soup, seaweed
 Sesame Chicken: Restaurant, Chinese, sesame chicken
-Shellfish Nfs: Shellfish, NFS, Shrimp, NFS
-Shrimp And Vegetables: Restaurant, Chinese, shrimp and vegetables
-Shrimp Baked Broiled: Shrimp, baked or broiled
-Shrimp Baked Broiled Coated: Shrimp, baked or broiled, coated
+Sesame Oil: Sesame oil
+Shellfish Nfs: Shellfish, NFS
 Shrimp Cake Patty: Shrimp, cake or patty
 Shrimp Cocktail: Shrimp cocktail
 Shrimp Crab Stuffing: Shrimp with crab stuffing
 Shrimp Creole No Rice: Shrimp creole, no rice
-Shrimp Creole With Rice: Shrimp creole, with rice
-Shrimp Dried: Shrimp, dried
-Shrimp Garlic Sauce: Shrimp in garlic sauce, Puerto Rican style
-Shrimp Grilled: Shrimp, grilled
+Shrimp Creole Rice: Shrimp creole, with rice
+Shrimp Garlic Puerto Rican: Shrimp in garlic sauce, Puerto Rican style
 Shrimp Lobster Sauce: Shrimp with lobster sauce
-Shrimp Noodles Cheese Sauce: Shrimp and noodles with cheese sauce
-Shrimp Noodles Cream Sauce: Shrimp and noodles with cream or white sauce
-Shrimp Noodles Mushroom Sauce: Shrimp and noodles with mushroom sauce
-Shrimp Noodles No Sauce: Shrimp and noodles, no sauce
-Shrimp Noodles Tomato Sauce: Shrimp and noodles with tomato sauce
+Shrimp Noodles Cheese: Shrimp and noodles with cheese sauce
+Shrimp Noodles Cream: Shrimp and noodles with cream or white sauce
+Shrimp Noodles Mushroom: Shrimp and noodles with mushroom sauce
+Shrimp Noodles Tomato: Shrimp and noodles with tomato sauce
 Shrimp Scampi: Shrimp scampi
-Shrimp Steamed Boiled: Shrimp, steamed or boiled
 Shrimp Toast: Shrimp toast
+Shrimp Vegetables Chinese: Restaurant, Chinese, shrimp and vegetables
 Sirloin Steak: APPLEBEE'S, 9 oz house sirloin steak, CRACKER BARREL, grilled sirloin steak, DENNY'S, top sirloin steak, Restaurant, family style, sirloin steak
-Sliced Ham: Ham, sliced, regular (approximately 11% fat)
-Smoked Ham Low Sodium: Ham, smoked, extra lean, low sodium
-Smoothie Drink: Licuado or Batido
-Snack Mix: Snack mix
-Soft Shell Crab: Crab, soft shell
-Soy Milk Sweetened: Soy milk, sweetened
-Soy Milk Unsweetened: Soy milk, unsweetened
+Snack Mix: Snack mix, Snack mix, plain (Chex Mix), Snacks, KRAFT, CORNNUTS, plain
+Snacks Corn Cakes Very Low Sodium: Snacks, corn cakes, very low sodium
+Soft Pretzels: Pretzels, soft, NFS, Pretzels, soft, from frozen, NFS, Pretzels, soft, from frozen, salted, Pretzels, soft, from frozen, unsalted, Pretzels, soft, from school lunch, Pretzels, soft, multigrain, Pretzels, soft, ready-to-eat, NFS, Pretzels, soft
+Sourdough Roll: Roll, sour dough
 Soy Yogurt: Yogurt, soy
-Soybean Oil: Soybean oil, Vegetable oil, NFS
 Spaghetti And Meatballs: DENNY'S, spaghetti and meatballs
 Spaghetti Pomodoro Sauce: OLIVE GARDEN, spaghetti with pomodoro sauce
-Spanish Rice: Spanish rice, NS as to fat, Spanish rice, from restaurant, Spanish rice, no added fat
-Spanish Rice With Beef: Spanish rice with ground beef
+Spanish Rice Ground Beef: Spanish rice with ground beef
+Spanish Rice Restaurant: Spanish rice, from restaurant
 Squab Meat Raw: Squab, (pigeon), meat only, raw
 Squab Meat Skin Raw: Squab, (pigeon), meat and skin, raw
-Steamed Clams: Clams, steamed or boiled
 Steamed Oysters: Oysters, steamed
 Steamed Scallops: Scallops, steamed or boiled
-Stewed Rice: Stewed rice, Puerto Rican style
-Stewed Salmon: Stewed salmon, Puerto Rican style
-Sugar Free Chocolate Pudding: Pudding, chocolate, ready-to-eat, sugar free
+Steamed Shrimp: Shrimp, steamed or boiled
+Stewed Gizzards Puerto Rican: Stewed gizzards, Puerto Rican style
+Stewed Rice Puerto Rican: Stewed rice, Puerto Rican style
+Stewed Salmon Puerto Rican: Stewed salmon, Puerto Rican style
+Stuffed Grape Leaves: Grape leaves stuffed with rice
 Sweet And Sour Chicken: Restaurant, Chinese, sweet and sour chicken
 Sweet And Sour Pork: Restaurant, Chinese, sweet and sour pork
 Sweetened Rice: Rice, sweet, cooked with honey
+Sweetened Soy Milk: Soy milk, sweetened
+Tapioca Pudding: Pudding, tapioca, made from dry mix, Pudding, tapioca, ready-to-eat
 Trifle: Trifle
 Tripe Soup: Restaurant, Latino, tripe soup
-Truffle Pate: Pate, truffle flavor
+Tteokbokki: Dukboki or Tteokbokki, Korean
 Tuna Cake Patty: Tuna cake or patty
 Tuna Noodle Casserole: Tuna noodle casserole with mushroom sauce
-Tuna Rice Mushroom Sauce: Tuna and rice with mushroom sauce
-Tuna Salad Cheese: Tuna salad with cheese
+Tuna Rice Mushroom: Tuna and rice with mushroom sauce
+Tuna Salad Cheese: Tuna salad with cheese, Tuna salad sandwich on wheat, Tuna salad sandwich on wheat, with cheese, Tuna salad sandwich on white, Tuna salad sandwich on white, with cheese, Tuna salad sandwich wrap
 Tuna Salad Egg: Tuna salad with egg, Tuna salad, made with mayonnaise
 Tuna Salad Light Creamy: Tuna salad, made with light creamy dressing
 Tuna Salad Light Italian: Tuna salad, made with light Italian dressing
-Tuna Salad Wrap: Tuna salad sandwich wrap
-Turkey And Gravy Frozen: Turkey and gravy, frozen
-Turkey Back Meat Raw: Turkey, whole, back, meat only, raw
-Turkey Bacon Low Sodium: Bacon, turkey, low sodium
+Turkey Back Meat Raw: Turkey, whole, back, meat only, raw, Turkey, whole, meat only, raw, Turkey, whole, neck, meat only, raw
+Turkey Bacon: Bacon, turkey, unprepared
 Turkey Breakfast Sausage: Sausage, turkey, breakfast links, mild, raw
-Turkey Breast Meat Raw: Turkey, retail parts, breast, meat only, raw, Turkey, whole, breast, meat only, raw, Turkey, whole, meat only, raw, Turkey breast, sliced, prepackaged
-Turkey Chicken Sausage: Turkey or chicken sausage, Sausage, turkey, fresh, cooked
+Turkey Breast Meat Raw: Turkey, retail parts, breast, meat only, raw, Turkey, whole, breast, meat only, raw
+Turkey Breast Sliced: Turkey breast, sliced, prepackaged
+Turkey Chicken Sausage: Turkey or chicken sausage
 Turkey Chicken Sausage Reduced Sodium: Turkey or chicken sausage, reduced sodium
+Turkey Dark Meat Cooked: Turkey, whole, dark meat, cooked, roasted
 Turkey Dark Meat Raw: Turkey, whole, dark meat, meat only, raw
-Turkey Dark Meat Roasted: Turkey, whole, dark meat, cooked, roasted
-Turkey Dark Meat Skin Raw: Turkey, dark meat, meat and skin, raw
+Turkey Deli: Turkey, white, rotisserie, deli cut
 Turkey Diced Seasoned: Turkey, diced, light and dark meat, seasoned
-Turkey Giblets Cooked: Turkey, whole, giblets, cooked, simmered
-Turkey Giblets Raw: Turkey, whole, giblets, raw, Turkey, whole, neck, meat only, raw
+Turkey Frankfurter: Frankfurter, turkey
+Turkey Gravy Frozen: Turkey and gravy, frozen
+Turkey Ground Fat Free: Turkey, ground, fat free, raw
 Turkey Heart Cooked: Turkey, all classes, heart, cooked, simmered
 Turkey Heart Raw: Turkey, all classes, heart, raw
-Turkey Leg Meat Skin Raw: Turkey, all classes, leg, meat and skin, raw
-Turkey Light Meat Raw: Turkey, whole, light meat, raw
+Turkey Leg Meat Skin Raw: Turkey, all classes, leg, meat and skin, raw, Turkey, whole, meat and skin, raw
 Turkey Liver Cooked: Turkey, all classes, liver, cooked, simmered
-Turkey Liver Raw: Turkey, all classes, liver, raw
 Turkey Meat Roasted: Turkey, whole, meat only, cooked, roasted
-Turkey Meat Skin Raw: Turkey, whole, meat and skin, raw
-Turkey Patties Broiled: Turkey, ground, fat free, patties, broiled
+Turkey Patties Fat Free: Turkey, ground, fat free, patties, broiled
 Turkey Pepperoni: Hormel Pillow Pak Sliced Turkey Pepperoni
+Turkey Pork Sausage: Turkey or chicken and pork sausage
+Turkey Sausage: Sausage, turkey, fresh, cooked
 Turkey Sausage Raw: Sausage, turkey, fresh, raw
-Turkey Skin: Turkey, whole, skin (light and dark), raw
+Turkey Skin Raw: Turkey, whole, skin (light and dark), raw
 Turkey Sticks Breaded: Turkey sticks, breaded, battered, fried
 Turkey Thigh Meat Raw: Turkey, retail parts, thigh, meat only, raw
 Turkey Wing Meat Raw: Turkey, retail parts, wing, meat only, raw, Turkey, whole, wing, meat only, raw
 Turtle: Turtle
-Vegetarian Ramen Bowl: Ramen bowl, vegetarian, Ramen bowl, vegetarian with egg
-Wheat Hamburger Bun: Roll, wheat or cracked wheat, hamburger bun
-Wheat Hot Dog Bun: Roll, wheat or cracked wheat, hot dog bun, Roll, whole wheat, hot dog bun
-Wheat Roll: Roll, wheat or cracked wheat
-White Chili: Chili, white
+Unsweetened Soy Milk: Soy milk, unsweetened
+Vegetable Biryani: Biryani with vegetables
+Vienna Sausage: Sausage, Vienna, canned, chicken, beef, pork
 White Chocolate Pretzels: Pretzels, hard, white chocolate coated
-White Hamburger Bun: Roll, white, hamburger bun
-White Hot Dog Bun: Roll, white, hot dog bun
-White Wild Rice: Rice, white and wild, cooked, NS as to fat, Rice, white and wild, cooked, fat added, Rice, white and wild, cooked, no added fat
-Whole Grain White Hamburger Bun: Roll, whole grain white, hamburger bun
-Whole Grain White Hot Dog Bun: Roll, whole grain white, hot dog bun
-Whole Grain White Roll: Roll, whole grain white
+Whole Grain Roll: Roll, whole grain white
 Whole Wheat Cheese Pizza: Pizza, cheese, whole wheat thick crust, Pizza, cheese, whole wheat thin crust
-Whole Wheat Hamburger Bun: Roll, whole wheat, hamburger bun
-Whole Wheat Roll: Roll, whole wheat
-Wild Rice: Rice, wild, 100%, cooked, NS as to fat, Rice, wild, 100%, cooked, fat added, Rice, wild, 100%, cooked, no added fat
 Wonton Soup: Soup, wonton
 Yachtwurst: Yachtwurst, with pistachio nuts, cooked
 Yellow Rice: Yellow rice, cooked, NS as to fat, Yellow rice, cooked, fat added, Yellow rice, cooked, no added fat

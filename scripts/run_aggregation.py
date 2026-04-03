@@ -180,6 +180,29 @@ def _apply_decision(agg: FoodAggregator, food: dict, row: pd.Series, decision: d
         agg.stats["ignored"] += 1
 
 
+def _parse_group_only(line: str, expected_idx: int):
+    import re
+    s = line.strip().lstrip('-').strip()
+    if not s:
+        return None
+    # Accept no-index format
+    if re.match(r'^(GROUP|IGNORE)\b', s, re.IGNORECASE):
+        s = f'[{expected_idx}] ' + s
+    m = re.match(r'^\[(\d+)\]\s*(GROUP|IGNORE)\s*(.*)$', s, re.IGNORECASE)
+    if not m:
+        return None
+    idx = int(m.group(1))
+    if idx != expected_idx:
+        return None
+    act = m.group(2).upper()
+    rest = m.group(3).strip().strip('"').strip("'")
+    if act == 'IGNORE':
+        return {'idx': expected_idx, 'action': 'IGNORE'}
+    if act == 'GROUP' and rest:
+        return {'idx': expected_idx, 'action': 'CREATE', 'name': rest}
+    return None
+
+
 def run_batched(
     agg: FoodAggregator,
     *,
@@ -187,6 +210,7 @@ def run_batched(
     offset: int,
     resume_from: int,
     batch_size: int,
+    decision_mode: str = "line",
 ):
     df = agg.source_df
     df = df[df["foodName"].notna() & (df["foodName"].astype(str) != "nan")].reset_index(drop=True)
@@ -226,11 +250,19 @@ def run_batched(
             chunk.append((idx, row, food))
 
         user_msg = "\n\n".join(_build_item_prompt(food) for _, _, food in chunk)
-        user_msg += (
-            "\n\nReturn exactly one decision per item, format: [idx] CREATE <name> | ADD <id> | IGNORE"
-            "\nImportant: if multiple incoming items should end up in the SAME group, use the EXACT same CREATE name text for all of them."
-            "\nDo not invent slightly different synonyms for the same target group in one batch."
-        )
+        if decision_mode == "group":
+            user_msg += (
+                "\n\nReturn exactly one decision per item, format: [idx] GROUP <generic_name> | IGNORE"
+                "\nGROUP means: assign this item to a generic group label."
+                "\nThe parser will add to existing group if label exists, otherwise create new group."
+                "\nUse the EXACT same GROUP name for items that belong together in this batch."
+            )
+        else:
+            user_msg += (
+                "\n\nReturn exactly one decision per item, format: [idx] CREATE <name> | ADD <id> | IGNORE"
+                "\nImportant: if multiple incoming items should end up in the SAME group, use the EXACT same CREATE name text for all of them."
+                "\nDo not invent slightly different synonyms for the same target group in one batch."
+            )
 
         try:
             raw = _call_llm_batch(
@@ -268,9 +300,9 @@ def run_batched(
         for idx, row, food in chunk:
             decision = None
             if idx in line_map:
-                decision = _parse_llm_decision(line_map[idx], idx)
+                decision = _parse_group_only(line_map[idx], idx) if decision_mode == "group" else _parse_llm_decision(line_map[idx], idx)
             if decision is None:
-                decision = _parse_llm_decision(raw, idx)
+                decision = _parse_group_only(raw, idx) if decision_mode == "group" else _parse_llm_decision(raw, idx)
             if decision is None:
                 agg.stats["errors"] += 1
                 agg.stats["ignored"] += 1
@@ -307,6 +339,7 @@ def main():
     parser.add_argument("--timeout-seconds", type=int, default=600)
     parser.add_argument("--estimate-full-size", type=int, default=296000)
     parser.add_argument("--estimated-cost-per-call", type=float, default=0.0, help="optional rough USD estimate per LLM API call")
+    parser.add_argument("--decision-mode", choices=["line", "group"], default="line", help="line=create/add/ignore, group=group-name-or-ignore")
     args = parser.parse_args()
 
     repo_root = Path(__file__).resolve().parents[1]
@@ -347,7 +380,14 @@ def main():
     if args.mode == "full":
         limit = limit or None
 
-    result = run_batched(agg, limit=limit, offset=args.offset, resume_from=resume_from, batch_size=args.batch_size)
+    result = run_batched(
+        agg,
+        limit=limit,
+        offset=args.offset,
+        resume_from=resume_from,
+        batch_size=args.batch_size,
+        decision_mode=args.decision_mode,
+    )
     agg.save(str(output_path))
 
     # Human-review friendly grouping trace: Group Name: item1, item2, ...
@@ -379,6 +419,7 @@ def main():
         "model": args.model,
         "batch_size": args.batch_size,
         "offset": args.offset,
+        "decision_mode": args.decision_mode,
         "input_rows": int(len(df if limit is None else df.iloc[:limit])),
         "processed": result["processed"],
         "api_calls": result["api_calls"],
