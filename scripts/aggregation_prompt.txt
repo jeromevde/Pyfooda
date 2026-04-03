@@ -29,5 +29,6 @@ Merge policy (aggressive but nutrition-aware):
   5) Pizza types MUST stay separate by category/style (e.g., cheese pizza, meat pizza, veggie pizza, deep-dish/frozen etc.) when nutrients differ noticeably
 - Do NOT collapse all pizzas into a generic "Pizza" group.
 - Do NOT create over-specific single-SKU style names; choose a broader nutrition-relevant generic bucket.
+- Normalize trivial wording variants into one canonical name (hyphenation/singular/plural/word order), e.g. "Non Dairy" and "Non-Dairy" must be the same group.
 
 Return one decision line only.
