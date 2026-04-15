@@ -44,8 +44,10 @@ Hard constraints:
 - Use the nutrient fingerprint in the prompt as a primary signal; avoid merging items with clearly different calories/macros.
 - Generic names must be short, generic, title case, no brands, no commas.
 - Strip brand/proprietary style tokens from group names (e.g., prefer \"Fat Free Salad Dressing\" over \"Thousand Island Dressing Fat Free\").
-- Target name length: 2-4 words (hard max 6 words). If longer, normalize to a shorter canonical label.
+- Target name length: 2-4 words (hard max 6 words).
 - Never output raw USDA names as CREATE names.
+- Never include lab/sample/spec tokens in CREATE names: no lot IDs, no assay strings, no moisture percentages, no numeric code tails (examples to avoid: "11F 8119 0 Moisture", "NFS", "NS as to").
+- If the incoming name is noisy/encoded, map it to the nearest plain-language food name.
 - IGNORE only if clearly non-food/unclear/supplement/baby/pet.
 
 Merge policy (aggressive but nutrition-aware):
@@ -454,7 +456,7 @@ def main():
                 continue
             seen.add(t.lower())
             unique_src.append(t)
-        lines.append(f"{gname}: " + ", ".join(unique_src))
+        lines.append(f"{gname}: " + " | ".join(unique_src))
     groups_txt.write_text("\n".join(lines) + "\n")
 
     rate = result["processed"] / result["elapsed_seconds"] if result["elapsed_seconds"] > 0 else 0

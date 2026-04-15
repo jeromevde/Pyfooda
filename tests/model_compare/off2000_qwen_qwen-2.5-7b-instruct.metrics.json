@@ -1,0 +1,21 @@
+{
+  "mode": "full",
+  "provider": "openrouter",
+  "model": "qwen/qwen-2.5-7b-instruct",
+  "batch_size": 16,
+  "offset": 2000,
+  "decision_mode": "line",
+  "input_rows": 1000,
+  "processed": 1000,
+  "api_calls": 63,
+  "final_groups": 423,
+  "elapsed_seconds": 290.5,
+  "items_per_second": 3.4423,
+  "eta_full_dataset_seconds": 85988.66,
+  "eta_full_dataset_hms": "23h 53m 08s",
+  "estimated_cost_per_call_usd": 0.0005,
+  "estimated_cost_usd": 0.0315,
+  "estimated_full_api_calls": 18648.0,
+  "estimated_full_cost_usd": 9.324,
+  "output_json": "tests/model_compare/off2000_qwen_qwen-2.5-7b-instruct.json"
+}

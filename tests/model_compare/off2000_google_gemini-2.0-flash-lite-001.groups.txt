@@ -1,0 +1,639 @@
+Alfredo Sauce: Alfredo sauce | Alfredo sauce with added vegetables | Alfredo sauce with meat | Alfredo sauce with meat and added vegetables | Alfredo sauce with poultry | Alfredo sauce with seafood | Black bean sauce | Cheese sauce | Curry sauce
+Almond Oil: Oil, almond
+American Cheese Food: Cheese food, cold pack, American
+American Cheese Spread: Cheese spread, pasteurized process, American
+Anhydrous Butter Oil: Butter oil, anhydrous
+Apricot Kernel Oil: Oil, apricot kernel
+Artichoke Dip: Artichoke dip | Spinach and artichoke dip
+Avocado Oil: Oil, avocado
+Babassu Oil: Oil, babassu
+Bacon Biscuit Sandwich: Bacon biscuit sandwich | Sausage biscuit sandwich
+Bacon Grease: Animal fat, bacon grease
+Bacon Lettuce Tomato Sandwich: Bacon, lettuce, tomato sandwich on white
+Bacon Tomato Salad Dressing: Salad dressing, bacon and tomato
+Bagel Chips: Bagel chips | Pita chips
+Baked Conch: Mollusks, conch, baked or broiled
+Baked Egg: Egg, whole, baked, NS as to fat | Egg, whole, baked, fat added
+Banana Chips: Banana chips
+Bao Bun: Bao bun
+Bao Bun No Meat: Bao bun, no meat
+Bean Beef Burrito: Fast foods, burrito, with beans and beef
+Bean Burrito: Fast foods, burrito, with beans
+Bean Cheese Burrito: Fast foods, burrito, with beans and cheese
+Bean Dip Made With Refried Beans: Bean dip, made with refried beans
+Beef Gravy: Gravy, beef
+Beef Tallow: Fat, beef tallow
+Beignet: Beignet
+Big Mac Sandwich: McDONALD'S, BIG MAC | McDONALD'S, BIG MAC (without Big Mac Sauce)
+Biscuit: Fast food, biscuit
+Biscuit Egg Bacon: Fast foods, biscuit, with egg and bacon | McDONALD'S, Bacon Egg & Cheese Biscuit
+Biscuit Egg Ham: Fast foods, biscuit, with egg and ham
+Biscuit Egg Sausage: Fast Foods, biscuit, with egg and sausage | McDONALD'S, Sausage Biscuit with Egg
+Biscuit Ham: Fast foods, biscuit, with ham
+Biscuit Sausage: Fast foods, biscuit, with sausage | McDONALD'S, Sausage Biscuit
+Biscuit With Gravy: Biscuit with gravy
+Bologna Sandwich: Bologna sandwich on wheat | Bologna sandwich on wheat, with cheese | Bologna sandwich on white | Bologna sandwich on white, with cheese
+Breakfast Crackers: Crackers, breakfast biscuit
+Breakfast Pastry: Breakfast pastry, NFS | Croissant | Danish pastry, plain or spice | Danish pastry, with fruit
+Breakfast Pizza: Breakfast pizza with egg
+Breakfast Sandwich: McDONALD'S, BIG BREAKFAST | McDONALD'S, Bacon, Egg & Cheese McGRIDDLES
+Breakfast Tart: Breakfast tart
+Breakfast Tart Lowfat: Breakfast tart, lowfat
+Brioche: Brioche
+Buffalo Milk: Milk, indian buffalo, fluid
+Butter Crackers: Crackers, butter (Ritz) | Crackers, butter, plain
+Butter Flavored Crackers: Crackers, butter, flavored
+Butter Substitute Powder: Butter replacement, without fat, powder
+Caesar Salad Dressing: Salad dressing, caesar dressing, regular
+Canned Eastern Oyster: Mollusks, oyster, eastern, canned
+Canned Jack Mackerel: Fish, mackerel, jack, canned, drained solids
+Canned Pink Salmon: Fish, salmon, pink, canned, drained solids
+Canola Oil: Oil, canola
+Canola Oil High Oleic: Oil, industrial, canola, high oleic
+Caviar: Fish, caviar, black and red, granular
+Cheddar Colby Cheese: Cheese, low-sodium, cheddar or colby
+Cheese Cottage Dry Curd: Cheese, cottage, dry curd
+Cheese Cottage Low Fat: Cheese, cottage, low fat
+Cheese Cottage Lowfat Lactose Reduced: Cheese, cottage, lowfat, lactose reduced
+Cheese Cottage Lowfat Low Sodium: Cheese, cottage, lowfat, low sodium
+Cheese Cottage Lowfat With Fruit: Cheese, cottage, lowfat, with fruit
+Cheese Cottage Nfs: Cheese, cottage, NFS
+Cheese Cottage Salted Dry Curd: Cheese, cottage, salted, dry curd
+Cheese Cottage With Fruit: Cheese, cottage, with fruit
+Cheese Cottage With Vegetables: Cheese, cottage, with vegetables
+Cheese Crackers: Crackers, cheese | Crackers, cheese (Cheez-It) | Crackers, cheese (Goldfish) | Crackers, cheese, reduced fat | Crackers, cheese, reduced sodium | Crackers, cheese, whole grain | Crackers, milk | Crackers, sandwich | Crackers, sandwich, cheese filled | Crackers, sandwich, cheese filled (Ritz) | Crackers, sandwich, peanut butter filled
+Cheese Croissant: Croissant, cheese
+Cheese Danish: Danish pastry, with cheese
+Cheese Dip: Cheese dip
+Cheese Dip With Chili Pepper: Cheese dip with chili pepper
+Cheese Fondue: Cheese fondue
+Cheese Pastry: Pastry, Italian, with cheese | Pastry, cheese-filled
+Cheese Pizza: DOMINO'S 14 Cheese Pizza, Crunchy Thin Crust | PAPA JOHN'S 14 Cheese Pizza, Original Crust | PAPA JOHN'S 14 Cheese Pizza, Thin Crust | PIZZA HUT 12 Cheese Pizza, Hand-Tossed Crust | PIZZA HUT 12 Cheese Pizza, Pan Crust | PIZZA HUT 14 Cheese Pizza, Hand-Tossed Crust | PIZZA HUT 14 Cheese Pizza, Pan Crust | PIZZA HUT 14 Cheese Pizza, Stuffed Crust
+Cheese Puffs: Cheese pastry puffs
+Cheese Sauce Prepared: Cheese sauce, prepared from recipe
+Cheese Souffle: Cheese souffle
+Cheeseburger: BURGER KING, Cheeseburger | BURGER KING, Double Cheeseburger | McDONALD'S, Cheeseburger | McDONALD'S, Double Cheeseburger | WENDY'S, Jr. Hamburger, with cheese
+Chicken Fat: Fat, chicken
+Chicken Nuggets: McDONALD'S, Chicken McNUGGETS
+Chicken Sandwich: Chicken deli sandwich or sub, restaurant | Turkey sandwich on wheat | Turkey sandwich on white | Turkey sandwich or sub, restaurant | BURGER KING, Original Chicken Sandwich | CHICK-FIL-A, chicken sandwich | McDONALD'S, McCHICKEN Sandwich | WENDY'S, Homestyle Chicken Fillet Sandwich | WENDY'S, Ultimate Chicken Grill Sandwich
+Chicken Strips: BURGER KING, Chicken Strips | CHICK-FIL-A, Chick-n-Strips | POPEYES, Mild Chicken Strips, analyzed 2006 | POPEYES, Spicy Chicken Strips, analyzed 2006 | WENDY'S, Chicken Nuggets
+Chicken Tenders: Fast foods, chicken tenders
+Chicken Wrap: McDONALD'S, RANCH SNACK WRAP, Crispy | McDONALD'S, RANCH SNACK WRAP, Grilled
+Chipotle Dip Light: Chipotle dip, light | Onion dip, light | Ranch dip, light
+Chipotle Dip Regular: Chipotle dip, regular
+Chipotle Dip Yogurt Based: Chipotle dip, yogurt based | Onion dip, yogurt based | Ranch dip, yogurt based
+Chocolate Covered Ice Cream Bar: Ice cream, bar or stick, chocolate covered
+Chocolate Croissant: Croissant, chocolate
+Chocolate Doughnut: Doughnut, cake type, chocolate icing | Doughnut, chocolate | Doughnut, chocolate, with chocolate icing | Doughnut, yeast type, with chocolate icing
+Chocolate Ice Cream Soft Serve: Ice cream, soft serve, chocolate
+Chocolate Milk Lowfat: Milk, chocolate, lowfat, reduced sugar
+Chocolate Milkshake Thick: Milk shakes, thick chocolate
+Chocolate Yogurt Nonfat: Yogurt, chocolate, nonfat milk
+Chow Mein Noodles: Noodles, chow mein
+Churros: Churros
+Cinnamon Roll: Roll, sweet, cinnamon bun, no frosting
+Clarified Butter Ghee: Butter, Clarified butter (ghee)
+Club Sandwich: Club sandwich on wheat | Club sandwich on wheat, with cheese | Club sandwich on white | Club sandwich on white, with cheese | Club sandwich or sub, restaurant
+Cocoa Butter Oil: Oil, cocoa butter
+Coconut Oil: Oil, coconut
+Cod Liver Oil: Fish oil, cod liver | Fish oil, menhaden | Fish oil, menhaden, fully hydrogenated | Fish oil, salmon | Fish oil, sardine
+Coffee Cake: Coffee cake, crumb or quick-bread type | Coffee cake, yeast type
+Coffee Creamer: Coffee creamer, NFS
+Coffee Creamer Liquid: Coffee creamer, liquid
+Coffee Creamer Liquid Flavored: Coffee creamer, liquid, flavored | Cream substitute, flavored, liquid
+Coffee Creamer Liquid Sugar Free Flavored: Coffee creamer, liquid, sugar free, flavored | Cream substitute, liquid, light
+Coffee Creamer Powder: Coffee creamer, powder | Cream substitute, powdered
+Coleslaw: Fast foods, coleslaw | POPEYES, Coleslaw
+Cooked American Shad: Fish, shad, american, cooked, dry heat
+Cooked Atlantic Cod: Fish, cod, Atlantic, cooked, dry heat
+Cooked Atlantic Herring: Fish, herring, Atlantic, cooked, dry heat
+Cooked Atlantic Mackerel: Fish, mackerel, Atlantic, cooked, dry heat
+Cooked Atlantic Pollock: Fish, pollock, Atlantic, cooked, dry heat
+Cooked Blue Mussel: Mollusks, mussel, blue, cooked, moist heat
+Cooked Bluefin Tuna: Fish, tuna, fresh, bluefin, cooked, dry heat
+Cooked Bluefish: Fish, bluefish, cooked, dry heat
+Cooked Burbot: Fish, burbot, cooked, dry heat
+Cooked Butterfish: Fish, butterfish, cooked, dry heat
+Cooked Carp: Fish, carp, cooked, dry heat
+Cooked Corn: Corn, fresh, cooked, no added fat
+Cooked Cusk: Fish, cusk, cooked, dry heat
+Cooked Duck Egg: Duck egg, cooked
+Cooked Eel: Fish, eel, mixed species, cooked, dry heat
+Cooked Egg: Egg, whole, cooked, NS as to cooking method
+Cooked Egg White: Egg, white, cooked, NS as to fat | Egg, white, cooked, fat added
+Cooked Egg Yolk: Egg, yolk only, cooked, NS as to fat | Egg, yolk only, cooked, fat added | Egg, yolk only, cooked, no added fat
+Cooked Fish Roe: Fish, roe, mixed species, cooked, dry heat
+Cooked Freshwater Drum: Fish, drum, freshwater, cooked, dry heat
+Cooked Goose Egg: Goose egg, cooked
+Cooked Haddock: Fish, haddock, cooked, dry heat
+Cooked Halibut: Fish, halibut, greenland, cooked, dry heat
+Cooked King Mackerel: Fish, mackerel, king, cooked, dry heat
+Cooked Ling: Fish, ling, cooked, dry heat
+Cooked Lingcod: Fish, lingcod, cooked, dry heat
+Cooked Mahimahi: Fish, mahimahi, cooked, dry heat
+Cooked Milkfish: Fish, milkfish, cooked, dry heat
+Cooked Monkfish: Fish, monkfish, cooked, dry heat
+Cooked Ocean Pout: Fish, pout, ocean, cooked, dry heat
+Cooked Orange Roughy: Fish, roughy, orange, cooked, dry heat
+Cooked Pacific Cod: Fish, cod, Pacific, cooked | Fish, pollock, Alaska, cooked
+Cooked Pacific Herring: Fish, herring, Pacific, cooked, dry heat
+Cooked Perch: Fish, perch, mixed species, cooked, dry heat
+Cooked Pike Fish: Fish, pike, northern, cooked, dry heat
+Cooked Pink Salmon: Fish, salmon, pink, cooked, dry heat
+Cooked Pompano Fish: Fish, pompano, florida, cooked, dry heat
+Cooked Rainbow Smelt: Fish, smelt, rainbow, cooked, dry heat
+Cooked Scup: Fish, scup, cooked, dry heat
+Cooked Sheepshead: Fish, sheepshead, cooked, dry heat
+Cooked Sockeye Salmon: Fish, salmon, sockeye, cooked, dry heat
+Cooked Spanish Mackerel: Fish, mackerel, spanish, cooked, dry heat
+Cooked Spot Fish: Fish, spot, cooked, dry heat
+Cooked Striped Bass: Fish, bass, striped, cooked, dry heat
+Cooked Striped Mullet: Fish, mullet, striped, cooked, dry heat
+Cooked Swordfish: Fish, swordfish, cooked, dry heat
+Cooked Tilapia: Fish, tilapia, cooked, dry heat
+Cooked Tilefish: Fish, tilefish, cooked, dry heat
+Cooked Trout Fish: Fish, trout, mixed species, cooked, dry heat | Fish, trout, rainbow, wild, cooked, dry heat
+Cooked Turbot Fish: Fish, turbot, european, cooked, dry heat
+Cooked Walleye Fish: Fish, pike, walleye, cooked, dry heat
+Cooked White Sucker Fish: Fish, sucker, white, cooked, dry heat
+Cooked Wolffish: Fish, wolffish, Atlantic, cooked, dry heat
+Cooking Spray: Oil, PAM cooking spray, original
+Corn And Canola Oil: Oil, corn and canola
+Corn Frozen Cooked No Added Fat: Corn, frozen, cooked, no added fat
+Corn Peanut Olive Oil: Oil, corn, peanut, and olive
+Corned Beef Sandwich: Corned beef sandwich on wheat | Corned beef sandwich on wheat, with cheese | Corned beef sandwich on white | Corned beef sandwich on white, with cheese
+Cottonseed Oil: Oil, cottonseed, salad or cooking
+Crackers: Crackers, NFS | Crackers, water | Crackers, wheat | Crackers, wheat, flavored (Wheat Thins) | Crackers, wheat, plain (Wheat Thins) | Crackers, wonton | Crackers, woven wheat | Crackers, woven wheat, flavored (Triscuit) | Crackers, woven wheat, plain (Triscuit)
+Cream Cheese: Cheese spread, cream cheese | Cheese spread, cream cheese base | Cheese, cream
+Cream Cheese Plain: Cream cheese, regular, plain
+Cream Puff: Cream puff, no filling or icing
+Cream Substitute Powdered Light: Cream substitute, powdered, light
+Creamed Egg: Egg, creamed
+Creamsicle Light Ice Cream: Light ice cream, Creamsicle
+Crispbread Crackers: Crackers, crispbread
+Croutons: Croutons
+Crustaceans Crab Alaska King Raw: Crustaceans, crab, alaska king, raw | Fish, pollock, Alaska, raw
+Crustaceans Crab Blue Canned: Crustaceans, crab, blue, canned
+Crustaceans Crab Blue Cooked Moist Heat: Crustaceans, crab, blue, cooked, moist heat
+Crustaceans Crab Blue Raw: Crustaceans, crab, blue, raw
+Crustaceans Crab Dungeness Raw: Crustaceans, crab, dungeness, raw
+Crustaceans Crab Queen Cooked Moist Heat: Crustaceans, crab, queen, cooked, moist heat
+Crustaceans Crab Queen Raw: Crustaceans, crab, queen, raw
+Crustaceans Lobster Northern Raw: Crustaceans, lobster, northern, raw
+Crustaceans Shrimp Cooked: Crustaceans, shrimp, cooked
+Crustaceans Shrimp Mixed Species Canned: Crustaceans, shrimp, mixed species, canned
+Crustaceans Shrimp Raw: Crustaceans, shrimp, raw
+Cupu Assu Oil: Oil, cupu assu
+Custard Filled Doughnut: Doughnut, custard-filled | Doughnut, custard-filled, with icing
+Deviled Egg: Egg, deviled
+Diet Soft Drink: Soft drink, NFS, diet | Soft drink, chocolate flavored, diet | Soft drink, cola, chocolate flavored, diet | Soft drink, cola, decaffeinated, diet | Soft drink, cola, diet | Soft drink, cream soda, diet | Soft drink, ginger ale, diet | Soft drink, pepper type, decaffeinated, diet | Soft drink, pepper type, diet | Soft drink, root beer, diet | Sports drink, low calorie (Powerade Zero)
+Doughnut: Doughnut, NFS | Doughnut, yeast type
+Doughnut Holes: Doughnut holes
+Dried Apple: Apple, dried
+Dried Apricot: Apricot, dried
+Dried Blueberry: Blueberries, dried
+Dried Buttermilk: Milk, buttermilk, dried
+Dried Cherry: Cherries, dried
+Dried Cranberry: Cranberries, dried
+Dried Currant: Currants, dried
+Dried Date: Date
+Dried Egg: Egg, whole, dried
+Dried Egg White: Egg, white, dried
+Dried Egg Yolk: Egg, yolk, dried
+Dried Fig: Fig, dried
+Dried Fruit: Dried, fruit, NFS
+Dried Mango: Mango, dried
+Dried Papaya: Papaya, dried
+Dried Peach: Peach, dried | Pineapple, dried | Prune, dried
+Dried Pear: Pear, dried
+Dried Persimmon: Persimmon, dried
+Dried Salted Cod: Fish, cod, Atlantic, dried and salted
+Dried Salted Jellyfish: Jellyfish, dried, salted
+Dried Whey: Whey, acid, dried
+Duck Egg Raw: Egg, duck, whole, fresh, raw
+Dulce De Leche: Dulce de Leche
+Edam Cheese: Cheese, edam
+Egg Benedict: Egg, Benedict
+Egg Burrito: Egg burrito | Egg burrito, with bacon | Egg burrito, with ham | Egg burrito, with sausage
+Egg Meat Quesadilla: Quesadilla, egg, with meat
+Egg Omelet: Egg omelet or scrambled egg, NS as to fat
+Egg Omelet No Fat: Egg omelet or scrambled egg, no added fat | Egg, whole, baked, no added fat | Egg, whole, fried no added fat
+Egg Omelet With Oil: Egg omelet or scrambled egg, made with oil
+Egg Pancake Meat Sandwich: Egg sandwich on griddle/pancake, with meat
+Egg Pancake Sandwich: Egg sandwich on griddle/pancake
+Egg Quesadilla: Quesadilla, egg
+Egg Roll Meatless: Egg roll, meatless
+Egg Roll With Beef And Or Pork: Egg roll, with beef and/or pork
+Egg Roll With Chicken Or Turkey: Egg roll, with chicken or turkey
+Egg Roll With Shrimp: Egg roll, with shrimp
+Egg Salad Light Creamy: Egg salad, made with light creamy dressing
+Egg Salad Light Italian: Egg salad, made with light Italian dressing
+Egg Salad Light Mayonnaise: Egg salad, made with light mayonnaise
+Egg Salad Mayonnaise: Egg salad, made with mayonnaise
+Egg Salad Sandwich: Egg salad sandwich on wheat | Egg salad sandwich on white
+Egg Sandwich: Egg sandwich on English muffin | Egg sandwich on English muffin, with bacon | Egg sandwich on English muffin, with ham | Egg sandwich on English muffin, with sausage | Egg sandwich on bagel | Egg sandwich on bagel, with bacon | Egg sandwich on bagel, with ham | Egg sandwich on bagel, with sausage | Egg sandwich on biscuit | Egg sandwich on biscuit, with bacon | Egg sandwich on biscuit, with sausage | Egg sandwich on croissant | Egg sandwich on croissant, with bacon | Egg sandwich on croissant, with ham | McDONALD'S, Egg McMUFFIN
+Egg Substitute Powder: Egg substitute, powder
+Egg Taquito: Taquito, egg
+Egg Wheat Bread Sandwich: Egg sandwich on wheat bread
+Egg Wheat Cheese Sandwich: Egg sandwich on wheat bread, with cheese
+Egg Wheat Meat Sandwich: Egg sandwich on wheat bread, with meat
+Egg White Bread Sandwich: Egg sandwich on white bread
+Egg White Cheese Sandwich: Egg sandwich on white bread, with cheese | Egg white sandwich, with cheese
+Egg White Meat Sandwich: Egg sandwich on white bread, with meat | Egg white sandwich, with meat
+Egg White Sandwich: Egg white sandwich
+Egg Whole Raw Frozen Salted Pasteurized: Egg, whole, raw, frozen, salted, pasteurized | Egg, whole, raw
+Eggnog: Eggnog
+Eggplant Dip: Eggplant dip
+Enhanced Water: Water, enhanced, regular
+Fat Free Beef Gravy: Gravy, beef, fat free
+Fat Free Coffee Creamer: Coffee creamer, liquid, fat free
+Fat Free Coffee Creamer Powder: Coffee creamer, powder, fat free
+Fat Free Cream Cheese: Cream cheese, fat free | Cheese, cream, fat free
+Fat Free Egg Substitute: Egg substitute, liquid or frozen, fat free
+Fat Free Half And Half Cream: Cream, half and half, fat free
+Fat Free Parmesan Cheese: Parmesan cheese topping, fat free
+Fat Free Poultry Gravy: Gravy, poultry, fat free
+Fat Free Salad Dressing: Dressing, honey mustard, fat-free | Salad Dressing, mayonnaise-like, fat-free | Salad dressing, caesar, fat-free | Salad dressing, french dressing, fat-free | Salad dressing, italian dressing, fat-free | Salad dressing, ranch dressing, fat-free
+Fat Free Sour Cream: Sour cream, fat free | KRAFT BREAKSTONE'S FREE Fat Free Sour Cream
+Fat Free Whipped Topping: Whipped topping, fat free | Whipped topping, sugar free | Reddi Wip Fat Free Whipped Topping
+Fatty Dip: Dip, NFS | Onion dip, regular | Ranch dip, regular
+Feta Cheese: Cheese, feta
+Filled Milk: Milk, filled, fluid, with lauric acid oil
+Fish Anchovy European Raw: Fish, anchovy, european, raw | Fish, tuna, fresh, skipjack, raw | Fish, tuna, fresh, yellowfin, raw | Fish, turbot, european, raw
+Fish Bass Fresh Water Mixed Species: Fish, bass, fresh water, mixed species, raw | Fish, sea bass, mixed species, raw | Fish, seatrout, mixed species, raw | Fish, whiting, mixed species, raw
+Fish Sandwich: BURGER KING, Premium Fish Sandwich | Fast foods, fish sandwich, with tartar sauce | McDONALD'S, FILET-O-FISH
+Fish Sticks Prepared: Fish, fish sticks, frozen, prepared
+Flatbread Crackers: Crackers, flatbread
+Flavored Coffee Creamer: Coffee creamer, liquid, fat free, flavored
+Flavored Coffee Creamer Powder: Coffee creamer, powder, flavored | Cream substitute, flavored, powdered
+Flavored Cream Cheese: Cream cheese, regular, flavored
+Flavored Half And Half Cream: Cream, half and half, flavored
+Flavored Hummus: Hummus, flavored
+Flaxseed Oil: Oil, flaxseed, cold pressed
+Fontina Cheese: Cheese, fontina
+Fractionated Palm Shortening: Shortening, confectionery, fractionated palm
+French Dip Sandwich: French dip sandwich
+French Fries: BURGER KING, french fries | McDONALD'S, french fries | WENDY'S, french fries
+French Salad Dressing: Salad dressing, french, home recipe
+French Toast Sticks: BURGER KING, french toast sticks | Fast foods, french toast sticks
+Fried Dumpling: Wonton, dumpling or pot sticker, fried
+Fried Egg: Egg, whole, cooked, fried | Egg, whole, fried with butter | Egg, whole, fried with cooking spray | Egg, whole, fried with margarine | Egg, whole, fried with oil | Egg, whole, fried, NS as to fat | Egg, whole, fried, NS as to fat type
+Fried Pastry: Pastry, cookie type, fried | Pastry, mainly flour and water, fried
+Frosted Cinnamon Roll: Roll, sweet, cinnamon bun, frosted
+Frosted Fruit Roll: Roll, sweet, with fruit, frosted | Roll, sweet, with fruit, frosted, diet
+Frosted Roll: Roll, sweet, frosted
+Frozen Egg White: Egg, white, raw, frozen, pasteurized
+Fruit Croissant: Croissant, fruit
+Fruit Fritter: Fritter, fruit
+Fruit Pastry: Pastry, fruit-filled
+Fruit Yogurt Low Fat: Yogurt, fruit, low fat, 11g protein/8 oz | Yogurt, fruit, low fat,9 g protein/8 oz | McDONALD'S, Fruit 'n Yogurt Parfait
+Fruit Yogurt Nonfat: Yogurt, fruit variety, nonfat
+Funnel Cake Sugar: Funnel cake with sugar
+Funnel Cake Sugar Fruit: Funnel cake with sugar and fruit
+Garlic Sauce: Garlic sauce
+Gefiltefish Sweet Recipe: Fish, gefiltefish, commercial, sweet recipe
+Gjetost Cheese: Cheese, gjetost
+Gluten Free Breadsticks: Breadsticks, hard, gluten free
+Gluten Free Crackers: Crackers, gluten free, flavored | Crackers, gluten free, plain
+Goat Milk: Milk, goat, fluid, with added vitamin D
+Goose Egg Raw: Egg, goose, whole, fresh, raw
+Goose Fat: Fat, goose
+Gouda Cheese: Cheese, gouda
+Grapeseed Oil: Oil, grapeseed
+Gravy: Gravy, NFS
+Greek Yogurt Apricot: Yogurt, Greek, 2% fat, apricot, CHOBANI | Yogurt, Greek, 2% fat, mango, CHOBANI | Yogurt, Greek, 2% fat, pineapple, CHOBANI | Yogurt, Greek, 2%fat, coconut blend, CHOBANI
+Greek Yogurt Blueberry: Yogurt, Greek, Blueberry, CHOBANI
+Greek Yogurt Fruit: Yogurt, Greek, fruit, whole milk | Yogurt, Greek, strawberry, DANNON OIKOS | Yogurt, Greek, strawberry, lowfat
+Greek Yogurt Lemon: Yogurt, Greek, nonfat, lemon blend, CHOBANI
+Greek Yogurt Peach: Yogurt, Greek, nonfat, peach, CHOBANI
+Greek Yogurt Plain Nonfat: Yogurt, Greek, nonfat, plain, CHOBANI
+Greek Yogurt Raspberry: Yogurt, Greek, nonfat, raspberry, CHOBANI | Yogurt, Greek, strawberry, nonfat
+Greek Yogurt Vanilla: Yogurt, Greek, nonfat, vanilla, CHOBANI | Yogurt, Greek, nonfat, vanilla, DANNON OIKOS | Yogurt, Greek, vanilla, lowfat | Yogurt, Greek, vanilla, nonfat
+Greek Yogurt Whole Milk: Yogurt, Greek, plain, whole milk | Yogurt, Greek, whole, plain, CHOBANI
+Green Enchilada Sauce: Enchilada sauce, green | Salsa verde or salsa, green
+Gruyere Cheese: Cheese, gruyere
+Guacamole: Guacamole, NFS
+Guacamole With Tomato: Guacamole with tomatoes
+Half And Half Cream: Cream, half and half | Cream, fluid, half and half
+Ham Biscuit Sandwich: Ham biscuit sandwich
+Ham Salad Sandwich: Ham salad sandwich on wheat | Ham salad sandwich on white
+Ham Sandwich: Ham sandwich on wheat | Ham sandwich on white | Ham sandwich or sub, restaurant
+Ham Sandwich With Cheese: Ham sandwich on wheat, with cheese | Ham sandwich on white, with cheese | Ham sandwich or sub, with cheese, restaurant | Turkey sandwich on wheat, with cheese | Turkey sandwich on white, with cheese
+Ham Sandwich Wrap: Ham sandwich wrap
+Hamburger: McDONALD'S, Hamburger
+Hard Boiled Egg: Egg, whole, cooked, hard-boiled | Egg, whole, cooked, poached | Egg, whole, cooked, scrambled | Egg, whole, raw, fresh | Egg, whole, boiled or poached
+Hard Breadsticks: Breadsticks, hard, NFS
+Hard Goat Cheese: Cheese, goat, hard type
+Hash Brown Rounds: BURGER KING, Hash Brown Rounds
+Hash Browns: CHICK-FIL-A, hash browns | McDONALD'S, Hash Brown
+Hazelnut Oil: Oil, hazelnut
+Heavy Cream: Cream, heavy | Cream, fluid, heavy whipping
+Hollandaise Sauce: Hollandaise sauce
+Huevos Rancheros: Huevos rancheros
+Hush Puppies: Fast foods, hush puppies | Fast foods, miniature cinnamon rolls | Fast foods, nachos, with cheese | Fast foods, onion rings, breaded and fried | Fast foods, potato, mashed | Fast foods, quesadilla, with chicken | Fast foods, roast beef sandwich, plain | Fast foods, shrimp, breaded and fried | Fast foods, sundae, caramel | Fast foods, sundae, hot fudge | Fast foods, sundae, strawberry | KFC, Coleslaw | KFC, Crispy Chicken Strips | KFC, Popcorn Chicken | KFC, biscuit | LITTLE CAESARS 14 Cheese Pizza, Thin Crust
+Ice Cream Dessert: McDONALD'S, McFLURRY with M&M'S CANDIES | McDONALD'S, McFLURRY with OREO cookies | WENDY'S, Frosty Dairy Dessert
+Ice Cream Sandwich: Ice cream cookie sandwich | Ice cream sandwich
+Ice Cream Sundae: Ice cream sundae cone | McDONALD'S, Hot Caramel Sundae | McDONALD'S, Hot Fudge Sundae
+Iced Doughnut: Doughnut, cake type, with icing
+Imitation Milk: Milk, imitation, non-soy
+Imitation Sour Cream: Sour cream, imitation | Sour cream, imitation, cultured
+Italian Sandwich: Italian sandwich on wheat | Italian sandwich on white | Italian sandwich or sub, restaurant
+Italian Sausage Sandwich: Italian sausage sandwich on wheat
+Jelly Doughnut: Doughnut, jelly
+Kippered Herring: Fish, herring, Atlantic, kippered
+Lard: Lard
+Layer Dip: Layer dip
+Lemon Butter Sauce: Lemon-butter sauce
+Light Butter Salted: Butter, light, stick, with salt
+Light Butter Unsalted: Butter, light, stick, without salt
+Light Cream: Cream, light
+Light Cream Cheese: Cream cheese, light
+Light Mayonnaise: Salad dressing, KRAFT Mayo Light Mayonnaise
+Light Sour Cream: Sour cream, light
+Light Whipping Cream: Cream, fluid, light whipping
+Limburger Cheese: Cheese, limburger
+Low Calorie Energy Drink: Energy drink, low calorie (Monster)
+Low Calorie Sports Drink: Sports drink, low calorie | Sports drink, low calorie (Gatorade G2)
+Low Fat Cheddar Cheese: Cheese, low fat, cheddar or colby
+Low Fat Cream Cheese: Cheese, cream, low fat
+Low Fat Monterey Cheese: Cheese, monterey, low fat
+Low Fat Muenster Cheese: Cheese, muenster, low fat
+Low Fat Plain Yogurt: Yogurt, Greek, plain, lowfat | Yogurt, plain, low fat
+Low Fat Whipped Topping: Whipped topping, frozen, low fat
+Low Sodium Milk: Milk, low sodium, fluid
+Low Sodium Mozzarella Cheese: Cheese, mozzarella, low sodium
+Lowfat Cultured Buttermilk: Milk, buttermilk, fluid, cultured, lowfat
+Lowfat Half And Half: Cream, half and half, lowfat
+Lowfat Kefir Plain: Kefir, lowfat, plain, LIFEWAY
+Lowfat Kefir Strawberry: Kefir, lowfat, strawberry, LIFEWAY
+Margarine Spread: Margarine Spread, 40-49% fat, tub | Margarine,spread, 35-39% fat, tub | Margarine-like spread, BENECOL Light Spread
+Matzo Crackers: Crackers, matzo | Crackers, matzo, reduced sodium
+Mayonnaise: Salad dressing, mayonnaise, regular
+Mayonnaise Low Sodium: Mayonnaise, low sodium, low calorie or diet
+Mayonnaise No Cholesterol: Mayonnaise dressing, no cholesterol
+Mayonnaise Reduced Fat: Mayonnaise, reduced fat, with olive oil
+Mayonnaise Tofu: Mayonnaise, made with tofu
+Melba Toast: Melba toast | Zwieback toast
+Mexican Cheese Blend: Cheese, Mexican blend
+Mole Sauce: Mole sauce
+Monterey Cheese: Cheese, monterey
+Mozzarella Cheese: Cheese, mozzarella, low moisture, part-skim
+Mozzarella Cheese Substitute: Cheese substitute, mozzarella
+Muenster Cheese: Cheese, muenster
+Multigrain Crackers: Crackers, multigrain
+Multiple Meat Sandwich: Multiple meat sandwich on wheat | Multiple meat sandwich on white | Multiple meat sandwich or sub, restaurant | Turkey and ham sandwich on wheat | Turkey and ham sandwich on white | Turkey and ham sandwich or sub, restaurant
+Multiple Meat Sandwich With Cheese: Multiple meat sandwich on wheat, with cheese | Multiple meat sandwich on white, with cheese | Multiple meat sandwich wrap
+Mustard Oil: Oil, mustard
+Neufchatel Cheese: Cheese, neufchatel
+Nonfat American Cheese: Cheese, American, nonfat or fat free
+Nonfat Dry Milk: Milk, dry, nonfat, calcium reduced
+Nonfat Mozzarella Cheese: Cheese, mozzarella, nonfat
+Nutmeg Butter Oil: Oil, nutmeg butter
+Oat Oil: Oil, oat
+Oatmeal Crackers: Crackers, oatmeal
+Olive Oil: Oil, olive, salad or cooking | Oil, teaseed | Oil, tomatoseed | Oil, walnut | Oil, wheat germ
+Omelet: Egg, whole, cooked, omelet
+Onion Rings: BURGER KING, Onion Rings
+Orange Roughy Fish Raw: Fish, roughy, orange, raw
+Palm Oil: Oil, palm | Vegetable oil, palm kernel
+Pan Dulce: Pan Dulce, no topping | Pan dulce, NFS
+Pan Dulce Fruit: Pan Dulce, with fruit, no frosting
+Pan Dulce Raisin Icing: Pan Dulce, with raisins and icing
+Pan Dulce Sugar: Pan Dulce, with sugar topping
+Pancakes: McDONALD'S, Hotcakes (plain)
+Parmesan Cheese: Cheese, parmesan, grated | Cheese, parmesan, hard | Cheese, parmesan, low sodium | Cheese, parmesan, shredded
+Parmesan Cheese Reduced Fat: Cheese, parmesan, dry grated, reduced fat
+Parmesan Garlic Breadstick: PIZZA HUT, breadstick, parmesan garlic
+Part Skim Mozzarella Cheese: Cheese, mozzarella, part skim milk
+Peanut Oil: Oil, peanut, salad or cooking
+Peanut Sauce: Peanut sauce
+Pepperoni Pizza: PIZZA HUT 12 Pepperoni Pizza, Pan Crust | PIZZA HUT 14 Pepperoni Pizza, Pan Crust
+Pesto Sauce: Pesto sauce
+Pickled Egg: Egg, whole, pickled
+Pickled Herring: Fish, herring, Atlantic, pickled
+Pimento Cheese: Cheese, pasteurized process, pimento
+Plain Doughnut: Doughnut, cake type, plain
+Plain Fritter: Fritter, plain
+Plain Hummus: Hummus, plain
+Plain Yogurt Skim Milk: Yogurt, plain, skim milk
+Plain Yogurt Whole Milk: Yogurt, plain, whole milk
+Popcorn Cake: Popcorn cake
+Popeyes Biscuit: POPEYES, biscuit
+Poppyseed Oil: Oil, poppyseed
+Port De Salut Cheese: Cheese, port de salut
+Poultry Gravy: Gravy, poultry
+Powdered Sugar Doughnut: Doughnut, cake type, powdered sugar
+Provolone Cheese: Cheese, provolone
+Provolone Cheese Reduced Fat: Cheese, provolone, reduced fat
+Puerto Rican Cheese: Puerto Rican white cheese
+Puff Pastry: Pastry, puff
+Quail Egg Raw: Egg, quail, whole, fresh, raw | Quail egg, canned
+Quarter Pounder Sandwich: McDONALD'S, QUARTER POUNDER | McDONALD'S, QUARTER POUNDER with Cheese
+Queso Anejo Cheese: Cheese, mexican, queso anejo
+Queso Asadero Cheese: Cheese, mexican, queso asadero
+Queso Blanco Cheese: Cheese, white, queso blanco
+Queso Chihuahua Cheese: Cheese, mexican, queso chihuahua
+Queso Cotija Cheese: Cheese, mexican, queso cotija
+Queso Fresco Cheese: Cheese, fresh, queso fresco
+Queso Seco Cheese: Cheese, dry white, queso seco
+Raisins: Raisins
+Raw Abalone: Mollusks, abalone, mixed species, raw
+Raw American Shad: Fish, shad, american, raw
+Raw Atlantic Cod: Fish, cod, Atlantic, raw
+Raw Atlantic Croaker: Fish, croaker, Atlantic, raw
+Raw Atlantic Herring: Fish, herring, Atlantic, raw
+Raw Atlantic Mackerel: Fish, mackerel, Atlantic, raw
+Raw Atlantic Pollock: Fish, pollock, Atlantic, raw
+Raw Blue Mussel: Mollusks, mussel, blue, raw
+Raw Bluefin Tuna: Fish, tuna, fresh, bluefin, raw
+Raw Bluefish: Fish, bluefish, raw
+Raw Brook Trout: Fish, trout, brook, raw, New York State
+Raw Burbot: Fish, burbot, raw
+Raw Butterfish: Fish, butterfish, raw
+Raw Carp: Fish, carp, raw
+Raw Channel Catfish: Fish, catfish, channel, farmed, raw | Fish, catfish, channel, wild, raw
+Raw Cisco: Fish, cisco, raw
+Raw Clam: Mollusks, clam, mixed species, raw
+Raw Corn: Corn, raw
+Raw Cusk: Fish, cusk, raw
+Raw Cuttlefish: Mollusks, cuttlefish, mixed species, raw
+Raw Eel: Fish, eel, mixed species, raw
+Raw Egg White: Egg, white, raw, fresh | Egg, white only, raw | Egg, white, cooked, no added fat
+Raw Egg Yolk: Egg, yolk, raw, fresh | Egg, yolk, raw, frozen, pasteurized | Egg, yolk, raw, frozen, salted, pasteurized | Egg, yolk, raw, frozen, sugared, pasteurized | Egg, yolk only, raw
+Raw Farmed Oyster: Mollusks, oyster, eastern, farmed, raw
+Raw Farmed Trout: Fish, trout, rainbow, farmed, raw
+Raw Fish Roe: Fish, roe, mixed species, raw
+Raw Freshwater Drum: Fish, drum, freshwater, raw
+Raw Frog Legs: Frog legs, raw
+Raw Grouper: Fish, grouper, mixed species, raw
+Raw Haddock: Fish, haddock, raw
+Raw Halibut: Fish, halibut, Atlantic and Pacific, raw | Fish, halibut, Greenland, raw
+Raw King Mackerel: Fish, mackerel, king, raw
+Raw Ling: Fish, ling, raw
+Raw Lingcod: Fish, lingcod, raw
+Raw Mahimahi: Fish, mahimahi, raw
+Raw Milkfish: Fish, milkfish, raw
+Raw Monkfish: Fish, monkfish, raw
+Raw Ocean Perch: Fish, ocean perch, Atlantic, raw
+Raw Ocean Pout: Fish, pout, ocean, raw
+Raw Octopus: Mollusks, octopus, common, raw
+Raw Pacific Herring: Fish, herring, Pacific, raw
+Raw Pacific Oyster: Mollusks, oyster, Pacific, raw
+Raw Perch: Fish, perch, mixed species, raw
+Raw Pike Fish: Fish, pike, northern, raw
+Raw Pink Salmon: Fish, salmon, pink, raw
+Raw Pompano Fish: Fish, pompano, florida, raw
+Raw Rainbow Smelt: Fish, smelt, rainbow, raw
+Raw Rockfish: Fish, rockfish, Pacific, mixed species, raw
+Raw Scallop: Mollusks, scallop, mixed species, raw
+Raw Scup: Fish, scup, raw
+Raw Shark: Fish, shark, mixed species, raw
+Raw Sheepshead: Fish, sheepshead, raw
+Raw Snail: Mollusks, snail, raw | Mollusks, squid, mixed species, raw | Mollusks, whelk, unspecified, raw | Salmon nuggets, breaded, frozen, heated | Salmon, sockeye, canned, total can contents | Turtle, green, raw | Caviar | Fish, NFS
+Raw Snapper Fish: Fish, snapper, mixed species, raw
+Raw Sockeye Salmon: Fish, salmon, sockeye, raw
+Raw Spanish Mackerel: Fish, mackerel, spanish, raw
+Raw Spot Fish: Fish, spot, raw
+Raw Striped Bass: Fish, bass, striped, raw
+Raw Striped Mullet: Fish, mullet, striped, raw
+Raw Sturgeon Fish: Fish, sturgeon, mixed species, raw
+Raw Sunfish: Fish, sunfish, pumpkin seed, raw
+Raw Swordfish: Fish, swordfish, raw
+Raw Tilapia: Fish, tilapia, raw
+Raw Tilefish: Fish, tilefish, raw
+Raw Trout Fish: Fish, trout, mixed species, raw | Fish, trout, rainbow, wild, raw
+Raw Walleye Fish: Fish, pike, walleye, raw
+Raw White Sucker Fish: Fish, sucker, white, raw
+Raw Whitefish: Fish, whitefish, mixed species, raw
+Raw Wild Oyster: Mollusks, oyster, eastern, wild, raw
+Raw Wolffish: Fish, wolffish, Atlantic, raw
+Raw Yellowtail Fish: Fish, yellowtail, mixed species, raw
+Reduced Fat Crackers: Crackers, butter, reduced fat | Crackers, wheat, reduced fat | Crackers, woven wheat, reduced fat
+Reduced Fat Salad Dressing: Salad Dressing, coleslaw, reduced fat
+Reduced Fat Sour Cream: Cream, sour, reduced fat, cultured | KRAFT BREAKSTONE'S Reduced Fat Sour Cream | Sour cream, reduced fat
+Reduced Sodium Breadsticks: Breadsticks, hard, reduced sodium
+Reduced Sodium Crackers: Crackers, butter, reduced sodium | Crackers, wheat, reduced sodium | Crackers, woven wheat, reduced sodium
+Reuben Sandwich: Reuben sandwich
+Rice Bran Oil: Oil, rice bran
+Rice Crackers: Crackers, rice | Rice cake
+Rice Flour Pastry: Pastry, Chinese, made with rice flour
+Rice Nut Crackers: Crackers, rice and nuts
+Rice Paper: Rice paper
+Ricotta Cheese: Cheese, Ricotta | Cheese, ricotta, part skim milk | Cheese, ricotta, whole milk
+Roast Beef Sandwich: Roast beef sandwich on wheat | Roast beef sandwich on white | ARBY'S, roast beef sandwich, classic
+Roast Beef Sandwich With Cheese: Roast beef sandwich on wheat, with cheese | Roast beef sandwich on white, with cheese
+Romano Cheese: Cheese, romano
+Roquefort Cheese: Cheese, roquefort
+Sablefish Cooked Dry Heat: Fish, sablefish, cooked, dry heat
+Sablefish Raw: Fish, sablefish, raw
+Sablefish Smoked: Fish, sablefish, smoked
+Salad Dressing: Egg salad, made with Italian dressing | Egg salad, made with creamy dressing | Salad dressing, buttermilk, lite | Salad dressing, caesar, low calorie | Salad dressing, coleslaw | Salad dressing, green goddess, regular | Salad dressing, home recipe, vinegar and oil | Salad dressing, honey mustard, regular | Salad dressing, poppyseed, creamy | Salad dressing, ranch dressing, regular | Salad dressing, russian dressing | Salad dressing, sweet and sour
+Salami Sandwich: Salami sandwich on wheat | Salami sandwich on white
+Salami Sandwich With Cheese: Salami sandwich on wheat, with cheese | Salami sandwich on white, with cheese
+Salmon Atlantic Farmed Raw: Fish, salmon, Atlantic, farmed, raw
+Salmon Atlantic Wild Raw: Fish, salmon, Atlantic, wild, raw
+Salmon Chinook Cooked Dry Heat: Fish, salmon, chinook, cooked, dry heat
+Salmon Chinook Raw: Fish, salmon, chinook, raw
+Salmon Chinook Smoked: Fish, salmon, chinook, smoked
+Salmon Chum Cooked Dry Heat: Fish, salmon, chum, cooked, dry heat
+Salmon Chum Raw: Fish, salmon, chum, raw
+Salmon Coho Farmed Cooked: Fish, salmon, coho, farmed, cooked, dry heat
+Salmon Coho Farmed Raw: Fish, salmon, coho, farmed, raw
+Salmon Coho Wild Cooked: Fish, salmon, coho, wild, cooked, dry heat | Fish, salmon, coho, wild, cooked, moist heat
+Salmon Coho Wild Raw: Fish, salmon, coho, wild, raw
+Salted Butter: Butter, salted
+Salted Mackerel: Fish, mackerel, salted
+Sandwich: Sandwich, NFS
+Sandwich Wrap: Sandwich wrap, NFS | Turkey sandwich wrap
+Sauce: Sauce, NFS
+Sausage Biscuit Sandwich With Cheese: Sausage biscuit sandwich, with cheese
+Sausage Burrito: McDONALD'S, Sausage Burrito
+Sausage Egg Cheese Griddle: McDONALD'S, Sausage, Egg & Cheese McGRIDDLES
+Sausage Egg Croissant Sandwich: Egg sandwich on croissant, with sausage | McDONALD'S, Sausage McMUFFIN with Egg
+Sausage English Muffin: Sausage English muffin sandwich | McDONALD'S, Sausage McMUFFIN
+Sausage Griddle Cake: Fast foods, griddle cake sandwich, sausage | McDONALD'S, Sausage McGRIDDLES
+Sausage Pancake Sandwich: Sausage griddle/pancake sandwich | McDONALD'S, Hotcakes and Sausage
+Sausage Pizza: PIZZA HUT 14 Sausage Pizza, Pan Crust
+Scrambled Egg: Fast foods, egg, scrambled
+Scrambled Eggs Frozen: Eggs, scrambled, frozen mixture
+Seafood Dip: Seafood dip
+Semisoft Goat Cheese: Cheese, goat, semisoft type
+Sesame Oil: Oil, sesame, salad or cooking
+Sheanut Oil: Oil, sheanut
+Sheep Milk: Milk, sheep, fluid
+Shortening Vegetable Household Composite: Shortening, vegetable, household, composite
+Smoked Cisco: Fish, cisco, smoked
+Smoked Haddock: Fish, haddock, smoked
+Smoked Sturgeon Fish: Fish, sturgeon, mixed species, smoked
+Smoked Whitefish: Fish, whitefish, mixed species, smoked
+Soft Goat Cheese: Cheese, goat, soft type
+Sopaipilla: Sopaipilla with syrup or honey | Sopaipilla, without syrup or honey
+Sour Cream: Sour cream, regular | Cream, sour, cultured
+Soy Coffee Creamer: Coffee creamer, soy, liquid
+Soy Oil Hydrogenated: Oil, industrial, soy, fully hydrogenated | Oil, vegetable, soybean, refined
+Soy Oil Low Linolenic: Oil, industrial, soy, low linolenic | Oil, industrial, soy, ultra low linolenic | Oil, soybean, salad or cooking
+Soy Sauce Gravy: Gravy, made with soy sauce
+Soybean Lecithin Oil: Oil, soybean lecithin
+Spam Sandwich: Spam sandwich
+Spanish Coffee Bread: Bread, Spanish coffee
+Spinach Dip: Spinach dip, regular | Spinach dip, yogurt based
+Spinach Dip Light: Spinach dip, light
+Steamed Dumpling: Wonton, dumpling or pot sticker, steamed
+Strawberry Sundae: McDONALD'S, Strawberry Sundae
+Sugar Free Energy Drink: Energy drink, sugar free | Energy drink, sugar free (Monster) | Energy drink, sugar free (Mountain Dew AMP) | Energy drink, sugar free (No Fear) | Energy drink, sugar free (Rockstar) | Energy drink, sugar free (Vault) | Energy drink, sugar-free (NOS) | Energy drink, sugar-free (Red Bull)
+Sunflower Oil Mid Oleic: Oil, industrial, mid-oleic, sunflower | Oil, sunflower, high oleic (70% and over) | Oil, sunflower, linoleic (less than 60%) | Oil, sunflower, linoleic, (approx. 65%)
+Surimi: Fish, surimi
+Sushi Roll Avocado: Sushi roll, avocado
+Sushi Roll California: Sushi roll, California | Sushi, NFS | Sushi, topped with crab
+Sushi Roll Eel: Sushi roll, eel | Sushi, topped with eel
+Sushi Roll Salmon: Sushi roll, salmon | Sushi, topped with salmon
+Sushi Roll Shrimp: Sushi roll, shrimp | Sushi, topped with shrimp
+Sushi Roll Tuna: Sushi roll tuna | Sushi, topped with tuna
+Sushi Roll Vegetable: Sushi roll, vegetable
+Sushi With Egg: Sushi, topped with egg
+Sweet Bread: Pannetone
+Sweet Roll: Roll, sweet, no frosting
+Sweet Tamale: Tamale, sweet
+Sweetened Condensed Milk: Milk, canned, condensed, sweetened
+Swiss Cheese: Cheese, pasteurized process, swiss | Cheese, swiss
+Swiss Cheese Food: Cheese food, pasteurized process, swiss
+Swiss Cheese Low Fat: Cheese, swiss, low fat
+Taco Bell Bean Burrito: TACO BELL, Bean Burrito
+Taco Bell Burrito Supreme With Beef: TACO BELL, BURRITO SUPREME with beef
+Taco Bell Burrito Supreme With Chicken: TACO BELL, BURRITO SUPREME with chicken
+Taco Bell Burrito Supreme With Steak: TACO BELL, BURRITO SUPREME with steak
+Taco Bell Nachos: TACO BELL, Nachos
+Taco Bell Nachos Supreme: TACO BELL, Nachos Supreme
+Taco Bell Soft Taco With Steak: TACO BELL, Soft Taco with steak
+Taco Bell Taco Salad: TACO BELL, Taco Salad
+Tilsit Cheese: Cheese, tilsit
+Tuna Salad: Fish, tuna salad
+Turkey Egg Raw: Egg, turkey, whole, fresh, raw
+Turkey Fat: Fat, turkey
+Tzatziki Dip: Tzatziki dip
+Ucuhuba Butter Oil: Oil, ucuhuba butter
+Unsalted Butter: Butter, without salt
+Vanilla Milkshake Thick: Milk shakes, thick vanilla
+Vanilla Shake: BURGER KING, Vanilla Shake
+Vanilla Yogurt Low Fat: Yogurt, vanilla, low fat.
+Vanilla Yogurt Nonfat: Yogurt, vanilla, non-fat
+Vegetable Dip: Vegetable dip, light | Vegetable dip, regular | Vegetable dip, yogurt based
+Vegetable Oil Butter Spread Reduced Calorie: Vegetable oil-butter spread, reduced calorie
+Vegetarian Gravy: Gravy, vegetarian
+Welsh Rarebit: Welsh rarebit
+Wend Ys Crispy Chicken Sandwich: WEND'YS, Crispy Chicken Sandwich
+Wendy S Classic Double With Cheese: WENDY'S, CLASSIC DOUBLE, with cheese
+Wendy S Classic Single Hamburger No Cheese: WENDY'S, CLASSIC SINGLE Hamburger, no cheese | WENDY'S, Jr. Hamburger, without cheese
+Wendy S Dave S Hot N Juicy 1 4: WENDY'S, DAVE'S Hot 'N Juicy 1/4 LB, single
+Wendy S Double Stack With Cheese: WENDY'S, Double Stack, with cheese
+Whey: Whey, acid, fluid | Whey, sweet, fluid
+Whipped Butter Salted: Butter, whipped, with salt
+Whipped Cream: Cream, whipped | Whipped topping | Cream, whipped, cream topping, pressurized
+Whipped Dessert Topping: Dessert topping, powdered | Dessert topping, pressurized | Dessert topping, semi solid, frozen
+White Sauce: White sauce or gravy
+Whole Buttermilk: Milk, buttermilk, fluid, whole
+Whole Dry Milk: Milk, dry, whole, with added vitamin D | Milk, dry, whole, without added vitamin D
+Whole Milk: Milk, producer, fluid, 3.7% milkfat
+Whole Milk Low Moisture Mozzarella Cheese: Cheese, mozzarella, whole milk, low moisture
+Whole Milk Mozzarella Cheese: Cheese, mozzarella, whole milk
+Whole Wheat Breadsticks: Breadsticks, hard, whole wheat
