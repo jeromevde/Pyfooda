@@ -1,0 +1,34 @@
+{
+  "runs": [
+    {
+      "offset": 2000,
+      "groups": 577,
+      "errors": 10,
+      "created": 579,
+      "added": 405,
+      "ignored": 16,
+      "elapsed_s": 207.85,
+      "api_calls": 42
+    },
+    {
+      "offset": 5000,
+      "groups": 612,
+      "errors": 31,
+      "created": 612,
+      "added": 356,
+      "ignored": 32,
+      "elapsed_s": 212.47,
+      "api_calls": 42
+    },
+    {
+      "offset": 7000,
+      "groups": 416,
+      "errors": 11,
+      "created": 425,
+      "added": 506,
+      "ignored": 69,
+      "elapsed_s": 202.5,
+      "api_calls": 42
+    }
+  ]
+}
