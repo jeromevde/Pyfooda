@@ -1,0 +1,637 @@
+Acorn Flour: Nuts, acorn flour, full fat
+Almond Butter: Nuts, almond butter, plain, with salt added, Almond butter, Almond butter, lower sodium
+Almond Butter Sandwich On Wheat Bread: Almond butter sandwich, on wheat bread
+Almond Butter Sandwich On White Bread: Almond butter sandwich, on white bread
+Almond Paste: Nuts, almond paste, Almond paste
+Almonds: Nuts, almonds, Almonds, NFS, Almonds, flavored, Almonds, lightly salted, Almonds, salted, Almonds, unroasted, Almonds, unsalted
+Almonds Blanched: Nuts, almonds, blanched
+Aloe Vera Juice: Aloe vera juice drink
+Ambrosia Salad: Ambrosia
+Antipasto Salad: Antipasto with ham, fish, cheese, vegetables
+Apple Salad: Apple salad with dressing
+Asian Pear Raw: Pear, Asian, raw
+Asparagus Frozen Cooked With Oil: Asparagus, frozen, cooked with oil
+Bacon: Bacon, for use on a sandwich, Bacon, for use with vegetables
+Baked Sweet Potato: Sweet potato, baked, NS as to fat, Sweet potato, baked, fat added, Sweet potato, baked, no added fat
+Barbecue Beef Sandwich: Barbecue beef sandwich, on wheat bun, Barbecue sandwich, NFS, Barbecue beef, with sauce, Barbecue meat, NFS
+Barbecue Beef Sandwich On White Bun: Barbecue beef sandwich, on white bun, Sloppy joe sandwich, on white bun
+Barbecue Chicken Sandwich: Barbecue chicken sandwich, on wheat bun
+Barbecue Chicken Sandwich On White Bun: Barbecue chicken sandwich, on white bun
+Barbecue Pork Sandwich On Wheat Bun: Barbecue pork sandwich, on wheat bun, Pork sandwich, Pork sandwich, with cheese, Sloppy joe sandwich, on wheat bun
+Barbecue Pork Sandwich On White Bun: Barbecue pork sandwich, on white bun, Barbecue pork, with sauce
+Barbecue Rib Sandwich: Barbecue rib sandwich
+Barley Cooked: Barley
+Basil Raw: Basil, raw
+Bean Cheese Burrito: Burrito, bean and cheese, frozen
+Bean Gordita: Gordita, with beans
+Bean Pupusa: Pupusa, with beans
+Beef And Noodles No Sauce: Beef and noodles, no sauce
+Beef And Noodles With Sauce: Beef and noodles with cream or white sauce, Beef and noodles with gravy, Beef and noodles with mushroom sauce, Beef and noodles with tomato-based sauce, Beef stroganoff with noodles, Stew, beef, with pasta, Stew, pork, with pasta, Spaghetti with meat sauce, diet frozen meal
+Beef And Vegetables: Beef and vegetables, Hawaiian style, Beef with vegetable, diet frozen meal
+Beef Bean Burrito: Burrito, beef and bean, frozen, Burrito, beef and bean, microwaved
+Beef Burgundy: Beef burgundy
+Beef Burrito Bowl: Burrito bowl, beef or pork, with rice, Burrito bowl, chicken, Burrito bowl, chicken, with beans, Burrito bowl, chicken, with beans and rice, Burrito bowl, chicken, with rice, Burrito bowl, with beans, Chilaquiles, Chiles rellenos, cheese-filled, Chiles rellenos, filled with meat and cheese, Chimichanga, chicken, Chimichanga, meat, Chimichanga, with beans, Enchilada, NFS, Enchilada, beef, Enchilada, chicken, Enchilada, no meat
+Beef Cream Sauce: Beef with cream or white sauce
+Beef Curry: Beef curry
+Beef Curry Rice: Beef curry with rice
+Beef Dinner Frozen: Beef dinner, NFS, frozen meal, Frozen dinner, NFS
+Beef Egg Onion: Beef, ground, with egg and onion
+Beef Guisada: Guisada, beef, Guisada, pork
+Beef Ingredient: Beef as ingredient in recipes, Beef, for use with vegetables
+Beef Pasta Mix: Pasta mix, classic beef, unprepared
+Beef Pork Fajita: Fajita, beef or pork
+Beef Pork Quesadilla: Quesadilla, beef or pork
+Beef Pork Quesadilla Vegetables: Quesadilla, beef or pork, with vegetables
+Beef Pork Taquito: Taquito, beef or pork
+Beef Pot Pie: Beef Pot Pie, frozen entree, prepared, Pot pie, beef
+Beef Potatoes Cheese Sauce: Beef and potatoes with cheese sauce
+Beef Potatoes No Sauce: Beef and potatoes, no sauce
+Beef Quesadilla: Quesadilla, NFS
+Beef Rice Cheese Sauce: Beef and rice with cheese sauce, Sausage and rice with cheese sauce
+Beef Rice Cream Sauce: Beef and rice with cream sauce
+Beef Rice Gravy: Beef and rice with gravy, Beef with gravy
+Beef Rice Mushroom Sauce: Beef and rice with mushroom sauce, Beef with mushroom sauce, Sausage and rice with mushroom sauce
+Beef Rice No Sauce: Beef and rice, no sauce
+Beef Rice Tomato Sauce: Beef and rice with tomato-based sauce, Beef with tomato-based sauce
+Beef Salad: Beef salad
+Beef Steak Onions: Beef steak with onions, Puerto Rican style
+Beef Stew: Beef stew, canned entree, Stew, NFS, Stew, beef, Stew, beef, canned, Stew, lamb, Stew, pork
+Beef Stew Potatoes: Beef stew with potatoes, Puerto Rican style
+Beef Stroganoff: Beef stroganoff
+Beef Tamale: Tamale, beef
+Beef Wellington: Beef wellington
+Blackberry Juice: Blackberry juice, 100%
+Blueberry Juice: Blueberry juice
+Boiled Breadfruit Seeds: Seeds, breadfruit seeds, boiled
+Boiled Chinese Chestnuts: Nuts, chestnuts, chinese, boiled and steamed
+Boiled Sweet Potato: Sweet potato, boiled, NS as to fat, Sweet potato, boiled, fat added, Sweet potato, boiled, no added fat
+Brazilnuts: Nuts, brazilnuts, dried, unblanched, Brazil nuts
+Breaded Chicken Tenders: Chicken tenders, breaded, frozen, prepared
+Breaded Chicken Thighs: Chicken, thighs, frozen, breaded, reheated
+Breading Batter: Breading or batter as ingredient in food
+Breakfast Biscuit Sausage Egg: Sausage, egg and cheese breakfast biscuit
+Breakfast Meat Omelet: Breakfast meat as ingredient in omelet
+Broccoli Cauliflower Cooked: Broccoli and cauliflower, cooked, fat added
+Broccoli Ingredient: Broccoli, cooked, as ingredient
+Brussels Sprouts Cooked: Brussels sprouts, fresh, cooked, fat added, Brussels sprouts, frozen, cooked, fat added
+Buckwheat Groats: Buckwheat groats
+Buffalo Sauce: Buffalo sauce
+Bulgur Fat Added: Bulgur, fat added
+Bulgur No Fat: Bulgur, NS as to fat
+Bulgur No Fat Added: Bulgur, no added fat
+Buttermilk: Buttermilk
+Cabbage Ham Hocks: Cabbage with ham hocks
+Cabbage Ingredient: Cabbage, cooked, as ingredient
+Cactus Cooked: Cactus, cooked, fat added, Cactus, cooked, no added fat
+Candied Sweet Potato: Sweet potato, candied
+Canned Apricot: Apricot, canned
+Canned Blackeyed Peas: Winter squash, raw, Blackeyed peas, from canned, Blackeyed peas, from frozen, Breadfruit, cooked, Cassava, cooked, Fufu, Green peas, NS as to form, cooked, Green peas, canned, cooked with oil, Green peas, canned, cooked, no added fat, Green peas, cooked, from restaurant, Green peas, fresh, cooked with oil, Green peas, fresh, cooked, no added fat, Green peas, frozen, cooked with oil, Green peas, frozen, cooked, no added fat, Green peas, raw, Lima beans and corn, cooked, fat added
+Canned Cherries: Cherries, canned
+Canned Fig: Fig, canned
+Canned Fruit Cocktail: Fruit cocktail, canned, NFS, Fruit cocktail, canned, in syrup, Fruit cocktail, canned, juice pack
+Canned Macaroni Cheese: Macaroni and Cheese, canned entree, Ravioli, cheese-filled, canned
+Canned Meat Lasagna: Lasagna with meat, canned
+Canned Pear Juice Pack: Pear, canned, juice pack
+Canned Pear Nfs: Pear, canned, NFS
+Canned Pear Syrup: Pear, canned, in syrup
+Canned Pineapple Juice Pack: Pineapple, canned, juice pack
+Canned Pineapple Nfs: Pineapple, canned, NFS
+Canned Pineapple Syrup: Pineapple, canned, in syrup
+Canned Plum: Plum, canned
+Canned Pumpkin: Pumpkin, canned, cooked, Pumpkin, cooked
+Canned Sweet Potato: Sweet potato, canned, NS as to fat, Sweet potato, canned, fat added, Sweet potato, canned, no added fat
+Cantaloupe Raw: Cantaloupe, raw
+Carrots Ingredient: Carrots, cooked, as ingredient
+Cashew Butter: Nuts, cashew butter, plain, with salt added, Cashew butter
+Cauliflower Cooked: Cauliflower, fresh, cooked with oil
+Cauliflower Ingredient: Cauliflower, cooked, as ingredient, Cauliflower, raw
+Celery Ingredient: Celery, cooked, as ingredient, Celery, raw
+Cheese Gnocchi: Gnocchi, cheese
+Cheese Gordita: Gordita, cheese only
+Cheese Ingredient: Cheese and Queso as ingredient, Cheese as ingredient in sandwiches
+Cheese Manicotti: Manicotti, cheese-filled, no sauce
+Cheese Nachos: Nachos, cheese only
+Cheese Pupusa: Pupusa, cheese only
+Cheese Quesadilla: Quesadilla, cheese only
+Cheese Ravioli Cream Sauce: Ravioli, cheese-filled, with cream sauce
+Cheese Rice Mix: Rice mix, cheese flavor, dry mix, unprepared
+Cheese Sauce: Cheese sauce, for use with vegetables
+Cheese Steak Sandwich: Cheese steak sandwich or sub on wheat, Cheese steak sandwich or sub on white
+Cheese Taquito: Taquito, cheese only
+Chia Seeds: Seeds, chia seeds, dried, Chia seeds
+Chicken Egg Roll: Egg rolls, chicken, refrigerated, heated
+Chicken Ingredient: Chicken as ingredient in recipes, Chicken, for use with vegetables
+Chicken Lasagna: Lasagna with chicken or turkey, Lasagna, with chicken or turkey, and spinach
+Chicken Nachos: Nachos, chicken, with beans, Fajita, chicken
+Chicken Pot Pie: Chicken pot pie, frozen entree, prepared, Turkey Pot Pie, frozen entree
+Chicken Quesadilla: Quesadilla, chicken
+Chicken Quesadilla Vegetables: Quesadilla, chicken, with vegetables
+Chicken Rice Mix: RICE-A-RONI, chicken flavor, unprepared
+Chicken Tamale: Tamale, chicken
+Chicken Taquito: Taquito, chicken
+Chili Hot Dog: Chili hot dog, no bun
+Chili No Beans: Chili, no beans, canned entree
+Chili With Beans: Chili con carne with beans, canned entree, Chili with beans, microwavable bowls, Chili with meat, Chili with meat and beans, Chili with meat, canned, Chili, NFS
+Chinese Pancake: Chinese pancake
+Chitterlings Stew: Stewed chitterlings, Puerto Rican style
+Chives Raw: Chives, raw
+Chocolate Covered Fruit: Fruit, chocolate covered
+Chocolate Crepe: Crepe, chocolate filled
+Chocolate Ice Cream Soda: Ice cream soda, chocolate
+Chocolate Milk Drink: Chocolate milk drink
+Chocolate Pancakes: Pancakes, chocolate, Pancakes, chocolate, fast food / restaurant, Pancakes, chocolate, frozen
+Chocolate Waffle: Waffle, chocolate
+Chocolate Waffle Fast Food: Waffle, chocolate, fast food / restaurant
+Chocolate Waffle Frozen: Waffle, chocolate, frozen
+Chutney: Chutney
+Cilantro Raw: Cilantro, raw
+Cinnamon Waffle: Waffle, cinnamon
+Citrus Fruit Juice Blend: Fruit juice blend, citrus, 100% juice
+Cocoa Powder: Cocoa powder, not reconstituted
+Coconut Water: Nuts, coconut water (liquid from coconuts)
+Cooked Bamboo Shoots: Bamboo shoots, cooked
+Cooked Bean Sprouts: Bean sprouts, cooked
+Cooked Beet Greens: Beet greens, cooked, Beet greens, raw, Chard, cooked, Chard, raw, Collards, NS as to form, cooked, Collards, fresh, cooked with oil, Collards, fresh, cooked, no added fat, Collards, frozen, cooked with oil, Collards, frozen, cooked, no added fat, Collards, raw, Cress, cooked, Cress, raw, Dandelion greens, cooked, Dandelion greens, raw, Escarole, cooked, Greens with ham or pork, Greens, NS as to form, cooked, Greens, canned, cooked, Greens, fresh, cooked, fat added, Greens, fresh, cooked, no added fat, Greens, frozen, cooked, fat added, Greens, frozen, cooked, no added fat, Mustard greens, NS as to form, cooked, Mustard greens, fresh, cooked, fat added, Beets, NS as to form, cooked, Beets, canned, cooked, fat added, Beets, canned, reduced sodium, cooked, Beets, fresh, cooked, fat added
+Cooked Beets: Beets, fresh, cooked, no added fat
+Cooked Bitter Melon: Bitter melon, cooked, Winter melon, cooked
+Cooked Broccoflower: Broccoflower, cooked
+Cooked Brown Rice: Rice, brown, cooked, as ingredient
+Cooked Brussels Sprouts: Brussels sprouts, NS as to form, cooked
+Cooked Burdock: Burdock, cooked
+Cooked Cauliflower: Cauliflower, NS as to form, cooked, Cauliflower, fresh, cooked, no added fat, Cauliflower, frozen, cooked with oil, Cauliflower, frozen, cooked, no added fat
+Cooked Celery: Celery, cooked
+Cooked Christophine: Christophine, cooked
+Cooked Cucumber: Cucumber, cooked
+Cooked Eggplant Fat: Eggplant, cooked, fat added
+Cooked Eggplant No Fat: Eggplant, cooked, no added fat
+Cooked Fennel Bulb: Fennel bulb, cooked
+Cooked Garlic: Garlic, cooked
+Cooked Hot Peppers: Peppers, hot, cooked
+Cooked Kale: Kale, NS as to form, cooked, Kale, fresh, cooked, fat added, Kale, fresh, cooked, no added fat, Kale, frozen, cooked, fat added, Kale, frozen, cooked, no added fat
+Cooked Kohlrabi: Kohlrabi, cooked
+Cooked Lambsquarters: Lambsquarter, cooked
+Cooked Lotus Root: Lotus root, cooked
+Cooked Mirepoix: Mirepoix, cooked, as ingredient
+Cooked Mushrooms: Mushrooms, cooked, as ingredient, Mushroom, Asian, cooked, from dried, Mushrooms, NS as to form, cooked, Mushrooms, canned, cooked, Mushrooms, fresh, cooked, no added fat, Mushrooms, raw
+Cooked Mustard Greens: Mustard greens, fresh, cooked, no added fat, Mustard greens, frozen, cooked, fat added, Turnip greens, frozen, cooked, no added fat
+Cooked Mustard Greens No Fat: Mustard greens, frozen, cooked, no added fat
+Cooked Okra: Okra, NS as to form, cooked
+Cooked Onions: Onions, cooked, as ingredient
+Cooked Palm Hearts: Palm hearts, cooked
+Cooked Parsnips: Parsnips, cooked
+Cooked Poke Greens: Poke greens, cooked
+Cooked Potato: Potato, cooked, as ingredient, Sweet potato, cooked, as ingredient
+Cooked Red Pepper: Red pepper, cooked, as ingredient, Peppers, red, cooked
+Cooked Seaweed Fat: Seaweed, cooked, fat added
+Cooked Seaweed No Fat: Seaweed, cooked, no added fat
+Cooked Snowpeas Fat: Snowpeas, NS as to form, cooked, Snowpeas, fresh, cooked, fat added
+Cooked Snowpeas No Fat: Snowpeas, fresh, cooked, no added fat
+Cooked Spaghetti Squash: Spaghetti squash, cooked
+Cooked Spinach: Spinach, cooked, as ingredient, Beets, canned, cooked, no added fat
+Cooked Summer Squash: Summer squash, cooked, as ingredient, Summer squash, green, raw, Summer squash, yellow, raw
+Cooked Taro Leaves: Taro leaves, cooked
+Cooked Tomatoes: Tomatoes, cooked, as ingredient
+Cooked Turnip: Turnip, cooked
+Cooked Turnip Greens: Turrnip greens, NS as to form, cooked, Asparagus, canned, cooked with oil, Asparagus, fresh, cooked with oil
+Cooked Turnip Greens Fat: Turnip greens, fresh, cooked, fat added
+Cooked Turnip Greens No Fat: Turnip greens, fresh, cooked, no added fat, Asparagus, canned, cooked, no added fat, Asparagus, fresh, cooked, no added fat, Asparagus, frozen, cooked, no added fat
+Cooked Watercress: Watercress, cooked
+Cooked White Rice: Rice, white, cooked, as ingredient
+Cooked Winter Squash: Winter squash, cooked, fat added, Winter squash, cooked, no added fat
+Corn Dog: Corn dogs, frozen, prepared
+Corn Relish: Relish, corn
+Corned Beef Hash: Beef, corned beef hash, with potato, canned, Beef, roast, hash, Corned beef hash, Corned beef patty, Pork hash
+Cottonseed Flour Low Fat: Seeds, cottonseed flour, low fat (glandless)
+Couscous Cooked Plain: Couscous, plain, cooked
+Cranberry Juice: Cranberry juice, 100%, not a blend
+Cranberry Juice Blend: Cranberry juice blend, 100% juice
+Cream Sauce: Cream sauce, for use with vegetables
+Crepe Plain: Crepe, NFS, Crepe, plain
+Cuban Sandwich: Cuban sandwich
+Diet Fruit Drink: Fruit flavored drink, diet
+Dosa Filled: Dosa, with filling
+Dosa Plain: Dosa, plain
+Dragon Fruit: Dragon fruit
+Dried Acorns: Nuts, acorns, dried
+Dried Beechnuts: Nuts, beechnuts, dried
+Dried Beef Creamed: Creamed chipped or dried beef
+Dried Breadnut Seeds: Seeds, breadnut tree seeds, dried
+Dried Butternuts: Nuts, butternuts, dried
+Dried Chinese Chestnuts: Nuts, chestnuts, chinese, dried
+Dried European Chestnuts: Nuts, chestnuts, european, dried, peeled, Nuts, chestnuts, european, dried, unpeeled
+Dried Ginkgo Nuts: Nuts, ginkgo nuts, canned, Nuts, ginkgo nuts, dried, Nuts, ginkgo nuts, raw, Nuts, hazelnuts or filberts, Nuts, hazelnuts or filberts, blanched, Nuts, hickorynuts, dried, Nuts, macadamia nuts, raw, Nuts, pecans, Nuts, pecans, dry roasted, with salt added, Nuts, pecans, oil roasted, with salt added, Nuts, pilinuts, dried, Nuts, pine nuts, dried, Nuts, pine nuts, pinyon, dried, Nuts, pistachio nuts, raw, Nuts, walnuts, black, dried, Nuts, walnuts, dry roasted, with salt added
+Dried Japanese Chestnuts: Nuts, chestnuts, japanese, dried
+Dried Lotus Seeds: Seeds, lotus seeds, dried
+Dried Seaweed: Seaweed, dried
+Dried Vegetable Mixture: Vegetable mixture, dried
+Dry Milk: Milk, dry, not reconstituted, Whey, sweet, dry
+Dry Roasted Almonds: Nuts, almonds, dry roasted, with salt added
+Duck Sauce: Duck sauce
+Eggnog: Eggnog
+Eggplant Ingredient: Eggplant, cooked, as ingredient, Eggplant, raw
+Eggplant Meat Casserole: Eggplant and meat casserole
+Evaporated Milk: Milk, evaporated, NS as to fat content
+Fajita: Fajita, NFS
+Fast Food Whole Grain Waffle: Waffle, whole grain, fast food / restaurant
+Fat Free Evaporated Milk: Milk, evaporated, fat free (skim)
+Fat Free Mayonnaise: Mayonnaise, fat free
+Fat Free Milk: Milk, fat free (skim)
+Fish Ingredient: Fish, cooked, as ingredient
+Flavored Oatmeal: Oatmeal, fast food, flavored, Oatmeal, instant, fruit flavored, fat added, Oatmeal, instant, maple flavored, fat added
+Flavored Pasta: Flavored pasta
+Flaxseed: Seeds, flaxseed, Flax seeds
+French Toast: French toast, school, French toast, whole grain
+French Toast Frozen: French toast, frozen
+French Toast Gluten Free: French toast, gluten free
+French Toast Plain: French toast, NFS, French toast, fast food / restaurant, French toast, plain
+French Toast Sticks: French toast sticks, French toast sticks, fast food / restaurant, French toast sticks, school
+Frito Pie: Frito pie
+Frozen Cherries: Cherries, frozen
+Frozen Cooked Snowpeas Fat: Snowpeas, frozen, cooked, fat added
+Frozen Cooked Snowpeas No Fat: Snowpeas, frozen, cooked, no added fat
+Frozen Cooked Turnip Greens Fat: Turnip greens, frozen, cooked, fat added
+Frozen Fruit Mixture: Fruit mixture, frozen
+Frozen Pineapple: Pineapple, frozen
+Fruit: Fruit, NFS
+Fruit Crepe: Crepe, fruit filled
+Fruit Juice: Fruit juice, NFS
+Fruit Juice Blend: Fruit juice blend, 100% juice
+Fruit Pancakes: Pancakes, fruit, Pancakes, fruit, fast food / restaurant, Pancakes, fruit, frozen
+Fruit Waffle: Waffle, fruit
+Fruit Waffle Fast Food: Waffle, fruit, fast food / restaurant
+Fruit Waffle Frozen: Waffle, fruit, frozen
+Fruit Whole Grain Waffle Frozen: Waffle, whole grain, fruit, frozen
+Fry Sauce: Fry sauce
+Gluten Free Pancakes: Pancakes, gluten free, Waffle, gluten free
+Gluten Free Pasta: Pasta, gluten free
+Goat Milk: Goat milk
+Granola Bar Kashi Chewy: Cereal or granola bar (Kashi Chewy), Nutrition bar (Tiger's Milk)
+Granola Bar Kashi Crunchy: Cereal or granola bar (Kashi Crunchy)
+Grape Juice: Grape juice, 100%, Grape juice, 100%, with calcium added
+Gravy: Gravy, for use with vegetables
+Green Beans Ingredient: Green beans, cooked, as ingredient
+Green Pepper Ingredient: Green pepper, cooked, as ingredient
+Gyro Sandwich: Gyro sandwich
+Ham Cheddar Pocket: LEAN POCKETS, Ham N Cheddar
+Ham Croquette: Ham croquette
+Ham Gravy: Ham or pork with gravy
+Ham Ingredient: Ham, for use with vegetables
+Ham Mushroom Sauce: Ham or pork with mushroom sauce
+Ham Noodles No Sauce: Ham and noodles, no sauce
+Ham Noodles With Sauce: Ham and noodles with cream or white sauce
+Ham Potato Cheese Sauce: Ham or pork and potatoes with cheese sauce
+Ham Potato Gravy: Ham or pork and potatoes with gravy
+Ham Rice Mushroom Sauce: Ham and rice with mushroom sauce
+Ham Rice No Sauce: Ham or pork and rice, no sauce
+Ham Salad: Ham or pork salad
+Ham Stroganoff: Ham stroganoff
+Ham Stuffing: Ham or pork with stuffing
+Ham Tomato Sauce: Ham or pork with tomato-based sauce
+Hamburger Sauce: Sauce as ingredient in hamburgers
+Hash: Hash, NS as to type of meat
+Hayacas: Hayacas, Puerto Rican style
+Hazelnuts: Hazelnuts
+Hemp Seeds Hulled: Seeds, hemp seed, hulled
+Home Recipe Meat Lasagna: Lasagna with meat, home recipe
+Honey Mustard Dip: Honey mustard dip
+Honey Roasted Almonds: Nuts, almonds, honey roasted, unblanched, Almonds, honey roasted, Walnuts, honey roasted
+Honey Roasted Peanuts: Peanuts, honey roasted
+Honey Roasted Pecans: Pecans, honey roasted
+Honeydew Melon Raw: Honeydew melon, raw
+Horseradish: Horseradish
+Horseradish Sauce: Horseradish sauce
+Hot Dogs Sauerkraut: Frankfurters or hot dogs and sauerkraut
+Hot Pepper Sauce: Hot pepper sauce
+Hot Thai Sauce: Hot Thai sauce
+Ice Cream Soda Flavored: Ice cream soda, flavors other than chocolate
+Industrial Oil: Industrial oil as ingredient in food
+Instant Coffee: Coffee, instant, not reconstituted
+Instant Iced Tea: Tea, iced, instant, black, unsweetened, dry
+Jelly Sandwich Nfs: Jelly sandwich, NFS
+Jelly Sandwich On Wheat Bread: Jelly sandwich, on wheat bread, Jelly sandwich, on white bread
+Kefir: Kefir
+Kibby: Kibby, Puerto Rican style
+Lactose Free Fat Free Milk: Milk, lactose free, fat free (skim)
+Lactose Free Low Fat Milk: Milk, lactose free, low fat (1%)
+Lactose Free Reduced Fat Milk: Milk, lactose free, reduced fat (2%)
+Lactose Free Whole Milk: Milk, lactose free, whole
+Lamb Gravy: Lamb or mutton with gravy
+Lamb Loaf: Lamb or mutton loaf
+Lamb Noodles Gravy: Lamb or mutton and noodles with gravy
+Lamb Potato Gravy: Lamb or mutton and potatoes with gravy
+Lasagna Cheese Frozen Prepared: Lasagna, cheese, frozen, prepared
+Lasagna Cheese Frozen Unprepared: Lasagna, cheese, frozen, unprepared
+Lasagna Pasta Mix: Pasta mix, Italian lasagna, unprepared
+Lasagna Vegetable Frozen Baked: Lasagna, Vegetable, frozen, baked, Lasagna, meatless, Lasagna, meatless, with vegetables
+Lasagna With Meat Sauce Frozen Prepared: Lasagna with meat sauce, frozen, prepared, Lasagna with meat
+Lemon Juice: Lemon juice, 100%, NS as to form, Lemon juice, 100%, canned or bottled, Lemon juice, 100%, freshly squeezed
+Light Mayonnaise: Mayonnaise, light, Mayonnaise-type salad dressing, Mayonnaise-type salad dressing, light
+Lima Beans And Corn: Lima beans and corn, cooked, no added fat, Lima beans, from canned, Lima beans, from frozen, fat added, Lima beans, from frozen, no added fat, Peas and corn, cooked, fat added, Peas and corn, cooked, no added fat, Plantain, cooked with butter or margarine, Plantain, cooked with oil, Plantain, cooked, no added fat, Plantain, raw, Taro, cooked, Water Chesnut, Alfalfa sprouts, raw, Artichoke, Asian stir fry vegetables, cooked, fat added, Asparagus, NS as to form, cooked
+Lime Juice: Lime juice, 100%, NS as to form, Lime juice, 100%, canned or bottled, Lime juice, 100%, freshly squeezed, Vinegar
+Liver Onions: Liver, beef or calves, and onions
+Lychee: Lychee
+Macadamia Nuts: Macadamia nuts
+Macaroni And Cheese Canned Microwavable: Macaroni and Cheese, canned, microwavable
+Macaroni And Cheese Frozen Entree: Macaroni and cheese, frozen entree
+Macaroni And Cheese With Beef: Beef and macaroni with cheese sauce, Chili with macaroni
+Malted Milk Mix: Milk, malted, dry mix, not reconstituted
+Malted Milkshake: Milk shake with malt
+Manicotti Meat Sauce: Manicotti, cheese-filled, with meat sauce
+Maraschino Cherries: Cherries, maraschino
+Meal Bar Slim Fast: Nutrition bar (Slim Fast Original Meal Bar), Nutrition bar or meal replacement bar, NFS
+Meal Bar South Beach: Nutrition bar (South Beach Living Meal Bar)
+Meat Bean Gordita: Gordita, meat, with beans
+Meat Bean Pupusa: Pupusa, meat, with beans
+Meat Cheese Calzone: Calzone, with meat and cheese
+Meat Fruit Pizza: Pizza with meat and fruit, medium crust
+Meat Gordita: Gordita, meat
+Meat Gravy: Meat with gravy, NS as to type of meat,
+Meat Lasagna Frozen: Lasagna with meat & sauce, frozen entree, Lasagna with meat, frozen
+Meat Pizza: Pizza with extra meat, medium crust, Pizza with extra meat, thick crust, Pizza with extra meat, thin crust
+Meat Pupusa: Pupusa, meat
+Meat Ravioli Cream Sauce: Ravioli, meat-filled, with cream sauce
+Meat Spinach Lasagna: Lasagna with meat and spinach
+Meat Tomato Sauce: Meat with tomato-based sauce
+Meatball Mozzarella Pocket: Lean Pockets, Meatballs & Mozzarella
+Meatball Sandwich: Meatball sandwich or sub
+Meatballs Puerto Rican: Meatballs, Puerto Rican style
+Meatballs With Sauce: Meatballs, NS as to type of meat, with sauce, Swedish meatballs with cream or white sauce
+Meatless Cheese Calzone: Calzone, with cheese, meatless
+Meatloaf: Meat loaf, NS as to type of meat
+Meatloaf Beef: Meat loaf made with beef
+Meatloaf Beef Pork: Meat loaf made with beef and pork
+Meatloaf Beef Veal Pork: Meat loaf made with beef, veal and pork
+Meatloaf Dinner: Meat loaf dinner, NFS, frozen meal
+Meatloaf Ham: Meat loaf made with ham
+Meatloaf Puerto Rican: Meat loaf, Puerto Rican style
+Meatloaf Sandwich: Meatloaf sandwich
+Meatloaf Venison: Meat loaf made with venison/deer
+Melon Frozen: Melon, frozen
+Mexican Ground Beef Stew: Stewed seasoned ground beef, Mexican style
+Mexican Pizza: Mexican pizza
+Milk: Milk, NFS
+Milk Evaporated Whole: Milk, evaporated, whole
+Milk Low Fat 1: Milk, low fat (1%)
+Milk Shake Bottled Chocolate: Milk shake, bottled, chocolate
+Milk Shake Fast Food Chocolate: Milk shake, fast food, chocolate
+Milk Shake Home Recipe Chocolate: Milk shake, home recipe, chocolate
+Milk Shake Home Recipe Chocolate Light: Milk shake, home recipe, chocolate, light
+Millet Cooked: Millet
+Mixed Nuts: Mixed nuts, NFS, Nuts, NFS, Trail mix with nuts
+Mixed Nuts Peanuts: Mixed nuts, with peanuts, lightly salted, Mixed nuts, with peanuts, salted, Mixed nuts, with peanuts, unsalted, Peanuts, NFS
+Mixed Nuts Salted: Mixed nuts, without peanuts, salted, Mixed nuts, without peanuts, unsalted, Peanuts, dry roasted, lightly salted, Peanuts, dry roasted, salted, Peanuts, dry roasted, unsalted, Peanuts, roasted, salted, Peanuts, roasted, unsalted, Peanuts, unroasted, Pecans, salted, Pistachio nuts, lightly salted, Pistachio nuts, salted
+Mixed Seeds: Mixed seeds
+Mushrooms Cooked With Oil: Mushrooms, fresh, cooked with oil
+Mustard: Mustard
+Nachos: Nachos, NFS
+Nachos Beef Pork: Nachos, beef or pork
+Nachos Beef Pork Beans: Nachos, beef or pork, with beans
+Nachos With Beans: Nachos, with beans
+Nectarine Raw: Nectarine, raw
+Nonfat Dry Milk: Milk, dry, reconstituted, nonfat
+Noodle Pudding: Noodle pudding
+Noodles Cooked: Noodles, cooked, Pasta, vegetable, cooked, Pasta, whole grain, cooked, Rice noodles, cooked
+Nutella Sandwich: Nutella sandwich on wheat bread, Nutella sandwich on white bread
+Nutrition Bar Balance Original: Nutrition bar (Balance Original Bar), Nutrition bar (Zone Perfect Classic Crunch)
+Nutrition Bar Clif Bar: Nutrition bar (Clif Bar)
+Nutrition Bar Clif Kids: Nutrition bar (Clif Kids Organic Zbar)
+Nutrition Bar Powerbar: Nutrition bar (PowerBar)
+Oatmeal Plain: Oatmeal, NFS, Oatmeal, fast food, plain, Oatmeal, multigrain, Oatmeal, reduced sugar
+Oil Roasted Almonds: Nuts, almonds, oil roasted, lightly salted, Nuts, almonds, oil roasted, with salt added
+Okra Cooked No Fat: Okra, fresh, cooked, no added fat
+Okra Cooked With Fat: Okra, fresh, cooked, fat added
+Okra Frozen No Fat: Okra, frozen, cooked, no added fat
+Okra Frozen With Fat: Okra, frozen, cooked, fat added
+Olive Tapenade: Olive tapenade
+Olives: Olives, NFS, Olives, black, Olives, green
+Olives Stuffed: Olives, stuffed
+Packaged Coconut: Coconut, packaged
+Pancakes: Pancakes, NFS, Pancakes, plain, Pancakes, plain, fast food / restaurant, Pancakes, plain, frozen, Pancakes, school, Pancakes, whole grain
+Pancakes Sausage Frozen: Pancakes and sausage, frozen meal
+Papaya Juice: Papaya juice, 100%
+Passion Fruit Juice: Passion fruit juice, 100%
+Pasta Cooked: Pasta, cooked
+Pasta Cream Sauce Meat: Pasta with cream sauce and meat, home recipe, Pasta with cream sauce and meat, restaurant, Pasta with cream sauce, home recipe, Pasta with cream sauce, ready-to-heat, Pasta with cream sauce, restaurant, Ravioli, NS as to filling, with cream sauce
+Pasta Salad Cheese: Macaroni or pasta salad with cheese
+Pasta Salad Chicken: Macaroni or pasta salad with chicken
+Pasta Salad Crab: Macaroni or pasta salad with crab meat
+Pasta Salad Egg: Macaroni or pasta salad with egg
+Pasta Salad Meat: Macaroni or pasta salad with meat
+Pasta Salad Shrimp: Macaroni or pasta salad with shrimp
+Pasta Salad Tuna: Macaroni or pasta salad with tuna
+Pasta Salad Tuna Egg: Macaroni or pasta salad with tuna and egg
+Pasta Sauce: Pasta with sauce, NFS
+Pasta Sauce Meat School: Pasta with sauce and meat, from school lunch
+Pasta Sauce Meatless: Pasta with sauce, meatless, school lunch
+Pasta Tomato Cheese: Pasta with tomato-based sauce and cheese
+Pasta Tomato Sauce: Pasta with tomato sauce, no meat, canned, Spaghetti with meat sauce, frozen entree, Tomato sauce, for use with vegetables, Pasta with tomato-based sauce, home recipe, Pasta with tomato-based sauce, ready-to-heat, Pasta with tomato-based sauce, restaurant
+Pasta Vegetables: Pasta with vegetables, no sauce or dressing
+Peach Canned In Syrup: Peach, canned, in syrup
+Peach Canned Juice Pack: Peach, canned, juice pack
+Peach Canned Nfs: Peach, canned, NFS
+Peach Frozen: Peach, frozen
+Peach Raw: Peach, raw
+Peanut Butter: Peanut butter, Peanut butter, lower sodium, Peanut butter, lower sodium and lower sugar, Peanut butter, lower sugar, Peanut butter, vitamin and mineral fortified
+Peanut Butter Chocolate Spread: Peanut butter and chocolate spread
+Peanut Butter Jelly: Peanut butter and jelly
+Peanut Butter Reduced Fat: Peanut butter, reduced fat
+Peanut Butter Sandwich: Peanut butter and jelly sandwich, NFS, Peanut butter sandwich, NFS
+Peas Carrots Canned: Peas and carrots, canned, cooked, fat added, Peas and carrots, cooked, NS as to form, Peas and carrots, fresh, cooked, fat added, Peas and carrots, frozen, cooked, fat added, Peppers and onions, cooked, fat added, Peppers and onions, cooked, no added fat, Peppers, banana, raw, Peppers, green, cooked, Peppers, jalapenos, Peppers, raw, NFS, Peppers, sweet, green, raw, Radish, Raw vegetable, NFS, Rutabaga, cooked, Rutabaga, raw, Salsify, cooked
+Pecans: Pecans, NFS, Pecans, unroasted, Pecans, unsalted
+Pepper Steak: Pepper steak
+Pickle Relish: Relish, pickle
+Pickled Beets: Beets, pickled
+Pickled Cabbage: Cabbage, green, pickled, Cabbage, red, pickled, Mushrooms, pickled, Okra, pickled, Peppers, sweet, pickled
+Pickled Cauliflower: Cauliflower, pickled
+Pickled Celery: Celery, pickled, Radishes, pickled
+Pickled Eggplant: Eggplant, pickled
+Pickled Fruit: Fruit, pickled
+Pickled Ginger: Ginger root, pickled
+Pickled Green Beans: Green beans, pickled
+Pickled Peppers: Peppers, hot, pickled
+Pickles: Pickles, NFS, Pickles, dill
+Pickles Sweet: Pickles, sweet
+Pimiento: Pimiento
+Pine Nuts: Pine nuts
+Pineapple Juice: Pineapple juice, 100%
+Pineapple Salad: Pineapple salad with dressing
+Pistachios: Pistachio nuts, NFS, Pistachio nuts, unsalted
+Pizza Beans Vegetables: Pizza with beans and vegetables, thick crust, Pizza with beans and vegetables, thin crust
+Pizza Rolls Frozen: Pizza rolls, frozen, unprepared, Pizza rolls
+Plantain Meat Pie: Ripe plantain meat pie, Puerto Rican style
+Pomegranate Juice: Pomegranate juice, 100%
+Porcupine Balls Mushroom: Porcupine balls with mushroom sauce
+Porcupine Balls Tomato: Porcupine balls with tomato-based sauce
+Pork Chili Tomatoes: Pork with chili and tomatoes
+Pork Chop Stuffed: Pork, chop, stuffed
+Pork Egg Roll: Egg rolls, pork, refrigerated, heated, Egg rolls, vegetable, frozen, prepared
+Pork Enchilada: Enchilada, pork
+Pork Rice Tomato Sauce: Pork and rice with tomato-based sauce, Sausage and rice with tomato-based sauce
+Pork Tamale: Tamale, pork
+Potato Dumpling: Dumpling, potato- or cheese-filled, frozen
+Potato Gnocchi: Gnocchi, potato
+Potato Salad Egg: Potato salad with egg
+Prune Juice: Prune juice, 100%
+Puerto Rican Pasteles: Puerto Rican pasteles
+Puerto Rican Seasoning: Puerto Rican seasoning with ham
+Puerto Rican Stewed Beef: Stewed dried beef, Puerto Rican style
+Puerto Rican Stewed Goat: Stewed goat, Puerto Rican style
+Puerto Rican Stewed Pigs Feet: Stewed pig's feet, Puerto Rican style
+Puerto Rican Stewed Pork: Stewed pork, Puerto Rican style
+Puerto Rican Stewed Rabbit: Stewed rabbit, Puerto Rican style,
+Puerto Rican Stuffed Pepper: Stuffed green pepper, Puerto Rican style
+Pulled Pork Barbecue: Pulled pork in barbecue sauce
+Pumpkin Pancakes: Pancakes, pumpkin
+Pumpkin Seeds: Pumpkin seeds, NFS, Pumpkin seeds, salted, Pumpkin seeds, unsalted
+Quesadilla Vegetables: Quesadilla, with vegetables
+Quinoa Fat Added: Quinoa, fat added
+Quinoa No Added Fat: Quinoa, no added fat
+Quinoa Ns As To Fat: Quinoa, NS as to fat
+Ravioli Cheese Spinach: Ravioli, cheese and spinach-filled, no sauce
+Ravioli No Sauce: Ravioli, NS as to filling, no sauce, Ravioli, cheese-filled, no sauce, Ravioli, meat-filled, no sauce, Stuffed shells, cheese-filled, no sauce, Tortellini, cheese-filled, no sauce, Tortellini, meat-filled, no sauce, Tortellini, spinach-filled, no sauce
+Ravioli Tomato Sauce: Ravioli, NS as to filling, with tomato sauce, Ravioli, cheese-filled, with meat sauce, Ravioli, cheese-filled, with tomato sauce, Tortellini, meat-filled, with tomato sauce
+Raw Acorns: Nuts, acorns, raw
+Raw Apricot: Apricot, raw
+Raw Asparagus: Asparagus, raw
+Raw Avocado: Avocado, raw
+Raw Bean Sprouts: Bean sprouts, raw, Brussels sprouts, raw
+Raw Beets: Beets, raw
+Raw Breadfruit Seeds: Seeds, breadfruit seeds, raw
+Raw Breadnut Seeds: Seeds, breadnut tree seeds, raw
+Raw Broccoflower: Broccoflower, raw
+Raw Cactus: Cactus, raw, Cucumber, raw
+Raw Cashew Nuts: Nuts, cashew nuts, raw, Cashews, NFS, Cashews, lightly salted, Cashews, salted, Cashews, unroasted, Cashews, unsalted
+Raw Cherries: Cherries, raw
+Raw Chinese Chestnuts: Nuts, chestnuts, chinese, raw
+Raw Coconut Meat: Nuts, coconut meat, raw, Coconut, fresh
+Raw European Chestnuts: Nuts, chestnuts, european, raw, peeled, Nuts, chestnuts, european, raw, unpeeled, Chestnuts
+Raw Fennel Bulb: Fennel bulb, raw
+Raw Fig: Fig, raw
+Raw Garlic: Garlic, raw
+Raw Guava: Guava, raw
+Raw Hot Peppers: Peppers, hot, raw
+Raw Japanese Chestnuts: Nuts, chestnuts, japanese, raw
+Raw Jicama: Jicama, raw
+Raw Kale: Kale, raw
+Raw Kiwi Fruit: Kiwi fruit, raw
+Raw Kohlrabi: Kohlrabi, raw
+Raw Lotus Seeds: Seeds, lotus seeds, raw
+Raw Mustard Greens: Mustard greens, raw
+Raw Oats: Oats, raw
+Raw Parsley: Parsley, raw
+Raw Passion Fruit: Passion fruit, raw
+Raw Pear: Pear, raw
+Raw Persimmon: Persimmon, raw
+Raw Pineapple: Pineapple, raw
+Raw Plum: Plum, raw
+Raw Pomegranate: Pomegranate, raw
+Raw Red Pepper: Peppers, sweet, red, raw
+Raw Seaweed: Seaweed, raw
+Raw Snowpeas: Snowpeas, raw
+Raw Starfruit: Starfruit, raw
+Raw Turnip: Turnip, raw
+Raw Watercress: Watercress, raw
+Reduced Fat Evaporated Milk: Milk, evaporated, reduced fat (2%)
+Reduced Fat Mayonnaise: Mayonnaise, reduced fat,  with olive oil
+Reduced Fat Milk: Milk, reduced fat (2%)
+Reduced Fat Pancakes: Pancakes, plain, reduced fat, Pancakes, whole grain, reduced fat, Waffle, plain, reduced fat
+Reduced Fat Waffle: Waffle, whole grain, reduced fat
+Regular Mayonnaise: Mayonnaise, regular
+Restaurant Chili Meat: Chili with meat, from restaurant
+Restaurant Meat Lasagna: Lasagna with meat, from restaurant
+Roasted Breadfruit Seeds: Seeds, breadfruit seeds, roasted
+Roasted Chinese Chestnuts: Nuts, chestnuts, chinese, roasted
+Roasted European Chestnuts: Nuts, chestnuts, european, roasted
+Roasted Japanese Chestnuts: Nuts, chestnuts, japanese, roasted
+Safflower Seeds Dried: Seeds, safflower seed kernels, dried
+Salad Dressing: Salad dressing, NFS, for sandwiches
+Salisbury Steak Frozen: Salisbury steak with gravy, frozen, Salisbury steak dinner, NFS, frozen meal, Salisbury steak with gravy
+Sandwich Spread: Sandwich spread
+Sauerkraut: Sauerkraut, Seaweed, pickled, Tomato, green, pickled, Turnip, pickled, Vegetables, pickled, Zucchini, pickled, Leeks, Onions, cooked, fat added, Onions, cooked, no added fat, Onions, green, cooked, Onions, green, raw, Onions, pearl, cooked, Onions, raw, Burrito bowl, NFS, Burrito bowl, beef or pork, Burrito bowl, beef or pork, with beans
+Sausage Gravy: Sausage gravy
+Sausage Peppers No Sauce: Sausage and peppers, no sauce
+Sausage Tomato Sauce: Sausage with tomato-based sauce
+Scalloped Potatoes With Meat: Potato, scalloped, from fresh, with meat, Potato, scalloped, ready-to-heat, Potato, scalloped, ready-to-heat, with meat
+School Waffle: Waffle, school
+Sesame Flour High Fat: Seeds, sesame flour, high-fat
+Sesame Flour Low Fat: Seeds, sesame flour, low-fat
+Sesame Flour Partially Defatted: Seeds, sesame flour, partially defatted
+Sesame Meal Partially Defatted: Seeds, sesame meal, partially defatted
+Sesame Paste: Seeds, sesame butter, paste
+Sesame Seeds Dried: Seeds, sesame seeds, whole, dried, Sesame seeds
+Shepherds Pie: Shepherd's pie
+Shrimp Fajita: Fajita, shrimp
+Sisymbrium Seeds Dried: Seeds, sisymbrium sp. seeds, whole, dried
+Sloppy Joe: Sloppy joe, no bun
+Slush Drink No Sugar: Slush frozen drink, no sugar added
+Soy Vegetable Sauce: Soy based sauce, for use with vegetables
+Spaghetti Meat Sauce: Spaghetti sauce with meat
+Spaghetti Sauce Fat Free: Spaghetti sauce, fat free
+Spaghetti Sauce Poultry: Spaghetti sauce with poultry
+Spaghetti Sauce Reduced Sodium: Spaghetti sauce, reduced sodium
+Spaghetti Sauce Seafood: Spaghetti sauce with seafood
+Spaghetti Tomato Sauce: Spaghetti sauce, Spaghetti sauce with added vegetables
+Spanish Rice Mix: Spanish rice mix, dry mix, unprepared
+Sprouts: Sprouts, NFS
+Steak Sandwich: Steak sandwich or sub on wheat, Steak sandwich or sub on white
+Steak Tartare: Steak tartare
+Stewed Potatoes: Stewed potatoes, Stewed potatoes with tomatoes, Stewed potatoes, Puerto Rican style
+Strawberry Juice: Strawberry juice, 100%
+Stuffed Cabbage Rolls: Stuffed cabbage rolls with beef and rice
+Stuffed Grape Leaves Beef: Stuffed grape leaves with beef and rice
+Stuffed Grape Leaves Lamb: Stuffed grape leaves with lamb and rice
+Sunflower Seed Butter: Seeds, sunflower seed butter, without salt
+Sunflower Seed Kernels: Seeds, sunflower seed kernels, dried, Sunflower seeds, NFS
+Sunflower Seeds Flavored: Sunflower seeds, flavored
+Sunflower Seeds Salted: Sunflower seeds, plain, salted, Sunflower seeds, plain, unsalted
+Sweet Potato Casserole: Sweet potato, casserole or mashed
+Sweet Potato Nfs: Sweet potato, NFS
+Sweet Sour Sauce: Sweet and sour sauce
+Sweetened Coconut Cream: Nuts, coconut cream, canned, sweetened
+Swiss Steak: Swiss steak
+Tahini: Tahini
+Tamale: Tamale, NFS
+Tamale Casserole Meat: Tamale casserole with meat
+Tamale No Meat: Tamale, no meat
+Tamarind: Tamarind
+Tartar Sauce: Tartar sauce
+Tomatoes Omelet: Tomatoes as ingredient in omelet
+Tortellini Cream Sauce: Tortellini, cheese-filled, with cream sauce
+Trail Mix: Trail mix, NFS
+Trail Mix Cereal: Trail mix with pretzels, cereal, or granola
+Trail Mix Chocolate: Trail mix with chocolate
+Trail Mix Fruit Nuts: Trail mix with nuts and fruit
+Tuna Pasta Puerto Rican: Macaroni with tuna, Puerto Rican style
+Unroasted Mixed Nuts: Mixed nuts, unroasted
+Veal Cordon Bleu: Veal cordon bleu
+Veal Marsala: Veal Marsala
+Veal Parmigiana: Veal parmigiana
+Veal Scallopini: Veal scallopini
+Vegan Mayonnaise: Vegan mayonnaise
+Vegetable Fajita: Fajita, vegetable
+Vegetable Stew Fat: Vegetables, stew type, cooked, fat added
+Vegetable Stew No Fat: Vegetables, stew type, cooked, no added fat
+Vegetables Curry: Vegetables as ingredient in curry
+Vegetables Omelet: Other vegetables as ingredient in omelet
+Vegetables Soup: Vegetables as ingredient in soups
+Vegetables Stew: Vegetables as ingredient in stews
+Vodka Sauce Tomato Cream: Vodka sauce with tomatoes and cream
+Waffle: Waffle, NFS, Waffle, plain
+Waffle Fast Food: Waffle, plain, fast food / restaurant
+Waffle Frozen: Waffle, plain, frozen, Waffle, whole grain, frozen
+Walnuts: Nuts, walnuts, english
+Walnuts Glazed: Nuts, walnuts, glazed
+Wasabi Paste: Wasabi paste
+Watermelon Raw: Watermelon, raw, Watermelon juice, 100%
+Watermelon Seed Kernels: Seeds, watermelon seed kernels, dried
+Wheat Bran: Wheat bran
+Wheat Bread Sandwich: Wheat bread as ingredient in sandwiches
+Wheat Bun Sandwich: Wheat bun as ingredient in sandwiches
+Wheat Germ: Wheat germ
+Whole Dry Milk: Milk, dry, reconstituted, whole
+Whole Grain Noodles Cooked: Noodles, whole grain, cooked
+Whole Grain Pancakes Frozen: Pancakes, whole grain, frozen
+Whole Grain Waffle: Waffle, whole grain
+Worcestershire Sauce: Worcestershire sauce
+Yeast: Yeast
+Yeast Extract Spread: Yeast extract spread

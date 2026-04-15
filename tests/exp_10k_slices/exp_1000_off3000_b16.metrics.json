@@ -1,0 +1,21 @@
+{
+  "mode": "full",
+  "provider": "openrouter",
+  "model": "google/gemini-2.0-flash-lite-001",
+  "batch_size": 16,
+  "offset": 3000,
+  "decision_mode": "line",
+  "input_rows": 1000,
+  "processed": 1000,
+  "api_calls": 63,
+  "final_groups": 639,
+  "elapsed_seconds": 260.11,
+  "items_per_second": 3.8445,
+  "eta_full_dataset_seconds": 76993.5,
+  "eta_full_dataset_hms": "21h 23m 13s",
+  "estimated_cost_per_call_usd": 0.0005,
+  "estimated_cost_usd": 0.0315,
+  "estimated_full_api_calls": 18648.0,
+  "estimated_full_cost_usd": 9.324,
+  "output_json": "tests/exp_10k_slices/exp_1000_off3000_b16.json"
+}

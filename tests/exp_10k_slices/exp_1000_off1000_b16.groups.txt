@@ -1,0 +1,534 @@
+Aged Mexican Cheese: Queso Anejo, aged Mexican cheese
+Angel Food Cake: Cake, angel food
+Animal Fat: Animal fat or drippings
+Anisette Toast: Anisette toast
+Apple Cake Or Cupcake: Cake or cupcake, apple
+Apple Cobbler: Cobbler, apple
+Apple Crisp: Crisp, apple, Crisp, peach
+Apple Pie Fast Food: Pie, apple, fast food
+Apple Strudel: Strudel, apple, Strudel, berry, Strudel, cherry, Strudel, peach
+Arepa: Arepa Dominicana, Biscuit with fruit, Biscuit, NFS, Biscuit, cheese, Biscuit, from fast food / restaurant, Biscuit, from refrigerated dough, Biscuit, home recipe, Biscuit, wheat, Bread, Boston Brown, Bread, Irish soda, Bread, fruit, Bread, nut, Bread, pumpkin, Bread, zucchini, Casabe, cassava bread, Corn flour patty or tart, fried
+Arrowroot Flour: Arrowroot flour
+Baked Corn Pone: Corn pone, baked
+Baklava: Baklava
+Banana Cake Or Cupcake: Cake or cupcake, banana
+Banana Cream Pie: Pie, banana cream
+Barbecue Beef: Barbecue beef, no sauce, Beef, pot roast
+Barley Flour: Barley flour or meal
+Barley Malt Flour: Barley malt flour, Millet flour
+Basbousa: Basbousa
+Bean Burrito: Burrito, with beans, no cheese
+Bean Cheese Taco: Taco, corn tortilla, with beans, cheese, Taco, flour tortilla, with beans, cheese
+Bean Salad: Bean salad, yellow and/or green string beans
+Beef: Beef, NFS, Beef, roast, Beef, steak, NFS, Beef, steak, T-bone, lean only eaten, Beef, steak, chuck, Beef, steak, cube, Beef, steak, flank, Beef, steak, ribeye, lean only eaten, Beef, steak, sirloin, NS as to fat eaten, Beef, steak, sirloin, lean only eaten, Beef, steak, strip, lean only eaten, Beef, stew meat, Meat, NFS
+Beef Brisket: Beef, brisket
+Beef Cheese Burrito: Burrito, beef, cheese, Burrito, beef, with beans and rice, cheese, Burrito, beef, with beans, cheese, Burrito, beef, with rice, cheese, Burrito, cheese only, Burrito, chicken, cheese, Burrito, chicken, with beans, cheese, Burrito, chicken, with rice, cheese, Burrito, meat, no cheese, Burrito, meat, with beans, no cheese, Burrito, meat, with rice, no cheese, Burrito, pork, cheese, Burrito, pork, with beans and rice, cheese, Burrito, pork, with beans, cheese, Burrito, pork, with rice, cheese, Burrito, with beans and rice, cheese, Burrito, with beans, cheese, Taco, corn tortilla, beef, cheese, Taco, flour tortilla, beef, cheese
+Beef Head: Beef, cow head, Beef, neck bones, Beef, oxtails
+Beef Jerky: Beef jerky, Venison/deer jerky
+Beef Luncheon Meat: Beef, prepackaged or deli, luncheon meat, Luncheon meat, NFS
+Beef Ribeye Steak: Beef, steak, ribeye, NS as to fat eaten, Beef, steak, ribeye, lean and fat eaten
+Beef Round Steak: Beef, steak, round
+Beef Sandwich Steak: Beef, sandwich steak
+Beef Shortribs: Beef, shortribs
+Beef Steak T Bone Ns As To: Beef, steak, T-bone, NS as to fat eaten, Beef, steak, sirloin, lean and fat eaten, Beef, steak, strip, NS as to fat eaten, Beef, steak, strip, lean and fat eaten
+Beef T Bone Steak: Beef, steak, T-bone,  lean and fat eaten
+Beef With Fat Cooked: Beef, retail cuts, separable fat, cooked
+Beef With Fat Raw: Beef, retail cuts, separable fat, raw
+Beer: Beer
+Berries Nfs: Berries, NFS, Berries, frozen, Blackberries, frozen, Blackberries, raw, Blueberries, frozen, Blueberries, raw, Raspberries, frozen, Raspberries, raw
+Berry Cobbler: Cobbler, berry
+Berry Crisp: Crisp, berry, Crisp, cherry
+Berry Pie: Pie, berry
+Beverages Water Bottled Poland Spring: Beverages, water, bottled, POLAND SPRING
+Beverages Water Tap Drinking: Beverages, water, tap, drinking
+Beverages Water Tap Municipal: Beverages, water, tap, municipal
+Beverages Water Tap Well: Beverages, water, tap, well
+Big Mac Burger: Big Mac (McDonalds)
+Black Forest Cake: Cake or cupcake, Black Forest
+Black Tea Ready To Drink: Beverages, tea, black, ready to drink
+Blueberry Pie: Pie, blueberry
+Bologna: Bologna
+Boston Cream Cake: Cake, Boston cream pie
+Bottled Canned Coffee: Coffee, bottled/canned
+Bottled Water: Water, bottled, generic, Water, bottled, plain
+Bran Muffin Lowfat: Muffin, bran with fruit, lowfat
+Bread Wheat Flour: Wheat flour, white, bread, enriched
+Breaded Chicken Fillet: Chicken fillet, breaded
+Breaded Chicken Patty: Chicken patty, breaded
+Breakfast Cereal: Cereals ready-to-eat, ALPEN, Cereals ready-to-eat, FAMILIA, Cereals ready-to-eat, MALT-O-MEAL, COCO-ROOS, Cereals ready-to-eat, POST Bran Flakes, Cereals ready-to-eat, POST, ALPHA-BITS, Cereals ready-to-eat, POST, COCOA PEBBLES, Cereals ready-to-eat, POST, FRUITY PEBBLES, Cereals ready-to-eat, POST, GOLDEN CRISP, Cereals ready-to-eat, POST, Honeycomb Cereal, Cereals ready-to-eat, Post, Waffle Crisp, Cereals ready-to-eat, QUAKER, CAP'N CRUNCH, Cereals ready-to-eat, QUAKER, KING VITAMAN, Cereals ready-to-eat, RALSTON CRISP RICE, Cereals ready-to-eat, RALSTON Corn Biscuits, Cereals ready-to-eat, RALSTON Corn Flakes, Cereals ready-to-eat, RALSTON TASTEEOS, Cereals ready-to-eat, UNCLE SAM CEREAL, Cereals ready-to-eat, granola, homemade, Cereals, CREAM OF RICE, dry, Cereals, CREAM OF WHEAT, instant, dry, Cereals, MALT-O-MEAL, chocolate, dry, Cereals, MALT-O-MEAL, original, plain, dry, Cereals, QUAKER, Quick Oats with Iron, Dry, Cereals, QUAKER, Quick Oats, Dry, Cereals, WHEATENA, dry, Cereals, farina, unenriched, dry, Cereals, whole wheat hot natural cereal, dry, Millet, puffed
+Brick Cheese: Cheese, Brick
+Brie Cheese: Cheese, Brie
+Broccoli Cooked No Fat: Broccoli, fresh, cooked, no added fat, Broccoli, frozen, cooked, no added fat
+Broccoli Cooked With Oil: Broccoli, fresh, cooked with oil, Broccoli, frozen, cooked with oil
+Broccoli Slaw: Broccoli slaw salad
+Brown Rice Cooked: Rice, brown, parboiled, cooked, UNCLE BENS
+Brown Rice Dry: Rice, brown, parboiled, dry, UNCLE BEN'S
+Buckwheat: Buckwheat
+Buckwheat Flour Whole: Buckwheat flour, whole-groat
+Butter Nfs: Butter, NFS
+Butter Stick: Butter, stick
+Butter Tub: Butter, tub
+Cabbage Salad: Cabbage salad, NFS
+Cafe Con Leche: Coffee, cafe con leche
+Cafe Con Leche Decaf: Coffee, cafe con leche, decaffeinated
+Cafe Mocha: Coffee, Cafe Mocha, Coffee, Cafe Mocha, decaffeinated
+Cafe Mocha Non Dairy: Coffee, Cafe Mocha, with non-dairy milk
+Cafe Mocha Nonfat: Coffee, Cafe Mocha, decaffeinated, nonfat, Coffee, Cafe Mocha, nonfat
+Cake Or Cupcake Nfs: Cake or cupcake, NFS
+Cake Wheat Flour: Wheat flour, white, cake, enriched
+Camembert Cheese: Cheese, Camembert
+Canadian Bacon Cooked: Canadian bacon, cooked
+Canned Blueberries: Bluberries, canned
+Canned Chicken Meat: Chicken, canned, meat only
+Canned Grapefruit: Grapefruit, canned
+Canned Ham: Ham, canned
+Canned Hominy: Hominy, canned, white
+Canned Orange: Orange, canned, NFS, Orange, canned, in syrup, Orange, canned, juice pack
+Cappuccino: Coffee, Cappuccino, Coffee, Cappuccino, decaffeinated
+Cappuccino Non Dairy: Coffee, Cappuccino, with non-dairy milk
+Cappuccino Nonfat: Coffee, Cappuccino, decaffeinated, nonfat, Coffee, Cappuccino, nonfat
+Carob Beverage Mix: Beverages, Carob-flavor beverage mix, powder
+Carrot Apple Salad: Carrots, raw, salad with apples
+Carrot Cake Or Cupcake: Cake or cupcake, carrot
+Carrot Muffin: Muffin, carrot
+Carrot Salad: Carrots, raw, salad
+Chamomile Tea Brewed: Beverages, tea, herb, brewed, chamomile
+Cheddar Cheese: Cheese, Cheddar
+Cheese: Cheese, NFS
+Cheese Muffin: Muffin, cheese
+Cheese Sandwich: Cheese sandwich, NFS
+Cheese Strudel: Strudel, cheese
+Cheese Taco: Taco, cheese only
+Cheeseburger: Cheeseburger (Burger King), Cheeseburger (McDonalds), Cheeseburger, NFS, Cheeseburger, from fast food, 1 large patty, Cheeseburger, from fast food, 1 medium patty, Cheeseburger, from fast food, 1 small patty, Cheeseburger, from school cafeteria, Cheeseburger, on wheat bun, 1 large patty, Cheeseburger, on wheat bun, 1 medium patty, Cheeseburger, on wheat bun, 1 small patty, Cheeseburger, on white bun, 1 large patty, Cheeseburger, on white bun, 1 medium patty, Cheeseburger, on white bun, 1 small patty, Double cheeseburger (Burger King), Double cheeseburger (McDonalds), Hamburger wrap sandwich, from fast food, Hamburger, NFS, Hamburger, from fast food, 1 large patty, Hamburger, from fast food, 1 medium patty, Hamburger, from fast food, 1 small patty
+Cheeseburger Slider: Cheeseburger slider, Cheeseburger slider, from fast food, Hamburger slider, Hamburger slider, from fast food
+Cherry Cobbler: Cobbler, cherry
+Cherry Pie: Pie, cherry
+Chewing Gum: Chewing gum
+Chicken Feet: Chicken feet
+Chicken Fillet Sandwich: Chicken fillet biscuit, from fast food, Chicken fillet sandwich, NFS, Chicken fillet sandwich, fried, on wheat bun, Chicken fillet sandwich, fried, on white bun
+Chicken Luncheon Meat: Chicken, prepackaged or deli, luncheon meat
+Chicken Neck Ribs: Chicken, neck or ribs
+Chicken Nuggets: Chicken nuggets, NFS, Chicken nuggets, from fast food, Chicken nuggets, from frozen, Chicken nuggets, from other sources, Chicken nuggets, from restaurant, Chicken nuggets, from school lunch, Chicken tenders or strips, NFS
+Chicken Roll Roasted: Chicken, chicken roll, roasted
+Chicken Salad Sandwich: Chicken salad sandwich on wheat, Chicken salad sandwich on white, Chicken salad sandwich wrap, Chicken salad spread
+Chicken Sauteed: Chicken, NS as to part, sauteed, skin eaten
+Chicken Skin: Chicken skin
+Chicken Stewed: Chicken, NS as to part, stewed, skin eaten
+Chicken Taco: Taco, corn tortilla, chicken, cheese, Taco, flour tortilla, chicken, cheese
+Chicken Taco Salad: Taco or tostada salad with chicken
+Chicken Tail: Chicken, tail
+Chicken Wing: Chicken wing, NS as to cooking method, Chicken wing, baked, coated, Chicken wing, fried, coated, from fast food, Chicken wing, fried, coated, from pre-cooked, Chicken wing, fried, coated, from raw, Chicken wing, fried, coated, from restaurant, Chicken wing, grilled with sauce, Chicken wing, grilled without sauce, Chicken wing, rotisserie, Chicken wing, sauteed, Chicken wing, stewed, Chicken wings with hot sauce, from precooked, Chicken wings, plain, from other sources, Chicken wings, plain, from precooked, Chicken, back
+Chicory Beverage: Chicory beverage
+Chiliburger On Bun: Chiliburger, with or without cheese, on bun
+Chinese Cabbage Cooked: Cabbage, Chinese, cooked, fat added, Cabbage, Chinese, cooked, no added fat
+Chinese Cabbage Raw: Cabbage, Chinese, raw
+Chocolate Almond Candy: Almonds, chocolate covered candy
+Chocolate Cake No Icing: Cake or cupcake, chocolate, no icing, Cake or cupcake, white, no icing
+Chocolate Candy: Chocolate candy, Chocolate candy, other, NFS, Chocolate chips, Dark chocolate candy, Dark chocolate candy, other, NFS, White chocolate candy
+Chocolate Caramel Candy: Chocolate candy, caramel filled, Chocolate candy, caramel filled with nuts, Chocolate candy, coconut filled, Chocolate candy, cookie filled, Chocolate candy, nougat filled, Chocolate candy, peanut butter filled, Candy, caramel
+Chocolate Cereal Candy: Chocolate candy with cereal
+Chocolate Cheesecake: Cheesecake, chocolate
+Chocolate Chip Muffin: Muffin, chocolate chip
+Chocolate Cookie Sticks: Pocky
+Chocolate Cream Candy: Chocolate candy, cream filled
+Chocolate Cream Pie: Pie, chocolate cream
+Chocolate Dried Fruit Candy: Chocolate candy with dried fruit
+Chocolate Fudge Candy: Chocolate candy, fudge
+Chocolate Malt Powder: Beverages, OVALTINE, chocolate malt powder
+Chocolate Muffin: Muffin, chocolate
+Chocolate Nut Candy: Chocolate candy with nuts, Chocolate candy with nuts, other, NFS, Chocolate candy, nougat filled with nuts, Dark chocolate candy with nuts, Dark chocolate candy with nuts, other, NFS, Peanuts, chocolate covered candy
+Chocolate Nut Shell Candy: Chocolate candy, candy shell with nuts
+Chocolate Shell Candy: Chocolate candy, candy shell
+Chocolate Snack Cake: Snack cake, chocolate
+Chocolate Soda Drink: Carbonated beverage, chocolate-flavored soda
+Chow Mein Noodles: Noodles, chinese, chow mein
+Citrus Energy Drink: Beverages,  Energy drink, Citrus, Beverages, Acai berry drink, fortified, Beverages, Energy drink, AMP, Beverages, Energy drink, FULL THROTTLE, Beverages, Energy drink, RED BULL, Beverages, Energy drink, ROCKSTAR
+Clam Tomato Juice: Beverages, Clam and tomato juice, canned
+Cocoa Powder: Beverages, Cocoa mix, powder
+Cocoa Powder No Sugar: Beverages, Cocoa mix, no sugar added, powder
+Coconut Cake Or Cupcake: Cake or cupcake, coconut
+Coconut Cream Pie: Pie, coconut cream
+Coffee Chicory Brewed: Coffee and chicory, brewed, Coffee and chicory, brewed, decaffeinated, Coffee, NS as to brewed or instant, Coffee, NS as to type, Coffee, brewed, Coffee, brewed, decaffeinated, Coffee, brewed, flavored, Coffee, instant, reconstituted
+Coffee Substitute: Coffee substitute
+Cola Drink: Beverages, carbonated, cola, fast-food cola, Beverages, carbonated, cola, regular, Beverages, carbonated, ginger ale, Beverages, carbonated, grape soda, Beverages, carbonated, orange, Beverages, carbonated, root beer, Beverages, carbonated, tonic water, Beverages, chocolate powder, no sugar added, Beverages, chocolate syrup, Beverages, coffee, brewed, breakfast blend, Beverages, coffee, instant, chicory, Beverages, coffee, instant, mocha, sweetened, Beverages, coffee, instant, regular, powder, Beverages, coffee, instant, with chicory, Beverages, grape drink, canned, Beverages, grape juice drink, canned
+Colby Cheese: Cheese, Colby
+Colby Jack Cheese: Cheese, Colby Jack
+Coleslaw: Coleslaw, Coleslaw, fast food / restaurant
+Coleslaw With Fruit: Coleslaw, with fruit
+Cooked Amaranth Grain: Amaranth grain, cooked
+Cooked Broccoli: Broccoli, NS as to form, cooked
+Cooked Broccoli Raab: Broccoli raab, cooked
+Cooked Bulgur: Bulgur, cooked
+Cooked Cabbage No Fat: Cabbage, green, cooked, no added fat
+Cooked Cabbage With Oil: Cabbage, green, cooked with oil, Carrots, canned, cooked with oil, Carrots, fresh, cooked with oil, Carrots, frozen, cooked with oil
+Cooked Carrots: Carrots, NS as to form, cooked, Carrots, cooked, from restaurant
+Cooked Carrots No Fat: Carrots, canned, cooked, no added fat, Carrots, fresh, cooked, no added fat, Carrots, frozen, cooked, no added fat
+Cooked Chinese Broccoli: Broccoli, Chinese, cooked
+Cooked Corn: Corn, NS as to form, cooked, Corn, cooked, from restaurant
+Cooked Corn No Fat: Corn, canned, cooked, no added fat
+Cooked Corn With Oil: Corn, canned, cooked with oil
+Cooked Corned Beef: Beef, cured, corned beef, brisket, cooked, Beef, corned
+Cooked Egg Noodles: Noodles, egg, enriched, cooked, Pasta, fresh-refrigerated, plain, cooked, Pasta, homemade, made with egg, cooked
+Cooked Millet: Millet, cooked
+Cooked Pearled Barley: Barley, pearled, cooked
+Cooked Red Cabbage: Cabbage, red, cooked
+Cooked Roasted Buckwheat: Buckwheat groats, roasted, cooked
+Cooked Savoy Cabbage: Cabbage, savoy, cooked
+Cooked Soba Noodles: Noodles, japanese, soba, cooked, Noodles, japanese, somen, cooked, Rice noodles, cooked
+Cooked Spinach Egg Noodles: Noodles, egg, spinach, enriched, cooked, Pasta, fresh-refrigerated, spinach, cooked, Spaghetti, spinach, cooked
+Cooked Teff: Teff, cooked
+Cooked Vegetable Macaroni: Macaroni, vegetable, enriched, cooked, Pasta, cooked, enriched, with added salt, Pasta, cooked, enriched, without added salt, Pasta, cooked, unenriched, with added salt, Pasta, gluten-free, corn, cooked
+Cookie: Cookie, NFS, Cookie, Pfeffernusse, Cookie, Pizzelle, Cookie, almond, Cookie, animal, Cookie, animal, with frosting or icing, Cookie, applesauce, Cookie, bar, with chocolate, Cookie, batter or dough, raw, Cookie, biscotti, Cookie, brownie, NS as to icing, Cookie, brownie, reduced fat, NS as to icing, Cookie, brownie, with icing or filling, Cookie, brownie, without icing, Cookie, butter or sugar, Cookie, butterscotch, brownie, Cookie, chocolate and vanilla sandwich, Cookie, chocolate chip, Cookie, chocolate chip sandwich, Cookie, chocolate or fudge, Cookie, chocolate sandwich, Cookie, chocolate wafer, Cookie, chocolate, with icing or coating, Cookie, coconut, Cookie, fig bar, Cookie, fortune, Cookie, gingersnaps, Cookie, gluten free, Cookie, granola, Cookie, ladyfinger, Cookie, lemon bar, Cookie, macaroon, Cookie, marshmallow, chocolate-covered, Cookie, marshmallow, with coconut, Cookie, meringue, Cookie, molasses, Cookie, multigrain, high fiber, Cookie, oatmeal, Cookie, oatmeal sandwich, with creme filling, Cookie, oatmeal, with chocolate chips, Cookie, oatmeal, with raisins, Cookie, peanut butter, Cookie, pumpkin, Cookie, raisin, Cookie, shortbread, Cookie, sugar wafer, Cookie, vanilla wafer
+Cookie Marshmallow Pie Chocolate Covered: Cookie, marshmallow pie, chocolate covered, Cookie, peanut butter, with chocolate, Cookie, shortbread, with icing or filling, Cookie, sugar wafer, chocolate-covered, Cookie, toffee bar, Cookie, vanilla sandwich, extra filling
+Cooking Wine: Alcoholic beverage, wine, cooking
+Corn Bran: Corn bran, crude
+Corn Flour: Corn flour, masa, enriched, white, Corn flour, masa, unenriched, white, Corn flour, whole-grain, white, Corn flour, whole-grain, yellow, Corn flour, yellow, degermed, unenriched, Corn flour, yellow, masa, enriched, Rice flour, brown, Rice flour, white, unenriched
+Corn Fritter: Fritter, corn
+Corn Grain: Corn grain, white, Corn grain, yellow
+Corn With Butter: Corn, fresh, cooked with butter or margarine
+Corn With Oil: Corn, fresh, cooked with oil
+Cornbread: Cornbread, made from home recipe, Cornbread, prepared from mix
+Cornbread Muffin: Cornbread muffin, stick, round
+Cornmeal: Cornmeal, degermed, enriched, white, Cornmeal, degermed, enriched, yellow, Cornmeal, degermed, unenriched, white, Cornmeal, degermed, unenriched, yellow, Cornmeal, whole-grain, white, Cornmeal, whole-grain, yellow
+Cornmeal Stick: Cornmeal stick, Puerto Rican style
+Cornstarch: Cornstarch
+Cotija Cheese: Queso cotija
+Country Fried Beef: Beef, steak, country fried
+Couscous Cooked: Couscous, cooked, Quinoa, cooked, Spelt, cooked
+Cran Cherry Juice: Beverages, OCEAN SPRAY, Cran Cherry
+Cran Grape Juice: Beverages, OCEAN SPRAY, Cran Grape
+Cran Lemonade Juice: Beverages, OCEAN SPRAY, Cran Lemonade
+Cran Pomegranate Juice: Beverages, OCEAN SPRAY, Cran Pomegranate
+Cranberry Juice Cocktail: Cranberry juice cocktail, bottled, Cranberry juice cocktail, frozen concentrate
+Cranberry Sauce: Cranberry sauce
+Cream Cake: Cake, cream, Cake, sponge
+Cream Soda Drink: Carbonated beverage, cream soda
+Creamed Corn: Corn, creamed
+Crunchy Noodles: Noodles, flat, crunchy, Chinese restaurant
+Cuban Coffee: Coffee, Cuban
+Cuban Cracker: Crackers, Cuban
+Cucumber Salad: Cucumber salad, made with Italian dressing
+Custard Pie: Pie, custard
+Dark Rye Flour: Rye flour, dark
+Decaf Espresso: Coffee, espresso, decaffeinated
+Decaf Latte: Coffee, Latte, decaffeinated
+Decaf Nonfat Latte: Coffee, Latte, decaffeinated, nonfat
+Decaf Pre Lightened Coffee: Coffee, decaffeinated, pre-lightened, Coffee, pre-lightened
+Dessert Pizza: Dessert pizza
+Diet Cran Cherry Juice: Beverages, OCEAN SPRAY, Diet Cran Cherry
+Diet Cranberry Juice: Beverages, OCEAN SPRAY, Diet Cranberry Juice
+Diet Green Tea Drink: Beverages, tea, green, ready-to-drink, diet
+Diet Lemon Tea Drink: Beverages, tea, ready-to-drink, lemon, diet
+Diet Lemon Tea Instant: Beverages, tea, instant, lemon, diet
+Dried Beef Cooked: Beef, dried, chipped, cooked in fat
+Dried Beef Uncooked: Beef, dried, chipped, uncooked
+Dry Bulgur: Bulgur, dry
+Dry Couscous: Couscous, dry
+Dry Dessert Wine: Alcoholic beverage, wine, dessert, dry
+Dry Egg Noodles: Noodles, egg, dry, enriched
+Dry Roasted Buckwheat: Buckwheat groats, roasted, dry
+Dry Soba Noodles: Noodles, japanese, soba, dry
+Dry Somen Noodles: Noodles, japanese, somen, dry, Rice noodles, dry
+Dry Spinach Egg Noodles: Noodles, egg, spinach, enriched, dry, Spaghetti, spinach, dry
+Dry Tapioca Pearls: Tapioca, pearl, dry
+Dry Vegetable Macaroni: Macaroni, vegetable, enriched, dry, Pasta, dry, enriched, Pasta, dry, unenriched, Pasta, gluten-free, corn, dry
+Dumpling No Meat: Dumpling, no meat
+Durum Wheat: Wheat, durum
+Espresso: Coffee, espresso
+Fat Back Cooked: Fat back, cooked
+Fat Free Parmesan Cheese: Cheese, Parmesan, dry grated, fat free
+Fat Free Swiss Cheese: Cheese, Swiss, nonfat or fat free
+Feta Cheese: Cheese, Feta
+Fish Taco: Taco, fish
+Flavored Decaf Latte: Coffee, Latte, decaffeinated, flavored
+Flavored Iced Latte: Coffee, Iced Latte, decaffeinated, flavored, Coffee, Iced Latte, flavored, Coffee, Iced Latte, nonfat, flavored
+Flavored Latte: Coffee, Latte, flavored
+Flavored Non Dairy Latte: Coffee, Latte, with non-dairy milk, flavored
+Flavored Nonfat Latte: Coffee, Latte, nonfat, flavored
+Flourless Chocolate Cake: Cake, chocolate, flourless
+Fontina Cheese: Cheese, Fontina
+Fried Corn Pone: Corn pone, fried
+Frozen Coffee Drink: Frozen coffee drink, Frozen coffee drink, decaffeinated, Frozen coffee drink, decaffeinated, nonfat, Frozen coffee drink, nonfat, Frozen coffee drink, with non-dairy milk, Frozen coffee drink, with whipped cream, Frozen mocha coffee drink, Frozen mocha coffee drink, decaffeinated, Frozen mocha coffee drink, nonfat
+Fruit Cake: Cake, fruit cake
+Fruit Cheesecake: Cheesecake, fruit
+Fruit Empanada: Empanada, fruit
+Fruit Filled Cookie: Cookie, fruit-filled bar, Cookie, rugelach
+Fruit Flavored Candy: Candy, fruit flavored pieces
+Fruit Leather Candy: Candy, fruit leather
+Fruit Snacks Candy: Candy, fruit snacks
+Fruit Tart: Tart, all types
+Fruit Turnover: Turnover, fruit
+German Chocolate Cake: Cake or cupcake, German chocolate
+Ghee Clarified Butter: Ghee, clarified butter
+Gingerbread Cake Or Cupcake: Cake or cupcake, gingerbread
+Glazed Carrots: Carrots, glazed, cooked
+Gluten Free Cake Or Cupcake: Cake or cupcake, gluten free
+Glutinous Rice Cooked: Rice, white, glutinous, unenriched, cooked
+Glutinous Rice Dry: Rice, white, glutinous, unenriched, uncooked
+Goat Cheese: Cheese, goat
+Gouda Cheese: Cheese, Gouda or Edam
+Graham Cracker: Graham crackers
+Graham Cracker Sandwich: Graham crackers, sandwich, with filling
+Graham Crackers Teddy Grahams: Graham crackers (Teddy Grahams)
+Granola Bar Low Fat: Cereal or granola bar, lowfat, NFS, Cereal or granola bar, nonfat, Cereal or granola bar, reduced sugar, NFS, Cereal or granola bar, with rice cereal, Milk 'n Cereal bar, Snack bar, oatmeal, Cheese ball, Cheese spread, Swiss cheese base, Cheese spread, pressurized can, Cheese,  with wine, Cheese, American, Cheese, American and Swiss blends, Cheese, American, nonfat or fat free, Cheese, American, reduced fat, Cheese, American, reduced sodium, Cheese, Blue or Roquefort
+Grapefruit Juice: Grapefruit juice, 100%, NS as to form, Grapefruit juice, 100%, freshly squeezed, Grapefruit juice, 100%, with calcium added
+Green Tea Brewed: Beverages, tea, green, brewed, regular
+Green Tea Decaffeinated Brewed: Beverages, tea, green, brewed, decaffeinated
+Grilled Cheese Sandwich: Grilled cheese sandwich, NFS
+Grilled Chicken Fillet: Chicken fillet, grilled
+Ground Beef 70 30: Beef, ground, 70% lean meat / 30% fat, raw
+Ground Beef 75 25: Beef, ground, 75% lean meat / 25% fat, raw
+Ground Beef 80 20: Beef, ground, 80% lean meat / 20% fat, raw
+Ground Beef 90 10: Beef, ground, 90% lean meat / 10% fat, raw
+Ground Beef 93 7: Beef, ground, 93% lean meat / 7% fat, raw
+Ground Beef 95 5: Beef, ground, 95% lean meat / 5% fat, raw
+Ground Beef 97 3: Beef, ground, 97% lean meat / 3% fat, raw
+Ground Chicken: Chicken, ground
+Ground Ham: Ham, ground
+Gruyere Cheese: Cheese, Gruyere
+Gummy Candy: Candy, gummy
+Ham: Ham
+Ham Luncheon Meat: Ham, prepackaged or deli, luncheon meat
+Ham Salad: Ham salad spread
+Hamburger Burger King: Hamburger (Burger King)
+Hamburger Cafeteria: Hamburger, from school cafeteria
+Hamburger Mcdonalds: Hamburger (McDonalds), McDouble (McDonalds), Quarter Pounder (McDonalds), Quarter Pounder with cheese (McDonalds)
+Hamburger Wheat Bun: Hamburger, on wheat bun, 1 large patty, Hamburger, on wheat bun, 1 medium patty, Hamburger, on wheat bun, 1 small patty
+Hamburger White Bun: Hamburger, on white bun, 1 large patty, Hamburger, on white bun, 1 medium patty, Hamburger, on white bun, 1 small patty
+Hard Candy: Candy, hard, Candy, taffy
+Hard Lemonade: Alcoholic beverage, malt beer, hard lemonade
+Hard Red Spring Wheat: Wheat, hard red spring, Wheat, hard red winter, Wheat, hard white, Wheat, khorasan, cooked, Wheat, khorasan, uncooked, Wheat, soft red winter, Wheat, soft white, Wheat, sprouted, Wild rice, cooked, Wild rice, raw, Breakfast bar, NFS, Breakfast bar, date, with yogurt coating, Cereal or Granola bar, NFS, Cereal or granola bar (Quaker Granola Bites), Cereal or granola bar, chocolate coated, NFS, Cereal or granola bar, fruit and nut
+Head Cheese: Head cheese
+Hibiscus Tea Brewed: Beverages, tea, hibiscus, brewed
+Higher Alcohol Beer: Beer, higher alcohol, Beer, light, Hard cider, Hard seltzer, Michelada, Alcoholic Beverage, wine, table, red, Claret, Alcoholic Beverage, wine, table, red, Gamay, Alcoholic Beverage, wine, table, red, Merlot, Alcoholic Beverage, wine, table, red, Syrah, Alcoholic beverage, beer, light, Alcoholic beverage, beer, light, BUD LIGHT, Alcoholic beverage, beer, light, low carb, Alcoholic beverage, beer, regular, BUDWEISER, Alcoholic beverage, beer, regular, all, Alcoholic beverage, daiquiri, canned, Alcoholic beverage, distilled, rum, 80 proof, Alcoholic beverages, beer, higher alcohol
+Hominy Canned Yellow: Hominy, canned, yellow
+Honey Butter: Honey butter
+Horchata: Beverages, Horchata, as served in restaurant
+Hulled Barley: Barley, hulled
+Hush Puppy: Hush puppy
+Ice Cream Cake: Ice cream cake
+Iced Cafe Mocha: Coffee, Iced Cafe Mocha, Coffee, Iced Cafe Mocha, decaffeinated
+Iced Cafe Mocha Non Dairy: Coffee, Iced Cafe Mocha, with non-dairy milk
+Iced Cafe Mocha Nonfat: Coffee, Iced Cafe Mocha, nonfat
+Iced Coffee Brewed: Iced Coffee, brewed, Iced Coffee, brewed, decaffeinated
+Iced Coffee Sweetened: Iced Coffee, pre-lightened and pre-sweetened
+Iced Latte: Coffee, Iced Latte, Coffee, Iced Latte, decaffeinated, Coffee, Iced Latte, decaffeinated, nonfat, Coffee, Iced Latte, nonfat, Coffee, Iced Latte, with non-dairy milk
+Imitation Cheese: Imitation cheese
+Japanese Cookie: Cookie, tea, Japanese
+Johnnycake: Johnnycake
+Key Lime Pie: Pie, key lime
+Kiwi Strawberry Drink: Beverages, Kiwi Strawberry Juice Drink
+Lard: Lard
+Latte: Coffee, Latte
+Lebkuchen Cookie: Cookie, Lebkuchen
+Lemon Cake Or Cupcake: Cake or cupcake, lemon
+Lemon Meringue Pie: Pie, lemon meringue
+Lemon Pie: Pie, lemon
+Lemon Tea Powder: Beverages, tea, instant, lemon, unsweetened
+Lemonade Powder: Beverages, Lemonade, powder, Beverages, lemonade-flavor drink, powder
+Lemonade Powder Drink: Lemonade, powder, prepared with water
+Licorice Candy: Candy, licorice, Cough drops
+Light Bottled Coffee: Coffee, bottled/canned, light
+Light Butter: Butter, light
+Light Cranberry Juice: Beverages, OCEAN SPRAY, Light Cranberry
+Light Orange Juice: Beverages, Orange juice, light, No pulp, Beverages, POWERADE, Zero, Mixed Berry, Beverages, Protein powder soy based, Beverages, Protein powder whey based, Beverages, Tropical Punch, ready-to-drink, Beverages, V8 SPLASH Smoothies, Peach Mango, Beverages, V8 V- FUSION Juices, Acai Berry, Beverages, V8 V-FUSION Juices, Peach Mango, Beverages, V8 V-FUSION Juices, Tropical, Beverages, Whey protein powder isolate, Beverages, Whiskey sour mix, bottled, Beverages, Whiskey sour mix, powder, Beverages, Wine, non-alcoholic, Beverages, ZEVIA, cola, Beverages, ZEVIA, cola, caffeine free, Beverages, carbonated, club soda
+Light Rye Flour: Rye flour, light
+Light Wine: Alcoholic beverage, wine, light
+Limburger Cheese: Cheese, Limburger
+Limeade Drink: Beverages, MINUTE MAID, Lemonada, Limeade
+Liverwurst: Liverwurst
+Lollipop Candy: Candy, lollipop
+Luncheon Meat Loaf: Luncheon meat, loaf type
+Macchiato: Coffee, macchiato
+Malt Beverage: Alcoholic malt beverage, Beverages, AMBER, hard cider, Beverages, Cranberry juice cocktail, Beverages, Malt liquor beverage, Malt beverage, includes non-alcoholic beer
+Malt Beverage Powder: Beverages, OVALTINE, Classic Malt powder, Beverages, rich chocolate, powder
+Marble Cake Or Cupcake: Cake or cupcake, marble, Cake, pound
+Marie Biscuit: Marie biscuit
+Marshmallow Candy: Candy, marshmallow
+Meat Spread: Meat spread or potted meat, NFS
+Meat Taco Salad: Taco or tostada salad with meat
+Meatless Taco Salad: Taco or tostada salad, meatless
+Medium Grain Rice Cooked: Rice, white, medium-grain, enriched, cooked, Rice, white, steamed, Chinese restaurant
+Medium Grain Rice Raw: Rice, white, medium-grain, raw, enriched, Rice, white, medium-grain, raw, unenriched
+Medium Rye Flour: Rye flour, medium
+Mexican Cheese Blend: Cheese, Mexican blend
+Mint Candy: Candy, mint
+Monterey Cheese: Cheese, Monterey
+Mortadella: Mortadella
+Mozzarella Cheese: Cheese, Mozzarella, NFS
+Mozzarella Sticks: Mozzarella sticks, breaded, baked, or fried
+Muenster Cheese: Cheese, Muenster
+Muffin: Muffin, NFS, Muffin, fruit, Muffin, fruit, low fat, Muffin, oat bran, Muffin, oatmeal, Muffin, plain, Muffin, pumpkin, Muffin, wheat, Muffin, wheat bran, Muffin, whole grain, Muffin, whole wheat, Muffin, zucchini
+Namasu Salad: Cucumber and vegetable namasu
+Non Chocolate Candy: Candy, NFS, Candy, cotton, Candy, non chocolate, other, NFS
+Non Dairy Latte: Coffee, Latte, with non-dairy milk
+Nonfat Cheddar Cheese: Cheese, Cheddar, nonfat or fat free
+Nonfat Latte: Coffee, Latte, nonfat
+Nonfat Mozzarella Cheese: Cheese, Mozzarella, nonfat or fat free
+Noodles Egg Dry Unenriched: Noodles, egg, dry, unenriched
+Nougat With Nuts: Candy, nougat with nuts
+Oat Flour: Oat flour, partially debranned
+Oatmeal Pie: Pie, oatmeal
+Oolong Tea Brewed: Beverages, tea, Oolong, brewed
+Orange Juice: Orange juice, 100%,  freshly squeezed, Orange juice, 100%, NFS, Orange juice, 100%, frozen, reconstituted
+Orange Juice Drink: Beverages, Orange juice drink
+Paneer Cheese: Cheese, paneer
+Parmesan Cheese: Cheese, Parmesan, dry grated, Cheese, Parmesan, hard
+Part Skim Mozzarella Cheese: Cheese, Mozzarella, part skim
+Pastrami: Pastrami, NFS
+Pea Cheese Salad: Pea salad with cheese
+Pea Salad: Pea salad
+Peach Cobbler: Cobbler, peach
+Peanut Brittle: Candy, peanut brittle
+Peanut Butter Cake Or Cupcake: Cake or cupcake, peanut butter
+Peanut Butter Cookie Sandwich: Cookie, peanut butter sandwich
+Peanut Butter Cream Pie: Pie, peanut butter cream
+Pecan Pie: Pie, pecan
+Pepperoni: Pepperoni, NFS
+Pie Apple: Pie, apple, Pie, peach
+Pie Nfs: Pie, NFS
+Pie Shell: Pie shell
+Pie Shell Graham Cracker: Pie shell, graham cracker, Graham crackers, chocolate covered
+Pina Colada: Alcoholic beverage, pina colada, canned
+Pineapple Cake: Cake, pineapple, upside down
+Pineapple Cream Pie: Pie, pineapple cream
+Pink Lemonade Concentrate: Lemonade, frozen concentrate, pink
+Plain Cheesecake: Cheesecake, plain
+Popover: Popover
+Pork Jerky: Pork jerky
+Pork Roll: Pork, roll
+Pork Taco: Taco, corn tortilla, pork, cheese, Taco, flour tortilla, pork, cheese
+Port Du Salut Cheese: Cheese, Port du Salut
+Processed Cheese Food: Cheese, processed cheese food
+Processed Cheese With Vegetables: Cheese, processed, with vegetables
+Prosciutto: Ham, prosciutto
+Provolone Cheese: Cheese, Provolone
+Puerto Rican Cookie: Cookies, Puerto Rican style
+Pumpkin Cake Or Cupcake: Cake or cupcake, pumpkin
+Pumpkin Pie: Pie, pumpkin
+Queso Asadero: Queso Asadero
+Queso Fresco: Queso Fresco
+Raisin Cream Cookie Sandwich: Cookie, raisin sandwich, cream-filled
+Raw Broccoli: Broccoli, raw
+Raw Broccoli Raab: Broccoli raab, raw
+Raw Carrots: Carrots, raw
+Raw Chinese Broccoli: Broccoli, chinese, raw
+Raw Clementine: Clementine, raw, Tangerine, raw
+Raw Corned Beef: Beef, cured, corned beef, brisket, raw
+Raw Grapefruit: Grapefruit, raw
+Raw Green Cabbage: Cabbage, green, raw
+Raw Ground Beef: Beef, grass-fed, ground, raw
+Raw Kumquat: Kumquat, raw
+Raw Lemon: Lemon, raw
+Raw Lime: Lime, raw
+Raw Millet: Millet, raw
+Raw Oat Bran: Oat bran, raw
+Raw Orange: Orange, raw
+Raw Pearled Barley: Barley, pearled, raw
+Raw Red Cabbage: Cabbage, red, raw
+Red Table Wine: Alcoholic beverage, wine, table, red
+Red Velvet Cake Or Cupcake: Cake or cupcake, red velvet
+Reduced Fat Cheddar Cheese: Cheese, Cheddar, reduced fat
+Reduced Fat Cookie: Cookie, chocolate chip, reduced fat, Cookie, chocolate sandwich, reduced fat, Cookie, shortbread, reduced fat, Cookie, vanilla sandwich, reduced fat, Cookie, vanilla wafer, reduced fat
+Reduced Fat Graham Cracker: Graham crackers, reduced fat
+Reduced Fat Mexican Cheese: Cheese, Mexican blend, reduced fat
+Reduced Fat Monterey Cheese: Cheese, Monterey, reduced fat
+Reduced Fat Muenster Cheese: Cheese, Muenster, reduced fat
+Reduced Fat Parmesan Cheese: Cheese, Parmesan, dry grated, reduced fat
+Reduced Fat Pepperoni: Pepperoni, reduced fat
+Reduced Fat Provolone Cheese: Cheese, provolone, reduced fat
+Reduced Fat Swiss Cheese: Cheese, Swiss, reduced fat
+Reduced Sodium Cheddar Cheese: Cheese, Cheddar, reduced sodium, Cheese, Swiss, reduced sodium
+Reduced Sodium Mozzarella Cheese: Cheese, Mozzarella, reduced sodium
+Reduced Sodium Pepperoni: Pepperoni, reduced sodium
+Reduced Sodium Spam: Spam, reduced sodium
+Reduced Sugar Cookie: Cookie, chocolate chip, reduced sugar, Cookie, oatmeal, reduced sugar, Cookie, sandwich, reduced sugar
+Refried Beans: Refried beans, from canned, reduced sodium, Refried beans, from fast food / restaurant, Soy nuts, Soybeans, cooked, Split peas, from dried, fat added, Split peas, from dried, no added fat, Wasabi peas, White beans, NFS, White beans, from canned, fat added, White beans, from canned, no added fat, White beans, from canned, reduced sodium, White beans, from dried, fat added, White beans, from dried, no added fat, Beef, New Zealand, imported, inside, raw, Beef, New Zealand, imported, sweetbread, raw, Beef, cured, breakfast strips, cooked
+Restaurant Broccoli Cooked: Broccoli, cooked, from restaurant
+Rice Bran: Rice bran, crude
+Rice Cereal Cookie: Cookie, chocolate, made with rice cereal
+Rice Milk Unsweetened: Beverages, rice milk, unsweetened
+Rose Wine: Alcoholic beverages, wine, rose
+Rotisserie Chicken Breast: Chicken breast, rotisserie, skin eaten, Chicken breast, rotisserie, skin not eaten
+Rotisserie Chicken Drumstick: Chicken drumstick, rotisserie, skin eaten
+Rotisserie Chicken Thigh: Chicken thigh, rotisserie, skin eaten, Chicken thigh, rotisserie, skin not eaten, Chicken thigh, sauteed, skin eaten, Chicken thigh, sauteed, skin not eaten, Chicken thigh, stewed, skin eaten, Chicken thigh, stewed, skin not eaten
+Ruby Red Cranberry Juice: Beverages, OCEAN SPRAY, Ruby Red cranberry, Cranberries, raw
+Rum Ball Cookie: Cookie, rum ball, no bake
+Rye Grain: Rye grain
+Sake: Alcoholic beverage, rice (sake)
+Salami: Salami, NFS
+Sauteed Chicken Breast: Chicken breast, sauteed, skin eaten, Chicken breast, sauteed, skin not eaten
+Sauteed Chicken Drumstick: Chicken drumstick, sauteed, skin eaten, Chicken drumstick, sauteed, skin not eaten
+Scone: Scone
+Scone With Fruit: Scone, with fruit
+Semolina Enriched: Semolina, enriched, Semolina, unenriched
+Short Grain Rice Cooked: Rice, white, short-grain, cooked, unenriched, Rice, white, short-grain, enriched, cooked
+Sorghum Flour Refined: Sorghum flour, refined, unenriched
+Sorghum Flour Whole Grain: Sorghum flour, whole-grain
+Sorghum Grain: Sorghum grain
+Soy Protein Powder: Beverages, ABBOTT, EAS soy protein powder
+Spam: Spam
+Spice Cake Or Cupcake: Cake or cupcake, spice
+Spoonbread: Spoonbread
+Sprinkle Candy: Candy, sprinkles
+Stewed Chicken Breast: Chicken breast, stewed, skin eaten, Chicken breast, stewed, skin not eaten
+Stewed Chicken Drumstick: Chicken drumstick, stewed, skin eaten, Chicken drumstick, stewed, skin not eaten
+Strawberry Cake Or Cupcake: Cake or cupcake, strawberry, Cake, jelly roll
+Strawberry Drink Mix: Strawberry-flavor beverage mix, powder
+Strawberry Pie: Pie, strawberry
+Strawberry Shake: Beverages, shake, fast food, strawberry
+Strawberry Shortcake: Cake, strawberry shortcake
+Sugar Free Candy: Candy, non chocolate, sugar free
+Sugar Free Chocolate Candy: Chocolate candy, sugar free
+Sugar Free Cookie: Cookie, sugar or plain, sugar free, Cookie, sugar wafer, sugar free
+Sugar Free Energy Drink: Beverages, Energy Drink, sugar free, Beverages, Energy drink, AMP, sugar free, Beverages, MONSTER energy drink, low carb
+Sugar Free Gum: Chewing gum, sugar free
+Sugar Free Peanut Butter Cookie: Cookie, peanut butter, sugar free
+Sweet Dessert Wine: Alcoholic beverage, wine, dessert, sweet
+Sweet Potato Pie: Pie, sweet potato
+Sweetened Coffee: Coffee, pre-sweetened with sugar
+Sweetened Macchiato: Coffee, macchiato, sweetened
+Sweetened Malt Beverage: Alcoholic malt beverage, sweetened
+Swiss Cheese: Cheese, Swiss
+Table Fat: Table fat, NFS
+Table Wine: Alcoholic beverage, wine, table, all
+Taco: Taco, NFS, Taco, meat, no cheese
+Taco With Beans: Taco, meat, with beans, no cheese, Taco, with beans, no cheese
+Tangerine Juice: Tangerine juice, 100%
+Tequila Sunrise: Alcoholic beverage, tequila sunrise, canned
+Tiramisu: Tiramisu
+Torte Cake: Cake, torte
+Tortilla Wheat Flour: Wheat flour, white, tortilla mix, enriched
+Tres Leches Cake: Cake, tres leche
+Triticale Grain: Triticale
+Turkey Burger Bun: Turkey or chicken burger, on wheat bun, Turkey or chicken burger, on white bun
+Turkey Luncheon Meat: Turkey, prepackaged or deli, luncheon meat
+Turkish Coffee: Coffee, Turkish
+Uncooked Amaranth Grain: Amaranth grain, uncooked, Quinoa, uncooked
+Uncooked Spelt: Spelt, uncooked
+Uncooked Teff: Teff, uncooked
+Unenriched Bread Flour: Wheat flours, bread, unenriched
+Unsweetened Tea Powder: Beverages, tea, instant, unsweetened, powder
+Vanilla Cream Pie: Pie, vanilla cream
+Vanilla Sandwich Cookie: Cookie, vanilla sandwich
+Vanilla Shake: Shake, fast food, vanilla
+Veal Chop: Veal, chop
+Veal Tenderloin: Beef, steak, tenderloin
+Venison Sausage: Venison sausage
+Vital Wheat Gluten: Vital wheat gluten
+Water Bottled Non Carbonated Naya: Water, bottled, non-carbonated, NAYA
+Wheat Bran: Wheat bran, crude
+Wheat Germ: Wheat germ, crude
+Wheatena Cereal Cooked: Cereals, WHEATENA, cooked with water, Oat bran, cooked
+Whey Protein Powder: Beverages, ABBOTT, EAS whey protein powder
+Whiskey Sour: Alcoholic beverage, whiskey sour, Alcoholic beverage, whiskey sour, canned
+White Lemonade Concentrate: Lemonade, frozen concentrate, white
+White Rice Uncooked: Rice, white, short-grain, enriched, uncooked, Rice, white, short-grain, raw, unenriched
+White Snack Cake: Snack cake, white
+White Table Wine: Alcoholic beverage, wine, table, white
+White Wheat Flour: Wheat flour, white, all-purpose, unenriched
+Whole Grain Triticale Flour: Triticale flour, whole-grain
+Whole Grain Wheat Flour: Wheat flour, whole-grain, soft wheat
+Whopper Burger: Whopper (Burger King), Whopper with cheese (Burger King)
+Whopper Jr Burger: Whopper Jr (Burger King), Whopper Jr with cheese (Burger King)
+Zucchini Cake Or Cupcake: Cake or cupcake, zucchini

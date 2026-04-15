@@ -1,0 +1,369 @@
+Almond Milk Refrigerated Unsweetened: almond milk, refrigerated, unsweetened, MILK, 1%, MILK, 1% (WAVE 22E), MILK, 1%(WAVE 22E), MILK, 2%, MILK, 2% (WAVE 22E)
+American Cheese: American Cheese
+Avocado Sandwich: Avocado, for use on a sandwich
+Baked Potato: Potatoes, Russet, flesh and skin, baked, Potatoes, baked, flesh and skin, with salt, Potatoes, baked, flesh, with salt, Potatoes, baked, flesh, without salt, Potatoes, red, flesh and skin, baked, Potatoes, white, flesh and skin, baked, Potato, baked, NFS, Potato, baked, peel eaten, Potato, baked, peel not eaten
+Baked Potato Skin: Potatoes, baked, skin only, with salt, Potatoes, baked, skin, without salt
+Baked Potato With Butter: Potato, baked, peel not eaten, with butter
+Baked Potato With Cheese: Potato, baked, peel not eaten, with cheese
+Baked Potato With Chili: Potato, baked, peel eaten, with chili, Potato, baked, peel not eaten, with chili
+Baked Potato With Meat: Potato, baked, peel eaten, with meat, Potato, baked, peel not eaten, with meat
+Baked Potato With Sour Cream: Potato, baked, peel eaten, with sour cream
+Baked Potato With Vegetables: Potato, baked, peel eaten, with vegetables
+Barley Bread: Bread, barley, Bread, wheat or cracked wheat
+Barley Bread Toasted: Bread, barley, toasted, Bread, oat bran, Bread, oat bran, toasted, Bread, oatmeal, Bread, oatmeal, toasted, Bread, wheat or cracked wheat, toasted, Bread, white with whole wheat swirl, toasted, Bread, white, toasted, Bread, whole grain white, toasted, Bread, whole wheat, toasted
+Beans Dry Black 11F 8116 0 Moisture: Beans, Dry, Black, 11F-8116 (0% moisture)
+Beans Dry Black 11F 8117 0 Moisture: Beans, Dry, Black, 11F-8117 (0% moisture)
+Beans Dry Black 11F 8119 0 Moisture: Beans, Dry, Black, 11F-8119 (0% moisture), Beans, Dry, Pink, 11F-8018 (0% moisture), Beans, Dry, Pink, 11F-8019 (0% moisture), Beans, Dry, Pink, 11F-8034 (0% moisture), Beans, Dry, Pink, 11F-8041 (0% moisture), Beans, Dry, Pink, 11F-8058 (0% moisture), Beans, Dry, Pink, 11F-8082 (0% moisture), Beans, Dry, Pink, 11F-8105 (0% moisture), Beans, Dry, Pink, 11F-8124 (0% moisture), Beans, Dry, Pink, 11F-8136 (0% moisture), Beans, Dry, Pink, 11F-8187 (0% moisture), Beans, Dry, Pink, 11F-8193 (0% moisture), Beans, Dry, Pink, 11F-8197 (0% moisture), Beans, Dry, Pink, 359 (0% moisture), Beans, Dry, Pink, 404 (0% moisture), Beans, Dry, Pink, 430 (0% moisture), Beans, Dry, Pink, 448 (0% moisture), Beans, Dry, Pink, 461 (0% moisture), Beans, Dry, Pink, 477 (0% moisture), Beans, Dry, Pink, 478 (0% moisture), Beans, Dry, Pink, 481 (0% moisture), Beans, Dry, Pink, 483 (0% moisture), Beans, Dry, Pink, 486 (0% moisture), Beans, Dry, Pink, 502 (0% moisture), Beans, Dry, Pinto, 11F-8006 (0% moisture), Beans, Dry, Pinto, 11F-8012 (0% moisture), Beans, Dry, Pinto, 11F-8024 (0% moisture), Beans, Dry, Pinto, 11F-8026 (0% moisture), Beans, Dry, Pinto, 11F-8031 (0% moisture), Beans, Dry, Pinto, 11F-8032 (0% moisture), Beans, Dry, Pinto, 11F-8035 (0% moisture), Beans, Dry, Pinto, 11F-8037 (0% moisture), Beans, Dry, Pinto, 11F-8038 (0% moisture), Beans, Dry, Pinto, 11F-8047 (0% moisture), Beans, Dry, Pinto, 11F-8048 (0% moisture), Beans, Dry, Pinto, 11F-8049 (0% moisture), Beans, Dry, Pinto, 11F-8054 (0% moisture), Beans, Dry, Pinto, 11F-8055 (0% moisture), Beans, Dry, Pinto, 11F-8065 (0% moisture), Beans, Dry, Pinto, 11F-8069 (0% moisture), Beans, Dry, Pinto, 11F-8070 (0% moisture), Beans, Dry, Pinto, 11F-8072 (0% moisture), Beans, Dry, Pinto, 11F-8075 (0% moisture), Beans, Dry, Pinto, 11F-8076 (0% moisture)
+Beans Dry Black 11F 8122 0 Moisture: Beans, Dry, Black, 11F-8122 (0% moisture)
+Beans Dry Black 11F 8123 0 Moisture: Beans, Dry, Black, 11F-8123 (0% moisture), Beans, Dry, Black, 274 (0% moisture)
+Beans Dry Black 11F 8129 0 Moisture: Beans, Dry, Black, 11F-8129 (0% moisture)
+Beans Dry Black 11F 8135 0 Moisture: Beans, Dry, Black, 11F-8135 (0% moisture), Beans, Dry, Navy, 262 (0% moisture)
+Beans Dry Black 11F 8140 0 Moisture: Beans, Dry, Black, 11F-8140 (0% moisture), Beans, Dry, Black, 528 (0% moisture), Beans, Dry, Carioca, 11F-8104 (0% moisture), Beans, Dry, Carioca, 217 (0% moisture), Beans, Dry, Carioca, 622 (0% moisture), Beans, Dry, Cranberry, 750 (0% moisture), Beans, Dry, Flor de Mayo, 443 (0% moisture), Beans, Dry, Flor de Mayo, 823 (0% moisture), Beans, Dry, Medium Red, 490 (0% moisture), Beans, Dry, Medium Red, 756 (0% moisture), Beans, Dry, Navy, 11F-8004 (0% moisture), Beans, Dry, Navy, 11F-8007 (0% moisture), Beans, Dry, Navy, 11F-8027 (0% moisture), Beans, Dry, Navy, 11F-8028 (0% moisture), Beans, Dry, Navy, 11F-8183 (0% moisture), Beans, Dry, Pink, 11F-8084 (0% moisture), Beans, Dry, Pink, 11F-8149 (0% moisture), Beans, Dry, Pink, 11F-8156 (0% moisture), Beans, Dry, Pink, 11F-8188 (0% moisture), Beans, Dry, Pink, 11F-8190 (0% moisture)
+Beans Dry Black 11F 8146 0 Moisture: Beans, Dry, Black, 11F-8146 (0% moisture), Beans, Dry, Black, 266 (0% moisture), Beans, Dry, Navy, 11F-8143 (0% moisture), Beans, Dry, Navy, 11F-8165 (0% moisture), Beans, Dry, Pink, 342 (0% moisture)
+Beans Dry Black 11F 8150 0 Moisture: Beans, Dry, Black, 11F-8150 (0% moisture), Beans, Dry, Navy, 11F-8043 (0% moisture), Beans, Dry, Navy, 11F-8098 (0% moisture), Beans, Dry, Navy, 11F-8107 (0% moisture), Beans, Dry, Navy, 11F-8162 (0% moisture), Beans, Dry, Navy, 11F-8179 (0% moisture), Beans, Dry, Navy, 11F-8195 (0% moisture)
+Beans Dry Black 11F 8158 0 Moisture: Beans, Dry, Black, 11F-8158 (0% moisture)
+Beans Dry Black 11F 8168 0 Moisture: Beans, Dry, Black, 11F-8168 (0% moisture), Beans, Dry, Cranberry, 378 (0% moisture)
+Beans Dry Black 11F 8177 0 Moisture: Beans, Dry, Black, 11F-8177 (0% moisture)
+Beans Dry Black 11F 8180 0 Moisture: Beans, Dry, Black, 11F-8180 (0% moisture), Beans, Dry, Black, 278 (0% moisture), Beans, Dry, Carioca, 11F-8001 (0% moisture), Beans, Dry, Navy, 11F-8030 (0% moisture)
+Beans Dry Black 214 0 Moisture: Beans, Dry, Black, 214 (0% moisture), Beans, Dry, Black, 215 (0% moisture), Beans, Dry, Black, 219 (0% moisture), Beans, Dry, Black, 221 (0% moisture), Beans, Dry, Black, 222 (0% moisture), Beans, Dry, Black, 225 (0% moisture), Beans, Dry, Black, 227 (0% moisture), Beans, Dry, Black, 232 (0% moisture), Beans, Dry, Black, 238 (0% moisture), Beans, Dry, Black, 244 (0% moisture), Beans, Dry, Black, 247 (0% moisture), Beans, Dry, Black, 248 (0% moisture), Beans, Dry, Black, 250 (0% moisture), Beans, Dry, Black, 251 (0% moisture), Beans, Dry, Black, 314 (0% moisture), Beans, Dry, Black, 395 (0% moisture), Beans, Dry, Navy, 216 (0% moisture), Beans, Dry, Navy, 242 (0% moisture), Beans, Dry, Navy, 245 (0% moisture), Beans, Dry, Pink, 445 (0% moisture)
+Beans Dry Black 223 0 Moisture: Beans, Dry, Black, 223 (0% moisture), Beans, Dry, Navy, 229 (0% moisture), Beans, Dry, Navy, 234 (0% moisture)
+Beans Dry Black 249 0 Moisture: Beans, Dry, Black, 249 (0% moisture), Beans, Dry, Black, 259 (0% moisture), Beans, Dry, Black, 263 (0% moisture), Beans, Dry, Black, 269 (0% moisture), Beans, Dry, Black, 271 (0% moisture), Beans, Dry, Black, 273 (0% moisture), Beans, Dry, Black, 276 (0% moisture), Beans, Dry, Black, 286 (0% moisture), Beans, Dry, Black, 291 (0% moisture), Beans, Dry, Black, 296 (0% moisture), Beans, Dry, Black, 297 (0% moisture), Beans, Dry, Black, 303 (0% moisture), Beans, Dry, Black, 304 (0% moisture), Beans, Dry, Black, 305 (0% moisture), Beans, Dry, Black, 310 (0% moisture), Beans, Dry, Black, 318 (0% moisture), Beans, Dry, Black, 348 (0% moisture), Beans, Dry, Black, 522 (0% moisture), Beans, Dry, Black, 529 (0% moisture), Beans, Dry, Black, 531 (0% moisture), Beans, Dry, Black, 536 (0% moisture), Beans, Dry, Black, 537 (0% moisture), Beans, Dry, Black, 547 (0% moisture), Beans, Dry, Black, 552 (0% moisture), Beans, Dry, Black, 553 (0% moisture), Beans, Dry, Black, 562 (0% moisture), Beans, Dry, Black, 574 (0% moisture), Beans, Dry, Black, 590 (0% moisture), Beans, Dry, Black, 592 (0% moisture), Beans, Dry, Black, 600 (0% moisture), Beans, Dry, Black, 601 (0% moisture), Beans, Dry, Black, 602 (0% moisture), Beans, Dry, Black, 604 (0% moisture), Beans, Dry, Black, 607 (0% moisture), Beans, Dry, Black, 608 (0% moisture), Beans, Dry, Black, 610 (0% moisture), Beans, Dry, Black, 611 (0% moisture), Beans, Dry, Black, 615 (0% moisture), Beans, Dry, Black, 617 (0% moisture), Beans, Dry, Black, 619 (0% moisture), Beans, Dry, Black, 620 (0% moisture), Beans, Dry, Black, 624 (0% moisture), Beans, Dry, Black, 625 (0% moisture), Beans, Dry, Black, 707 (0% moisture), Beans, Dry, Black, 737 (0% moisture), Beans, Dry, Black, 745 (0% moisture), Beans, Dry, Black, 753 (0% moisture), Beans, Dry, Black, 767 (0% moisture), Beans, Dry, Navy, 220 (0% moisture), Beans, Dry, Navy, 226 (0% moisture), Beans, Dry, Navy, 228 (0% moisture), Beans, Dry, Navy, 230 (0% moisture), Beans, Dry, Navy, 237 (0% moisture), Beans, Dry, Navy, 246 (0% moisture), Beans, Dry, Navy, 256 (0% moisture)
+Beans Dry Black 254 0 Moisture: Beans, Dry, Black, 254 (0% moisture), Beans, Dry, Black, 258 (0% moisture), Beans, Dry, Black, 282 (0% moisture), Beans, Dry, Black, 288 (0% moisture), Beans, Dry, Navy, 236 (0% moisture), Beans, Dry, Navy, 252 (0% moisture), Beans, Dry, Navy, 255 (0% moisture), Beans, Dry, Navy, 257 (0% moisture), Beans, Dry, Navy, 261 (0% moisture), Beans, Dry, Navy, 279 (0% moisture), Beans, Dry, Navy, 280 (0% moisture), Beans, Dry, Navy, 287 (0% moisture), Beans, Dry, Navy, 289 (0% moisture), Beans, Dry, Navy, 294 (0% moisture)
+Beans Dry Black 267 0 Moisture: Beans, Dry, Black, 267 (0% moisture), Beans, Dry, Black, 298 (0% moisture), Beans, Dry, Black, 301 (0% moisture), Beans, Dry, Black, 317 (0% moisture), Beans, Dry, Black, 331 (0% moisture), Beans, Dry, Black, 424 (0% moisture), Beans, Dry, Black, 472 (0% moisture), Beans, Dry, Black, 526 (0% moisture), Beans, Dry, Black, 533 (0% moisture), Beans, Dry, Black, 534 (0% moisture), Beans, Dry, Black, 542 (0% moisture), Beans, Dry, Black, 545 (0% moisture), Beans, Dry, Black, 550 (0% moisture), Beans, Dry, Black, 566 (0% moisture), Beans, Dry, Black, 569 (0% moisture), Beans, Dry, Black, 570 (0% moisture), Beans, Dry, Black, 572 (0% moisture), Beans, Dry, Black, 573 (0% moisture), Beans, Dry, Black, 575 (0% moisture), Beans, Dry, Black, 580 (0% moisture), Beans, Dry, Black, 583 (0% moisture), Beans, Dry, Black, 596 (0% moisture), Beans, Dry, Black, 597 (0% moisture), Beans, Dry, Brown, 679 (0% moisture), Beans, Dry, Navy, 213 (0% moisture), Beans, Dry, Navy, 241 (0% moisture), Beans, Dry, Navy, 253 (0% moisture), Beans, Dry, Navy, 260 (0% moisture), Beans, Dry, Navy, 277 (0% moisture), Beans, Dry, Navy, 281 (0% moisture), Beans, Dry, Navy, 283 (0% moisture), Beans, Dry, Navy, 290 (0% moisture), Beans, Dry, Navy, 292 (0% moisture), Beans, Dry, Navy, 295 (0% moisture), Beans, Dry, Navy, 299 (0% moisture), Beans, Dry, Navy, 307 (0% moisture)
+Beans Dry Navy 268 0 Moisture: Beans, Dry, Navy, 268 (0% moisture), Beans, Dry, Navy, 308 (0% moisture), Beans, Dry, Navy, 312 (0% moisture), Beans, Dry, Navy, 386 (0% moisture), Beans, Dry, Navy, 523 (0% moisture), Beans, Dry, Navy, 524 (0% moisture), Beans, Dry, Navy, 525 (0% moisture), Beans, Dry, Navy, 609 (0% moisture), Beans, Dry, Navy, 612 (0% moisture), Beans, Dry, Navy, 719 (0% moisture)
+Beans Dry Navy 284 0 Moisture: Beans, Dry, Navy, 284 (0% moisture), Beans, Dry, Navy, 311 (0% moisture), Beans, Dry, Navy, 313 (0% moisture), Beans, Dry, Navy, 316 (0% moisture), Beans, Dry, Navy, 319 (0% moisture), Beans, Dry, Navy, 320 (0% moisture), Beans, Dry, Navy, 422 (0% moisture), Beans, Dry, Navy, 476 (0% moisture), Beans, Dry, Navy, 521 (0% moisture), Beans, Dry, Navy, 530 (0% moisture), Beans, Dry, Navy, 532 (0% moisture), Beans, Dry, Navy, 535 (0% moisture), Beans, Dry, Navy, 539 (0% moisture), Beans, Dry, Navy, 541 (0% moisture), Beans, Dry, Navy, 543 (0% moisture), Beans, Dry, Navy, 546 (0% moisture), Beans, Dry, Navy, 548 (0% moisture), Beans, Dry, Navy, 551 (0% moisture), Beans, Dry, Navy, 554 (0% moisture), Beans, Dry, Navy, 555 (0% moisture), Beans, Dry, Navy, 556 (0% moisture), Beans, Dry, Navy, 557 (0% moisture), Beans, Dry, Navy, 558 (0% moisture), Beans, Dry, Navy, 559 (0% moisture), Beans, Dry, Navy, 560 (0% moisture), Beans, Dry, Navy, 561 (0% moisture), Beans, Dry, Navy, 565 (0% moisture), Beans, Dry, Navy, 567 (0% moisture), Beans, Dry, Navy, 568 (0% moisture), Beans, Dry, Navy, 576 (0% moisture), Beans, Dry, Navy, 578 (0% moisture), Beans, Dry, Navy, 582 (0% moisture), Beans, Dry, Navy, 584 (0% moisture), Beans, Dry, Navy, 585 (0% moisture), Beans, Dry, Navy, 586 (0% moisture), Beans, Dry, Navy, 587 (0% moisture), Beans, Dry, Navy, 588 (0% moisture), Beans, Dry, Navy, 589 (0% moisture), Beans, Dry, Navy, 595 (0% moisture), Beans, Dry, Navy, 598 (0% moisture), Beans, Dry, Navy, 599 (0% moisture), Beans, Dry, Navy, 603 (0% moisture), Beans, Dry, Navy, 605 (0% moisture), Beans, Dry, Navy, 613 (0% moisture), Beans, Dry, Navy, 614 (0% moisture), Beans, Dry, Navy, 623 (0% moisture), Beans, Dry, Navy, 626 (0% moisture), Beans, Dry, Navy, 627 (0% moisture), Beans, Dry, Navy, 628 (0% moisture), Beans, Dry, Navy, 721 (0% moisture), Beans, Dry, Navy, 771 (0% moisture)
+Beans Dry Pink 399 0 Moisture: Beans, Dry, Pink, 399 (0% moisture)
+Beans Dry Pink 411 0 Moisture: Beans, Dry, Pink, 411 (0% moisture), Beans, Dry, Pink, 504 (0% moisture), Beans, Dry, Pink, 629 (0% moisture), Beans, Dry, Pink, 636 (0% moisture), Beans, Dry, Pink, 641 (0% moisture), Beans, Dry, Pink, 652 (0% moisture), Beans, Dry, Pink, 664 (0% moisture), Beans, Dry, Pink, 687 (0% moisture), Beans, Dry, Pink, 699 (0% moisture), Beans, Dry, Pink, 701 (0% moisture), Beans, Dry, Pink, 712 (0% moisture), Beans, Dry, Pink, 725 (0% moisture), Beans, Dry, Pink, 732 (0% moisture), Beans, Dry, Pink, 739 (0% moisture), Beans, Dry, Pink, 752 (0% moisture), Beans, Dry, Pink, 779 (0% moisture), Beans, Dry, Pink, 794 (0% moisture), Beans, Dry, Pink, 796 (0% moisture), Beans, Dry, Pink, 817 (0% moisture), Beans, Dry, Pink, 819 (0% moisture)
+Beans Dry Pink 433 0 Moisture: Beans, Dry, Pink, 433 (0% moisture), Beans, Dry, Pink, 803 (0% moisture)
+Beef Tenderloin Steak Raw: Beef, tenderloin steak, raw
+Black Bread: Bread, black
+Black Bread Toasted: Bread, black, toasted
+Bulgur Dry Raw: Bulgur, dry, raw
+Candied Sweet Potato: Sweet potato, cooked, candied, home-prepared
+Canned Green Chili Peppers: Peppers, chili, green, canned
+Canned Mixed Vegetables: Vegetables, mixed, canned, drained solids
+Canned Onions: Onions, canned, solids and liquids, Sauerkraut, canned, solids and liquids, Turnip greens, canned, no salt added, Turnip greens, canned, solids and liquids, Cucumber, for use on a sandwich
+Canned Peas Onions: Peas and onions, canned, solids and liquids
+Canned Pimento: Pimento, canned
+Canned Potato: Potato, canned, NS as to fat, Potato, canned, fat added, NS as to fat type
+Canned Potatoes: Potatoes, canned, drained solids, Potatoes, canned, solids and liquids, Potato, canned, no added fat
+Canned Pumpkin: Pumpkin, canned, with salt, Pumpkin, canned, without salt
+Canned Pumpkin Pie Mix: Pumpkin pie mix, canned
+Canned Sweet Potato: Sweet potato, canned, vacuum pack
+Canned Tomato Juice: Tomato juice, canned, with salt added, Tomato juice, canned, without salt added, Vegetable juice cocktail, low sodium, canned
+Canned Tomato Sauce: Tomato products, canned, sauce, Tomato sauce, canned, no salt added
+Canola Oil: Canola oil, OIL, OLIVE, EXTRA LIGHT, OIL, PEANUT, OIL, SAFFLOWER, OIL, SUNFLOWER, Olive oil, extra virgin, Soybean oil
+Champagne Punch: Champagne punch
+Cheese: Cheese
+Cheese American: Cheese, American, Cheese; American
+Cheese Bread: Bread, cheese
+Cheese Bread Toasted: Bread, cheese, toasted
+Cheese Feta Whole Milk Crumbled: Cheese, feta, whole milk, crumbled
+Cheese Parmesan Grated Refrigerated: Cheese, parmesan, grated, refrigerated
+Cheese Ricotta Whole Milk Galbani: CHEESE, RICOTTA, WHOLE MILK, GALBANI
+Cheese Ricotta Whole Milk Lucerne: CHEESE, RICOTTA, WHOLE MILK, LUCERNE
+Cheese Ricotta Whole Milk Polly O: CHEESE, RICOTTA, WHOLE MILK, POLLY-O
+Cheese Ricotta Whole Milk Sorrento: CHEESE, RICOTTA, WHOLE MILK, SORRENTO
+Cheese Ricotta Whole Milk Store Other: CHEESE, RICOTTA, WHOLE MILK, STORE/OTHER, Ricotta cheese whole milk - NFY1216V4, Ricotta cheese whole milk - NFY1216VM, Ricotta cheese whole milk - NFY1216WD, Ricotta cheese whole milk - NFY1216WV, Ricotta cheese whole milk - NFY1216XI, Ricotta cheese whole milk - NFY1216XZ, Ricotta cheese, whole milk, Ricotta cheese, whole milk - NFY1216UZ, Ricotta cheese, whole milk - NFY1216W7
+Chia Seeds Whole Dry Raw: Chia seeds, whole, dry, raw
+Cinnamon Bread: Bread, cinnamon
+Cinnamon Bread Toasted: Bread, cinnamon, toasted
+Cod Raw: Cod, Pacific or Alaskan, frozen, wild caught, Fatty Acids, Pollock, raw (IN) - NFY060DN6, Fatty Acids, Pollock, raw (MI) - NFY060DP6, Fatty Acids, Pollock, raw (MO) - NFY060DNU, Fatty Acids, Pollock, raw (NC) - NFY060DLU, Fatty Acids, Pollock, raw (NY) - NFY060DO6, Fatty Acids, Pollock, raw (OK) - NFY060DM6
+Cooked Nopales: Nopales, cooked, without salt
+Cooked Okra: Okra, cooked, boiled, drained, with salt
+Cooked Onions: Onions, cooked, boiled, drained, with salt, Onions, for use on a sandwich
+Cooked Parsnips: Parsnips, cooked, boiled, drained, with salt
+Cooked Pumpkin: Pumpkin, cooked, boiled, drained, with salt
+Cooked Purslane: Purslane, cooked, boiled, drained, with salt
+Cooked Salsify: Salsify, cooked, boiled, drained, with salt
+Cooked Sesbania Flower: Sesbania flower, cooked, steamed, with salt
+Cooked Sweet Potato: Sweet potato, cooked, boiled, without skin
+Cooked Taro: Taro, cooked, with salt, Taro, cooked, without salt, Taro, tahitian, cooked, with salt, Taro, tahitian, cooked, without salt
+Cooked Taro Leaves: Taro leaves, cooked, steamed, without salt, Taro, leaves, cooked, steamed, with salt
+Cooked Taro Shoots: Taro shoots, cooked, without salt, Taro, shoots, cooked, with salt
+Cooked Tomatoes: Tomatoes, red, ripe, cooked, Tomatoes, red, ripe, cooked, with salt
+Cooked Tree Fern: Tree fern, cooked, with salt, Tree fern, cooked, without salt
+Corn Flour Masa Harina White Dry: Corn flour, masa harina, white, dry, raw
+Corn Flour Masa Harina Yellow Dry: Corn flour, masa harina, yellow, dry, raw, FLOUR, CORN, YELLOW (FINE MEAL) (ENRICHED)
+Corn Oil: Corn oil
+Cornmeal Molasses Bread: Bread, cornmeal and molasses, Bread, cornmeal and molasses, toasted
+Cotija Cheese: cotija (solid)
+Cottage Cheese: cottage cheese, 4% milkfat, large curd, cottage cheese, 4% milkfat, small curd
+Cream Cheese: cream cheese, block, full fat
+Crushed Tomatoes: Tomatoes, crushed, canned
+Cuban Bread: Bread, Cuban
+Cuban Bread Toasted: Bread, Cuban, toasted, Bread, French or Vienna, toasted
+Dehydrated Onions: Onions, dehydrated flakes
+Dessert Wine: Wine, dessert, sweet
+Dill Pickles: Pickles, cucumber, dill or kosher dill, Pickles, cucumber, dill, reduced sodium
+Dried Agar Seaweed: Seaweed, agar, dried
+Dried Ancho Peppers: Peppers, ancho, dried
+Dried Egg Yolk: EGG, DRIED YOLK, Producer A, EGG, LIQUID YOLK, Producer C, EGG, LIQUID YOLK, Producer D, EGG, LIQUID YOLK, Producer E, EGG, LIQUID YOLK, Producer F, Egg yolks dried, Egg yolks, dried
+Dried Oriental Radishes: Radishes, oriental, dried
+Dried Parsley: Parsley, freeze-dried
+Dried Pasilla Pepper: Peppers, pasilla, dried
+Dried Pepeao: Pepeao, dried
+Dried Spirulina Seaweed: Seaweed, spirulina, dried
+Dried Whole Egg: EGG, DRIED WHOLE, Producer A, Egg whites dried, Egg whites, dried, Whole eggs dried, Whole eggs, dried
+Dry Black Beans: Beans, Dry, Black, 11F-8112 (0% moisture)
+Dry Brown Beans: Beans, Dry, Brown, 351 (0% moisture)
+Dry Navy Beans: Beans, Dry, Navy, 233 (0% moisture), Beans, Dry, Navy, 264 (0% moisture)
+Dry Pink Beans: Beans, Dry, Pink, 354 (0% moisture)
+Egg Bread Challah: Bread, egg, Challah
+Egg Bread Challah Toasted: Bread, egg, Challah, toasted
+Egg Dried White Stabilized Producer A: EGG, DRIED WHITE STABILIZED, Producer A, EGG, DRIED WHITE STABILIZED, Producer D, EGG, DRIED WHITE STABILIZED, Producer E
+Egg Dried White Stabilized Producer B: EGG, DRIED WHITE STABILIZED, Producer B, EGG, DRIED WHOLE, Producer B, EGG, DRIED YOLK, Producer B, EGG, DRIED YOLK, Producer D, EGG, DRIED YOLK, Producer F, EGG, LIQUID WHOLE, Producer C, EGG, LIQUID WHOLE, Producer D, EGG, LIQUID WHOLE, Producer F, Eggs, whites
+Egg Dried White Stabilized Producer C: EGG, DRIED WHITE STABILIZED, Producer C, EGG, DRIED WHOLE, Producer C, EGG, DRIED WHOLE, Producer D, EGG, DRIED WHOLE, Producer E, EGG, DRIED WHOLE, Producer F, EGG, DRIED YOLK, Producer C, EGG, DRIED YOLK, Producer E, Minerals, Haddock, raw (CO) - NFY060CM2, Minerals, Haddock, raw (CT) - NFY060CMH, Minerals, Haddock, raw (FL) - NFY060CNB, Minerals, Haddock, raw (IN) - NFY060CMW
+Egg Whites: Egg whites, Eggs; whites
+Egg Yolk: Egg yolk, Eggs, yolk, Eggs; yolk
+Einkorn Grain Wheat Berry Dry Raw: Einkorn, grain, wheat berry, dry, raw
+Farro Dry Raw: Farro, pearled, dry, raw
+Fiber White Bread: Bread, white, special formula, added fiber
+Flour All Purpose Enriched Bleached: FLOUR, ALL PURPOSE (ENRICHED) (BLEACHED)
+Flour All Purpose Enriched Unbleached: FLOUR, ALL PURPOSE (ENRICHED) (UNBLEACHED), FLOUR, ALL PURPOSE (UNENRICHED) (UNBLEACHED), FLOUR, BREAD, WHITE (ENRICHED) (UNBLEACHED), FLOUR, WHOLE WHEAT (UNENRICHED), FLOUR, WHOLE WHEAT (UNENRICHED) (ORGANIC), Flour, Semolina, Coarse, Flour, Semolina, Semi-Coarse, Flour, all-purpose, enriched, Flour, all-purpose, unenriched, Flour, bread, white, enriched, Flour, corn, enriched, Flour, whole grain oat, Flour, whole wheat, unenriched, Oats, whole grain, rolled, old fashioned, Oats, whole grain, steel cut, amaranth, flour, barley, flour, buckwheat, flour, flour, 00, flour, semolina, fine, flour, spelt, whole grain, quinoa, flour, rye, flour
+Flour Rice White Unenriched: Flour, Rice, White (unenriched), Flour, Rice, White(unenriched), Flour, Rice, White, unenriched, white rice, long grain, unenriched
+Focaccia Bread Plain: Focaccia, Italian, plain
+Fonio Grain Dry Raw: Fonio, grain, dry, raw
+Freeze Dried Red Pepper: Peppers, sweet, red, freeze-dried
+Freeze Dried Shallots: Shallots, freeze-dried, Shallots, raw, Soybeans, green, raw, Soybeans, mature seeds, sprouted, raw, Spinach souffle, Spinach, cooked, boiled, drained, with salt, Spinach, raw, Squash, summer, all varieties, raw, Squash, summer, scallop, raw, Squash, summer, zucchini, includes skin, raw, Squash, winter, acorn, raw, Squash, winter, all varieties, raw, Squash, winter, butternut, raw, Squash, winter, hubbard, baked, with salt, Squash, winter, hubbard, baked, without salt, Squash, winter, hubbard, raw
+French Bread: Bread, French or Vienna
+Fresco Cheese: fresco (solid)
+Fresh Parsley: Parsley, fresh
+Fried Dough Bread: Bread, dough, fried
+Frozen Edible Pod Peas: Peas, edible-podded, frozen, unprepared
+Frozen Halibut: Halibut, frozen, wild caught
+Frozen Lobster Tail: Lobster, tail only, frozen, wild caught
+Frozen Mahi Mahi: Mahi mahi, frozen, wild caught
+Frozen Mixed Vegetables: Vegetables, mixed, frozen, unprepared
+Frozen Okra: Okra, frozen, unprepared
+Frozen Onions: Onions, frozen, chopped, unprepared
+Frozen Peas Carrots: Peas and carrots, frozen, unprepared
+Frozen Peas Onions: Peas and onions, frozen, unprepared
+Frozen Potato O Brien: Potatoes, o'brien, frozen, prepared, Potatoes, o'brien, frozen, unprepared
+Frozen Potato Puffs: Potato puffs, frozen, oven-heated, Potato puffs, frozen, unprepared
+Frozen Sea Bass: Sea bass, Chilean, frozen, wild caught
+Frozen Snapper: Snapper, frozen, wild caught
+Frozen Snow Crab Legs: Snow crab, legs only, frozen
+Frozen Squid Tubes: Squid (calamari), frozen, tubes only
+Frozen Swordfish: Swordfish, frozen, wild caught
+Frozen Tuna: Tuna, ahi or yellowfin, frozen, wild caught
+Frozen Turnip Greens: Turnip greens, frozen, unprepared
+Frozen Turnips: Turnips, frozen, unprepared
+Gluten Free Bread: Bread, gluten free
+Gluten Free Bread Toasted: Bread, gluten free, toasted
+Grapefruit Juice: Grapefruit juice white shelf stable
+Greek Yogurt Fruit: Yogurt, Greek, NS as to type of milk, fruit, Yogurt, Greek, low fat milk, fruit, Yogurt, Greek, nonfat milk, fruit, Yogurt, Greek, whole milk, fruit
+Greek Yogurt Oats: Yogurt, Greek, with oats
+Greek Yogurt Plain: Yogurt, Greek, NS as to type of milk, plain, Yogurt, Greek, low fat milk, plain, Yogurt, Greek, nonfat milk, plain, Yogurt, Greek, whole milk, plain
+Green Olives: Olives, Green Manzanilla - PA, NJ, Olives, Green Manzanilla, Lindsay - GA, IA, Olives, Green Manzanilla, Lindsay - IN, NC, Olives, Green Manzanilla, Lindsay - KY, NE, Olives, Green Manzanilla, Mario - CA1, Olives, Green Manzanilla, Mario - GA, IN, Olives, Green Manzanilla, Mario - KY, TX, Olives, Green Manzanilla, Mario - NE, NC, Olives, Green Manzanilla, Star - AZ, CA2
+Green Onion Tops: Onions, young green, tops only
+Ground Beef 80 Lean: Beef, ground, 80% lean, 20% fat, raw
+Ground Beef 90 Lean: Beef, ground, 90% lean, 10% fat, raw, Beef, short loin (NY strip steak), raw, Beef, top sirloin steak, raw, beef, chuck, roast, boneless, beef, flank steak, beef, ribeye steak, boneless, beef, top round, boneless
+Hamburger Pickle Relish: Pickle relish, hamburger
+Hash Browns: Potatoes, hash brown, home-prepared
+Heavy Cream: heavy cream
+High Protein Bread Toasted: Bread, high protein, toasted
+Honeydew Melon Raw: Melons, honeydew, flesh only, raw
+Hot Dog Pickle Relish: Pickle relish, hot dog
+Injera Bread: Injera, Ethiopian bread
+Italian Bread: Bread, Italian, Grecian, Armenian
+Italian Bread Toasted: Bread, Italian, Grecian, Armenian, toasted
+Khorasan Grain Wheat Berry Dry Raw: Khorasan, grain, wheat berry, dry, raw, buckwheat, whole grain
+Kiwi Fruit: Kiwi, Region 1, n/a, Yes, Fiber  - NFY0100RH, Kiwi, Region 2, n/a, Yes, Fiber  - NFY0100SD, Kiwi, Region 3, n/a, Yes, Fiber  - NFY0100TB, Kiwi, Region 4, n/a, Yes, Fiber  - NFY0100U9, Kiwifruit (kiwi), green, peeled, raw
+Lard Bread Puerto Rican: Bread, lard, Puerto Rican style, Bread, native, water, Puerto Rican style
+Lard Bread Puerto Rican Toasted: Bread, lard, toasted, Puerto Rican style
+Lettuce Sandwich: Lettuce, for use on a sandwich
+Light Wine: Wine, light
+Liquid Egg Yolk: EGG, LIQUID YOLK, Producer B
+Liquid Whole Egg: EGG, LIQUID WHOLE, Producer B, Eggs, whole, Eggs; whole, Whole eggs
+Mandarin Orange Raw: Mandarin, seedless, peeled, raw
+Mango Raw: Mango, Ataulfo, peeled, pit removed, raw
+Marble Rye Pumpernickel Bread: Bread, marble rye and pumpernickel, Bread, pumpernickel
+Marble Rye Pumpernickel Bread Toasted: Bread, marble rye and pumpernickel, toasted, Bread, pumpernickel, toasted
+Mashed Potatoes: Potatoes, mashed, ready-to-eat, Potato, NFS, Potato, baked, peel eaten, with butter, Potato, baked, peel eaten, with cheese, Potato, boiled, NFS, Potato, boiled, ready-to-heat, Potato, roasted, NFS, Potato, roasted, ready-to-heat
+Mashed Sweet Potato: Sweet potato, canned, mashed
+Milk Skim: MILK, SKIM
+Milk Skim Wave 22E: MILK, SKIM (WAVE 22E)
+Milk Whole: MILK, WHOLE
+Milk Whole Wave 22E: MILK, WHOLE (WAVE 22E)
+Mimosa: Mimosa
+Minerals Haddock Raw Mi Nfy060Cpe: Minerals, Haddock, raw (MI) - NFY060CPE, Thiamin, Haddock, raw (AL,MI) - NFY060CR3, Thiamin, Haddock, raw (CO,CT,IN) - NFY060CQB, Thiamin, Haddock, raw (FL,NC,NY) - NFY060CQP, Vitamin B6, Haddock, raw (AL,MI) - NFY060CR1, Vitamin E, Haddock, raw (AL,MI) - NFY060CR5
+Monterey Jack Cheese: monterey jack cheese, block
+Multigrain Bread: Bread, multigrain
+Multigrain Bread Toasted: Bread, multigrain, toasted
+Multigrain Raisin Bread: Bread, multigrain, with raisins, Bread, raisin
+Multigrain Raisin Bread Toasted: Bread, multigrain, with raisins, toasted, Bread, raisin, toasted, Bread, whole wheat, with raisins, toasted
+Mushroom Sandwich: Mushrooms, for use on a sandwich
+Naan Bread: Bread, naan
+Oat Milk Refrigerated Unsweetened: oat milk, refrigerated, unsweetened
+Oatmeal Raisin Cookie: Oatmeal cookies with raisins, packaged
+Oaxaca Cheese: oaxaca
+Okra Cooked Boiled Drained Without Salt: Okra, cooked, boiled, drained, without salt, Turnips, cooked, boiled, drained, with salt
+Onion Bread: Bread, onion
+Onion Bread Toasted: Bread, onion, toasted
+Onions Frozen Whole Unprepared: Onions, frozen, whole, unprepared
+Onions Sweet Raw: Onions, sweet, raw
+Onions Welsh Raw: Onions, welsh, raw
+Overripe Banana: BANANAS, OVERRIPE, BANANAS, OVERRIPE, MEDIUM SIZE
+Paratha Bread: Bread, paratha
+Pepper Sandwich: Pepper, for use on a sandwich
+Pickled Chili Peppers: Peppers, hot pickled, canned
+Pickled Radishes: Radishes, hawaiian style, pickled
+Pink Dry Beans: Beans, Dry, Pink, 11F-8059 (0% moisture), Beans, Dry, Pink, 321 (0% moisture), Beans, Dry, Pink, 338 (0% moisture)
+Pita Bread: Bread, pita
+Pita Bread Fruit: Bread, pita with fruit
+Poi: Poi
+Pokeberry Shoots: Pokeberry shoots, (poke), raw
+Potato Au Gratin Mix: Potatoes, au gratin, dry mix, unprepared
+Potato Bread: Bread, potato
+Potato Bread Toasted: Bread, potato, toasted, Bread, sweet potato, toasted, Bread, vegetable, toasted
+Potato Flour: Potato flour
+Potato O Brien: Potatoes, o'brien, home-prepared
+Potato Pancakes: Potato pancakes
+Potato Salad: Potato salad, home-prepared
+Potato Scalloped Mix: Potatoes, scalloped, dry mix, unprepared
+Provolone Cheese: provolone cheese, sliced, non-smoked, provolone cheese, sliced, smoked
+Prune Juice: Juice, prune, from concentrate, shelf-stable
+Puri Bread: Bread, puri
+Raw Agar Seaweed: Seaweed, agar, raw
+Raw Apple: APPLES, FUJI, WITH SKIN, RAW, APPLES, GALA, APPLES, GALA, WITH SKIN, RAW, APPLES, GRANNY SMITH, APPLES, GRANNY SMITH, WITH SKIN, RAW, APPLES, HONEYCRISP, APPLES, HONEYCRISP, WITH SKIN, RAW, APPLES, RED DELICIOUS, APPLES, RED DELICIOUS, WITH SKIN, RAW, Pineapple, raw
+Raw Apricot: Apricot, with skin, pitted, raw
+Raw Avocado: Avocado, Hass, peeled, pit removed, raw
+Raw Banana Pepper: Pepper, banana, raw
+Raw Blackberries: Blackberries, raw
+Raw Blueberries: blueberries, fresh, raw
+Raw Catfish: catfish, farm raised, raw, skin removed
+Raw Cherries: Cherries, dark red, sweet, raw
+Raw Chili Peppers Red: Peppers, hot chili, red, raw
+Raw Edible Pod Peas: Peas, edible-podded, raw
+Raw Grapes: grapes, green, seedless, fresh, raw, grapes, red, seedless, fresh, raw
+Raw Green Bell Pepper: Peppers, sweet, green, raw
+Raw Green Peas: Peas, green, raw
+Raw Green Tomatoes: Tomatoes, green, raw
+Raw Ground Bison: Bison, ground, raw
+Raw Ground Lamb: Lamb, ground, raw
+Raw Haddock Minerals: Minerals, Haddock, raw (AL) - NFY060COK, Minerals, Haddock, raw (NC) - NFY060CL8, Minerals, Haddock, raw (NY) - NFY060CO5, Niacin, Haddock, raw (AL,MI) - NFY060CQZ, Niacin, Haddock, raw (CO,CT,IN) - NFY060CQ7, Niacin, Haddock, raw (FL,NC,NY) - NFY060CQL, Proximates, Haddock, raw (AL) - NFY060COQ, Proximates, Haddock, raw (CO) - NFY060CM8, Proximates, Haddock, raw (CT) - NFY060CMN, Proximates, Haddock, raw (FL) - NFY060CNH, Proximates, Haddock, raw (IN) - NFY060CN2, Proximates, Haddock, raw (MI) - NFY060CPK, Proximates, Haddock, raw (NC) - NFY060CLE, Proximates, Haddock, raw (NY) - NFY060COB, Riboflavin, Haddock, raw (AL,MI) - NFY060CR2, Selenium, Haddock, raw (AL) - NFY060COL, Selenium, Haddock, raw (CO) - NFY060CM3, Selenium, Haddock, raw (CT) - NFY060CMI, Selenium, Haddock, raw (FL) - NFY060CNC, Selenium, Haddock, raw (IN) - NFY060CMX, Selenium, Haddock, raw (MI) - NFY060CPF, Selenium, Haddock, raw (NC) - NFY060CL9, Selenium, Haddock, raw (NY) - NFY060CO6
+Raw Hungarian Pepper: Peppers, hungarian, raw
+Raw Irishmoss Seaweed: Seaweed, irishmoss, raw
+Raw Jalapeno Pepper: Peppers, jalapeno, raw
+Raw Jicama: Yambean (jicama), raw
+Raw Kelp Seaweed: Seaweed, kelp, raw
+Raw Laver Seaweed: Seaweed, laver, raw
+Raw Nopales: Nopales, raw
+Raw Okra: Okra, raw
+Raw Onions: Onions, raw
+Raw Orange Tomatoes: Tomatoes, orange, raw, Tomatoes, yellow, raw
+Raw Oriental Radishes: Radishes, oriental, raw, Radishes, raw, Radishes, white icicle, raw
+Raw Parsnips: Parsnips, raw
+Raw Pawpaw: pawpaw, peeled, seeded, raw
+Raw Pigeonpeas: Pigeonpeas, immature seeds, raw
+Raw Plantain: Plantains, black, overripe, peeled, raw, Plantains, green, unripe, peeled, raw, Plantains, yellow, ripe, peeled, raw
+Raw Plum: Plum, black, with skin, pitted, raw
+Raw Pollock: Fatty Acids, Pollock, raw (CT) - NFY060DMU, Minerals, Pollock, raw (CO) - NFY060DMF, Minerals, Pollock, raw (CT) - NFY060DMR, Minerals, Pollock, raw (IN) - NFY060DN3, Minerals, Pollock, raw (MI) - NFY060DP3, Minerals, Pollock, raw (MO) - NFY060DNR, Minerals, Pollock, raw (NC) - NFY060DLR, Minerals, Pollock, raw (NY) - NFY060DO3, Minerals, Pollock, raw (OK) - NFY060DM3, Niacin, Pollock, raw (NC, OK) - NFY060DPF, Proximates, Pollock, raw (CO) - NFY060DMJ, Proximates, Pollock, raw (CT) - NFY060DMV, Proximates, Pollock, raw (IN) - NFY060DN7, Proximates, Pollock, raw (MI) - NFY060DP7, Proximates, Pollock, raw (MO) - NFY060DNV, Proximates, Pollock, raw (NC) - NFY060DLV, Proximates, Pollock, raw (NY) - NFY060DO7, Proximates, Pollock, raw (OK) - NFY060DM7, Selenium, Pollock, raw (CO) - NFY060DMG, Selenium, Pollock, raw (CT) - NFY060DMS, Selenium, Pollock, raw (IN) - NFY060DN4, Selenium, Pollock, raw (MI) - NFY060DP4, Selenium, Pollock, raw (MO) - NFY060DNS, Selenium, Pollock, raw (NC) - NFY060DLS, Selenium, Pollock, raw (NY) - NFY060DO4, Selenium, Pollock, raw (OK) - NFY060DM4, Thiamin, Pollock, raw (NC, OK) - NFY060DPK, VITAMIN E, Pollock, raw (NC, OK) - NFY060DPN
+Raw Potato: Potatoes, flesh and skin, raw, Potatoes, white, flesh and skin, raw
+Raw Potato Skin: Potatoes, raw, skin
+Raw Pumpkin: Pumpkin, raw
+Raw Pumpkin Flowers: Pumpkin flowers, raw
+Raw Pumpkin Leaves: Pumpkin leaves, raw
+Raw Purslane: Purslane, raw
+Raw Radicchio: Radicchio, raw
+Raw Raspberries: raspberries, fresh, raw
+Raw Red Bell Pepper: Peppers, sweet, red, raw
+Raw Red Potato: Potatoes, red, flesh and skin, raw
+Raw Rutabaga: Rutabagas, raw
+Raw Salsify: Salsify, (vegetable oyster), raw
+Raw Serrano Pepper: Peppers, serrano, raw
+Raw Sesbania Flower: Sesbania flower, raw
+Raw Spaghetti Squash: Squash, winter, spaghetti, raw
+Raw Spirulina Seaweed: Seaweed, spirulina, raw
+Raw Strawberries: strawberries, fresh, raw
+Raw Succotash: Succotash, (corn and limas), raw
+Raw Sweet Potato Leaves: Sweet potato leaves, raw
+Raw Taro: Taro, raw, Taro, tahitian, raw
+Raw Taro Leaves: Taro leaves, raw
+Raw Taro Shoots: Taro shoots, raw
+Raw Tilapia: tilapia, farm raised, raw, skin removed
+Raw Tomatillos: Tomatillos, raw
+Raw Tomatoes: Tomatoes, red, ripe, raw, year round average, Tomatoes, for use on a sandwich
+Raw Turnip Greens: Turnip greens, raw
+Raw Turnips: Turnips, raw
+Raw Vinespinach: Vinespinach, (basella), raw
+Raw Wakame Seaweed: Seaweed, wakame, raw
+Raw Wasabi Root: Wasabi, root, raw
+Raw Water Convolvulus: Water convolvulus,raw
+Raw Waterchestnuts: Waterchestnuts, chinese, (matai), raw
+Raw Watercress: Watercress, raw
+Raw Watermelon: Watermelon, seedless, flesh only, raw, Watermelon, seedless, rind only, raw
+Raw Waxgourd: Waxgourd, (chinese preserving melon), raw
+Raw Winged Bean Leaves: Winged bean leaves, raw
+Raw Winged Bean Tuber: Winged bean tuber, raw
+Raw Winged Beans: Winged beans, immature seeds, raw
+Raw Yam: Yam, raw
+Raw Yardlong Bean: Yardlong bean, raw
+Raw Yautia: Yautia (tannier), raw
+Raw Yellow Bell Pepper: Peppers, sweet, yellow, raw
+Raw Zucchini: Squash, zucchini, baby, raw
+Red Wine: Wine, red
+Rice Black Unenriched Raw: Rice, black, unenriched, raw
+Rice Bread: Bread, rice, FLOUR, RICE, BROWN, FLOUR, RICE, BROWN (ORGANIC), FLOUR, RICE, GLUTENOUS, FLOUR, RICE, WHITE, FLOUR, RICE, WHITE (ORGANIC)
+Rice Bread Toasted: Bread, rice, toasted
+Rice Red Unenriched Dry Raw: Rice, red, unenriched, dry, raw, brown rice, long grain, unenriched
+Rice Wine: Wine, rice
+Ricotta Cheese Whole Milk: Ricotta cheese whole milk - NFY1216UC
+Ripe Banana: BANANAS, RIPE, BANANAS, RIPE, MEDIUM SIZE, BANANAS, SLIGHTLY RIPE, BANANAS, SLIGHTLY RIPE, MEDIUM SIZE
+Rose Wine: Wine, rose
+Roti Bread: Bread, chappatti or roti
+Rye Bread: Bread, rye
+Rye Bread Toasted: Bread, rye, toasted
+Salted Butter: BUTTER, STICK, SALTED
+Sangria: Sangria, red, Sangria, white
+Sauteed Green Bell Pepper: Peppers, sweet, green, sauteed
+Sauteed Onions: Onions, yellow, sauteed
+Sauteed Red Bell Pepper: Peppers, sweet, red, sauteed
+Sorghum Bran White Unenriched Dry Raw: Sorghum bran, white, unenriched, dry, raw
+Sorghum Whole Grain White Dry Raw: Sorghum, whole grain, white, dry, raw, millet, whole grain, sorghum, flour, Beans, Dry, Black, 11F-8000 (0% moisture), Beans, Dry, Black, 11F-8002 (0% moisture), Beans, Dry, Black, 11F-8003 (0% moisture), Beans, Dry, Black, 11F-8013 (0% moisture), Beans, Dry, Black, 11F-8015 (0% moisture), Beans, Dry, Black, 11F-8016 (0% moisture), Beans, Dry, Black, 11F-8020 (0% moisture), Beans, Dry, Black, 11F-8023 (0% moisture), Beans, Dry, Black, 11F-8029 (0% moisture), Beans, Dry, Black, 11F-8036 (0% moisture), Beans, Dry, Black, 11F-8039 (0% moisture), Beans, Dry, Black, 11F-8044 (0% moisture), Beans, Dry, Black, 11F-8045 (0% moisture), Beans, Dry, Black, 11F-8046 (0% moisture), Beans, Dry, Black, 11F-8062 (0% moisture)
+Sour Cream: sour cream, full fat
+Sour Pickles: Pickles, cucumber, sour, Pickles, cucumber, sour, low sodium
+Sourdough Bread: Bread, sour dough
+Sourdough Bread Toasted: Bread, sour dough, toasted
+Soy Bread: Bread, soy
+Soy Bread Toasted: Bread, soy, toasted
+Sparkling Wine: Wine, sparkling
+Spinach Sandwich: Spinach, for use on a sandwich
+Sprouted Peas: Peas, mature seeds, sprouted, raw
+Sprouted Radish Seeds: Radish seeds, sprouted, raw
+Sprouted Wheat Bread: Bread, sprouted wheat
+Sprouted Wheat Bread Toasted: Bread, sprouted wheat, toasted
+Stewed Tomatoes: Tomatoes, red, ripe, canned, stewed, Tomatoes, red, ripe, cooked, stewed
+Stuffed Green Olives: Olives green stuffed with pimentos, Olives, green, stuffed with pimentos
+Sun Dried Hot Chili Peppers: Peppers, hot chile, sun-dried
+Sun Dried Tomatoes: Tomatoes, sun-dried, Tomatoes, sun-dried, packed in oil, drained
+Sunflower Bread: Bread, sunflower meal
+Sunflower Bread Toasted: Bread, sunflower meal, toasted
+Sweet Pickle Relish: Pickle relish, sweet
+Sweet Potato Bread: Bread, sweet potato
+Sweet Potato Puffs: Sweet Potato puffs, frozen, unprepared
+Tomato Powder: Tomato powder
+Tomato Sauce Onions: Tomato products, canned, sauce, with onions
+Tomato Vegetable Juice: Tomato and vegetable juice, low sodium, Vegetable juice cocktail, canned
+Unsalted Butter: BUTTER, STICK, UNSALTED, Butter, stick, salted, Buttermilk, lowfat
+Unspecified Flour Bread: Bread, NS as to major flour
+Unspecified Flour Bread Toasted: Bread, NS as to major flour, toasted
+Unsweetened Applesauce: applesauce, unsweetened, with vit C added
+Vegetable Bread: Bread, vegetable, Garlic bread, NFS, Garlic bread, from fast food / restaurant, Garlic bread, from frozen
+Wheat Pita Bread: Bread, pita, wheat or cracked wheat
+Wheat Raisin Bread: Bread, wheat or cracked wheat, with raisins, Bread, whole wheat, with raisins
+White Bread: Bread, white
+White Wine: Wine, white
+Whole Wheat Bread: Bread, French or Vienna, whole wheat, Bread, white with whole wheat swirl, Bread, whole grain white, Bread, whole wheat
+Whole Wheat Pita Bread: Bread, pita, whole wheat
+Wild Rice Dry Raw: Wild rice, dry, raw
+Wine Cooler: Wine cooler
+Wine Spritzer: Wine spritzer
+Yeast Extract Spread: Yeast extract spread
+Yogurt Flavored: Yogurt, NS as to type of milk or flavor, Yogurt, NS as to type of milk, fruit, Yogurt, low fat milk, fruit, Yogurt, nonfat milk, fruit, Yogurt, whole milk, flavors other than fruit, Yogurt, whole milk, fruit
+Yogurt Liquid: Yogurt, liquid
+Yogurt Nfs: Yogurt, NFS
+Yogurt Parfait Fruit: Yogurt parfait, with fruit
+Yogurt Plain: Yogurt, NS as to type of milk, plain, Yogurt, low fat milk, plain, Yogurt, nonfat milk, plain, Yogurt, whole milk, plain, yogurt, plain, nonfat
+Yogurt Tube: Yogurt tube

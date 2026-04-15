@@ -1,0 +1,22 @@
+{
+  "target_total_rows": 10000,
+  "completed_slices": 10,
+  "processed_total": 10000,
+  "api_calls_total": 630,
+  "elapsed_seconds_total": 2555.32,
+  "elapsed_hms_total": "0h 42m 35.32s",
+  "estimated_cost_usd_total": 0.315,
+  "avg_final_groups_per_1k": 514.2,
+  "slice_offsets": [
+    0,
+    1000,
+    2000,
+    3000,
+    4000,
+    5000,
+    6000,
+    7000,
+    8000,
+    9000
+  ]
+}

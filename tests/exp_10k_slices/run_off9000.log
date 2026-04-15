@@ -1,0 +1,52 @@
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7314.58it/s]
+[1mBertModel LOAD REPORT[0m from: BAAI/bge-small-en-v1.5
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+
+============================================================
+  AGGREGATION COMPLETE
+============================================================
+  Source foods processed : 1000
+  Generic foods created  : 324
+  Merged into existing   : 647
+  Ignored                : 29
+  Foundation-locked (skip): 0
+  ADD id rejected (bad idx): 0
+  Name dedup merged       : 0
+  Renamed existing groups : 0
+  Parse errors (-> create): 14
+  API calls              : 63
+  Final DB size          : 307 entries
+  Post-pass merged groups: 17
+============================================================
+  Saved 307 generic foods -> tests/exp_10k_slices/exp_1000_off9000_b16.json
+  Saved CSV -> tests/exp_10k_slices/exp_1000_off9000_b16.csv
+
+Batching metrics:
+{
+  "mode": "full",
+  "provider": "openrouter",
+  "model": "google/gemini-2.0-flash-lite-001",
+  "batch_size": 16,
+  "offset": 9000,
+  "decision_mode": "line",
+  "input_rows": 1000,
+  "processed": 1000,
+  "api_calls": 63,
+  "final_groups": 307,
+  "elapsed_seconds": 269.56,
+  "items_per_second": 3.7098,
+  "eta_full_dataset_seconds": 79788.95,
+  "eta_full_dataset_hms": "22h 09m 48s",
+  "estimated_cost_per_call_usd": 0.0005,
+  "estimated_cost_usd": 0.0315,
+  "estimated_full_api_calls": 18648.0,
+  "estimated_full_cost_usd": 9.324,
+  "output_json": "tests/exp_10k_slices/exp_1000_off9000_b16.json"
+}
+Saved metrics -> tests/exp_10k_slices/exp_1000_off9000_b16.metrics.json
+Saved groups  -> tests/exp_10k_slices/exp_1000_off9000_b16.groups.txt
