@@ -827,18 +827,31 @@ class FoodAggregator:
             words = set(re.findall(r'\b[a-z]{2,}\b', name.lower()))
             return words - STOP
 
-        def conflict(n1: str, n2: str) -> bool:
-            w1 = set(re.findall(r'\b\w+\b', n1.lower()))
-            w2 = set(re.findall(r'\b\w+\b', n2.lower()))
+        def entry_words(entry: dict) -> set:
+            """Collect all significant prep/cooking words from generic_name + source_names."""
+            words: set = set()
+            words.update(re.findall(r'\b\w+\b', entry.get('generic_name', '').lower()))
+            for sn in entry.get('source_names', [])[:6]:
+                words.update(re.findall(r'\b\w+\b', sn.lower()))
+            return words
+
+        def conflict(entry_a: dict, entry_b: dict) -> bool:
+            # Use full word sets (generic_name + source_names) so e.g. 'raw' from
+            # "Chicken, stewing, dark meat, meat only, raw" is visible even when
+            # the generic name is "Chicken Stewing Dark Meat Meat Only"
+            w1 = entry_words(entry_a)
+            w2 = entry_words(entry_b)
             for a_set, b_set in PREP_CONFLICT:
                 if (w1 & a_set) and (w2 & b_set):
                     return True
                 if (w2 & a_set) and (w1 & b_set):
                     return True
             # Fat level conflict: if one is nonfat/fat-free and other is whole/regular
-            if ('nonfat' in w1 or ('fat' in w1 and 'free' in w1)) and ('whole' in w2 or 'regular' in w2):
+            n1 = entry_a.get('generic_name', '').lower()
+            n2 = entry_b.get('generic_name', '').lower()
+            if ('nonfat' in n1 or 'fat free' in n1) and ('whole' in n2 or 'regular' in n2):
                 return True
-            if ('nonfat' in w2 or ('fat' in w2 and 'free' in w2)) and ('whole' in w1 or 'regular' in w1):
+            if ('nonfat' in n2 or 'fat free' in n2) and ('whole' in n1 or 'regular' in n1):
                 return True
             return False
 
@@ -882,7 +895,7 @@ class FoodAggregator:
                     continue
                 if other.get('food_category', '') != cat:
                     continue
-                if conflict(name, other['generic_name']):
+                if conflict(entry, other):
                     continue
                 # Require at least one shared food token (prevents e.g. asparagus + broccoli)
                 if food_jaccard(name, other['generic_name']) < 0.2:

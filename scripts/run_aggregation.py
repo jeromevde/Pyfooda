@@ -187,11 +187,12 @@ def _apply_decision(agg: FoodAggregator, food: dict, row: pd.Series, decision: d
             if cross_cat or cooking_conflict or nutrient_conflict:
                 # Mismatch — create fresh group using the original food name
                 fallback_name = _sanitize_generic_name(name)
-                # Check if a same-category + same-cooking-state group already exists
+                # Find a compatible same-category group with this fallback name (no cooking conflict)
                 fallback_id = next(
                     (gid for gid, entry in agg.db.items()
                      if entry.get("food_category", "") == incoming_cat
-                     and _normalized_name_key(entry.get("generic_name", "")) == _normalized_name_key(fallback_name)),
+                     and _normalized_name_key(entry.get("generic_name", "")) == _normalized_name_key(fallback_name)
+                     and not _cooking_state_conflict(name, entry)),
                     None
                 )
                 if fallback_id is not None:
