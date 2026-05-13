@@ -249,14 +249,13 @@ _DEFAULT_BATCH_INSTRUCTION = (
     "\n{\"idx\": <idx>, \"action\": \"ADD\", \"target_id\": <id>}"
     "\n{\"idx\": <idx>, \"action\": \"IGNORE\"}"
     "\n"
-    "\nCRITICAL — anti-catch-all rule: each item in this batch is a DIFFERENT food. Expect to CREATE a distinct group"
-    " for MOST items. Only reuse an identical CREATE name or issue ADD if you are CERTAIN two foods are the exact same"
-    " generic food (e.g. two brands of plain white bread, or two preparations of the same bean variety)."
-    " Grouping all or most items under one name is ALWAYS wrong."
+    "\nADD rule: only ADD to a candidate if its example source names confirm it is the SAME specific food"
+    " (e.g. different brands/preparations of the same thing). If the examples show a different food, CREATE instead."
+    " Never ADD corn to a collard-greens group, salmon to a yogurt group, etc."
     "\n"
-    "\nWithin-batch name reuse: if item [3] creates 'Red Kidney Beans' and item [9] is also red kidney beans,"
-    " output CREATE with the EXACT same name string — they will be auto-merged. But corn ≠ collard greens ≠ asparagus"
-    " even if all are cooked vegetables."
+    "\nCREATE rule: expect to CREATE a distinct group for MOST items. Only reuse an identical CREATE name within this"
+    " batch if you are certain two items are the same generic food. Corn ≠ broccoli ≠ collard greens even if all"
+    " are cooked vegetables — each needs its own group."
     "\nADD is only valid using an id shown in that item's candidate list."
 )
 
@@ -297,6 +296,7 @@ def run_batched(
                 if entry:
                     m["nutrients"] = _nutrient_fingerprint(entry["nutrients"], is_dict=True)
                     m["count"] = entry.get("count", 1)
+                    m["source_names"] = entry.get("source_names", [])[:3]
 
             food = {
                 "idx": idx,

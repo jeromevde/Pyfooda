@@ -275,8 +275,12 @@ def _build_item_prompt(food: dict) -> str:
                     warn = '  ⚠️ ENERGY MISMATCH — DO NOT ADD, prefer CREATE'
             count = m.get('count', 1)
             count_str = f'  ({count} sources)' if count > 1 else ''
+            # Show up to 3 representative source names so the model can verify
+            # the group actually contains the same specific food
+            examples = m.get('source_names', [])[:3]
+            examples_str = f'  e.g.: {"; ".join(examples)}' if examples else ''
             match_lines.append(
-                f'    id={m["id"]}  "{m["name"]}"  [{m.get("nutrients", "")}]  (score={m["score"]}){count_str}{warn}'
+                f'    id={m["id"]}  "{m["name"]}"  [{m.get("nutrients", "")}]  (score={m["score"]}){count_str}{examples_str}{warn}'
             )
         matches_str = '\n'.join(match_lines)
 
