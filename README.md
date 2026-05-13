@@ -1,82 +1,83 @@
-# FoodData Central Python API
+# Pyfooda
 
-This package provides a simple, ready-to-use Python API for accessing and querying relevant data from the [USDA FoodData Central](https://fdc.nal.usda.gov/) database—**no API key required**. All data is processed locally from CSV files and exposed through a clean Python interface.
+Offline Python API for the [USDA FoodData Central](https://fdc.nal.usda.gov/) database — no API key required.
 
-## Installation
+---
 
-You can install the package from PyPI:
+## 1. Using the library
 
 ```bash
 pip install pyfooda
 ```
 
-Or install directly from the repository:
-
-```bash
-pip install git+https://github.com/yourusername/pyfooda.git
-```
-
-## Features
-
-- **No API key required**: Works entirely offline with preprocessed FoodData Central CSV files.
-- **Simple**: Query food categories, nutrients, and portion information with a few lines of code.
-- **Search**: Find foods by partial name.
-- **DataFrames**: Access the raw fooddata and DRV DataFrames for custom analysis.
-
-## Example
-
 ```python
 import pyfooda as pf
 
-# Find up to 10 foods matching a partial name
-print(pf.find_closest_matches('apple'))
+# Search by partial name
+pf.find_closest_matches('apple')
 
-# Get the category of a food
-print(pf.get_category('Apple, raw'))
+# Category, nutrients, portion
+pf.get_category('Apple, raw')
+pf.get_nutrients('Apple, raw')             # dict of nutrient → value
+pf.get_portion_gram_weight('Apple, raw')   # e.g. 138.0
+pf.get_portion_unit_name('Apple, raw')     # e.g. "medium"
 
-# Get all nutrient values for a food
-nutrients = pf.get_nutrients('Apple, raw')
-print(nutrients)
-
-# Get portion information
-print(pf.get_portion_gram_weight('Apple, raw'))  # e.g., 138.0
-print(pf.get_portion_unit_name('Apple, raw'))    # e.g., "medium"
-
-# Get the raw DataFrames
-fooddata_df = pf.get_fooddata_df()
-drv_df = pf.get_drv_df()
+# Raw DataFrames for custom analysis
+df     = pf.get_fooddata_df()   # all foods × nutrients
+drv_df = pf.get_drv_df()        # dietary reference values
 ```
 
-## API Reference
+| Function | Returns |
+|---|---|
+| `find_closest_matches(partial)` | up to 10 food names containing the string |
+| `get_category(name)` | category string, `'Other'` if not found |
+| `get_nutrients(name)` | `dict[nutrient → float]` or `None` |
+| `get_portion_gram_weight(name)` | `float` or `None` |
+| `get_portion_unit_name(name)` | `str` or `None` |
+| `get_fooddata_df()` | full foods DataFrame |
+| `get_drv_df()` | DRV reference DataFrame |
 
-### `get_category(foodName)`
-Returns the food category for the given food name (case-insensitive). Returns `'Other'` if not found.
+---
 
-### `get_nutrients(foodName)`
-Returns a dictionary of nutrient values for the given food name. Returns `None` if not found.
+## 2. Aggregation pipeline
 
-### `get_portion_gram_weight(foodName)`
-Returns the portion gram weight (float) for the given food name. Returns `None` if not found.
+The pipeline collapses ~296 k USDA food entries into a compact generic food database using an LLM.
+Scripts are in `scripts/` and must be run from that directory.
 
-### `get_portion_unit_name(foodName)`
-Returns the portion unit name (string) for the given food name. Returns `None` if not found.
+**LLM backend** — set `OPENROUTER_API_KEY` to use OpenRouter.
+Without a key the scripts automatically fall back to the local [VS Code Copilot proxy](https://github.com/hyorman/copilot-proxy) at `http://127.0.0.1:3000`.
 
-### `find_closest_matches(partialName)`
-Returns a list of up to 10 food names that contain the given partial name (case-insensitive).
+```bash
+cd scripts
 
-### `get_fooddata_df()`
-Returns the fooddata DataFrame containing all food items and their nutrient values.
+# ── 1. TEST SET EVALUATION ────────────────────────────────────────────────────
+# Run the aggregator on the 200-row stratified sample, then score it.
+# Do this after every prompt or model change to track quality.
 
-### `get_drv_df()`
-Returns the DRV (Dietary Reference Values) DataFrame containing nutrient reference values.
+python run_aggregation.py --mode test --batch-size 24
+python score_aggregation.py ../tests/batch_test_aggregated.json
 
-## License
+# Regenerate the ground-truth test set from the real CSV:
+# python generate_test_set.py
 
-## Test package
 
+# ── 2. SLICE RUN (qualitative check before committing to a full run) ──────────
+# Process 1 000 foods at a non-zero offset.
+# The dataset is sorted by data type then category, so neighbouring rows are
+# correlated — a non-zero offset samples a different region of the data.
+
+python run_aggregation.py --mode full --batch-size 24 --limit 1000 --offset 5000 \
+    --output ../tests/slice_5000.json
+
+# Human-friendly group listing:  tests/slice_5000.groups.txt
+# Throughput + cost estimate:    tests/slice_5000.metrics.json
+
+
+# ── 3. FULL RUN ───────────────────────────────────────────────────────────────
+# Processes all ~296 k foods. Resumes automatically from the last checkpoint.
+
+python run_aggregation.py --mode full --batch-size 24 --resume
+
+# Output:       pyfooda/data/foods_aggregated.json  (and .csv)
+# Checkpoints:  checkpoints_batch/  (saved every 500 items)
 ```
-pip install -e .
-python -c "import pyfooda; print(pyfooda.__version__)"
-```
-
-MIT License
