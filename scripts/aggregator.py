@@ -292,7 +292,7 @@ def _build_item_prompt(food: dict) -> str:
 # ---------------------------------------------------------------------------
 
 COPILOT_PROXY_BASE_URL = 'http://127.0.0.1:3000/v1'
-COPILOT_PROXY_MODEL = 'gpt-4o-mini'
+COPILOT_PROXY_MODEL = 'gpt-5-mini'
 
 
 def _resolve_llm_backend(
