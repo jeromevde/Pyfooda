@@ -60,6 +60,8 @@ Merge policy (aggressive but nutrition-aware):
   3) Composite dish vs plain ingredient (e.g., Ham Sub != Ham)
   4) Lemon juice vs lemonade/soda drinks
   5) Pizza types MUST stay separate by category/style (e.g., cheese pizza, meat pizza, veggie pizza, deep-dish/frozen etc.) when nutrients differ noticeably
+  6) Cooking state: raw ≠ cooked ≠ smoked ≠ canned ≠ frozen ≠ dried — these are DIFFERENT groups. "Fish, cisco, raw" and "Fish, cisco, smoked" MUST be separate groups.
+  7) Preparation method differences matter: canned ≠ home-prepared ≠ frozen ≠ fresh
 - Do NOT collapse all pizzas into a generic \"Pizza\" group.
 - Do NOT create over-specific single-SKU style names; choose a broader nutrition-relevant generic bucket.
 - Normalize trivial wording variants into one canonical name (hyphenation/singular/plural/word order), e.g. \"Non Dairy\" and \"Non-Dairy\" must be the same group.- IMPORTANT: different specific foods must NOT share a group. Corn ≠ collard greens. Chestnuts ≠ hummus. Salmon ≠ cod. Asparagus ≠ peas. Each distinct food type needs its own group.
@@ -131,14 +133,39 @@ def _apply_decision(agg: FoodAggregator, food: dict, row: pd.Series, decision: d
             create_name = create_aliases.setdefault(key, create_name)
         existing_id = _find_existing_id_by_name(agg, create_name)
         if existing_id is not None:
-            result = agg._do_add(existing_id, row)
-            if result == "ok":
-                agg.stats["added"] += 1
+            # Category gate: never merge into a group from a different food category
+            existing_cat = agg.db.get(existing_id, {}).get("food_category", "")
+            incoming_cat = food.get("category", "")
+            if incoming_cat and existing_cat and incoming_cat != existing_cat:
+                # Cross-category name collision — create fresh group using the original food name
+                # so the cross-cat group stays intact in _name_to_id
+                fallback_name = _sanitize_generic_name(name)
+                # Check if a same-category group with this fallback name already exists
+                fallback_id = next(
+                    (gid for gid, entry in agg.db.items()
+                     if entry.get("food_category", "") == incoming_cat
+                     and _normalized_name_key(entry.get("generic_name", "")) == _normalized_name_key(fallback_name)),
+                    None
+                )
+                if fallback_id is not None:
+                    result = agg._do_add(fallback_id, row)
+                    if result == "ok":
+                        agg.stats["added"] += 1
+                    else:
+                        agg._do_create(fallback_name, row)
+                        agg.stats["created"] += 1
+                else:
+                    agg._do_create(fallback_name, row)
+                    agg.stats["created"] += 1
             else:
-                agg._do_create(create_name, row)
-                # register normalized key for stronger dedup gateway
-                agg._name_to_id[_normalized_name_key(create_name)] = agg._next_id - 1
-                agg.stats["created"] += 1
+                result = agg._do_add(existing_id, row)
+                if result == "ok":
+                    agg.stats["added"] += 1
+                else:
+                    agg._do_create(create_name, row)
+                    # register normalized key for stronger dedup gateway
+                    agg._name_to_id[_normalized_name_key(create_name)] = agg._next_id - 1
+                    agg.stats["created"] += 1
         else:
             agg._do_create(create_name, row)
             # register normalized key for stronger dedup gateway
@@ -149,6 +176,7 @@ def _apply_decision(agg: FoodAggregator, food: dict, row: pd.Series, decision: d
         target = decision.get("target_id")
         target_name = decision.get("target_name")
         valid_add_ids = food.get("_valid_add_ids", set())
+        incoming_cat = food.get("category", "")
 
         if target is not None and target not in valid_add_ids:
             target = None
@@ -157,6 +185,12 @@ def _apply_decision(agg: FoodAggregator, food: dict, row: pd.Series, decision: d
             matches = agg.index.search(target_name, top_k=1)
             if matches and matches[0]["score"] > 0.75 and matches[0]["id"] in valid_add_ids:
                 target = matches[0]["id"]
+
+        # Hard category gate: never ADD to a group from a different food category
+        if target and target in agg.db:
+            target_cat = agg.db[target].get("food_category", "")
+            if incoming_cat and target_cat and incoming_cat != target_cat:
+                target = None  # force CREATE instead
 
         if target and target in agg.db:
             result = agg._do_add(target, row)
@@ -249,14 +283,13 @@ _DEFAULT_BATCH_INSTRUCTION = (
     "\n{\"idx\": <idx>, \"action\": \"ADD\", \"target_id\": <id>}"
     "\n{\"idx\": <idx>, \"action\": \"IGNORE\"}"
     "\n"
-    "\nADD rule: only ADD to a candidate if its example source names confirm it is the SAME specific food"
-    " (e.g. different brands/preparations of the same thing). If the examples show a different food, CREATE instead."
-    " Never ADD corn to a collard-greens group, salmon to a yogurt group, etc."
-    "\n"
-    "\nCREATE rule: expect to CREATE a distinct group for MOST items. Only reuse an identical CREATE name within this"
-    " batch if you are certain two items are the same generic food. Corn ≠ broccoli ≠ collard greens even if all"
-    " are cooked vegetables — each needs its own group."
-    "\nADD is only valid using an id shown in that item's candidate list."
+    "\nRules:"
+    "\n- Every item is a DIFFERENT food — give each its own unique, specific CREATE name."
+    "\n- NEVER reuse the same CREATE name for different foods in one batch."
+    "\n- ADD only if the candidate's example sources are the SAME food. Check category: a"
+    " 'Dairy' candidate is NEVER valid for a 'Finfish' item, and vice versa."
+    "\n- ADD is only valid using an id from that item's candidate list."
+    "\n- When in doubt, CREATE with a specific descriptive name."
 )
 
 
@@ -290,13 +323,27 @@ def run_batched(
             row = df.iloc[idx]
             name = str(row.get("foodName", ""))
             cat = str(row.get("food_category", ""))
-            search_results = agg.index.search(name, top_k=agg.search_top_k)
-            for m in search_results:
+            # Fetch more candidates than needed so we can filter by category
+            raw_results = agg.index.search(name, top_k=max(agg.search_top_k * 3, 24))
+            # Prefer same-category candidates; fall back to cross-category if few same-cat results
+            same_cat = []
+            cross_cat = []
+            for m in raw_results:
                 entry = agg.db.get(m["id"])
                 if entry:
                     m["nutrients"] = _nutrient_fingerprint(entry["nutrients"], is_dict=True)
                     m["count"] = entry.get("count", 1)
                     m["source_names"] = entry.get("source_names", [])[:3]
+                    m["food_category"] = entry.get("food_category", "")
+                    if m["food_category"] == cat:
+                        same_cat.append(m)
+                    else:
+                        cross_cat.append(m)
+            # Use same-category candidates only; cross-category only when zero same-cat matches exist
+            if same_cat:
+                search_results = same_cat[:agg.search_top_k]
+            else:
+                search_results = cross_cat[:agg.search_top_k]
 
             food = {
                 "idx": idx,
@@ -319,6 +366,12 @@ def run_batched(
             )
         else:
             user_msg += batch_instruction if batch_instruction is not None else _DEFAULT_BATCH_INSTRUCTION
+
+        batch_num = (i - resume_from) // batch_size + 1
+        total_batches = (total - resume_from + batch_size - 1) // batch_size
+        elapsed = time.time() - start_ts
+        groups_so_far = len(agg.db)
+        print(f"  Batch {batch_num}/{total_batches}  rows {i+1}-{end}/{total}  groups={groups_so_far}  elapsed={elapsed:.0f}s", flush=True)
 
         try:
             raw = _call_llm_batch(
@@ -378,6 +431,7 @@ def run_batched(
             agg._save_checkpoint()
         i = end
 
+    agg._apply_similarity_merge_postpass(threshold=0.80)
     agg._apply_canonical_postpass()
     agg._save_checkpoint()
     agg._print_summary()

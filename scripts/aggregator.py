@@ -95,7 +95,7 @@ class FoodSearchIndex:
             if idx < 0:
                 continue
             cos_sim = float(score)  # already cosine similarity (normalized IP)
-            if cos_sim > 0.25:      # minimum relevance threshold
+            if cos_sim > 0.35:      # minimum relevance threshold
                 results.append({
                     'id': self.ids[idx],
                     'name': self.names[idx],
@@ -279,8 +279,9 @@ def _build_item_prompt(food: dict) -> str:
             # the group actually contains the same specific food
             examples = m.get('source_names', [])[:3]
             examples_str = f'  e.g.: {"; ".join(examples)}' if examples else ''
+            cat_str = f'  [cat={m["food_category"]}]' if m.get("food_category") else ''
             match_lines.append(
-                f'    id={m["id"]}  "{m["name"]}"  [{m.get("nutrients", "")}]  (score={m["score"]}){count_str}{examples_str}{warn}'
+                f'    id={m["id"]}  "{m["name"]}"  [{m.get("nutrients", "")}]{cat_str}  (score={m["score"]}){count_str}{examples_str}{warn}'
             )
         matches_str = '\n'.join(match_lines)
 
@@ -652,6 +653,7 @@ class FoodAggregator:
                 self._save_checkpoint()
 
         pbar.close()
+        self._apply_similarity_merge_postpass(threshold=0.80)
         self._apply_canonical_postpass()
         self._save_checkpoint()
         self._print_summary()
@@ -782,6 +784,99 @@ class FoodAggregator:
         base.setdefault('portion_unit_names', []).extend(incoming.get('portion_unit_names', []))
         base.setdefault('_source_energies', []).extend(incoming.get('_source_energies', []))
 
+    def _apply_similarity_merge_postpass(self, threshold: float = 0.80):
+        """Merge same-category groups with high embedding similarity and compatible cooking states."""
+        if not self.db:
+            return
+
+        COOKED_STATES = {'cooked', 'baked', 'fried', 'smoked', 'dried', 'roasted', 'broiled', 'boiled', 'grilled'}
+        PREP_STATES   = {'raw', 'fresh', 'frozen', 'canned'}
+
+        def cooking_conflict(n1: str, n2: str) -> bool:
+            w1 = set(re.findall(r'\b\w+\b', n1.lower()))
+            w2 = set(re.findall(r'\b\w+\b', n2.lower()))
+            # raw/fresh vs any cooked-type → conflict
+            if (w1 & {'raw', 'fresh'}) and (w2 & COOKED_STATES):
+                return True
+            if (w2 & {'raw', 'fresh'}) and (w1 & COOKED_STATES):
+                return True
+            # frozen vs fresh/raw → conflict
+            if ('frozen' in w1) and (w2 & {'fresh', 'raw'}):
+                return True
+            if ('frozen' in w2) and (w1 & {'fresh', 'raw'}):
+                return True
+            # canned vs raw/fresh → conflict
+            if ('canned' in w1) and (w2 & {'raw', 'fresh'}):
+                return True
+            if ('canned' in w2) and (w1 & {'raw', 'fresh'}):
+                return True
+            return False
+
+        # Union-Find for clustering
+        parent = {gid: gid for gid in self.db}
+
+        def find(x: int) -> int:
+            while parent[x] != x:
+                parent[x] = parent[parent[x]]
+                x = parent[x]
+            return x
+
+        def union(x: int, y: int):
+            px, py = find(x), find(y)
+            if px != py:
+                if self.db.get(px, {}).get('count', 0) >= self.db.get(py, {}).get('count', 0):
+                    parent[py] = px
+                else:
+                    parent[px] = py
+
+        gids = list(self.db.keys())
+        for gid in gids:
+            entry = self.db.get(gid)
+            if entry is None:
+                continue
+            name = entry['generic_name']
+            cat = entry.get('food_category', '')
+            results = self.index.search(name, top_k=10)
+            for r in results:
+                if r['id'] == gid or r['score'] < threshold:
+                    continue
+                other = self.db.get(r['id'])
+                if other is None:
+                    continue
+                if other.get('food_category', '') != cat:
+                    continue
+                if cooking_conflict(name, other['generic_name']):
+                    continue
+                union(gid, r['id'])
+
+        # Apply merges
+        root_to_members: dict[int, list[int]] = {}
+        for gid in gids:
+            root = find(gid)
+            root_to_members.setdefault(root, []).append(gid)
+
+        merges = 0
+        for root, members in root_to_members.items():
+            if len(members) <= 1:
+                continue
+            base_id = max(members, key=lambda g: self.db.get(g, {}).get('count', 0))
+            for mid in members:
+                if mid == base_id:
+                    continue
+                if mid in self.db and base_id in self.db:
+                    self._merge_entries(self.db[base_id], self.db[mid])
+                    del self.db[mid]
+                    merges += 1
+
+        self.stats['similarity_merged_groups'] = merges
+        if merges:
+            self._next_id = max(self.db.keys(), default=0) + 1
+            self.index = FoodSearchIndex()
+            self._name_to_id = {}
+            for fid, e in self.db.items():
+                self.index.add(fid, e['generic_name'])
+                self._name_to_id[e['generic_name'].strip().lower()] = fid
+
     def _apply_canonical_postpass(self):
         """Deterministic cleanup pass to collapse known semantic variants."""
         if not self.db:
@@ -793,7 +888,9 @@ class FoodAggregator:
 
         for _, entry in sorted(self.db.items(), key=lambda kv: kv[0]):
             target_name = self._canonical_group_name(entry) or entry.get('generic_name', '')
-            key = target_name.strip().lower()
+            entry_cat = entry.get('food_category', '')
+            # Scope dedup key by category so groups from different categories never merge
+            key = f"{entry_cat}||{target_name.strip().lower()}"
 
             if key not in canonical_to_id:
                 eid = next_id
@@ -926,5 +1023,6 @@ class FoodAggregator:
         print(f'  Parse errors (-> create): {self.stats["errors"]}')
         print(f'  API calls              : {self.stats["api_calls"]}')
         print(f'  Final DB size          : {len(self.db)} entries')
+        print(f'  Similarity merged groups: {self.stats.get("similarity_merged_groups", 0)}')
         print(f'  Post-pass merged groups: {self.stats.get("postpass_merged_groups", 0)}')
         print('=' * 60)
