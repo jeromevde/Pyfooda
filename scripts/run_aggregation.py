@@ -40,7 +40,7 @@ Return EXACTLY one line, and nothing else:
 [<idx>] IGNORE
 
 Hard constraints:
-- Prefer ADD over CREATE when reasonably similar.
+- Prefer ADD over CREATE only when the candidate group is the same generic food. When in doubt, CREATE.
 - ADD id must be one of the shown candidate ids.
 - Use the nutrient fingerprint in the prompt as a primary signal; avoid merging items with clearly different calories/macros.
 - Generic names must be short, generic, title case, no brands, no commas.
@@ -62,8 +62,7 @@ Merge policy (aggressive but nutrition-aware):
   5) Pizza types MUST stay separate by category/style (e.g., cheese pizza, meat pizza, veggie pizza, deep-dish/frozen etc.) when nutrients differ noticeably
 - Do NOT collapse all pizzas into a generic \"Pizza\" group.
 - Do NOT create over-specific single-SKU style names; choose a broader nutrition-relevant generic bucket.
-- Normalize trivial wording variants into one canonical name (hyphenation/singular/plural/word order), e.g. \"Non Dairy\" and \"Non-Dairy\" must be the same group.
-
+- Normalize trivial wording variants into one canonical name (hyphenation/singular/plural/word order), e.g. \"Non Dairy\" and \"Non-Dairy\" must be the same group.- IMPORTANT: different specific foods must NOT share a group. Corn ≠ collard greens. Chestnuts ≠ hummus. Salmon ≠ cod. Asparagus ≠ peas. Each distinct food type needs its own group.
 Return one decision line only.
 """
 
@@ -249,10 +248,16 @@ _DEFAULT_BATCH_INSTRUCTION = (
     "\n{\"idx\": <idx>, \"action\": \"CREATE\", \"name\": \"<generic_name>\"}"
     "\n{\"idx\": <idx>, \"action\": \"ADD\", \"target_id\": <id>}"
     "\n{\"idx\": <idx>, \"action\": \"IGNORE\"}"
-    "\nWithin-batch consistency: process items in index order. If you CREATE a group (e.g. 'Red Kidney Beans') for item [3],"
-    " any later item in this batch that belongs to the same group MUST use CREATE with the EXACT same name string (identical"
-    " capitalization and word order) — not a synonym. They will be automatically merged. Use ADD only for ids shown in the"
-    " candidate list above each item."
+    "\n"
+    "\nCRITICAL — anti-catch-all rule: each item in this batch is a DIFFERENT food. Expect to CREATE a distinct group"
+    " for MOST items. Only reuse an identical CREATE name or issue ADD if you are CERTAIN two foods are the exact same"
+    " generic food (e.g. two brands of plain white bread, or two preparations of the same bean variety)."
+    " Grouping all or most items under one name is ALWAYS wrong."
+    "\n"
+    "\nWithin-batch name reuse: if item [3] creates 'Red Kidney Beans' and item [9] is also red kidney beans,"
+    " output CREATE with the EXACT same name string — they will be auto-merged. But corn ≠ collard greens ≠ asparagus"
+    " even if all are cooked vegetables."
+    "\nADD is only valid using an id shown in that item's candidate list."
 )
 
 
