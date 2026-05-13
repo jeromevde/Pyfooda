@@ -13,6 +13,7 @@ import argparse
 import json
 import math
 import os
+import re
 import tempfile
 import time
 from pathlib import Path
@@ -43,6 +44,8 @@ Hard constraints:
 - Prefer ADD over CREATE only when the candidate group is the same generic food. When in doubt, CREATE.
 - ADD id must be one of the shown candidate ids.
 - Use the nutrient fingerprint in the prompt as a primary signal; avoid merging items with clearly different calories/macros.
+- If a candidate shows [BLOCK: kcal diff=X%], you MUST use CREATE — do not ADD to that group.
+- If kcal differs by >40% between incoming and candidate, always CREATE a new group.
 - Generic names must be short, generic, title case, no brands, no commas.
 - Strip brand/proprietary style tokens from group names (e.g., prefer \"Fat Free Salad Dressing\" over \"Thousand Island Dressing Fat Free\").
 - Target name length: 2-4 words (hard max 6 words).
@@ -124,6 +127,33 @@ def _resolve_input_output(repo_root: Path, mode: str, output: str | None, checkp
     return input_path, Path(output) if output else default_output, Path(checkpoint_dir) if checkpoint_dir else default_ckpt
 
 
+_COOKED_KWORDS = {'cooked', 'baked', 'fried', 'smoked', 'roasted', 'broiled', 'boiled',
+                  'grilled', 'stewed', 'steamed', 'poached', 'braised', 'canned', 'dried'}
+_RAW_KWORDS    = {'raw', 'fresh'}
+_FROZEN_KWORD  = 'frozen'
+
+
+def _cooking_state_conflict(incoming_name: str, group_entry: dict) -> bool:
+    """Return True if incoming food's cooking state conflicts with an existing group's sources."""
+    w_in = set(re.findall(r'\b\w+\b', incoming_name.lower()))
+    # Build representative word set from the group
+    rep_names = ([group_entry.get('generic_name', '')] +
+                 group_entry.get('source_names', [])[:3])
+    g_words: set = set()
+    for n in rep_names:
+        g_words.update(re.findall(r'\b\w+\b', n.lower()))
+    # raw/fresh incoming vs cooked group → conflict
+    if (w_in & _RAW_KWORDS) and (g_words & _COOKED_KWORDS):
+        return True
+    # cooked incoming vs raw/fresh group → conflict
+    if (w_in & _COOKED_KWORDS) and (g_words & _RAW_KWORDS) and not (g_words & _COOKED_KWORDS):
+        return True
+    # frozen incoming vs non-frozen group (where group has cooked sources) → conflict
+    if _FROZEN_KWORD in w_in and _FROZEN_KWORD not in g_words and (g_words & _COOKED_KWORDS):
+        return True
+    return False
+
+
 def _apply_decision(agg: FoodAggregator, food: dict, row: pd.Series, decision: dict, create_aliases: dict[str, str] | None = None):
     name = food["name"]
     if decision["action"] == "CREATE":
@@ -136,11 +166,13 @@ def _apply_decision(agg: FoodAggregator, food: dict, row: pd.Series, decision: d
             # Category gate: never merge into a group from a different food category
             existing_cat = agg.db.get(existing_id, {}).get("food_category", "")
             incoming_cat = food.get("category", "")
-            if incoming_cat and existing_cat and incoming_cat != existing_cat:
-                # Cross-category name collision — create fresh group using the original food name
-                # so the cross-cat group stays intact in _name_to_id
+            group_entry = agg.db.get(existing_id, {})
+            cross_cat = incoming_cat and existing_cat and incoming_cat != existing_cat
+            cooking_conflict = not cross_cat and _cooking_state_conflict(name, group_entry)
+            if cross_cat or cooking_conflict:
+                # Mismatch — create fresh group using the original food name
                 fallback_name = _sanitize_generic_name(name)
-                # Check if a same-category group with this fallback name already exists
+                # Check if a same-category + same-cooking-state group already exists
                 fallback_id = next(
                     (gid for gid, entry in agg.db.items()
                      if entry.get("food_category", "") == incoming_cat
@@ -191,6 +223,19 @@ def _apply_decision(agg: FoodAggregator, food: dict, row: pd.Series, decision: d
             target_cat = agg.db[target].get("food_category", "")
             if incoming_cat and target_cat and incoming_cat != target_cat:
                 target = None  # force CREATE instead
+
+        # Cooking-state gate: never ADD if states conflict (e.g. raw → cooked group)
+        if target and target in agg.db:
+            if _cooking_state_conflict(name, agg.db[target]):
+                target = None
+
+        # Nutrient gate: block ADD if energy differs >40% from group median
+        if target and target in agg.db:
+            incoming_energy = row.get("Energy", None)
+            if incoming_energy is not None and not pd.isna(incoming_energy):
+                from aggregator import _is_energy_compatible
+                if not _is_energy_compatible(agg.db[target], float(incoming_energy)):
+                    target = None
 
         if target and target in agg.db:
             result = agg._do_add(target, row)

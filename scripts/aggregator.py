@@ -269,10 +269,14 @@ def _build_item_prompt(food: dict) -> str:
         for m in sr:
             m_energy = _energy_from_fingerprint(m.get('nutrients', ''))
             warn = ''
+            kcal_diff_str = ''
             if incoming_energy and m_energy and incoming_energy > 0 and m_energy > 0:
                 ratio = abs(incoming_energy - m_energy) / min(incoming_energy, m_energy)
-                if ratio > 0.5:
-                    warn = '  ⚠️ ENERGY MISMATCH — DO NOT ADD, prefer CREATE'
+                pct = int(ratio * 100)
+                if ratio > 0.40:
+                    warn = f'  [BLOCK: kcal diff={pct}% — likely different foods, use CREATE]'
+                elif ratio > 0.20:
+                    kcal_diff_str = f'  [kcal diff={pct}%]'
             count = m.get('count', 1)
             count_str = f'  ({count} sources)' if count > 1 else ''
             # Show up to 3 representative source names so the model can verify
@@ -281,7 +285,7 @@ def _build_item_prompt(food: dict) -> str:
             examples_str = f'  e.g.: {"; ".join(examples)}' if examples else ''
             cat_str = f'  [cat={m["food_category"]}]' if m.get("food_category") else ''
             match_lines.append(
-                f'    id={m["id"]}  "{m["name"]}"  [{m.get("nutrients", "")}]{cat_str}  (score={m["score"]}){count_str}{examples_str}{warn}'
+                f'    id={m["id"]}  "{m["name"]}"  [{m.get("nutrients", "")}]{cat_str}  (score={m["score"]}){count_str}{kcal_diff_str}{examples_str}{warn}'
             )
         matches_str = '\n'.join(match_lines)
 
@@ -789,28 +793,61 @@ class FoodAggregator:
         if not self.db:
             return
 
-        COOKED_STATES = {'cooked', 'baked', 'fried', 'smoked', 'dried', 'roasted', 'broiled', 'boiled', 'grilled'}
-        PREP_STATES   = {'raw', 'fresh', 'frozen', 'canned'}
+        COOKED_STATES = {'cooked', 'baked', 'fried', 'smoked', 'roasted', 'broiled',
+                         'boiled', 'grilled', 'stewed', 'steamed', 'poached', 'braised'}
+        PREP_CONFLICT = [
+            # raw/fresh vs any cooked → conflict
+            ({'raw', 'fresh'}, COOKED_STATES),
+            # frozen vs fresh/raw → conflict
+            ({'frozen'}, {'raw', 'fresh'}),
+            # frozen vs non-frozen cooked → conflict (frozen-cooked ≠ fresh-cooked)
+            ({'frozen'}, COOKED_STATES),
+            # canned vs raw/fresh/frozen → conflict
+            ({'canned'}, {'raw', 'fresh', 'frozen'}),
+            # dried vs raw/fresh/cooked → conflict
+            ({'dried'}, {'raw', 'fresh', 'cooked'}),
+            # smoked vs raw/fresh → conflict
+            ({'smoked'}, {'raw', 'fresh'}),
+            # oil-roasted vs dry-roasted → different fat method
+            ({'oil'}, {'dry'}),
+            # fried vs baked/broiled/roasted (different fat level)
+            ({'fried'}, {'baked', 'broiled', 'roasted'}),
+        ]
 
-        def cooking_conflict(n1: str, n2: str) -> bool:
+        # Stop-words for food-token jaccard check
+        STOP = {'raw', 'cooked', 'baked', 'fried', 'smoked', 'dried', 'roasted', 'broiled',
+                'boiled', 'grilled', 'stewed', 'steamed', 'with', 'without', 'oil', 'fat',
+                'added', 'no', 'free', 'plain', 'unsalted', 'whole', 'mixed', 'species',
+                'regular', 'lightly', 'reduced', 'low', 'high', 'light', 'dark', 'mild',
+                'heat', 'dry', 'moist', 'and', 'or', 'the', 'of', 'from', 'to', 'in', 'on',
+                'at', 'nfs', 'ns', 'all', 'any', 'type', 'form', 'meat', 'only', 'skin',
+                'eaten', 'not', 'as', 'fresh', 'frozen', 'canned', 'n', 's', 'a'}
+
+        def food_tokens(name: str) -> set:
+            words = set(re.findall(r'\b[a-z]{2,}\b', name.lower()))
+            return words - STOP
+
+        def conflict(n1: str, n2: str) -> bool:
             w1 = set(re.findall(r'\b\w+\b', n1.lower()))
             w2 = set(re.findall(r'\b\w+\b', n2.lower()))
-            # raw/fresh vs any cooked-type → conflict
-            if (w1 & {'raw', 'fresh'}) and (w2 & COOKED_STATES):
+            for a_set, b_set in PREP_CONFLICT:
+                if (w1 & a_set) and (w2 & b_set):
+                    return True
+                if (w2 & a_set) and (w1 & b_set):
+                    return True
+            # Fat level conflict: if one is nonfat/fat-free and other is whole/regular
+            if ('nonfat' in w1 or ('fat' in w1 and 'free' in w1)) and ('whole' in w2 or 'regular' in w2):
                 return True
-            if (w2 & {'raw', 'fresh'}) and (w1 & COOKED_STATES):
-                return True
-            # frozen vs fresh/raw → conflict
-            if ('frozen' in w1) and (w2 & {'fresh', 'raw'}):
-                return True
-            if ('frozen' in w2) and (w1 & {'fresh', 'raw'}):
-                return True
-            # canned vs raw/fresh → conflict
-            if ('canned' in w1) and (w2 & {'raw', 'fresh'}):
-                return True
-            if ('canned' in w2) and (w1 & {'raw', 'fresh'}):
+            if ('nonfat' in w2 or ('fat' in w2 and 'free' in w2)) and ('whole' in w1 or 'regular' in w1):
                 return True
             return False
+
+        def food_jaccard(n1: str, n2: str) -> float:
+            t1 = food_tokens(n1)
+            t2 = food_tokens(n2)
+            if not t1 or not t2:
+                return 0.0
+            return len(t1 & t2) / len(t1 | t2)
 
         # Union-Find for clustering
         parent = {gid: gid for gid in self.db}
@@ -845,8 +882,23 @@ class FoodAggregator:
                     continue
                 if other.get('food_category', '') != cat:
                     continue
-                if cooking_conflict(name, other['generic_name']):
+                if conflict(name, other['generic_name']):
                     continue
+                # Require at least one shared food token (prevents e.g. asparagus + broccoli)
+                if food_jaccard(name, other['generic_name']) < 0.2:
+                    continue
+                # Nutrient gate: block merge if energy differs >40% or fat ratio differs >60%
+                e_a = entry.get('nutrients', {}).get('Energy')
+                e_b = other.get('nutrients', {}).get('Energy')
+                if e_a and e_b and e_a > 0 and e_b > 0:
+                    if abs(e_a - e_b) / min(e_a, e_b) > 0.40:
+                        continue
+                f_a = entry.get('nutrients', {}).get('Total fat')
+                f_b = other.get('nutrients', {}).get('Total fat')
+                if f_a is not None and f_b is not None:
+                    max_fat = max(f_a, f_b)
+                    if max_fat > 1.0 and abs(f_a - f_b) / max_fat > 0.60:
+                        continue
                 union(gid, r['id'])
 
         # Apply merges
