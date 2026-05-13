@@ -243,6 +243,19 @@ def _parse_json_line(raw: str, expected_idx: int):
     return None
 
 
+_DEFAULT_BATCH_INSTRUCTION = (
+    "\n\nReturn exactly one decision per item as strict JSON object lines."
+    "\nAllowed JSON schemas:"
+    "\n{\"idx\": <idx>, \"action\": \"CREATE\", \"name\": \"<generic_name>\"}"
+    "\n{\"idx\": <idx>, \"action\": \"ADD\", \"target_id\": <id>}"
+    "\n{\"idx\": <idx>, \"action\": \"IGNORE\"}"
+    "\nWithin-batch consistency: process items in index order. If you CREATE a group (e.g. 'Red Kidney Beans') for item [3],"
+    " any later item in this batch that belongs to the same group MUST use CREATE with the EXACT same name string (identical"
+    " capitalization and word order) — not a synonym. They will be automatically merged. Use ADD only for ids shown in the"
+    " candidate list above each item."
+)
+
+
 def run_batched(
     agg: FoodAggregator,
     *,
@@ -251,6 +264,7 @@ def run_batched(
     resume_from: int,
     batch_size: int,
     decision_mode: str = "line",
+    batch_instruction: str | None = None,
 ):
     df = agg.source_df
     df = df[df["foodName"].notna() & (df["foodName"].astype(str) != "nan")].reset_index(drop=True)
@@ -299,15 +313,7 @@ def run_batched(
                 "\nUse the EXACT same GROUP name for items that belong together in this batch."
             )
         else:
-            user_msg += (
-                "\n\nReturn exactly one decision per item as strict JSON object lines."
-                "\nAllowed JSON schemas:"
-                "\n{\"idx\": <idx>, \"action\": \"CREATE\", \"name\": \"<generic_name>\"}"
-                "\n{\"idx\": <idx>, \"action\": \"ADD\", \"target_id\": <id>}"
-                "\n{\"idx\": <idx>, \"action\": \"IGNORE\"}"
-                "\nImportant: if multiple incoming items should end up in the SAME group, use the EXACT same CREATE name text for all of them."
-                "\nDo not invent slightly different synonyms for the same target group in one batch."
-            )
+            user_msg += batch_instruction if batch_instruction is not None else _DEFAULT_BATCH_INSTRUCTION
 
         try:
             raw = _call_llm_batch(
