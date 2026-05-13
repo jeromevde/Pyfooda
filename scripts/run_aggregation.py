@@ -83,6 +83,13 @@ def _normalized_name_key(name: str) -> str:
 def _sanitize_generic_name(name: str) -> str:
     import re
     s = re.sub(r"\s+", " ", str(name)).strip()
+
+    # Strip lab/spec tokens: NFS, NFs, NS as to, lot IDs, moisture % strings
+    s = re.sub(r'\bNFS\b', '', s, flags=re.IGNORECASE).strip()
+    s = re.sub(r'\bNFs\b', '', s).strip()
+    s = re.sub(r'\bNS\s+as\s+to\b.*', '', s, flags=re.IGNORECASE).strip()
+    s = re.sub(r'\s+', ' ', s).strip()
+
     # hard cap to reduce overly specific labels
     words = s.split()
     if len(words) > 6:
@@ -169,7 +176,15 @@ def _apply_decision(agg: FoodAggregator, food: dict, row: pd.Series, decision: d
             group_entry = agg.db.get(existing_id, {})
             cross_cat = incoming_cat and existing_cat and incoming_cat != existing_cat
             cooking_conflict = not cross_cat and _cooking_state_conflict(name, group_entry)
-            if cross_cat or cooking_conflict:
+            # Nutrient gate: check incoming energy against the group's median
+            nutrient_conflict = False
+            if not cross_cat and not cooking_conflict:
+                incoming_energy = row.get("Energy", None)
+                if incoming_energy is not None and not pd.isna(incoming_energy):
+                    from aggregator import _is_energy_compatible
+                    if not _is_energy_compatible(group_entry, float(incoming_energy)):
+                        nutrient_conflict = True
+            if cross_cat or cooking_conflict or nutrient_conflict:
                 # Mismatch — create fresh group using the original food name
                 fallback_name = _sanitize_generic_name(name)
                 # Check if a same-category + same-cooking-state group already exists
