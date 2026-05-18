@@ -78,21 +78,44 @@ python run_aggregation.py --mode full --batch-size 24 --resume
 
 When running the experiment loop improvements, the goal is to make the test set very representative to measure the quality we will get on a full run on the full dataset. This can be done by trying small test runs real world samples (by doing the aggreagation with LIMIT and OFFSET), and if you notice cases we should add to the test set, do it. Then, based on that, tweak the prompt and pipeline to improve accuracy on the test set. Create like this a loop of continuous improvements of both the test set and the pipeline (prompt, batch, ...) untill you are satisfied we will get good results out of a full run (which will be done on openrouter and is costly). PLEASE PLEASE PLEASE prefer a prompt based approach to hardcoding rules or postprocessing...
 
-Scoring is computed by `scripts/score_aggregation.py` against `tests/test_set.json`.
-Weights: merge 0.35 · split 0.45 · name\_quality 0.20.
+### Test format (v3 — active)
 
-| Date | Test set | Items | Model | Overall | Merge | Split | Name quality | Notes |
-|------|----------|-------|-------|---------|-------|-------|--------------|-------|
-| 2026-05-17 | v2.0 (200 cases) | 355 | gpt-5-mini | 81.1 % | 79.0 % | 80.4 % | 87.5 % | Baseline run |
-| 2026-05-17 | v2.1 (204 cases) | 355 | gpt-5-mini | 84.2 % | 79.0 % | 86.7 % | 87.5 % | +energy extreme-ratio gate (10×); +fat-tier conflict in postpass; +prompt: fat tier for all foods, fish species guidance, category noun rule |
-| 2026-05-18 | v2.1 (204 cases) | 355 | gpt-4o (0×) | 84.5 % | 79.0 % | 91.8 % | 77.5 % | +fat-tier ADD gate (source-name check); 592 s vs 933 s; NQ regresses — gpt-4o omits category prefix more often |
-| 2026-05-18 | v2.2 (216 cases) | 377 | gpt-5-mini | 80.8 % | 72.0 % | 88.3 % | 77.5 % | v2.2 test set (+12 empirical cases: dry-form, cheese varieties, grain flours, brand cookies, baked-goods types); +dry-form cooking-state gate; +6 new prompt rules; merge regressed due to overly broad rules |
-| 2026-05-18 | v2.2 (216 cases) | 377 | gpt-5-mini | **88.4 %** | **93.4 %** | **86.1 %** | **85.0 %** | +postpass dry-form conflict gate; softened prompt rule 10 (baked goods); fixed fat-tier gate (incoming non-regular now conflicts with regular sources); fat-tier fallback path fix; energy extreme ratio lowered to 3× |
+The test set is `tests/test_groups.txt` — a plain pipe-delimited file:
 
-**Test set changelog**
+```
+group_name | food_item_1 | food_item_2 | ...
+```
 
-| Version | Cases | Changes |
-|---------|-------|---------|
-| v2.0 | 200 | Initial stratified set (62 merge, 98 split, 40 name\_quality) |
-| v2.1 | 204 | +m061 OJ trivial form modifier; +m062 grape juice fortification; +s101 brewed vs instant coffee energy cliff; +s102 fat-free vs regular salad dressing |
-| v2.2 | 216 | +s103–s112 (baked-goods types, cheese varieties, grain flours, dry-form vs cooked, brand flavors, fast-food products); +m063 bagel toasted variant; +m064 English muffin variants |
+Each group declares items that **should merge** together.  
+**Confusable pairs** (group-name Jaccard ≥ 0.30) are auto-detected and tested for correct **separation**.  
+One file covers both merge and split checks with no manual case IDs.
+
+```bash
+# Run aggregation, then score
+python scripts/run_aggregation.py --mode test --batch-size 24
+python scripts/score_groups.py                         # uses tests/output/batch_test_aggregated.json
+python scripts/score_groups.py -v                      # show passing checks too
+python scripts/score_groups.py --threshold 0.40        # stricter pair detection
+```
+
+Scoring: `score = 1 − (failures / total_checks)` where each check is one merge or split test.
+
+| Date | Test set | Groups | Pairs | Checks | Model | Score | Merge | Split | Notes |
+|------|----------|--------|-------|--------|-------|-------|-------|-------|-------|
+| 2026-05-17 | v2.2 (216 cases) | — | — | 216 | gpt-5-mini | 88.4 % | 93.4 % | 86.1 % | Heaviest rule-gate version (cooking-state + fat-tier + dry-form gates hardcoded) |
+| 2026-05-18 | v3 (41 groups) | 41 | 31 | 45 | gpt-5-mini | **88.9 %** | **78.6 %** | **93.5 %** | Simplified: removed all hardcoded cooking/fat/dry gates; prompt-only rules; new group-based test format |
+
+**Open failures on v3 (5/45)**
+
+| Type | Groups | Issue |
+|------|--------|-------|
+| merge | Wine Red Varietals | Claret / Gamay / Merlot / Syrah kept as separate groups — prompt should say "wine varietals of the same type merge" |
+| merge | Tea Green | Decaf vs regular brewed green tea split — should merge (same nutritional profile) |
+| merge | Beer Regular | BUDWEISER brand variant split from generic regular beer — should merge |
+| split | French Dressing Regular ↔ Reduced-Fat | Merged despite fat-tier difference — prompt fat-tier rule not firing |
+| split | Biscuits Dry ↔ Biscuits Baked | Dry mix merged with baked — energy gate didn't catch this pair |
+
+**Legacy test set (v2.x)** — kept for reference
+
+`tests/test_set.json` (216 cases: 64 merge · 112 split · 40 name\_quality) and  
+`scripts/score_aggregation.py` (weighted scoring) are still runnable but no longer the primary benchmark.
