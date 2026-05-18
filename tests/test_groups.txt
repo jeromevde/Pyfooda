@@ -1,24 +1,3 @@
-# Pyfooda test groups
-# Format: group_name | food_item_1 | food_item_2 | ...
-#
-# Each group defines items that SHOULD land in the SAME output group.
-# Confusable pairs — groups whose name-token Jaccard >= 0.30 — are
-# auto-detected and tested for correct SEPARATION.
-# This means one file covers both merge and split behaviour.
-#
-# Scoring (scripts/score_groups.py):
-#   merge_check  per group with ≥2 items: all items in same output group?
-#   split_check  per confusable pair: items in DIFFERENT output groups?
-#   score = 1 - (failures / total_checks)
-#
-# Items must be present in tests/test_fooddata.csv (or whichever CSV
-# is passed to run_aggregation.py --mode test).
-
-# ===========================================================================
-# BRAND / VARIANT MERGE GROUPS
-# Same product, minor presentation/lot/flavour differences → should merge
-# ===========================================================================
-
 Wine Red Varietals | Alcoholic Beverage, wine, table, red, Claret | Alcoholic Beverage, wine, table, red, Gamay | Alcoholic Beverage, wine, table, red, Merlot | Alcoholic Beverage, wine, table, red, Syrah
 Ovaltine Malt | Beverages, OVALTINE, chocolate malt powder | Beverages, OVALTINE, Classic Malt powder
 Grape Juice | Grape juice, 100% | Grape juice, 100%, with calcium added
@@ -30,23 +9,11 @@ Greek Yogurt Nonfat | Yogurt, Greek, plain, nonfat | Yogurt, Greek, strawberry, 
 Pesto Sauce | Sauce, pesto, ready-to-serve, refrigerated | Sauce, pesto, ready-to-serve, shelf stable
 Tea Green | Beverages, tea, green, brewed, decaffeinated | Beverages, tea, green, brewed, regular
 French Bread | Bread, French or Vienna | Bread, French or Vienna, toasted
-
-# ===========================================================================
-# CONFUSABLE PAIRS — DRY / UNCOOKED FORM VS COOKED  (energy cliff)
-# Dry-form calories are ~2-3x higher than cooked → keep separate
-# ===========================================================================
-
 Pasta Dry | Pasta, dry, enriched
 Pasta Cooked | Pasta, cooked, enriched, with added salt
 
 Biscuits Dry | Biscuits, plain or buttermilk, dry mix
 Biscuits Baked | Biscuits, plain or buttermilk, frozen, baked
-
-# ===========================================================================
-# CONFUSABLE PAIRS — COOKING STATE  (raw vs cooked vs dried vs smoked)
-# Different cooking states should stay separate
-# ===========================================================================
-
 Deer Raw | Game meat, deer, raw
 Deer Ground Cooked | Game meat, deer, ground, cooked, pan-broiled
 Deer Cooked | Game meat, deer, cooked, roasted
@@ -59,12 +26,6 @@ Chestnuts European Dried | Nuts, chestnuts, european, dried, unpeeled
 
 Shiitake Cooked | Mushrooms, shiitake, cooked, with salt
 Shiitake Dried | Mushrooms, shiitake, dried
-
-# ===========================================================================
-# CONFUSABLE PAIRS — PRESERVATION STATE  (canned vs frozen vs fresh)
-# Different preservation forms should stay separate
-# ===========================================================================
-
 Spinach Canned | Spinach, canned, cooked, no added fat
 Spinach Frozen | Spinach, frozen, cooked, no added fat
 
@@ -74,12 +35,6 @@ Green Peas Raw | Green peas, raw
 
 Potato Tots Fresh | Potato tots, from fresh, fried or baked
 Potato Tots Frozen | Potato tots, frozen, baked
-
-# ===========================================================================
-# CONFUSABLE PAIRS — FAT TIERS  (fat-free vs reduced-fat vs regular)
-# Different fat-tier variants should stay separate
-# ===========================================================================
-
 Beer Light | Alcoholic beverage, beer, light | Alcoholic beverage, beer, light, BUD LIGHT
 Beer Regular | Alcoholic beverage, beer, regular, all | Alcoholic beverage, beer, regular, BUDWEISER
 
@@ -91,11 +46,5 @@ Blue Cheese Dressing Fat-Free | Blue or roquefort cheese dressing, fat free
 
 French Dressing Regular | Salad dressing, french, home recipe
 French Dressing Reduced-Fat | Salad dressing, french dressing, reduced fat
-
-# ===========================================================================
-# CONFUSABLE PAIRS — PREPARATION METHOD
-# Dry-roasted vs oil-roasted are meaningfully different products
-# ===========================================================================
-
 Almonds Dry Roasted | Nuts, almonds, dry roasted, with salt added
 Almonds Oil Roasted | Nuts, almonds, oil roasted, lightly salted
