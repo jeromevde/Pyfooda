@@ -1,0 +1,21 @@
+{
+  "mode": "test",
+  "provider": "openrouter",
+  "model": "gpt-5-mini",
+  "batch_size": 24,
+  "offset": 0,
+  "decision_mode": "line",
+  "input_rows": 48,
+  "processed": 48,
+  "api_calls": 2,
+  "final_groups": 16,
+  "elapsed_seconds": 22.3,
+  "items_per_second": 2.1526,
+  "eta_full_dataset_seconds": 137509.81,
+  "eta_full_dataset_hms": "14h 11m 49s",
+  "estimated_cost_per_call_usd": 0.0,
+  "estimated_cost_usd": 0.0,
+  "estimated_full_api_calls": 12333.33,
+  "estimated_full_cost_usd": 0.0,
+  "output_json": "/Users/jf41043/Documents/Pyfooda/tests/output/batch_test_aggregated.json"
+}

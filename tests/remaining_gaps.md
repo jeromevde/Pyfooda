@@ -1,6 +1,7 @@
 # Remaining Aggregation Score Gaps
 
-**Baseline**: 82.1% overall (35 failures) after run with source-name-aware conflict detection.
+**Baseline (run 1)**: 82.1% overall (35 failures) — purpose-built test CSV (547 rows), full LLM pass.  
+**Run 2**: 81.1% overall (37 failures, 3 skipped) — reconstructed test CSV (546 rows), partial LLM pass (384/546 foods processed; 162 items ignored due to proxy dropout on batches 17-23).  
 Weights: merge=35%, split=45%, name_quality=20%.
 
 ---
@@ -102,3 +103,42 @@ Test expects taxonomically/nutritionally similar white fish and raw fish species
 | Body-part / cheese-type / prep-method name conflicts | s022, s026, s032, s038, s043, s053, s061 | ~2–3% |
 | Relax fish food_jaccard gate in Finfish category | m030, m032, m034, m035, m037, m040, m042, m043 | ~3–4% |
 | Name quality prompt improvements | n004, n015, n017, n020, n022, n033, n040 | ~1–2% |
+
+---
+
+## Empirical gaps confirmed in Run 2 (not previously documented)
+
+### New split patterns
+
+**C. Dry/powder-format beverage vs brewed liquid**  
+`Coffee, brewed` (1 kcal) grouped with `Beverages, coffee, instant, regular, powder` (353 kcal) → 353x energy cliff. The energy gate should catch this, but shared tokens ("coffee") dominate the similarity signal when the gate is applied at group-creation time rather than at merge time. This pattern is a beverage-domain analog of s093/s098 (soup broth vs dry soup mix).  
+→ **New test case added**: `s101`  
+→ **Fix direction**: Extend the "dry mix / powder" token blocklist to include beverages, not just soups.
+
+**D. Fat-free vs regular of the same exact dressing**  
+`Blue or roquefort cheese dressing` (484 kcal) vs `Blue or roquefort cheese dressing, fat free` (115 kcal). This is a 4x energy ratio on an identical base food. Current fat-level conflict detection fires when comparing two *different* foods with fat-tier tokens, but may miss same-food variants if tokens partially overlap and calorie ratio falls below the soft gate.  
+→ **New test case added**: `s102`  
+→ **Fix direction**: Lower fat gate threshold to ~30% (4x ratio = 75% reduction) or add `fat free` as an explicit split token against any non-fat-free variant of the same named food.
+
+### New merge patterns
+
+**E. Trivial format modifier prevents merge (juice)**  
+`Orange juice, 100%, NFS` vs `Orange juice, canned, unsweetened` (47 vs 47 kcal — identical energy) end up in separate groups because "canned" triggers a cooking-state-like discriminator.  
+→ **New test case added**: `m061`  
+→ **Fix direction**: Treat "canned" as non-discriminative for juices; the food_jaccard similarity should be sufficient.
+
+**F. Added-nutrient fortification variant prevents merge**  
+`Grape juice, 100%` vs `Grape juice, 100%, with calcium added` (66 vs 62 kcal — ~6% diff). The "with calcium added" clause acts as a discriminating token even though it represents a minor formulation difference.  
+→ **New test case added**: `m062`  
+→ **Fix direction**: Add `with [nutrient] added` as a non-discriminative suffix pattern (i.e., strip it from token comparison).
+
+### Confirmed name quality patterns (newly observed in Run 2)
+
+| Case | Group name assigned | Issue | Notes |
+|---|---|---|---|
+| n013 | Chicken Broth Low Sodium | missing 'Soup' | category='Soups, Sauces, and Gravies' — category noun dropped entirely |
+| n024 | Ribeye Steak | missing 'Beef' | category='Beef, excludes ground' — protein class noun dropped |
+| n037 | Cooked Blue Mussel | missing 'Mollusks' | category='Finfish and Shellfish Products' — phylum noun dropped |
+
+All three are instances of the same systemic problem: the LLM omits the food-class category noun when it constructs the group name, using only the specific food descriptor. The prompt currently says "concise", which the model interprets as removing the category prefix.  
+→ **Fix direction**: Add an explicit instruction: *"Always include the primary category noun in the group name (e.g., 'Beef Ribeye Steak', 'Chicken Soup Low Sodium', 'Mollusks Blue Mussel Cooked')."*

@@ -81,3 +81,22 @@ python run_aggregation.py --mode full --batch-size 24 --resume
 # Output:       pyfooda/data/foods_aggregated.json  (and .csv)
 # Checkpoints:  checkpoints_batch/  (saved every 500 items)
 ```
+
+---
+
+## 3. Experiments
+
+Scoring is computed by `scripts/score_aggregation.py` against `tests/test_set.json`.
+Weights: merge 0.35 · split 0.45 · name\_quality 0.20.
+
+| Date | Test set | Items | Model | Overall | Merge | Split | Name quality | Notes |
+|------|----------|-------|-------|---------|-------|-------|--------------|-------|
+| 2026-05-17 | v2.0 (200 cases) | 355 | gpt-5-mini | 81.1 % | 79.0 % | 80.4 % | 87.5 % | Baseline run |
+| 2026-05-17 | v2.1 (204 cases) | 355 | gpt-5-mini | 84.2 % | 79.0 % | 86.7 % | 87.5 % | +energy extreme-ratio gate (10×); +fat-tier conflict in postpass; +prompt: fat tier for all foods, fish species guidance, category noun rule |
+
+**Test set changelog**
+
+| Version | Cases | Changes |
+|---------|-------|---------|
+| v2.0 | 200 | Initial stratified set (62 merge, 98 split, 40 name\_quality) |
+| v2.1 | 204 | +m061 OJ trivial form modifier; +m062 grape juice fortification; +s101 brewed vs instant coffee energy cliff; +s102 fat-free vs regular salad dressing |

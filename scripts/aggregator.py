@@ -188,23 +188,38 @@ def _avg_nutrients(existing: dict, new_row: pd.Series, count: int) -> dict:
 _ENERGY_MAD_THRESHOLD = 3.5   # multiples of MAD
 _ENERGY_FIXED_BAND = 200      # kcal, fallback when MAD < 10
 _ENERGY_MIN_COUNT = 3         # don't gate until we have this many sources
+_ENERGY_EXTREME_RATIO = 10.0  # always reject if new/group ratio exceeds this (fires even with 1 sample)
 
 
 def _is_energy_compatible(entry: dict, new_energy: float) -> bool:
     """Return True if new_energy is compatible with the group's energy profile.
 
-    Uses the more lenient of MAD-based or fixed band thresholds, so that
-    homogeneous groups (low MAD) still accept branded variants that are
-    within the fixed band (200 kcal).
+    Two-stage check:
+    1. Extreme-ratio guard (fires with ≥1 sample): rejects when new_energy is
+       more than _ENERGY_EXTREME_RATIO times the group median.  Catches e.g.
+       broth (16 kcal) being added to a dry-soup group (400+ kcal) regardless
+       of how many sources the group already has.
+    2. MAD/band gate (fires at ≥_ENERGY_MIN_COUNT samples): rejects outliers
+       beyond max(3.5*MAD, 200 kcal) from the group median.
     """
     energies = entry.get('_source_energies', [])
-    if len(energies) < _ENERGY_MIN_COUNT:
-        return True  # too few samples to judge
+    if not energies:
+        return True
 
     arr = np.array(energies, dtype=float)
     median = float(np.median(arr))
-    mad = float(np.median(np.abs(arr - median)))
 
+    # Stage 1: extreme ratio guard — always active
+    if median > 0 and new_energy > 0:
+        ratio = max(median, new_energy) / min(median, new_energy)
+        if ratio > _ENERGY_EXTREME_RATIO:
+            return False
+
+    # Stage 2: MAD/band gate — needs enough samples to be meaningful
+    if len(energies) < _ENERGY_MIN_COUNT:
+        return True
+
+    mad = float(np.median(np.abs(arr - median)))
     # Use the more lenient threshold — the fixed band provides a floor
     # so that groups with low MAD don't become overly restrictive
     threshold = max(_ENERGY_MAD_THRESHOLD * mad, _ENERGY_FIXED_BAND)
@@ -835,6 +850,24 @@ class FoodAggregator:
                 words.update(re.findall(r'\b\w+\b', sn.lower()))
             return words
 
+        def _fat_tier_label(name: str) -> str:
+            """Classify a group name into a fat tier.
+
+            Returns one of: 'fat_free', 'low_fat', 'reduced', 'light', 'regular'.
+            Uses word-boundary matching to avoid false positives (e.g. 'lightly'
+            must NOT match 'light').
+            """
+            n = name.lower()
+            if re.search(r'\b(fat.?free|nonfat)\b', n):
+                return 'fat_free'
+            if re.search(r'\blow.?fat\b', n):
+                return 'low_fat'
+            if re.search(r'\breduced.?fat\b', n):
+                return 'reduced'
+            if re.search(r'\b(light|lite|part.?skim)\b', n):
+                return 'light'
+            return 'regular'
+
         def conflict(entry_a: dict, entry_b: dict) -> bool:
             # Use full word sets (generic_name + source_names) so e.g. 'raw' from
             # "Chicken, stewing, dark meat, meat only, raw" is visible even when
@@ -846,12 +879,12 @@ class FoodAggregator:
                     return True
                 if (w2 & a_set) and (w1 & b_set):
                     return True
-            # Fat level conflict: if one is nonfat/fat-free and other is whole/regular
+            # Generalized fat-tier conflict: any two groups in different tiers
+            # must not merge (fat-free ≠ low-fat ≠ light ≠ reduced ≠ regular).
             n1 = entry_a.get('generic_name', '').lower()
             n2 = entry_b.get('generic_name', '').lower()
-            if ('nonfat' in n1 or 'fat free' in n1) and ('whole' in n2 or 'regular' in n2):
-                return True
-            if ('nonfat' in n2 or 'fat free' in n2) and ('whole' in n1 or 'regular' in n1):
+            t1, t2 = _fat_tier_label(n1), _fat_tier_label(n2)
+            if t1 != t2:
                 return True
             return False
 

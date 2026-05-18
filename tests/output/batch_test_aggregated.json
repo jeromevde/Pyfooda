@@ -1,0 +1,760 @@
+{
+  "meta": {
+    "processed_count": 48,
+    "stats": {
+      "created": 40,
+      "added": 8,
+      "ignored": 0,
+      "errors": 0,
+      "api_calls": 2,
+      "foundation_locked": 0,
+      "similarity_merged_groups": 24,
+      "postpass_merged_groups": 0
+    }
+  },
+  "foods": [
+    {
+      "id": 1,
+      "generic_name": "Nonfat Strawberry Greek Yogurt",
+      "food_category": "Dairy and Egg Products",
+      "nutrients": {
+        "Energy": 71.96749521988528,
+        "Carbohydrate": 7.92,
+        "Protein": 9.18,
+        "Total fat": 0.26,
+        "Fiber": 0.6,
+        "Sugars, Total": 7.385,
+        "Sodium": 34.0,
+        "Calcium": 104.0,
+        "Iron": 0.08,
+        "Cholesterol": 4.5,
+        "Fatty acids, total saturated": 0.1055,
+        "Vitamin A, RAE": 0.5,
+        "Vitamin C": 0.2,
+        "Vitamin D (D2 + D3)": 0.5,
+        "Vitamin E": 0.01,
+        "Vitamin B-6": 0.057,
+        "Vitamin B-12": 0.575,
+        "Folate, total": 20.0,
+        "Zinc": 0.495,
+        "Magnesium": 10.55,
+        "Potassium": 137.0,
+        "Phosphorus": 124.5
+      },
+      "source_ids": [
+        0,
+        1
+      ],
+      "source_names": [
+        "Yogurt, Greek, strawberry, nonfat",
+        "Yogurt, Greek, plain, nonfat"
+      ],
+      "portion_gram_weights": [
+        150.0,
+        156.0
+      ],
+      "portion_unit_names": [
+        "container",
+        "container"
+      ],
+      "count": 2
+    },
+    {
+      "id": 2,
+      "generic_name": "Fish Salmon Sockeye Wild Caught Raw",
+      "food_category": "Finfish and Shellfish Products",
+      "nutrients": {
+        "Energy": 136.22202,
+        "Carbohydrate": 0.0,
+        "Protein": 22.3,
+        "Total fat": 4.936,
+        "Fiber": null,
+        "Sugars, Total": null,
+        "Sodium": 53.3,
+        "Calcium": 14.84,
+        "Iron": 0.4024,
+        "Cholesterol": 59.3,
+        "Fatty acids, total saturated": null,
+        "Vitamin A, RAE": null,
+        "Vitamin C": null,
+        "Vitamin D (D2 + D3)": null,
+        "Vitamin E": null,
+        "Vitamin B-6": null,
+        "Vitamin B-12": 5.16,
+        "Folate, total": null,
+        "Zinc": 0.4246,
+        "Magnesium": 26.15,
+        "Potassium": 329.7,
+        "Phosphorus": 226.3
+      },
+      "source_ids": [
+        2
+      ],
+      "source_names": [
+        "Fish, salmon, sockeye, wild caught, raw"
+      ],
+      "portion_gram_weights": [],
+      "portion_unit_names": [],
+      "count": 1
+    },
+    {
+      "id": 3,
+      "generic_name": "Fish Cod Atlantic Wild Caught Raw",
+      "food_category": "Finfish and Shellfish Products",
+      "nutrients": {
+        "Energy": 70.477065,
+        "Carbohydrate": 0.0,
+        "Protein": 16.06875,
+        "Total fat": 0.6675,
+        "Fiber": null,
+        "Sugars, Total": null,
+        "Sodium": 298.8,
+        "Calcium": 6.59,
+        "Iron": 0.065,
+        "Cholesterol": 47.44,
+        "Fatty acids, total saturated": null,
+        "Vitamin A, RAE": null,
+        "Vitamin C": null,
+        "Vitamin D (D2 + D3)": null,
+        "Vitamin E": null,
+        "Vitamin B-6": null,
+        "Vitamin B-12": 1.248,
+        "Folate, total": null,
+        "Zinc": 0.3051,
+        "Magnesium": 17.98,
+        "Potassium": 245.1,
+        "Phosphorus": 224.1
+      },
+      "source_ids": [
+        3
+      ],
+      "source_names": [
+        "Fish, cod, Atlantic, wild caught, raw"
+      ],
+      "portion_gram_weights": [],
+      "portion_unit_names": [],
+      "count": 1
+    },
+    {
+      "id": 4,
+      "generic_name": "Nuts Almonds Dry Roasted With Salt",
+      "food_category": "Nut and Seed Products",
+      "nutrients": {
+        "Energy": 620.0,
+        "Carbohydrate": 16.2,
+        "Protein": 20.4,
+        "Total fat": 57.8,
+        "Fiber": 11.0,
+        "Sugars, Total": 4.17,
+        "Sodium": 256.0,
+        "Calcium": 273.0,
+        "Iron": 3.17,
+        "Cholesterol": null,
+        "Fatty acids, total saturated": 4.56,
+        "Vitamin A, RAE": 2.0,
+        "Vitamin C": 0.0,
+        "Vitamin D (D2 + D3)": null,
+        "Vitamin E": 19.0,
+        "Vitamin B-6": 0.075,
+        "Vitamin B-12": null,
+        "Folate, total": 35.0,
+        "Zinc": 2.8,
+        "Magnesium": 258.0,
+        "Potassium": 684.0,
+        "Phosphorus": 456.0
+      },
+      "source_ids": [
+        4
+      ],
+      "source_names": [
+        "Nuts, almonds, dry roasted, with salt added"
+      ],
+      "portion_gram_weights": [
+        135.0
+      ],
+      "portion_unit_names": [
+        "cup"
+      ],
+      "count": 1
+    },
+    {
+      "id": 5,
+      "generic_name": "Melon Banana Navajo",
+      "food_category": "American Indian/Alaska Native Foods",
+      "nutrients": {
+        "Energy": 21.0,
+        "Carbohydrate": 4.06,
+        "Protein": 0.84,
+        "Total fat": 0.2,
+        "Fiber": 0.3,
+        "Sugars, Total": null,
+        "Sodium": 11.0,
+        "Calcium": 13.0,
+        "Iron": 0.21,
+        "Cholesterol": null,
+        "Fatty acids, total saturated": null,
+        "Vitamin A, RAE": null,
+        "Vitamin C": 8.1,
+        "Vitamin D (D2 + D3)": null,
+        "Vitamin E": 0.0,
+        "Vitamin B-6": 0.05,
+        "Vitamin B-12": null,
+        "Folate, total": 20.0,
+        "Zinc": 0.14,
+        "Magnesium": 10.0,
+        "Potassium": 140.0,
+        "Phosphorus": 9.0
+      },
+      "source_ids": [
+        5
+      ],
+      "source_names": [
+        "Melon, banana (Navajo)"
+      ],
+      "portion_gram_weights": [],
+      "portion_unit_names": [],
+      "count": 1
+    },
+    {
+      "id": 6,
+      "generic_name": "Babyfood Meat Veal Strained",
+      "food_category": "Baby Foods",
+      "nutrients": {
+        "Energy": 81.0,
+        "Carbohydrate": 1.51,
+        "Protein": 13.12,
+        "Total fat": 2.45,
+        "Fiber": 0.0,
+        "Sugars, Total": null,
+        "Sodium": 39.0,
+        "Calcium": 6.0,
+        "Iron": 0.76,
+        "Cholesterol": 33.0,
+        "Fatty acids, total saturated": 1.063,
+        "Vitamin A, RAE": 0.0,
+        "Vitamin C": 0.0,
+        "Vitamin D (D2 + D3)": 0.7,
+        "Vitamin E": 0.28,
+        "Vitamin B-6": 0.049,
+        "Vitamin B-12": 1.65,
+        "Folate, total": 5.0,
+        "Zinc": 2.5,
+        "Magnesium": 11.0,
+        "Potassium": 170.0,
+        "Phosphorus": 98.0
+      },
+      "source_ids": [
+        6
+      ],
+      "source_names": [
+        "Babyfood, meat, veal, strained"
+      ],
+      "portion_gram_weights": [
+        71.0
+      ],
+      "portion_unit_names": [
+        "undetermined"
+      ],
+      "count": 1
+    },
+    {
+      "id": 7,
+      "generic_name": "Baby Toddler Pears Stage 2",
+      "food_category": "Baby food: fruit",
+      "nutrients": {
+        "Energy": 42.333333333333336,
+        "Carbohydrate": 11.066666666666668,
+        "Protein": 0.26666666666666666,
+        "Total fat": 0.16666666666666666,
+        "Fiber": 2.433333333333333,
+        "Sugars, Total": null,
+        "Sodium": 0.6666666666666666,
+        "Calcium": 6.666666666666667,
+        "Iron": 0.23666666666666666,
+        "Cholesterol": 0.0,
+        "Fatty acids, total saturated": 0.016666666666666666,
+        "Vitamin A, RAE": 1.0,
+        "Vitamin C": 28.266666666666666,
+        "Vitamin D (D2 + D3)": 0.0,
+        "Vitamin E": 0.43,
+        "Vitamin B-6": 0.016333333333333335,
+        "Vitamin B-12": 0.0,
+        "Folate, total": 3.3333333333333335,
+        "Zinc": 0.06,
+        "Magnesium": 6.666666666666667,
+        "Potassium": 105.33333333333333,
+        "Phosphorus": 10.333333333333334
+      },
+      "source_ids": [
+        7,
+        8,
+        13
+      ],
+      "source_names": [
+        "Baby Toddler pears, Stage 2",
+        "Baby Toddler pears, Stage 1",
+        "Baby Toddler apples, Stage 1"
+      ],
+      "portion_gram_weights": [],
+      "portion_unit_names": [
+        "undetermined",
+        "undetermined",
+        "undetermined"
+      ],
+      "count": 3
+    },
+    {
+      "id": 8,
+      "generic_name": "Baby Toddler Peaches Stage 2",
+      "food_category": "Baby food: fruit",
+      "nutrients": {
+        "Energy": 74.66666666666667,
+        "Carbohydrate": 17.42,
+        "Protein": 0.8733333333333334,
+        "Total fat": 0.24666666666666662,
+        "Fiber": 1.5333333333333332,
+        "Sugars, Total": null,
+        "Sodium": 2.6666666666666665,
+        "Calcium": 4.0,
+        "Iron": 0.26333333333333336,
+        "Cholesterol": 0.0,
+        "Fatty acids, total saturated": 0.04700000000000001,
+        "Vitamin A, RAE": 12.666666666666666,
+        "Vitamin C": 32.50000000000001,
+        "Vitamin D (D2 + D3)": 0.0,
+        "Vitamin E": 0.9166666666666666,
+        "Vitamin B-6": 0.13999999999999999,
+        "Vitamin B-12": 0.0,
+        "Folate, total": 16.666666666666668,
+        "Zinc": 0.06999999999999999,
+        "Magnesium": 16.0,
+        "Potassium": 228.0,
+        "Phosphorus": 16.666666666666668
+      },
+      "source_ids": [
+        9,
+        10,
+        11,
+        12,
+        14,
+        15
+      ],
+      "source_names": [
+        "Baby Toddler peaches, Stage 2",
+        "Baby Toddler peaches, Stage 1",
+        "Baby Toddler multiple fruit, Stage 3",
+        "Baby Toddler multiple fruit, Stage 2",
+        "Baby Toddler bananas, Stage 2",
+        "Baby Toddler bananas, Stage 1"
+      ],
+      "portion_gram_weights": [],
+      "portion_unit_names": [
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined"
+      ],
+      "count": 6
+    },
+    {
+      "id": 9,
+      "generic_name": "Bagel Multigrain With Raisins",
+      "food_category": "Bagels and English muffins",
+      "nutrients": {
+        "Energy": 254.71428571428572,
+        "Carbohydrate": 51.075714285714284,
+        "Protein": 9.851428571428572,
+        "Total fat": 1.4285714285714286,
+        "Fiber": 3.7857142857142856,
+        "Sugars, Total": null,
+        "Sodium": 413.2857142857143,
+        "Calcium": 97.71428571428571,
+        "Iron": 2.8071428571428574,
+        "Cholesterol": 0.0,
+        "Fatty acids, total saturated": 0.05142857142857144,
+        "Vitamin A, RAE": 0.0,
+        "Vitamin C": 0.1142857142857143,
+        "Vitamin D (D2 + D3)": 0.0,
+        "Vitamin E": 0.30857142857142855,
+        "Vitamin B-6": 0.1382857142857143,
+        "Vitamin B-12": 0.0,
+        "Folate, total": 75.85714285714286,
+        "Zinc": 1.0242857142857145,
+        "Magnesium": 47.57142857142857,
+        "Potassium": 187.28571428571428,
+        "Phosphorus": 134.14285714285714
+      },
+      "source_ids": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "source_names": [
+        "Bagel, multigrain, with raisins",
+        "Bagel, multigrain",
+        "Bagel, wheat",
+        "Bagel, with raisins",
+        "Bagel, whole wheat, with raisins",
+        "Bagel, whole wheat",
+        "Bagel, wheat, with raisins"
+      ],
+      "portion_gram_weights": [],
+      "portion_unit_names": [
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined"
+      ],
+      "count": 7
+    },
+    {
+      "id": 10,
+      "generic_name": "Muffin English",
+      "food_category": "Bagels and English muffins",
+      "nutrients": {
+        "Energy": 238.625,
+        "Carbohydrate": 47.215,
+        "Protein": 8.405000000000001,
+        "Total fat": 2.41,
+        "Fiber": 4.187500000000001,
+        "Sugars, Total": null,
+        "Sodium": 376.375,
+        "Calcium": 142.125,
+        "Iron": 3.045,
+        "Cholesterol": 0.0,
+        "Fatty acids, total saturated": 0.48225,
+        "Vitamin A, RAE": 1.125,
+        "Vitamin C": 0.525,
+        "Vitamin D (D2 + D3)": 0.0,
+        "Vitamin E": 0.40750000000000003,
+        "Vitamin B-6": 0.07874999999999999,
+        "Vitamin B-12": 0.0175,
+        "Folate, total": 67.625,
+        "Zinc": 1.0175000000000003,
+        "Magnesium": 33.875,
+        "Potassium": 182.625,
+        "Phosphorus": 107.5
+      },
+      "source_ids": [
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      "source_names": [
+        "Muffin, English",
+        "Muffin, English, oat bran",
+        "Muffin, English, oat bran, with raisins",
+        "Muffin, English, wheat bran",
+        "Muffin, English, wheat bran, with raisins",
+        "Muffin, English, whole wheat",
+        "Muffin, English, whole wheat, with raisins",
+        "Muffin, English, with raisins"
+      ],
+      "portion_gram_weights": [],
+      "portion_unit_names": [
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined"
+      ],
+      "count": 8
+    },
+    {
+      "id": 11,
+      "generic_name": "Glutino Gluten Free Wafers Lemon Flavored",
+      "food_category": "Baked Products",
+      "nutrients": {
+        "Energy": 515.2963671128107,
+        "Carbohydrate": 74.39,
+        "Protein": 0.0,
+        "Total fat": 24.18,
+        "Fiber": 0.0,
+        "Sugars, Total": null,
+        "Sodium": 111.0,
+        "Calcium": 9.0,
+        "Iron": 0.18,
+        "Cholesterol": null,
+        "Fatty acids, total saturated": 10.501,
+        "Vitamin A, RAE": null,
+        "Vitamin C": null,
+        "Vitamin D (D2 + D3)": null,
+        "Vitamin E": 3.12,
+        "Vitamin B-6": 0.0,
+        "Vitamin B-12": null,
+        "Folate, total": 0.0,
+        "Zinc": 0.03,
+        "Magnesium": 3.0,
+        "Potassium": 36.0,
+        "Phosphorus": 39.0
+      },
+      "source_ids": [
+        31
+      ],
+      "source_names": [
+        "Glutino, Gluten Free Wafers, Lemon Flavored"
+      ],
+      "portion_gram_weights": [
+        10.0
+      ],
+      "portion_unit_names": [
+        "undetermined"
+      ],
+      "count": 1
+    },
+    {
+      "id": 12,
+      "generic_name": "Crackers Wheat Reduced Fat",
+      "food_category": "Baked Products",
+      "nutrients": {
+        "Energy": 443.83365200764814,
+        "Carbohydrate": 71.52,
+        "Protein": 9.34,
+        "Total fat": 13.37,
+        "Fiber": 3.4,
+        "Sugars, Total": null,
+        "Sodium": 776.0,
+        "Calcium": 80.0,
+        "Iron": 5.02,
+        "Cholesterol": 0.0,
+        "Fatty acids, total saturated": 2.112,
+        "Vitamin A, RAE": 0.0,
+        "Vitamin C": 0.0,
+        "Vitamin D (D2 + D3)": 0.0,
+        "Vitamin E": 1.18,
+        "Vitamin B-6": 0.15,
+        "Vitamin B-12": 0.14,
+        "Folate, total": 127.0,
+        "Zinc": 1.74,
+        "Magnesium": 47.0,
+        "Potassium": 210.0,
+        "Phosphorus": 258.0
+      },
+      "source_ids": [
+        32
+      ],
+      "source_names": [
+        "Crackers, wheat, reduced fat"
+      ],
+      "portion_gram_weights": [
+        1.8
+      ],
+      "portion_unit_names": [
+        "undetermined"
+      ],
+      "count": 1
+    },
+    {
+      "id": 13,
+      "generic_name": "Crackers Matzo Whole Wheat",
+      "food_category": "Baked Products",
+      "nutrients": {
+        "Energy": 351.0,
+        "Carbohydrate": 78.9,
+        "Protein": 13.1,
+        "Total fat": 1.5,
+        "Fiber": 11.8,
+        "Sugars, Total": null,
+        "Sodium": 2.0,
+        "Calcium": 23.0,
+        "Iron": 4.65,
+        "Cholesterol": 0.0,
+        "Fatty acids, total saturated": 0.243,
+        "Vitamin A, RAE": 0.0,
+        "Vitamin C": 0.0,
+        "Vitamin D (D2 + D3)": null,
+        "Vitamin E": null,
+        "Vitamin B-6": 0.159,
+        "Vitamin B-12": 0.0,
+        "Folate, total": 35.0,
+        "Zinc": 2.61,
+        "Magnesium": 134.0,
+        "Potassium": 316.0,
+        "Phosphorus": 305.0
+      },
+      "source_ids": [
+        33
+      ],
+      "source_names": [
+        "Crackers, matzo, whole-wheat"
+      ],
+      "portion_gram_weights": [
+        28.4
+      ],
+      "portion_unit_names": [
+        "undetermined"
+      ],
+      "count": 1
+    },
+    {
+      "id": 14,
+      "generic_name": "Pinto Beans From Canned Reduced Sodium",
+      "food_category": "Beans, peas, legumes",
+      "nutrients": {
+        "Energy": 191.33333333333334,
+        "Carbohydrate": 25.23222222222222,
+        "Protein": 8.543333333333331,
+        "Total fat": 6.651111111111112,
+        "Fiber": 7.877777777777778,
+        "Sugars, Total": null,
+        "Sodium": 259.0,
+        "Calcium": 61.333333333333336,
+        "Iron": 2.261111111111111,
+        "Cholesterol": 0.0,
+        "Fatty acids, total saturated": 0.9703333333333332,
+        "Vitamin A, RAE": 0.0,
+        "Vitamin C": 1.5333333333333332,
+        "Vitamin D (D2 + D3)": 0.0,
+        "Vitamin E": 1.8811111111111112,
+        "Vitamin B-6": 0.15066666666666667,
+        "Vitamin B-12": 0.0,
+        "Folate, total": 71.77777777777777,
+        "Zinc": 0.911111111111111,
+        "Magnesium": 55.44444444444444,
+        "Potassium": 441.77777777777777,
+        "Phosphorus": 162.0
+      },
+      "source_ids": [
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        45,
+        46,
+        47
+      ],
+      "source_names": [
+        "Pinto beans, from canned, reduced sodium",
+        "Pinto beans, from canned, fat added",
+        "Beans, from dried, NS as to type, fat added",
+        "Beans, from canned, NS as to type, fat added",
+        "Kidney beans, from canned, reduced sodium",
+        "Kidney beans, from canned, fat added",
+        "White beans, from canned, reduced sodium",
+        "White beans, from canned, fat added",
+        "Black beans, from canned, reduced sodium"
+      ],
+      "portion_gram_weights": [],
+      "portion_unit_names": [
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined"
+      ],
+      "count": 9
+    },
+    {
+      "id": 15,
+      "generic_name": "Baked Beans Vegetarian",
+      "food_category": "Beans, peas, legumes",
+      "nutrients": {
+        "Energy": 101.0,
+        "Carbohydrate": 21.02,
+        "Protein": 4.68,
+        "Total fat": 0.5533333333333333,
+        "Fiber": 4.666666666666667,
+        "Sugars, Total": null,
+        "Sodium": 334.6666666666667,
+        "Calcium": 41.0,
+        "Iron": 0.96,
+        "Cholesterol": 2.3333333333333335,
+        "Fatty acids, total saturated": 0.13466666666666668,
+        "Vitamin A, RAE": 3.6666666666666665,
+        "Vitamin C": 0.9666666666666667,
+        "Vitamin D (D2 + D3)": 0.0,
+        "Vitamin E": 0.11333333333333333,
+        "Vitamin B-6": 0.08366666666666667,
+        "Vitamin B-12": 0.0,
+        "Folate, total": 14.0,
+        "Zinc": 1.3933333333333333,
+        "Magnesium": 29.666666666666668,
+        "Potassium": 249.66666666666666,
+        "Phosphorus": 88.33333333333333
+      },
+      "source_ids": [
+        40,
+        41,
+        42
+      ],
+      "source_names": [
+        "Baked beans, vegetarian",
+        "Baked beans, reduced sodium",
+        "Baked beans"
+      ],
+      "portion_gram_weights": [],
+      "portion_unit_names": [
+        "undetermined",
+        "undetermined",
+        "undetermined"
+      ],
+      "count": 3
+    },
+    {
+      "id": 16,
+      "generic_name": "Refried Beans",
+      "food_category": "Beans, peas, legumes",
+      "nutrients": {
+        "Energy": 94.5,
+        "Carbohydrate": 12.655000000000001,
+        "Protein": 6.395,
+        "Total fat": 2.26,
+        "Fiber": 3.45,
+        "Sugars, Total": null,
+        "Sodium": 388.0,
+        "Calcium": 28.0,
+        "Iron": 1.47,
+        "Cholesterol": 5.5,
+        "Fatty acids, total saturated": 0.7344999999999999,
+        "Vitamin A, RAE": 0.5,
+        "Vitamin C": 5.300000000000001,
+        "Vitamin D (D2 + D3)": 0.05,
+        "Vitamin E": 0.095,
+        "Vitamin B-6": 0.123,
+        "Vitamin B-12": 0.11,
+        "Folate, total": 10.0,
+        "Zinc": 0.895,
+        "Magnesium": 34.0,
+        "Potassium": 319.0,
+        "Phosphorus": 103.0
+      },
+      "source_ids": [
+        43,
+        44
+      ],
+      "source_names": [
+        "Refried beans",
+        "Refried beans with meat"
+      ],
+      "portion_gram_weights": [],
+      "portion_unit_names": [
+        "undetermined",
+        "undetermined"
+      ],
+      "count": 2
+    }
+  ]
+}
