@@ -188,7 +188,7 @@ def _avg_nutrients(existing: dict, new_row: pd.Series, count: int) -> dict:
 _ENERGY_MAD_THRESHOLD = 3.5   # multiples of MAD
 _ENERGY_FIXED_BAND = 200      # kcal, fallback when MAD < 10
 _ENERGY_MIN_COUNT = 3         # don't gate until we have this many sources
-_ENERGY_EXTREME_RATIO = 10.0  # always reject if new/group ratio exceeds this (fires even with 1 sample)
+_ENERGY_EXTREME_RATIO = 3.0   # reject if new/group ratio exceeds this (fires even with 1 sample)
 
 
 def _is_energy_compatible(entry: dict, new_energy: float) -> bool:
@@ -345,11 +345,13 @@ def _resolve_llm_backend(
         return resolved_key, 'https://openrouter.ai/api/v1', resolved_model
 
     # No key at all → fall back to local Copilot proxy.
+    # Use the caller-supplied model if given, else the proxy default.
+    proxy_model = model if model else COPILOT_PROXY_MODEL
     print(
         '  OPENROUTER_API_KEY not set — falling back to VS Code Copilot proxy '
-        f'at {COPILOT_PROXY_BASE_URL}  (model: {COPILOT_PROXY_MODEL})'
+        f'at {COPILOT_PROXY_BASE_URL}  (model: {proxy_model})'
     )
-    return 'dummy', COPILOT_PROXY_BASE_URL, COPILOT_PROXY_MODEL
+    return 'dummy', COPILOT_PROXY_BASE_URL, proxy_model
 
 
 def _call_llm_batch(
@@ -881,10 +883,40 @@ class FoodAggregator:
                     return True
             # Generalized fat-tier conflict: any two groups in different tiers
             # must not merge (fat-free ≠ low-fat ≠ light ≠ reduced ≠ regular).
-            n1 = entry_a.get('generic_name', '').lower()
-            n2 = entry_b.get('generic_name', '').lower()
-            t1, t2 = _fat_tier_label(n1), _fat_tier_label(n2)
+            # Check both generic_name and source_names so a group called
+            # "Salad Dressing" still respects the fat tier of its actual sources.
+            def _src_fat_tier(entry: dict) -> str:
+                n = entry.get('generic_name', '').lower()
+                t = _fat_tier_label(n)
+                if t != 'regular':
+                    return t
+                # Fallback: derive from source_names (majority vote)
+                src = entry.get('source_names', [])
+                if not src:
+                    return 'regular'
+                tiers = [_fat_tier_label(s.lower()) for s in src]
+                non_reg = [x for x in tiers if x != 'regular']
+                if not non_reg:
+                    return 'regular'
+                # If all non-regular sources agree, use that tier
+                if len(set(non_reg)) == 1:
+                    return non_reg[0]
+                return 'regular'
+            t1, t2 = _src_fat_tier(entry_a), _src_fat_tier(entry_b)
             if t1 != t2:
+                return True
+            # Dry-form vs cooked-form conflict: "dry mix" / "powder" group must
+            # not merge with a baked/cooked group even if names look similar.
+            DRY_INDICATORS = {'dry', 'mix', 'powder', 'instant'}
+            HEAT_EXCL      = {'roasted', 'toast', 'toasted', 'heat'}
+            def _has_dry_form(entry: dict) -> bool:
+                w = entry_words(entry)
+                return bool(w & DRY_INDICATORS) and not bool(w & HEAT_EXCL)
+            a_dry = _has_dry_form(entry_a)
+            b_dry = _has_dry_form(entry_b)
+            if a_dry and (w2 & COOKED_STATES) and not b_dry:
+                return True
+            if b_dry and (w1 & COOKED_STATES) and not a_dry:
                 return True
             return False
 

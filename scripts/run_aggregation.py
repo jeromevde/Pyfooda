@@ -72,6 +72,12 @@ Merge policy (aggressive but nutrition-aware):
 - Do NOT create over-specific single-SKU style names; choose a broader nutrition-relevant generic bucket.
 - Normalize trivial wording variants into one canonical name (hyphenation/singular/plural/word order), e.g. "Non Dairy" and "Non-Dairy" must be the same group.
 - Fish/seafood species: When multiple species share the same preparation state AND are nutritionally near-identical, use a GENERIC group name covering the type (e.g., multiple lean white fish cooked dry-heat → "White Fish Cooked"; multiple raw mollusks → "Raw Mollusks"). Nutritionally distinct species must stay separate (e.g., fatty fish like salmon differ from lean white fish like cod).
+  9) Dry/uncooked form ≠ hydrated/cooked form: pasta dry ≠ pasta cooked; oatmeal dry ≠ oatmeal cooked; soup dry mix ≠ soup prepared. Dry forms have ~2-3× higher kcal per 100 g.
+  10) Baked-goods PRODUCT differences: a rye loaf ≠ breadsticks ≠ English muffin ≠ bagel ≠ biscuit ≠ Danish pastry ≠ doughnut. These are different products and need separate groups. Within one product type, variants MAY merge (plain bagel ≠ sesame bagel are the SAME product, just a flavour variant — they can share a group; French bread and French bread toasted are the same product).  
+  11) Cheese VARIETY differences: Mozzarella ≠ American ≠ Brie ≠ Cheddar ≠ Swiss ≠ Parmesan. Same variety in different fat tiers may split, but different varieties are ALWAYS separate groups.
+  12) Grain type differences: wheat flour ≠ sorghum flour ≠ rice flour ≠ corn flour ≠ oat flour. Different grain = different group.
+  13) Brand product flavors: for named-brand products, different flavors are separate groups even from the same brand (e.g., Archway Coconut Macaroon ≠ Archway Dutch Cocoa). Do NOT collapse different-flavor brand SKUs into one group.
+  14) Fast-food items from the same chain must stay separate when they are fundamentally different products (e.g., chicken strips ≠ beef burger even if both are Burger King).
 - IMPORTANT: different specific foods must NOT share a group. Corn ≠ collard greens. Chestnuts ≠ hummus. Asparagus ≠ peas. Broth ≠ sauce. Each distinct food type needs its own group.
 Return one decision line only.
 """
@@ -148,6 +154,22 @@ _COOKED_KWORDS = {'cooked', 'baked', 'fried', 'smoked', 'roasted', 'broiled', 'b
 _RAW_KWORDS    = {'raw', 'fresh'}
 _FROZEN_KWORD  = 'frozen'
 
+
+def _is_dry_uncooked_form(name: str) -> bool:
+    """Return True if the food is a dry/uncooked powder or mix form.
+
+    Catches 'Pasta, dry' / 'Soup, dry mix' / 'Oatmeal, dry' / 'Instant oatmeal'
+    but NOT 'Peanuts, dry roasted' (has 'roasted') or 'Dried apricots'.
+    """
+    words = set(re.findall(r'\b\w+\b', name.lower()))
+    DRY_INDICATORS = {'dry', 'mix', 'powder', 'instant'}
+    if not (DRY_INDICATORS & words):
+        return False
+    # 'dry roasted' / 'dry heat' are cooking methods, not raw shelf forms
+    if {'roasted', 'toast', 'toasted', 'heat'} & words:
+        return False
+    return True
+
 # Fat tier patterns — ordered from most to least restrictive.
 # Each tier is mutually exclusive with any other tier.
 _FAT_TIERS = [
@@ -189,10 +211,9 @@ def _fat_tier_conflict(incoming_name: str, group_entry: dict) -> bool:
         return False
     # Incoming has a fat-tier keyword; conflict if any source is a different tier
     src_names = group_entry.get('source_names', [])
-    generic = group_entry.get('generic_name', '')
-    for n in ([generic] + src_names):
+    for n in src_names:
         t = _fat_tier_of(n)
-        if t != 4 and t != in_tier:
+        if t != in_tier:
             return True
     return False
 
@@ -214,6 +235,13 @@ def _cooking_state_conflict(incoming_name: str, group_entry: dict) -> bool:
         return True
     # frozen incoming vs non-frozen group (where group has cooked sources) → conflict
     if _FROZEN_KWORD in w_in and _FROZEN_KWORD not in g_words and (g_words & _COOKED_KWORDS):
+        return True
+    # dry/uncooked form vs cooked group → conflict (pasta dry ≠ pasta cooked)
+    in_dry  = _is_dry_uncooked_form(incoming_name)
+    grp_dry = any(_is_dry_uncooked_form(n) for n in rep_names if n)
+    if in_dry and (g_words & _COOKED_KWORDS) and not grp_dry:
+        return True
+    if grp_dry and (w_in & _COOKED_KWORDS) and not in_dry:
         return True
     return False
 
@@ -246,12 +274,13 @@ def _apply_decision(agg: FoodAggregator, food: dict, row: pd.Series, decision: d
             if cross_cat or cooking_conflict or fat_conflict or nutrient_conflict:
                 # Mismatch — create fresh group using the original food name
                 fallback_name = _sanitize_generic_name(name)
-                # Find a compatible same-category group with this fallback name (no cooking conflict)
+                # Find a compatible same-category group with this fallback name (no cooking conflict, no fat-tier conflict)
                 fallback_id = next(
                     (gid for gid, entry in agg.db.items()
                      if entry.get("food_category", "") == incoming_cat
                      and _normalized_name_key(entry.get("generic_name", "")) == _normalized_name_key(fallback_name)
-                     and not _cooking_state_conflict(name, entry)),
+                     and not _cooking_state_conflict(name, entry)
+                     and not _fat_tier_conflict(name, entry)),
                     None
                 )
                 if fallback_id is not None:
@@ -568,7 +597,8 @@ def run_batched(
 def main():
     parser = argparse.ArgumentParser(description="Run aggregation pipeline (batched)")
     parser.add_argument("--mode", choices=["test", "full"], default="test")
-    parser.add_argument("--model", default="google/gemini-2.0-flash-lite-001")
+    parser.add_argument("--model", default=None,
+                        help="Model name. Defaults to gpt-5-mini via Copilot proxy when no API key is set.")
     parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument("--base-url", default=None)
     parser.add_argument("--api-key", default=None)

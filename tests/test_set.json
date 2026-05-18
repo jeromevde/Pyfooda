@@ -1,5 +1,5 @@
 {
-  "version": "2.1",
+  "version": "2.2",
   "generated_by": "generate_test_set.py",
   "seed": 42,
   "csv_source": "/Users/jf41043/Documents/Pyfooda/pyfooda/data/fooddata.csv",
@@ -10,9 +10,9 @@
     "name_quality_weight": 0.2
   },
   "stats": {
-    "total_cases": 204,
-    "merge": 62,
-    "split": 102,
+    "total_cases": 216,
+    "merge": 64,
+    "split": 112,
     "name_quality": 40,
     "severity": {
       "normal": 124,
@@ -29,7 +29,7 @@
         "Kidney beans, from canned, fat added",
         "Kidney beans, from canned, reduced sodium"
       ],
-      "note": "category='Beans, peas, legumes'  core_jaccard≈1.00  auto-generated from CSV"
+      "note": "category='Beans, peas, legumes'  core_jaccard\u22481.00  auto-generated from CSV"
     },
     {
       "id": "m002",
@@ -39,7 +39,7 @@
         "Pinto beans, from canned, fat added",
         "Pinto beans, from canned, reduced sodium"
       ],
-      "note": "category='Beans, peas, legumes'  core_jaccard≈1.00  auto-generated from CSV"
+      "note": "category='Beans, peas, legumes'  core_jaccard\u22481.00  auto-generated from CSV"
     },
     {
       "id": "m003",
@@ -50,7 +50,7 @@
         "Baked beans, reduced sodium",
         "Baked beans, vegetarian"
       ],
-      "note": "category='Beans, peas, legumes'  core_jaccard≈1.00  auto-generated from CSV"
+      "note": "category='Beans, peas, legumes'  core_jaccard\u22481.00  auto-generated from CSV"
     },
     {
       "id": "m004",
@@ -60,7 +60,7 @@
         "Black beans, from canned, fat added",
         "Black beans, from canned, reduced sodium"
       ],
-      "note": "category='Beans, peas, legumes'  core_jaccard≈1.00  auto-generated from CSV"
+      "note": "category='Beans, peas, legumes'  core_jaccard\u22481.00  auto-generated from CSV"
     },
     {
       "id": "m005",
@@ -70,7 +70,7 @@
         "Refried beans",
         "Refried beans with meat"
       ],
-      "note": "category='Beans, peas, legumes'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Beans, peas, legumes'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m006",
@@ -80,7 +80,7 @@
         "White beans, from canned, fat added",
         "White beans, from canned, reduced sodium"
       ],
-      "note": "category='Beans, peas, legumes'  core_jaccard≈1.00  auto-generated from CSV"
+      "note": "category='Beans, peas, legumes'  core_jaccard\u22481.00  auto-generated from CSV"
     },
     {
       "id": "m007",
@@ -92,7 +92,7 @@
         "Beverages, OCEAN SPRAY, Cran Lemonade",
         "Beverages, OCEAN SPRAY, Cran Pomegranate"
       ],
-      "note": "category='Beverages'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Beverages'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m008",
@@ -103,7 +103,7 @@
         "Alcoholic beverage, wine, table, red",
         "Alcoholic beverage, wine, table, white"
       ],
-      "note": "category='Beverages'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Beverages'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m009",
@@ -113,7 +113,7 @@
         "Beverages, tea, instant, lemon, unsweetened",
         "Beverages, tea, instant, unsweetened, powder"
       ],
-      "note": "category='Beverages'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Beverages'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m010",
@@ -125,7 +125,7 @@
         "Alcoholic Beverage, wine, table, red, Merlot",
         "Alcoholic Beverage, wine, table, red, Syrah"
       ],
-      "note": "category='Beverages'  core_jaccard≈0.71  auto-generated from CSV"
+      "note": "category='Beverages'  core_jaccard\u22480.71  auto-generated from CSV"
     },
     {
       "id": "m011",
@@ -135,7 +135,7 @@
         "Alcoholic beverage, beer, regular, BUDWEISER",
         "Alcoholic beverage, beer, regular, all"
       ],
-      "note": "category='Beverages'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Beverages'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m012",
@@ -145,7 +145,7 @@
         "Beverages, ABBOTT, EAS soy protein powder",
         "Beverages, ABBOTT, EAS whey protein powder"
       ],
-      "note": "category='Beverages'  core_jaccard≈0.71  auto-generated from CSV"
+      "note": "category='Beverages'  core_jaccard\u22480.71  auto-generated from CSV"
     },
     {
       "id": "m013",
@@ -155,7 +155,7 @@
         "Beverages, tea, green, brewed, decaffeinated",
         "Beverages, tea, green, brewed, regular"
       ],
-      "note": "category='Beverages'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Beverages'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m014",
@@ -165,7 +165,7 @@
         "Alcoholic beverage, beer, light",
         "Alcoholic beverage, beer, light, BUD LIGHT"
       ],
-      "note": "category='Beverages'  core_jaccard≈0.80  auto-generated from CSV"
+      "note": "category='Beverages'  core_jaccard\u22480.80  auto-generated from CSV"
     },
     {
       "id": "m015",
@@ -175,7 +175,7 @@
         "Beverages, Protein powder soy based",
         "Beverages, Protein powder whey based"
       ],
-      "note": "category='Beverages'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Beverages'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m016",
@@ -185,7 +185,7 @@
         "Beverages, OVALTINE, Classic Malt powder",
         "Beverages, OVALTINE, chocolate malt powder"
       ],
-      "note": "category='Beverages'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Beverages'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m017",
@@ -195,7 +195,7 @@
         "Alcoholic beverage, wine, dessert, dry",
         "Alcoholic beverage, wine, dessert, sweet"
       ],
-      "note": "category='Beverages'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Beverages'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m018",
@@ -205,7 +205,7 @@
         "Beverages, Cocoa mix, no sugar added, powder",
         "Beverages, Cocoa mix, powder"
       ],
-      "note": "category='Beverages'  core_jaccard≈0.80  auto-generated from CSV"
+      "note": "category='Beverages'  core_jaccard\u22480.80  auto-generated from CSV"
     },
     {
       "id": "m019",
@@ -215,7 +215,7 @@
         "Beverages, carbonated, cola, fast-food cola",
         "Beverages, carbonated, cola, regular"
       ],
-      "note": "category='Beverages'  core_jaccard≈0.75  auto-generated from CSV"
+      "note": "category='Beverages'  core_jaccard\u22480.75  auto-generated from CSV"
     },
     {
       "id": "m020",
@@ -225,7 +225,7 @@
         "Beverages, grape drink, canned",
         "Beverages, grape juice drink, canned"
       ],
-      "note": "category='Beverages'  core_jaccard≈0.75  auto-generated from CSV"
+      "note": "category='Beverages'  core_jaccard\u22480.75  auto-generated from CSV"
     },
     {
       "id": "m021",
@@ -236,7 +236,7 @@
         "Bagel, wheat, with raisins",
         "Bagel, with raisins"
       ],
-      "note": "category='Bagels and English muffins'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Bagels and English muffins'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m022",
@@ -246,7 +246,7 @@
         "Muffin, English, whole wheat",
         "Muffin, English, whole wheat, with raisins"
       ],
-      "note": "category='Bagels and English muffins'  core_jaccard≈0.80  auto-generated from CSV"
+      "note": "category='Bagels and English muffins'  core_jaccard\u22480.80  auto-generated from CSV"
     },
     {
       "id": "m023",
@@ -256,7 +256,7 @@
         "Muffin, English",
         "Muffin, English, with raisins"
       ],
-      "note": "category='Bagels and English muffins'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Bagels and English muffins'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m024",
@@ -266,7 +266,7 @@
         "Bagel, whole wheat",
         "Bagel, whole wheat, with raisins"
       ],
-      "note": "category='Bagels and English muffins'  core_jaccard≈0.75  auto-generated from CSV"
+      "note": "category='Bagels and English muffins'  core_jaccard\u22480.75  auto-generated from CSV"
     },
     {
       "id": "m025",
@@ -276,7 +276,7 @@
         "Bagel, multigrain",
         "Bagel, multigrain, with raisins"
       ],
-      "note": "category='Bagels and English muffins'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Bagels and English muffins'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m026",
@@ -286,7 +286,7 @@
         "Muffin, English, oat bran",
         "Muffin, English, oat bran, with raisins"
       ],
-      "note": "category='Bagels and English muffins'  core_jaccard≈0.80  auto-generated from CSV"
+      "note": "category='Bagels and English muffins'  core_jaccard\u22480.80  auto-generated from CSV"
     },
     {
       "id": "m027",
@@ -296,7 +296,7 @@
         "Muffin, English, wheat bran",
         "Muffin, English, wheat bran, with raisins"
       ],
-      "note": "category='Bagels and English muffins'  core_jaccard≈0.80  auto-generated from CSV"
+      "note": "category='Bagels and English muffins'  core_jaccard\u22480.80  auto-generated from CSV"
     },
     {
       "id": "m028",
@@ -309,7 +309,7 @@
         "Fish, whitefish, mixed species, raw",
         "Fish, yellowtail, mixed species, raw"
       ],
-      "note": "category='Finfish and Shellfish Products'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Finfish and Shellfish Products'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m029",
@@ -320,7 +320,7 @@
         "Fish, salmon, coho, farmed, raw",
         "Fish, salmon, coho, wild, raw"
       ],
-      "note": "category='Finfish and Shellfish Products'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Finfish and Shellfish Products'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m030",
@@ -333,7 +333,7 @@
         "Fish, lingcod, cooked, dry heat",
         "Fish, mahimahi, cooked, dry heat"
       ],
-      "note": "category='Finfish and Shellfish Products'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Finfish and Shellfish Products'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m031",
@@ -344,7 +344,7 @@
         "Fish, salmon, pink, cooked, dry heat",
         "Fish, salmon, sockeye, cooked, dry heat"
       ],
-      "note": "category='Finfish and Shellfish Products'  core_jaccard≈0.71  auto-generated from CSV"
+      "note": "category='Finfish and Shellfish Products'  core_jaccard\u22480.71  auto-generated from CSV"
     },
     {
       "id": "m032",
@@ -357,7 +357,7 @@
         "Fish, sheepshead, cooked, dry heat",
         "Fish, spot, cooked, dry heat"
       ],
-      "note": "category='Finfish and Shellfish Products'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Finfish and Shellfish Products'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m033",
@@ -367,7 +367,7 @@
         "Fish, salmon, sockeye, raw",
         "Fish, salmon, sockeye, wild caught, raw"
       ],
-      "note": "category='Finfish and Shellfish Products'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Finfish and Shellfish Products'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m034",
@@ -378,7 +378,7 @@
         "Fish, milkfish, cooked, dry heat",
         "Fish, swordfish, cooked, dry heat"
       ],
-      "note": "category='Finfish and Shellfish Products'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Finfish and Shellfish Products'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m035",
@@ -388,7 +388,7 @@
         "Fish, haddock, cooked, dry heat",
         "Fish, monkfish, cooked, dry heat"
       ],
-      "note": "category='Finfish and Shellfish Products'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Finfish and Shellfish Products'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m036",
@@ -398,7 +398,7 @@
         "Fish, cod, Atlantic, raw",
         "Fish, cod, Atlantic, wild caught, raw"
       ],
-      "note": "category='Finfish and Shellfish Products'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Finfish and Shellfish Products'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m037",
@@ -411,7 +411,7 @@
         "Fish, snapper, mixed species, raw",
         "Fish, sturgeon, mixed species, raw"
       ],
-      "note": "category='Finfish and Shellfish Products'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Finfish and Shellfish Products'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m038",
@@ -421,7 +421,7 @@
         "Fish, mackerel, king, cooked, dry heat",
         "Fish, mackerel, spanish, cooked, dry heat"
       ],
-      "note": "category='Finfish and Shellfish Products'  core_jaccard≈0.71  auto-generated from CSV"
+      "note": "category='Finfish and Shellfish Products'  core_jaccard\u22480.71  auto-generated from CSV"
     },
     {
       "id": "m039",
@@ -431,7 +431,7 @@
         "Fish, eel, mixed species, cooked, dry heat",
         "Fish, roe, mixed species, cooked, dry heat"
       ],
-      "note": "category='Finfish and Shellfish Products'  core_jaccard≈0.75  auto-generated from CSV"
+      "note": "category='Finfish and Shellfish Products'  core_jaccard\u22480.75  auto-generated from CSV"
     },
     {
       "id": "m040",
@@ -442,7 +442,7 @@
         "Fish, pollock, Atlantic, cooked, dry heat",
         "Fish, wolffish, Atlantic, cooked, dry heat"
       ],
-      "note": "category='Finfish and Shellfish Products'  core_jaccard≈0.71  auto-generated from CSV"
+      "note": "category='Finfish and Shellfish Products'  core_jaccard\u22480.71  auto-generated from CSV"
     },
     {
       "id": "m041",
@@ -452,7 +452,7 @@
         "Fish, trout, rainbow, farmed, raw",
         "Fish, trout, rainbow, wild, raw"
       ],
-      "note": "category='Finfish and Shellfish Products'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Finfish and Shellfish Products'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m042",
@@ -462,7 +462,7 @@
         "Fish, pike, northern, cooked, dry heat",
         "Fish, pike, walleye, cooked, dry heat"
       ],
-      "note": "category='Finfish and Shellfish Products'  core_jaccard≈0.71  auto-generated from CSV"
+      "note": "category='Finfish and Shellfish Products'  core_jaccard\u22480.71  auto-generated from CSV"
     },
     {
       "id": "m043",
@@ -472,7 +472,7 @@
         "catfish, farm raised, raw, skin removed",
         "tilapia, farm raised, raw, skin removed"
       ],
-      "note": "category='Finfish and Shellfish Products'  core_jaccard≈0.71  auto-generated from CSV"
+      "note": "category='Finfish and Shellfish Products'  core_jaccard\u22480.71  auto-generated from CSV"
     },
     {
       "id": "m044",
@@ -482,7 +482,7 @@
         "Fish, tilapia, cooked, dry heat",
         "Fish, tilefish, cooked, dry heat"
       ],
-      "note": "category='Finfish and Shellfish Products'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Finfish and Shellfish Products'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m045",
@@ -492,7 +492,7 @@
         "Mollusks, abalone, mixed species, raw",
         "Mollusks, squid, mixed species, raw"
       ],
-      "note": "category='Finfish and Shellfish Products'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Finfish and Shellfish Products'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m046",
@@ -502,7 +502,7 @@
         "Mollusks, cuttlefish, mixed species, raw",
         "Mollusks, scallop, mixed species, raw"
       ],
-      "note": "category='Finfish and Shellfish Products'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Finfish and Shellfish Products'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m047",
@@ -512,7 +512,7 @@
         "Mollusks, oyster, eastern, farmed, raw",
         "Mollusks, oyster, eastern, wild, raw"
       ],
-      "note": "category='Finfish and Shellfish Products'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Finfish and Shellfish Products'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m048",
@@ -522,7 +522,7 @@
         "Macaroni or noodles with cheese",
         "Macaroni or noodles with cheese and meat"
       ],
-      "note": "category='Macaroni and cheese'  core_jaccard≈0.75  auto-generated from CSV"
+      "note": "category='Macaroni and cheese'  core_jaccard\u22480.75  auto-generated from CSV"
     },
     {
       "id": "m049",
@@ -532,7 +532,7 @@
         "Baby Toddler multiple fruit, Stage 2",
         "Baby Toddler multiple fruit, Stage 3"
       ],
-      "note": "category='Baby food: fruit'  core_jaccard≈0.71  auto-generated from CSV"
+      "note": "category='Baby food: fruit'  core_jaccard\u22480.71  auto-generated from CSV"
     },
     {
       "id": "m050",
@@ -543,7 +543,7 @@
         "Baby Toddler pears, Stage 1",
         "Baby Toddler pears, Stage 2"
       ],
-      "note": "category='Baby food: fruit'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Baby food: fruit'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m051",
@@ -553,7 +553,7 @@
         "Baby Toddler bananas, Stage 1",
         "Baby Toddler bananas, Stage 2"
       ],
-      "note": "category='Baby food: fruit'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Baby food: fruit'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m052",
@@ -563,7 +563,7 @@
         "Baby Toddler peaches, Stage 1",
         "Baby Toddler peaches, Stage 2"
       ],
-      "note": "category='Baby food: fruit'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Baby food: fruit'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m053",
@@ -573,7 +573,7 @@
         "Bread, French or Vienna",
         "Bread, French or Vienna, toasted"
       ],
-      "note": "category='Yeast breads'  core_jaccard≈0.75  auto-generated from CSV"
+      "note": "category='Yeast breads'  core_jaccard\u22480.75  auto-generated from CSV"
     },
     {
       "id": "m054",
@@ -584,7 +584,7 @@
         "Bread, white with whole wheat swirl, toasted",
         "Bread, whole wheat, toasted"
       ],
-      "note": "category='Yeast breads'  core_jaccard≈0.83  auto-generated from CSV"
+      "note": "category='Yeast breads'  core_jaccard\u22480.83  auto-generated from CSV"
     },
     {
       "id": "m055",
@@ -594,7 +594,7 @@
         "Bread, rice",
         "Bread, rice, toasted"
       ],
-      "note": "category='Yeast breads'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Yeast breads'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m056",
@@ -604,7 +604,7 @@
         "Bread, gluten free",
         "Bread, gluten free, toasted"
       ],
-      "note": "category='Yeast breads'  core_jaccard≈0.75  auto-generated from CSV"
+      "note": "category='Yeast breads'  core_jaccard\u22480.75  auto-generated from CSV"
     },
     {
       "id": "m057",
@@ -614,7 +614,7 @@
         "Bread, lard, Puerto Rican style",
         "Bread, lard, toasted, Puerto Rican style"
       ],
-      "note": "category='Yeast breads'  core_jaccard≈0.80  auto-generated from CSV"
+      "note": "category='Yeast breads'  core_jaccard\u22480.80  auto-generated from CSV"
     },
     {
       "id": "m058",
@@ -624,7 +624,7 @@
         "Bread, whole wheat, with raisins",
         "Bread, whole wheat, with raisins, toasted"
       ],
-      "note": "category='Yeast breads'  core_jaccard≈0.80  auto-generated from CSV"
+      "note": "category='Yeast breads'  core_jaccard\u22480.80  auto-generated from CSV"
     },
     {
       "id": "m059",
@@ -634,7 +634,7 @@
         "Bread, pita",
         "Bread, pita with fruit"
       ],
-      "note": "category='Yeast breads'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Yeast breads'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "m060",
@@ -644,7 +644,7 @@
         "Bread, white",
         "Bread, white, toasted"
       ],
-      "note": "category='Yeast breads'  core_jaccard≈0.67  auto-generated from CSV"
+      "note": "category='Yeast breads'  core_jaccard\u22480.67  auto-generated from CSV"
     },
     {
       "id": "s001",
@@ -2201,6 +2201,127 @@
         "Blue or roquefort cheese dressing, fat free"
       ],
       "note": "fat-level conflict: ['regular'] vs ['fat free']  same base food  category='Fats and Oils'  source=empirical"
+    },
+    {
+      "id": "s103",
+      "type": "split",
+      "severity": "important",
+      "foods": [
+        "Bread, rye, toasted",
+        "Bread, sticks, plain"
+      ],
+      "note": "Real-world: rye bread vs breadsticks \u2014 different baked product types, not variants"
+    },
+    {
+      "id": "s104",
+      "type": "split",
+      "severity": "important",
+      "foods": [
+        "Danish pastry, plain or spice",
+        "Doughnut holes"
+      ],
+      "note": "Real-world: Danish pastry vs doughnut holes \u2014 different pastry types"
+    },
+    {
+      "id": "s105",
+      "type": "split",
+      "severity": "important",
+      "foods": [
+        "Biscuits, plain or buttermilk, dry mix",
+        "Biscuits, plain or buttermilk, frozen, baked"
+      ],
+      "note": "Real-world: dry mix (raw ingredient) vs baked \u2014 preparation state conflict"
+    },
+    {
+      "id": "s106",
+      "type": "split",
+      "severity": "important",
+      "foods": [
+        "Cheese, Mozzarella, NFS",
+        "Cheese, American"
+      ],
+      "note": "Real-world: Mozzarella vs American \u2014 different cheese varieties"
+    },
+    {
+      "id": "s107",
+      "type": "split",
+      "severity": "important",
+      "foods": [
+        "Cheese, Brie",
+        "Cheese, Mozzarella, NFS"
+      ],
+      "note": "Real-world: Brie vs Mozzarella \u2014 very different cheese varieties"
+    },
+    {
+      "id": "s108",
+      "type": "split",
+      "severity": "important",
+      "foods": [
+        "Wheat flour, white, all-purpose, unenriched",
+        "Sorghum flour, refined, unenriched"
+      ],
+      "note": "Real-world: wheat flour vs sorghum flour \u2014 different grain types"
+    },
+    {
+      "id": "s109",
+      "type": "split",
+      "severity": "important",
+      "foods": [
+        "Pasta, dry, enriched",
+        "Pasta, cooked, enriched, with added salt"
+      ],
+      "note": "Real-world: pasta dry (371 kcal) vs cooked (157 kcal) \u2014 dry is uncooked form"
+    },
+    {
+      "id": "s110",
+      "type": "split",
+      "severity": "important",
+      "foods": [
+        "Egg, white only, raw",
+        "Egg, whole, raw"
+      ],
+      "note": "Real-world: egg white (52 kcal) vs whole egg (143 kcal) \u2014 different food components"
+    },
+    {
+      "id": "s111",
+      "type": "split",
+      "severity": "normal",
+      "foods": [
+        "Archway Home Style Cookies, Coconut Macaroon",
+        "Archway Home Style Cookies, Dutch Cocoa"
+      ],
+      "note": "Real-world: same brand, different cookie flavors \u2014 nutritionally distinct products"
+    },
+    {
+      "id": "s112",
+      "type": "split",
+      "severity": "important",
+      "foods": [
+        "BURGER KING, Chicken Strips",
+        "BURGER KING, DOUBLE WHOPPER, no cheese"
+      ],
+      "note": "Real-world: fast food chicken strips vs beef burger \u2014 different products from same chain"
+    },
+    {
+      "id": "m063",
+      "type": "merge",
+      "severity": "normal",
+      "foods": [
+        "Bagels, cinnamon-raisin",
+        "Bagels, cinnamon-raisin, toasted"
+      ],
+      "note": "Real-world: same bagel toasted vs untoasted \u2014 same generic group"
+    },
+    {
+      "id": "m064",
+      "type": "merge",
+      "severity": "normal",
+      "foods": [
+        "Muffin, English",
+        "Muffin, English, wheat bran",
+        "Muffin, English, whole grain white"
+      ],
+      "note": "Real-world: English muffin variants (plain, wheat bran, whole grain) \u2014 same product type"
     }
   ]
 }
