@@ -806,30 +806,9 @@ class FoodAggregator:
         base.setdefault('_source_energies', []).extend(incoming.get('_source_energies', []))
 
     def _apply_similarity_merge_postpass(self, threshold: float = 0.80):
-        """Merge same-category groups with high embedding similarity and compatible cooking states."""
+        """Merge same-category groups with high embedding similarity and compatible nutrients."""
         if not self.db:
             return
-
-        COOKED_STATES = {'cooked', 'baked', 'fried', 'smoked', 'roasted', 'broiled',
-                         'boiled', 'grilled', 'stewed', 'steamed', 'poached', 'braised'}
-        PREP_CONFLICT = [
-            # raw/fresh vs any cooked → conflict
-            ({'raw', 'fresh'}, COOKED_STATES),
-            # frozen vs fresh/raw → conflict
-            ({'frozen'}, {'raw', 'fresh'}),
-            # frozen vs non-frozen cooked → conflict (frozen-cooked ≠ fresh-cooked)
-            ({'frozen'}, COOKED_STATES),
-            # canned vs raw/fresh/frozen → conflict
-            ({'canned'}, {'raw', 'fresh', 'frozen'}),
-            # dried vs raw/fresh/cooked → conflict
-            ({'dried'}, {'raw', 'fresh', 'cooked'}),
-            # smoked vs raw/fresh → conflict
-            ({'smoked'}, {'raw', 'fresh'}),
-            # oil-roasted vs dry-roasted → different fat method
-            ({'oil'}, {'dry'}),
-            # fried vs baked/broiled/roasted (different fat level)
-            ({'fried'}, {'baked', 'broiled', 'roasted'}),
-        ]
 
         # Stop-words for food-token jaccard check
         STOP = {'raw', 'cooked', 'baked', 'fried', 'smoked', 'dried', 'roasted', 'broiled',
@@ -844,88 +823,24 @@ class FoodAggregator:
             words = set(re.findall(r'\b[a-z]{2,}\b', name.lower()))
             return words - STOP
 
-        def entry_words(entry: dict) -> set:
-            """Collect all significant prep/cooking words from generic_name + source_names."""
-            words: set = set()
-            words.update(re.findall(r'\b\w+\b', entry.get('generic_name', '').lower()))
-            for sn in entry.get('source_names', [])[:6]:
-                words.update(re.findall(r'\b\w+\b', sn.lower()))
-            return words
-
         def _fat_tier_label(name: str) -> str:
-            """Classify a group name into a fat tier.
-
-            Returns one of: 'fat_free', 'low_fat', 'reduced', 'light', 'regular'.
-            Uses word-boundary matching to avoid false positives (e.g. 'lightly'
-            must NOT match 'light').
-            """
             n = name.lower()
-            if re.search(r'\b(fat.?free|nonfat)\b', n):
-                return 'fat_free'
-            if re.search(r'\blow.?fat\b', n):
-                return 'low_fat'
-            if re.search(r'\breduced.?fat\b', n):
-                return 'reduced'
-            if re.search(r'\b(light|lite|part.?skim)\b', n):
-                return 'light'
+            if re.search(r'\b(fat.?free|nonfat)\b', n): return 'fat_free'
+            if re.search(r'\blow.?fat\b', n):            return 'low_fat'
+            if re.search(r'\breduced.?fat\b', n):        return 'reduced'
+            if re.search(r'\b(light|lite|part.?skim)\b', n): return 'light'
             return 'regular'
 
         def conflict(entry_a: dict, entry_b: dict) -> bool:
-            # Use full word sets (generic_name + source_names) so e.g. 'raw' from
-            # "Chicken, stewing, dark meat, meat only, raw" is visible even when
-            # the generic name is "Chicken Stewing Dark Meat Meat Only"
-            w1 = entry_words(entry_a)
-            w2 = entry_words(entry_b)
-            for a_set, b_set in PREP_CONFLICT:
-                if (w1 & a_set) and (w2 & b_set):
-                    return True
-                if (w2 & a_set) and (w1 & b_set):
-                    return True
-            # Generalized fat-tier conflict: any two groups in different tiers
-            # must not merge (fat-free ≠ low-fat ≠ light ≠ reduced ≠ regular).
-            # Check both generic_name and source_names so a group called
-            # "Salad Dressing" still respects the fat tier of its actual sources.
-            def _src_fat_tier(entry: dict) -> str:
-                n = entry.get('generic_name', '').lower()
-                t = _fat_tier_label(n)
-                if t != 'regular':
-                    return t
-                # Fallback: derive from source_names (majority vote)
-                src = entry.get('source_names', [])
-                if not src:
-                    return 'regular'
-                tiers = [_fat_tier_label(s.lower()) for s in src]
-                non_reg = [x for x in tiers if x != 'regular']
-                if not non_reg:
-                    return 'regular'
-                # If all non-regular sources agree, use that tier
-                if len(set(non_reg)) == 1:
-                    return non_reg[0]
-                return 'regular'
-            t1, t2 = _src_fat_tier(entry_a), _src_fat_tier(entry_b)
-            if t1 != t2:
-                return True
-            # Dry-form vs cooked-form conflict: "dry mix" / "powder" group must
-            # not merge with a baked/cooked group even if names look similar.
-            DRY_INDICATORS = {'dry', 'mix', 'powder', 'instant'}
-            HEAT_EXCL      = {'roasted', 'toast', 'toasted', 'heat'}
-            def _has_dry_form(entry: dict) -> bool:
-                w = entry_words(entry)
-                return bool(w & DRY_INDICATORS) and not bool(w & HEAT_EXCL)
-            a_dry = _has_dry_form(entry_a)
-            b_dry = _has_dry_form(entry_b)
-            if a_dry and (w2 & COOKED_STATES) and not b_dry:
-                return True
-            if b_dry and (w1 & COOKED_STATES) and not a_dry:
-                return True
-            return False
+            # Only block postpass merges where fat tiers clearly differ by generic name
+            return _fat_tier_label(entry_a.get('generic_name', '')) != \
+                   _fat_tier_label(entry_b.get('generic_name', ''))
 
         def food_jaccard(n1: str, n2: str) -> float:
-            t1 = food_tokens(n1)
-            t2 = food_tokens(n2)
-            if not t1 or not t2:
-                return 0.0
+            t1 = food_tokens(n1); t2 = food_tokens(n2)
+            if not t1 or not t2: return 0.0
             return len(t1 & t2) / len(t1 | t2)
+
 
         # Union-Find for clustering
         parent = {gid: gid for gid in self.db}

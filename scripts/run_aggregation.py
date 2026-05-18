@@ -43,11 +43,10 @@ Return EXACTLY one line, and nothing else:
 Hard constraints:
 - Prefer ADD over CREATE only when the candidate group is the same generic food. When in doubt, CREATE.
 - ADD id must be one of the shown candidate ids.
-- Use the nutrient fingerprint in the prompt as a primary signal; avoid merging items with clearly different calories/macros.
+- Use the nutrient fingerprint as a primary signal; avoid merging items with clearly different calories/macros.
 - If a candidate shows [BLOCK: kcal diff=X%], you MUST use CREATE — do not ADD to that group.
 - If kcal differs by >40% between incoming and candidate, always CREATE a new group.
 - Generic names must be short, generic, title case, no brands, no commas.
-- Strip brand/proprietary style tokens from group names (e.g., prefer "Fat Free Salad Dressing" over "Thousand Island Dressing Fat Free").
 - Target name length: 2-4 words (hard max 6 words — count every space-separated word; 7-word names are INVALID, shorten them).
 - Avoid bare numbers in group names; use descriptive terms instead (e.g., "Lean Ground Beef" not "Ground Beef 93").
 - Group names must be self-identifying — include the primary food class noun (e.g., "Beef Ribeye Steak" not "Ribeye Steak"; "Mollusks Blue Mussel" not "Blue Mussel Cooked"; "Horseradish Sauce" not just "Horseradish").
@@ -58,27 +57,31 @@ Hard constraints:
 
 Merge policy (aggressive but nutrition-aware):
 - Brand variants should merge when nutrients/use are similar.
-- Flavored fruit yogurts may merge into one flavored-yogurt bucket (apple/cherry/strawberry can merge).
-- Keep distinctions when nutrition changes materially:
-  1) Dry vs cooked legumes
-  2) Fat-level tier differences apply to ALL foods: fat-free/nonfat ≠ low-fat ≠ light/lite ≠ reduced-fat ≠ regular/whole. These are distinct products with different calorie/fat content and must always be SEPARATE groups.
-  3) Composite dish vs plain ingredient (e.g., Ham Sub != Ham)
-  4) Lemon juice vs lemonade/soda drinks
-  5) Pizza types MUST stay separate by category/style (e.g., cheese pizza, meat pizza, veggie pizza, deep-dish/frozen etc.) when nutrients differ noticeably
-  6) Cooking state: raw ≠ cooked ≠ smoked ≠ canned ≠ frozen ≠ dried — these are DIFFERENT groups. "Fish, cisco, raw" and "Fish, cisco, smoked" MUST be separate groups.
-  7) Preparation method differences matter: canned ≠ home-prepared ≠ frozen ≠ fresh
-  8) Different soups, broths, and sauces are separate groups even within the same category (e.g., chicken broth ≠ horseradish sauce ≠ ramen noodle soup).
-- Do NOT collapse all pizzas into a generic "Pizza" group.
-- Do NOT create over-specific single-SKU style names; choose a broader nutrition-relevant generic bucket.
-- Normalize trivial wording variants into one canonical name (hyphenation/singular/plural/word order), e.g. "Non Dairy" and "Non-Dairy" must be the same group.
-- Fish/seafood species: When multiple species share the same preparation state AND are nutritionally near-identical, use a GENERIC group name covering the type (e.g., multiple lean white fish cooked dry-heat → "White Fish Cooked"; multiple raw mollusks → "Raw Mollusks"). Nutritionally distinct species must stay separate (e.g., fatty fish like salmon differ from lean white fish like cod).
-  9) Dry/uncooked form ≠ hydrated/cooked form: pasta dry ≠ pasta cooked; oatmeal dry ≠ oatmeal cooked; soup dry mix ≠ soup prepared. Dry forms have ~2-3× higher kcal per 100 g.
-  10) Baked-goods PRODUCT differences: a rye loaf ≠ breadsticks ≠ English muffin ≠ bagel ≠ biscuit ≠ Danish pastry ≠ doughnut. These are different products and need separate groups. Within one product type, variants MAY merge (plain bagel ≠ sesame bagel are the SAME product, just a flavour variant — they can share a group; French bread and French bread toasted are the same product).  
-  11) Cheese VARIETY differences: Mozzarella ≠ American ≠ Brie ≠ Cheddar ≠ Swiss ≠ Parmesan. Same variety in different fat tiers may split, but different varieties are ALWAYS separate groups.
-  12) Grain type differences: wheat flour ≠ sorghum flour ≠ rice flour ≠ corn flour ≠ oat flour. Different grain = different group.
-  13) Brand product flavors: for named-brand products, different flavors are separate groups even from the same brand (e.g., Archway Coconut Macaroon ≠ Archway Dutch Cocoa). Do NOT collapse different-flavor brand SKUs into one group.
-  14) Fast-food items from the same chain must stay separate when they are fundamentally different products (e.g., chicken strips ≠ beef burger even if both are Burger King).
-- IMPORTANT: different specific foods must NOT share a group. Corn ≠ collard greens. Chestnuts ≠ hummus. Asparagus ≠ peas. Broth ≠ sauce. Each distinct food type needs its own group.
+- Flavored fruit yogurts may merge into one flavored-yogurt bucket.
+- Normalize trivial wording variants into one canonical name (hyphenation/singular/plural/word order).
+- Fish/seafood species: multiple species with the same prep state AND near-identical nutrients → use a GENERIC group name (e.g., "White Fish Cooked", "Raw Mollusks"). Nutritionally distinct species stay separate.
+- IMPORTANT: different specific foods must NOT share a group. Corn ≠ collard greens. Chestnuts ≠ hummus. Asparagus ≠ peas. Broth ≠ sauce.
+
+Keep these groups ALWAYS separate:
+  1) Fat-level tiers apply to ALL foods: fat-free/nonfat ≠ low-fat ≠ light/lite ≠ reduced-fat ≠ regular/whole.
+     Fat-free foods have dramatically fewer kcal than regular (e.g. fat-free dressing ~15 kcal vs regular ~400 kcal).
+     ALWAYS check the kcal fingerprint — if [BLOCK] shows, or kcal differ by >40%, the tiers are different → CREATE.
+  2) Dry/uncooked form ≠ hydrated/cooked form — they differ by ~2–3× in kcal per 100 g:
+     pasta dry ~370 kcal vs pasta cooked ~130 kcal; biscuit dry mix ~360 kcal vs biscuit baked ~300 kcal;
+     oatmeal dry ~370 kcal vs oatmeal cooked ~70 kcal; soup dry mix ~400 kcal vs soup prepared ~50 kcal.
+     Always CHECK the kcal before merging anything labelled "dry", "mix", "powder", or "instant" with a cooked form.
+  3) Cooking state: raw ≠ cooked ≠ smoked ≠ canned ≠ frozen ≠ dried.
+  4) Composite dish vs plain ingredient (Ham Sub ≠ Ham).
+  5) Lemon juice ≠ lemonade/soda.
+  6) Pizza types by style/topping (cheese ≠ meat ≠ veggie ≠ deep-dish/frozen) when nutrients differ.
+  7) Preparation method: canned ≠ home-prepared ≠ frozen ≠ fresh.
+  8) Soups, broths, and sauces are separate even within the same category (chicken broth ≠ horseradish sauce ≠ ramen).
+  9) Baked-goods PRODUCTS: rye loaf ≠ breadsticks ≠ English muffin ≠ bagel ≠ biscuit ≠ Danish ≠ doughnut.
+     Within one product, variants MAY merge (plain bagel + sesame bagel; French bread + French bread toasted).
+  10) Cheese VARIETIES: Mozzarella ≠ American ≠ Brie ≠ Cheddar ≠ Swiss ≠ Parmesan — always separate groups.
+  11) Grain types: wheat flour ≠ sorghum flour ≠ rice flour ≠ corn flour ≠ oat flour.
+  12) Brand flavors: different flavors of the same named-brand product are separate (Archway Coconut ≠ Archway Dutch Cocoa).
+  13) Fast-food items from the same chain stay separate when fundamentally different products.
 Return one decision line only.
 """
 
@@ -105,16 +108,6 @@ def _sanitize_generic_name(name: str) -> str:
     words = s.split()
     if len(words) > 6:
         s = " ".join(words[:6])
-
-    # normalize dressing labels to generic class when needed
-    low = s.lower()
-    if "dressing" in low and "salad dressing" not in low:
-        qualifier = ""
-        for q in ["fat free", "low fat", "reduced fat", "light"]:
-            if q in low:
-                qualifier = q.title() + " "
-                break
-        s = f"{qualifier}Salad Dressing".strip()
 
     return s
 
@@ -149,101 +142,7 @@ def _resolve_input_output(repo_root: Path, mode: str, output: str | None, checkp
     return input_path, Path(output) if output else default_output, Path(checkpoint_dir) if checkpoint_dir else default_ckpt
 
 
-_COOKED_KWORDS = {'cooked', 'baked', 'fried', 'smoked', 'roasted', 'broiled', 'boiled',
-                  'grilled', 'stewed', 'steamed', 'poached', 'braised', 'canned', 'dried'}
-_RAW_KWORDS    = {'raw', 'fresh'}
-_FROZEN_KWORD  = 'frozen'
 
-
-def _is_dry_uncooked_form(name: str) -> bool:
-    """Return True if the food is a dry/uncooked powder or mix form.
-
-    Catches 'Pasta, dry' / 'Soup, dry mix' / 'Oatmeal, dry' / 'Instant oatmeal'
-    but NOT 'Peanuts, dry roasted' (has 'roasted') or 'Dried apricots'.
-    """
-    words = set(re.findall(r'\b\w+\b', name.lower()))
-    DRY_INDICATORS = {'dry', 'mix', 'powder', 'instant'}
-    if not (DRY_INDICATORS & words):
-        return False
-    # 'dry roasted' / 'dry heat' are cooking methods, not raw shelf forms
-    if {'roasted', 'toast', 'toasted', 'heat'} & words:
-        return False
-    return True
-
-# Fat tier patterns — ordered from most to least restrictive.
-# Each tier is mutually exclusive with any other tier.
-_FAT_TIERS = [
-    (0, re.compile(r'\b(fat.?free|nonfat)\b')),
-    (1, re.compile(r'\blow.?fat\b')),
-    (2, re.compile(r'\breduced.?fat\b')),
-    (3, re.compile(r'\b(light|lite|part.?skim)\b')),
-]
-
-
-def _fat_tier_of(name: str) -> int:
-    """Return fat tier index (0=fat-free … 3=light; 4=regular/unspecified)."""
-    n = name.lower()
-    for tier, pat in _FAT_TIERS:
-        if pat.search(n):
-            return tier
-    return 4  # regular / unspecified
-
-
-def _fat_tier_conflict(incoming_name: str, group_entry: dict) -> bool:
-    """Return True if the incoming food's fat tier clashes with any source in the group.
-
-    Uses source names (not the generic group name) so that a group called
-    "Salad Dressing" still detects a fat-tier conflict when its sources are
-    exclusively fat-free or exclusively regular variants.
-    """
-    in_tier = _fat_tier_of(incoming_name)
-    if in_tier == 4:
-        # Incoming has no fat-tier keyword; check whether the group is locked
-        # to a specific tier (all sources share the same non-regular tier).
-        src_names = group_entry.get('source_names', [])
-        if not src_names:
-            return False
-        group_tiers = {_fat_tier_of(n) for n in src_names}
-        group_tiers.discard(4)  # ignore regular/unspecified sources
-        # Conflict only when ALL sources are a single non-regular tier
-        if len(group_tiers) == 1:
-            return True  # regular incoming vs single-tier fat group
-        return False
-    # Incoming has a fat-tier keyword; conflict if any source is a different tier
-    src_names = group_entry.get('source_names', [])
-    for n in src_names:
-        t = _fat_tier_of(n)
-        if t != in_tier:
-            return True
-    return False
-
-
-def _cooking_state_conflict(incoming_name: str, group_entry: dict) -> bool:
-    """Return True if incoming food's cooking state conflicts with an existing group's sources."""
-    w_in = set(re.findall(r'\b\w+\b', incoming_name.lower()))
-    # Build representative word set from the group
-    rep_names = ([group_entry.get('generic_name', '')] +
-                 group_entry.get('source_names', [])[:3])
-    g_words: set = set()
-    for n in rep_names:
-        g_words.update(re.findall(r'\b\w+\b', n.lower()))
-    # raw/fresh incoming vs cooked group → conflict
-    if (w_in & _RAW_KWORDS) and (g_words & _COOKED_KWORDS):
-        return True
-    # cooked incoming vs raw/fresh group → conflict
-    if (w_in & _COOKED_KWORDS) and (g_words & _RAW_KWORDS) and not (g_words & _COOKED_KWORDS):
-        return True
-    # frozen incoming vs non-frozen group (where group has cooked sources) → conflict
-    if _FROZEN_KWORD in w_in and _FROZEN_KWORD not in g_words and (g_words & _COOKED_KWORDS):
-        return True
-    # dry/uncooked form vs cooked group → conflict (pasta dry ≠ pasta cooked)
-    in_dry  = _is_dry_uncooked_form(incoming_name)
-    grp_dry = any(_is_dry_uncooked_form(n) for n in rep_names if n)
-    if in_dry and (g_words & _COOKED_KWORDS) and not grp_dry:
-        return True
-    if grp_dry and (w_in & _COOKED_KWORDS) and not in_dry:
-        return True
-    return False
 
 
 def _apply_decision(agg: FoodAggregator, food: dict, row: pd.Series, decision: dict, create_aliases: dict[str, str] | None = None):
@@ -258,48 +157,24 @@ def _apply_decision(agg: FoodAggregator, food: dict, row: pd.Series, decision: d
             # Category gate: never merge into a group from a different food category
             existing_cat = agg.db.get(existing_id, {}).get("food_category", "")
             incoming_cat = food.get("category", "")
-            group_entry = agg.db.get(existing_id, {})
             cross_cat = incoming_cat and existing_cat and incoming_cat != existing_cat
-            cooking_conflict = not cross_cat and _cooking_state_conflict(name, group_entry)
-            # Nutrient gate: check incoming energy against the group's median
+            # Energy gate: don't fold into a group with incompatible calorie profile
             nutrient_conflict = False
-            fat_conflict = (not cross_cat and not cooking_conflict
-                            and _fat_tier_conflict(name, group_entry))
-            if not cross_cat and not cooking_conflict and not fat_conflict:
+            if not cross_cat:
                 incoming_energy = row.get("Energy", None)
                 if incoming_energy is not None and not pd.isna(incoming_energy):
                     from aggregator import _is_energy_compatible
-                    if not _is_energy_compatible(group_entry, float(incoming_energy)):
+                    if not _is_energy_compatible(agg.db[existing_id], float(incoming_energy)):
                         nutrient_conflict = True
-            if cross_cat or cooking_conflict or fat_conflict or nutrient_conflict:
-                # Mismatch — create fresh group using the original food name
-                fallback_name = _sanitize_generic_name(name)
-                # Find a compatible same-category group with this fallback name (no cooking conflict, no fat-tier conflict)
-                fallback_id = next(
-                    (gid for gid, entry in agg.db.items()
-                     if entry.get("food_category", "") == incoming_cat
-                     and _normalized_name_key(entry.get("generic_name", "")) == _normalized_name_key(fallback_name)
-                     and not _cooking_state_conflict(name, entry)
-                     and not _fat_tier_conflict(name, entry)),
-                    None
-                )
-                if fallback_id is not None:
-                    result = agg._do_add(fallback_id, row)
-                    if result == "ok":
-                        agg.stats["added"] += 1
-                    else:
-                        agg._do_create(fallback_name, row)
-                        agg.stats["created"] += 1
-                else:
-                    agg._do_create(fallback_name, row)
-                    agg.stats["created"] += 1
+            if cross_cat or nutrient_conflict:
+                agg._do_create(_sanitize_generic_name(name), row)
+                agg.stats["created"] += 1
             else:
                 result = agg._do_add(existing_id, row)
                 if result == "ok":
                     agg.stats["added"] += 1
                 else:
                     agg._do_create(create_name, row)
-                    # register normalized key for stronger dedup gateway
                     agg._name_to_id[_normalized_name_key(create_name)] = agg._next_id - 1
                     agg.stats["created"] += 1
         else:
@@ -328,17 +203,7 @@ def _apply_decision(agg: FoodAggregator, food: dict, row: pd.Series, decision: d
             if incoming_cat and target_cat and incoming_cat != target_cat:
                 target = None  # force CREATE instead
 
-        # Cooking-state gate: never ADD if states conflict (e.g. raw → cooked group)
-        if target and target in agg.db:
-            if _cooking_state_conflict(name, agg.db[target]):
-                target = None
-
-        # Fat-tier gate: never ADD if fat tier of incoming conflicts with group sources
-        if target and target in agg.db:
-            if _fat_tier_conflict(name, agg.db[target]):
-                target = None
-
-        # Nutrient gate: block ADD if energy differs >40% from group median
+        # Energy gate: block ADD if energy is incompatible with group profile
         if target and target in agg.db:
             incoming_energy = row.get("Energy", None)
             if incoming_energy is not None and not pd.isna(incoming_energy):

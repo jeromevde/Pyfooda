@@ -27,16 +27,6 @@ df     = pf.get_fooddata_df()   # all foods × nutrients
 drv_df = pf.get_drv_df()        # dietary reference values
 ```
 
-| Function | Returns |
-|---|---|
-| `find_closest_matches(partial)` | up to 10 food names containing the string |
-| `get_category(name)` | category string, `'Other'` if not found |
-| `get_nutrients(name)` | `dict[nutrient → float]` or `None` |
-| `get_portion_gram_weight(name)` | `float` or `None` |
-| `get_portion_unit_name(name)` | `str` or `None` |
-| `get_fooddata_df()` | full foods DataFrame |
-| `get_drv_df()` | DRV reference DataFrame |
-
 ---
 
 ## 2. Aggregation pipeline

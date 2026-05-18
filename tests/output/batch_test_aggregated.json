@@ -2,100 +2,101 @@
   "meta": {
     "processed_count": 377,
     "stats": {
-      "created": 320,
-      "added": 46,
-      "ignored": 11,
+      "created": 330,
+      "added": 35,
+      "ignored": 12,
       "errors": 0,
       "api_calls": 16,
-      "foundation_locked": 11,
-      "similarity_merged_groups": 100,
-      "postpass_merged_groups": 1
+      "foundation_locked": 12,
+      "similarity_merged_groups": 125,
+      "postpass_merged_groups": 0
     }
   },
   "foods": [
     {
       "id": 1,
-      "generic_name": "Strawberry Greek Yogurt Nonfat",
+      "generic_name": "Nonfat Strawberry Greek Yogurt",
       "food_category": "Dairy and Egg Products",
       "nutrients": {
-        "Energy": 71.48056086679414,
-        "Carbohydrate": 7.976666666666667,
-        "Protein": 9.143333333333333,
-        "Total fat": 0.24666666666666667,
-        "Fiber": 0.5,
+        "Energy": 71.96749521988528,
+        "Carbohydrate": 7.92,
+        "Protein": 9.18,
+        "Total fat": 0.26,
+        "Fiber": 0.6,
         "Sugars, Total": 7.385,
-        "Sodium": 34.666666666666664,
-        "Calcium": 104.66666666666667,
-        "Iron": 0.07,
+        "Sodium": 34.0,
+        "Calcium": 104.0,
+        "Iron": 0.08,
         "Cholesterol": 4.5,
-        "Fatty acids, total saturated": 0.12966666666666668,
+        "Fatty acids, total saturated": 0.1055,
         "Vitamin A, RAE": 0.5,
         "Vitamin C": 0.2,
         "Vitamin D (D2 + D3)": 0.5,
         "Vitamin E": 0.01,
-        "Vitamin B-6": 0.05566666666666667,
-        "Vitamin B-12": 0.6166666666666666,
+        "Vitamin B-6": 0.057,
+        "Vitamin B-12": 0.575,
         "Folate, total": 20.0,
-        "Zinc": 0.49333333333333335,
-        "Magnesium": 10.700000000000001,
-        "Potassium": 134.66666666666666,
-        "Phosphorus": 125.0
+        "Zinc": 0.495,
+        "Magnesium": 10.55,
+        "Potassium": 137.0,
+        "Phosphorus": 124.5
       },
       "source_ids": [
         0,
-        1,
-        129
+        1
       ],
       "source_names": [
         "Yogurt, Greek, strawberry, nonfat",
-        "Yogurt, Greek, plain, nonfat",
-        "Yogurt, Greek, nonfat, vanilla, CHOBANI"
+        "Yogurt, Greek, plain, nonfat"
       ],
       "portion_gram_weights": [
         150.0,
-        156.0,
-        28.30188679245283
+        156.0
       ],
       "portion_unit_names": [
         "container",
-        "container",
-        "undetermined"
+        "container"
       ],
-      "count": 3
+      "count": 2
     },
     {
       "id": 2,
       "generic_name": "Fish Salmon Sockeye Wild Caught Raw",
       "food_category": "Finfish and Shellfish Products",
       "nutrients": {
-        "Energy": 132.25135255151903,
+        "Energy": 116.27610235659655,
         "Carbohydrate": 0.0,
-        "Protein": 20.89777777777778,
-        "Total fat": 4.815111111111111,
+        "Protein": 20.24348214285714,
+        "Total fat": 3.367392857142857,
         "Fiber": 0.0,
         "Sugars, Total": null,
-        "Sodium": 47.922222222222224,
-        "Calcium": 25.093333333333334,
-        "Iron": 0.6302666666666666,
-        "Cholesterol": 55.25555555555556,
-        "Fatty acids, total saturated": 0.9942222222222222,
-        "Vitamin A, RAE": 123.33333333333333,
-        "Vitamin C": 0.9555555555555555,
-        "Vitamin D (D2 + D3)": 10.716666666666669,
-        "Vitamin E": 0.5414814814814815,
-        "Vitamin B-6": 0.3294444444444445,
-        "Vitamin B-12": 4.424444444444444,
-        "Folate, total": 8.444444444444445,
-        "Zinc": 0.6560666666666666,
-        "Magnesium": 29.68333333333333,
-        "Potassium": 362.6333333333334,
-        "Phosphorus": 225.36666666666667
+        "Sodium": 67.86428571428571,
+        "Calcium": 24.745,
+        "Iron": 0.5790999999999998,
+        "Cholesterol": 54.910000000000004,
+        "Fatty acids, total saturated": 0.6491428571428571,
+        "Vitamin A, RAE": 75.85714285714286,
+        "Vitamin C": 1.05,
+        "Vitamin D (D2 + D3)": 4.650649350649352,
+        "Vitamin E": 0.46310245310245307,
+        "Vitamin B-6": 0.3143571428571429,
+        "Vitamin B-12": 3.539857142857142,
+        "Folate, total": 7.642857142857143,
+        "Zinc": 0.61355,
+        "Magnesium": 29.152142857142856,
+        "Potassium": 362.0571428571429,
+        "Phosphorus": 223.8857142857143
       },
       "source_ids": [
         2,
+        3,
+        154,
+        162,
         193,
+        194,
         197,
         199,
+        200,
         201,
         203,
         207,
@@ -104,9 +105,14 @@
       ],
       "source_names": [
         "Fish, salmon, sockeye, wild caught, raw",
+        "Fish, cod, Atlantic, wild caught, raw",
+        "Fish, perch, mixed species, raw",
+        "Fish, lingcod, raw",
         "Fish, bluefish, raw",
+        "Fish, cod, Atlantic, raw",
         "Fish, cisco, raw",
         "Fish, whitefish, mixed species, raw",
+        "Fish, tuna, fresh, yellowfin, raw",
         "Fish, yellowtail, mixed species, raw",
         "Fish, tuna, fresh, bluefin, raw",
         "Fish, trout, rainbow, wild, raw",
@@ -114,9 +120,13 @@
         "Fish, trout, mixed species, raw"
       ],
       "portion_gram_weights": [
+        60.0,
+        28.333333333333332,
         150.0,
+        231.0,
         79.0,
         198.0,
+        28.35,
         374.0,
         28.333333333333332,
         159.0,
@@ -131,60 +141,16 @@
         "undetermined",
         "undetermined",
         "undetermined",
-        "undetermined"
-      ],
-      "count": 9
-    },
-    {
-      "id": 3,
-      "generic_name": "Fish Cod Atlantic Wild Caught Raw",
-      "food_category": "Finfish and Shellfish Products",
-      "nutrients": {
-        "Energy": 87.15201083173996,
-        "Carbohydrate": 0.0,
-        "Protein": 19.42625,
-        "Total fat": 0.6091666666666666,
-        "Fiber": 0.0,
-        "Sugars, Total": null,
-        "Sodium": 132.6,
-        "Calcium": 8.863333333333333,
-        "Iron": 0.405,
-        "Cholesterol": 43.14666666666667,
-        "Fatty acids, total saturated": 0.14466666666666667,
-        "Vitamin A, RAE": 14.0,
-        "Vitamin C": 0.6666666666666666,
-        "Vitamin D (D2 + D3)": 1.1666666666666667,
-        "Vitamin E": 0.5066666666666667,
-        "Vitamin B-6": 0.47433333333333333,
-        "Vitamin B-12": 1.4126666666666665,
-        "Folate, total": 5.333333333333333,
-        "Zinc": 0.37503333333333333,
-        "Magnesium": 28.326666666666668,
-        "Potassium": 366.3666666666666,
-        "Phosphorus": 235.03333333333333
-      },
-      "source_ids": [
-        3,
-        194,
-        200
-      ],
-      "source_names": [
-        "Fish, cod, Atlantic, wild caught, raw",
-        "Fish, cod, Atlantic, raw",
-        "Fish, tuna, fresh, yellowfin, raw"
-      ],
-      "portion_gram_weights": [
-        231.0,
-        28.35
-      ],
-      "portion_unit_names": [
+        "undetermined",
+        "undetermined",
+        "undetermined",
         "undetermined",
         "undetermined"
       ],
-      "count": 3
+      "count": 14
     },
     {
-      "id": 4,
+      "id": 3,
       "generic_name": "Nuts Almonds Dry Roasted With Salt",
       "food_category": "Nut and Seed Products",
       "nutrients": {
@@ -232,7 +198,7 @@
       "count": 4
     },
     {
-      "id": 5,
+      "id": 4,
       "generic_name": "Melon Banana Navajo",
       "food_category": "American Indian/Alaska Native Foods",
       "nutrients": {
@@ -270,7 +236,7 @@
       "count": 1
     },
     {
-      "id": 6,
+      "id": 5,
       "generic_name": "Babyfood Meat Veal Strained",
       "food_category": "Baby Foods",
       "nutrients": {
@@ -312,7 +278,7 @@
       "count": 1
     },
     {
-      "id": 7,
+      "id": 6,
       "generic_name": "Baby Toddler Pears Stage 2",
       "food_category": "Baby food: fruit",
       "nutrients": {
@@ -358,7 +324,7 @@
       "count": 3
     },
     {
-      "id": 8,
+      "id": 7,
       "generic_name": "Baby Toddler Peaches Stage 2",
       "food_category": "Baby food: fruit",
       "nutrients": {
@@ -413,7 +379,7 @@
       "count": 6
     },
     {
-      "id": 9,
+      "id": 8,
       "generic_name": "Bagel Multigrain With Raisins",
       "food_category": "Bagels and English muffins",
       "nutrients": {
@@ -471,7 +437,7 @@
       "count": 7
     },
     {
-      "id": 10,
+      "id": 9,
       "generic_name": "Muffin English",
       "food_category": "Bagels and English muffins",
       "nutrients": {
@@ -535,8 +501,8 @@
       "count": 9
     },
     {
-      "id": 11,
-      "generic_name": "Gluten Free Lemon Wafers",
+      "id": 10,
+      "generic_name": "Gluten Free Lemon Wafer",
       "food_category": "Baked Products",
       "nutrients": {
         "Energy": 515.2963671128107,
@@ -577,7 +543,7 @@
       "count": 1
     },
     {
-      "id": 12,
+      "id": 11,
       "generic_name": "Bagels Cinnamon Raisin Toasted",
       "food_category": "Baked Products",
       "nutrients": {
@@ -623,7 +589,7 @@
       "count": 2
     },
     {
-      "id": 13,
+      "id": 12,
       "generic_name": "Coconut Macaroon Cookie",
       "food_category": "Baked Products",
       "nutrients": {
@@ -669,7 +635,7 @@
       "count": 2
     },
     {
-      "id": 14,
+      "id": 13,
       "generic_name": "Reduced Fat Wheat Crackers",
       "food_category": "Baked Products",
       "nutrients": {
@@ -711,7 +677,7 @@
       "count": 1
     },
     {
-      "id": 15,
+      "id": 14,
       "generic_name": "Whole Wheat Matzo Crackers",
       "food_category": "Baked Products",
       "nutrients": {
@@ -753,7 +719,7 @@
       "count": 1
     },
     {
-      "id": 16,
+      "id": 15,
       "generic_name": "Toasted Rye Bread",
       "food_category": "Baked Products",
       "nutrients": {
@@ -795,7 +761,7 @@
       "count": 1
     },
     {
-      "id": 17,
+      "id": 16,
       "generic_name": "Plain Breadsticks",
       "food_category": "Baked Products",
       "nutrients": {
@@ -837,96 +803,58 @@
       "count": 1
     },
     {
-      "id": 18,
-      "generic_name": "Dry Biscuit Mix",
+      "id": 17,
+      "generic_name": "Buttermilk Biscuit Mix",
       "food_category": "Baked Products",
       "nutrients": {
-        "Energy": 428.0,
-        "Carbohydrate": 63.4,
-        "Protein": 8.0,
-        "Total fat": 15.4,
-        "Fiber": 2.1,
+        "Energy": 383.0,
+        "Carbohydrate": 58.635,
+        "Protein": 7.1,
+        "Total fat": 13.215,
+        "Fiber": 1.7000000000000002,
         "Sugars, Total": null,
-        "Sodium": 1276.0,
-        "Calcium": 179.0,
-        "Iron": 2.77,
-        "Cholesterol": 2.0,
-        "Fatty acids, total saturated": 3.965,
-        "Vitamin A, RAE": 2.0,
-        "Vitamin C": 0.3,
+        "Sodium": 1109.0,
+        "Calcium": 114.0,
+        "Iron": 3.035,
+        "Cholesterol": 1.5,
+        "Fatty acids, total saturated": 2.8205,
+        "Vitamin A, RAE": 1.0,
+        "Vitamin C": 0.15,
         "Vitamin D (D2 + D3)": 0.0,
-        "Vitamin E": 0.13,
-        "Vitamin B-6": 0.076,
-        "Vitamin B-12": 0.39,
-        "Folate, total": 125.0,
-        "Zinc": 0.6,
-        "Magnesium": 25.0,
-        "Potassium": 163.0,
-        "Phosphorus": 585.0
+        "Vitamin E": 0.7250000000000001,
+        "Vitamin B-6": 0.0615,
+        "Vitamin B-12": 0.265,
+        "Folate, total": 97.5,
+        "Zinc": 0.54,
+        "Magnesium": 21.0,
+        "Potassium": 193.5,
+        "Phosphorus": 507.5
       },
       "source_ids": [
-        41
-      ],
-      "source_names": [
-        "Biscuits, plain or buttermilk, dry mix"
-      ],
-      "portion_gram_weights": [
-        28.35
-      ],
-      "portion_unit_names": [
-        "undetermined"
-      ],
-      "count": 1
-    },
-    {
-      "id": 19,
-      "generic_name": "Frozen Baked Biscuits",
-      "food_category": "Baked Products",
-      "nutrients": {
-        "Energy": 338.0,
-        "Carbohydrate": 53.87,
-        "Protein": 6.2,
-        "Total fat": 11.03,
-        "Fiber": 1.3,
-        "Sugars, Total": null,
-        "Sodium": 942.0,
-        "Calcium": 49.0,
-        "Iron": 3.3,
-        "Cholesterol": 1.0,
-        "Fatty acids, total saturated": 1.676,
-        "Vitamin A, RAE": 0.0,
-        "Vitamin C": 0.0,
-        "Vitamin D (D2 + D3)": 0.0,
-        "Vitamin E": 1.32,
-        "Vitamin B-6": 0.047,
-        "Vitamin B-12": 0.14,
-        "Folate, total": 70.0,
-        "Zinc": 0.48,
-        "Magnesium": 17.0,
-        "Potassium": 224.0,
-        "Phosphorus": 430.0
-      },
-      "source_ids": [
+        41,
         42
       ],
       "source_names": [
+        "Biscuits, plain or buttermilk, dry mix",
         "Biscuits, plain or buttermilk, frozen, baked"
       ],
       "portion_gram_weights": [
+        28.35,
         28.35
       ],
       "portion_unit_names": [
+        "undetermined",
         "undetermined"
       ],
-      "count": 1
+      "count": 2
     },
     {
-      "id": 20,
-      "generic_name": "Canned Beans With Added Fat",
+      "id": 18,
+      "generic_name": "Canned Kidney Beans Reduced Sodium",
       "food_category": "Beans, peas, legumes",
       "nutrients": {
         "Energy": 190.0,
-        "Carbohydrate": 25.051999999999996,
+        "Carbohydrate": 25.052,
         "Protein": 8.542999999999997,
         "Total fat": 6.578,
         "Fiber": 8.069999999999999,
@@ -940,37 +868,37 @@
         "Vitamin C": 1.7399999999999998,
         "Vitamin D (D2 + D3)": 0.0,
         "Vitamin E": 1.8850000000000002,
-        "Vitamin B-6": 0.143,
+        "Vitamin B-6": 0.14300000000000002,
         "Vitamin B-12": 0.0,
         "Folate, total": 72.8,
-        "Zinc": 0.8959999999999999,
+        "Zinc": 0.8960000000000001,
         "Magnesium": 54.9,
         "Potassium": 441.2,
         "Phosphorus": 161.1
       },
       "source_ids": [
-        46,
+        47,
         48,
-        58,
         43,
         44,
         45,
-        47,
+        46,
         54,
         55,
-        56
+        56,
+        58
       ],
       "source_names": [
-        "Beans, from canned, NS as to type, fat added",
+        "Kidney beans, from canned, reduced sodium",
         "Kidney beans, from canned, fat added",
-        "Black beans, from canned, fat added",
         "Pinto beans, from canned, reduced sodium",
         "Pinto beans, from canned, fat added",
         "Beans, from dried, NS as to type, fat added",
-        "Kidney beans, from canned, reduced sodium",
+        "Beans, from canned, NS as to type, fat added",
         "White beans, from canned, reduced sodium",
         "White beans, from canned, fat added",
-        "Black beans, from canned, reduced sodium"
+        "Black beans, from canned, reduced sodium",
+        "Black beans, from canned, fat added"
       ],
       "portion_gram_weights": [],
       "portion_unit_names": [
@@ -988,7 +916,7 @@
       "count": 10
     },
     {
-      "id": 21,
+      "id": 19,
       "generic_name": "Vegetarian Baked Beans",
       "food_category": "Beans, peas, legumes",
       "nutrients": {
@@ -1034,7 +962,7 @@
       "count": 3
     },
     {
-      "id": 22,
+      "id": 20,
       "generic_name": "Refried Beans",
       "food_category": "Beans, peas, legumes",
       "nutrients": {
@@ -1077,8 +1005,8 @@
       "count": 2
     },
     {
-      "id": 23,
-      "generic_name": "Cooked Black Beans",
+      "id": 21,
+      "generic_name": "Dried Black Beans",
       "food_category": "Beans, peas, legumes",
       "nutrients": {
         "Energy": 131.0,
@@ -1117,7 +1045,7 @@
       "count": 1
     },
     {
-      "id": 24,
+      "id": 22,
       "generic_name": "Lean Ground Beef",
       "food_category": "Beef Products",
       "nutrients": {
@@ -1159,7 +1087,7 @@
       "count": 1
     },
     {
-      "id": 25,
+      "id": 23,
       "generic_name": "Beef Ribeye Steak",
       "food_category": "Beef, excludes ground",
       "nutrients": {
@@ -1199,103 +1127,283 @@
       "count": 1
     },
     {
-      "id": 26,
+      "id": 24,
       "generic_name": "Soy Protein Powder",
       "food_category": "Beverages",
       "nutrients": {
-        "Energy": 392.40917782026764,
-        "Carbohydrate": 30.26,
-        "Protein": 56.61666666666667,
-        "Total fat": 4.753333333333333,
-        "Fiber": 2.2333333333333334,
+        "Energy": 382.30688336520075,
+        "Carbohydrate": 24.2575,
+        "Protein": 61.995000000000005,
+        "Total fat": 3.9549999999999996,
+        "Fiber": 2.45,
         "Sugars, Total": null,
-        "Sodium": 523.3333333333334,
-        "Calcium": 176.33333333333334,
-        "Iron": 6.45,
-        "Cholesterol": 68.33333333333333,
-        "Fatty acids, total saturated": 1.2249999999999999,
-        "Vitamin A, RAE": 5.0,
-        "Vitamin C": 0.26666666666666666,
+        "Sodium": 431.5,
+        "Calcium": 249.5,
+        "Iron": 5.12,
+        "Cholesterol": 55.25,
+        "Fatty acids, total saturated": 1.114,
+        "Vitamin A, RAE": 3.75,
+        "Vitamin C": 0.2,
         "Vitamin D (D2 + D3)": 0.0,
-        "Vitamin E": 0.16666666666666666,
-        "Vitamin B-6": 0.407,
-        "Vitamin B-12": 0.7566666666666667,
-        "Folate, total": 196.33333333333334,
-        "Zinc": 5.343333333333334,
-        "Magnesium": 89.0,
-        "Potassium": 737.0,
-        "Phosphorus": 785.3333333333334
+        "Vitamin E": 0.125,
+        "Vitamin B-6": 0.457,
+        "Vitamin B-12": 1.1800000000000002,
+        "Folate, total": 155.5,
+        "Zinc": 5.5525,
+        "Magnesium": 115.5,
+        "Potassium": 677.75,
+        "Phosphorus": 919.25
       },
       "source_ids": [
         61,
+        90,
         62,
-        90
+        89
       ],
       "source_names": [
         "Beverages, ABBOTT, EAS soy protein powder",
+        "Beverages, Protein powder soy based",
         "Beverages, ABBOTT, EAS whey protein powder",
-        "Beverages, Protein powder soy based"
+        "Beverages, Protein powder whey based"
       ],
       "portion_gram_weights": [
         44.0,
+        45.0,
         19.5,
-        45.0
+        96.96969696969695
       ],
       "portion_unit_names": [
         "undetermined",
         "undetermined",
+        "undetermined",
         "undetermined"
       ],
-      "count": 3
+      "count": 4
     },
     {
-      "id": 27,
-      "generic_name": "Lemonade Powder",
+      "id": 25,
+      "generic_name": "Powdered Lemonade",
       "food_category": "Beverages",
       "nutrients": {
-        "Energy": 370.7066921606118,
-        "Carbohydrate": 91.43199999999999,
-        "Protein": 2.44,
-        "Total fat": 0.512,
-        "Fiber": 0.08,
+        "Energy": 378.24856596558317,
+        "Carbohydrate": 97.735,
+        "Protein": 0.0,
+        "Total fat": 1.03,
+        "Fiber": 0.2,
         "Sugars, Total": null,
-        "Sodium": 276.8,
-        "Calcium": 398.0,
-        "Iron": 7.497999999999999,
+        "Sodium": 90.5,
+        "Calcium": 15.5,
+        "Iron": 0.18,
         "Cholesterol": 0.0,
-        "Fatty acids, total saturated": 0.10619999999999999,
-        "Vitamin A, RAE": 546.0,
-        "Vitamin C": 37.9,
-        "Vitamin D (D2 + D3)": 3.6399999999999997,
-        "Vitamin E": 4.952,
-        "Vitamin B-6": 0.7382,
+        "Fatty acids, total saturated": 0.16699999999999998,
+        "Vitamin A, RAE": 0.0,
+        "Vitamin C": 40.25,
+        "Vitamin D (D2 + D3)": 0.0,
+        "Vitamin E": 0.11000000000000001,
+        "Vitamin B-6": 0.013,
         "Vitamin B-12": 0.0,
-        "Folate, total": 1.2,
-        "Zinc": 5.552000000000001,
-        "Magnesium": 235.0,
-        "Potassium": 744.2,
-        "Phosphorus": 81.2
+        "Folate, total": 3.0,
+        "Zinc": 0.065,
+        "Magnesium": 206.0,
+        "Potassium": 93.0,
+        "Phosphorus": 51.5
       },
       "source_ids": [
         63,
-        87,
-        88,
-        91,
         92
       ],
       "source_names": [
         "Beverages, Lemonade, powder",
-        "Beverages, OVALTINE, Classic Malt powder",
-        "Beverages, OVALTINE, chocolate malt powder",
-        "Beverages, coffee, instant, regular, powder",
         "Beverages, lemonade-flavor drink, powder"
       ],
       "portion_gram_weights": [
         18.0,
-        21.0,
-        21.0,
-        1.0,
         58.0
+      ],
+      "portion_unit_names": [
+        "undetermined",
+        "undetermined"
+      ],
+      "count": 2
+    },
+    {
+      "id": 26,
+      "generic_name": "Cocoa Mix Powder",
+      "food_category": "Beverages",
+      "nutrients": {
+        "Energy": 387.3527724665392,
+        "Carbohydrate": 77.83000000000001,
+        "Protein": 11.08,
+        "Total fat": 3.5,
+        "Fiber": 5.6,
+        "Sugars, Total": null,
+        "Sodium": 690.0,
+        "Calcium": 354.5,
+        "Iron": 3.075,
+        "Cholesterol": 0.0,
+        "Fatty acids, total saturated": 2.077,
+        "Vitamin A, RAE": 2.5,
+        "Vitamin C": 0.1,
+        "Vitamin D (D2 + D3)": 0.0,
+        "Vitamin E": 0.115,
+        "Vitamin B-6": 0.216,
+        "Vitamin B-12": 0.7649999999999999,
+        "Folate, total": 10.0,
+        "Zinc": 2.45,
+        "Magnesium": 145.5,
+        "Potassium": 1707.0,
+        "Phosphorus": 604.0
+      },
+      "source_ids": [
+        64,
+        65
+      ],
+      "source_names": [
+        "Beverages, Cocoa mix, powder",
+        "Beverages, Cocoa mix, no sugar added, powder"
+      ],
+      "portion_gram_weights": [
+        28.0,
+        19.0
+      ],
+      "portion_unit_names": [
+        "undetermined",
+        "undetermined"
+      ],
+      "count": 2
+    },
+    {
+      "id": 27,
+      "generic_name": "Claret Red Wine",
+      "food_category": "Beverages",
+      "nutrients": {
+        "Energy": 83.17399617590821,
+        "Carbohydrate": 3.01,
+        "Protein": 0.07,
+        "Total fat": 0.0,
+        "Fiber": null,
+        "Sugars, Total": null,
+        "Sodium": null,
+        "Calcium": null,
+        "Iron": null,
+        "Cholesterol": null,
+        "Fatty acids, total saturated": null,
+        "Vitamin A, RAE": null,
+        "Vitamin C": null,
+        "Vitamin D (D2 + D3)": null,
+        "Vitamin E": null,
+        "Vitamin B-6": null,
+        "Vitamin B-12": null,
+        "Folate, total": null,
+        "Zinc": null,
+        "Magnesium": null,
+        "Potassium": null,
+        "Phosphorus": null
+      },
+      "source_ids": [
+        66
+      ],
+      "source_names": [
+        "Alcoholic Beverage, wine, table, red, Claret"
+      ],
+      "portion_gram_weights": [
+        147.0
+      ],
+      "portion_unit_names": [
+        "undetermined"
+      ],
+      "count": 1
+    },
+    {
+      "id": 28,
+      "generic_name": "Gamay Red Wine",
+      "food_category": "Beverages",
+      "nutrients": {
+        "Energy": 77.91586998087953,
+        "Carbohydrate": 2.38,
+        "Protein": 0.07,
+        "Total fat": 0.0,
+        "Fiber": null,
+        "Sugars, Total": null,
+        "Sodium": null,
+        "Calcium": null,
+        "Iron": null,
+        "Cholesterol": null,
+        "Fatty acids, total saturated": null,
+        "Vitamin A, RAE": null,
+        "Vitamin C": null,
+        "Vitamin D (D2 + D3)": null,
+        "Vitamin E": null,
+        "Vitamin B-6": null,
+        "Vitamin B-12": null,
+        "Folate, total": null,
+        "Zinc": null,
+        "Magnesium": null,
+        "Potassium": null,
+        "Phosphorus": null
+      },
+      "source_ids": [
+        67
+      ],
+      "source_names": [
+        "Alcoholic Beverage, wine, table, red, Gamay"
+      ],
+      "portion_gram_weights": [
+        29.4
+      ],
+      "portion_unit_names": [
+        "undetermined"
+      ],
+      "count": 1
+    },
+    {
+      "id": 29,
+      "generic_name": "Merlot Red Wine",
+      "food_category": "Beverages",
+      "nutrients": {
+        "Energy": 83.26959847036328,
+        "Carbohydrate": 2.604,
+        "Protein": 0.07,
+        "Total fat": 0.0,
+        "Fiber": 0.0,
+        "Sugars, Total": null,
+        "Sodium": 4.4,
+        "Calcium": 8.2,
+        "Iron": 0.404,
+        "Cholesterol": 0.0,
+        "Fatty acids, total saturated": 0.0,
+        "Vitamin A, RAE": 0.0,
+        "Vitamin C": 0.0,
+        "Vitamin D (D2 + D3)": 0.0,
+        "Vitamin E": 0.0,
+        "Vitamin B-6": 0.05500000000000001,
+        "Vitamin B-12": 0.0,
+        "Folate, total": 1.0,
+        "Zinc": 0.134,
+        "Magnesium": 11.4,
+        "Potassium": 110.2,
+        "Phosphorus": 21.4
+      },
+      "source_ids": [
+        68,
+        69,
+        76,
+        77,
+        78
+      ],
+      "source_names": [
+        "Alcoholic Beverage, wine, table, red, Merlot",
+        "Alcoholic Beverage, wine, table, red, Syrah",
+        "Alcoholic beverage, wine, table, all",
+        "Alcoholic beverage, wine, table, red",
+        "Alcoholic beverage, wine, table, white"
+      ],
+      "portion_gram_weights": [
+        29.4,
+        29.4,
+        29.5,
+        29.4,
+        29.4
       ],
       "portion_unit_names": [
         "undetermined",
@@ -1307,146 +1415,8 @@
       "count": 5
     },
     {
-      "id": 28,
-      "generic_name": "Cocoa Mix Powder",
-      "food_category": "Beverages",
-      "nutrients": {
-        "Energy": 397.7055449330784,
-        "Carbohydrate": 83.73,
-        "Protein": 6.67,
-        "Total fat": 4.0,
-        "Fiber": 3.7,
-        "Sugars, Total": null,
-        "Sodium": 504.0,
-        "Calcium": 133.0,
-        "Iron": 1.19,
-        "Cholesterol": 0.0,
-        "Fatty acids, total saturated": 2.377,
-        "Vitamin A, RAE": 1.0,
-        "Vitamin C": 0.2,
-        "Vitamin D (D2 + D3)": 0.0,
-        "Vitamin E": 0.19,
-        "Vitamin B-6": 0.114,
-        "Vitamin B-12": 0.35,
-        "Folate, total": 6.0,
-        "Zinc": 1.46,
-        "Magnesium": 83.0,
-        "Potassium": 712.0,
-        "Phosphorus": 315.0
-      },
-      "source_ids": [
-        64
-      ],
-      "source_names": [
-        "Beverages, Cocoa mix, powder"
-      ],
-      "portion_gram_weights": [
-        28.0
-      ],
-      "portion_unit_names": [
-        "undetermined"
-      ],
-      "count": 1
-    },
-    {
-      "id": 29,
-      "generic_name": "No Sugar Cocoa Mix",
-      "food_category": "Beverages",
-      "nutrients": {
-        "Energy": 377.0,
-        "Carbohydrate": 71.93,
-        "Protein": 15.49,
-        "Total fat": 3.0,
-        "Fiber": 7.5,
-        "Sugars, Total": null,
-        "Sodium": 876.0,
-        "Calcium": 576.0,
-        "Iron": 4.96,
-        "Cholesterol": 0.0,
-        "Fatty acids, total saturated": 1.777,
-        "Vitamin A, RAE": 4.0,
-        "Vitamin C": 0.0,
-        "Vitamin D (D2 + D3)": 0.0,
-        "Vitamin E": 0.04,
-        "Vitamin B-6": 0.318,
-        "Vitamin B-12": 1.18,
-        "Folate, total": 14.0,
-        "Zinc": 3.44,
-        "Magnesium": 208.0,
-        "Potassium": 2702.0,
-        "Phosphorus": 893.0
-      },
-      "source_ids": [
-        65
-      ],
-      "source_names": [
-        "Beverages, Cocoa mix, no sugar added, powder"
-      ],
-      "portion_gram_weights": [
-        19.0
-      ],
-      "portion_unit_names": [
-        "undetermined"
-      ],
-      "count": 1
-    },
-    {
       "id": 30,
-      "generic_name": "Red Table Wine",
-      "food_category": "Beverages",
-      "nutrients": {
-        "Energy": 81.85946462715104,
-        "Carbohydrate": 2.62,
-        "Protein": 0.07,
-        "Total fat": 0.0,
-        "Fiber": 0.0,
-        "Sugars, Total": null,
-        "Sodium": 4.0,
-        "Calcium": 8.0,
-        "Iron": 0.46,
-        "Cholesterol": null,
-        "Fatty acids, total saturated": null,
-        "Vitamin A, RAE": null,
-        "Vitamin C": 0.0,
-        "Vitamin D (D2 + D3)": null,
-        "Vitamin E": null,
-        "Vitamin B-6": 0.057,
-        "Vitamin B-12": 0.0,
-        "Folate, total": 1.0,
-        "Zinc": 0.14,
-        "Magnesium": 12.0,
-        "Potassium": 127.0,
-        "Phosphorus": 23.0
-      },
-      "source_ids": [
-        66,
-        67,
-        68,
-        69
-      ],
-      "source_names": [
-        "Alcoholic Beverage, wine, table, red, Claret",
-        "Alcoholic Beverage, wine, table, red, Gamay",
-        "Alcoholic Beverage, wine, table, red, Merlot",
-        "Alcoholic Beverage, wine, table, red, Syrah"
-      ],
-      "portion_gram_weights": [
-        147.0,
-        29.4,
-        29.4,
-        29.4
-      ],
-      "portion_unit_names": [
-        "undetermined",
-        "undetermined",
-        "undetermined",
-        "undetermined"
-      ],
-      "count": 4
-    },
-    {
-      "id": 31,
-      "generic_name": "Light Beer",
+      "generic_name": "Light Lager Beer",
       "food_category": "Beverages",
       "nutrients": {
         "Energy": 29.198852772466537,
@@ -1491,102 +1461,92 @@
       "count": 2
     },
     {
+      "id": 31,
+      "generic_name": "American Lager Beer",
+      "food_category": "Beverages",
+      "nutrients": {
+        "Energy": 41.0,
+        "Carbohydrate": 2.97,
+        "Protein": 0.36,
+        "Total fat": 0.0,
+        "Fiber": 0.0,
+        "Sugars, Total": null,
+        "Sodium": 3.0,
+        "Calcium": 4.0,
+        "Iron": 0.0,
+        "Cholesterol": 0.0,
+        "Fatty acids, total saturated": null,
+        "Vitamin A, RAE": null,
+        "Vitamin C": null,
+        "Vitamin D (D2 + D3)": null,
+        "Vitamin E": null,
+        "Vitamin B-6": null,
+        "Vitamin B-12": null,
+        "Folate, total": null,
+        "Zinc": 0.0,
+        "Magnesium": 7.0,
+        "Potassium": 33.0,
+        "Phosphorus": 13.0
+      },
+      "source_ids": [
+        72
+      ],
+      "source_names": [
+        "Alcoholic beverage, beer, regular, BUDWEISER"
+      ],
+      "portion_gram_weights": [
+        29.8
+      ],
+      "portion_unit_names": [
+        "undetermined"
+      ],
+      "count": 1
+    },
+    {
       "id": 32,
       "generic_name": "Regular Beer",
       "food_category": "Beverages",
       "nutrients": {
-        "Energy": 51.65842665938269,
-        "Carbohydrate": 8.16,
-        "Protein": 0.11714285714285715,
-        "Total fat": 0.02,
-        "Fiber": 0.17857142857142855,
+        "Energy": 43.0,
+        "Carbohydrate": 3.55,
+        "Protein": 0.46,
+        "Total fat": 0.0,
+        "Fiber": 0.0,
         "Sugars, Total": null,
-        "Sodium": 10.357142857142858,
-        "Calcium": 8.214285714285714,
-        "Iron": 0.12285714285714289,
-        "Cholesterol": 0.07142857142857142,
-        "Fatty acids, total saturated": 0.00028571428571428574,
-        "Vitamin A, RAE": 0.35714285714285715,
-        "Vitamin C": 12.15,
+        "Sodium": 4.0,
+        "Calcium": 4.0,
+        "Iron": 0.02,
+        "Cholesterol": 0.0,
+        "Fatty acids, total saturated": 0.0,
+        "Vitamin A, RAE": 0.0,
+        "Vitamin C": 0.0,
         "Vitamin D (D2 + D3)": 0.0,
         "Vitamin E": 0.0,
-        "Vitamin B-6": 0.020714285714285716,
-        "Vitamin B-12": 0.002857142857142857,
-        "Folate, total": 3.5785714285714283,
-        "Zinc": 0.05357142857142858,
-        "Magnesium": 4.214285714285714,
-        "Potassium": 33.214285714285715,
-        "Phosphorus": 8.5
+        "Vitamin B-6": 0.046,
+        "Vitamin B-12": 0.02,
+        "Folate, total": 6.0,
+        "Zinc": 0.01,
+        "Magnesium": 6.0,
+        "Potassium": 27.0,
+        "Phosphorus": 14.0
       },
       "source_ids": [
-        72,
-        73,
-        76,
-        77,
-        78,
-        80,
-        81,
-        82,
-        83,
-        84,
-        85,
-        86,
-        93,
-        94
+        73
       ],
       "source_names": [
-        "Alcoholic beverage, beer, regular, BUDWEISER",
-        "Alcoholic beverage, beer, regular, all",
-        "Alcoholic beverage, wine, table, all",
-        "Alcoholic beverage, wine, table, red",
-        "Alcoholic beverage, wine, table, white",
-        "Water, bottled, generic",
-        "Beverages, carbonated, cola, fast-food cola",
-        "Beverages, carbonated, cola, regular",
-        "Beverages, OCEAN SPRAY, Cran Cherry",
-        "Beverages, OCEAN SPRAY, Cran Grape",
-        "Beverages, OCEAN SPRAY, Cran Lemonade",
-        "Beverages, OCEAN SPRAY, Cran Pomegranate",
-        "Beverages, grape juice drink, canned",
-        "Beverages, grape drink, canned"
+        "Alcoholic beverage, beer, regular, all"
       ],
       "portion_gram_weights": [
-        29.8,
-        29.7,
-        29.5,
-        29.4,
-        29.4,
-        237.0,
-        258.0,
-        30.7,
-        31.0,
-        30.0,
-        30.875,
-        31.0,
-        227.0,
-        250.0
+        29.7
       ],
       "portion_unit_names": [
-        "undetermined",
-        "undetermined",
-        "undetermined",
-        "undetermined",
-        "undetermined",
-        "undetermined",
-        "undetermined",
-        "undetermined",
-        "undetermined",
-        "undetermined",
-        "undetermined",
-        "undetermined",
-        "undetermined",
         "undetermined"
       ],
-      "count": 14
+      "count": 1
     },
     {
       "id": 33,
-      "generic_name": "Alcoholic Beverage Wine Dessert Dry",
+      "generic_name": "Dry Dessert Wine",
       "food_category": "Beverages",
       "nutrients": {
         "Energy": 156.42925430210323,
@@ -1632,7 +1592,7 @@
     },
     {
       "id": 34,
-      "generic_name": "Lemonade Powder Prepared With Water",
+      "generic_name": "Prepared Lemonade Drink",
       "food_category": "Beverages",
       "nutrients": {
         "Energy": 14.0,
@@ -1674,40 +1634,40 @@
     },
     {
       "id": 35,
-      "generic_name": "Beverages Protein Powder Whey Based",
+      "generic_name": "Bottled Water",
       "food_category": "Beverages",
       "nutrients": {
-        "Energy": 352.0,
-        "Carbohydrate": 6.25,
-        "Protein": 78.13,
-        "Total fat": 1.56,
-        "Fiber": 3.1,
+        "Energy": 0.0,
+        "Carbohydrate": 0.0,
+        "Protein": 0.0,
+        "Total fat": 0.0,
+        "Fiber": 0.0,
         "Sugars, Total": null,
-        "Sodium": 156.0,
-        "Calcium": 469.0,
-        "Iron": 1.13,
-        "Cholesterol": 16.0,
-        "Fatty acids, total saturated": 0.781,
+        "Sodium": 2.0,
+        "Calcium": 10.0,
+        "Iron": 0.0,
+        "Cholesterol": 0.0,
+        "Fatty acids, total saturated": 0.0,
         "Vitamin A, RAE": 0.0,
         "Vitamin C": 0.0,
         "Vitamin D (D2 + D3)": 0.0,
         "Vitamin E": 0.0,
-        "Vitamin B-6": 0.607,
-        "Vitamin B-12": 2.45,
-        "Folate, total": 33.0,
-        "Zinc": 6.18,
-        "Magnesium": 195.0,
-        "Potassium": 500.0,
-        "Phosphorus": 1321.0
+        "Vitamin B-6": 0.0,
+        "Vitamin B-12": 0.0,
+        "Folate, total": 0.0,
+        "Zinc": 0.0,
+        "Magnesium": 2.0,
+        "Potassium": 0.0,
+        "Phosphorus": 0.0
       },
       "source_ids": [
-        89
+        80
       ],
       "source_names": [
-        "Beverages, Protein powder whey based"
+        "Water, bottled, generic"
       ],
       "portion_gram_weights": [
-        96.96969696969695
+        237.0
       ],
       "portion_unit_names": [
         "undetermined"
@@ -1716,18 +1676,214 @@
     },
     {
       "id": 36,
-      "generic_name": "Beverages Tea Green Brewed Regular",
+      "generic_name": "Fast Food Cola",
       "food_category": "Beverages",
       "nutrients": {
-        "Energy": 0.4780114722753346,
-        "Carbohydrate": 0.0,
-        "Protein": 0.11,
+        "Energy": 39.53250478011472,
+        "Carbohydrate": 9.96,
+        "Protein": 0.035,
+        "Total fat": 0.135,
+        "Fiber": 0.0,
+        "Sugars, Total": null,
+        "Sodium": 3.5,
+        "Calcium": 1.5,
+        "Iron": 0.065,
+        "Cholesterol": 0.0,
+        "Fatty acids, total saturated": 0.0,
+        "Vitamin A, RAE": 0.0,
+        "Vitamin C": 0.0,
+        "Vitamin D (D2 + D3)": 0.0,
+        "Vitamin E": 0.0,
+        "Vitamin B-6": 0.0,
+        "Vitamin B-12": 0.0,
+        "Folate, total": 0.0,
+        "Zinc": 0.055,
+        "Magnesium": 0.0,
+        "Potassium": 3.5,
+        "Phosphorus": 9.5
+      },
+      "source_ids": [
+        81,
+        82
+      ],
+      "source_names": [
+        "Beverages, carbonated, cola, fast-food cola",
+        "Beverages, carbonated, cola, regular"
+      ],
+      "portion_gram_weights": [
+        258.0,
+        30.7
+      ],
+      "portion_unit_names": [
+        "undetermined",
+        "undetermined"
+      ],
+      "count": 2
+    },
+    {
+      "id": 37,
+      "generic_name": "Cranberry Cherry Juice",
+      "food_category": "Beverages",
+      "nutrients": {
+        "Energy": 51.69216061185468,
+        "Carbohydrate": 13.311666666666667,
+        "Protein": 0.09000000000000001,
+        "Total fat": 0.0016666666666666668,
+        "Fiber": 0.4166666666666667,
+        "Sugars, Total": null,
+        "Sodium": 19.166666666666668,
+        "Calcium": 11.5,
+        "Iron": 0.07833333333333334,
+        "Cholesterol": 0.16666666666666666,
+        "Fatty acids, total saturated": 0.0006666666666666666,
+        "Vitamin A, RAE": 0.8333333333333334,
+        "Vitamin C": 28.349999999999998,
+        "Vitamin D (D2 + D3)": 0.0,
+        "Vitamin E": 0.0,
+        "Vitamin B-6": 0.0061666666666666675,
+        "Vitamin B-12": 0.0,
+        "Folate, total": 7.333333333333333,
+        "Zinc": 0.04,
+        "Magnesium": 1.8333333333333333,
+        "Potassium": 16.833333333333332,
+        "Phosphorus": 2.0
+      },
+      "source_ids": [
+        83,
+        84,
+        85,
+        86,
+        93,
+        94
+      ],
+      "source_names": [
+        "Beverages, OCEAN SPRAY, Cran Cherry",
+        "Beverages, OCEAN SPRAY, Cran Grape",
+        "Beverages, OCEAN SPRAY, Cran Lemonade",
+        "Beverages, OCEAN SPRAY, Cran Pomegranate",
+        "Beverages, grape juice drink, canned",
+        "Beverages, grape drink, canned"
+      ],
+      "portion_gram_weights": [
+        31.0,
+        30.0,
+        30.875,
+        31.0,
+        227.0,
+        250.0
+      ],
+      "portion_unit_names": [
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined"
+      ],
+      "count": 6
+    },
+    {
+      "id": 38,
+      "generic_name": "Malt Beverage Powder",
+      "food_category": "Beverages",
+      "nutrients": {
+        "Energy": 371.7734225621415,
+        "Carbohydrate": 93.145,
+        "Protein": 0.0,
         "Total fat": 0.0,
         "Fiber": 0.0,
         "Sugars, Total": null,
-        "Sodium": 0.5,
+        "Sodium": 583.0,
+        "Calcium": 909.0,
+        "Iron": 16.36,
+        "Cholesterol": 0.0,
+        "Fatty acids, total saturated": 0.0,
+        "Vitamin A, RAE": 1365.0,
+        "Vitamin C": 54.5,
+        "Vitamin D (D2 + D3)": 9.1,
+        "Vitamin E": 12.27,
+        "Vitamin B-6": 1.818,
+        "Vitamin B-12": 0.0,
+        "Folate, total": 0.0,
+        "Zinc": 13.64,
+        "Magnesium": 218.0,
+        "Potassium": 0.0,
+        "Phosphorus": 0.0
+      },
+      "source_ids": [
+        87,
+        88
+      ],
+      "source_names": [
+        "Beverages, OVALTINE, Classic Malt powder",
+        "Beverages, OVALTINE, chocolate malt powder"
+      ],
+      "portion_gram_weights": [
+        21.0,
+        21.0
+      ],
+      "portion_unit_names": [
+        "undetermined",
+        "undetermined"
+      ],
+      "count": 2
+    },
+    {
+      "id": 39,
+      "generic_name": "Instant Coffee Powder",
+      "food_category": "Beverages",
+      "nutrients": {
+        "Energy": 353.48948374760994,
+        "Carbohydrate": 75.4,
+        "Protein": 12.2,
+        "Total fat": 0.5,
+        "Fiber": 0.0,
+        "Sugars, Total": null,
+        "Sodium": 37.0,
+        "Calcium": 141.0,
+        "Iron": 4.41,
+        "Cholesterol": 0.0,
+        "Fatty acids, total saturated": 0.197,
+        "Vitamin A, RAE": 0.0,
+        "Vitamin C": 0.0,
+        "Vitamin D (D2 + D3)": 0.0,
+        "Vitamin E": 0.0,
+        "Vitamin B-6": 0.029,
+        "Vitamin B-12": 0.0,
+        "Folate, total": 0.0,
+        "Zinc": 0.35,
+        "Magnesium": 327.0,
+        "Potassium": 3535.0,
+        "Phosphorus": 303.0
+      },
+      "source_ids": [
+        91
+      ],
+      "source_names": [
+        "Beverages, coffee, instant, regular, powder"
+      ],
+      "portion_gram_weights": [
+        1.0
+      ],
+      "portion_unit_names": [
+        "undetermined"
+      ],
+      "count": 1
+    },
+    {
+      "id": 40,
+      "generic_name": "Green Tea Brewed",
+      "food_category": "Beverages",
+      "nutrients": {
+        "Energy": 0.9560229445506692,
+        "Carbohydrate": 0.0,
+        "Protein": 0.22,
+        "Total fat": 0.0,
+        "Fiber": 0.0,
+        "Sugars, Total": null,
+        "Sodium": 1.0,
         "Calcium": 0.0,
-        "Iron": 0.01,
+        "Iron": 0.02,
         "Cholesterol": 0.0,
         "Fatty acids, total saturated": 0.0,
         "Vitamin A, RAE": 0.0,
@@ -1739,76 +1895,76 @@
         "Folate, total": 0.0,
         "Zinc": 0.01,
         "Magnesium": 1.0,
-        "Potassium": 11.5,
+        "Potassium": 8.0,
         "Phosphorus": 0.0
       },
       "source_ids": [
-        95,
+        95
+      ],
+      "source_names": [
+        "Beverages, tea, green, brewed, regular"
+      ],
+      "portion_gram_weights": [
+        29.6
+      ],
+      "portion_unit_names": [
+        "undetermined"
+      ],
+      "count": 1
+    },
+    {
+      "id": 41,
+      "generic_name": "Instant Tea Powder",
+      "food_category": "Beverages",
+      "nutrients": {
+        "Energy": 220.0,
+        "Carbohydrate": 45.72666666666667,
+        "Protein": 9.203333333333333,
+        "Total fat": 0.06,
+        "Fiber": 4.5,
+        "Sugars, Total": null,
+        "Sodium": 42.333333333333336,
+        "Calcium": 48.666666666666664,
+        "Iron": 1.0033333333333332,
+        "Cholesterol": 0.0,
+        "Fatty acids, total saturated": 0.015666666666666666,
+        "Vitamin A, RAE": 0.0,
+        "Vitamin C": 0.0,
+        "Vitamin D (D2 + D3)": 0.0,
+        "Vitamin E": 0.03,
+        "Vitamin B-6": 0.19466666666666665,
+        "Vitamin B-12": 0.0,
+        "Folate, total": 54.666666666666664,
+        "Zinc": 0.8933333333333332,
+        "Magnesium": 137.33333333333334,
+        "Potassium": 3169.3333333333335,
+        "Phosphorus": 115.33333333333333
+      },
+      "source_ids": [
+        96,
+        97,
         98
       ],
       "source_names": [
-        "Beverages, tea, green, brewed, regular",
+        "Beverages, tea, instant, unsweetened, powder",
+        "Beverages, tea, instant, lemon, unsweetened",
         "Beverages, tea, green, brewed, decaffeinated"
       ],
       "portion_gram_weights": [
-        29.6,
+        0.7,
+        5.65,
         1.0
       ],
       "portion_unit_names": [
         "undetermined",
-        "undetermined"
-      ],
-      "count": 2
-    },
-    {
-      "id": 37,
-      "generic_name": "Instant Unsweetened Tea Powder",
-      "food_category": "Beverages",
-      "nutrients": {
-        "Energy": 330.0,
-        "Carbohydrate": 68.59,
-        "Protein": 13.805,
-        "Total fat": 0.09,
-        "Fiber": 6.75,
-        "Sugars, Total": null,
-        "Sodium": 63.5,
-        "Calcium": 73.0,
-        "Iron": 1.505,
-        "Cholesterol": 0.0,
-        "Fatty acids, total saturated": 0.0235,
-        "Vitamin A, RAE": 0.0,
-        "Vitamin C": 0.0,
-        "Vitamin D (D2 + D3)": 0.0,
-        "Vitamin E": 0.045,
-        "Vitamin B-6": 0.2895,
-        "Vitamin B-12": 0.0,
-        "Folate, total": 82.0,
-        "Zinc": 1.335,
-        "Magnesium": 205.5,
-        "Potassium": 4746.5,
-        "Phosphorus": 173.0
-      },
-      "source_ids": [
-        96,
-        97
-      ],
-      "source_names": [
-        "Beverages, tea, instant, unsweetened, powder",
-        "Beverages, tea, instant, lemon, unsweetened"
-      ],
-      "portion_gram_weights": [
-        0.7,
-        5.65
-      ],
-      "portion_unit_names": [
         "undetermined",
         "undetermined"
       ],
-      "count": 2
+      "count": 3
     },
     {
-      "id": 38,
-      "generic_name": "Instant Wheat Cereal",
+      "id": 42,
+      "generic_name": "Cereals Cream Of Wheat Instant Dry",
       "food_category": "Breakfast Cereals",
       "nutrients": {
         "Energy": 365.91778202676863,
@@ -1849,8 +2005,8 @@
       "count": 1
     },
     {
-      "id": 39,
-      "generic_name": "Broccoli Cooked With Oil",
+      "id": 43,
+      "generic_name": "Broccoli Fresh Cooked With Oil",
       "food_category": "Broccoli",
       "nutrients": {
         "Energy": 67.0,
@@ -1889,8 +2045,8 @@
       "count": 1
     },
     {
-      "id": 40,
-      "generic_name": "Broccoli Cooked Chinese Style",
+      "id": 44,
+      "generic_name": "Broccoli Chinese Cooked",
       "food_category": "Broccoli",
       "nutrients": {
         "Energy": 50.0,
@@ -1929,8 +2085,8 @@
       "count": 1
     },
     {
-      "id": 41,
-      "generic_name": "Taco With Meat And Beans",
+      "id": 45,
+      "generic_name": "Taco Meat With Beans No Cheese",
       "food_category": "Burritos and tacos",
       "nutrients": {
         "Energy": 205.0,
@@ -1969,8 +2125,8 @@
       "count": 1
     },
     {
-      "id": 42,
-      "generic_name": "Carrots Cooked With Oil",
+      "id": 46,
+      "generic_name": "Carrots Fresh Cooked With Oil",
       "food_category": "Carrots",
       "nutrients": {
         "Energy": 76.0,
@@ -2009,8 +2165,8 @@
       "count": 1
     },
     {
-      "id": 43,
-      "generic_name": "Glazed Cooked Carrots",
+      "id": 47,
+      "generic_name": "Carrots Glazed Cooked",
       "food_category": "Carrots",
       "nutrients": {
         "Energy": 97.0,
@@ -2049,8 +2205,8 @@
       "count": 1
     },
     {
-      "id": 44,
-      "generic_name": "Fresh Spinach Pasta Cooked",
+      "id": 48,
+      "generic_name": "Pasta Fresh Refrigerated Spinach Cooked",
       "food_category": "Cereal Grains and Pasta",
       "nutrients": {
         "Energy": 130.0,
@@ -2091,8 +2247,8 @@
       "count": 1
     },
     {
-      "id": 45,
-      "generic_name": "Enriched Dry Pasta",
+      "id": 49,
+      "generic_name": "Pasta Dry Enriched",
       "food_category": "Cereal Grains and Pasta",
       "nutrients": {
         "Energy": 371.0,
@@ -2133,8 +2289,8 @@
       "count": 1
     },
     {
-      "id": 46,
-      "generic_name": "Enriched Pasta Cooked With Salt",
+      "id": 50,
+      "generic_name": "Pasta Cooked Enriched With Added Salt",
       "food_category": "Cereal Grains and Pasta",
       "nutrients": {
         "Energy": 156.54875717017208,
@@ -2175,50 +2331,54 @@
       "count": 1
     },
     {
-      "id": 47,
-      "generic_name": "Refined Sorghum Flour",
+      "id": 51,
+      "generic_name": "Sorghum Flour Refined Unenriched",
       "food_category": "Cereal Grains and Pasta",
       "nutrients": {
-        "Energy": 357.0,
-        "Carbohydrate": 76.85,
-        "Protein": 9.53,
-        "Total fat": 1.24,
-        "Fiber": 1.9,
+        "Energy": 360.50286806883366,
+        "Carbohydrate": 76.58,
+        "Protein": 9.93,
+        "Total fat": 1.1099999999999999,
+        "Fiber": 2.3,
         "Sugars, Total": null,
-        "Sodium": 1.0,
-        "Calcium": 6.0,
-        "Iron": 0.97,
-        "Cholesterol": null,
-        "Fatty acids, total saturated": 0.303,
-        "Vitamin A, RAE": null,
-        "Vitamin C": 0.6,
-        "Vitamin D (D2 + D3)": null,
-        "Vitamin E": null,
-        "Vitamin B-6": 0.068,
-        "Vitamin B-12": null,
-        "Folate, total": null,
-        "Zinc": 0.47,
-        "Magnesium": 31.0,
-        "Potassium": 145.0,
-        "Phosphorus": 87.0
+        "Sodium": 1.5,
+        "Calcium": 10.5,
+        "Iron": 1.0699999999999998,
+        "Cholesterol": 0.0,
+        "Fatty acids, total saturated": 0.22899999999999998,
+        "Vitamin A, RAE": 0.0,
+        "Vitamin C": 0.3,
+        "Vitamin D (D2 + D3)": 0.0,
+        "Vitamin E": 0.06,
+        "Vitamin B-6": 0.056,
+        "Vitamin B-12": 0.0,
+        "Folate, total": 26.0,
+        "Zinc": 0.585,
+        "Magnesium": 26.5,
+        "Potassium": 126.0,
+        "Phosphorus": 97.5
       },
       "source_ids": [
-        108
+        108,
+        110
       ],
       "source_names": [
-        "Sorghum flour, refined, unenriched"
+        "Sorghum flour, refined, unenriched",
+        "Wheat flour, white, all-purpose, unenriched"
       ],
       "portion_gram_weights": [
-        161.0
+        161.0,
+        125.0
       ],
       "portion_unit_names": [
+        "undetermined",
         "undetermined"
       ],
-      "count": 1
+      "count": 2
     },
     {
-      "id": 48,
-      "generic_name": "Spinach Spaghetti Cooked",
+      "id": 52,
+      "generic_name": "Spaghetti Spinach Cooked",
       "food_category": "Cereal Grains and Pasta",
       "nutrients": {
         "Energy": 130.0,
@@ -2259,90 +2419,54 @@
       "count": 1
     },
     {
-      "id": 49,
-      "generic_name": "All Purpose White Flour",
-      "food_category": "Cereal Grains and Pasta",
-      "nutrients": {
-        "Energy": 364.00573613766727,
-        "Carbohydrate": 76.31,
-        "Protein": 10.33,
-        "Total fat": 0.98,
-        "Fiber": 2.7,
-        "Sugars, Total": null,
-        "Sodium": 2.0,
-        "Calcium": 15.0,
-        "Iron": 1.17,
-        "Cholesterol": 0.0,
-        "Fatty acids, total saturated": 0.155,
-        "Vitamin A, RAE": 0.0,
-        "Vitamin C": 0.0,
-        "Vitamin D (D2 + D3)": 0.0,
-        "Vitamin E": 0.06,
-        "Vitamin B-6": 0.044,
-        "Vitamin B-12": 0.0,
-        "Folate, total": 26.0,
-        "Zinc": 0.7,
-        "Magnesium": 22.0,
-        "Potassium": 107.0,
-        "Phosphorus": 108.0
-      },
-      "source_ids": [
-        110
-      ],
-      "source_names": [
-        "Wheat flour, white, all-purpose, unenriched"
-      ],
-      "portion_gram_weights": [
-        125.0
-      ],
-      "portion_unit_names": [
-        "undetermined"
-      ],
-      "count": 1
-    },
-    {
-      "id": 50,
-      "generic_name": "Mozzarella Cheese",
+      "id": 53,
+      "generic_name": "Cheese Mozzarella",
       "food_category": "Cheese",
       "nutrients": {
-        "Energy": 296.0,
-        "Carbohydrate": 4.44,
-        "Protein": 23.7,
-        "Total fat": 20.4,
+        "Energy": 323.3333333333333,
+        "Carbohydrate": 4.016666666666667,
+        "Protein": 20.413333333333334,
+        "Total fat": 25.08,
         "Fiber": 0.0,
         "Sugars, Total": null,
-        "Sodium": 699.0,
-        "Calcium": 693.0,
-        "Iron": 0.2,
-        "Cholesterol": 65.0,
-        "Fatty acids, total saturated": 11.7,
-        "Vitamin A, RAE": 203.0,
+        "Sodium": 919.3333333333334,
+        "Calcium": 646.3333333333334,
+        "Iron": 0.48,
+        "Cholesterol": 84.0,
+        "Fatty acids, total saturated": 14.906,
+        "Vitamin A, RAE": 213.0,
         "Vitamin C": 0.0,
-        "Vitamin D (D2 + D3)": 0.4,
-        "Vitamin E": 0.51,
-        "Vitamin B-6": 0.09,
-        "Vitamin B-12": 1.65,
-        "Folate, total": 26.0,
-        "Zinc": 3.62,
-        "Magnesium": 27.0,
-        "Potassium": 116.0,
-        "Phosphorus": 533.0
+        "Vitamin D (D2 + D3)": 2.466666666666667,
+        "Vitamin E": 0.5233333333333333,
+        "Vitamin B-6": 0.1383333333333333,
+        "Vitamin B-12": 1.593333333333333,
+        "Folate, total": 34.666666666666664,
+        "Zinc": 2.7900000000000005,
+        "Magnesium": 25.666666666666668,
+        "Potassium": 158.33333333333334,
+        "Phosphorus": 454.3333333333333
       },
       "source_ids": [
-        111
+        111,
+        113,
+        114
       ],
       "source_names": [
-        "Cheese, Mozzarella, NFS"
+        "Cheese, Mozzarella, NFS",
+        "Cheese, Brie",
+        "Cheese, American"
       ],
       "portion_gram_weights": [],
       "portion_unit_names": [
+        "undetermined",
+        "undetermined",
         "undetermined"
       ],
-      "count": 1
+      "count": 3
     },
     {
-      "id": 51,
-      "generic_name": "Monterey Jack Reduced Fat Cheese",
+      "id": 54,
+      "generic_name": "Cheese Monterey Reduced Fat",
       "food_category": "Cheese",
       "nutrients": {
         "Energy": 313.0,
@@ -2381,88 +2505,8 @@
       "count": 1
     },
     {
-      "id": 52,
-      "generic_name": "Brie Cheese",
-      "food_category": "Cheese",
-      "nutrients": {
-        "Energy": 334.0,
-        "Carbohydrate": 0.45,
-        "Protein": 20.75,
-        "Total fat": 27.68,
-        "Fiber": 0.0,
-        "Sugars, Total": null,
-        "Sodium": 629.0,
-        "Calcium": 184.0,
-        "Iron": 0.5,
-        "Cholesterol": 100.0,
-        "Fatty acids, total saturated": 17.41,
-        "Vitamin A, RAE": 174.0,
-        "Vitamin C": 0.0,
-        "Vitamin D (D2 + D3)": 0.5,
-        "Vitamin E": 0.24,
-        "Vitamin B-6": 0.235,
-        "Vitamin B-12": 1.65,
-        "Folate, total": 65.0,
-        "Zinc": 2.38,
-        "Magnesium": 20.0,
-        "Potassium": 152.0,
-        "Phosphorus": 188.0
-      },
-      "source_ids": [
-        113
-      ],
-      "source_names": [
-        "Cheese, Brie"
-      ],
-      "portion_gram_weights": [],
-      "portion_unit_names": [
-        "undetermined"
-      ],
-      "count": 1
-    },
-    {
-      "id": 53,
-      "generic_name": "American Cheese",
-      "food_category": "Cheese",
-      "nutrients": {
-        "Energy": 340.0,
-        "Carbohydrate": 7.16,
-        "Protein": 16.79,
-        "Total fat": 27.16,
-        "Fiber": 0.0,
-        "Sugars, Total": null,
-        "Sodium": 1430.0,
-        "Calcium": 1062.0,
-        "Iron": 0.74,
-        "Cholesterol": 87.0,
-        "Fatty acids, total saturated": 15.608,
-        "Vitamin A, RAE": 262.0,
-        "Vitamin C": 0.0,
-        "Vitamin D (D2 + D3)": 6.5,
-        "Vitamin E": 0.82,
-        "Vitamin B-6": 0.09,
-        "Vitamin B-12": 1.48,
-        "Folate, total": 13.0,
-        "Zinc": 2.37,
-        "Magnesium": 30.0,
-        "Potassium": 207.0,
-        "Phosphorus": 642.0
-      },
-      "source_ids": [
-        114
-      ],
-      "source_names": [
-        "Cheese, American"
-      ],
-      "portion_gram_weights": [],
-      "portion_unit_names": [
-        "undetermined"
-      ],
-      "count": 1
-    },
-    {
-      "id": 54,
-      "generic_name": "Pure Orange Juice",
+      "id": 55,
+      "generic_name": "Orange Juice 100",
       "food_category": "Citrus juice",
       "nutrients": {
         "Energy": 47.0,
@@ -2501,8 +2545,8 @@
       "count": 1
     },
     {
-      "id": 55,
-      "generic_name": "Flavored Non Dairy Latte",
+      "id": 56,
+      "generic_name": "Coffee Latte With Non Dairy Milk Flavored",
       "food_category": "Coffee",
       "nutrients": {
         "Energy": 40.0,
@@ -2541,8 +2585,8 @@
       "count": 1
     },
     {
-      "id": 56,
-      "generic_name": "Brewed Coffee",
+      "id": 57,
+      "generic_name": "Coffee Brewed",
       "food_category": "Coffee",
       "nutrients": {
         "Energy": 1.0,
@@ -2581,8 +2625,8 @@
       "count": 1
     },
     {
-      "id": 57,
-      "generic_name": "Pastrami Deli Meat",
+      "id": 58,
+      "generic_name": "Pastrami",
       "food_category": "Cold cuts and cured meats",
       "nutrients": {
         "Energy": 147.0,
@@ -2621,8 +2665,8 @@
       "count": 1
     },
     {
-      "id": 58,
-      "generic_name": "Cooked Corn Restaurant Style",
+      "id": 59,
+      "generic_name": "Corn Cooked From Restaurant",
       "food_category": "Corn",
       "nutrients": {
         "Energy": 119.0,
@@ -2661,8 +2705,8 @@
       "count": 1
     },
     {
-      "id": 59,
-      "generic_name": "Frozen Cooked Corn",
+      "id": 60,
+      "generic_name": "Corn Cooked Frozen",
       "food_category": "Corn",
       "nutrients": {
         "Energy": 81.0,
@@ -2701,7 +2745,7 @@
       "count": 1
     },
     {
-      "id": 60,
+      "id": 61,
       "generic_name": "Sour Cream Light",
       "food_category": "Cream cheese, sour cream, whipped cream",
       "nutrients": {
@@ -2741,7 +2785,7 @@
       "count": 1
     },
     {
-      "id": 61,
+      "id": 62,
       "generic_name": "Sour Cream Reduced Fat",
       "food_category": "Dairy and Egg Products",
       "nutrients": {
@@ -2783,7 +2827,7 @@
       "count": 1
     },
     {
-      "id": 62,
+      "id": 63,
       "generic_name": "Sour Cream Fat Free",
       "food_category": "Dairy and Egg Products",
       "nutrients": {
@@ -2825,8 +2869,8 @@
       "count": 1
     },
     {
-      "id": 63,
-      "generic_name": "Egg Yolk Raw Fresh",
+      "id": 64,
+      "generic_name": "Egg Yolk Raw",
       "food_category": "Dairy and Egg Products",
       "nutrients": {
         "Energy": 322.0,
@@ -2867,8 +2911,8 @@
       "count": 1
     },
     {
-      "id": 64,
-      "generic_name": "Egg Yolk Raw Frozen Salted Pasteurized",
+      "id": 65,
+      "generic_name": "Egg Yolk Pasteurized Frozen",
       "food_category": "Dairy and Egg Products",
       "nutrients": {
         "Energy": 274.61759082217975,
@@ -2909,8 +2953,8 @@
       "count": 1
     },
     {
-      "id": 65,
-      "generic_name": "Egg Whole Cooked Poached",
+      "id": 66,
+      "generic_name": "Egg Whole Poached",
       "food_category": "Dairy and Egg Products",
       "nutrients": {
         "Energy": 142.68642447418736,
@@ -2951,8 +2995,8 @@
       "count": 1
     },
     {
-      "id": 66,
-      "generic_name": "Cheese Cheddar Nonfat Or Fat Free",
+      "id": 67,
+      "generic_name": "Cheddar Cheese Fat Free",
       "food_category": "Dairy and Egg Products",
       "nutrients": {
         "Energy": 149.01338432122373,
@@ -2997,8 +3041,8 @@
       "count": 2
     },
     {
-      "id": 67,
-      "generic_name": "Yogurt Greek Vanilla Lowfat",
+      "id": 68,
+      "generic_name": "Greek Yogurt Low Fat Vanilla",
       "food_category": "Dairy and Egg Products",
       "nutrients": {
         "Energy": 100.06214149139579,
@@ -3041,7 +3085,7 @@
       "count": 2
     },
     {
-      "id": 68,
+      "id": 69,
       "generic_name": "Yogurt Plain Low Fat",
       "food_category": "Dairy and Egg Products",
       "nutrients": {
@@ -3083,8 +3127,8 @@
       "count": 1
     },
     {
-      "id": 69,
-      "generic_name": "Cheese Ricotta Part Skim Milk",
+      "id": 70,
+      "generic_name": "Ricotta Cheese Part Skim",
       "food_category": "Dairy and Egg Products",
       "nutrients": {
         "Energy": 138.1453154875717,
@@ -3125,8 +3169,8 @@
       "count": 1
     },
     {
-      "id": 70,
-      "generic_name": "Gravy",
+      "id": 71,
+      "generic_name": "Gravy Sauce",
       "food_category": "Dips, gravies, other sauces",
       "nutrients": {
         "Energy": 53.0,
@@ -3165,7 +3209,7 @@
       "count": 1
     },
     {
-      "id": 71,
+      "id": 72,
       "generic_name": "Doughnut Holes",
       "food_category": "Doughnuts, sweet rolls, pastries",
       "nutrients": {
@@ -3205,8 +3249,8 @@
       "count": 1
     },
     {
-      "id": 72,
-      "generic_name": "Danish Pastry Plain Or Spice",
+      "id": 73,
+      "generic_name": "Danish Pastry",
       "food_category": "Doughnuts, sweet rolls, pastries",
       "nutrients": {
         "Energy": 403.0,
@@ -3245,7 +3289,7 @@
       "count": 1
     },
     {
-      "id": 73,
+      "id": 74,
       "generic_name": "Egg Whole Raw",
       "food_category": "Eggs and omelets",
       "nutrients": {
@@ -3285,8 +3329,8 @@
       "count": 1
     },
     {
-      "id": 74,
-      "generic_name": "Egg White Only Raw",
+      "id": 75,
+      "generic_name": "Egg White Raw",
       "food_category": "Eggs and omelets",
       "nutrients": {
         "Energy": 52.0,
@@ -3325,63 +3369,21 @@
       "count": 1
     },
     {
-      "id": 75,
-      "generic_name": "Wendy S Double Stack With Cheese",
-      "food_category": "Fast Foods",
-      "nutrients": {
-        "Energy": 284.89483747609944,
-        "Carbohydrate": 15.35,
-        "Protein": 18.53,
-        "Total fat": 16.6,
-        "Fiber": null,
-        "Sugars, Total": null,
-        "Sodium": 477.0,
-        "Calcium": 73.0,
-        "Iron": 2.75,
-        "Cholesterol": null,
-        "Fatty acids, total saturated": 6.851,
-        "Vitamin A, RAE": null,
-        "Vitamin C": null,
-        "Vitamin D (D2 + D3)": null,
-        "Vitamin E": null,
-        "Vitamin B-6": null,
-        "Vitamin B-12": null,
-        "Folate, total": null,
-        "Zinc": 3.37,
-        "Magnesium": 21.0,
-        "Potassium": 258.0,
-        "Phosphorus": 157.0
-      },
-      "source_ids": [
-        139
-      ],
-      "source_names": [
-        "WENDY'S, Double Stack, with cheese"
-      ],
-      "portion_gram_weights": [
-        146.0
-      ],
-      "portion_unit_names": [
-        "undetermined"
-      ],
-      "count": 1
-    },
-    {
       "id": 76,
-      "generic_name": "Burger King Double Whopper No Cheese",
+      "generic_name": "Double Stack Cheeseburger",
       "food_category": "Fast Foods",
       "nutrients": {
-        "Energy": 252.0,
-        "Carbohydrate": 13.74,
-        "Protein": 13.94,
-        "Total fat": 15.66,
+        "Energy": 268.4474187380497,
+        "Carbohydrate": 14.545,
+        "Protein": 16.235,
+        "Total fat": 16.130000000000003,
         "Fiber": 1.4,
         "Sugars, Total": null,
-        "Sodium": 289.0,
-        "Calcium": 35.0,
-        "Iron": 2.8,
+        "Sodium": 383.0,
+        "Calcium": 54.0,
+        "Iron": 2.775,
         "Cholesterol": 46.0,
-        "Fatty acids, total saturated": 5.773,
+        "Fatty acids, total saturated": 6.311999999999999,
         "Vitamin A, RAE": null,
         "Vitamin C": 0.2,
         "Vitamin D (D2 + D3)": null,
@@ -3389,28 +3391,32 @@
         "Vitamin B-6": 0.114,
         "Vitamin B-12": null,
         "Folate, total": 45.0,
-        "Zinc": 3.0,
-        "Magnesium": 18.0,
-        "Potassium": 192.0,
-        "Phosphorus": 111.0
+        "Zinc": 3.185,
+        "Magnesium": 19.5,
+        "Potassium": 225.0,
+        "Phosphorus": 134.0
       },
       "source_ids": [
+        139,
         140
       ],
       "source_names": [
+        "WENDY'S, Double Stack, with cheese",
         "BURGER KING, DOUBLE WHOPPER, no cheese"
       ],
       "portion_gram_weights": [
+        146.0,
         374.0
       ],
       "portion_unit_names": [
+        "undetermined",
         "undetermined"
       ],
-      "count": 1
+      "count": 2
     },
     {
       "id": 77,
-      "generic_name": "Burger King Chicken Strips",
+      "generic_name": "Chicken Strips",
       "food_category": "Fast Foods",
       "nutrients": {
         "Energy": 292.0,
@@ -3452,7 +3458,7 @@
     },
     {
       "id": 78,
-      "generic_name": "Salad Dressing Sweet And Sour",
+      "generic_name": "Sweet And Sour Dressing",
       "food_category": "Fats and Oils",
       "nutrients": {
         "Energy": 15.0,
@@ -3494,7 +3500,7 @@
     },
     {
       "id": 79,
-      "generic_name": "Salad Dressing Ranch Dressing Reduced Fat",
+      "generic_name": "Ranch Dressing Reduced Fat",
       "food_category": "Fats and Oils",
       "nutrients": {
         "Energy": 196.0,
@@ -3536,182 +3542,94 @@
     },
     {
       "id": 80,
-      "generic_name": "Reduced Fat Salad Dressing",
+      "generic_name": "Reduced Fat French Dressing",
       "food_category": "Fats and Oils",
       "nutrients": {
-        "Energy": 275.33460803059273,
-        "Carbohydrate": 35.61,
-        "Protein": 0.29,
-        "Total fat": 15.76,
-        "Fiber": 0.95,
+        "Energy": 518.6931166347993,
+        "Carbohydrate": 9.622499999999999,
+        "Protein": 0.9524999999999999,
+        "Total fat": 53.605,
+        "Fiber": 0.5,
         "Sugars, Total": null,
-        "Sodium": 1219.0,
-        "Calcium": 23.5,
-        "Iron": 0.495,
-        "Cholesterol": 12.5,
-        "Fatty acids, total saturated": 1.911,
-        "Vitamin A, RAE": 13.5,
-        "Vitamin C": 2.4,
-        "Vitamin D (D2 + D3)": 0.0,
-        "Vitamin E": 1.42,
-        "Vitamin B-6": 0.0375,
-        "Vitamin B-12": 0.05,
-        "Folate, total": 1.0,
-        "Zinc": 0.19,
-        "Magnesium": 6.5,
-        "Potassium": 78.5,
-        "Phosphorus": 23.0
+        "Sodium": 835.0,
+        "Calcium": 18.25,
+        "Iron": 0.5549999999999999,
+        "Cholesterol": 20.25,
+        "Fatty acids, total saturated": 8.4835,
+        "Vitamin A, RAE": 19.5,
+        "Vitamin C": 1.4249999999999998,
+        "Vitamin D (D2 + D3)": 0.07500000000000001,
+        "Vitamin E": 4.254999999999999,
+        "Vitamin B-6": 0.022,
+        "Vitamin B-12": 0.0375,
+        "Folate, total": 2.25,
+        "Zinc": 0.11499999999999999,
+        "Magnesium": 2.75,
+        "Potassium": 45.0,
+        "Phosphorus": 14.75
       },
       "source_ids": [
         144,
-        150
-      ],
-      "source_names": [
-        "Salad dressing, french dressing, reduced fat",
-        "Salad Dressing, coleslaw, reduced fat"
-      ],
-      "portion_gram_weights": [
-        16.0,
-        17.0
-      ],
-      "portion_unit_names": [
-        "undetermined",
-        "undetermined"
-      ],
-      "count": 2
-    },
-    {
-      "id": 81,
-      "generic_name": "Salad Dressing",
-      "food_category": "Fats and Oils",
-      "nutrients": {
-        "Energy": 586.4875717017208,
-        "Carbohydrate": 3.3499999999999996,
-        "Protein": 1.135,
-        "Total fat": 64.025,
-        "Fiber": 0.25,
-        "Sugars, Total": null,
-        "Sodium": 933.5,
-        "Calcium": 27.0,
-        "Iron": 0.64,
-        "Cholesterol": 19.5,
-        "Fatty acids, total saturated": 10.6945,
-        "Vitamin A, RAE": 17.5,
-        "Vitamin C": 0.44999999999999996,
-        "Vitamin D (D2 + D3)": 0.1,
-        "Vitamin E": 6.37,
-        "Vitamin B-6": 0.0125,
-        "Vitamin B-12": 0.015,
-        "Folate, total": 1.0,
-        "Zinc": 0.055,
-        "Magnesium": 1.0,
-        "Potassium": 26.5,
-        "Phosphorus": 11.0
-      },
-      "source_ids": [
         145,
+        147,
         153
       ],
       "source_names": [
+        "Salad dressing, french dressing, reduced fat",
         "Salad dressing, french, home recipe",
+        "Salad dressing, mayonnaise, regular",
         "Salad dressing, caesar dressing, regular"
       ],
       "portion_gram_weights": [
+        16.0,
         14.0,
+        10.0,
         14.7
       ],
       "portion_unit_names": [
         "undetermined",
+        "undetermined",
+        "undetermined",
         "undetermined"
       ],
-      "count": 2
+      "count": 4
     },
     {
-      "id": 82,
-      "generic_name": "Fat Free Salad Dressing",
+      "id": 81,
+      "generic_name": "Salad Dressing Italian Dressing Fat Free",
       "food_category": "Fats and Oils",
       "nutrients": {
-        "Energy": 83.13065646908858,
-        "Carbohydrate": 16.92,
-        "Protein": 0.47333333333333333,
-        "Total fat": 1.83,
-        "Fiber": 0.8666666666666666,
+        "Energy": 46.60611854684512,
+        "Carbohydrate": 8.75,
+        "Protein": 0.97,
+        "Total fat": 0.87,
+        "Fiber": 0.6,
         "Sugars, Total": null,
-        "Sodium": 938.0,
-        "Calcium": 28.666666666666668,
-        "Iron": 0.5233333333333334,
-        "Cholesterol": 6.0,
-        "Fatty acids, total saturated": 0.44733333333333336,
-        "Vitamin A, RAE": 1.6666666666666667,
-        "Vitamin C": 0.13333333333333333,
+        "Sodium": 1129.0,
+        "Calcium": 30.0,
+        "Iron": 0.4,
+        "Cholesterol": 2.0,
+        "Fatty acids, total saturated": 0.295,
+        "Vitamin A, RAE": 4.0,
+        "Vitamin C": 0.4,
         "Vitamin D (D2 + D3)": 0.0,
-        "Vitamin E": 0.32666666666666666,
-        "Vitamin B-6": 0.008,
-        "Vitamin B-12": 0.10333333333333333,
-        "Folate, total": 6.0,
-        "Zinc": 0.27,
+        "Vitamin E": 0.76,
+        "Vitamin B-6": 0.0,
+        "Vitamin B-12": 0.31,
+        "Folate, total": 12.0,
+        "Zinc": 0.36,
         "Magnesium": 5.0,
-        "Potassium": 87.33333333333333,
-        "Phosphorus": 75.66666666666667
+        "Potassium": 102.0,
+        "Phosphorus": 109.0
       },
       "source_ids": [
-        146,
-        149,
-        151
+        146
       ],
       "source_names": [
-        "Salad dressing, italian dressing, fat-free",
-        "Salad dressing, ranch dressing, fat-free",
-        "Salad Dressing, mayonnaise-like, fat-free"
+        "Salad dressing, italian dressing, fat-free"
       ],
       "portion_gram_weights": [
-        14.0,
-        14.0,
-        16.0
-      ],
-      "portion_unit_names": [
-        "undetermined",
-        "undetermined",
-        "undetermined"
-      ],
-      "count": 3
-    },
-    {
-      "id": 83,
-      "generic_name": "Regular Mayonnaise",
-      "food_category": "Fats and Oils",
-      "nutrients": {
-        "Energy": 680.0,
-        "Carbohydrate": 0.57,
-        "Protein": 0.96,
-        "Total fat": 74.85,
-        "Fiber": 0.0,
-        "Sugars, Total": null,
-        "Sodium": 635.0,
-        "Calcium": 8.0,
-        "Iron": 0.21,
-        "Cholesterol": 42.0,
-        "Fatty acids, total saturated": 11.703,
-        "Vitamin A, RAE": 16.0,
-        "Vitamin C": 0.0,
-        "Vitamin D (D2 + D3)": 0.2,
-        "Vitamin E": 3.28,
-        "Vitamin B-6": 0.008,
-        "Vitamin B-12": 0.12,
-        "Folate, total": 5.0,
-        "Zinc": 0.15,
-        "Magnesium": 1.0,
-        "Potassium": 20.0,
-        "Phosphorus": 21.0
-      },
-      "source_ids": [
-        147
-      ],
-      "source_names": [
-        "Salad dressing, mayonnaise, regular"
-      ],
-      "portion_gram_weights": [
-        10.0
+        14.0
       ],
       "portion_unit_names": [
         "undetermined"
@@ -3719,8 +3637,8 @@
       "count": 1
     },
     {
-      "id": 84,
-      "generic_name": "Light Salad Dressing",
+      "id": 82,
+      "generic_name": "Salad Dressing Mayonnaise Type Light",
       "food_category": "Fats and Oils",
       "nutrients": {
         "Energy": 158.0,
@@ -3757,8 +3675,134 @@
       "count": 1
     },
     {
+      "id": 83,
+      "generic_name": "Salad Dressing Ranch Dressing Fat Free",
+      "food_category": "Fats and Oils",
+      "nutrients": {
+        "Energy": 118.78585086042064,
+        "Carbohydrate": 26.51,
+        "Protein": 0.25,
+        "Total fat": 1.92,
+        "Fiber": 0.1,
+        "Sugars, Total": null,
+        "Sodium": 897.0,
+        "Calcium": 50.0,
+        "Iron": 1.05,
+        "Cholesterol": 7.0,
+        "Fatty acids, total saturated": 0.447,
+        "Vitamin A, RAE": 1.0,
+        "Vitamin C": 0.0,
+        "Vitamin D (D2 + D3)": null,
+        "Vitamin E": 0.18,
+        "Vitamin B-6": 0.024,
+        "Vitamin B-12": 0.0,
+        "Folate, total": 6.0,
+        "Zinc": 0.4,
+        "Magnesium": 8.0,
+        "Potassium": 111.0,
+        "Phosphorus": 113.0
+      },
+      "source_ids": [
+        149
+      ],
+      "source_names": [
+        "Salad dressing, ranch dressing, fat-free"
+      ],
+      "portion_gram_weights": [
+        14.0
+      ],
+      "portion_unit_names": [
+        "undetermined"
+      ],
+      "count": 1
+    },
+    {
+      "id": 84,
+      "generic_name": "Salad Dressing Coleslaw Reduced Fat",
+      "food_category": "Fats and Oils",
+      "nutrients": {
+        "Energy": 328.8718929254302,
+        "Carbohydrate": 40.0,
+        "Protein": 0.0,
+        "Total fat": 20.0,
+        "Fiber": 0.4,
+        "Sugars, Total": null,
+        "Sodium": 1600.0,
+        "Calcium": 36.0,
+        "Iron": 0.26,
+        "Cholesterol": 25.0,
+        "Fatty acids, total saturated": 2.98,
+        "Vitamin A, RAE": 0.0,
+        "Vitamin C": 0.0,
+        "Vitamin D (D2 + D3)": 0.0,
+        "Vitamin E": 1.84,
+        "Vitamin B-6": 0.02,
+        "Vitamin B-12": 0.1,
+        "Folate, total": 0.0,
+        "Zinc": 0.18,
+        "Magnesium": 5.0,
+        "Potassium": 50.0,
+        "Phosphorus": 30.0
+      },
+      "source_ids": [
+        150
+      ],
+      "source_names": [
+        "Salad Dressing, coleslaw, reduced fat"
+      ],
+      "portion_gram_weights": [
+        17.0
+      ],
+      "portion_unit_names": [
+        "undetermined"
+      ],
+      "count": 1
+    },
+    {
       "id": 85,
-      "generic_name": "Light Mayonnaise",
+      "generic_name": "Salad Dressing Mayonnaise Like Fat Free",
+      "food_category": "Fats and Oils",
+      "nutrients": {
+        "Energy": 84.0,
+        "Carbohydrate": 15.5,
+        "Protein": 0.2,
+        "Total fat": 2.7,
+        "Fiber": 1.9,
+        "Sugars, Total": null,
+        "Sodium": 788.0,
+        "Calcium": 6.0,
+        "Iron": 0.12,
+        "Cholesterol": 9.0,
+        "Fatty acids, total saturated": 0.6,
+        "Vitamin A, RAE": 0.0,
+        "Vitamin C": 0.0,
+        "Vitamin D (D2 + D3)": 0.0,
+        "Vitamin E": 0.04,
+        "Vitamin B-6": 0.0,
+        "Vitamin B-12": 0.0,
+        "Folate, total": 0.0,
+        "Zinc": 0.05,
+        "Magnesium": 2.0,
+        "Potassium": 49.0,
+        "Phosphorus": 5.0
+      },
+      "source_ids": [
+        151
+      ],
+      "source_names": [
+        "Salad Dressing, mayonnaise-like, fat-free"
+      ],
+      "portion_gram_weights": [
+        16.0
+      ],
+      "portion_unit_names": [
+        "undetermined"
+      ],
+      "count": 1
+    },
+    {
+      "id": 86,
+      "generic_name": "Salad Dressing Kraft Mayo Light Mayonnaise",
       "food_category": "Fats and Oils",
       "nutrients": {
         "Energy": 333.8910133843212,
@@ -3799,743 +3843,137 @@
       "count": 1
     },
     {
-      "id": 86,
-      "generic_name": "Perch Raw",
-      "food_category": "Finfish and Shellfish Products",
-      "nutrients": {
-        "Energy": 91.06118546845124,
-        "Carbohydrate": 0.0,
-        "Protein": 19.39,
-        "Total fat": 0.92,
-        "Fiber": 0.0,
-        "Sugars, Total": null,
-        "Sodium": 62.0,
-        "Calcium": 80.0,
-        "Iron": 0.9,
-        "Cholesterol": 90.0,
-        "Fatty acids, total saturated": 0.185,
-        "Vitamin A, RAE": 9.0,
-        "Vitamin C": 1.7,
-        "Vitamin D (D2 + D3)": 3.0,
-        "Vitamin E": 0.2,
-        "Vitamin B-6": 0.12,
-        "Vitamin B-12": 1.9,
-        "Folate, total": 5.0,
-        "Zinc": 1.11,
-        "Magnesium": 30.0,
-        "Potassium": 269.0,
-        "Phosphorus": 200.0
-      },
-      "source_ids": [
-        154
-      ],
-      "source_names": [
-        "Fish, perch, mixed species, raw"
-      ],
-      "portion_gram_weights": [
-        60.0
-      ],
-      "portion_unit_names": [
-        "undetermined"
-      ],
-      "count": 1
-    },
-    {
       "id": 87,
-      "generic_name": "Perch Cooked Dry Heat",
+      "generic_name": "Fish Ling Cooked Dry Heat",
       "food_category": "Finfish and Shellfish Products",
       "nutrients": {
-        "Energy": 117.11281070745696,
-        "Carbohydrate": 0.0,
-        "Protein": 24.86,
-        "Total fat": 1.18,
+        "Energy": 143.4726229793151,
+        "Carbohydrate": 0.05818181818181818,
+        "Protein": 23.87666666666667,
+        "Total fat": 4.627878787878789,
         "Fiber": 0.0,
         "Sugars, Total": null,
-        "Sodium": 79.0,
-        "Calcium": 102.0,
-        "Iron": 1.16,
-        "Cholesterol": 115.0,
-        "Fatty acids, total saturated": 0.237,
-        "Vitamin A, RAE": 10.0,
-        "Vitamin C": 1.7,
-        "Vitamin D (D2 + D3)": null,
-        "Vitamin E": null,
-        "Vitamin B-6": 0.14,
-        "Vitamin B-12": 2.2,
-        "Folate, total": 6.0,
-        "Zinc": 1.43,
-        "Magnesium": 38.0,
-        "Potassium": 344.0,
-        "Phosphorus": 257.0
+        "Sodium": 129.8181818181818,
+        "Calcium": 34.75757575757575,
+        "Iron": 0.7596969696969698,
+        "Cholesterol": 84.54545454545455,
+        "Fatty acids, total saturated": 0.8414925496645925,
+        "Vitamin A, RAE": 84.57575757575758,
+        "Vitamin C": 0.9242424242424242,
+        "Vitamin D (D2 + D3)": 6.572457912457914,
+        "Vitamin E": 0.8503973063973065,
+        "Vitamin B-6": 0.36648484848484847,
+        "Vitamin B-12": 3.35060606060606,
+        "Folate, total": 11.696969696969697,
+        "Zinc": 0.7875757575757573,
+        "Magnesium": 37.666666666666664,
+        "Potassium": 447.45454545454544,
+        "Phosphorus": 276.72727272727286
       },
       "source_ids": [
-        155
-      ],
-      "source_names": [
-        "Fish, perch, mixed species, cooked, dry heat"
-      ],
-      "portion_gram_weights": [
-        46.0
-      ],
-      "portion_unit_names": [
-        "undetermined"
-      ],
-      "count": 1
-    },
-    {
-      "id": 88,
-      "generic_name": "Monkfish Cooked",
-      "food_category": "Finfish and Shellfish Products",
-      "nutrients": {
-        "Energy": 97.03632887189292,
-        "Carbohydrate": 0.0,
-        "Protein": 18.56,
-        "Total fat": 1.95,
-        "Fiber": 0.0,
-        "Sugars, Total": null,
-        "Sodium": 23.0,
-        "Calcium": 10.0,
-        "Iron": 0.41,
-        "Cholesterol": 32.0,
-        "Fatty acids, total saturated": null,
-        "Vitamin A, RAE": 14.0,
-        "Vitamin C": 1.0,
-        "Vitamin D (D2 + D3)": null,
-        "Vitamin E": null,
-        "Vitamin B-6": 0.277,
-        "Vitamin B-12": 1.04,
-        "Folate, total": 8.0,
-        "Zinc": 0.53,
-        "Magnesium": 27.0,
-        "Potassium": 513.0,
-        "Phosphorus": 256.0
-      },
-      "source_ids": [
-        156
-      ],
-      "source_names": [
-        "Fish, monkfish, cooked, dry heat"
-      ],
-      "portion_gram_weights": [
-        28.333333333333332
-      ],
-      "portion_unit_names": [
-        "undetermined"
-      ],
-      "count": 1
-    },
-    {
-      "id": 89,
-      "generic_name": "Milkfish Cooked",
-      "food_category": "Finfish and Shellfish Products",
-      "nutrients": {
-        "Energy": 190.0095602294455,
-        "Carbohydrate": 0.0,
-        "Protein": 26.32,
-        "Total fat": 8.63,
-        "Fiber": 0.0,
-        "Sugars, Total": null,
-        "Sodium": 92.0,
-        "Calcium": 65.0,
-        "Iron": 0.41,
-        "Cholesterol": 67.0,
-        "Fatty acids, total saturated": null,
-        "Vitamin A, RAE": 33.0,
-        "Vitamin C": 0.0,
-        "Vitamin D (D2 + D3)": null,
-        "Vitamin E": null,
-        "Vitamin B-6": 0.488,
-        "Vitamin B-12": 3.27,
-        "Folate, total": 18.0,
-        "Zinc": 1.05,
-        "Magnesium": 38.0,
-        "Potassium": 374.0,
-        "Phosphorus": 208.0
-      },
-      "source_ids": [
-        157
-      ],
-      "source_names": [
-        "Fish, milkfish, cooked, dry heat"
-      ],
-      "portion_gram_weights": [
-        28.333333333333332
-      ],
-      "portion_unit_names": [
-        "undetermined"
-      ],
-      "count": 1
-    },
-    {
-      "id": 90,
-      "generic_name": "Northern Pike Cooked",
-      "food_category": "Finfish and Shellfish Products",
-      "nutrients": {
-        "Energy": 113.0,
-        "Carbohydrate": 0.0,
-        "Protein": 24.69,
-        "Total fat": 0.88,
-        "Fiber": 0.0,
-        "Sugars, Total": null,
-        "Sodium": 49.0,
-        "Calcium": 73.0,
-        "Iron": 0.71,
-        "Cholesterol": 50.0,
-        "Fatty acids, total saturated": 0.151,
-        "Vitamin A, RAE": 24.0,
-        "Vitamin C": 3.8,
-        "Vitamin D (D2 + D3)": null,
-        "Vitamin E": null,
-        "Vitamin B-6": 0.135,
-        "Vitamin B-12": 2.3,
-        "Folate, total": 17.0,
-        "Zinc": 0.86,
-        "Magnesium": 40.0,
-        "Potassium": 331.0,
-        "Phosphorus": 282.0
-      },
-      "source_ids": [
-        158
-      ],
-      "source_names": [
-        "Fish, pike, northern, cooked, dry heat"
-      ],
-      "portion_gram_weights": [
-        28.333333333333332
-      ],
-      "portion_unit_names": [
-        "undetermined"
-      ],
-      "count": 1
-    },
-    {
-      "id": 91,
-      "generic_name": "Atlantic Pollock Cooked",
-      "food_category": "Finfish and Shellfish Products",
-      "nutrients": {
-        "Energy": 118.06883365200764,
-        "Carbohydrate": 0.0,
-        "Protein": 24.92,
-        "Total fat": 1.26,
-        "Fiber": 0.0,
-        "Sugars, Total": null,
-        "Sodium": 110.0,
-        "Calcium": 77.0,
-        "Iron": 0.59,
-        "Cholesterol": 91.0,
-        "Fatty acids, total saturated": 0.17,
-        "Vitamin A, RAE": 12.0,
-        "Vitamin C": 0.0,
-        "Vitamin D (D2 + D3)": null,
-        "Vitamin E": null,
-        "Vitamin B-6": 0.331,
-        "Vitamin B-12": 3.68,
-        "Folate, total": 3.0,
-        "Zinc": 0.6,
-        "Magnesium": 86.0,
-        "Potassium": 456.0,
-        "Phosphorus": 283.0
-      },
-      "source_ids": [
-        159
-      ],
-      "source_names": [
-        "Fish, pollock, Atlantic, cooked, dry heat"
-      ],
-      "portion_gram_weights": [
-        302.0
-      ],
-      "portion_unit_names": [
-        "undetermined"
-      ],
-      "count": 1
-    },
-    {
-      "id": 92,
-      "generic_name": "Walleye Cooked",
-      "food_category": "Finfish and Shellfish Products",
-      "nutrients": {
-        "Energy": 119.0,
-        "Carbohydrate": 0.0,
-        "Protein": 24.54,
-        "Total fat": 1.56,
-        "Fiber": 0.0,
-        "Sugars, Total": null,
-        "Sodium": 65.0,
-        "Calcium": 141.0,
-        "Iron": 1.67,
-        "Cholesterol": 110.0,
-        "Fatty acids, total saturated": 0.319,
-        "Vitamin A, RAE": 24.0,
-        "Vitamin C": 0.0,
-        "Vitamin D (D2 + D3)": null,
-        "Vitamin E": null,
-        "Vitamin B-6": 0.138,
-        "Vitamin B-12": 2.31,
-        "Folate, total": 17.0,
-        "Zinc": 0.79,
-        "Magnesium": 38.0,
-        "Potassium": 499.0,
-        "Phosphorus": 269.0
-      },
-      "source_ids": [
-        160
-      ],
-      "source_names": [
-        "Fish, pike, walleye, cooked, dry heat"
-      ],
-      "portion_gram_weights": [
-        124.0
-      ],
-      "portion_unit_names": [
-        "undetermined"
-      ],
-      "count": 1
-    },
-    {
-      "id": 93,
-      "generic_name": "Mahi Mahi Cooked",
-      "food_category": "Finfish and Shellfish Products",
-      "nutrients": {
-        "Energy": 108.98661567877627,
-        "Carbohydrate": 0.0,
-        "Protein": 23.72,
-        "Total fat": 0.9,
-        "Fiber": 0.0,
-        "Sugars, Total": null,
-        "Sodium": 113.0,
-        "Calcium": 19.0,
-        "Iron": 1.45,
-        "Cholesterol": 94.0,
-        "Fatty acids, total saturated": 0.241,
-        "Vitamin A, RAE": 62.0,
-        "Vitamin C": 0.0,
-        "Vitamin D (D2 + D3)": null,
-        "Vitamin E": null,
-        "Vitamin B-6": 0.462,
-        "Vitamin B-12": 0.69,
-        "Folate, total": 6.0,
-        "Zinc": 0.59,
-        "Magnesium": 38.0,
-        "Potassium": 533.0,
-        "Phosphorus": 183.0
-      },
-      "source_ids": [
-        161
-      ],
-      "source_names": [
-        "Fish, mahimahi, cooked, dry heat"
-      ],
-      "portion_gram_weights": [
-        28.333333333333332
-      ],
-      "portion_unit_names": [
-        "undetermined"
-      ],
-      "count": 1
-    },
-    {
-      "id": 94,
-      "generic_name": "Lingcod Raw",
-      "food_category": "Finfish and Shellfish Products",
-      "nutrients": {
-        "Energy": 85.08604206500955,
-        "Carbohydrate": 0.0,
-        "Protein": 17.66,
-        "Total fat": 1.06,
-        "Fiber": 0.0,
-        "Sugars, Total": null,
-        "Sodium": 59.0,
-        "Calcium": 14.0,
-        "Iron": 0.32,
-        "Cholesterol": 52.0,
-        "Fatty acids, total saturated": 0.197,
-        "Vitamin A, RAE": 15.0,
-        "Vitamin C": 0.0,
-        "Vitamin D (D2 + D3)": null,
-        "Vitamin E": null,
-        "Vitamin B-6": 0.3,
-        "Vitamin B-12": 3.6,
-        "Folate, total": 9.0,
-        "Zinc": 0.45,
-        "Magnesium": 26.0,
-        "Potassium": 437.0,
-        "Phosphorus": 201.0
-      },
-      "source_ids": [
-        162
-      ],
-      "source_names": [
-        "Fish, lingcod, raw"
-      ],
-      "portion_gram_weights": [
-        28.333333333333332
-      ],
-      "portion_unit_names": [
-        "undetermined"
-      ],
-      "count": 1
-    },
-    {
-      "id": 95,
-      "generic_name": "Lingcod Cooked",
-      "food_category": "Finfish and Shellfish Products",
-      "nutrients": {
-        "Energy": 109.0,
-        "Carbohydrate": 0.0,
-        "Protein": 22.64,
-        "Total fat": 1.36,
-        "Fiber": 0.0,
-        "Sugars, Total": null,
-        "Sodium": 76.0,
-        "Calcium": 18.0,
-        "Iron": 0.41,
-        "Cholesterol": 67.0,
-        "Fatty acids, total saturated": 0.255,
-        "Vitamin A, RAE": 17.0,
-        "Vitamin C": 0.0,
-        "Vitamin D (D2 + D3)": null,
-        "Vitamin E": null,
-        "Vitamin B-6": 0.346,
-        "Vitamin B-12": 4.15,
-        "Folate, total": 10.0,
-        "Zinc": 0.58,
-        "Magnesium": 33.0,
-        "Potassium": 560.0,
-        "Phosphorus": 258.0
-      },
-      "source_ids": [
-        163
-      ],
-      "source_names": [
-        "Fish, lingcod, cooked, dry heat"
-      ],
-      "portion_gram_weights": [
-        302.0
-      ],
-      "portion_unit_names": [
-        "undetermined"
-      ],
-      "count": 1
-    },
-    {
-      "id": 96,
-      "generic_name": "Ling Cooked",
-      "food_category": "Finfish and Shellfish Products",
-      "nutrients": {
-        "Energy": 110.89866156787762,
-        "Carbohydrate": 0.0,
-        "Protein": 24.35,
-        "Total fat": 0.82,
-        "Fiber": 0.0,
-        "Sugars, Total": null,
-        "Sodium": 173.0,
-        "Calcium": 44.0,
-        "Iron": 0.83,
-        "Cholesterol": 51.0,
-        "Fatty acids, total saturated": null,
-        "Vitamin A, RAE": 35.0,
-        "Vitamin C": 0.0,
-        "Vitamin D (D2 + D3)": null,
-        "Vitamin E": null,
-        "Vitamin B-6": 0.351,
-        "Vitamin B-12": 0.65,
-        "Folate, total": 8.0,
-        "Zinc": 1.0,
-        "Magnesium": 81.0,
-        "Potassium": 486.0,
-        "Phosphorus": 254.0
-      },
-      "source_ids": [
-        164
-      ],
-      "source_names": [
-        "Fish, ling, cooked, dry heat"
-      ],
-      "portion_gram_weights": [
-        151.0
-      ],
-      "portion_unit_names": [
-        "undetermined"
-      ],
-      "count": 1
-    },
-    {
-      "id": 97,
-      "generic_name": "Spanish Mackerel Cooked",
-      "food_category": "Finfish and Shellfish Products",
-      "nutrients": {
-        "Energy": 146.04110898661568,
-        "Carbohydrate": 0.0,
-        "Protein": 24.795,
-        "Total fat": 4.44,
-        "Fiber": 0.0,
-        "Sugars, Total": null,
-        "Sodium": 134.5,
-        "Calcium": 26.5,
-        "Iron": 1.5099999999999998,
-        "Cholesterol": 70.5,
-        "Fatty acids, total saturated": 1.133,
-        "Vitamin A, RAE": 142.5,
-        "Vitamin C": 1.6,
-        "Vitamin D (D2 + D3)": null,
-        "Vitamin E": null,
-        "Vitamin B-6": 0.485,
-        "Vitamin B-12": 12.5,
-        "Folate, total": 5.0,
-        "Zinc": 0.6699999999999999,
-        "Magnesium": 39.5,
-        "Potassium": 556.0,
-        "Phosphorus": 294.5
-      },
-      "source_ids": [
+        164,
+        192,
+        195,
+        196,
+        202,
+        204,
+        205,
+        206,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        163,
         165,
-        166
-      ],
-      "source_names": [
-        "Fish, mackerel, spanish, cooked, dry heat",
-        "Fish, mackerel, king, cooked, dry heat"
-      ],
-      "portion_gram_weights": [
-        146.0,
-        308.0
-      ],
-      "portion_unit_names": [
-        "undetermined",
-        "undetermined"
-      ],
-      "count": 2
-    },
-    {
-      "id": 98,
-      "generic_name": "Scup Cooked",
-      "food_category": "Finfish and Shellfish Products",
-      "nutrients": {
-        "Energy": 135.0,
-        "Carbohydrate": 0.0,
-        "Protein": 24.21,
-        "Total fat": 3.5,
-        "Fiber": 0.0,
-        "Sugars, Total": null,
-        "Sodium": 54.0,
-        "Calcium": 51.0,
-        "Iron": 0.68,
-        "Cholesterol": 67.0,
-        "Fatty acids, total saturated": null,
-        "Vitamin A, RAE": 31.0,
-        "Vitamin C": 0.0,
-        "Vitamin D (D2 + D3)": null,
-        "Vitamin E": null,
-        "Vitamin B-6": 0.346,
-        "Vitamin B-12": 1.62,
-        "Folate, total": 17.0,
-        "Zinc": 0.62,
-        "Magnesium": 29.0,
-        "Potassium": 368.0,
-        "Phosphorus": 237.0
-      },
-      "source_ids": [
-        167
-      ],
-      "source_names": [
-        "Fish, scup, cooked, dry heat"
-      ],
-      "portion_gram_weights": [
-        50.0
-      ],
-      "portion_unit_names": [
-        "undetermined"
-      ],
-      "count": 1
-    },
-    {
-      "id": 99,
-      "generic_name": "Fish Salmon Sockeye Cooked Dry Heat",
-      "food_category": "Finfish and Shellfish Products",
-      "nutrients": {
-        "Energy": 182.03747609942639,
-        "Carbohydrate": 0.192,
-        "Protein": 24.529,
-        "Total fat": 8.568000000000001,
-        "Fiber": 0.0,
-        "Sugars, Total": null,
-        "Sodium": 78.4,
-        "Calcium": 25.4,
-        "Iron": 0.7589999999999999,
-        "Cholesterol": 126.7,
-        "Fatty acids, total saturated": 1.510148148148148,
-        "Vitamin A, RAE": 161.4,
-        "Vitamin C": 1.98,
-        "Vitamin D (D2 + D3)": 14.85,
-        "Vitamin E": 0.735,
-        "Vitamin B-6": 0.41999999999999993,
-        "Vitamin B-12": 4.021,
-        "Folate, total": 18.5,
-        "Zinc": 1.002,
-        "Magnesium": 35.2,
-        "Potassium": 457.0,
-        "Phosphorus": 349.0
-      },
-      "source_ids": [
+        166,
+        167,
         169,
         170,
         172,
+        174,
         177,
         180,
         183,
         185,
         186,
+        187,
+        189,
         190,
-        191
+        191,
+        198
       ],
       "source_names": [
+        "Fish, ling, cooked, dry heat",
+        "Fish, burbot, cooked, dry heat",
+        "Fish, cod, Atlantic, cooked, dry heat",
+        "Fish, cisco, smoked",
+        "Fish, wolffish, Atlantic, cooked, dry heat",
+        "Fish, tilefish, cooked, dry heat",
+        "Fish, tilapia, cooked, dry heat",
+        "Fish, swordfish, cooked, dry heat",
+        "Fish, perch, mixed species, cooked, dry heat",
+        "Fish, monkfish, cooked, dry heat",
+        "Fish, milkfish, cooked, dry heat",
+        "Fish, pike, northern, cooked, dry heat",
+        "Fish, pollock, Atlantic, cooked, dry heat",
+        "Fish, pike, walleye, cooked, dry heat",
+        "Fish, mahimahi, cooked, dry heat",
+        "Fish, lingcod, cooked, dry heat",
+        "Fish, mackerel, spanish, cooked, dry heat",
+        "Fish, mackerel, king, cooked, dry heat",
+        "Fish, scup, cooked, dry heat",
         "Fish, salmon, sockeye, cooked, dry heat",
         "Fish, salmon, pink, cooked, dry heat",
         "Fish, spot, cooked, dry heat",
+        "Fish, sheepshead, cooked, dry heat",
         "Fish, shad, american, cooked, dry heat",
         "Fish, roe, mixed species, cooked, dry heat",
         "Fish, salmon, chum, cooked, dry heat",
         "Fish, bluefish, cooked, dry heat",
         "Fish, eel, mixed species, cooked, dry heat",
+        "Fish, cusk, cooked, dry heat",
+        "Fish, haddock, cooked, dry heat",
         "Fish, carp, cooked, dry heat",
-        "Fish, butterfish, cooked, dry heat"
+        "Fish, butterfish, cooked, dry heat",
+        "Fish, whitefish, mixed species, smoked"
       ],
       "portion_gram_weights": [
+        151.0,
+        90.0,
+        180.0,
+        28.35,
+        238.0,
+        300.0,
+        87.0,
+        106.0,
+        46.0,
+        28.333333333333332,
+        28.333333333333332,
+        28.333333333333332,
+        302.0,
+        124.0,
+        28.333333333333332,
+        302.0,
+        146.0,
+        308.0,
+        50.0,
         28.333333333333332,
         248.0,
         50.0,
+        186.0,
         144.0,
         28.35,
         308.0,
         117.0,
         159.0,
-        170.0,
-        28.333333333333332
-      ],
-      "portion_unit_names": [
-        "undetermined",
-        "undetermined",
-        "undetermined",
-        "undetermined",
-        "undetermined",
-        "undetermined",
-        "undetermined",
-        "undetermined",
-        "undetermined",
-        "undetermined"
-      ],
-      "count": 10
-    },
-    {
-      "id": 100,
-      "generic_name": "Fish Sheepshead Cooked Dry Heat",
-      "food_category": "Finfish and Shellfish Products",
-      "nutrients": {
-        "Energy": 109.43339706819631,
-        "Carbohydrate": 0.0,
-        "Protein": 23.453333333333333,
-        "Total fat": 1.0199999999999998,
-        "Fiber": 0.0,
-        "Sugars, Total": null,
-        "Sodium": 124.66666666666667,
-        "Calcium": 21.333333333333332,
-        "Iron": 0.6466666666666666,
-        "Cholesterol": 61.0,
-        "Fatty acids, total saturated": 0.27699999999999997,
-        "Vitamin A, RAE": 25.666666666666668,
-        "Vitamin C": 0.0,
-        "Vitamin D (D2 + D3)": 0.6,
-        "Vitamin E": 0.55,
-        "Vitamin B-6": 0.37466666666666665,
-        "Vitamin B-12": 1.8766666666666667,
-        "Folate, total": 10.666666666666666,
-        "Zinc": 0.5066666666666667,
-        "Magnesium": 33.666666666666664,
-        "Potassium": 455.3333333333333,
-        "Phosphorus": 296.6666666666667
-      },
-      "source_ids": [
-        174,
-        187,
-        189
-      ],
-      "source_names": [
-        "Fish, sheepshead, cooked, dry heat",
-        "Fish, cusk, cooked, dry heat",
-        "Fish, haddock, cooked, dry heat"
-      ],
-      "portion_gram_weights": [
-        186.0,
         95.0,
-        150.0
-      ],
-      "portion_unit_names": [
-        "undetermined",
-        "undetermined",
-        "undetermined"
-      ],
-      "count": 3
-    },
-    {
-      "id": 101,
-      "generic_name": "Burbot Cooked",
-      "food_category": "Finfish and Shellfish Products",
-      "nutrients": {
-        "Energy": 127.0807308264287,
-        "Carbohydrate": 0.43444444444444447,
-        "Protein": 21.215555555555554,
-        "Total fat": 3.947777777777778,
-        "Fiber": 0.0,
-        "Sugars, Total": null,
-        "Sodium": 237.22222222222223,
-        "Calcium": 24.555555555555557,
-        "Iron": 1.2111111111111112,
-        "Cholesterol": 56.666666666666664,
-        "Fatty acids, total saturated": 0.7959999999999999,
-        "Vitamin A, RAE": 71.44444444444444,
-        "Vitamin C": 0.6666666666666666,
-        "Vitamin D (D2 + D3)": 7.005555555555556,
-        "Vitamin E": 0.7916666666666666,
-        "Vitamin B-6": 0.3201111111111112,
-        "Vitamin B-12": 4.105555555555556,
-        "Folate, total": 6.444444444444445,
-        "Zinc": 10.66777777777778,
-        "Magnesium": 35.22222222222222,
-        "Potassium": 387.0,
-        "Phosphorus": 201.66666666666666
-      },
-      "source_ids": [
-        192,
-        195,
-        196,
-        198,
-        202,
-        204,
-        205,
-        206,
-        214
-      ],
-      "source_names": [
-        "Fish, burbot, cooked, dry heat",
-        "Fish, cod, Atlantic, cooked, dry heat",
-        "Fish, cisco, smoked",
-        "Fish, whitefish, mixed species, smoked",
-        "Fish, wolffish, Atlantic, cooked, dry heat",
-        "Fish, tilefish, cooked, dry heat",
-        "Fish, tilapia, cooked, dry heat",
-        "Fish, swordfish, cooked, dry heat",
-        "Mollusks, oyster, eastern, canned"
-      ],
-      "portion_gram_weights": [
-        90.0,
-        180.0,
-        28.35,
-        136.0,
-        238.0,
-        300.0,
-        87.0,
-        106.0,
-        272.0
+        150.0,
+        170.0,
+        28.333333333333332,
+        136.0
       ],
       "portion_unit_names": [
         "undetermined",
@@ -4546,12 +3984,36 @@
         "undetermined",
         "undetermined",
         "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
+        "undetermined",
         "undetermined"
       ],
-      "count": 9
+      "count": 33
     },
     {
-      "id": 102,
+      "id": 88,
       "generic_name": "Mollusks Oyster Eastern Farmed Raw",
       "food_category": "Finfish and Shellfish Products",
       "nutrients": {
@@ -4597,92 +4059,38 @@
       "count": 2
     },
     {
-      "id": 103,
-      "generic_name": "Mollusks Squid Mixed Species Raw",
+      "id": 89,
+      "generic_name": "Mollusks Scallop Mixed Species Raw",
       "food_category": "Finfish and Shellfish Products",
       "nutrients": {
-        "Energy": 86.30019120458891,
-        "Carbohydrate": 3.2725,
-        "Protein": 15.245000000000001,
-        "Total fat": 0.8325,
+        "Energy": 69.07265774378585,
+        "Carbohydrate": 3.18,
+        "Protein": 12.06,
+        "Total fat": 0.49,
         "Fiber": 0.0,
         "Sugars, Total": null,
-        "Sodium": 277.25,
-        "Calcium": 39.75,
-        "Iron": 2.5675,
-        "Cholesterol": 113.5,
-        "Fatty acids, total saturated": 0.18825,
-        "Vitamin A, RAE": 31.5,
-        "Vitamin C": 3.0,
+        "Sodium": 392.0,
+        "Calcium": 6.0,
+        "Iron": 0.38,
+        "Cholesterol": 24.0,
+        "Fatty acids, total saturated": 0.128,
+        "Vitamin A, RAE": 1.0,
+        "Vitamin C": 0.0,
         "Vitamin D (D2 + D3)": 0.0,
-        "Vitamin E": 1.6,
-        "Vitamin B-6": 0.10724999999999998,
-        "Vitamin B-12": 1.6099999999999999,
-        "Folate, total": 10.5,
-        "Zinc": 1.2475,
-        "Magnesium": 33.25,
-        "Potassium": 263.75,
-        "Phosphorus": 283.0
+        "Vitamin E": 0.0,
+        "Vitamin B-6": 0.073,
+        "Vitamin B-12": 1.41,
+        "Folate, total": 16.0,
+        "Zinc": 0.91,
+        "Magnesium": 22.0,
+        "Potassium": 205.0,
+        "Phosphorus": 334.0
       },
       "source_ids": [
-        213,
-        216,
-        212,
-        215
+        212
       ],
       "source_names": [
-        "Mollusks, squid, mixed species, raw",
-        "Mollusks, cuttlefish, mixed species, raw",
-        "Mollusks, scallop, mixed species, raw",
-        "Mollusks, abalone, mixed species, raw"
-      ],
-      "portion_gram_weights": [
-        28.333333333333332,
-        28.333333333333332,
-        28.333333333333332,
-        28.333333333333332
-      ],
-      "portion_unit_names": [
-        "undetermined",
-        "undetermined",
-        "undetermined",
-        "undetermined"
-      ],
-      "count": 4
-    },
-    {
-      "id": 104,
-      "generic_name": "Mollusks Mussel Blue Cooked Moist Heat",
-      "food_category": "Finfish and Shellfish Products",
-      "nutrients": {
-        "Energy": 172.0841300191205,
-        "Carbohydrate": 7.39,
-        "Protein": 23.8,
-        "Total fat": 4.48,
-        "Fiber": 0.0,
-        "Sugars, Total": null,
-        "Sodium": 369.0,
-        "Calcium": 33.0,
-        "Iron": 6.72,
-        "Cholesterol": 56.0,
-        "Fatty acids, total saturated": 0.85,
-        "Vitamin A, RAE": 91.0,
-        "Vitamin C": 13.6,
-        "Vitamin D (D2 + D3)": null,
-        "Vitamin E": null,
-        "Vitamin B-6": 0.1,
-        "Vitamin B-12": 24.0,
-        "Folate, total": 76.0,
-        "Zinc": 2.67,
-        "Magnesium": 37.0,
-        "Potassium": 268.0,
-        "Phosphorus": 285.0
-      },
-      "source_ids": [
-        217
-      ],
-      "source_names": [
-        "Mollusks, mussel, blue, cooked, moist heat"
+        "Mollusks, scallop, mixed species, raw"
       ],
       "portion_gram_weights": [
         28.333333333333332
@@ -4693,7 +4101,141 @@
       "count": 1
     },
     {
-      "id": 105,
+      "id": 90,
+      "generic_name": "Mollusks Squid Mixed Species Raw",
+      "food_category": "Finfish and Shellfish Products",
+      "nutrients": {
+        "Energy": 98.50860420650096,
+        "Carbohydrate": 4.545,
+        "Protein": 16.34,
+        "Total fat": 1.0699999999999998,
+        "Fiber": 0.0,
+        "Sugars, Total": null,
+        "Sodium": 172.5,
+        "Calcium": 31.5,
+        "Iron": 1.935,
+        "Cholesterol": 159.0,
+        "Fatty acids, total saturated": 0.2535,
+        "Vitamin A, RAE": 6.0,
+        "Vitamin C": 3.35,
+        "Vitamin D (D2 + D3)": 0.0,
+        "Vitamin E": 2.6,
+        "Vitamin B-6": 0.103,
+        "Vitamin B-12": 1.0150000000000001,
+        "Folate, total": 5.0,
+        "Zinc": 1.175,
+        "Magnesium": 40.5,
+        "Potassium": 248.0,
+        "Phosphorus": 205.5
+      },
+      "source_ids": [
+        213,
+        215
+      ],
+      "source_names": [
+        "Mollusks, squid, mixed species, raw",
+        "Mollusks, abalone, mixed species, raw"
+      ],
+      "portion_gram_weights": [
+        28.333333333333332,
+        28.333333333333332
+      ],
+      "portion_unit_names": [
+        "undetermined",
+        "undetermined"
+      ],
+      "count": 2
+    },
+    {
+      "id": 91,
+      "generic_name": "Mollusks Oyster Eastern Canned",
+      "food_category": "Finfish and Shellfish Products",
+      "nutrients": {
+        "Energy": 68.0,
+        "Carbohydrate": 3.91,
+        "Protein": 7.06,
+        "Total fat": 2.47,
+        "Fiber": 0.0,
+        "Sugars, Total": null,
+        "Sodium": 112.0,
+        "Calcium": 45.0,
+        "Iron": 6.7,
+        "Cholesterol": 55.0,
+        "Fatty acids, total saturated": 0.631,
+        "Vitamin A, RAE": 90.0,
+        "Vitamin C": 5.0,
+        "Vitamin D (D2 + D3)": 0.0,
+        "Vitamin E": 0.85,
+        "Vitamin B-6": 0.095,
+        "Vitamin B-12": 19.13,
+        "Folate, total": 9.0,
+        "Zinc": 90.95,
+        "Magnesium": 54.0,
+        "Potassium": 229.0,
+        "Phosphorus": 139.0
+      },
+      "source_ids": [
+        214
+      ],
+      "source_names": [
+        "Mollusks, oyster, eastern, canned"
+      ],
+      "portion_gram_weights": [
+        272.0
+      ],
+      "portion_unit_names": [
+        "undetermined"
+      ],
+      "count": 1
+    },
+    {
+      "id": 92,
+      "generic_name": "Mollusks Cuttlefish Raw",
+      "food_category": "Finfish and Shellfish Products",
+      "nutrients": {
+        "Energy": 125.59751434034419,
+        "Carbohydrate": 4.1049999999999995,
+        "Protein": 20.02,
+        "Total fat": 2.5900000000000003,
+        "Fiber": 0.0,
+        "Sugars, Total": null,
+        "Sodium": 370.5,
+        "Calcium": 61.5,
+        "Iron": 6.369999999999999,
+        "Cholesterol": 84.0,
+        "Fatty acids, total saturated": 0.484,
+        "Vitamin A, RAE": 102.0,
+        "Vitamin C": 9.45,
+        "Vitamin D (D2 + D3)": null,
+        "Vitamin E": null,
+        "Vitamin B-6": 0.125,
+        "Vitamin B-12": 13.5,
+        "Folate, total": 46.0,
+        "Zinc": 2.2,
+        "Magnesium": 33.5,
+        "Potassium": 311.0,
+        "Phosphorus": 336.0
+      },
+      "source_ids": [
+        216,
+        217
+      ],
+      "source_names": [
+        "Mollusks, cuttlefish, mixed species, raw",
+        "Mollusks, mussel, blue, cooked, moist heat"
+      ],
+      "portion_gram_weights": [
+        28.333333333333332,
+        28.333333333333332
+      ],
+      "portion_unit_names": [
+        "undetermined",
+        "undetermined"
+      ],
+      "count": 2
+    },
+    {
+      "id": 93,
       "generic_name": "Fish Salmon Fried",
       "food_category": "Fish",
       "nutrients": {
@@ -4739,7 +4281,7 @@
       "count": 3
     },
     {
-      "id": 106,
+      "id": 94,
       "generic_name": "Fish White Mixed Species Baked Or",
       "food_category": "Fish",
       "nutrients": {
@@ -4782,7 +4324,7 @@
       "count": 2
     },
     {
-      "id": 107,
+      "id": 95,
       "generic_name": "Hot Dog",
       "food_category": "Frankfurters",
       "nutrients": {
@@ -4822,7 +4364,7 @@
       "count": 1
     },
     {
-      "id": 108,
+      "id": 96,
       "generic_name": "Potato Tots From Fresh Fried Or",
       "food_category": "French fries and other fried white potatoes",
       "nutrients": {
@@ -4862,7 +4404,7 @@
       "count": 1
     },
     {
-      "id": 109,
+      "id": 97,
       "generic_name": "Potato Tots Frozen Baked",
       "food_category": "French fries and other fried white potatoes",
       "nutrients": {
@@ -4902,7 +4444,7 @@
       "count": 1
     },
     {
-      "id": 110,
+      "id": 98,
       "generic_name": "Orange Juice Canned Unsweetened",
       "food_category": "Fruits and Fruit Juices",
       "nutrients": {
@@ -4944,7 +4486,7 @@
       "count": 1
     },
     {
-      "id": 111,
+      "id": 99,
       "generic_name": "Oranges Raw California Valencias",
       "food_category": "Fruits and Fruit Juices",
       "nutrients": {
@@ -4986,7 +4528,7 @@
       "count": 1
     },
     {
-      "id": 112,
+      "id": 100,
       "generic_name": "Veal Seam Fat Only Raw",
       "food_category": "Lamb, Veal, and Game Products",
       "nutrients": {
@@ -5028,7 +4570,7 @@
       "count": 1
     },
     {
-      "id": 113,
+      "id": 101,
       "generic_name": "Game Meat Deer Raw",
       "food_category": "Lamb, Veal, and Game Products",
       "nutrients": {
@@ -5074,7 +4616,7 @@
       "count": 2
     },
     {
-      "id": 114,
+      "id": 102,
       "generic_name": "Game Meat Deer Ground Cooked Pan Broiled",
       "food_category": "Lamb, Veal, and Game Products",
       "nutrients": {
@@ -5116,7 +4658,7 @@
       "count": 1
     },
     {
-      "id": 115,
+      "id": 103,
       "generic_name": "Game Meat Deer Cooked Roasted",
       "food_category": "Lamb, Veal, and Game Products",
       "nutrients": {
@@ -5162,7 +4704,7 @@
       "count": 2
     },
     {
-      "id": 116,
+      "id": 104,
       "generic_name": "Beans Baked Canned Plain Or Vegetarian",
       "food_category": "Legumes and Legume Products",
       "nutrients": {
@@ -5208,7 +4750,7 @@
       "count": 2
     },
     {
-      "id": 117,
+      "id": 105,
       "generic_name": "Beans Baked Home Prepared",
       "food_category": "Legumes and Legume Products",
       "nutrients": {
@@ -5254,7 +4796,7 @@
       "count": 2
     },
     {
-      "id": 118,
+      "id": 106,
       "generic_name": "Beans French Mature Seeds Raw",
       "food_category": "Legumes and Legume Products",
       "nutrients": {
@@ -5304,8 +4846,8 @@
       "count": 3
     },
     {
-      "id": 119,
-      "generic_name": "Canned Lima Beans",
+      "id": 107,
+      "generic_name": "Lima Beans Canned",
       "food_category": "Legumes and Legume Products",
       "nutrients": {
         "Energy": 79.0,
@@ -5346,7 +4888,7 @@
       "count": 1
     },
     {
-      "id": 120,
+      "id": 108,
       "generic_name": "Macaroni Or Noodles With Cheese",
       "food_category": "Macaroni and cheese",
       "nutrients": {
@@ -5389,7 +4931,7 @@
       "count": 2
     },
     {
-      "id": 121,
+      "id": 109,
       "generic_name": "Chili No Beans Canned Entree",
       "food_category": "Meals, Entrees, and Side Dishes",
       "nutrients": {
@@ -5431,7 +4973,7 @@
       "count": 1
     },
     {
-      "id": 122,
+      "id": 110,
       "generic_name": "Horseradish Sauce",
       "food_category": "Mustard and other condiments",
       "nutrients": {
@@ -5471,7 +5013,7 @@
       "count": 1
     },
     {
-      "id": 123,
+      "id": 111,
       "generic_name": "Hot Pepper Sauce",
       "food_category": "Mustard and other condiments",
       "nutrients": {
@@ -5511,7 +5053,7 @@
       "count": 1
     },
     {
-      "id": 124,
+      "id": 112,
       "generic_name": "Fry Sauce",
       "food_category": "Mustard and other condiments",
       "nutrients": {
@@ -5551,7 +5093,7 @@
       "count": 1
     },
     {
-      "id": 125,
+      "id": 113,
       "generic_name": "Buffalo Sauce",
       "food_category": "Mustard and other condiments",
       "nutrients": {
@@ -5591,7 +5133,7 @@
       "count": 1
     },
     {
-      "id": 126,
+      "id": 114,
       "generic_name": "Rice White Cooked As Ingredient",
       "food_category": "Not included in a food category",
       "nutrients": {
@@ -5629,7 +5171,7 @@
       "count": 1
     },
     {
-      "id": 127,
+      "id": 115,
       "generic_name": "Seeds Sesame Flour Low Fat",
       "food_category": "Nut and Seed Products",
       "nutrients": {
@@ -5671,7 +5213,7 @@
       "count": 1
     },
     {
-      "id": 128,
+      "id": 116,
       "generic_name": "Seeds Sesame Seeds Whole Dried",
       "food_category": "Nut and Seed Products",
       "nutrients": {
@@ -5713,7 +5255,7 @@
       "count": 1
     },
     {
-      "id": 129,
+      "id": 117,
       "generic_name": "Nuts Chestnuts European Raw Peeled",
       "food_category": "Nut and Seed Products",
       "nutrients": {
@@ -5759,7 +5301,7 @@
       "count": 2
     },
     {
-      "id": 130,
+      "id": 118,
       "generic_name": "Nuts Chestnuts European Dried Unpeeled",
       "food_category": "Nut and Seed Products",
       "nutrients": {
@@ -5801,7 +5343,7 @@
       "count": 1
     },
     {
-      "id": 131,
+      "id": 119,
       "generic_name": "Nuts Almonds Oil Roasted Lightly Salted",
       "food_category": "Nut and Seed Products",
       "nutrients": {
@@ -5843,7 +5385,7 @@
       "count": 1
     },
     {
-      "id": 132,
+      "id": 120,
       "generic_name": "Nuts Chestnuts Japanese Dried",
       "food_category": "Nut and Seed Products",
       "nutrients": {
@@ -5885,7 +5427,7 @@
       "count": 1
     },
     {
-      "id": 133,
+      "id": 121,
       "generic_name": "Greens",
       "food_category": "Other dark green vegetables",
       "nutrients": {
@@ -5928,7 +5470,7 @@
       "count": 2
     },
     {
-      "id": 134,
+      "id": 122,
       "generic_name": "Greens Frozen Cooked No Added Fat",
       "food_category": "Other dark green vegetables",
       "nutrients": {
@@ -5971,7 +5513,7 @@
       "count": 2
     },
     {
-      "id": 135,
+      "id": 123,
       "generic_name": "Beet Greens Cooked",
       "food_category": "Other dark green vegetables",
       "nutrients": {
@@ -6014,7 +5556,7 @@
       "count": 2
     },
     {
-      "id": 136,
+      "id": 124,
       "generic_name": "Mustard Greens Frozen Cooked Fat Added",
       "food_category": "Other dark green vegetables",
       "nutrients": {
@@ -6054,7 +5596,7 @@
       "count": 1
     },
     {
-      "id": 137,
+      "id": 125,
       "generic_name": "Turnip Greens Frozen Cooked Fat Added",
       "food_category": "Other dark green vegetables",
       "nutrients": {
@@ -6094,7 +5636,7 @@
       "count": 1
     },
     {
-      "id": 138,
+      "id": 126,
       "generic_name": "Turnip Greens Fresh Cooked No Added",
       "food_category": "Other dark green vegetables",
       "nutrients": {
@@ -6134,8 +5676,8 @@
       "count": 1
     },
     {
-      "id": 139,
-      "generic_name": "Turnip Greens Cooked With Oil",
+      "id": 127,
+      "generic_name": "Turnip Greens Fresh Cooked Fat Added",
       "food_category": "Other dark green vegetables",
       "nutrients": {
         "Energy": 42.0,
@@ -6174,7 +5716,7 @@
       "count": 1
     },
     {
-      "id": 140,
+      "id": 128,
       "generic_name": "Collard Greens Cooked With Oil",
       "food_category": "Other dark green vegetables",
       "nutrients": {
@@ -6214,8 +5756,8 @@
       "count": 1
     },
     {
-      "id": 141,
-      "generic_name": "Grape Juice",
+      "id": 129,
+      "generic_name": "Grape Juice 100",
       "food_category": "Other fruit juice",
       "nutrients": {
         "Energy": 64.0,
@@ -6257,7 +5799,7 @@
       "count": 2
     },
     {
-      "id": 142,
+      "id": 130,
       "generic_name": "Maraschino Cherries",
       "food_category": "Other fruits and fruit salads",
       "nutrients": {
@@ -6297,7 +5839,7 @@
       "count": 1
     },
     {
-      "id": 143,
+      "id": 131,
       "generic_name": "Peas And Corn Cooked",
       "food_category": "Other starchy vegetables",
       "nutrients": {
@@ -6337,7 +5879,7 @@
       "count": 1
     },
     {
-      "id": 144,
+      "id": 132,
       "generic_name": "Plantain Cooked With Butter",
       "food_category": "Other starchy vegetables",
       "nutrients": {
@@ -6377,7 +5919,7 @@
       "count": 1
     },
     {
-      "id": 145,
+      "id": 133,
       "generic_name": "Green Peas Raw",
       "food_category": "Other starchy vegetables",
       "nutrients": {
@@ -6417,7 +5959,7 @@
       "count": 1
     },
     {
-      "id": 146,
+      "id": 134,
       "generic_name": "Green Peas Cooked With Oil",
       "food_category": "Other starchy vegetables",
       "nutrients": {
@@ -6457,8 +5999,8 @@
       "count": 1
     },
     {
-      "id": 147,
-      "generic_name": "Green Peas Canned",
+      "id": 135,
+      "generic_name": "Green Peas Canned No Added Fat",
       "food_category": "Other starchy vegetables",
       "nutrients": {
         "Energy": 68.0,
@@ -6497,8 +6039,8 @@
       "count": 1
     },
     {
-      "id": 148,
-      "generic_name": "Eggplant Cooked",
+      "id": 136,
+      "generic_name": "Eggplant Cooked No Added Fat",
       "food_category": "Other vegetables and combinations",
       "nutrients": {
         "Energy": 27.0,
@@ -6537,8 +6079,8 @@
       "count": 1
     },
     {
-      "id": 149,
-      "generic_name": "Asparagus Cooked",
+      "id": 137,
+      "generic_name": "Asparagus Cooked No Added Fat",
       "food_category": "Other vegetables and combinations",
       "nutrients": {
         "Energy": 21.0,
@@ -6577,8 +6119,8 @@
       "count": 1
     },
     {
-      "id": 150,
-      "generic_name": "Asparagus Cooked With Oil",
+      "id": 138,
+      "generic_name": "Asparagus Canned Cooked With Oil",
       "food_category": "Other vegetables and combinations",
       "nutrients": {
         "Energy": 45.0,
@@ -6617,8 +6159,8 @@
       "count": 1
     },
     {
-      "id": 151,
-      "generic_name": "Cauliflower Cooked With Oil",
+      "id": 139,
+      "generic_name": "Cauliflower Frozen Cooked With Oil",
       "food_category": "Other vegetables and combinations",
       "nutrients": {
         "Energy": 45.0,
@@ -6657,7 +6199,7 @@
       "count": 1
     },
     {
-      "id": 152,
+      "id": 140,
       "generic_name": "Broccoli And Cauliflower Cooked With Oil",
       "food_category": "Other vegetables and combinations",
       "nutrients": {
@@ -6697,7 +6239,7 @@
       "count": 1
     },
     {
-      "id": 153,
+      "id": 141,
       "generic_name": "Potato Chips Lightly Salted",
       "food_category": "Potato chips",
       "nutrients": {
@@ -6737,7 +6279,7 @@
       "count": 1
     },
     {
-      "id": 154,
+      "id": 142,
       "generic_name": "Potato Chips Reduced Fat",
       "food_category": "Potato chips",
       "nutrients": {
@@ -6777,7 +6319,7 @@
       "count": 1
     },
     {
-      "id": 155,
+      "id": 143,
       "generic_name": "Quail Breast Raw",
       "food_category": "Poultry Products",
       "nutrients": {
@@ -6819,8 +6361,8 @@
       "count": 1
     },
     {
-      "id": 156,
-      "generic_name": "Turkey Diced Seasoned",
+      "id": 144,
+      "generic_name": "Diced Seasoned Turkey",
       "food_category": "Poultry Products",
       "nutrients": {
         "Energy": 138.0,
@@ -6861,7 +6403,7 @@
       "count": 1
     },
     {
-      "id": 157,
+      "id": 145,
       "generic_name": "Turkey Dark Meat Raw",
       "food_category": "Poultry Products",
       "nutrients": {
@@ -6907,7 +6449,7 @@
       "count": 2
     },
     {
-      "id": 158,
+      "id": 146,
       "generic_name": "Turkey Light Meat Raw",
       "food_category": "Poultry Products",
       "nutrients": {
@@ -6949,8 +6491,8 @@
       "count": 1
     },
     {
-      "id": 159,
-      "generic_name": "Chicken Stewing Raw",
+      "id": 147,
+      "generic_name": "Chicken Stewing Meat Raw",
       "food_category": "Poultry Products",
       "nutrients": {
         "Energy": 152.51338432122373,
@@ -6995,8 +6537,8 @@
       "count": 2
     },
     {
-      "id": 160,
-      "generic_name": "Stewed Chicken",
+      "id": 148,
+      "generic_name": "Chicken Stewing Meat Cooked",
       "food_category": "Poultry Products",
       "nutrients": {
         "Energy": 237.0,
@@ -7037,8 +6579,8 @@
       "count": 1
     },
     {
-      "id": 161,
-      "generic_name": "Canned Chicken With Broth",
+      "id": 149,
+      "generic_name": "Canned Chicken In Broth",
       "food_category": "Poultry Products",
       "nutrients": {
         "Energy": 165.0,
@@ -7079,8 +6621,8 @@
       "count": 1
     },
     {
-      "id": 162,
-      "generic_name": "Gluten Free Soft Pretzels",
+      "id": 150,
+      "generic_name": "Gluten Free Soft Pretzel",
       "food_category": "Pretzels/snack mix",
       "nutrients": {
         "Energy": 297.0,
@@ -7119,7 +6661,7 @@
       "count": 1
     },
     {
-      "id": 163,
+      "id": 151,
       "generic_name": "Hot And Sour Soup",
       "food_category": "Ramen and Asian broth-based soups",
       "nutrients": {
@@ -7159,7 +6701,7 @@
       "count": 1
     },
     {
-      "id": 164,
+      "id": 152,
       "generic_name": "Multigrain O Cereal",
       "food_category": "Ready-to-eat cereal, lower sugar (=<21.2g/100g)",
       "nutrients": {
@@ -7199,7 +6741,7 @@
       "count": 1
     },
     {
-      "id": 165,
+      "id": 153,
       "generic_name": "Brown Rice With Gravy",
       "food_category": "Rice mixed dishes",
       "nutrients": {
@@ -7239,8 +6781,8 @@
       "count": 1
     },
     {
-      "id": 166,
-      "generic_name": "Whole Grain White Roll",
+      "id": 154,
+      "generic_name": "Whole Grain White Bun",
       "food_category": "Rolls and buns",
       "nutrients": {
         "Energy": 255.0,
@@ -7279,51 +6821,88 @@
       "count": 1
     },
     {
-      "id": 167,
-      "generic_name": "Salad Dressing",
+      "id": 155,
+      "generic_name": "Blue Cheese Dressing",
       "food_category": "Salad dressings and vegetable oils",
       "nutrients": {
-        "Energy": 299.5,
-        "Carbohydrate": 15.185,
-        "Protein": 1.445,
-        "Total fat": 26.055,
-        "Fiber": 1.1,
+        "Energy": 484.0,
+        "Carbohydrate": 4.77,
+        "Protein": 1.37,
+        "Total fat": 51.1,
+        "Fiber": 0.4,
         "Sugars, Total": null,
-        "Sodium": 728.0,
-        "Calcium": 44.0,
-        "Iron": 0.105,
-        "Cholesterol": 16.5,
-        "Fatty acids, total saturated": 4.3625,
-        "Vitamin A, RAE": 9.5,
-        "Vitamin C": 0.6,
-        "Vitamin D (D2 + D3)": 0.05,
-        "Vitamin E": 2.16,
-        "Vitamin B-6": 0.040999999999999995,
-        "Vitamin B-12": 0.265,
-        "Folate, total": 3.5,
+        "Sodium": 642.0,
+        "Calcium": 37.0,
+        "Iron": 0.09,
+        "Cholesterol": 31.0,
+        "Fatty acids, total saturated": 8.275,
+        "Vitamin A, RAE": 14.0,
+        "Vitamin C": 0.7,
+        "Vitamin D (D2 + D3)": 0.1,
+        "Vitamin E": 4.28,
+        "Vitamin B-6": 0.037,
+        "Vitamin B-12": 0.27,
+        "Folate, total": 5.0,
         "Zinc": 0.21,
-        "Magnesium": 11.5,
-        "Potassium": 141.0,
-        "Phosphorus": 90.5
+        "Magnesium": 8.0,
+        "Potassium": 88.0,
+        "Phosphorus": 74.0
       },
       "source_ids": [
-        297,
+        297
+      ],
+      "source_names": [
+        "Blue or roquefort cheese dressing"
+      ],
+      "portion_gram_weights": [],
+      "portion_unit_names": [
+        "undetermined"
+      ],
+      "count": 1
+    },
+    {
+      "id": 156,
+      "generic_name": "Blue Cheese Dressing Fat Free",
+      "food_category": "Salad dressings and vegetable oils",
+      "nutrients": {
+        "Energy": 115.0,
+        "Carbohydrate": 25.6,
+        "Protein": 1.52,
+        "Total fat": 1.01,
+        "Fiber": 1.8,
+        "Sugars, Total": null,
+        "Sodium": 814.0,
+        "Calcium": 51.0,
+        "Iron": 0.12,
+        "Cholesterol": 2.0,
+        "Fatty acids, total saturated": 0.45,
+        "Vitamin A, RAE": 5.0,
+        "Vitamin C": 0.5,
+        "Vitamin D (D2 + D3)": 0.0,
+        "Vitamin E": 0.04,
+        "Vitamin B-6": 0.045,
+        "Vitamin B-12": 0.26,
+        "Folate, total": 2.0,
+        "Zinc": 0.21,
+        "Magnesium": 15.0,
+        "Potassium": 194.0,
+        "Phosphorus": 107.0
+      },
+      "source_ids": [
         298
       ],
       "source_names": [
-        "Blue or roquefort cheese dressing",
         "Blue or roquefort cheese dressing, fat free"
       ],
       "portion_gram_weights": [],
       "portion_unit_names": [
-        "undetermined",
         "undetermined"
       ],
-      "count": 2
+      "count": 1
     },
     {
-      "id": 168,
-      "generic_name": "Smoked Polish Sausage",
+      "id": 157,
+      "generic_name": "Polish Sausage Smoked",
       "food_category": "Sausages and Luncheon Meats",
       "nutrients": {
         "Energy": 300.9082217973231,
@@ -7364,7 +6943,7 @@
       "count": 1
     },
     {
-      "id": 169,
+      "id": 158,
       "generic_name": "Canned Shrimp",
       "food_category": "Shellfish",
       "nutrients": {
@@ -7404,7 +6983,7 @@
       "count": 1
     },
     {
-      "id": 170,
+      "id": 159,
       "generic_name": "Dried Shrimp",
       "food_category": "Shellfish",
       "nutrients": {
@@ -7444,7 +7023,7 @@
       "count": 1
     },
     {
-      "id": 171,
+      "id": 160,
       "generic_name": "Fruit Smoothie No Dairy",
       "food_category": "Smoothies and grain drinks",
       "nutrients": {
@@ -7484,7 +7063,7 @@
       "count": 1
     },
     {
-      "id": 172,
+      "id": 161,
       "generic_name": "Light Fruit Smoothie",
       "food_category": "Smoothies and grain drinks",
       "nutrients": {
@@ -7524,7 +7103,7 @@
       "count": 1
     },
     {
-      "id": 173,
+      "id": 162,
       "generic_name": "Snacks Potato Chips Lightly Salted",
       "food_category": "Snacks",
       "nutrients": {
@@ -7566,7 +7145,7 @@
       "count": 1
     },
     {
-      "id": 174,
+      "id": 163,
       "generic_name": "Snacks Potato Chips Reduced Fat",
       "food_category": "Snacks",
       "nutrients": {
@@ -7608,7 +7187,7 @@
       "count": 1
     },
     {
-      "id": 175,
+      "id": 164,
       "generic_name": "Sauce Horseradish",
       "food_category": "Soups, Sauces, and Gravies",
       "nutrients": {
@@ -7650,7 +7229,7 @@
       "count": 1
     },
     {
-      "id": 176,
+      "id": 165,
       "generic_name": "Refrigerated Pesto Sauce",
       "food_category": "Soups, Sauces, and Gravies",
       "nutrients": {
@@ -7696,7 +7275,7 @@
       "count": 2
     },
     {
-      "id": 177,
+      "id": 166,
       "generic_name": "Sauce Ready To Serve Pepper Or Hot",
       "food_category": "Soups, Sauces, and Gravies",
       "nutrients": {
@@ -7742,7 +7321,7 @@
       "count": 2
     },
     {
-      "id": 178,
+      "id": 167,
       "generic_name": "Dry Alfredo Sauce Mix",
       "food_category": "Soups, Sauces, and Gravies",
       "nutrients": {
@@ -7780,8 +7359,8 @@
       "count": 1
     },
     {
-      "id": 179,
-      "generic_name": "Turkey Gravy Mix",
+      "id": 168,
+      "generic_name": "Turkey Gravy Dry Mix",
       "food_category": "Soups, Sauces, and Gravies",
       "nutrients": {
         "Energy": 395.33173996175907,
@@ -7842,8 +7421,8 @@
       "count": 6
     },
     {
-      "id": 180,
-      "generic_name": "Au Jus Sauce",
+      "id": 169,
+      "generic_name": "Beef Au Jus Gravy",
       "food_category": "Soups, Sauces, and Gravies",
       "nutrients": {
         "Energy": 16.0,
@@ -7884,7 +7463,7 @@
       "count": 1
     },
     {
-      "id": 181,
+      "id": 170,
       "generic_name": "Chicken Broth Low Sodium",
       "food_category": "Soups, Sauces, and Gravies",
       "nutrients": {
@@ -7926,8 +7505,8 @@
       "count": 1
     },
     {
-      "id": 182,
-      "generic_name": "Onion Soup Mix",
+      "id": 171,
+      "generic_name": "Onion Soup Dry Mix",
       "food_category": "Soups, Sauces, and Gravies",
       "nutrients": {
         "Energy": 12.4282982791587,
@@ -7968,8 +7547,8 @@
       "count": 1
     },
     {
-      "id": 183,
-      "generic_name": "Cream Of Vegetable Soup Mix",
+      "id": 172,
+      "generic_name": "Creamy Vegetable Soup Dry Mix",
       "food_category": "Soups, Sauces, and Gravies",
       "nutrients": {
         "Energy": 445.98470363288715,
@@ -8010,8 +7589,8 @@
       "count": 1
     },
     {
-      "id": 184,
-      "generic_name": "Homemade Beef Stock",
+      "id": 173,
+      "generic_name": "Beef Stock Homemade",
       "food_category": "Soups, Sauces, and Gravies",
       "nutrients": {
         "Energy": 13.0,
@@ -8052,7 +7631,7 @@
       "count": 1
     },
     {
-      "id": 185,
+      "id": 174,
       "generic_name": "Ground Turmeric",
       "food_category": "Spices and Herbs",
       "nutrients": {
@@ -8094,7 +7673,7 @@
       "count": 1
     },
     {
-      "id": 186,
+      "id": 175,
       "generic_name": "Canned Cooked Spinach",
       "food_category": "Spinach",
       "nutrients": {
@@ -8134,7 +7713,7 @@
       "count": 1
     },
     {
-      "id": 187,
+      "id": 176,
       "generic_name": "Frozen Cooked Spinach",
       "food_category": "Spinach",
       "nutrients": {
@@ -8174,8 +7753,8 @@
       "count": 1
     },
     {
-      "id": 188,
-      "generic_name": "Canned Green Beans",
+      "id": 177,
+      "generic_name": "Canned Cooked Green Beans",
       "food_category": "String beans",
       "nutrients": {
         "Energy": 24.0,
@@ -8214,8 +7793,8 @@
       "count": 1
     },
     {
-      "id": 189,
-      "generic_name": "Green Beans Cooked With Oil",
+      "id": 178,
+      "generic_name": "Saut Ed Green Beans",
       "food_category": "String beans",
       "nutrients": {
         "Energy": 68.0,
@@ -8254,7 +7833,7 @@
       "count": 1
     },
     {
-      "id": 190,
+      "id": 179,
       "generic_name": "Pectin Dry Mix",
       "food_category": "Sweets",
       "nutrients": {
@@ -8296,7 +7875,7 @@
       "count": 1
     },
     {
-      "id": 191,
+      "id": 180,
       "generic_name": "Liquid Pectin",
       "food_category": "Sweets",
       "nutrients": {
@@ -8338,8 +7917,8 @@
       "count": 1
     },
     {
-      "id": 192,
-      "generic_name": "Unsweetened Baking Chocolate",
+      "id": 181,
+      "generic_name": "Liquid Unsweetened Chocolate",
       "food_category": "Sweets",
       "nutrients": {
         "Energy": 472.0,
@@ -8380,7 +7959,7 @@
       "count": 1
     },
     {
-      "id": 193,
+      "id": 182,
       "generic_name": "Liquid Fructose Sweetener",
       "food_category": "Sweets",
       "nutrients": {
@@ -8422,8 +8001,8 @@
       "count": 1
     },
     {
-      "id": 194,
-      "generic_name": "Vanilla Fat Free Ice Cream",
+      "id": 183,
+      "generic_name": "Fat Free Vanilla Ice Cream",
       "food_category": "Sweets",
       "nutrients": {
         "Energy": 137.18929254302105,
@@ -8464,8 +8043,8 @@
       "count": 1
     },
     {
-      "id": 195,
-      "generic_name": "Vanilla Light Ice Cream",
+      "id": 184,
+      "generic_name": "Light Vanilla Ice Cream",
       "food_category": "Sweets",
       "nutrients": {
         "Energy": 180.4493307839388,
@@ -8506,7 +8085,7 @@
       "count": 1
     },
     {
-      "id": 196,
+      "id": 185,
       "generic_name": "Hot Tea With Milk",
       "food_category": "Tea",
       "nutrients": {
@@ -8546,88 +8125,51 @@
       "count": 1
     },
     {
-      "id": 197,
+      "id": 186,
       "generic_name": "Reduced Fat Tortilla Chips",
       "food_category": "Tortilla, corn, other chips",
       "nutrients": {
-        "Energy": 411.0,
-        "Carbohydrate": 79.07,
-        "Protein": 10.86,
-        "Total fat": 5.63,
-        "Fiber": 5.2,
+        "Energy": 413.5,
+        "Carbohydrate": 79.585,
+        "Protein": 10.93,
+        "Total fat": 5.665,
+        "Fiber": 5.25,
         "Sugars, Total": null,
-        "Sodium": 511.0,
-        "Calcium": 158.0,
-        "Iron": 1.58,
+        "Sodium": 263.0,
+        "Calcium": 158.5,
+        "Iron": 1.59,
         "Cholesterol": 0.0,
-        "Fatty acids, total saturated": 0.839,
+        "Fatty acids, total saturated": 0.8445,
         "Vitamin A, RAE": 4.0,
         "Vitamin C": 0.2,
         "Vitamin D (D2 + D3)": 0.0,
-        "Vitamin E": 3.48,
-        "Vitamin B-6": 0.178,
+        "Vitamin E": 3.505,
+        "Vitamin B-6": 0.179,
         "Vitamin B-12": 0.0,
         "Folate, total": 16.0,
-        "Zinc": 1.14,
-        "Magnesium": 96.0,
-        "Potassium": 269.0,
-        "Phosphorus": 314.0
+        "Zinc": 1.145,
+        "Magnesium": 96.5,
+        "Potassium": 270.5,
+        "Phosphorus": 316.0
       },
       "source_ids": [
-        335
-      ],
-      "source_names": [
-        "Tortilla chips, reduced fat, flavored"
-      ],
-      "portion_gram_weights": [],
-      "portion_unit_names": [
-        "undetermined"
-      ],
-      "count": 1
-    },
-    {
-      "id": 198,
-      "generic_name": "Low Fat Tortilla Chips",
-      "food_category": "Tortilla, corn, other chips",
-      "nutrients": {
-        "Energy": 416.0,
-        "Carbohydrate": 80.1,
-        "Protein": 11.0,
-        "Total fat": 5.7,
-        "Fiber": 5.3,
-        "Sugars, Total": null,
-        "Sodium": 15.0,
-        "Calcium": 159.0,
-        "Iron": 1.6,
-        "Cholesterol": 0.0,
-        "Fatty acids, total saturated": 0.85,
-        "Vitamin A, RAE": 4.0,
-        "Vitamin C": 0.2,
-        "Vitamin D (D2 + D3)": 0.0,
-        "Vitamin E": 3.53,
-        "Vitamin B-6": 0.18,
-        "Vitamin B-12": 0.0,
-        "Folate, total": 16.0,
-        "Zinc": 1.15,
-        "Magnesium": 97.0,
-        "Potassium": 272.0,
-        "Phosphorus": 318.0
-      },
-      "source_ids": [
+        335,
         336
       ],
       "source_names": [
+        "Tortilla chips, reduced fat, flavored",
         "Tortilla chips, low fat, unsalted"
       ],
       "portion_gram_weights": [],
       "portion_unit_names": [
+        "undetermined",
         "undetermined"
       ],
-      "count": 1
+      "count": 2
     },
     {
-      "id": 199,
-      "generic_name": "Roasted Turkey Drumstick With Skin",
+      "id": 187,
+      "generic_name": "Turkey Drumstick Roasted Skin Eaten",
       "food_category": "Turkey, duck, other poultry",
       "nutrients": {
         "Energy": 182.0,
@@ -8672,8 +8214,8 @@
       "count": 3
     },
     {
-      "id": 200,
-      "generic_name": "Boiled Beets",
+      "id": 188,
+      "generic_name": "Beets Cooked Boiled Drained",
       "food_category": "Vegetables and Vegetable Products",
       "nutrients": {
         "Energy": 44.0,
@@ -8714,8 +8256,8 @@
       "count": 1
     },
     {
-      "id": 201,
-      "generic_name": "Canned Beets",
+      "id": 189,
+      "generic_name": "Beets Canned Drained Solids",
       "food_category": "Vegetables and Vegetable Products",
       "nutrients": {
         "Energy": 31.0,
@@ -8756,8 +8298,8 @@
       "count": 1
     },
     {
-      "id": 202,
-      "generic_name": "Cooked Shiitake Mushrooms",
+      "id": 190,
+      "generic_name": "Mushrooms Shiitake Cooked With Salt",
       "food_category": "Vegetables and Vegetable Products",
       "nutrients": {
         "Energy": 56.0,
@@ -8798,8 +8340,8 @@
       "count": 1
     },
     {
-      "id": 203,
-      "generic_name": "Dried Shiitake Mushrooms",
+      "id": 191,
+      "generic_name": "Mushrooms Shiitake Dried",
       "food_category": "Vegetables and Vegetable Products",
       "nutrients": {
         "Energy": 296.0,
@@ -8840,8 +8382,8 @@
       "count": 1
     },
     {
-      "id": 204,
-      "generic_name": "Raw Spaghetti Squash",
+      "id": 192,
+      "generic_name": "Squash Winter Spaghetti Raw",
       "food_category": "Vegetables and Vegetable Products",
       "nutrients": {
         "Energy": 31.070745697896747,
@@ -8882,92 +8424,54 @@
       "count": 1
     },
     {
-      "id": 205,
-      "generic_name": "Canned Mashed Sweet Potato",
+      "id": 193,
+      "generic_name": "Sweet Potato Canned Mashed",
       "food_category": "Vegetables and Vegetable Products",
       "nutrients": {
-        "Energy": 101.0,
-        "Carbohydrate": 23.19,
-        "Protein": 1.98,
-        "Total fat": 0.2,
-        "Fiber": 1.7,
+        "Energy": 88.5,
+        "Carbohydrate": 20.455,
+        "Protein": 1.675,
+        "Total fat": 0.17,
+        "Fiber": 2.1,
         "Sugars, Total": null,
-        "Sodium": 75.0,
-        "Calcium": 30.0,
-        "Iron": 1.33,
+        "Sodium": 51.0,
+        "Calcium": 28.5,
+        "Iron": 1.025,
         "Cholesterol": 0.0,
-        "Fatty acids, total saturated": 0.041,
-        "Vitamin A, RAE": 435.0,
-        "Vitamin C": 5.2,
+        "Fatty acids, total saturated": 0.036000000000000004,
+        "Vitamin A, RAE": 611.0,
+        "Vitamin C": 9.0,
         "Vitamin D (D2 + D3)": 0.0,
-        "Vitamin E": 1.09,
-        "Vitamin B-6": 0.235,
+        "Vitamin E": 1.0150000000000001,
+        "Vitamin B-6": 0.2,
         "Vitamin B-12": 0.0,
-        "Folate, total": 11.0,
-        "Zinc": 0.21,
-        "Magnesium": 24.0,
-        "Potassium": 210.0,
-        "Phosphorus": 52.0
+        "Folate, total": 8.5,
+        "Zinc": 0.20500000000000002,
+        "Magnesium": 21.0,
+        "Potassium": 220.0,
+        "Phosphorus": 42.0
       },
       "source_ids": [
-        345
-      ],
-      "source_names": [
-        "Sweet potato, canned, mashed"
-      ],
-      "portion_gram_weights": [
-        255.0
-      ],
-      "portion_unit_names": [
-        "undetermined"
-      ],
-      "count": 1
-    },
-    {
-      "id": 206,
-      "generic_name": "Boiled Sweet Potato Without Skin",
-      "food_category": "Vegetables and Vegetable Products",
-      "nutrients": {
-        "Energy": 76.0,
-        "Carbohydrate": 17.72,
-        "Protein": 1.37,
-        "Total fat": 0.14,
-        "Fiber": 2.5,
-        "Sugars, Total": null,
-        "Sodium": 27.0,
-        "Calcium": 27.0,
-        "Iron": 0.72,
-        "Cholesterol": 0.0,
-        "Fatty acids, total saturated": 0.031,
-        "Vitamin A, RAE": 787.0,
-        "Vitamin C": 12.8,
-        "Vitamin D (D2 + D3)": 0.0,
-        "Vitamin E": 0.94,
-        "Vitamin B-6": 0.165,
-        "Vitamin B-12": 0.0,
-        "Folate, total": 6.0,
-        "Zinc": 0.2,
-        "Magnesium": 18.0,
-        "Potassium": 230.0,
-        "Phosphorus": 32.0
-      },
-      "source_ids": [
+        345,
         346
       ],
       "source_names": [
+        "Sweet potato, canned, mashed",
         "Sweet potato, cooked, boiled, without skin"
       ],
       "portion_gram_weights": [
+        255.0,
         151.0
       ],
       "portion_unit_names": [
+        "undetermined",
         "undetermined"
       ],
-      "count": 1
+      "count": 2
     },
     {
-      "id": 207,
-      "generic_name": "Home Prepared Candied Sweet Potato",
+      "id": 194,
+      "generic_name": "Sweet Potato Cooked Candied Home Prepared",
       "food_category": "Vegetables and Vegetable Products",
       "nutrients": {
         "Energy": 164.0,
@@ -9008,8 +8512,8 @@
       "count": 1
     },
     {
-      "id": 208,
-      "generic_name": "Frozen Sweet Potato Puffs",
+      "id": 195,
+      "generic_name": "Sweet Potato Puffs Frozen Unprepared",
       "food_category": "Vegetables and Vegetable Products",
       "nutrients": {
         "Energy": 161.0,
@@ -9050,8 +8554,8 @@
       "count": 1
     },
     {
-      "id": 209,
-      "generic_name": "Baked Potato With Butter",
+      "id": 196,
+      "generic_name": "Potato Baked Peel Not Eaten With",
       "food_category": "White potatoes, baked or boiled",
       "nutrients": {
         "Energy": 125.0,
@@ -9090,7 +8594,7 @@
       "count": 1
     },
     {
-      "id": 210,
+      "id": 197,
       "generic_name": "Wine Dessert Sweet",
       "food_category": "Wine",
       "nutrients": {
@@ -9130,8 +8634,8 @@
       "count": 1
     },
     {
-      "id": 211,
-      "generic_name": "Pita Bread With Fruit",
+      "id": 198,
+      "generic_name": "Bread Pita With Fruit",
       "food_category": "Yeast breads",
       "nutrients": {
         "Energy": 277.0,
@@ -9173,34 +8677,42 @@
       "count": 2
     },
     {
-      "id": 212,
-      "generic_name": "Rice Bread",
+      "id": 199,
+      "generic_name": "White Bread",
       "food_category": "Yeast breads",
       "nutrients": {
-        "Energy": 276.7142857142857,
-        "Carbohydrate": 52.51857142857143,
-        "Protein": 6.482857142857142,
-        "Total fat": 4.505714285714285,
-        "Fiber": 3.514285714285714,
+        "Energy": 281.2,
+        "Carbohydrate": 52.53,
+        "Protein": 8.723999999999998,
+        "Total fat": 4.117999999999999,
+        "Fiber": 4.053333333333334,
         "Sugars, Total": null,
-        "Sodium": 493.2857142857143,
-        "Calcium": 95.28571428571429,
-        "Iron": 3.2685714285714282,
-        "Cholesterol": 0.5714285714285714,
-        "Fatty acids, total saturated": 0.9645714285714286,
-        "Vitamin A, RAE": 0.0,
-        "Vitamin C": 0.0,
-        "Vitamin D (D2 + D3)": 0.028571428571428574,
-        "Vitamin E": 0.40857142857142853,
-        "Vitamin B-6": 0.07685714285714287,
-        "Vitamin B-12": 0.0,
-        "Folate, total": 65.57142857142857,
-        "Zinc": 0.6171428571428571,
-        "Magnesium": 17.571428571428573,
-        "Potassium": 92.42857142857143,
-        "Phosphorus": 69.71428571428571
+        "Sodium": 495.26666666666665,
+        "Calcium": 124.6,
+        "Iron": 3.1806666666666668,
+        "Cholesterol": 1.0666666666666667,
+        "Fatty acids, total saturated": 0.9725333333333332,
+        "Vitamin A, RAE": 3.1333333333333333,
+        "Vitamin C": 0.04,
+        "Vitamin D (D2 + D3)": 0.04000000000000001,
+        "Vitamin E": 0.38999999999999996,
+        "Vitamin B-6": 0.11633333333333336,
+        "Vitamin B-12": 0.007333333333333334,
+        "Folate, total": 69.86666666666666,
+        "Zinc": 1.0426666666666666,
+        "Magnesium": 37.4,
+        "Potassium": 156.86666666666667,
+        "Phosphorus": 122.73333333333333
       },
       "source_ids": [
+        360,
+        361,
+        362,
+        363,
+        364,
+        365,
+        366,
+        367,
         353,
         354,
         355,
@@ -9210,6 +8722,14 @@
         359
       ],
       "source_names": [
+        "Bread, white",
+        "Bread, white with whole wheat swirl",
+        "Bread, white with whole wheat swirl, toasted",
+        "Bread, white, toasted",
+        "Bread, whole wheat, toasted",
+        "Bread, whole wheat, with raisins",
+        "Bread, whole wheat, with raisins, toasted",
+        "Bread, French or Vienna",
         "Bread, rice",
         "Bread, rice, toasted",
         "Bread, French or Vienna, toasted",
@@ -9226,60 +8746,7 @@
         "undetermined",
         "undetermined",
         "undetermined",
-        "undetermined"
-      ],
-      "count": 7
-    },
-    {
-      "id": 213,
-      "generic_name": "White Bread",
-      "food_category": "Yeast breads",
-      "nutrients": {
-        "Energy": 285.125,
-        "Carbohydrate": 52.540000000000006,
-        "Protein": 10.684999999999999,
-        "Total fat": 3.7787500000000005,
-        "Fiber": 4.525,
-        "Sugars, Total": null,
-        "Sodium": 497.0,
-        "Calcium": 150.25,
-        "Iron": 3.10375,
-        "Cholesterol": 1.5,
-        "Fatty acids, total saturated": 0.9794999999999999,
-        "Vitamin A, RAE": 5.875,
-        "Vitamin C": 0.075,
-        "Vitamin D (D2 + D3)": 0.05,
-        "Vitamin E": 0.37374999999999997,
-        "Vitamin B-6": 0.150875,
-        "Vitamin B-12": 0.013750000000000002,
-        "Folate, total": 73.625,
-        "Zinc": 1.415,
-        "Magnesium": 54.75,
-        "Potassium": 213.25,
-        "Phosphorus": 169.125
-      },
-      "source_ids": [
-        360,
-        361,
-        362,
-        363,
-        364,
-        365,
-        366,
-        367
-      ],
-      "source_names": [
-        "Bread, white",
-        "Bread, white with whole wheat swirl",
-        "Bread, white with whole wheat swirl, toasted",
-        "Bread, white, toasted",
-        "Bread, whole wheat, toasted",
-        "Bread, whole wheat, with raisins",
-        "Bread, whole wheat, with raisins, toasted",
-        "Bread, French or Vienna"
-      ],
-      "portion_gram_weights": [],
-      "portion_unit_names": [
+        "undetermined",
         "undetermined",
         "undetermined",
         "undetermined",
@@ -9289,10 +8756,10 @@
         "undetermined",
         "undetermined"
       ],
-      "count": 8
+      "count": 15
     },
     {
-      "id": 214,
+      "id": 200,
       "generic_name": "Yogurt Greek Nonfat Milk Plain",
       "food_category": "Yogurt, Greek",
       "nutrients": {
@@ -9332,7 +8799,7 @@
       "count": 1
     },
     {
-      "id": 215,
+      "id": 201,
       "generic_name": "Yogurt Greek Whole Milk Fruit",
       "food_category": "Yogurt, Greek",
       "nutrients": {
@@ -9372,7 +8839,7 @@
       "count": 1
     },
     {
-      "id": 216,
+      "id": 202,
       "generic_name": "Egg Dried Whole Producer A",
       "food_category": "Dairy and Egg Products",
       "nutrients": {
@@ -9410,7 +8877,7 @@
       "count": 1
     },
     {
-      "id": 217,
+      "id": 203,
       "generic_name": "Ricotta Cheese Whole Milk Nfy1216Vm",
       "food_category": "Dairy and Egg Products",
       "nutrients": {
@@ -9448,7 +8915,7 @@
       "count": 1
     },
     {
-      "id": 218,
+      "id": 204,
       "generic_name": "Tilapia Farm Raised Raw Skin Removed",
       "food_category": "Finfish and Shellfish Products",
       "nutrients": {
@@ -9486,7 +8953,7 @@
       "count": 1
     },
     {
-      "id": 219,
+      "id": 205,
       "generic_name": "Catfish Farm Raised Raw Skin Removed",
       "food_category": "Finfish and Shellfish Products",
       "nutrients": {
