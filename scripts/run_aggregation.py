@@ -7,8 +7,8 @@ using an LLM.  Processes foods in batches; the LLM sees each item's nearest
 existing generic entries and decides CREATE / ADD / IGNORE.
 
 Usage:
-  python scripts/run_aggregation.py --mode test --batch-size 24
-  python scripts/run_aggregation.py --mode full --batch-size 24 --resume
+  python scripts/run_aggregation.py --mode test --batch-size 100
+  python scripts/run_aggregation.py --mode full --batch-size 100 --resume
 """
 
 from __future__ import annotations
@@ -27,6 +27,8 @@ import pandas as pd
 from tqdm import tqdm
 
 import openai
+
+DEFAULT_BATCH_SIZE = 100
 
 
 # Lazy-loaded embedding model (shared across instances, loaded once)
@@ -392,7 +394,6 @@ def _parse_llm_decision(raw: str, expected_idx: int) -> dict | None:
     Accepted forms:
       [idx] CREATE <name>
       [idx] ADD <id_or_name>
-      [idx] RENAME <id> <new_name_existing> CREATE <new_name_incoming>
       [idx] IGNORE
     """
     # JSON support
@@ -424,22 +425,8 @@ def _parse_llm_decision(raw: str, expected_idx: int) -> dict | None:
             continue
 
         # Accept no-index variant by prefixing expected idx.
-        if re.match(r'^(CREATE|ADD|RENAME|IGNORE)\b', line, re.IGNORECASE):
+        if re.match(r'^(CREATE|ADD|IGNORE)\b', line, re.IGNORECASE):
             line = f'[{expected_idx}] ' + line
-
-        rm = re.match(
-            r'\[?(\d+)\]?\s*RENAME\s+(\d+)\s+["\']?([^"\']+?)["\']?'
-            r'(?:\s+(?:CREATE|->)\s+["\']?([^"\']+?)["\']?)?\s*$',
-            line, re.IGNORECASE
-        )
-        if rm:
-            return {
-                'idx': expected_idx,
-                'action': 'RENAME',
-                'target_id': int(rm.group(2)),
-                'new_name_existing': rm.group(3).strip(),
-                'new_name_incoming': rm.group(4).strip() if rm.group(4) else None,
-            }
 
         m = re.match(r'\[?(\d+)\]?\s*(CREATE|ADD|IGNORE)\s*(.*)', line, re.IGNORECASE)
         if not m:
@@ -473,7 +460,7 @@ class FoodAggregator:
 
     Usage:
         agg = FoodAggregator(foods_df)
-        agg.run(limit=1000)            # test run
+        run_batched(agg, limit=1000, offset=0, resume_from=0, batch_size=24)
         agg.save('output.json')
     """
 
@@ -510,173 +497,6 @@ class FoodAggregator:
         self.stats = {'created': 0, 'added': 0, 'ignored': 0, 'errors': 0, 'api_calls': 0,
                       'foundation_locked': 0}
         self.processed_count = 0
-
-    # -- public -----------------------------------------------------------------
-
-    def run(self, limit: int | None = None, resume_from: int = 0):
-        """Run streaming aggregation (one food per LLM call)."""
-        df = self.source_df
-        df = df[df['foodName'].notna() & (df['foodName'].astype(str) != 'nan')].reset_index(drop=True)
-
-        # Foundation/legacy first; branded later for cleaner base groups.
-        df['_dtype_rank'] = df['data_type'].apply(_data_type_rank)
-        df = df.sort_values(
-            ['_dtype_rank', 'food_category'],
-            ascending=[True, True],
-            na_position='last',
-        ).reset_index(drop=True)
-        if limit:
-            df = df.iloc[:limit]
-
-        total = len(df)
-        pbar = tqdm(total=total, initial=resume_from, desc='Aggregating (streaming)')
-
-        for idx in range(resume_from, total):
-            row = df.iloc[idx]
-            name = str(row.get('foodName', ''))
-            cat = str(row.get('food_category', ''))
-
-            search_results = self.index.search(name, top_k=self.search_top_k)
-            for m in search_results:
-                entry = self.db.get(m['id'])
-                if entry:
-                    m['nutrients'] = _nutrient_fingerprint(entry['nutrients'], is_dict=True)
-                    m['count'] = entry.get('count', 1)
-
-            food = {
-                'idx': idx,
-                'name': name,
-                'category': cat,
-                'nutrients_str': _nutrient_fingerprint(row),
-                'search_results': search_results,
-            }
-
-            user_msg = _build_item_prompt(food)
-            try:
-                raw = _call_llm_batch(
-                    self.system_prompt,
-                    user_msg,
-                    api_key=self.api_key,
-                    base_url=self.base_url,
-                    model=self.model,
-                    timeout_seconds=self.timeout_seconds,
-                )
-                self.stats['api_calls'] += 1
-            except Exception as e:
-                print(f'\n  LLM call failed for idx {idx}: {e}')
-                self.stats['errors'] += 1
-                self.stats['ignored'] += 1
-                self.processed_count += 1
-                pbar.update(1)
-                continue
-
-            decision = _parse_llm_decision(raw, idx)
-            if decision is None:
-                self.stats['errors'] += 1
-                self.stats['ignored'] += 1
-                self.processed_count += 1
-                pbar.update(1)
-                continue
-
-            if decision['action'] == 'CREATE':
-                create_name = decision.get('name', name)
-                name_key = create_name.strip().lower()
-                if name_key in self._name_to_id:
-                    existing_id = self._name_to_id[name_key]
-                    result = self._do_add(existing_id, row)
-                    if result == 'ok':
-                        self.stats['added'] += 1
-                        self.stats.setdefault('name_dedup_merged', 0)
-                        self.stats['name_dedup_merged'] += 1
-                    else:
-                        self._do_create(create_name, row)
-                        self.stats['created'] += 1
-                elif (existing := self.index.search(create_name, top_k=1)) and existing[0]['score'] > 0.88:
-                    result = self._do_add(existing[0]['id'], row)
-                    if result == 'ok':
-                        self.stats['added'] += 1
-                    else:
-                        self._do_create(create_name, row)
-                        self.stats['created'] += 1
-                else:
-                    self._do_create(create_name, row)
-                    self.stats['created'] += 1
-
-            elif decision['action'] == 'ADD':
-                target = decision.get('target_id')
-                target_name = decision.get('target_name')
-                valid_add_ids = food.get('_valid_add_ids', set())
-
-                if target is not None and target not in valid_add_ids:
-                    self.stats.setdefault('add_id_rejected', 0)
-                    self.stats['add_id_rejected'] += 1
-                    target = None
-
-                if target is None and target_name:
-                    matches = self.index.search(target_name, top_k=1)
-                    if matches and matches[0]['score'] > 0.75 and matches[0]['id'] in valid_add_ids:
-                        target = matches[0]['id']
-
-                if target and target in self.db:
-                    result = self._do_add(target, row)
-                    if result == 'ok':
-                        self.stats['added'] += 1
-                    elif result == 'foundation_locked':
-                        self.stats['ignored'] += 1
-                    else:
-                        create_name = target_name or name
-                        self._do_create(create_name, row)
-                        self.stats['created'] += 1
-                else:
-                    create_name = target_name or name
-                    self._do_create(create_name, row)
-                    self.stats['created'] += 1
-
-            elif decision['action'] == 'RENAME':
-                target_id = decision.get('target_id')
-                new_name_existing = decision.get('new_name_existing', '').strip()
-                new_name_incoming = decision.get('new_name_incoming')
-                if target_id and target_id in self.db and new_name_existing:
-                    old_name_key = self.db[target_id]['generic_name'].strip().lower()
-                    self._name_to_id.pop(old_name_key, None)
-                    self.db[target_id]['generic_name'] = new_name_existing
-                    self._name_to_id[new_name_existing.lower()] = target_id
-                    self.index.rename(target_id, new_name_existing)
-                    self.stats.setdefault('renamed', 0)
-                    self.stats['renamed'] += 1
-
-                    create_name = (new_name_incoming or name).strip()
-                    if create_name.lower() in self._name_to_id:
-                        result = self._do_add(self._name_to_id[create_name.lower()], row)
-                        if result == 'ok':
-                            self.stats['added'] += 1
-                        else:
-                            self._do_create(create_name, row)
-                            self.stats['created'] += 1
-                    else:
-                        self._do_create(create_name, row)
-                        self.stats['created'] += 1
-                else:
-                    self.stats['errors'] += 1
-                    self.stats['ignored'] += 1
-
-            elif decision['action'] == 'IGNORE':
-                self.stats['ignored'] += 1
-            else:
-                self.stats['errors'] += 1
-                self.stats['ignored'] += 1
-
-            self.processed_count += 1
-            pbar.update(1)
-
-            if self.processed_count % 500 == 0:
-                self._save_checkpoint()
-
-        pbar.close()
-        self._apply_similarity_merge_postpass(threshold=0.80)
-        self._apply_canonical_postpass()
-        self._save_checkpoint()
-        self._print_summary()
 
     # -- actions ----------------------------------------------------------------
 
@@ -1063,8 +883,7 @@ class FoodAggregator:
         print(f'  Foundation-locked (skip): {self.stats.get("foundation_locked", 0)}')
         print(f'  ADD id rejected (bad idx): {self.stats.get("add_id_rejected", 0)}')
         print(f'  Name dedup merged       : {self.stats.get("name_dedup_merged", 0)}')
-        print(f'  Renamed existing groups : {self.stats.get("renamed", 0)}')
-        print(f'  Parse errors (-> create): {self.stats["errors"]}')
+        print(f'  Parse errors (-> create) : {self.stats["errors"]}')
         print(f'  API calls              : {self.stats["api_calls"]}')
         print(f'  Final DB size          : {len(self.db)} entries')
         print(f'  Similarity merged groups: {self.stats.get("similarity_merged_groups", 0)}')
@@ -1078,7 +897,6 @@ Return EXACTLY one line, and nothing else:
 
 [<idx>] CREATE <generic_name>
 [<idx>] ADD <id>
-[<idx>] RENAME <id> <new_name_for_existing> CREATE <new_name_for_incoming>
 [<idx>] IGNORE
 
 Hard constraints:
@@ -1166,8 +984,8 @@ def _find_existing_id_by_name(agg: FoodAggregator, candidate: str):
 
 def _resolve_input_output(repo_root: Path, mode: str, output: str | None, checkpoint_dir: str | None):
     default_input = repo_root / "pyfooda/data/fooddata.csv"
-    default_output = repo_root / "tests/output/batch_test_aggregated.json" if mode == "test" else repo_root / "pyfooda/data/foods_aggregated_batch.json"
-    default_ckpt = repo_root / ("tests/output/checkpoints_batch" if mode == "test" else "checkpoints_batch")
+    default_output = repo_root / "scripts/output/batch_test_aggregated.json" if mode == "test" else repo_root / "pyfooda/data/foods_aggregated_batch.json"
+    default_ckpt = repo_root / ("scripts/output/checkpoints_batch" if mode == "test" else "checkpoints_batch")
 
     # In test mode, use the purpose-built test_fooddata.csv if present — it
     # contains exactly the foods referenced in test_set.json, so scoring works
@@ -1175,7 +993,7 @@ def _resolve_input_output(repo_root: Path, mode: str, output: str | None, checkp
     # Regenerate it with: python scripts/generate_test_csv.py
     input_path = default_input
     if mode == "test":
-        test_csv = repo_root / "tests/test_fooddata.csv"
+        test_csv = repo_root / "scripts/test_fooddata.csv"
         if test_csv.exists():
             input_path = test_csv
 
@@ -1273,65 +1091,6 @@ def _apply_decision(agg: FoodAggregator, food: dict, row: pd.Series, decision: d
         agg.stats["ignored"] += 1
 
 
-def _parse_group_only(line: str, expected_idx: int):
-    s = line.strip().lstrip('-').strip()
-    if not s:
-        return None
-    # Accept no-index format
-    if re.match(r'^(GROUP|IGNORE)\b', s, re.IGNORECASE):
-        s = f'[{expected_idx}] ' + s
-    m = re.match(r'^\[(\d+)\]\s*(GROUP|IGNORE)\s*(.*)$', s, re.IGNORECASE)
-    if not m:
-        return None
-    idx = int(m.group(1))
-    if idx != expected_idx:
-        return None
-    act = m.group(2).upper()
-    rest = m.group(3).strip().strip('"').strip("'")
-    if act == 'IGNORE':
-        return {'idx': expected_idx, 'action': 'IGNORE'}
-    if act == 'GROUP' and rest:
-        return {'idx': expected_idx, 'action': 'CREATE', 'name': rest}
-    return None
-
-
-def _parse_json_line(raw: str, expected_idx: int):
-    try:
-        cleaned = raw.strip()
-        if cleaned.startswith('```'):
-            cleaned = '\n'.join(cleaned.split('\n')[1:])
-        if cleaned.endswith('```'):
-            cleaned = '\n'.join(cleaned.split('\n')[:-1])
-        obj = json.loads(cleaned)
-    except Exception:
-        return None
-
-    if isinstance(obj, list):
-        for it in obj:
-            if isinstance(it, dict) and int(it.get('idx', -1)) == expected_idx:
-                obj = it
-                break
-        else:
-            return None
-
-    if not isinstance(obj, dict):
-        return None
-    idx_val = int(obj.get('idx', -1))
-    if expected_idx >= 0 and idx_val != expected_idx:
-        return None
-
-    action = str(obj.get('action', '')).upper()
-    if action == 'IGNORE':
-        return {'idx': idx_val, 'action': 'IGNORE'}
-    if action == 'ADD' and obj.get('target_id') is not None:
-        return {'idx': idx_val, 'action': 'ADD', 'target_id': int(obj['target_id'])}
-    if action == 'CREATE' and obj.get('name'):
-        return {'idx': idx_val, 'action': 'CREATE', 'name': str(obj['name'])}
-    if action == 'GROUP' and obj.get('name'):
-        return {'idx': idx_val, 'action': 'CREATE', 'name': str(obj['name'])}
-    return None
-
-
 _DEFAULT_BATCH_INSTRUCTION = (
     "\n\nReturn exactly one decision per item as strict JSON object lines."
     "\nAllowed JSON schemas:"
@@ -1356,8 +1115,8 @@ def run_batched(
     offset: int,
     resume_from: int,
     batch_size: int,
-    decision_mode: str = "line",
     batch_instruction: str | None = None,
+    on_batch_complete=None,
 ):
     df = agg.source_df
     df = df[df["foodName"].notna() & (df["foodName"].astype(str) != "nan")].reset_index(drop=True)
@@ -1412,16 +1171,7 @@ def run_batched(
             chunk.append((idx, row, food))
 
         user_msg = "\n\n".join(_build_item_prompt(food) for _, _, food in chunk)
-        if decision_mode == "group":
-            user_msg += (
-                "\n\nReturn exactly one decision per item as strict JSON object lines."
-                "\nAllowed JSON schemas:"
-                "\n{\"idx\": <idx>, \"action\": \"GROUP\", \"name\": \"<generic_name>\"}"
-                "\n{\"idx\": <idx>, \"action\": \"IGNORE\"}"
-                "\nUse the EXACT same GROUP name for items that belong together in this batch."
-            )
-        else:
-            user_msg += batch_instruction if batch_instruction is not None else _DEFAULT_BATCH_INSTRUCTION
+        user_msg += batch_instruction if batch_instruction is not None else _DEFAULT_BATCH_INSTRUCTION
 
         batch_num = (i - resume_from) // batch_size + 1
         total_batches = (total - resume_from + batch_size - 1) // batch_size
@@ -1448,40 +1198,33 @@ def run_batched(
             i = end
             continue
 
-        # parse per line JSON first; fallback to legacy parser only for backward compatibility
-        line_map = {}
+        # Map each response line to its idx
+        line_map: dict[int, str] = {}
         for ln in raw.splitlines():
             ln = ln.strip()
             if not ln:
                 continue
-            parsed = _parse_json_line(ln, expected_idx=-1)
-            # expected_idx=-1 means disabled strict check in this stage; we parse idx later
-            if parsed and parsed.get('idx') is not None:
-                line_map[int(parsed['idx'])] = ln
-            elif ln.startswith("[") and "]" in ln:
-                try:
-                    idx = int(ln[1:ln.index("]")])
-                    line_map[idx] = ln
-                except Exception:
-                    pass
+            try:
+                obj = json.loads(ln)
+                if isinstance(obj, dict) and obj.get('idx') is not None:
+                    line_map[int(obj['idx'])] = ln
+            except (json.JSONDecodeError, ValueError, KeyError):
+                pass
 
         create_aliases: dict[str, str] = {}
         for idx, row, food in chunk:
-            decision = None
-            if idx in line_map:
-                decision = _parse_json_line(line_map[idx], idx)
-                if decision is None:
-                    decision = _parse_group_only(line_map[idx], idx) if decision_mode == "group" else _parse_llm_decision(line_map[idx], idx)
+            decision = _parse_llm_decision(line_map[idx], idx) if idx in line_map else None
             if decision is None:
-                decision = _parse_json_line(raw, idx)
-            if decision is None:
-                decision = _parse_group_only(raw, idx) if decision_mode == "group" else _parse_llm_decision(raw, idx)
+                decision = _parse_llm_decision(raw, idx)
             if decision is None:
                 agg.stats["errors"] += 1
                 agg.stats["ignored"] += 1
             else:
                 _apply_decision(agg, food, row, decision, create_aliases=create_aliases)
             agg.processed_count += 1
+
+        if on_batch_complete is not None:
+            on_batch_complete([food for _, _, food in chunk])
 
         if agg.processed_count % 500 == 0:
             agg._save_checkpoint()
@@ -1501,7 +1244,7 @@ def main():
     parser.add_argument("--mode", choices=["test", "full"], default="test")
     parser.add_argument("--model", default=None,
                         help="Model name. Defaults to gpt-5-mini via Copilot proxy when no API key is set.")
-    parser.add_argument("--batch-size", type=int, default=8)
+    parser.add_argument("--batch-size", type=int, default=DEFAULT_BATCH_SIZE)
     parser.add_argument("--base-url", default=None)
     parser.add_argument("--api-key", default=None)
     parser.add_argument("--search-top-k", type=int, default=8)
@@ -1514,7 +1257,6 @@ def main():
     parser.add_argument("--timeout-seconds", type=int, default=600)
     parser.add_argument("--estimate-full-size", type=int, default=296000)
     parser.add_argument("--estimated-cost-per-call", type=float, default=0.0, help="optional rough USD estimate per LLM API call")
-    parser.add_argument("--decision-mode", choices=["line", "group"], default="line", help="line=create/add/ignore, group=group-name-or-ignore")
     args = parser.parse_args()
 
     repo_root = Path(__file__).resolve().parents[1]
@@ -1526,14 +1268,7 @@ def main():
     )
 
     df = pd.read_csv(input_path)
-
-    prompt_path = args.prompt
-    tmp_prompt = None
-    if not prompt_path:
-        tmp_prompt = tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False)
-        tmp_prompt.write(DEFAULT_PROMPT)
-        tmp_prompt.flush()
-        prompt_path = tmp_prompt.name
+    system_prompt = Path(args.prompt).read_text() if args.prompt else DEFAULT_PROMPT
 
     agg = FoodAggregator(
         df,
@@ -1561,7 +1296,6 @@ def main():
         offset=args.offset,
         resume_from=resume_from,
         batch_size=args.batch_size,
-        decision_mode=args.decision_mode,
     )
     agg.save(str(output_path))
 
@@ -1590,11 +1324,9 @@ def main():
     est_full_cost = est_full_calls * args.estimated_cost_per_call
     summary = {
         "mode": args.mode,
-        "provider": "openrouter",
         "model": args.model,
         "batch_size": args.batch_size,
         "offset": args.offset,
-        "decision_mode": args.decision_mode,
         "input_rows": int(len(df if limit is None else df.iloc[:limit])),
         "processed": result["processed"],
         "api_calls": result["api_calls"],
