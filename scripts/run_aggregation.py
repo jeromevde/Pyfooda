@@ -182,51 +182,6 @@ def _avg_nutrients(existing: dict, new_row: pd.Series, count: int) -> dict:
     return merged
 
 
-# Energy-based nutrient guard: reject additions that are too far from the group
-# Uses MAD (Median Absolute Deviation) — robust even under 50% contamination.
-# Falls back to a fixed ±150 kcal band when MAD is near zero (uniform groups).
-
-_ENERGY_MAD_THRESHOLD = 3.5   # multiples of MAD
-_ENERGY_FIXED_BAND = 200      # kcal, fallback when MAD < 10
-_ENERGY_MIN_COUNT = 3         # don't gate until we have this many sources
-_ENERGY_EXTREME_RATIO = 3.0   # reject if new/group ratio exceeds this (fires even with 1 sample)
-
-
-def _is_energy_compatible(entry: dict, new_energy: float) -> bool:
-    """Return True if new_energy is compatible with the group's energy profile.
-
-    Two-stage check:
-    1. Extreme-ratio guard (fires with ≥1 sample): rejects when new_energy is
-       more than _ENERGY_EXTREME_RATIO times the group median.  Catches e.g.
-       broth (16 kcal) being added to a dry-soup group (400+ kcal) regardless
-       of how many sources the group already has.
-    2. MAD/band gate (fires at ≥_ENERGY_MIN_COUNT samples): rejects outliers
-       beyond max(3.5*MAD, 200 kcal) from the group median.
-    """
-    energies = entry.get('_source_energies', [])
-    if not energies:
-        return True
-
-    arr = np.array(energies, dtype=float)
-    median = float(np.median(arr))
-
-    # Stage 1: extreme ratio guard — always active
-    if median > 0 and new_energy > 0:
-        ratio = max(median, new_energy) / min(median, new_energy)
-        if ratio > _ENERGY_EXTREME_RATIO:
-            return False
-
-    # Stage 2: MAD/band gate — needs enough samples to be meaningful
-    if len(energies) < _ENERGY_MIN_COUNT:
-        return True
-
-    mad = float(np.median(np.abs(arr - median)))
-    # Use the more lenient threshold — the fixed band provides a floor
-    # so that groups with low MAD don't become overly restrictive
-    threshold = max(_ENERGY_MAD_THRESHOLD * mad, _ENERGY_FIXED_BAND)
-    return abs(new_energy - median) <= threshold
-
-
 # Key nutrients shown in prompt (compact fingerprint for LLM comparison)
 _PROMPT_NUTRIENT_COLS = ['Energy', 'Carbohydrate', 'Protein', 'Total fat', 'Sugars, Total']
 _PROMPT_NUTRIENT_SHORT = ['kcal', 'carb', 'prot', 'fat', 'sugar']
@@ -537,249 +492,26 @@ class FoodAggregator:
         self._name_to_id[generic_name.strip().lower()] = fid
 
     def _do_add(self, target_id: int, row: pd.Series) -> str:
-        """Add a source food to an existing group.
-
-        Returns:
-            'ok'                  – successfully added
-            'energy_rejected'     – energy outlier gate fired
-            'foundation_locked'   – group is foundation-locked, lower source rejected
-
-        Foundation-locked groups:
-        If a group was created by a foundation_food, it already has
-        lab-measured, gold-standard nutrients.  Lower-quality sources
-        (legacy / branded) are rejected to keep the group clean.
-        """
+        """Add a source food to an existing group. Returns 'ok'."""
         entry = self.db[target_id]
-
-        # Foundation lock — protect lab-quality groups from dilution
-        created_by = entry.get('_created_by', '')
-        incoming_dtype = str(row.get('data_type', ''))
-        if created_by == 'foundation_food' and incoming_dtype != 'foundation_food':
-            self.stats['foundation_locked'] += 1
-            return 'foundation_locked'
-
-        # Energy-based outlier gate
-        new_energy = row.get('Energy', np.nan)
-        if pd.notna(new_energy) and not _is_energy_compatible(entry, float(new_energy)):
-            return 'energy_rejected'
-
         entry['nutrients'] = _avg_nutrients(entry['nutrients'], row, entry['count'])
         entry['count'] += 1
         src_id = int(row.name) if isinstance(row.name, (int, np.integer)) else 0
         entry['source_ids'].append(src_id)
         entry['source_names'].append(str(row.get('foodName', '')))
-        # Track energy for future gating
-        if pd.notna(new_energy):
-            entry.setdefault('_source_energies', []).append(float(new_energy))
-        # Collect serving size
         pgw = row.get('portion_gram_weight', np.nan)
         if pd.notna(pgw):
             entry['portion_gram_weights'].append(float(pgw))
         pun = row.get('portion_unit_name', '')
         if pd.notna(pun) and str(pun).strip():
             entry['portion_unit_names'].append(str(pun))
-
         return 'ok'
 
+    def _apply_similarity_merge_postpass(self, **_):
+        """No-op — postpass removed."""
 
-    def _canonical_group_name(self, entry: dict) -> str | None:
-        """Return a generic normalization key for safe post-pass dedup only.
-
-        Important: no dataset-specific hardcoded food families here.
-        """
-        raw = str(entry.get('generic_name', '')).strip()
-        if not raw:
-            return None
-
-        name = raw.lower()
-        # conservative normalization: punctuation/spacing/case only
-        name = re.sub(r'[^a-z0-9\s]', ' ', name)
-        name = re.sub(r'\s+', ' ', name).strip()
-        if not name:
-            return None
-        return name.title()
-
-    def _merge_entries(self, base: dict, incoming: dict):
-        """Merge incoming aggregated entry into base (weighted nutrients)."""
-        base_count = int(base.get('count', 1))
-        inc_count = int(incoming.get('count', 1))
-
-        for col in NUTRIENT_COLS:
-            a = base.get('nutrients', {}).get(col)
-            b = incoming.get('nutrients', {}).get(col)
-            if a is None and b is None:
-                v = None
-            elif a is None:
-                v = b
-            elif b is None:
-                v = a
-            else:
-                v = (float(a) * base_count + float(b) * inc_count) / (base_count + inc_count)
-            base['nutrients'][col] = v
-
-        base['count'] = base_count + inc_count
-        base.setdefault('source_ids', []).extend(incoming.get('source_ids', []))
-        base.setdefault('source_names', []).extend(incoming.get('source_names', []))
-        base.setdefault('portion_gram_weights', []).extend(incoming.get('portion_gram_weights', []))
-        base.setdefault('portion_unit_names', []).extend(incoming.get('portion_unit_names', []))
-        base.setdefault('_source_energies', []).extend(incoming.get('_source_energies', []))
-
-    def _apply_similarity_merge_postpass(self, threshold: float = 0.80):
-        """Merge same-category groups with high embedding similarity and compatible nutrients."""
-        if not self.db:
-            return
-
-        # Stop-words for food-token jaccard check
-        STOP = {'raw', 'cooked', 'baked', 'fried', 'smoked', 'dried', 'roasted', 'broiled',
-                'boiled', 'grilled', 'stewed', 'steamed', 'with', 'without', 'oil', 'fat',
-                'added', 'no', 'free', 'plain', 'unsalted', 'whole', 'mixed', 'species',
-                'regular', 'lightly', 'reduced', 'low', 'high', 'light', 'dark', 'mild',
-                'heat', 'dry', 'moist', 'and', 'or', 'the', 'of', 'from', 'to', 'in', 'on',
-                'at', 'nfs', 'ns', 'all', 'any', 'type', 'form', 'meat', 'only', 'skin',
-                'eaten', 'not', 'as', 'fresh', 'frozen', 'canned', 'n', 's', 'a'}
-
-        def food_tokens(name: str) -> set:
-            words = set(re.findall(r'\b[a-z]{2,}\b', name.lower()))
-            return words - STOP
-
-        def _fat_tier_label(name: str) -> str:
-            n = name.lower()
-            if re.search(r'\b(fat.?free|nonfat)\b', n): return 'fat_free'
-            if re.search(r'\blow.?fat\b', n):            return 'low_fat'
-            if re.search(r'\breduced.?fat\b', n):        return 'reduced'
-            if re.search(r'\b(light|lite|part.?skim)\b', n): return 'light'
-            return 'regular'
-
-        def conflict(entry_a: dict, entry_b: dict) -> bool:
-            # Only block postpass merges where fat tiers clearly differ by generic name
-            return _fat_tier_label(entry_a.get('generic_name', '')) != \
-                   _fat_tier_label(entry_b.get('generic_name', ''))
-
-        def food_jaccard(n1: str, n2: str) -> float:
-            t1 = food_tokens(n1); t2 = food_tokens(n2)
-            if not t1 or not t2: return 0.0
-            return len(t1 & t2) / len(t1 | t2)
-
-
-        # Union-Find for clustering
-        parent = {gid: gid for gid in self.db}
-
-        def find(x: int) -> int:
-            while parent[x] != x:
-                parent[x] = parent[parent[x]]
-                x = parent[x]
-            return x
-
-        def union(x: int, y: int):
-            px, py = find(x), find(y)
-            if px != py:
-                if self.db.get(px, {}).get('count', 0) >= self.db.get(py, {}).get('count', 0):
-                    parent[py] = px
-                else:
-                    parent[px] = py
-
-        gids = list(self.db.keys())
-        for gid in gids:
-            entry = self.db.get(gid)
-            if entry is None:
-                continue
-            name = entry['generic_name']
-            cat = entry.get('food_category', '')
-            results = self.index.search(name, top_k=10)
-            for r in results:
-                if r['id'] == gid or r['score'] < threshold:
-                    continue
-                other = self.db.get(r['id'])
-                if other is None:
-                    continue
-                if other.get('food_category', '') != cat:
-                    continue
-                if conflict(entry, other):
-                    continue
-                # Require at least one shared food token (prevents e.g. asparagus + broccoli)
-                if food_jaccard(name, other['generic_name']) < 0.2:
-                    continue
-                # Nutrient gate: block merge if energy differs >40% or fat ratio differs >60%
-                e_a = entry.get('nutrients', {}).get('Energy')
-                e_b = other.get('nutrients', {}).get('Energy')
-                if e_a and e_b and e_a > 0 and e_b > 0:
-                    if abs(e_a - e_b) / min(e_a, e_b) > 0.40:
-                        continue
-                f_a = entry.get('nutrients', {}).get('Total fat')
-                f_b = other.get('nutrients', {}).get('Total fat')
-                if f_a is not None and f_b is not None:
-                    max_fat = max(f_a, f_b)
-                    if max_fat > 1.0 and abs(f_a - f_b) / max_fat > 0.60:
-                        continue
-                union(gid, r['id'])
-
-        # Apply merges
-        root_to_members: dict[int, list[int]] = {}
-        for gid in gids:
-            root = find(gid)
-            root_to_members.setdefault(root, []).append(gid)
-
-        merges = 0
-        for root, members in root_to_members.items():
-            if len(members) <= 1:
-                continue
-            base_id = max(members, key=lambda g: self.db.get(g, {}).get('count', 0))
-            for mid in members:
-                if mid == base_id:
-                    continue
-                if mid in self.db and base_id in self.db:
-                    self._merge_entries(self.db[base_id], self.db[mid])
-                    del self.db[mid]
-                    merges += 1
-
-        self.stats['similarity_merged_groups'] = merges
-        if merges:
-            self._next_id = max(self.db.keys(), default=0) + 1
-            self.index = FoodSearchIndex()
-            self._name_to_id = {}
-            for fid, e in self.db.items():
-                self.index.add(fid, e['generic_name'])
-                self._name_to_id[e['generic_name'].strip().lower()] = fid
-
-    def _apply_canonical_postpass(self):
-        """Deterministic cleanup pass to collapse known semantic variants."""
-        if not self.db:
-            return
-
-        new_db = {}
-        canonical_to_id = {}
-        next_id = 1
-
-        for _, entry in sorted(self.db.items(), key=lambda kv: kv[0]):
-            target_name = self._canonical_group_name(entry) or entry.get('generic_name', '')
-            entry_cat = entry.get('food_category', '')
-            # Scope dedup key by category so groups from different categories never merge
-            key = f"{entry_cat}||{target_name.strip().lower()}"
-
-            if key not in canonical_to_id:
-                eid = next_id
-                next_id += 1
-                clone = dict(entry)
-                clone['id'] = eid
-                clone['generic_name'] = target_name
-                new_db[eid] = clone
-                canonical_to_id[key] = eid
-            else:
-                base_id = canonical_to_id[key]
-                self._merge_entries(new_db[base_id], entry)
-
-        old_size = len(self.db)
-        self.db = new_db
-        self._next_id = max(self.db.keys(), default=0) + 1
-
-        # Rebuild search/index maps for consistency
-        self.index = FoodSearchIndex()
-        self._name_to_id = {}
-        for fid, e in self.db.items():
-            self.index.add(fid, e['generic_name'])
-            self._name_to_id[e['generic_name'].strip().lower()] = fid
-
-        self.stats['postpass_merged_groups'] = old_size - len(self.db)
+    def _apply_canonical_postpass(self, **_):
+        """No-op — postpass removed."""
 
     # -- persistence ------------------------------------------------------------
 
@@ -890,58 +622,33 @@ class FoodAggregator:
         print(f'  Post-pass merged groups: {self.stats.get("postpass_merged_groups", 0)}')
         print('=' * 60)
 
-DEFAULT_PROMPT = """You are curating a compact food database for everyday tracking.
+DEFAULT_PROMPT = """You are building a compact food reference database from USDA FoodData Central.
 
-You receive ONE incoming food item and nearest existing entries.
-Return EXACTLY one line, and nothing else:
+For each food item, output one decision using the JSON format shown in the batch instruction.
 
-[<idx>] CREATE <generic_name>
-[<idx>] ADD <id>
-[<idx>] IGNORE
+NAMING — write short 2-4 word Title Case generics, never raw USDA strings:
+  "Biscuits, plain or buttermilk, dry mix"      → "Biscuits Dry Mix"
+  "Fish, salmon, sockeye, wild caught, raw"      → "Wild Salmon Raw"
+  "Game meat, deer, raw"                          → "Deer Raw"  (use source word: "Deer" not "Venison")
+  "Sauce, pesto, ready-to-serve, refrigerated"   → "Pesto Sauce"
+  "Nuts, almonds, dry roasted, with salt added"  → "Almonds Dry Roasted"
+  No lot IDs, no lab codes, no moisture strings (e.g. "11F 8119", "NFS", "NS as to" are invalid).
 
-Hard constraints:
-- Prefer ADD over CREATE only when the candidate group is the same generic food. When in doubt, CREATE.
-- ADD id must be one of the shown candidate ids.
-- Use the nutrient fingerprint as a primary signal; avoid merging items with clearly different calories/macros.
-- If a candidate shows [BLOCK: kcal diff=X%], you MUST use CREATE — do not ADD to that group.
-- If kcal differs by >40% between incoming and candidate, always CREATE a new group.
-- Generic names must be short, generic, title case, no brands, no commas.
-- Target name length: 2-4 words (hard max 6 words — count every space-separated word; 7-word names are INVALID, shorten them).
-- Avoid bare numbers in group names; use descriptive terms instead (e.g., "Lean Ground Beef" not "Ground Beef 93").
-- Group names must be self-identifying — include the primary food class noun (e.g., "Beef Ribeye Steak" not "Ribeye Steak"; "Mollusks Blue Mussel" not "Blue Mussel Cooked"; "Horseradish Sauce" not just "Horseradish").
-- Never output raw USDA names as CREATE names.
-- Never include lab/sample/spec tokens in CREATE names: no lot IDs, no assay strings, no moisture percentages, no numeric code tails (examples to avoid: "11F 8119 0 Moisture", "NFS", "NS as to").
-- If the incoming name is noisy/encoded, map it to the nearest plain-language food name.
-- IGNORE only if clearly non-food/unclear/supplement/baby/pet.
+MERGE (ADD) these variant types into the base food group:
+  • Brand variants: "BUD LIGHT" → Beer Light;  "BUDWEISER" → Beer Regular
+  • Fortified/enriched: "grape juice with calcium" → Grape Juice
+  • Reduced-sodium / no-salt-added (when kcal matches)
+  • Toast/heat variants: "French bread toasted" → French Bread
+  • Baby food stages: Stage 1 + Stage 2 of same food → one group
+  • Wine varietals of same color: Merlot, Syrah, Claret → "Red Table Wine"
+  • Refrigerated vs shelf-stable of same dish: pesto refrigerated + shelf stable → "Pesto Sauce"
 
-Merge policy (aggressive but nutrition-aware):
-- Brand variants should merge when nutrients/use are similar.
-- Flavored fruit yogurts may merge into one flavored-yogurt bucket.
-- Normalize trivial wording variants into one canonical name (hyphenation/singular/plural/word order).
-- Fish/seafood species: multiple species with the same prep state AND near-identical nutrients → use a GENERIC group name (e.g., "White Fish Cooked", "Raw Mollusks"). Nutritionally distinct species stay separate.
-- IMPORTANT: different specific foods must NOT share a group. Corn ≠ collard greens. Chestnuts ≠ hummus. Asparagus ≠ peas. Broth ≠ sauce.
-
-Keep these groups ALWAYS separate:
-  1) Fat-level tiers apply to ALL foods: fat-free/nonfat ≠ low-fat ≠ light/lite ≠ reduced-fat ≠ regular/whole.
-     Fat-free foods have dramatically fewer kcal than regular (e.g. fat-free dressing ~15 kcal vs regular ~400 kcal).
-     ALWAYS check the kcal fingerprint — if [BLOCK] shows, or kcal differ by >40%, the tiers are different → CREATE.
-  2) Dry/uncooked form ≠ hydrated/cooked form — they differ by ~2–3× in kcal per 100 g:
-     pasta dry ~370 kcal vs pasta cooked ~130 kcal; biscuit dry mix ~360 kcal vs biscuit baked ~300 kcal;
-     oatmeal dry ~370 kcal vs oatmeal cooked ~70 kcal; soup dry mix ~400 kcal vs soup prepared ~50 kcal.
-     Always CHECK the kcal before merging anything labelled "dry", "mix", "powder", or "instant" with a cooked form.
-  3) Cooking state: raw ≠ cooked ≠ smoked ≠ canned ≠ frozen ≠ dried.
-  4) Composite dish vs plain ingredient (Ham Sub ≠ Ham).
-  5) Lemon juice ≠ lemonade/soda.
-  6) Pizza types by style/topping (cheese ≠ meat ≠ veggie ≠ deep-dish/frozen) when nutrients differ.
-  7) Preparation method: canned ≠ home-prepared ≠ frozen ≠ fresh.
-  8) Soups, broths, and sauces are separate even within the same category (chicken broth ≠ horseradish sauce ≠ ramen).
-  9) Baked-goods PRODUCTS: rye loaf ≠ breadsticks ≠ English muffin ≠ bagel ≠ biscuit ≠ Danish ≠ doughnut.
-     Within one product, variants MAY merge (plain bagel + sesame bagel; French bread + French bread toasted).
-  10) Cheese VARIETIES: Mozzarella ≠ American ≠ Brie ≠ Cheddar ≠ Swiss ≠ Parmesan — always separate groups.
-  11) Grain types: wheat flour ≠ sorghum flour ≠ rice flour ≠ corn flour ≠ oat flour.
-  12) Brand flavors: different flavors of the same named-brand product are separate (Archway Coconut ≠ Archway Dutch Cocoa).
-  13) Fast-food items from the same chain stay separate when fundamentally different products.
-Return one decision line only.
+KEEP SEPARATE — always CREATE a new group when:
+  • Cooking state differs: raw ≠ cooked ≠ canned ≠ frozen ≠ dried
+  • Fat tier differs: fat-free ≠ reduced-fat ≠ regular  (fat-free has ~90% fewer kcal — check kcal!)
+  • Dry form ≠ hydrated/cooked (pasta dry 370 kcal ≠ pasta cooked 130 kcal)
+  • The candidate's example sources show a DIFFERENT food (almonds ≠ chestnuts; broth ≠ sauce)
+  • Cheese varieties (Mozzarella ≠ Cheddar), grain types, pizza styles
 """
 
 
@@ -1012,31 +719,10 @@ def _apply_decision(agg: FoodAggregator, food: dict, row: pd.Series, decision: d
             create_name = create_aliases.setdefault(key, create_name)
         existing_id = _find_existing_id_by_name(agg, create_name)
         if existing_id is not None:
-            # Category gate: never merge into a group from a different food category
-            existing_cat = agg.db.get(existing_id, {}).get("food_category", "")
-            incoming_cat = food.get("category", "")
-            cross_cat = incoming_cat and existing_cat and incoming_cat != existing_cat
-            # Energy gate: don't fold into a group with incompatible calorie profile
-            nutrient_conflict = False
-            if not cross_cat:
-                incoming_energy = row.get("Energy", None)
-                if incoming_energy is not None and not pd.isna(incoming_energy):
-                    if not _is_energy_compatible(agg.db[existing_id], float(incoming_energy)):
-                        nutrient_conflict = True
-            if cross_cat or nutrient_conflict:
-                agg._do_create(_sanitize_generic_name(name), row)
-                agg.stats["created"] += 1
-            else:
-                result = agg._do_add(existing_id, row)
-                if result == "ok":
-                    agg.stats["added"] += 1
-                else:
-                    agg._do_create(create_name, row)
-                    agg._name_to_id[_normalized_name_key(create_name)] = agg._next_id - 1
-                    agg.stats["created"] += 1
+            agg._do_add(existing_id, row)
+            agg.stats["added"] += 1
         else:
             agg._do_create(create_name, row)
-            # register normalized key for stronger dedup gateway
             agg._name_to_id[_normalized_name_key(create_name)] = agg._next_id - 1
             agg.stats["created"] += 1
 
@@ -1044,40 +730,26 @@ def _apply_decision(agg: FoodAggregator, food: dict, row: pd.Series, decision: d
         target = decision.get("target_id")
         target_name = decision.get("target_name")
         valid_add_ids = food.get("_valid_add_ids", set())
-        incoming_cat = food.get("category", "")
 
         if target is not None and target not in valid_add_ids:
             target = None
 
         if target is None and target_name:
-            matches = agg.index.search(target_name, top_k=1)
-            if matches and matches[0]["score"] > 0.75 and matches[0]["id"] in valid_add_ids:
-                target = matches[0]["id"]
-
-        # Hard category gate: never ADD to a group from a different food category
-        if target and target in agg.db:
-            target_cat = agg.db[target].get("food_category", "")
-            if incoming_cat and target_cat and incoming_cat != target_cat:
-                target = None  # force CREATE instead
-
-        # Energy gate: block ADD if energy is incompatible with group profile
-        if target and target in agg.db:
-            incoming_energy = row.get("Energy", None)
-            if incoming_energy is not None and not pd.isna(incoming_energy):
-                if not _is_energy_compatible(agg.db[target], float(incoming_energy)):
-                    target = None
+            # First: resolve within-batch create_aliases (group just created in this batch)
+            if create_aliases:
+                key = _normalized_name_key(target_name)
+                canonical = create_aliases.get(key)
+                if canonical is not None:
+                    target = _find_existing_id_by_name(agg, canonical)
+            # Fallback: FAISS search among already-indexed groups
+            if target is None:
+                matches = agg.index.search(target_name, top_k=1)
+                if matches and matches[0]["score"] > 0.75 and matches[0]["id"] in valid_add_ids:
+                    target = matches[0]["id"]
 
         if target and target in agg.db:
-            result = agg._do_add(target, row)
-            if result == "ok":
-                agg.stats["added"] += 1
-            elif result == "foundation_locked":
-                agg.stats["ignored"] += 1
-            else:
-                cname = _sanitize_generic_name(target_name or name)
-                agg._do_create(cname, row)
-                agg._name_to_id[_normalized_name_key(cname)] = agg._next_id - 1
-                agg.stats["created"] += 1
+            agg._do_add(target, row)
+            agg.stats["added"] += 1
         else:
             cname = _sanitize_generic_name(target_name or name)
             agg._do_create(cname, row)
@@ -1096,15 +768,17 @@ _DEFAULT_BATCH_INSTRUCTION = (
     "\nAllowed JSON schemas:"
     "\n{\"idx\": <idx>, \"action\": \"CREATE\", \"name\": \"<generic_name>\"}"
     "\n{\"idx\": <idx>, \"action\": \"ADD\", \"target_id\": <id>}"
+    "\n{\"idx\": <idx>, \"action\": \"ADD\", \"target_name\": \"<generic_name>\"}"
     "\n{\"idx\": <idx>, \"action\": \"IGNORE\"}"
     "\n"
     "\nRules:"
-    "\n- Every item is a DIFFERENT food — give each its own unique, specific CREATE name."
-    "\n- NEVER reuse the same CREATE name for different foods in one batch."
-    "\n- ADD only if the candidate's example sources are the SAME food. Check category: a"
-    " 'Dairy' candidate is NEVER valid for a 'Finfish' item, and vice versa."
-    "\n- ADD is only valid using an id from that item's candidate list."
-    "\n- When in doubt, CREATE with a specific descriptive name."
+    "\n- target_id must come from that item's candidate list."
+    "\n  target_name references a group CREATEd earlier in THIS same batch — use this for within-batch variants/brands."
+    "\n- Within-batch merging: before writing CREATE, check if an earlier item in this batch already CREATEd the right"
+    " generic group. If so, ADD to it using target_name instead of creating a duplicate."
+    "\n- ADD only if the candidate's example sources confirm it is the SAME food."
+    " Check category: 'Dairy' ≠ 'Finfish'; different nuts (almonds ≠ chestnuts) are NEVER merged."
+    "\n- When in doubt, CREATE with a short 2-4 word Title Case name."
 )
 
 
@@ -1138,11 +812,8 @@ def run_batched(
             row = df.iloc[idx]
             name = str(row.get("foodName", ""))
             cat = str(row.get("food_category", ""))
-            # Fetch more candidates than needed so we can filter by category
-            raw_results = agg.index.search(name, top_k=max(agg.search_top_k * 3, 24))
-            # Prefer same-category candidates; fall back to cross-category if few same-cat results
-            same_cat = []
-            cross_cat = []
+            raw_results = agg.index.search(name, top_k=agg.search_top_k)
+            search_results = []
             for m in raw_results:
                 entry = agg.db.get(m["id"])
                 if entry:
@@ -1150,15 +821,7 @@ def run_batched(
                     m["count"] = entry.get("count", 1)
                     m["source_names"] = entry.get("source_names", [])[:3]
                     m["food_category"] = entry.get("food_category", "")
-                    if m["food_category"] == cat:
-                        same_cat.append(m)
-                    else:
-                        cross_cat.append(m)
-            # Use same-category candidates only; cross-category only when zero same-cat matches exist
-            if same_cat:
-                search_results = same_cat[:agg.search_top_k]
-            else:
-                search_results = cross_cat[:agg.search_top_k]
+                    search_results.append(m)
 
             food = {
                 "idx": idx,

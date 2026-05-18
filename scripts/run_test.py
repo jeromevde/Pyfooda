@@ -23,7 +23,6 @@ Usage:
 from __future__ import annotations
 
 import argparse
-import re
 import sys
 from pathlib import Path
 
@@ -38,24 +37,6 @@ from run_aggregation import (
     _resolve_llm_backend,
     run_batched,
 )
-
-# ── name similarity ────────────────────────────────────────────────────────────
-
-_NAME_MATCH_THRESHOLD = 0.4
-
-
-def _name_tokens(name: str) -> set[str]:
-    """All word tokens, no stopword removal (we want dry≠cooked, light≠regular)."""
-    return set(re.findall(r'\b[a-z]{2,}\b', name.lower()))
-
-
-def _name_match(canonical: str, created: str, threshold: float = _NAME_MATCH_THRESHOLD) -> bool:
-    ta = _name_tokens(canonical)
-    tb = _name_tokens(created)
-    if not ta or not tb:
-        return False
-    return len(ta & tb) / len(ta | tb) >= threshold
-
 
 # ── test-set I/O ──────────────────────────────────────────────────────────────
 
@@ -87,8 +68,6 @@ def main():
     parser.add_argument('--base-url',      default=None)
     parser.add_argument('--api-key',       default=None)
     parser.add_argument('--prompt',        default=None, help='Path to prompt .txt file')
-    parser.add_argument('--name-threshold', type=float, default=_NAME_MATCH_THRESHOLD,
-                        help='Jaccard threshold for group name match on anchor items')
     parser.add_argument('--only',       action='append', default=[], metavar='PATTERN',
                         help='Only include groups whose name contains PATTERN (repeatable)')
     parser.add_argument('-v', '--verbose', action='store_true',
@@ -199,7 +178,8 @@ def main():
                 if pos == 0:
                     anchor_gids[gname] = gid
                     created_name = agg.db[gid]['generic_name']
-                    name_ok = _name_match(gname, created_name, args.name_threshold)
+                    faiss_hits = agg.index.search(gname, top_k=1)
+                    name_ok = bool(faiss_hits and faiss_hits[0]['id'] == gid)
                     _record(item, gname, name_ok, created_name, 'CREATE')
                 else:
                     anchor_gid  = anchor_gids[gname]
