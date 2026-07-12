@@ -217,18 +217,36 @@
     border-radius: 4px; pointer-events: none;
   }
 
-  /* Nutrient source modal */
+  /* Modals */
   .modal-backdrop {
-    display: none; position: fixed; inset: 0; z-index: 100;
-    background: rgba(0,0,0,.45); align-items: center; justify-content: center;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    z-index: 9999;
+    background: rgba(0, 0, 0, .45);
     padding: 1rem;
+    overflow-y: auto;
+    box-sizing: border-box;
   }
-  .modal-backdrop.visible { display: flex; }
+  .modal-backdrop.visible {
+    display: grid;
+    place-items: center;
+  }
   .modal {
-    width: min(640px, 100%); max-height: 80vh; overflow: hidden;
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,.25);
-    display: flex; flex-direction: column;
+    width: min(640px, 100%);
+    max-height: min(80vh, calc(100dvh - 2rem));
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .25);
+    display: flex;
+    flex-direction: column;
+    margin: auto;
   }
   .modal-header {
     display: flex; justify-content: space-between; align-items: flex-start;
@@ -322,6 +340,33 @@
 </style>
 </head>
 <body>
+
+<div class="modal-backdrop" id="coverage-modal" onclick="if(event.target===this) closeCoverageModal()">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="coverage-title">
+    <div class="modal-header">
+      <div>
+        <h3 id="coverage-title">Nutrient coverage</h3>
+        <p id="coverage-subtitle"></p>
+      </div>
+      <button class="modal-close" type="button" onclick="closeCoverageModal()" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body" id="coverage-body"></div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="nutrient-modal" onclick="if(event.target===this) closeNutrientModal()">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-header">
+      <div>
+        <h3 id="modal-title"></h3>
+        <p id="modal-subtitle"></p>
+      </div>
+      <button class="modal-close" type="button" onclick="closeNutrientModal()" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
 <div class="container">
   <header>
     <h1>🍎 <span>Pyfooda</span></h1>
@@ -361,32 +406,6 @@
     Package: <a href="https://pypi.org/project/pyfooda/">pip install pyfooda</a> ·
     Source: <a href="https://github.com/jeromevde/Pyfooda">GitHub</a>
   </footer>
-</div>
-
-<div class="modal-backdrop" id="coverage-modal" onclick="if(event.target===this) closeCoverageModal()">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="coverage-title">
-    <div class="modal-header">
-      <div>
-        <h3 id="coverage-title">Nutrient coverage</h3>
-        <p id="coverage-subtitle"></p>
-      </div>
-      <button class="modal-close" type="button" onclick="closeCoverageModal()" aria-label="Close">&times;</button>
-    </div>
-    <div class="modal-body" id="coverage-body"></div>
-  </div>
-</div>
-
-<div class="modal-backdrop" id="nutrient-modal" onclick="if(event.target===this) closeNutrientModal()">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-    <div class="modal-header">
-      <div>
-        <h3 id="modal-title"></h3>
-        <p id="modal-subtitle"></p>
-      </div>
-      <button class="modal-close" type="button" onclick="closeNutrientModal()" aria-label="Close">&times;</button>
-    </div>
-    <div class="modal-body" id="modal-body"></div>
-  </div>
 </div>
 
 <script>
@@ -433,7 +452,11 @@ let sourceNameIndex = {};  // token -> Set of food indices
 let sourceNameKeys = [];   // sorted keys for binary-search prefix lookup
 
 const dataBase = './data/';
-const DATA_VERSION = '0.2.8';
+const DATA_VERSION = '0.2.9';
+
+function setModalOpen(open) {
+  document.body.style.overflow = open ? 'hidden' : '';
+}
 
 let dbMeta = {};
 let dbCoverage = null;
@@ -933,10 +956,14 @@ function openNutrientModal(food, nutrientName) {
   body += '</tbody></table>';
   document.getElementById('modal-body').innerHTML = body;
   document.getElementById('nutrient-modal').classList.add('visible');
+  setModalOpen(true);
 }
 
 function closeNutrientModal() {
   document.getElementById('nutrient-modal').classList.remove('visible');
+  if (!document.getElementById('coverage-modal').classList.contains('visible')) {
+    setModalOpen(false);
+  }
 }
 
 function openCoverageModal() {
@@ -964,10 +991,14 @@ function openCoverageModal() {
   body += '</tbody></table>';
   document.getElementById('coverage-body').innerHTML = body;
   document.getElementById('coverage-modal').classList.add('visible');
+  setModalOpen(true);
 }
 
 function closeCoverageModal() {
   document.getElementById('coverage-modal').classList.remove('visible');
+  if (!document.getElementById('nutrient-modal').classList.contains('visible')) {
+    setModalOpen(false);
+  }
 }
 
 document.addEventListener('keydown', (e) => {
