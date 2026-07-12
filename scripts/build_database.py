@@ -203,17 +203,17 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--meta", type=Path, default=DEFAULT_META)
     p.add_argument("--top-k", type=int, default=50, help="USDA candidates per ingredient from embedding search")
     p.add_argument("--top-sources", type=int, default=5, help="Max USDA rows to average per ingredient")
-    p.add_argument("--min-similarity", type=float, default=0.35, help="Minimum cosine similarity for candidates")
+    p.add_argument("--min-similarity", type=float, default=0.50, help="Minimum cosine similarity for candidates")
     p.add_argument(
         "--min-source-similarity",
         type=float,
-        default=0.76,
+        default=0.80,
         help="Absolute floor for selected USDA sources",
     )
     p.add_argument(
         "--max-similarity-drop",
         type=float,
-        default=0.12,
+        default=0.08,
         help="Drop sources more than this below the best match",
     )
     p.add_argument("--batch-size", type=int, default=256)

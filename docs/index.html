@@ -175,22 +175,6 @@
   .click-hint {
     font-size: .8rem; color: var(--muted); margin-top: .25rem;
   }
-  .uncertain-section { margin-top: 1.25rem; }
-  .uncertain-toggle {
-    width: 100%; text-align: left; border: 1px dashed var(--border);
-    background: transparent; color: var(--muted); border-radius: var(--radius);
-    padding: .65rem .8rem; font-size: .84rem; cursor: pointer;
-  }
-  .uncertain-toggle:hover { background: color-mix(in srgb, var(--accent-light) 45%, transparent); color: var(--text); }
-  .uncertain-toggle .arrow {
-    display: inline-block; margin-right: .35rem; transition: transform .15s;
-  }
-  .uncertain-toggle.open .arrow { transform: rotate(90deg); }
-  .uncertain-list { display: none; margin-top: .75rem; }
-  .uncertain-list.visible { display: block; }
-  .uncertain-note {
-    font-size: .78rem; color: var(--muted); margin-bottom: .6rem;
-  }
   .nutrient-row .value {
     font-size: .85rem; font-weight: 600;
     text-align: right; white-space: nowrap; min-width: 70px;
@@ -375,7 +359,7 @@ let sourceNameIndex = {};  // token -> Set of food indices
 let sourceNameKeys = [];   // sorted keys for binary-search prefix lookup
 
 const dataBase = './data/';
-const DATA_VERSION = '0.2.2';
+const DATA_VERSION = '0.2.3';
 
 let dbMeta = {};
 
@@ -649,8 +633,8 @@ function confidenceLevel(stat, sourceCount) {
   if (!stat || stat.support == null || stat.support === 0) return 'none';
   const supportPct = stat.support_pct != null ? stat.support_pct : stat.support / Math.max(sourceCount, 1);
   const cv = stat.cv != null ? stat.cv : 1;
-  if (supportPct >= 0.6 && cv <= 0.2) return 'high';
-  if (supportPct >= 0.4 && cv <= 0.4) return 'medium';
+  if (supportPct >= 0.8 && cv <= 0.15) return 'high';
+  if (supportPct >= 0.5 && cv <= 0.35) return 'medium';
   return 'low';
 }
 
@@ -715,16 +699,13 @@ function renderDetail(food) {
   const nutrientStats = food.nutrient_stats || {};
   const sourceCount = food.source_count || 0;
 
-  const trustedByCat = {};
-  const uncertainByCat = {};
+  const groups = {};
   for (const nm of NUTRIENT_META) {
     const stat = nutrientStats[nm.name];
     const rawVal = nutrients[nm.name];
     if (rawVal == null && (!stat || !stat.support)) continue;
-    const level = confidenceLevel(stat, sourceCount);
-    const bucket = (level === 'low' || level === 'none') ? uncertainByCat : trustedByCat;
-    if (!bucket[nm.cat]) bucket[nm.cat] = [];
-    bucket[nm.cat].push(nm);
+    if (!groups[nm.cat]) groups[nm.cat] = [];
+    groups[nm.cat].push(nm);
   }
 
   let html = `<div class="food-header">
@@ -741,39 +722,17 @@ function renderDetail(food) {
 
   // Nutrient groups
   const categoryOrder = ['Energy', 'Carbohydrates', 'Lipids', 'Proteins', 'Vitamins', 'Minerals'];
-  const orderedCats = categoryOrder.filter(c => trustedByCat[c]);
-  for (const c of Object.keys(trustedByCat)) {
+  const orderedCats = categoryOrder.filter(c => groups[c]);
+  for (const c of Object.keys(groups)) {
     if (!orderedCats.includes(c)) orderedCats.push(c);
   }
 
   for (const cat of orderedCats) {
     html += `<div class="nutrient-group"><h3>${esc(cat)}</h3>`;
-    for (const nm of trustedByCat[cat]) {
+    for (const nm of groups[cat]) {
       html += renderNutrientRow(nm, nutrients, nutrientStats, sourceCount, scale);
     }
     html += '</div>';
-  }
-
-  const uncertainCount = Object.values(uncertainByCat).reduce((n, arr) => n + arr.length, 0);
-  if (uncertainCount > 0) {
-    html += `<div class="uncertain-section">
-      <button type="button" class="uncertain-toggle" onclick="toggleUncertain(this)">
-        <span class="arrow">&#9654;</span>${uncertainCount} uncertain estimate${uncertainCount === 1 ? '' : 's'} (sparse USDA data)
-      </button>
-      <div class="uncertain-list">
-        <p class="uncertain-note">These values come from fewer than 40% of matched USDA sources, or vary widely between sources.</p>`;
-    const uncertainCats = categoryOrder.filter(c => uncertainByCat[c]);
-    for (const c of Object.keys(uncertainByCat)) {
-      if (!uncertainCats.includes(c)) uncertainCats.push(c);
-    }
-    for (const cat of uncertainCats) {
-      html += `<div class="nutrient-group"><h3>${esc(cat)}</h3>`;
-      for (const nm of uncertainByCat[cat]) {
-        html += renderNutrientRow(nm, nutrients, nutrientStats, sourceCount, scale);
-      }
-      html += '</div>';
-    }
-    html += '</div></div>';
   }
 
   detailPanel.innerHTML = html;
@@ -785,12 +744,6 @@ function renderDetail(food) {
     const nutrientName = detailNutrients[idx];
     if (nutrientName) openNutrientModal(currentFood, nutrientName);
   };
-}
-
-function toggleUncertain(btn) {
-  btn.classList.toggle('open');
-  const list = btn.nextElementSibling;
-  if (list) list.classList.toggle('visible');
 }
 
 function openNutrientModal(food, nutrientName) {
