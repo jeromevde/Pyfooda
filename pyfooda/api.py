@@ -144,7 +144,3 @@ def get_drv_df() -> pd.DataFrame:
     ensure_data_loaded()
     assert _nutrients_df is not None
     return _nutrients_df.copy()
-
-
-# Backward-compatible aliases
-find_closest_matches = find_ingredients

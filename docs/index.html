@@ -285,67 +285,6 @@
     transition: width .3s ease;
   }
 
-  /* Source foods panel */
-  .sources-section { margin-top: 1.5rem; }
-  .sources-toggle {
-    display: flex; align-items: center; gap: .5rem;
-    background: none; border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 8px 14px; cursor: pointer; width: 100%;
-    font-size: .9rem; color: var(--text); background: var(--surface);
-    transition: background .15s;
-  }
-  .sources-toggle:hover { background: var(--accent-light); }
-  .sources-toggle .arrow {
-    transition: transform .2s; font-size: .7rem;
-  }
-  .sources-toggle.open .arrow { transform: rotate(90deg); }
-  .sources-toggle .toggle-info {
-    margin-left: auto; font-size: .8rem; color: var(--muted);
-  }
-
-  .sources-list {
-    display: none; margin-top: .5rem;
-    border: 1px solid var(--border); border-radius: var(--radius);
-    background: var(--surface); max-height: 400px; overflow-y: auto;
-  }
-  .sources-list.visible { display: block; }
-  .sources-list .source-item {
-    padding: 6px 14px; font-size: .82rem;
-    border-bottom: 1px solid var(--border);
-    color: var(--text);
-  }
-  .sources-list .source-item:last-child { border-bottom: none; }
-  .sources-list .source-item:nth-child(odd) {
-    background: color-mix(in srgb, var(--surface) 95%, var(--border));
-  }
-
-  .sources-filter {
-    padding: 8px 14px; border-bottom: 1px solid var(--border);
-    position: sticky; top: 0; background: var(--surface); z-index: 1;
-  }
-  .sources-filter input {
-    width: 100%; padding: 6px 10px; border: 1px solid var(--border);
-    border-radius: 4px; font-size: .82rem;
-    background: var(--bg); color: var(--text); outline: none;
-  }
-  .sources-filter input:focus { border-color: var(--accent); }
-
-  /* Portion selector */
-  .portion-selector {
-    display: flex; align-items: center; gap: .5rem;
-    margin-top: .6rem;
-  }
-  .portion-selector label {
-    font-size: .85rem; color: var(--muted); white-space: nowrap;
-  }
-  .portion-selector select {
-    flex: 1; padding: 6px 10px; border: 1px solid var(--border);
-    border-radius: var(--radius); font-size: .85rem;
-    background: var(--surface); color: var(--text); outline: none;
-    max-width: 340px; cursor: pointer;
-  }
-  .portion-selector select:focus { border-color: var(--accent); }
-
   /* Loading */
   .loading {
     text-align: center; padding: 3rem; color: var(--muted);

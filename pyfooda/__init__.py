@@ -1,6 +1,7 @@
+from pathlib import Path
+
 from .api import (
     find_ingredients,
-    find_closest_matches,
     get_display_name,
     get_drv_df,
     get_ingredients_df,
@@ -10,4 +11,16 @@ from .api import (
     list_ingredients,
 )
 
-__version__ = "0.2.0"
+__version__ = (Path(__file__).parent / "VERSION").read_text().strip()
+
+__all__ = [
+    "__version__",
+    "find_ingredients",
+    "get_display_name",
+    "get_drv_df",
+    "get_ingredients_df",
+    "get_nutrients",
+    "get_sources",
+    "get_vocabulary",
+    "list_ingredients",
+]
