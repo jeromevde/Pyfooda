@@ -29,8 +29,8 @@ def recompute(
     ingredients_path: Path = INGREDIENTS_CSV,
     *,
     top_sources: int = 5,
-    min_source_similarity: float = 0.70,
-    max_similarity_drop: float = 0.20,
+    min_source_similarity: float = 0.76,
+    max_similarity_drop: float = 0.12,
 ) -> int:
     nutrient_cols = pd.read_csv(NUTRIENTS_CSV)["nutrientName"].tolist()
     meta = json.loads(meta_path.read_text())
@@ -111,8 +111,8 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--usda", type=Path, default=USDA_CSV)
     p.add_argument("--ingredients", type=Path, default=INGREDIENTS_CSV)
     p.add_argument("--top-sources", type=int, default=5)
-    p.add_argument("--min-source-similarity", type=float, default=0.70)
-    p.add_argument("--max-similarity-drop", type=float, default=0.20)
+    p.add_argument("--min-source-similarity", type=float, default=0.76)
+    p.add_argument("--max-similarity-drop", type=float, default=0.12)
     return p.parse_args()
 
 

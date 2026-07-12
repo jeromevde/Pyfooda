@@ -207,13 +207,13 @@ def parse_args() -> argparse.Namespace:
     p.add_argument(
         "--min-source-similarity",
         type=float,
-        default=0.70,
+        default=0.76,
         help="Absolute floor for selected USDA sources",
     )
     p.add_argument(
         "--max-similarity-drop",
         type=float,
-        default=0.20,
+        default=0.12,
         help="Drop sources more than this below the best match",
     )
     p.add_argument("--batch-size", type=int, default=256)

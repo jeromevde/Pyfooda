@@ -23,8 +23,8 @@ def filter_source_records(
     sources: list[dict],
     *,
     top_sources: int = 5,
-    min_source_similarity: float = 0.70,
-    max_similarity_drop: float = 0.20,
+    min_source_similarity: float = 0.76,
+    max_similarity_drop: float = 0.12,
 ) -> list[dict]:
     """Keep up to top_sources USDA rows that are close to the best embedding match."""
     if not sources:
@@ -43,8 +43,8 @@ def select_source_rows(
     candidates: pd.DataFrame,
     *,
     top_sources: int = 5,
-    min_source_similarity: float = 0.70,
-    max_similarity_drop: float = 0.20,
+    min_source_similarity: float = 0.76,
+    max_similarity_drop: float = 0.12,
 ) -> pd.DataFrame:
     """Keep up to top_sources USDA rows that are close to the best embedding match."""
     if candidates.empty:

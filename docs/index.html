@@ -175,6 +175,22 @@
   .click-hint {
     font-size: .8rem; color: var(--muted); margin-top: .25rem;
   }
+  .uncertain-section { margin-top: 1.25rem; }
+  .uncertain-toggle {
+    width: 100%; text-align: left; border: 1px dashed var(--border);
+    background: transparent; color: var(--muted); border-radius: var(--radius);
+    padding: .65rem .8rem; font-size: .84rem; cursor: pointer;
+  }
+  .uncertain-toggle:hover { background: color-mix(in srgb, var(--accent-light) 45%, transparent); color: var(--text); }
+  .uncertain-toggle .arrow {
+    display: inline-block; margin-right: .35rem; transition: transform .15s;
+  }
+  .uncertain-toggle.open .arrow { transform: rotate(90deg); }
+  .uncertain-list { display: none; margin-top: .75rem; }
+  .uncertain-list.visible { display: block; }
+  .uncertain-note {
+    font-size: .78rem; color: var(--muted); margin-bottom: .6rem;
+  }
   .nutrient-row .value {
     font-size: .85rem; font-weight: 600;
     text-align: right; white-space: nowrap; min-width: 70px;
@@ -359,7 +375,7 @@ let sourceNameIndex = {};  // token -> Set of food indices
 let sourceNameKeys = [];   // sorted keys for binary-search prefix lookup
 
 const dataBase = './data/';
-const DATA_VERSION = '0.2.1';
+const DATA_VERSION = '0.2.2';
 
 let dbMeta = {};
 
@@ -633,8 +649,8 @@ function confidenceLevel(stat, sourceCount) {
   if (!stat || stat.support == null || stat.support === 0) return 'none';
   const supportPct = stat.support_pct != null ? stat.support_pct : stat.support / Math.max(sourceCount, 1);
   const cv = stat.cv != null ? stat.cv : 1;
-  if (supportPct >= 0.8 && cv <= 0.15) return 'high';
-  if (supportPct >= 0.4 && cv <= 0.35) return 'medium';
+  if (supportPct >= 0.6 && cv <= 0.2) return 'high';
+  if (supportPct >= 0.4 && cv <= 0.4) return 'medium';
   return 'low';
 }
 
@@ -656,6 +672,41 @@ function ciBarPct(stat, val, drv) {
   return { left, width: Math.max(right - left, 0) };
 }
 
+function renderNutrientRow(nm, nutrients, nutrientStats, sourceCount, scale) {
+  const rawVal = nutrients[nm.name];
+  const val = rawVal != null ? rawVal * scale : null;
+  const stat = nutrientStats[nm.name];
+  const drv = nm.drv;
+  const pct = (drv > 0 && val != null) ? Math.min((val / drv) * 100, 100) : 0;
+  const barColor = pct < 15 ? 'var(--muted)' : pct < 50 ? 'var(--green)' : pct < 80 ? 'var(--yellow)' : 'var(--red)';
+  const pctLabel = (drv > 0 && val != null) ? ` (${Math.round((val / drv) * 100)}% DV)` : '';
+  const level = confidenceLevel(stat, sourceCount);
+  const rowClass = level === 'low' || level === 'none' ? 'nutrient-row low-confidence' : 'nutrient-row';
+  const support = stat ? `${stat.support}/${sourceCount} sources` : `0/${sourceCount} sources`;
+  const ci = (stat && stat.ci_low != null && stat.ci_high != null && val != null)
+    ? `95% CI: ${formatVal(stat.ci_low)}–${formatVal(stat.ci_high)} ${nm.unit}`
+    : '';
+  const ciBar = ciBarPct(stat, val, drv);
+  const pill = level !== 'none'
+    ? `<span class="confidence-pill ${level}">${confidenceLabel(level)}</span>`
+    : '';
+  const nutrientIdx = detailNutrients.length;
+  detailNutrients.push(nm.name);
+
+  return `<div class="${rowClass}" data-nutrient-idx="${nutrientIdx}" title="View USDA sources">
+    <div class="name-wrap">
+      <span class="name">${esc(nm.name)}${pill}</span>
+      <span class="support">Support: <strong>${support}</strong>${stat && stat.cv != null ? ` · CV ${(stat.cv * 100).toFixed(0)}%` : ''}</span>
+      ${ci ? `<span class="ci-range">${ci}</span>` : ''}
+    </div>
+    <span class="value">${formatVal(val)} ${esc(nm.unit)}${pctLabel}</span>
+    <div class="bar-wrap">
+      ${ciBar.width > 0 ? `<div class="bar-ci" style="left:${ciBar.left.toFixed(1)}%;width:${ciBar.width.toFixed(1)}%"></div>` : ''}
+      <div class="bar-fill" style="width:${pct.toFixed(1)}%;background:${barColor}"></div>
+    </div>
+  </div>`;
+}
+
 function renderDetail(food) {
   currentFood = food;
   detailNutrients = [];
@@ -664,15 +715,16 @@ function renderDetail(food) {
   const nutrientStats = food.nutrient_stats || {};
   const sourceCount = food.source_count || 0;
 
-  // Group available nutrients by category
-  const groups = {};
+  const trustedByCat = {};
+  const uncertainByCat = {};
   for (const nm of NUTRIENT_META) {
     const stat = nutrientStats[nm.name];
     const rawVal = nutrients[nm.name];
     if (rawVal == null && (!stat || !stat.support)) continue;
-    const cat = nm.cat;
-    if (!groups[cat]) groups[cat] = [];
-    groups[cat].push(nm);
+    const level = confidenceLevel(stat, sourceCount);
+    const bucket = (level === 'low' || level === 'none') ? uncertainByCat : trustedByCat;
+    if (!bucket[nm.cat]) bucket[nm.cat] = [];
+    bucket[nm.cat].push(nm);
   }
 
   let html = `<div class="food-header">
@@ -689,59 +741,56 @@ function renderDetail(food) {
 
   // Nutrient groups
   const categoryOrder = ['Energy', 'Carbohydrates', 'Lipids', 'Proteins', 'Vitamins', 'Minerals'];
-  const orderedCats = categoryOrder.filter(c => groups[c]);
-  for (const c of Object.keys(groups)) {
+  const orderedCats = categoryOrder.filter(c => trustedByCat[c]);
+  for (const c of Object.keys(trustedByCat)) {
     if (!orderedCats.includes(c)) orderedCats.push(c);
   }
 
   for (const cat of orderedCats) {
-    const metas = groups[cat];
     html += `<div class="nutrient-group"><h3>${esc(cat)}</h3>`;
-    for (const nm of metas) {
-      const rawVal = nutrients[nm.name];
-      const val = rawVal != null ? rawVal * scale : null;
-      const stat = nutrientStats[nm.name];
-      const drv = nm.drv;
-      let pct = (drv > 0 && val != null) ? Math.min((val / drv) * 100, 100) : 0;
-      let barColor = pct < 15 ? 'var(--muted)' : pct < 50 ? 'var(--green)' : pct < 80 ? 'var(--yellow)' : 'var(--red)';
-      let pctLabel = (drv > 0 && val != null) ? ` (${Math.round((val / drv) * 100)}% DV)` : '';
-      const level = confidenceLevel(stat, sourceCount);
-      const rowClass = level === 'low' || level === 'none' ? 'nutrient-row low-confidence' : 'nutrient-row';
-      const support = stat ? `${stat.support}/${sourceCount} sources` : `0/${sourceCount} sources`;
-      const ci = (stat && stat.ci_low != null && stat.ci_high != null && val != null)
-        ? `95% CI: ${formatVal(stat.ci_low)}–${formatVal(stat.ci_high)} ${nm.unit}`
-        : '';
-      const ciBar = ciBarPct(stat, val, drv);
-      const pill = level !== 'none'
-        ? `<span class="confidence-pill ${level}">${confidenceLabel(level)}</span>`
-        : '';
-      const nutrientIdx = detailNutrients.length;
-      detailNutrients.push(nm.name);
-
-      html += `<div class="${rowClass}" data-nutrient-idx="${nutrientIdx}" data-nutrient-name="${esc(nm.name)}" title="View USDA sources">
-        <div class="name-wrap">
-          <span class="name">${esc(nm.name)}${pill}</span>
-          <span class="support">Support: <strong>${support}</strong>${stat && stat.cv != null ? ` · CV ${(stat.cv * 100).toFixed(0)}%` : ''}</span>
-          ${ci ? `<span class="ci-range">${ci}</span>` : ''}
-        </div>
-        <span class="value">${formatVal(val)} ${esc(nm.unit)}${pctLabel}</span>
-        <div class="bar-wrap">
-          ${ciBar.width > 0 ? `<div class="bar-ci" style="left:${ciBar.left.toFixed(1)}%;width:${ciBar.width.toFixed(1)}%"></div>` : ''}
-          <div class="bar-fill" style="width:${pct.toFixed(1)}%;background:${barColor}"></div>
-        </div>
-      </div>`;
+    for (const nm of trustedByCat[cat]) {
+      html += renderNutrientRow(nm, nutrients, nutrientStats, sourceCount, scale);
     }
     html += '</div>';
+  }
+
+  const uncertainCount = Object.values(uncertainByCat).reduce((n, arr) => n + arr.length, 0);
+  if (uncertainCount > 0) {
+    html += `<div class="uncertain-section">
+      <button type="button" class="uncertain-toggle" onclick="toggleUncertain(this)">
+        <span class="arrow">&#9654;</span>${uncertainCount} uncertain estimate${uncertainCount === 1 ? '' : 's'} (sparse USDA data)
+      </button>
+      <div class="uncertain-list">
+        <p class="uncertain-note">These values come from fewer than 40% of matched USDA sources, or vary widely between sources.</p>`;
+    const uncertainCats = categoryOrder.filter(c => uncertainByCat[c]);
+    for (const c of Object.keys(uncertainByCat)) {
+      if (!uncertainCats.includes(c)) uncertainCats.push(c);
+    }
+    for (const cat of uncertainCats) {
+      html += `<div class="nutrient-group"><h3>${esc(cat)}</h3>`;
+      for (const nm of uncertainByCat[cat]) {
+        html += renderNutrientRow(nm, nutrients, nutrientStats, sourceCount, scale);
+      }
+      html += '</div>';
+    }
+    html += '</div></div>';
   }
 
   detailPanel.innerHTML = html;
   detailPanel.classList.add('visible');
   detailPanel.onclick = (e) => {
-    const row = e.target.closest('[data-nutrient-name]');
+    const row = e.target.closest('[data-nutrient-idx]');
     if (!row || !currentFood) return;
-    const nutrientName = row.dataset.nutrientName || detailNutrients[Number(row.dataset.nutrientIdx)];
+    const idx = Number(row.dataset.nutrientIdx);
+    const nutrientName = detailNutrients[idx];
     if (nutrientName) openNutrientModal(currentFood, nutrientName);
   };
+}
+
+function toggleUncertain(btn) {
+  btn.classList.toggle('open');
+  const list = btn.nextElementSibling;
+  if (list) list.classList.toggle('visible');
 }
 
 function openNutrientModal(food, nutrientName) {
@@ -749,11 +798,6 @@ function openNutrientModal(food, nutrientName) {
   const aggregate = food.nutrients ? food.nutrients[nutrientName] : null;
   const stat = (food.nutrient_stats || {})[nutrientName];
   const sources = food.sources || [];
-
-  document.getElementById('modal-title').textContent = nutrientName;
-  document.getElementById('modal-subtitle').textContent =
-    `Aggregate: ${formatVal(aggregate)} ${meta.unit}` +
-    (sources.length ? ` · ${reporting}/${sources.length} sources report this nutrient` : '');
 
   const rows = sources.map(src => {
     const val = sourceNutrientValue(src, nutrientName);
@@ -765,6 +809,11 @@ function openNutrientModal(food, nutrientName) {
   });
 
   const reporting = rows.filter(r => r.val != null).length;
+
+  document.getElementById('modal-title').textContent = nutrientName;
+  document.getElementById('modal-subtitle').textContent =
+    `Aggregate: ${formatVal(aggregate)} ${meta.unit}` +
+    (sources.length ? ` · ${reporting}/${sources.length} sources report this nutrient` : '');
 
   let body = `<table class="source-table"><thead><tr>
     <th>USDA food</th><th>Type</th><th>Match</th><th>Value</th>
