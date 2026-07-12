@@ -39,6 +39,7 @@ The library ships a pre-built `ingredients.csv`. To rebuild from USDA source dat
 ```bash
 pip install -r requirements-build.txt
 python scripts/build_database.py
+python scripts/export_web_data.py   # refresh docs/data/ingredients.json for GitHub Pages
 ```
 
 For each of the 1,790 Epicure ingredients, the build script:

@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pyfooda — Food Nutrition Lookup</title>
+<style>
+  :root {
+    --bg: #fafafa; --surface: #fff; --border: #e0e0e0;
+    --text: #1a1a1a; --muted: #666; --accent: #2563eb;
+    --accent-light: #dbeafe; --radius: 8px;
+    --green: #16a34a; --yellow: #ca8a04; --red: #dc2626;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111; --surface: #1a1a1a; --border: #333;
+      --text: #e5e5e5; --muted: #999; --accent: #60a5fa;
+      --accent-light: #1e3a5f;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg); color: var(--text);
+    line-height: 1.5; min-height: 100vh;
+  }
+  .container { max-width: 720px; margin: 0 auto; padding: 2rem 1rem; }
+
+  /* Header */
+  header { text-align: center; margin-bottom: 2rem; }
+  header h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: .3rem; }
+  header h1 span { color: var(--accent); }
+  header p { color: var(--muted); font-size: .95rem; }
+
+  /* Search */
+  .search-wrap {
+    position: relative; margin-bottom: 1rem;
+  }
+  .search-wrap svg {
+    position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+    width: 18px; height: 18px; color: var(--muted); pointer-events: none;
+  }
+  #search {
+    width: 100%; padding: 12px 14px 12px 42px;
+    border: 1.5px solid var(--border); border-radius: var(--radius);
+    font-size: 1rem; background: var(--surface); color: var(--text);
+    outline: none; transition: border-color .15s;
+  }
+  #search:focus { border-color: var(--accent); }
+  #search::placeholder { color: var(--muted); }
+
+  /* Results list */
+  #results {
+    list-style: none; border: 1px solid var(--border);
+    border-radius: var(--radius); background: var(--surface);
+    max-height: 320px; overflow-y: auto; display: none;
+  }
+  #results.visible { display: block; }
+  #results li {
+    padding: 10px 14px; cursor: pointer;
+    border-bottom: 1px solid var(--border);
+    transition: background .1s;
+  }
+  #results li:last-child { border-bottom: none; }
+  #results li:hover, #results li.active { background: var(--accent-light); }
+  #results li .cat {
+    font-size: .8rem; color: var(--muted); margin-left: .5rem;
+  }
+  #results li .count {
+    font-size: .75rem; color: var(--muted); margin-left: .3rem;
+    opacity: .7;
+  }
+
+  /* Detail panel */
+  #detail { display: none; margin-top: 1.5rem; }
+  #detail.visible { display: block; }
+  .food-header {
+    margin-bottom: 1.2rem;
+  }
+  .food-header-top {
+    display: flex; justify-content: space-between; align-items: baseline;
+    flex-wrap: wrap; gap: .5rem;
+  }
+  .food-header h2 { font-size: 1.4rem; font-weight: 600; }
+  .food-header .badge {
+    font-size: .8rem; padding: 3px 10px; border-radius: 20px;
+    background: var(--accent-light); color: var(--accent); font-weight: 500;
+  }
+  .food-meta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    margin-top: .4rem; font-size: .85rem; color: var(--muted);
+  }
+
+  /* Nutrient groups */
+  .nutrient-group { margin-bottom: 1.5rem; }
+  .nutrient-group h3 {
+    font-size: .85rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: .05em; color: var(--muted); margin-bottom: .6rem;
+    padding-bottom: .3rem; border-bottom: 1px solid var(--border);
+  }
+  .nutrient-row {
+    display: grid; grid-template-columns: 1fr auto 1fr;
+    gap: 8px; align-items: center; padding: 5px 0;
+  }
+  .nutrient-row .name { font-size: .9rem; }
+  .nutrient-row .value {
+    font-size: .85rem; font-weight: 600;
+    text-align: right; white-space: nowrap; min-width: 70px;
+  }
+  .bar-wrap {
+    height: 8px; background: var(--border); border-radius: 4px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%; border-radius: 4px;
+    transition: width .3s ease;
+  }
+
+  /* Source foods panel */
+  .sources-section { margin-top: 1.5rem; }
+  .sources-toggle {
+    display: flex; align-items: center; gap: .5rem;
+    background: none; border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 8px 14px; cursor: pointer; width: 100%;
+    font-size: .9rem; color: var(--text); background: var(--surface);
+    transition: background .15s;
+  }
+  .sources-toggle:hover { background: var(--accent-light); }
+  .sources-toggle .arrow {
+    transition: transform .2s; font-size: .7rem;
+  }
+  .sources-toggle.open .arrow { transform: rotate(90deg); }
+  .sources-toggle .toggle-info {
+    margin-left: auto; font-size: .8rem; color: var(--muted);
+  }
+
+  .sources-list {
+    display: none; margin-top: .5rem;
+    border: 1px solid var(--border); border-radius: var(--radius);
+    background: var(--surface); max-height: 400px; overflow-y: auto;
+  }
+  .sources-list.visible { display: block; }
+  .sources-list .source-item {
+    padding: 6px 14px; font-size: .82rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  .sources-list .source-item:last-child { border-bottom: none; }
+  .sources-list .source-item:nth-child(odd) {
+    background: color-mix(in srgb, var(--surface) 95%, var(--border));
+  }
+
+  .sources-filter {
+    padding: 8px 14px; border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; background: var(--surface); z-index: 1;
+  }
+  .sources-filter input {
+    width: 100%; padding: 6px 10px; border: 1px solid var(--border);
+    border-radius: 4px; font-size: .82rem;
+    background: var(--bg); color: var(--text); outline: none;
+  }
+  .sources-filter input:focus { border-color: var(--accent); }
+
+  /* Portion selector */
+  .portion-selector {
+    display: flex; align-items: center; gap: .5rem;
+    margin-top: .6rem;
+  }
+  .portion-selector label {
+    font-size: .85rem; color: var(--muted); white-space: nowrap;
+  }
+  .portion-selector select {
+    flex: 1; padding: 6px 10px; border: 1px solid var(--border);
+    border-radius: var(--radius); font-size: .85rem;
+    background: var(--surface); color: var(--text); outline: none;
+    max-width: 340px; cursor: pointer;
+  }
+  .portion-selector select:focus { border-color: var(--accent); }
+
+  /* Loading */
+  .loading {
+    text-align: center; padding: 3rem; color: var(--muted);
+  }
+  .loading .spinner {
+    display: inline-block; width: 28px; height: 28px;
+    border: 3px solid var(--border); border-top-color: var(--accent);
+    border-radius: 50%; animation: spin .6s linear infinite;
+    margin-bottom: .5rem;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  footer {
+    text-align: center; margin-top: 3rem; padding-top: 1.5rem;
+    border-top: 1px solid var(--border); color: var(--muted); font-size: .82rem;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>🍎 <span>Pyfooda</span></h1>
+    <p>Search 1,790 recipe ingredients — Epicure vocabulary + USDA FoodData Central</p>
+  </header>
+
+  <div id="loading" class="loading">
+    <div class="spinner"></div>
+    <div>Loading food database…</div>
+  </div>
+
+  <div id="app" style="display:none">
+    <div class="search-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+           stroke-width="2" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="M21 21l-5.2-5.2m0 0A7.5 7.5 0 105.8 15.8a7.5 7.5 0 0010 0z"/>
+      </svg>
+      <input id="search" type="text" placeholder="Search foods… e.g. cheddar, banana, chicken breast"
+             autocomplete="off" spellcheck="false">
+    </div>
+    <ul id="results"></ul>
+    <div id="detail"></div>
+  </div>
+
+  <footer>
+    Data: <a href="https://fdc.nal.usda.gov/">USDA FoodData Central</a> ·
+    Vocabulary: <a href="https://huggingface.co/datasets/Kaikaku/epicure-corpus-resources">Epicure</a> ·
+    Package: <a href="https://pypi.org/project/pyfooda/">pip install pyfooda</a> ·
+    Source: <a href="https://github.com/jeromevde/Pyfooda">GitHub</a>
+  </footer>
+</div>
+
+<script>
+/* ------------------------------------------------------------------ */
+/*  Nutrient metadata (embedded to avoid extra fetch)                  */
+/* ------------------------------------------------------------------ */
+const NUTRIENT_META = [
+  { name: "Energy", unit: "KCAL", cat: "Energy", drv: 2500 },
+  { name: "Carbohydrate", unit: "G", cat: "Carbohydrates", drv: 320 },
+  { name: "Sugars, Total", unit: "G", cat: "Carbohydrates", drv: 50 },
+  { name: "Fiber", unit: "G", cat: "Carbohydrates", drv: 30 },
+  { name: "Total fat", unit: "G", cat: "Lipids", drv: 80 },
+  { name: "Cholesterol", unit: "MG", cat: "Lipids", drv: 300 },
+  { name: "Fatty acids, total saturated", unit: "G", cat: "Lipids", drv: 20 },
+  { name: "Protein", unit: "G", cat: "Proteins", drv: 160 },
+  { name: "Vitamin A, RAE", unit: "UG", cat: "Vitamins", drv: 900 },
+  { name: "Vitamin E", unit: "MG", cat: "Vitamins", drv: 15 },
+  { name: "Vitamin D (D2 + D3)", unit: "UG", cat: "Vitamins", drv: 20 },
+  { name: "Vitamin C", unit: "MG", cat: "Vitamins", drv: 90 },
+  { name: "Vitamin B-6", unit: "MG", cat: "Vitamins", drv: 1.7 },
+  { name: "Folate, total", unit: "UG", cat: "Vitamins", drv: 400 },
+  { name: "Vitamin B-12", unit: "UG", cat: "Vitamins", drv: 2.4 },
+  { name: "Calcium", unit: "MG", cat: "Minerals", drv: 1000 },
+  { name: "Iron", unit: "MG", cat: "Minerals", drv: 10 },
+  { name: "Magnesium", unit: "MG", cat: "Minerals", drv: 420 },
+  { name: "Phosphorus", unit: "MG", cat: "Minerals", drv: 700 },
+  { name: "Potassium", unit: "MG", cat: "Minerals", drv: 3400 },
+  { name: "Sodium", unit: "MG", cat: "Minerals", drv: 1500 },
+  { name: "Zinc", unit: "MG", cat: "Minerals", drv: 11 },
+];
+
+/* ------------------------------------------------------------------ */
+/*  Data loading                                                       */
+/* ------------------------------------------------------------------ */
+let foods = [];
+let foodNames = [];
+let foodNamesLower = [];
+let idf = {};
+
+/* Source-name → food-index reverse map (for brand-name search) */
+let sourceNameIndex = {};  // token -> Set of food indices
+let sourceNameKeys = [];   // sorted keys for binary-search prefix lookup
+
+const dataBase = './data/';
+
+async function init() {
+  try {
+    const resp = await fetch(dataBase + 'ingredients.json');
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    const data = await resp.json();
+    foods = Array.isArray(data) ? data : (data.foods || []);
+
+    foodNames = foods.map(f => f.display_name);
+    foodNamesLower = foodNames.map(n => n.toLowerCase());
+
+    buildIndex();
+
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('app').style.display = '';
+    document.getElementById('search').focus();
+  } catch (e) {
+    document.getElementById('loading').innerHTML =
+      '<p style="color:var(--red)">Failed to load data. ' + e + '</p>';
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Search engine: BM25 + prefix matching + source-name lookup         */
+/* ------------------------------------------------------------------ */
+let docTokens = [];
+let docLens = [];
+let avgDL = 0;
+
+function buildIndex() {
+  const N = foodNamesLower.length;
+  const df = {};
+  docTokens = [];
+  docLens = [];
+  let totalLen = 0;
+
+  for (const nl of foodNamesLower) {
+    const tokens = nl.split(/\s+/);
+    docTokens.push(tokens);
+    docLens.push(tokens.length);
+    totalLen += tokens.length;
+    const unique = new Set(tokens);
+    for (const t of unique) df[t] = (df[t] || 0) + 1;
+  }
+  avgDL = totalLen / N;
+
+  idf = {};
+  for (const [t, freq] of Object.entries(df)) {
+    idf[t] = Math.log((N - freq + 0.5) / (freq + 0.5) + 1);
+  }
+
+  /* Build source-name reverse index: extract unique tokens from each
+     food's source_names array, map token → set of food indices.
+     This lets "nutella" find "Hazelnut Spread" because one of its
+     sources was named "NUTELLA ...". */
+  sourceNameIndex = {};
+  for (let i = 0; i < foods.length; i++) {
+    const sources = foods[i].sources || [];
+    if (!sources.length) continue;
+    const seen = new Set();
+    for (const src of sources) {
+      const sn = src.foodName || '';
+      const tokens = sn.toLowerCase().split(/[\s,\-\/\(\)]+/).filter(t => t.length >= 3);
+      for (const t of tokens) {
+        if (seen.has(t)) continue;
+        seen.add(t);
+        if (!sourceNameIndex[t]) sourceNameIndex[t] = new Set();
+        sourceNameIndex[t].add(i);
+      }
+    }
+  }
+  /* Sort keys for binary-search prefix lookup */
+  sourceNameKeys = Object.keys(sourceNameIndex).sort();
+}
+
+function search(query, n = 15) {
+  const q = query.toLowerCase().trim();
+  if (!q) return [];
+  const qTokens = q.split(/\s+/);
+  const k1 = 1.5, b = 0.75;
+  const scores = new Float32Array(foods.length);
+
+  /* --- Pass 1: BM25 on generic names (exact token match) --- */
+  for (let i = 0; i < foods.length; i++) {
+    const tokens = docTokens[i];
+    const dl = docLens[i];
+    let score = 0;
+    for (const qt of qTokens) {
+      const tf = tokens.filter(t => t === qt).length;
+      if (tf === 0) continue;
+      const idfVal = idf[qt] || 0;
+      score += idfVal * (tf * (k1 + 1)) / (tf + k1 * (1 - b + b * dl / avgDL));
+    }
+    scores[i] = score;
+  }
+
+  /* --- Pass 2: Prefix matching on generic names --- */
+  for (let i = 0; i < foods.length; i++) {
+    const tokens = docTokens[i];
+    let prefixHits = 0;
+    for (const qt of qTokens) {
+      if (qt.length < 2) continue;
+      for (const t of tokens) {
+        if (t.startsWith(qt) && t !== qt) {
+          prefixHits++;
+          break;
+        }
+      }
+    }
+    if (prefixHits > 0) {
+      /* Give prefix matches a decent score, scaled by how many query
+         tokens matched as prefix — but less than an exact BM25 hit */
+      const boost = prefixHits * 3.0 * (qTokens.length > 0 ? prefixHits / qTokens.length : 1);
+      scores[i] = Math.max(scores[i], boost);
+    }
+  }
+
+  /* --- Pass 3: Source-name lookup (brand → generic) --- */
+  for (const qt of qTokens) {
+    if (qt.length < 3) continue;
+
+    /* Exact token match in source names */
+    const exact = sourceNameIndex[qt];
+    if (exact) {
+      for (const i of exact) {
+        if (scores[i] < 1.5) scores[i] = Math.max(scores[i], 1.5);
+      }
+    }
+
+    /* Prefix match via binary search on sorted keys */
+    let lo = 0, hi = sourceNameKeys.length;
+    while (lo < hi) {
+      const mid = (lo + hi) >> 1;
+      if (sourceNameKeys[mid] < qt) lo = mid + 1; else hi = mid;
+    }
+    for (let k = lo; k < sourceNameKeys.length; k++) {
+      const key = sourceNameKeys[k];
+      if (!key.startsWith(qt)) break;
+      if (key === qt) continue; /* already handled above */
+      for (const i of sourceNameIndex[key]) {
+        if (scores[i] < 0.8) scores[i] = Math.max(scores[i], 0.8);
+      }
+    }
+  }
+
+  /* --- Collect and rank --- */
+  const candidates = [];
+  for (let i = 0; i < foods.length; i++) {
+    if (scores[i] <= 0) continue;
+
+    let s = scores[i];
+    const nl = foodNamesLower[i];
+    /* Exact name match bonus */
+    if (nl === q) s += 100;
+    else if (nl.startsWith(q + ' ') || nl.startsWith(q)) s += 20;
+    else if (qTokens.every(t => nl.includes(t))) s += 10;
+    /* Prefer shorter, more generic names */
+    s += 8 / (1 + docTokens[i].length);
+
+    candidates.push({ idx: i, score: s });
+  }
+
+  candidates.sort((a, b) => b.score - a.score);
+  return candidates.slice(0, n);
+}
+
+/* ------------------------------------------------------------------ */
+/*  UI                                                                 */
+/* ------------------------------------------------------------------ */
+const searchInput = document.getElementById('search');
+const resultsList = document.getElementById('results');
+const detailPanel = document.getElementById('detail');
+let activeIdx = -1;
+let currentResults = [];
+let debounceTimer;
+
+searchInput.addEventListener('input', () => {
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(doSearch, 80);
+});
+
+searchInput.addEventListener('keydown', e => {
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    if (activeIdx < currentResults.length - 1) setActive(activeIdx + 1);
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    if (activeIdx > 0) setActive(activeIdx - 1);
+  } else if (e.key === 'Enter') {
+    e.preventDefault();
+    if (activeIdx >= 0 && currentResults[activeIdx] != null)
+      selectFood(currentResults[activeIdx].idx);
+  } else if (e.key === 'Escape') {
+    resultsList.classList.remove('visible');
+  }
+});
+
+function doSearch() {
+  const q = searchInput.value.trim();
+  if (!q) {
+    resultsList.classList.remove('visible');
+    currentResults = [];
+    activeIdx = -1;
+    return;
+  }
+  currentResults = search(q);
+  activeIdx = currentResults.length > 0 ? 0 : -1;
+  renderResults();
+}
+
+function renderResults() {
+  resultsList.innerHTML = '';
+  if (!currentResults.length) {
+    resultsList.classList.remove('visible');
+    return;
+  }
+  for (let i = 0; i < currentResults.length; i++) {
+    const f = foods[currentResults[i].idx];
+    const li = document.createElement('li');
+    li.innerHTML = `${esc(f.display_name)}<span class="cat">${esc(f.ingredient_id)}</span><span class="count">&times;${f.source_count}</span>`;
+    if (i === activeIdx) li.classList.add('active');
+    li.addEventListener('click', () => selectFood(currentResults[i].idx));
+    li.addEventListener('mouseenter', () => setActive(i));
+    resultsList.appendChild(li);
+  }
+  resultsList.classList.add('visible');
+}
+
+function setActive(i) {
+  activeIdx = i;
+  const items = resultsList.querySelectorAll('li');
+  items.forEach((li, j) => li.classList.toggle('active', j === i));
+  if (items[i]) items[i].scrollIntoView({ block: 'nearest' });
+}
+
+function selectFood(idx) {
+  const f = foods[idx];
+  searchInput.value = f.display_name;
+  resultsList.classList.remove('visible');
+  renderDetail(f);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Nutrient detail rendering                                          */
+/* ------------------------------------------------------------------ */
+let currentFood = null;
+
+function renderDetail(food) {
+  currentFood = food;
+  const scale = 1;
+  const nutrients = food.nutrients;
+
+  // Group available nutrients by category
+  const groups = {};
+  for (const nm of NUTRIENT_META) {
+    if (!(nm.name in nutrients)) continue;
+    const cat = nm.cat;
+    if (!groups[cat]) groups[cat] = [];
+    groups[cat].push(nm);
+  }
+
+  let html = `<div class="food-header">
+    <div class="food-header-top">
+      <h2>${esc(food.display_name)}</h2>
+      <span class="badge">${esc(food.ingredient_id)}</span>
+    </div>
+    <div class="food-meta">
+      <span>Averaged from <strong>${food.source_count}</strong> USDA matches</span>
+      ${food.top_similarity != null ? `<span>Top match: <strong>${(food.top_similarity * 100).toFixed(0)}%</strong></span>` : ''}
+    </div>
+  </div>`;
+
+  // Nutrient groups
+  const categoryOrder = ['Energy', 'Carbohydrates', 'Lipids', 'Proteins', 'Vitamins', 'Minerals'];
+  const orderedCats = categoryOrder.filter(c => groups[c]);
+  for (const c of Object.keys(groups)) {
+    if (!orderedCats.includes(c)) orderedCats.push(c);
+  }
+
+  for (const cat of orderedCats) {
+    const metas = groups[cat];
+    html += `<div class="nutrient-group"><h3>${esc(cat)}</h3>`;
+    for (const nm of metas) {
+      const rawVal = nutrients[nm.name];
+      const val = rawVal != null ? rawVal * scale : null;
+      const drv = nm.drv;
+      let pct = (drv > 0 && val != null) ? Math.min((val / drv) * 100, 100) : 0;
+      let barColor = pct < 15 ? 'var(--muted)' : pct < 50 ? 'var(--green)' : pct < 80 ? 'var(--yellow)' : 'var(--red)';
+      let pctLabel = (drv > 0 && val != null) ? ` (${Math.round((val / drv) * 100)}% DV)` : '';
+
+      html += `<div class="nutrient-row">
+        <span class="name">${esc(nm.name)}</span>
+        <span class="value">${formatVal(val)} ${esc(nm.unit)}${pctLabel}</span>
+        <div class="bar-wrap"><div class="bar-fill" style="width:${pct.toFixed(1)}%;background:${barColor}"></div></div>
+      </div>`;
+    }
+    html += '</div>';
+  }
+
+  // Source foods section
+  const sourceItems = food.sources || [];
+  const sourceNames = sourceItems.map(s => s.foodName);
+  if (sourceNames.length > 0) {
+    html += `<div class="sources-section">
+      <button class="sources-toggle" onclick="toggleSources(this)">
+        <span class="arrow">&#9654;</span>
+        <span>USDA source foods used</span>
+        <span class="toggle-info">${sourceNames.length} items</span>
+      </button>
+      <div class="sources-list" id="sources-panel">
+        <div class="sources-filter">
+          <input type="text" placeholder="Filter source foods…" oninput="filterSources(this.value)">
+        </div>
+        <div id="sources-items"></div>
+      </div>
+    </div>`;
+  }
+
+  detailPanel.innerHTML = html;
+  detailPanel.classList.add('visible');
+
+  if (sourceNames.length > 0) {
+    renderSourceItems(sourceNames, sourceItems);
+  }
+}
+
+let currentSourceNames = [];
+let currentSourceItems = [];
+
+function renderSourceItems(names, items, filter) {
+  currentSourceNames = names;
+  currentSourceItems = items || [];
+  const container = document.getElementById('sources-items');
+  if (!container) return;
+
+  const fl = (filter || '').toLowerCase();
+  const pairs = names.map((name, i) => ({ name, item: (items && items[i]) || null }));
+  const filtered = fl ? pairs.filter(p => p.name.toLowerCase().includes(fl)) : pairs;
+
+  const show = filtered.slice(0, 200);
+  let html = '';
+  for (const { name, item } of show) {
+    const meta = item
+      ? ` <span style="color:var(--muted)">(${esc(item.data_type || 'usda')}, ${Math.round((item.similarity || 0) * 100)}% match)</span>`
+      : '';
+    html += `<div class="source-item">${esc(name)}${meta}</div>`;
+  }
+  if (filtered.length > 200) {
+    html += `<div class="source-item" style="color:var(--muted);font-style:italic">&hellip; and ${filtered.length - 200} more (use filter to narrow down)</div>`;
+  }
+  if (filtered.length === 0) {
+    html += `<div class="source-item" style="color:var(--muted);font-style:italic">No matches</div>`;
+  }
+  container.innerHTML = html;
+}
+
+function toggleSources(btn) {
+  btn.classList.toggle('open');
+  document.getElementById('sources-panel').classList.toggle('visible');
+}
+
+function filterSources(q) {
+  renderSourceItems(currentSourceNames, currentSourceItems, q);
+}
+
+function formatVal(v) {
+  if (v == null || isNaN(v)) return '&mdash;';
+  if (v >= 100) return Math.round(v).toLocaleString();
+  if (v >= 1) return v.toFixed(1);
+  return v.toFixed(2);
+}
+
+function esc(s) {
+  if (s == null) return '';
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+// Boot
+init();
+</script>
+</body>
+</html>
