@@ -10,6 +10,8 @@ import pandas as pd
 # Two-sided 95% t critical values for small sample sizes (n-1 df).
 _T_95 = {1: 12.706, 2: 4.303, 3: 3.182, 4: 2.776, 5: 2.571}
 
+KEY_MACRO_COLS = ["Energy", "Protein", "Carbohydrate", "Total fat"]
+
 
 def row_nutrients(row: pd.Series, nutrient_cols: list[str]) -> dict:
     out = {}
@@ -19,24 +21,36 @@ def row_nutrients(row: pd.Series, nutrient_cols: list[str]) -> dict:
     return out
 
 
-def filter_source_records(
-    sources: list[dict],
+def values_conflict(
+    vals: list[float],
     *,
-    top_sources: int = 5,
-    min_source_similarity: float = 0.80,
-    max_similarity_drop: float = 0.08,
-) -> list[dict]:
-    """Keep up to top_sources USDA rows that are close to the best embedding match."""
-    if not sources:
-        return []
+    rel_tol: float = 0.15,
+    abs_tol: float = 0.5,
+) -> bool:
+    """True only when 2+ sources report meaningfully different values."""
+    if len(vals) <= 1:
+        return False
+    lo, hi = min(vals), max(vals)
+    if hi - lo <= abs_tol:
+        return False
+    mean = sum(vals) / len(vals)
+    if abs(mean) <= abs_tol:
+        return hi - lo > abs_tol
+    std = float(np.std(vals, ddof=1))
+    return (std / abs(mean)) > rel_tol
 
-    ordered = sorted(sources, key=lambda s: float(s.get("similarity") or 0), reverse=True)
-    top_sim = float(ordered[0].get("similarity") or 0)
-    threshold = max(min_source_similarity, top_sim - max_similarity_drop)
-    kept = [s for s in ordered if float(s.get("similarity") or 0) >= threshold]
-    if not kept:
-        kept = ordered[:1]
-    return kept[:top_sources]
+
+def macro_agreement(row: pd.Series, reference: pd.Series, key_cols: list[str]) -> float:
+    """1.0 = macros match; lower = more disagreement on shared fields."""
+    scores: list[float] = []
+    for col in key_cols:
+        a, b = row.get(col), reference.get(col)
+        if pd.isna(a) or pd.isna(b):
+            continue
+        a, b = float(a), float(b)
+        denom = max(abs(a), abs(b), 1.0)
+        scores.append(1.0 - min(1.0, abs(a - b) / denom))
+    return float(np.mean(scores)) if scores else 1.0
 
 
 def select_source_rows(
@@ -45,18 +59,29 @@ def select_source_rows(
     top_sources: int = 5,
     min_source_similarity: float = 0.80,
     max_similarity_drop: float = 0.08,
+    min_macro_agreement: float = 0.85,
+    key_cols: list[str] | None = None,
 ) -> pd.DataFrame:
-    """Keep up to top_sources USDA rows that are close to the best embedding match."""
+    """Pick up to top_sources USDA rows: best embedding match + agreeing macros."""
     if candidates.empty:
         return candidates
 
-    ordered = candidates.sort_values(["_similarity", "_coverage"], ascending=[False, False])
-    top_sim = float(ordered["_similarity"].iloc[0])
-    threshold = max(min_source_similarity, top_sim - max_similarity_drop)
-    passing = ordered[ordered["_similarity"] >= threshold]
-    if passing.empty:
-        passing = ordered.iloc[:1]
-    return passing.head(top_sources)
+    key_cols = key_cols or KEY_MACRO_COLS
+    ordered = candidates.sort_values("_similarity", ascending=False)
+    anchor = ordered.iloc[0]
+    top_sim = float(anchor["_similarity"])
+    sim_floor = max(min_source_similarity, top_sim - max_similarity_drop)
+
+    picked: list[pd.Series] = [anchor]
+    for _, row in ordered.iloc[1:].iterrows():
+        if len(picked) >= top_sources:
+            break
+        if float(row["_similarity"]) < sim_floor:
+            continue
+        if macro_agreement(row, anchor, key_cols) >= min_macro_agreement:
+            picked.append(row)
+
+    return pd.DataFrame(picked)
 
 
 def source_record(row: pd.Series, nutrient_cols: list[str], similarity: float, coverage: int) -> dict:
@@ -85,9 +110,11 @@ def nutrient_stats(rows: pd.DataFrame, nutrient_cols: list[str], source_count: i
                 "ci_low": None,
                 "ci_high": None,
                 "cv": None,
+                "conflicting": False,
             }
             continue
 
+        val_list = vals.tolist()
         mean = float(vals.mean())
         std = float(vals.std(ddof=1)) if n > 1 else 0.0
         if n > 1:
@@ -106,6 +133,7 @@ def nutrient_stats(rows: pd.DataFrame, nutrient_cols: list[str], source_count: i
             "ci_low": round(ci_low, 4),
             "ci_high": round(ci_high, 4),
             "cv": round(cv, 4) if cv is not None else None,
+            "conflicting": values_conflict(val_list),
         }
     return out
 

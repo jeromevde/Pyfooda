@@ -359,7 +359,7 @@ let sourceNameIndex = {};  // token -> Set of food indices
 let sourceNameKeys = [];   // sorted keys for binary-search prefix lookup
 
 const dataBase = './data/';
-const DATA_VERSION = '0.2.3';
+const DATA_VERSION = '0.2.4';
 
 let dbMeta = {};
 
@@ -629,20 +629,15 @@ function sourceNutrientValue(src, nutrientName) {
   return Number.isFinite(num) ? num : null;
 }
 
-function confidenceLevel(stat, sourceCount) {
+function confidenceLevel(stat) {
   if (!stat || stat.support == null || stat.support === 0) return 'none';
-  const supportPct = stat.support_pct != null ? stat.support_pct : stat.support / Math.max(sourceCount, 1);
-  const cv = stat.cv != null ? stat.cv : 1;
-  if (supportPct >= 0.8 && cv <= 0.15) return 'high';
-  if (supportPct >= 0.5 && cv <= 0.35) return 'medium';
-  return 'low';
+  if (stat.conflicting) return 'low';
+  return 'none';
 }
 
 function confidenceLabel(level) {
-  if (level === 'high') return 'Strong';
-  if (level === 'medium') return 'Moderate';
-  if (level === 'low') return 'Weak';
-  return 'No data';
+  if (level === 'low') return 'Conflicting';
+  return '';
 }
 
 function ciBarPct(stat, val, drv) {
@@ -664,14 +659,14 @@ function renderNutrientRow(nm, nutrients, nutrientStats, sourceCount, scale) {
   const pct = (drv > 0 && val != null) ? Math.min((val / drv) * 100, 100) : 0;
   const barColor = pct < 15 ? 'var(--muted)' : pct < 50 ? 'var(--green)' : pct < 80 ? 'var(--yellow)' : 'var(--red)';
   const pctLabel = (drv > 0 && val != null) ? ` (${Math.round((val / drv) * 100)}% DV)` : '';
-  const level = confidenceLevel(stat, sourceCount);
-  const rowClass = level === 'low' || level === 'none' ? 'nutrient-row low-confidence' : 'nutrient-row';
+  const level = confidenceLevel(stat);
+  const rowClass = level === 'low' ? 'nutrient-row low-confidence' : 'nutrient-row';
   const support = stat ? `${stat.support}/${sourceCount} sources` : `0/${sourceCount} sources`;
   const ci = (stat && stat.ci_low != null && stat.ci_high != null && val != null)
     ? `95% CI: ${formatVal(stat.ci_low)}–${formatVal(stat.ci_high)} ${nm.unit}`
     : '';
   const ciBar = ciBarPct(stat, val, drv);
-  const pill = level !== 'none'
+  const pill = level === 'low'
     ? `<span class="confidence-pill ${level}">${confidenceLabel(level)}</span>`
     : '';
   const nutrientIdx = detailNutrients.length;

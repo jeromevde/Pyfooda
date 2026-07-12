@@ -81,6 +81,7 @@ def build_database(
     min_similarity: float,
     min_source_similarity: float,
     max_similarity_drop: float,
+    min_macro_agreement: float,
     batch_size: int,
 ) -> pd.DataFrame:
     vocab = load_vocabulary(vocab_path)
@@ -151,6 +152,7 @@ def build_database(
             top_sources=top_sources,
             min_source_similarity=min_source_similarity,
             max_similarity_drop=max_similarity_drop,
+            min_macro_agreement=min_macro_agreement,
         )
         avg = average_nutrients(selected, nutrient_cols)
         stats = nutrient_stats(selected, nutrient_cols, len(selected))
@@ -216,6 +218,12 @@ def parse_args() -> argparse.Namespace:
         default=0.08,
         help="Drop sources more than this below the best match",
     )
+    p.add_argument(
+        "--min-macro-agreement",
+        type=float,
+        default=0.85,
+        help="Min macro-nutrient agreement with anchor source (0-1)",
+    )
     p.add_argument("--batch-size", type=int, default=256)
     return p.parse_args()
 
@@ -237,6 +245,7 @@ def main() -> int:
         min_similarity=args.min_similarity,
         min_source_similarity=args.min_source_similarity,
         max_similarity_drop=args.max_similarity_drop,
+        min_macro_agreement=args.min_macro_agreement,
         batch_size=args.batch_size,
     )
     return 0
