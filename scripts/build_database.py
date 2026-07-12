@@ -24,7 +24,7 @@ import pandas as pd
 from sentence_transformers import SentenceTransformer
 from tqdm import tqdm
 
-from nutrient_stats import average_nutrients, nutrient_stats, source_record
+from nutrient_stats import average_nutrients, nutrient_stats, select_source_rows, source_record
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_USDA = REPO_ROOT / "pyfooda/data/fooddata.csv"
@@ -79,6 +79,8 @@ def build_database(
     top_k: int,
     top_sources: int,
     min_similarity: float,
+    min_source_similarity: float,
+    max_similarity_drop: float,
     batch_size: int,
 ) -> pd.DataFrame:
     vocab = load_vocabulary(vocab_path)
@@ -144,10 +146,12 @@ def build_database(
         candidates["_coverage"] = candidates.apply(
             lambda r: nutrient_coverage(r, nutrient_cols), axis=1
         )
-        candidates = candidates.sort_values(
-            ["_coverage", "_similarity"], ascending=[False, False]
+        selected = select_source_rows(
+            candidates,
+            top_sources=top_sources,
+            min_source_similarity=min_source_similarity,
+            max_similarity_drop=max_similarity_drop,
         )
-        selected = candidates.head(top_sources)
         avg = average_nutrients(selected, nutrient_cols)
         stats = nutrient_stats(selected, nutrient_cols, len(selected))
 
@@ -198,8 +202,20 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     p.add_argument("--meta", type=Path, default=DEFAULT_META)
     p.add_argument("--top-k", type=int, default=50, help="USDA candidates per ingredient from embedding search")
-    p.add_argument("--top-sources", type=int, default=5, help="USDA rows to average per ingredient")
-    p.add_argument("--min-similarity", type=float, default=0.35, help="Minimum cosine similarity")
+    p.add_argument("--top-sources", type=int, default=5, help="Max USDA rows to average per ingredient")
+    p.add_argument("--min-similarity", type=float, default=0.35, help="Minimum cosine similarity for candidates")
+    p.add_argument(
+        "--min-source-similarity",
+        type=float,
+        default=0.70,
+        help="Absolute floor for selected USDA sources",
+    )
+    p.add_argument(
+        "--max-similarity-drop",
+        type=float,
+        default=0.20,
+        help="Drop sources more than this below the best match",
+    )
     p.add_argument("--batch-size", type=int, default=256)
     return p.parse_args()
 
@@ -219,6 +235,8 @@ def main() -> int:
         top_k=args.top_k,
         top_sources=args.top_sources,
         min_similarity=args.min_similarity,
+        min_source_similarity=args.min_source_similarity,
+        max_similarity_drop=args.max_similarity_drop,
         batch_size=args.batch_size,
     )
     return 0

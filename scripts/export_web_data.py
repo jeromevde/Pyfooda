@@ -48,7 +48,7 @@ def export_web_data() -> Path:
         "meta": {
             "count": len(foods),
             "vocabulary": "epicure",
-            "version": "0.2.0",
+            "version": "0.2.1",
         },
         "foods": foods,
     }

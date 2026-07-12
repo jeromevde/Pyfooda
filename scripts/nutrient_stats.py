@@ -19,6 +19,46 @@ def row_nutrients(row: pd.Series, nutrient_cols: list[str]) -> dict:
     return out
 
 
+def filter_source_records(
+    sources: list[dict],
+    *,
+    top_sources: int = 5,
+    min_source_similarity: float = 0.70,
+    max_similarity_drop: float = 0.20,
+) -> list[dict]:
+    """Keep up to top_sources USDA rows that are close to the best embedding match."""
+    if not sources:
+        return []
+
+    ordered = sorted(sources, key=lambda s: float(s.get("similarity") or 0), reverse=True)
+    top_sim = float(ordered[0].get("similarity") or 0)
+    threshold = max(min_source_similarity, top_sim - max_similarity_drop)
+    kept = [s for s in ordered if float(s.get("similarity") or 0) >= threshold]
+    if not kept:
+        kept = ordered[:1]
+    return kept[:top_sources]
+
+
+def select_source_rows(
+    candidates: pd.DataFrame,
+    *,
+    top_sources: int = 5,
+    min_source_similarity: float = 0.70,
+    max_similarity_drop: float = 0.20,
+) -> pd.DataFrame:
+    """Keep up to top_sources USDA rows that are close to the best embedding match."""
+    if candidates.empty:
+        return candidates
+
+    ordered = candidates.sort_values(["_similarity", "_coverage"], ascending=[False, False])
+    top_sim = float(ordered["_similarity"].iloc[0])
+    threshold = max(min_source_similarity, top_sim - max_similarity_drop)
+    passing = ordered[ordered["_similarity"] >= threshold]
+    if passing.empty:
+        passing = ordered.iloc[:1]
+    return passing.head(top_sources)
+
+
 def source_record(row: pd.Series, nutrient_cols: list[str], similarity: float, coverage: int) -> dict:
     return {
         "foodName": row["foodName"],

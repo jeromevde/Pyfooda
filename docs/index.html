@@ -359,12 +359,13 @@ let sourceNameIndex = {};  // token -> Set of food indices
 let sourceNameKeys = [];   // sorted keys for binary-search prefix lookup
 
 const dataBase = './data/';
+const DATA_VERSION = '0.2.1';
 
 let dbMeta = {};
 
 async function init() {
   try {
-    const resp = await fetch(dataBase + 'ingredients.json');
+    const resp = await fetch(dataBase + 'ingredients.json?v=' + DATA_VERSION);
     if (!resp.ok) throw new Error('HTTP ' + resp.status);
     const data = await resp.json();
     foods = Array.isArray(data) ? data : (data.foods || []);
@@ -619,6 +620,15 @@ function nutrientMetaByName(name) {
   return NUTRIENT_META.find(n => n.name === name) || { name, unit: '', cat: '' };
 }
 
+function sourceNutrientValue(src, nutrientName) {
+  const nutrients = src && src.nutrients;
+  if (!nutrients || typeof nutrients !== 'object') return null;
+  const val = nutrients[nutrientName];
+  if (val == null || val === '') return null;
+  const num = Number(val);
+  return Number.isFinite(num) ? num : null;
+}
+
 function confidenceLevel(stat, sourceCount) {
   if (!stat || stat.support == null || stat.support === 0) return 'none';
   const supportPct = stat.support_pct != null ? stat.support_pct : stat.support / Math.max(sourceCount, 1);
@@ -671,7 +681,7 @@ function renderDetail(food) {
       <span class="badge">${esc(food.ingredient_id)}</span>
     </div>
     <div class="food-meta">
-      <span>Averaged from <strong>${food.source_count}</strong> USDA matches</span>
+      <span>Averaged from <strong>${food.source_count}</strong> USDA match${food.source_count === 1 ? '' : 'es'}</span>
       ${food.top_similarity != null ? `<span>Top match: <strong>${(food.top_similarity * 100).toFixed(0)}%</strong></span>` : ''}
     </div>
     <div class="click-hint">Click any nutrient to see USDA source values</div>
@@ -708,7 +718,7 @@ function renderDetail(food) {
       const nutrientIdx = detailNutrients.length;
       detailNutrients.push(nm.name);
 
-      html += `<div class="${rowClass}" data-nutrient-idx="${nutrientIdx}" title="View USDA sources">
+      html += `<div class="${rowClass}" data-nutrient-idx="${nutrientIdx}" data-nutrient-name="${esc(nm.name)}" title="View USDA sources">
         <div class="name-wrap">
           <span class="name">${esc(nm.name)}${pill}</span>
           <span class="support">Support: <strong>${support}</strong>${stat && stat.cv != null ? ` · CV ${(stat.cv * 100).toFixed(0)}%` : ''}</span>
@@ -727,10 +737,9 @@ function renderDetail(food) {
   detailPanel.innerHTML = html;
   detailPanel.classList.add('visible');
   detailPanel.onclick = (e) => {
-    const row = e.target.closest('[data-nutrient-idx]');
+    const row = e.target.closest('[data-nutrient-name]');
     if (!row || !currentFood) return;
-    const idx = Number(row.dataset.nutrientIdx);
-    const nutrientName = detailNutrients[idx];
+    const nutrientName = row.dataset.nutrientName || detailNutrients[Number(row.dataset.nutrientIdx)];
     if (nutrientName) openNutrientModal(currentFood, nutrientName);
   };
 }
@@ -744,10 +753,10 @@ function openNutrientModal(food, nutrientName) {
   document.getElementById('modal-title').textContent = nutrientName;
   document.getElementById('modal-subtitle').textContent =
     `Aggregate: ${formatVal(aggregate)} ${meta.unit}` +
-    (stat && stat.support ? ` · ${stat.support}/${food.source_count} sources` : '');
+    (sources.length ? ` · ${reporting}/${sources.length} sources report this nutrient` : '');
 
   const rows = sources.map(src => {
-    const val = src.nutrients ? src.nutrients[nutrientName] : null;
+    const val = sourceNutrientValue(src, nutrientName);
     return { src, val };
   }).sort((a, b) => {
     const av = a.val == null ? -Infinity : a.val;
@@ -755,9 +764,15 @@ function openNutrientModal(food, nutrientName) {
     return bv - av;
   });
 
+  const reporting = rows.filter(r => r.val != null).length;
+
   let body = `<table class="source-table"><thead><tr>
     <th>USDA food</th><th>Type</th><th>Match</th><th>Value</th>
   </tr></thead><tbody>`;
+
+  if (!sources.length) {
+    body += `<tr><td colspan="4">No USDA sources matched for this ingredient.</td></tr>`;
+  }
 
   for (const { src, val } of rows) {
     const missing = val == null;
@@ -795,10 +810,12 @@ document.addEventListener('keydown', (e) => {
 });
 
 function formatVal(v) {
-  if (v == null || isNaN(v)) return '—';
-  if (v >= 100) return Math.round(v).toLocaleString();
-  if (v >= 1) return v.toFixed(1);
-  return v.toFixed(2);
+  if (v == null || v === '') return '—';
+  const num = Number(v);
+  if (!Number.isFinite(num)) return '—';
+  if (num >= 100) return Math.round(num).toLocaleString();
+  if (num >= 1) return num.toFixed(1);
+  return num.toFixed(2);
 }
 
 function esc(s) {
