@@ -1,5 +1,6 @@
 include README.md
-include LICENSE
 include pyfooda/VERSION
-include pyfooda/data/fooddata.csv
+include pyfooda/data/epicure_vocabulary.json
+include pyfooda/data/ingredients.csv
+include pyfooda/data/ingredients_meta.json
 include pyfooda/data/nutrients.csv

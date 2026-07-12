@@ -2,15 +2,8 @@
 pyfooda/data/fooddata.xlsx
 pyfooda/data/nutrients.xlsx
 
-# Aggregation run artifacts (large — store externally or in GitHub Actions)
-tests/exp_*.csv
-tests/exp_*.json
-tests/exp_*.txt
-tests/exp_*.metrics.json
-tests/batch_test_aggregated.*
-checkpoints_batch/
-checkpoints/
-tests/checkpoints*/
+# Build artifacts (ingredients.csv is committed; these are optional local outputs)
+scripts/output/
 
 # Python
 __pycache__/
