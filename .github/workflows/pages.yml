@@ -30,7 +30,8 @@ jobs:
 
       - name: Export web data
         run: |
-          pip install pandas
+          pip install pandas numpy
+          python scripts/recompute_nutrient_stats.py
           python scripts/export_web_data.py
 
       - uses: actions/configure-pages@v5

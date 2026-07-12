@@ -38,6 +38,7 @@ def export_web_data() -> Path:
                 "source_count": int(row["source_count"]),
                 "top_similarity": None if pd.isna(top_sim) else float(top_sim),
                 "nutrients": nutrients,
+                "nutrient_stats": meta.get("nutrient_stats", {}),
                 "sources": meta.get("sources", []),
             }
         )

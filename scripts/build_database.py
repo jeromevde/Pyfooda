@@ -24,6 +24,8 @@ import pandas as pd
 from sentence_transformers import SentenceTransformer
 from tqdm import tqdm
 
+from nutrient_stats import average_nutrients, nutrient_stats
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_USDA = REPO_ROOT / "pyfooda/data/fooddata.csv"
 DEFAULT_VOCAB = REPO_ROOT / "pyfooda/data/epicure_vocabulary.json"
@@ -57,14 +59,6 @@ def nutrient_coverage(row: pd.Series, nutrient_cols: list[str]) -> int:
     if "number_of_nutrients" in row.index and pd.notna(row["number_of_nutrients"]):
         return int(row["number_of_nutrients"])
     return int(row[nutrient_cols].notna().sum())
-
-
-def average_nutrients(rows: pd.DataFrame, nutrient_cols: list[str]) -> dict:
-    out = {}
-    for col in nutrient_cols:
-        vals = pd.to_numeric(rows[col], errors="coerce").dropna()
-        out[col] = float(vals.mean()) if not vals.empty else None
-    return out
 
 
 def embed_texts(model: SentenceTransformer, texts: list[str], batch_size: int) -> np.ndarray:
@@ -140,6 +134,7 @@ def build_database(
                     "ingredient_id": ingredient_id,
                     "display_name": display_name,
                     "sources": [],
+                    "nutrient_stats": {},
                 }
             )
             continue
@@ -154,6 +149,7 @@ def build_database(
         )
         selected = candidates.head(top_sources)
         avg = average_nutrients(selected, nutrient_cols)
+        stats = nutrient_stats(selected, nutrient_cols, len(selected))
 
         rows.append(
             {
@@ -177,6 +173,7 @@ def build_database(
                     }
                     for _, r in selected.iterrows()
                 ],
+                "nutrient_stats": stats,
             }
         )
 

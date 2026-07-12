@@ -31,6 +31,10 @@
   header h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: .3rem; }
   header h1 span { color: var(--accent); }
   header p { color: var(--muted); font-size: .95rem; }
+  header .db-count {
+    display: inline-block; margin-top: .35rem;
+    font-size: .82rem; color: var(--accent); font-weight: 600;
+  }
 
   /* Search */
   .search-wrap {
@@ -102,7 +106,30 @@
     display: grid; grid-template-columns: 1fr auto 1fr;
     gap: 8px; align-items: center; padding: 5px 0;
   }
+  .nutrient-row.low-confidence { opacity: 0.72; }
+  .nutrient-row .name-wrap { display: flex; flex-direction: column; gap: 2px; }
   .nutrient-row .name { font-size: .9rem; }
+  .nutrient-row .support {
+    font-size: .72rem; color: var(--muted); line-height: 1.2;
+  }
+  .nutrient-row .support strong { color: var(--text); font-weight: 600; }
+  .nutrient-row .ci-range {
+    font-size: .72rem; color: var(--muted);
+  }
+  .confidence-pill {
+    display: inline-block; font-size: .65rem; font-weight: 600;
+    padding: 1px 6px; border-radius: 10px; margin-left: 4px;
+    vertical-align: middle;
+  }
+  .confidence-pill.high { background: color-mix(in srgb, var(--green) 18%, transparent); color: var(--green); }
+  .confidence-pill.medium { background: color-mix(in srgb, var(--yellow) 18%, transparent); color: var(--yellow); }
+  .confidence-pill.low { background: color-mix(in srgb, var(--red) 14%, transparent); color: var(--red); }
+  .bar-wrap { position: relative; }
+  .bar-ci {
+    position: absolute; top: -2px; height: 12px;
+    background: color-mix(in srgb, var(--accent) 22%, transparent);
+    border-radius: 4px; pointer-events: none;
+  }
   .nutrient-row .value {
     font-size: .85rem; font-weight: 600;
     text-align: right; white-space: nowrap; min-width: 70px;
@@ -201,7 +228,8 @@
 <div class="container">
   <header>
     <h1>🍎 <span>Pyfooda</span></h1>
-    <p>Search 1,790 recipe ingredients — Epicure vocabulary + USDA FoodData Central</p>
+    <p>Recipe ingredient nutrition per 100g — Epicure vocabulary + USDA FoodData Central</p>
+    <div class="db-count" id="db-count"></div>
   </header>
 
   <div id="loading" class="loading">
@@ -274,17 +302,25 @@ let sourceNameKeys = [];   // sorted keys for binary-search prefix lookup
 
 const dataBase = './data/';
 
+let dbMeta = {};
+
 async function init() {
   try {
     const resp = await fetch(dataBase + 'ingredients.json');
     if (!resp.ok) throw new Error('HTTP ' + resp.status);
     const data = await resp.json();
     foods = Array.isArray(data) ? data : (data.foods || []);
+    dbMeta = data.meta || {};
 
     foodNames = foods.map(f => f.display_name);
     foodNamesLower = foodNames.map(n => n.toLowerCase());
 
     buildIndex();
+
+    const count = dbMeta.count || foods.length;
+    const withData = foods.filter(f => (f.source_count || 0) > 0).length;
+    document.getElementById('db-count').textContent =
+      `${count.toLocaleString()} ingredients · ${withData.toLocaleString()} with USDA nutrient profiles`;
 
     document.getElementById('loading').style.display = 'none';
     document.getElementById('app').style.display = '';
@@ -520,15 +556,46 @@ function selectFood(idx) {
 /* ------------------------------------------------------------------ */
 let currentFood = null;
 
+function confidenceLevel(stat, sourceCount) {
+  if (!stat || stat.support == null || stat.support === 0) return 'none';
+  const supportPct = stat.support_pct != null ? stat.support_pct : stat.support / Math.max(sourceCount, 1);
+  const cv = stat.cv != null ? stat.cv : 1;
+  if (supportPct >= 0.8 && cv <= 0.15) return 'high';
+  if (supportPct >= 0.4 && cv <= 0.35) return 'medium';
+  return 'low';
+}
+
+function confidenceLabel(level) {
+  if (level === 'high') return 'Strong';
+  if (level === 'medium') return 'Moderate';
+  if (level === 'low') return 'Weak';
+  return 'No data';
+}
+
+function ciBarPct(stat, val, drv) {
+  if (!stat || val == null || drv <= 0 || stat.ci_low == null || stat.ci_high == null) {
+    return { left: 0, width: 0 };
+  }
+  const lo = Math.max(0, stat.ci_low);
+  const hi = Math.max(lo, stat.ci_high);
+  const left = Math.min((lo / drv) * 100, 100);
+  const right = Math.min((hi / drv) * 100, 100);
+  return { left, width: Math.max(right - left, 0) };
+}
+
 function renderDetail(food) {
   currentFood = food;
   const scale = 1;
   const nutrients = food.nutrients;
+  const nutrientStats = food.nutrient_stats || {};
+  const sourceCount = food.source_count || 0;
 
   // Group available nutrients by category
   const groups = {};
   for (const nm of NUTRIENT_META) {
-    if (!(nm.name in nutrients)) continue;
+    const stat = nutrientStats[nm.name];
+    const rawVal = nutrients[nm.name];
+    if (rawVal == null && (!stat || !stat.support)) continue;
     const cat = nm.cat;
     if (!groups[cat]) groups[cat] = [];
     groups[cat].push(nm);
@@ -558,15 +625,33 @@ function renderDetail(food) {
     for (const nm of metas) {
       const rawVal = nutrients[nm.name];
       const val = rawVal != null ? rawVal * scale : null;
+      const stat = nutrientStats[nm.name];
       const drv = nm.drv;
       let pct = (drv > 0 && val != null) ? Math.min((val / drv) * 100, 100) : 0;
       let barColor = pct < 15 ? 'var(--muted)' : pct < 50 ? 'var(--green)' : pct < 80 ? 'var(--yellow)' : 'var(--red)';
       let pctLabel = (drv > 0 && val != null) ? ` (${Math.round((val / drv) * 100)}% DV)` : '';
+      const level = confidenceLevel(stat, sourceCount);
+      const rowClass = level === 'low' || level === 'none' ? 'nutrient-row low-confidence' : 'nutrient-row';
+      const support = stat ? `${stat.support}/${sourceCount} sources` : `0/${sourceCount} sources`;
+      const ci = (stat && stat.ci_low != null && stat.ci_high != null && val != null)
+        ? `95% CI: ${formatVal(stat.ci_low)}–${formatVal(stat.ci_high)} ${nm.unit}`
+        : '';
+      const ciBar = ciBarPct(stat, val, drv);
+      const pill = level !== 'none'
+        ? `<span class="confidence-pill ${level}">${confidenceLabel(level)}</span>`
+        : '';
 
-      html += `<div class="nutrient-row">
-        <span class="name">${esc(nm.name)}</span>
+      html += `<div class="${rowClass}">
+        <div class="name-wrap">
+          <span class="name">${esc(nm.name)}${pill}</span>
+          <span class="support">Support: <strong>${support}</strong>${stat && stat.cv != null ? ` · CV ${(stat.cv * 100).toFixed(0)}%` : ''}</span>
+          ${ci ? `<span class="ci-range">${ci}</span>` : ''}
+        </div>
         <span class="value">${formatVal(val)} ${esc(nm.unit)}${pctLabel}</span>
-        <div class="bar-wrap"><div class="bar-fill" style="width:${pct.toFixed(1)}%;background:${barColor}"></div></div>
+        <div class="bar-wrap">
+          ${ciBar.width > 0 ? `<div class="bar-ci" style="left:${ciBar.left.toFixed(1)}%;width:${ciBar.width.toFixed(1)}%"></div>` : ''}
+          <div class="bar-fill" style="width:${pct.toFixed(1)}%;background:${barColor}"></div>
+        </div>
       </div>`;
     }
     html += '</div>';
