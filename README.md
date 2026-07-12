@@ -15,7 +15,9 @@ import pyfooda as pf
 
 pf.find_ingredients("hazelnut")
 pf.get_nutrients("chocolate_hazelnut_spread")
-pf.get_sources("chocolate_hazelnut_spread")
+pf.get_matches("chocolate_hazelnut_spread")
+pf.get_nutrient_coverage()   # database-wide: which nutrients are measured
+pf.get_coverage("almond")    # per-ingredient: measured vs missing
 ```
 
 **Web UI:** [jeromevde.github.io/Pyfooda](https://jeromevde.github.io/Pyfooda/)

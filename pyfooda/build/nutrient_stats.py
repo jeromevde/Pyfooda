@@ -12,12 +12,51 @@ _T_95 = {1: 12.706, 2: 4.303, 3: 3.182, 4: 2.776, 5: 2.571}
 
 KEY_MACRO_COLS = ["Energy", "Protein", "Carbohydrate", "Total fat"]
 
+# Nutrients commonly present on US branded food labels even when coverage is low.
+_LABEL_CORE = {
+    "Energy",
+    "Protein",
+    "Carbohydrate",
+    "Total fat",
+    "Cholesterol",
+    "Sodium",
+    "Sugars, Total",
+    "Fiber",
+    "Fatty acids, total saturated",
+}
+
+
+def normalize_nutrient_value(row: pd.Series, col: str, val) -> float | None:
+    """Treat sparse branded-food zeros as missing (USDA pads unreported fields with 0)."""
+    if pd.isna(val):
+        return None
+    v = float(val)
+    if v != 0:
+        return v
+    if row.get("data_type") != "branded_food":
+        return v
+    coverage = row.get("number_of_nutrients")
+    if pd.isna(coverage):
+        return v
+    if int(coverage) >= 25 or col in _LABEL_CORE:
+        return v
+    return None
+
 
 def row_nutrients(row: pd.Series, nutrient_cols: list[str]) -> dict:
     out = {}
     for col in nutrient_cols:
-        val = row.get(col)
-        out[col] = None if pd.isna(val) else float(val)
+        out[col] = normalize_nutrient_value(row, col, row.get(col))
+    return out
+
+
+def coerce_usda_nutrients(df: pd.DataFrame, nutrient_cols: list[str]) -> pd.DataFrame:
+    """Return a copy with normalized nutrient columns for averaging and stats."""
+    out = df.copy()
+    for col in nutrient_cols:
+        if col not in out.columns:
+            continue
+        out[col] = out.apply(lambda r, c=col: normalize_nutrient_value(r, c, r.get(c)), axis=1)
     return out
 
 
@@ -31,13 +70,22 @@ def values_conflict(
     if len(vals) <= 1:
         return False
     lo, hi = min(vals), max(vals)
-    if hi - lo <= abs_tol:
-        return False
+    span = hi - lo
     mean = sum(vals) / len(vals)
-    if abs(mean) <= abs_tol:
-        return hi - lo > abs_tol
+    mean_abs = abs(mean)
+
+    # Small absolute values: allow more spread before calling it a conflict.
+    if mean_abs < 10:
+        if span <= max(3.0, 0.5 * max(mean_abs, 1.0)):
+            return False
+    elif span <= abs_tol:
+        return False
+
+    if mean_abs <= abs_tol:
+        return span > max(abs_tol, 0.25 * max(hi, 1.0))
+
     std = float(np.std(vals, ddof=1))
-    return (std / abs(mean)) > rel_tol
+    return (std / mean_abs) > rel_tol
 
 
 def macro_agreement(row: pd.Series, reference: pd.Series, key_cols: list[str]) -> float:
@@ -53,6 +101,33 @@ def macro_agreement(row: pd.Series, reference: pd.Series, key_cols: list[str]) -
     return float(np.mean(scores)) if scores else 1.0
 
 
+DATA_TYPE_BONUS = {
+    "survey_fndds_food": 0.06,
+    "sr_legacy_food": 0.06,
+    "foundation_food": 0.05,
+    "branded_food": 0.0,
+    "sub_sample_food": -0.05,
+}
+
+SPARSE_BRANDED_COVERAGE = 18
+SPARSE_BRANDED_PENALTY = 0.15
+
+
+def source_quality_score(row: pd.Series) -> float:
+    """Rank USDA rows: prefer survey/sr/foundation and full nutrient profiles over sparse branded."""
+    sim = float(row["_similarity"])
+    coverage = int(row.get("_coverage", 0))
+    data_type = str(row.get("data_type") or "")
+    bonus = DATA_TYPE_BONUS.get(data_type, 0.0)
+    coverage_bonus = min(coverage / 35.0, 0.06)
+    penalty = (
+        SPARSE_BRANDED_PENALTY
+        if data_type == "branded_food" and coverage < SPARSE_BRANDED_COVERAGE
+        else 0.0
+    )
+    return sim + bonus + coverage_bonus - penalty
+
+
 def select_source_rows(
     candidates: pd.DataFrame,
     *,
@@ -62,12 +137,14 @@ def select_source_rows(
     min_macro_agreement: float = 0.85,
     key_cols: list[str] | None = None,
 ) -> pd.DataFrame:
-    """Pick up to top_sources USDA rows: best embedding match + agreeing macros."""
+    """Pick up to top_sources USDA rows: quality-ranked anchor + agreeing macros."""
     if candidates.empty:
         return candidates
 
     key_cols = key_cols or KEY_MACRO_COLS
-    ordered = candidates.sort_values("_similarity", ascending=False)
+    ranked = candidates.copy()
+    ranked["_quality"] = ranked.apply(source_quality_score, axis=1)
+    ordered = ranked.sort_values(["_quality", "_similarity"], ascending=False)
     anchor = ordered.iloc[0]
     top_sim = float(anchor["_similarity"])
     sim_floor = max(min_source_similarity, top_sim - max_similarity_drop)

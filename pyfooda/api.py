@@ -14,6 +14,9 @@ _nutrients_df: Optional[pd.DataFrame] = None
 _meta: Optional[dict[str, dict]] = None
 
 
+_coverage: Optional[dict] = None
+
+
 def _data_path(filename: str) -> str:
     return str(resources.files("pyfooda").joinpath("data").joinpath(filename))
 
@@ -113,8 +116,44 @@ def get_nutrients(name: str) -> Optional[dict]:
     return {k: (None if pd.isna(v) else v) for k, v in values.items()}
 
 
-def get_sources(name: str) -> Optional[list[dict]]:
-    """Return USDA source rows used to build an ingredient profile."""
+def get_nutrient_coverage() -> dict:
+    """Return database-wide nutrient coverage (which nutrients are measured across ingredients)."""
+    global _coverage
+    if _coverage is None:
+        coverage_path = _data_path("nutrient_coverage.json")
+        try:
+            with open(coverage_path) as f:
+                _coverage = json.load(f)
+        except FileNotFoundError:
+            ensure_data_loaded()
+            assert _meta is not None
+            assert _nutrients_df is not None
+            from pyfooda.build.coverage import compute_nutrient_coverage
+
+            meta_items = list(_meta.values())
+            nutrient_cols = _nutrients_df["nutrientName"].tolist()
+            _coverage = compute_nutrient_coverage(meta_items, nutrient_cols, _nutrients_df)
+    return _coverage
+
+
+def get_coverage(name: str) -> Optional[dict]:
+    """Return per-ingredient nutrient coverage (measured vs missing nutrients)."""
+    ensure_data_loaded()
+    ingredient_id = _resolve_ingredient_id(name)
+    if ingredient_id is None:
+        return None
+    item = _meta.get(ingredient_id)
+    if not item:
+        return None
+    from pyfooda.build.coverage import ingredient_coverage
+
+    assert _nutrients_df is not None
+    nutrient_cols = _nutrients_df["nutrientName"].tolist()
+    return ingredient_coverage(item, nutrient_cols)
+
+
+def get_matches(name: str) -> Optional[list[dict]]:
+    """Return USDA embedding matches used to build an ingredient profile."""
     ensure_data_loaded()
     ingredient_id = _resolve_ingredient_id(name)
     if ingredient_id is None:
@@ -123,6 +162,11 @@ def get_sources(name: str) -> Optional[list[dict]]:
     if not item:
         return None
     return item.get("sources", [])
+
+
+def get_sources(name: str) -> Optional[list[dict]]:
+    """Alias for get_matches."""
+    return get_matches(name)
 
 
 def get_ingredients_df() -> pd.DataFrame:

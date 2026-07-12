@@ -205,24 +205,11 @@
     cursor: pointer; border-radius: 6px; transition: background .12s;
   }
   .nutrient-row:hover { background: color-mix(in srgb, var(--accent-light) 65%, transparent); }
-  .nutrient-row.low-confidence { opacity: 0.72; }
   .nutrient-row .name-wrap { display: flex; flex-direction: column; gap: 2px; }
   .nutrient-row .name { font-size: .9rem; }
-  .nutrient-row .support {
-    font-size: .72rem; color: var(--muted); line-height: 1.2;
+  .nutrient-row .detail-line {
+    font-size: .72rem; color: var(--muted); line-height: 1.3;
   }
-  .nutrient-row .support strong { color: var(--text); font-weight: 600; }
-  .nutrient-row .ci-range {
-    font-size: .72rem; color: var(--muted);
-  }
-  .confidence-pill {
-    display: inline-block; font-size: .65rem; font-weight: 600;
-    padding: 1px 6px; border-radius: 10px; margin-left: 4px;
-    vertical-align: middle;
-  }
-  .confidence-pill.high { background: color-mix(in srgb, var(--green) 18%, transparent); color: var(--green); }
-  .confidence-pill.medium { background: color-mix(in srgb, var(--yellow) 18%, transparent); color: var(--yellow); }
-  .confidence-pill.low { background: color-mix(in srgb, var(--red) 14%, transparent); color: var(--red); }
   .bar-wrap { position: relative; }
   .bar-ci {
     position: absolute; top: -2px; height: 12px;
@@ -303,6 +290,35 @@
   }
   footer a { color: var(--accent); text-decoration: none; }
   footer a:hover { text-decoration: underline; }
+
+  .coverage-link {
+    display: inline-block; margin-top: .5rem; margin-left: .75rem;
+    font-size: .82rem; color: var(--accent); font-weight: 600;
+    background: none; border: none; cursor: pointer; padding: 0;
+    text-decoration: underline; text-underline-offset: 2px;
+  }
+  .coverage-link:hover { opacity: .85; }
+
+  .food-coverage {
+    font-size: .82rem; color: var(--muted); margin-top: .35rem;
+  }
+  .missing-nutrients {
+    margin-top: 1rem; padding: .75rem 1rem;
+    border: 1px dashed var(--border); border-radius: 8px;
+    font-size: .78rem; color: var(--muted); line-height: 1.45;
+  }
+  .missing-nutrients strong { color: var(--text); font-weight: 600; }
+
+  .coverage-table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+  .coverage-table th, .coverage-table td {
+    padding: .45rem .6rem; text-align: left; border-bottom: 1px solid var(--border);
+  }
+  .coverage-table th { font-weight: 600; color: var(--muted); font-size: .72rem; text-transform: uppercase; }
+  .coverage-bar {
+    height: 6px; border-radius: 3px; background: color-mix(in srgb, var(--accent) 70%, transparent);
+    min-width: 2px;
+  }
+  .coverage-pct { font-variant-numeric: tabular-nums; white-space: nowrap; }
 </style>
 </head>
 <body>
@@ -311,6 +327,7 @@
     <h1>🍎 <span>Pyfooda</span></h1>
     <p>Recipe ingredient nutrition per 100g — Epicure vocabulary + USDA FoodData Central</p>
     <div class="db-count" id="db-count"></div>
+    <button type="button" class="coverage-link" id="coverage-btn" style="display:none" onclick="openCoverageModal()">Nutrient coverage report</button>
   </header>
 
   <div id="loading" class="loading">
@@ -344,6 +361,19 @@
     Package: <a href="https://pypi.org/project/pyfooda/">pip install pyfooda</a> ·
     Source: <a href="https://github.com/jeromevde/Pyfooda">GitHub</a>
   </footer>
+</div>
+
+<div class="modal-backdrop" id="coverage-modal" onclick="if(event.target===this) closeCoverageModal()">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="coverage-title">
+    <div class="modal-header">
+      <div>
+        <h3 id="coverage-title">Nutrient coverage</h3>
+        <p id="coverage-subtitle"></p>
+      </div>
+      <button class="modal-close" type="button" onclick="closeCoverageModal()" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body" id="coverage-body"></div>
+  </div>
 </div>
 
 <div class="modal-backdrop" id="nutrient-modal" onclick="if(event.target===this) closeNutrientModal()">
@@ -403,9 +433,10 @@ let sourceNameIndex = {};  // token -> Set of food indices
 let sourceNameKeys = [];   // sorted keys for binary-search prefix lookup
 
 const dataBase = './data/';
-const DATA_VERSION = '0.2.5';
+const DATA_VERSION = '0.2.7';
 
 let dbMeta = {};
+let dbCoverage = null;
 
 async function init() {
   try {
@@ -414,6 +445,7 @@ async function init() {
     const data = await resp.json();
     foods = Array.isArray(data) ? data : (data.foods || []);
     dbMeta = data.meta || {};
+    dbCoverage = dbMeta.coverage || null;
 
     foodNames = foods.map(f => f.display_name);
     foodNamesLower = foodNames.map(n => n.toLowerCase());
@@ -428,6 +460,7 @@ async function init() {
     const withData = foods.filter(f => (f.source_count || 0) > 0).length;
     document.getElementById('db-count').textContent =
       `${count.toLocaleString()} ingredients · ${withData.toLocaleString()} with USDA nutrient profiles`;
+    if (dbCoverage) document.getElementById('coverage-btn').style.display = 'inline-block';
 
     document.getElementById('loading').style.display = 'none';
     document.getElementById('app').style.display = '';
@@ -713,15 +746,15 @@ function sourceNutrientValue(src, nutrientName) {
   return Number.isFinite(num) ? num : null;
 }
 
-function confidenceLevel(stat) {
-  if (!stat || stat.support == null || stat.support === 0) return 'none';
-  if (stat.conflicting) return 'low';
-  return 'none';
-}
-
-function confidenceLabel(level) {
-  if (level === 'low') return 'Conflicting';
-  return '';
+function nutrientDetailLine(stat, sourceCount, unit, val) {
+  const parts = [];
+  if (stat && stat.ci_low != null && stat.ci_high != null && val != null) {
+    parts.push(`95% CI: ${formatVal(stat.ci_low)}–${formatVal(stat.ci_high)} ${unit}`);
+  }
+  if (stat && stat.support) {
+    parts.push(`${stat.support}/${sourceCount} sources`);
+  }
+  return parts.join(' · ');
 }
 
 function ciBarPct(stat, val, drv) {
@@ -743,24 +776,15 @@ function renderNutrientRow(nm, nutrients, nutrientStats, sourceCount, scale) {
   const pct = (drv > 0 && val != null) ? Math.min((val / drv) * 100, 100) : 0;
   const barColor = pct < 15 ? 'var(--muted)' : pct < 50 ? 'var(--green)' : pct < 80 ? 'var(--yellow)' : 'var(--red)';
   const pctLabel = (drv > 0 && val != null) ? ` (${Math.round((val / drv) * 100)}% DV)` : '';
-  const level = confidenceLevel(stat);
-  const rowClass = level === 'low' ? 'nutrient-row low-confidence' : 'nutrient-row';
-  const support = stat ? `${stat.support}/${sourceCount} sources` : `0/${sourceCount} sources`;
-  const ci = (stat && stat.ci_low != null && stat.ci_high != null && val != null)
-    ? `95% CI: ${formatVal(stat.ci_low)}–${formatVal(stat.ci_high)} ${nm.unit}`
-    : '';
+  const detailLine = nutrientDetailLine(stat, sourceCount, nm.unit, val);
   const ciBar = ciBarPct(stat, val, drv);
-  const pill = level === 'low'
-    ? `<span class="confidence-pill ${level}">${confidenceLabel(level)}</span>`
-    : '';
   const nutrientIdx = detailNutrients.length;
   detailNutrients.push(nm.name);
 
-  return `<div class="${rowClass}" data-nutrient-idx="${nutrientIdx}" title="View USDA sources">
+  return `<div class="nutrient-row" data-nutrient-idx="${nutrientIdx}" title="View USDA sources">
     <div class="name-wrap">
-      <span class="name">${esc(nm.name)}${pill}</span>
-      <span class="support">Support: <strong>${support}</strong>${stat && stat.cv != null ? ` · CV ${(stat.cv * 100).toFixed(0)}%` : ''}</span>
-      ${ci ? `<span class="ci-range">${ci}</span>` : ''}
+      <span class="name">${esc(nm.name)}</span>
+      ${detailLine ? `<span class="detail-line">${esc(detailLine)}</span>` : ''}
     </div>
     <span class="value">${formatVal(val)} ${esc(nm.unit)}${pctLabel}</span>
     <div class="bar-wrap">
@@ -770,6 +794,28 @@ function renderNutrientRow(nm, nutrients, nutrientStats, sourceCount, scale) {
   </div>`;
 }
 
+function ingredientMeasuredCount(food) {
+  const stats = food.nutrient_stats || {};
+  let measured = 0;
+  for (const nm of NUTRIENT_META) {
+    const st = stats[nm.name];
+    if (st && st.support > 0) measured++;
+    else if (food.nutrients && food.nutrients[nm.name] != null) measured++;
+  }
+  return measured;
+}
+
+function ingredientMissingNutrients(food) {
+  const stats = food.nutrient_stats || {};
+  return NUTRIENT_META
+    .filter(nm => {
+      const st = stats[nm.name];
+      const hasValue = food.nutrients && food.nutrients[nm.name] != null;
+      return !(st && st.support > 0) && !hasValue;
+    })
+    .map(nm => nm.name);
+}
+
 function renderDetail(food) {
   currentFood = food;
   detailNutrients = [];
@@ -777,6 +823,8 @@ function renderDetail(food) {
   const nutrients = food.nutrients;
   const nutrientStats = food.nutrient_stats || {};
   const sourceCount = food.source_count || 0;
+  const measuredCount = ingredientMeasuredCount(food);
+  const missing = ingredientMissingNutrients(food);
 
   const groups = {};
   for (const nm of NUTRIENT_META) {
@@ -796,6 +844,7 @@ function renderDetail(food) {
       <span>Averaged from <strong>${food.source_count}</strong> USDA match${food.source_count === 1 ? '' : 'es'}</span>
       ${food.top_similarity != null ? `<span>Top match: <strong>${(food.top_similarity * 100).toFixed(0)}%</strong></span>` : ''}
     </div>
+    <div class="food-coverage">${measuredCount} of ${NUTRIENT_META.length} tracked nutrients measured from USDA sources</div>
     <div class="click-hint">Click any nutrient to see USDA source values</div>
   </div>`;
 
@@ -812,6 +861,10 @@ function renderDetail(food) {
       html += renderNutrientRow(nm, nutrients, nutrientStats, sourceCount, scale);
     }
     html += '</div>';
+  }
+
+  if (missing.length) {
+    html += `<div class="missing-nutrients"><strong>Not measured:</strong> ${esc(missing.join(', '))}</div>`;
   }
 
   detailPanel.innerHTML = html;
@@ -886,8 +939,42 @@ function closeNutrientModal() {
   document.getElementById('nutrient-modal').classList.remove('visible');
 }
 
+function openCoverageModal() {
+  if (!dbCoverage || !dbCoverage.nutrients) return;
+  const total = dbCoverage.ingredients_with_sources || 0;
+  const summary = dbCoverage.summary || {};
+  document.getElementById('coverage-subtitle').textContent =
+    `${total.toLocaleString()} ingredients with USDA sources · ` +
+    `${summary.well_measured || 0} nutrients ≥50% coverage · ` +
+    `${summary.rarely_measured || 0} rarely measured`;
+
+  const rows = [...dbCoverage.nutrients].sort((a, b) => b.coverage_pct - a.coverage_pct);
+  let body = `<table class="coverage-table"><thead><tr>
+    <th>Nutrient</th><th>Category</th><th>Coverage</th><th></th>
+  </tr></thead><tbody>`;
+  for (const row of rows) {
+    const pct = Math.round(row.coverage_pct * 100);
+    body += `<tr>
+      <td>${esc(row.name)}</td>
+      <td>${esc(row.category || '—')}</td>
+      <td class="coverage-pct">${pct}% <span style="color:var(--muted)">(${row.ingredients_with_value}/${row.ingredients_total})</span></td>
+      <td style="width:28%"><div class="coverage-bar" style="width:${pct}%"></div></td>
+    </tr>`;
+  }
+  body += '</tbody></table>';
+  document.getElementById('coverage-body').innerHTML = body;
+  document.getElementById('coverage-modal').classList.add('visible');
+}
+
+function closeCoverageModal() {
+  document.getElementById('coverage-modal').classList.remove('visible');
+}
+
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeNutrientModal();
+  if (e.key === 'Escape') {
+    closeNutrientModal();
+    closeCoverageModal();
+  }
 });
 
 function formatVal(v) {

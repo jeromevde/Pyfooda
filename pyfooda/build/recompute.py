@@ -10,9 +10,15 @@ from pathlib import Path
 
 import pandas as pd
 
+from pyfooda.build.coverage import write_coverage_report
 from pyfooda.build.download_usda import ensure_fooddata
-from pyfooda.build.nutrient_stats import average_nutrients, nutrient_stats, row_nutrients
-from pyfooda.build.paths import INGREDIENTS_CSV, META_JSON, NUTRIENTS_CSV, USDA_CSV
+from pyfooda.build.nutrient_stats import (
+    average_nutrients,
+    coerce_usda_nutrients,
+    nutrient_stats,
+    row_nutrients,
+)
+from pyfooda.build.paths import COVERAGE_JSON, INGREDIENTS_CSV, META_JSON, NUTRIENTS_CSV, USDA_CSV
 
 
 def recompute(
@@ -57,12 +63,13 @@ def recompute(
             averages[ingredient_id] = {col: None for col in nutrient_cols}
             continue
 
-        selected = pd.DataFrame(rows)
+        selected = coerce_usda_nutrients(pd.DataFrame(rows), nutrient_cols)
         item["nutrient_stats"] = nutrient_stats(selected, nutrient_cols, source_count)
         averages[ingredient_id] = average_nutrients(selected, nutrient_cols)
         updated += 1
 
     meta_path.write_text(json.dumps(meta, indent=2))
+    write_coverage_report(meta_path, NUTRIENTS_CSV, COVERAGE_JSON)
 
     for idx, row in ingredients.iterrows():
         ingredient_id = row["ingredient_id"]

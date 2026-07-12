@@ -13,9 +13,16 @@ import pandas as pd
 from sentence_transformers import SentenceTransformer
 from tqdm import tqdm
 
+from pyfooda.build.coverage import write_coverage_report
 from pyfooda.build.download_usda import ensure_fooddata
-from pyfooda.build.nutrient_stats import average_nutrients, nutrient_stats, select_source_rows, source_record
-from pyfooda.build.paths import INGREDIENTS_CSV, META_JSON, NUTRIENTS_CSV, USDA_CSV, VOCAB_JSON
+from pyfooda.build.nutrient_stats import (
+    average_nutrients,
+    coerce_usda_nutrients,
+    nutrient_stats,
+    select_source_rows,
+    source_record,
+)
+from pyfooda.build.paths import COVERAGE_JSON, INGREDIENTS_CSV, META_JSON, NUTRIENTS_CSV, USDA_CSV, VOCAB_JSON
 
 MODEL_NAME = "BAAI/bge-small-en-v1.5"
 
@@ -126,8 +133,9 @@ def build_database(
             max_similarity_drop=max_similarity_drop,
             min_macro_agreement=min_macro_agreement,
         )
-        avg = average_nutrients(selected, nutrient_cols)
-        stats = nutrient_stats(selected, nutrient_cols, len(selected))
+        normalized = coerce_usda_nutrients(selected, nutrient_cols)
+        avg = average_nutrients(normalized, nutrient_cols)
+        stats = nutrient_stats(normalized, nutrient_cols, len(selected))
 
         rows.append(
             {
@@ -160,6 +168,7 @@ def build_database(
     out_df.to_csv(output_path, index=False)
     with open(meta_path, "w") as f:
         json.dump(meta, f, indent=2)
+    write_coverage_report(meta_path, nutrients_path, COVERAGE_JSON)
 
     matched = int((out_df["source_count"] > 0).sum())
     print(f"Wrote {len(out_df)} ingredients to {output_path}")

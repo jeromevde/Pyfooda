@@ -36,6 +36,7 @@ pyfooda-build = "pyfooda.build.build_database:main"
 pyfooda-recompute = "pyfooda.build.recompute:main"
 pyfooda-export-web = "pyfooda.build.export_web:main"
 pyfooda-download-usda = "pyfooda.build.download_usda:main"
+pyfooda-coverage = "pyfooda.build.coverage_report:main"
 
 [tool.setuptools.dynamic]
 version = { file = "pyfooda/VERSION" }

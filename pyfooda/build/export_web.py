@@ -8,7 +8,8 @@ from pathlib import Path
 
 import pandas as pd
 
-from pyfooda.build.paths import INGREDIENTS_CSV, META_JSON, NUTRIENTS_CSV, VERSION_FILE, WEB_JSON
+from pyfooda.build.coverage import compute_nutrient_coverage, write_coverage_report
+from pyfooda.build.paths import INGREDIENTS_CSV, META_JSON, NUTRIENTS_CSV, VERSION_FILE, WEB_JSON, COVERAGE_JSON
 
 
 def package_version() -> str:
@@ -19,6 +20,9 @@ def export_web_data(output: Path = WEB_JSON) -> Path:
     meta_items = json.loads(META_JSON.read_text())
     meta_by_id = {item["ingredient_id"]: item for item in meta_items}
     nutrient_cols = pd.read_csv(NUTRIENTS_CSV)["nutrientName"].tolist()
+    nutrients_df = pd.read_csv(NUTRIENTS_CSV)
+    coverage = compute_nutrient_coverage(meta_items, nutrient_cols, nutrients_df)
+    COVERAGE_JSON.write_text(json.dumps(coverage, indent=2))
     df = pd.read_csv(INGREDIENTS_CSV)
 
     foods = []
@@ -49,6 +53,7 @@ def export_web_data(output: Path = WEB_JSON) -> Path:
             "count": len(foods),
             "vocabulary": "epicure",
             "version": package_version(),
+            "coverage": coverage,
         },
         "foods": foods,
     }
