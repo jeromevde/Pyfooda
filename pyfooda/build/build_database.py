@@ -13,6 +13,7 @@ import pandas as pd
 from sentence_transformers import SentenceTransformer
 from tqdm import tqdm
 
+from pyfooda.build.food_categories import filter_compatible_candidates
 from pyfooda.build.coverage import write_coverage_report
 from pyfooda.build.download_usda import ensure_fooddata
 from pyfooda.build.nutrient_stats import (
@@ -49,6 +50,39 @@ def embed_texts(model: SentenceTransformer, texts: list[str], batch_size: int) -
         show_progress_bar=True,
         normalize_embeddings=True,
     )
+
+
+def gather_candidates(
+    usda: pd.DataFrame,
+    scores: np.ndarray,
+    ingredient_id: str,
+    display_name: str,
+    nutrient_cols: list[str],
+    *,
+    min_similarity: float,
+    pool_sizes: tuple[int, ...] = (200, 800, 2500),
+) -> pd.DataFrame:
+    """Return embedding-ranked USDA rows compatible with the ingredient food family."""
+    for pool in pool_sizes:
+        k = min(int(pool), len(scores))
+        if k == 0:
+            continue
+        candidate_idx = np.argpartition(scores, -k)[-k:]
+        candidate_idx = candidate_idx[np.argsort(scores[candidate_idx])[::-1]]
+        candidate_idx = [int(j) for j in candidate_idx if scores[j] >= min_similarity]
+        if not candidate_idx:
+            continue
+
+        candidates = usda.iloc[candidate_idx].copy()
+        candidates["_similarity"] = [float(scores[j]) for j in candidate_idx]
+        candidates["_coverage"] = candidates.apply(
+            lambda r: nutrient_coverage(r, nutrient_cols), axis=1
+        )
+        filtered = filter_compatible_candidates(candidates, ingredient_id, display_name)
+        if not filtered.empty:
+            return filtered
+
+    return pd.DataFrame()
 
 
 def build_database(
@@ -97,11 +131,16 @@ def build_database(
         ingredient_id = item["id"]
         display_name = item["name"]
         scores = sims[i]
-        candidate_idx = np.argpartition(scores, -top_k)[-top_k:]
-        candidate_idx = candidate_idx[np.argsort(scores[candidate_idx])[::-1]]
-        candidate_idx = [j for j in candidate_idx if scores[j] >= min_similarity]
+        candidates = gather_candidates(
+            usda,
+            scores,
+            ingredient_id,
+            display_name,
+            nutrient_cols,
+            min_similarity=min_similarity,
+        )
 
-        if not candidate_idx:
+        if candidates.empty:
             rows.append(
                 {
                     "ingredient_id": ingredient_id,
@@ -121,11 +160,6 @@ def build_database(
             )
             continue
 
-        candidates = usda.iloc[candidate_idx].copy()
-        candidates["_similarity"] = [float(scores[j]) for j in candidate_idx]
-        candidates["_coverage"] = candidates.apply(
-            lambda r: nutrient_coverage(r, nutrient_cols), axis=1
-        )
         selected = select_source_rows(
             candidates,
             top_sources=top_sources,
