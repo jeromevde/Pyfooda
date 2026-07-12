@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
-"""Recompute per-nutrient support/CI stats in ingredients_meta.json without re-embedding."""
+"""Recompute per-nutrient support/CI stats and per-source nutrients in ingredients_meta.json."""
 
 from __future__ import annotations
 
 import json
-import sys
 from pathlib import Path
 
 import pandas as pd
 
-from nutrient_stats import nutrient_stats
+from nutrient_stats import nutrient_stats, row_nutrients
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 USDA_CSV = REPO_ROOT / "pyfooda/data/fooddata.csv"
@@ -38,8 +37,11 @@ def recompute(meta_path: Path = META_JSON, usda_path: Path = USDA_CSV) -> int:
         for src in sources:
             key = str(src.get("foodName", "")).lower()
             if key not in usda_by_name.groups:
+                src["nutrients"] = {}
                 continue
-            rows.append(usda_by_name.get_group(key).iloc[0])
+            row = usda_by_name.get_group(key).iloc[0]
+            src["nutrients"] = row_nutrients(row, nutrient_cols)
+            rows.append(row)
 
         if not rows:
             item["nutrient_stats"] = {}

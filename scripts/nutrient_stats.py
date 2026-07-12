@@ -11,6 +11,24 @@ import pandas as pd
 _T_95 = {1: 12.706, 2: 4.303, 3: 3.182, 4: 2.776, 5: 2.571}
 
 
+def row_nutrients(row: pd.Series, nutrient_cols: list[str]) -> dict:
+    out = {}
+    for col in nutrient_cols:
+        val = row.get(col)
+        out[col] = None if pd.isna(val) else float(val)
+    return out
+
+
+def source_record(row: pd.Series, nutrient_cols: list[str], similarity: float, coverage: int) -> dict:
+    return {
+        "foodName": row["foodName"],
+        "data_type": row.get("data_type"),
+        "similarity": float(similarity),
+        "nutrient_coverage": int(coverage),
+        "nutrients": row_nutrients(row, nutrient_cols),
+    }
+
+
 def nutrient_stats(rows: pd.DataFrame, nutrient_cols: list[str], source_count: int) -> dict:
     """Compute mean/support/CI per nutrient from selected USDA source rows."""
     out: dict[str, dict] = {}

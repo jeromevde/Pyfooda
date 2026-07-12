@@ -24,7 +24,7 @@ import pandas as pd
 from sentence_transformers import SentenceTransformer
 from tqdm import tqdm
 
-from nutrient_stats import average_nutrients, nutrient_stats
+from nutrient_stats import average_nutrients, nutrient_stats, source_record
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_USDA = REPO_ROOT / "pyfooda/data/fooddata.csv"
@@ -165,12 +165,12 @@ def build_database(
                 "ingredient_id": ingredient_id,
                 "display_name": display_name,
                 "sources": [
-                    {
-                        "foodName": r["foodName"],
-                        "data_type": r.get("data_type"),
-                        "similarity": float(r["_similarity"]),
-                        "nutrient_coverage": int(r["_coverage"]),
-                    }
+                    source_record(
+                        r,
+                        nutrient_cols,
+                        float(r["_similarity"]),
+                        int(r["_coverage"]),
+                    )
                     for _, r in selected.iterrows()
                 ],
                 "nutrient_stats": stats,
