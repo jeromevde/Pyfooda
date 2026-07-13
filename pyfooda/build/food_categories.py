@@ -96,6 +96,7 @@ _ALCOHOL_TOKENS = (
     "mezcal",
     "ouzo",
     "pastis",
+    "prosecco",
     "port",
     "rum",
     "sake",
@@ -321,6 +322,9 @@ def infer_ingredient_family(ingredient_id: str, display_name: str) -> str:
     for suffix, family in _SUFFIX_FAMILIES:
         if iid.endswith(suffix):
             return family
+
+    if re.search(r"\b(prosecco|sparkling wine|champagne|cava)\b", _name, re.I):
+        return "alcohol"
 
     if any(token in iid for token in _ALCOHOL_TOKENS):
         return "alcohol"
