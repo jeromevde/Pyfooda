@@ -112,6 +112,40 @@ DATA_TYPE_BONUS = {
 SPARSE_BRANDED_COVERAGE = 18
 SPARSE_BRANDED_PENALTY = 0.15
 
+# Approximate adult DRV values in the same units as USDA FoodData Central columns.
+# Used to detect source rows that are almost certainly data-entry errors.
+_NUTRIENT_DRV: dict[str, float] = {
+    "Vitamin B-12": 2.4,        # µg
+    "Thiamin": 1.2,              # mg
+    "Riboflavin": 1.3,           # mg
+    "Niacin": 16.0,              # mg
+    "Vitamin B-6": 1.7,          # mg
+    "Folate, total": 400.0,      # µg
+    "Vitamin C": 90.0,           # mg
+    "Vitamin D (D2 + D3)": 20.0, # µg
+    "Vitamin E": 15.0,           # mg
+    "Vitamin A, RAE": 900.0,     # µg
+    "Iron": 18.0,                # mg
+    "Zinc": 11.0,                # mg
+}
+# Source rows where any tracked nutrient exceeds this multiple of DRV per 100 g
+# are excluded before averaging — real foods almost never exceed ~50× DRV.
+_OUTLIER_DRV_CAP = 100.0
+
+
+def _is_nutrient_outlier(row: pd.Series) -> bool:
+    """Return True when any micronutrient value exceeds the DRV-based outlier cap."""
+    for col, drv in _NUTRIENT_DRV.items():
+        val = row.get(col)
+        if val is None or (isinstance(val, float) and math.isnan(val)):
+            continue
+        try:
+            if float(val) > _OUTLIER_DRV_CAP * drv:
+                return True
+        except (TypeError, ValueError):
+            continue
+    return False
+
 
 def source_quality_score(row: pd.Series) -> float:
     """Rank USDA rows: prefer survey/sr/foundation and full nutrient profiles over sparse branded."""
@@ -144,6 +178,14 @@ def select_source_rows(
     key_cols = key_cols or KEY_MACRO_COLS
     ranked = candidates.copy()
     ranked["_quality"] = ranked.apply(source_quality_score, axis=1)
+
+    # Exclude source rows whose micronutrient values exceed the DRV-based outlier cap.
+    # This catches data-entry errors (e.g. 480 µg B-12/100 g in a pie crust entry)
+    # before they can become an anchor and skew the average.
+    non_outlier = ranked[~ranked.apply(_is_nutrient_outlier, axis=1)]
+    if not non_outlier.empty:
+        ranked = non_outlier
+
     ordered = ranked.sort_values(["_quality", "_similarity"], ascending=False)
     anchor = ordered.iloc[0]
     top_sim = float(anchor["_similarity"])

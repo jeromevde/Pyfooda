@@ -14,17 +14,17 @@
       "name": "Iodine",
       "category": "Minerals",
       "unit": "UG",
-      "ingredients_with_value": 19,
+      "ingredients_with_value": 13,
       "ingredients_total": 1790,
-      "coverage_pct": 0.0106
+      "coverage_pct": 0.0073
     },
     {
-      "name": "Sugars, Total",
-      "category": "Carbohydrates",
-      "unit": "G",
-      "ingredients_with_value": 23,
+      "name": "Vitamin A",
+      "category": "Vitamins",
+      "unit": "UG",
+      "ingredients_with_value": 35,
       "ingredients_total": 1790,
-      "coverage_pct": 0.0128
+      "coverage_pct": 0.0196
     },
     {
       "name": "Molybdenum",
@@ -35,273 +35,273 @@
       "coverage_pct": 0.0201
     },
     {
-      "name": "Vitamin A",
-      "category": "Vitamins",
-      "unit": "UG",
-      "ingredients_with_value": 39,
+      "name": "Sugars, Total",
+      "category": "Carbohydrates",
+      "unit": "G",
+      "ingredients_with_value": 36,
       "ingredients_total": 1790,
-      "coverage_pct": 0.0218
+      "coverage_pct": 0.0201
     },
     {
       "name": "Vitamin K2 MK-4",
       "category": "Vitamins",
       "unit": "UG",
-      "ingredients_with_value": 53,
+      "ingredients_with_value": 47,
       "ingredients_total": 1790,
-      "coverage_pct": 0.0296
+      "coverage_pct": 0.0263
     },
     {
       "name": "ALA",
       "category": "Lipids",
       "unit": "G",
-      "ingredients_with_value": 87,
+      "ingredients_with_value": 64,
       "ingredients_total": 1790,
-      "coverage_pct": 0.0486
+      "coverage_pct": 0.0358
     },
     {
       "name": "Pantothenic acid",
       "category": "Vitamins",
       "unit": "MG",
-      "ingredients_with_value": 697,
+      "ingredients_with_value": 620,
       "ingredients_total": 1790,
-      "coverage_pct": 0.3894
+      "coverage_pct": 0.3464
     },
     {
       "name": "Manganese",
       "category": "Minerals",
       "unit": "MG",
-      "ingredients_with_value": 799,
+      "ingredients_with_value": 739,
       "ingredients_total": 1790,
-      "coverage_pct": 0.4464
+      "coverage_pct": 0.4128
     },
     {
       "name": "Choline",
       "category": "Vitamins",
       "unit": "MG",
-      "ingredients_with_value": 1142,
+      "ingredients_with_value": 910,
       "ingredients_total": 1790,
-      "coverage_pct": 0.638
+      "coverage_pct": 0.5084
     },
     {
       "name": "Vitamin K1",
       "category": "Vitamins",
       "unit": "UG",
-      "ingredients_with_value": 1177,
+      "ingredients_with_value": 957,
       "ingredients_total": 1790,
-      "coverage_pct": 0.6575
+      "coverage_pct": 0.5346
     },
     {
       "name": "Vitamin E",
       "category": "Vitamins",
       "unit": "MG",
-      "ingredients_with_value": 1197,
+      "ingredients_with_value": 978,
       "ingredients_total": 1790,
-      "coverage_pct": 0.6687
+      "coverage_pct": 0.5464
     },
     {
       "name": "Vitamin E",
       "category": "Vitamins",
       "unit": "MG",
-      "ingredients_with_value": 1197,
+      "ingredients_with_value": 978,
       "ingredients_total": 1790,
-      "coverage_pct": 0.6687
+      "coverage_pct": 0.5464
     },
     {
       "name": "Vitamin E",
       "category": "Vitamins",
       "unit": "MG",
-      "ingredients_with_value": 1197,
+      "ingredients_with_value": 978,
       "ingredients_total": 1790,
-      "coverage_pct": 0.6687
+      "coverage_pct": 0.5464
     },
     {
       "name": "DHA",
       "category": "Lipids",
       "unit": "G",
-      "ingredients_with_value": 1235,
+      "ingredients_with_value": 1002,
       "ingredients_total": 1790,
-      "coverage_pct": 0.6899
+      "coverage_pct": 0.5598
     },
     {
       "name": "EPA",
       "category": "Lipids",
       "unit": "G",
-      "ingredients_with_value": 1235,
+      "ingredients_with_value": 1002,
       "ingredients_total": 1790,
-      "coverage_pct": 0.6899
+      "coverage_pct": 0.5598
     },
     {
       "name": "Vitamin D (D2 + D3)",
       "category": "Vitamins",
       "unit": "UG",
-      "ingredients_with_value": 1347,
+      "ingredients_with_value": 1109,
       "ingredients_total": 1790,
-      "coverage_pct": 0.7525
-    },
-    {
-      "name": "Total Sugars",
-      "category": "Carbohydrates",
-      "unit": "G",
-      "ingredients_with_value": 1364,
-      "ingredients_total": 1790,
-      "coverage_pct": 0.762
+      "coverage_pct": 0.6196
     },
     {
       "name": "Selenium",
       "category": "Minerals",
       "unit": "UG",
-      "ingredients_with_value": 1420,
+      "ingredients_with_value": 1184,
       "ingredients_total": 1790,
-      "coverage_pct": 0.7933
+      "coverage_pct": 0.6615
     },
     {
       "name": "Vitamin A, RAE",
       "category": "Vitamins",
       "unit": "UG",
-      "ingredients_with_value": 1422,
+      "ingredients_with_value": 1192,
       "ingredients_total": 1790,
-      "coverage_pct": 0.7944
+      "coverage_pct": 0.6659
     },
     {
       "name": "Vitamin B-12",
       "category": "Vitamins",
       "unit": "UG",
-      "ingredients_with_value": 1453,
+      "ingredients_with_value": 1212,
       "ingredients_total": 1790,
-      "coverage_pct": 0.8117
+      "coverage_pct": 0.6771
     },
     {
       "name": "Folate, total",
       "category": "Vitamins",
       "unit": "UG",
-      "ingredients_with_value": 1455,
+      "ingredients_with_value": 1219,
       "ingredients_total": 1790,
-      "coverage_pct": 0.8128
+      "coverage_pct": 0.681
     },
     {
       "name": "Vitamin B-6",
       "category": "Vitamins",
       "unit": "MG",
-      "ingredients_with_value": 1466,
+      "ingredients_with_value": 1234,
       "ingredients_total": 1790,
-      "coverage_pct": 0.819
+      "coverage_pct": 0.6894
     },
     {
       "name": "Thiamin",
       "category": "Vitamins",
       "unit": "MG",
-      "ingredients_with_value": 1481,
+      "ingredients_with_value": 1254,
       "ingredients_total": 1790,
-      "coverage_pct": 0.8274
+      "coverage_pct": 0.7006
     },
     {
       "name": "Copper",
       "category": "Minerals",
       "unit": "MG",
-      "ingredients_with_value": 1492,
+      "ingredients_with_value": 1266,
       "ingredients_total": 1790,
-      "coverage_pct": 0.8335
+      "coverage_pct": 0.7073
     },
     {
       "name": "Niacin",
       "category": "Vitamins",
       "unit": "MG",
-      "ingredients_with_value": 1499,
+      "ingredients_with_value": 1268,
       "ingredients_total": 1790,
-      "coverage_pct": 0.8374
+      "coverage_pct": 0.7084
     },
     {
       "name": "Riboflavin",
       "category": "Vitamins",
       "unit": "MG",
-      "ingredients_with_value": 1513,
+      "ingredients_with_value": 1274,
       "ingredients_total": 1790,
-      "coverage_pct": 0.8453
+      "coverage_pct": 0.7117
     },
     {
-      "name": "Vitamin C",
-      "category": "Vitamins",
-      "unit": "MG",
-      "ingredients_with_value": 1516,
+      "name": "Total Sugars",
+      "category": "Carbohydrates",
+      "unit": "G",
+      "ingredients_with_value": 1293,
       "ingredients_total": 1790,
-      "coverage_pct": 0.8469
+      "coverage_pct": 0.7223
     },
     {
       "name": "Zinc",
       "category": "Minerals",
       "unit": "MG",
-      "ingredients_with_value": 1532,
+      "ingredients_with_value": 1295,
       "ingredients_total": 1790,
-      "coverage_pct": 0.8559
+      "coverage_pct": 0.7235
     },
     {
       "name": "Phosphorus",
       "category": "Minerals",
       "unit": "MG",
-      "ingredients_with_value": 1544,
+      "ingredients_with_value": 1316,
       "ingredients_total": 1790,
-      "coverage_pct": 0.8626
+      "coverage_pct": 0.7352
     },
     {
       "name": "Magnesium",
       "category": "Minerals",
       "unit": "MG",
-      "ingredients_with_value": 1546,
+      "ingredients_with_value": 1319,
       "ingredients_total": 1790,
-      "coverage_pct": 0.8637
+      "coverage_pct": 0.7369
+    },
+    {
+      "name": "Vitamin C",
+      "category": "Vitamins",
+      "unit": "MG",
+      "ingredients_with_value": 1336,
+      "ingredients_total": 1790,
+      "coverage_pct": 0.7464
     },
     {
       "name": "Potassium",
       "category": "Minerals",
       "unit": "MG",
-      "ingredients_with_value": 1624,
+      "ingredients_with_value": 1496,
       "ingredients_total": 1790,
-      "coverage_pct": 0.9073
-    },
-    {
-      "name": "Fatty acids, total saturated",
-      "category": "Lipids",
-      "unit": "G",
-      "ingredients_with_value": 1627,
-      "ingredients_total": 1790,
-      "coverage_pct": 0.9089
+      "coverage_pct": 0.8358
     },
     {
       "name": "Calcium",
       "category": "Minerals",
       "unit": "MG",
-      "ingredients_with_value": 1660,
+      "ingredients_with_value": 1537,
       "ingredients_total": 1790,
-      "coverage_pct": 0.9274
-    },
-    {
-      "name": "Fiber",
-      "category": "Carbohydrates",
-      "unit": "G",
-      "ingredients_with_value": 1665,
-      "ingredients_total": 1790,
-      "coverage_pct": 0.9302
-    },
-    {
-      "name": "Cholesterol",
-      "category": "Lipids",
-      "unit": "MG",
-      "ingredients_with_value": 1668,
-      "ingredients_total": 1790,
-      "coverage_pct": 0.9318
+      "coverage_pct": 0.8587
     },
     {
       "name": "Iron",
       "category": "Minerals",
       "unit": "MG",
-      "ingredients_with_value": 1675,
+      "ingredients_with_value": 1553,
       "ingredients_total": 1790,
-      "coverage_pct": 0.9358
+      "coverage_pct": 0.8676
     },
     {
-      "name": "Carbohydrate",
+      "name": "Fatty acids, total saturated",
+      "category": "Lipids",
+      "unit": "G",
+      "ingredients_with_value": 1598,
+      "ingredients_total": 1790,
+      "coverage_pct": 0.8927
+    },
+    {
+      "name": "Cholesterol",
+      "category": "Lipids",
+      "unit": "MG",
+      "ingredients_with_value": 1643,
+      "ingredients_total": 1790,
+      "coverage_pct": 0.9179
+    },
+    {
+      "name": "Fiber",
       "category": "Carbohydrates",
       "unit": "G",
+      "ingredients_with_value": 1646,
+      "ingredients_total": 1790,
+      "coverage_pct": 0.9196
+    },
+    {
+      "name": "Energy",
+      "category": "Energy",
+      "unit": "kJ",
       "ingredients_with_value": 1752,
       "ingredients_total": 1790,
       "coverage_pct": 0.9788
@@ -310,57 +310,57 @@
       "name": "Energy",
       "category": "Energy",
       "unit": "kJ",
-      "ingredients_with_value": 1754,
+      "ingredients_with_value": 1752,
       "ingredients_total": 1790,
-      "coverage_pct": 0.9799
+      "coverage_pct": 0.9788
     },
     {
       "name": "Energy",
       "category": "Energy",
       "unit": "kJ",
-      "ingredients_with_value": 1754,
+      "ingredients_with_value": 1752,
       "ingredients_total": 1790,
-      "coverage_pct": 0.9799
+      "coverage_pct": 0.9788
     },
     {
       "name": "Energy",
       "category": "Energy",
       "unit": "kJ",
-      "ingredients_with_value": 1754,
+      "ingredients_with_value": 1752,
       "ingredients_total": 1790,
-      "coverage_pct": 0.9799
+      "coverage_pct": 0.9788
     },
     {
-      "name": "Energy",
-      "category": "Energy",
-      "unit": "kJ",
-      "ingredients_with_value": 1754,
+      "name": "Carbohydrate",
+      "category": "Carbohydrates",
+      "unit": "G",
+      "ingredients_with_value": 1760,
       "ingredients_total": 1790,
-      "coverage_pct": 0.9799
+      "coverage_pct": 0.9832
     },
     {
       "name": "Sodium",
       "category": "Minerals",
       "unit": "MG",
-      "ingredients_with_value": 1765,
+      "ingredients_with_value": 1760,
       "ingredients_total": 1790,
-      "coverage_pct": 0.986
+      "coverage_pct": 0.9832
     },
     {
       "name": "Protein",
       "category": "Proteins",
       "unit": "G",
-      "ingredients_with_value": 1766,
+      "ingredients_with_value": 1774,
       "ingredients_total": 1790,
-      "coverage_pct": 0.9866
+      "coverage_pct": 0.9911
     },
     {
       "name": "Total fat",
       "category": "Lipids",
       "unit": "G",
-      "ingredients_with_value": 1784,
+      "ingredients_with_value": 1781,
       "ingredients_total": 1790,
-      "coverage_pct": 0.9966
+      "coverage_pct": 0.995
     }
   ],
   "summary": {
