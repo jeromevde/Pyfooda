@@ -28,7 +28,6 @@ def recompute(
 ) -> int:
     nutrient_cols = pd.read_csv(NUTRIENTS_CSV)["nutrientName"].tolist()
     meta = json.loads(meta_path.read_text())
-    ingredients = pd.read_csv(ingredients_path)
 
     print(f"Loading USDA data from {usda_path}")
     usda = pd.read_csv(usda_path)
@@ -71,14 +70,32 @@ def recompute(
     meta_path.write_text(json.dumps(meta, indent=2))
     write_coverage_report(meta_path, NUTRIENTS_CSV, COVERAGE_JSON)
 
-    for idx, row in ingredients.iterrows():
-        ingredient_id = row["ingredient_id"]
-        avg = averages.get(ingredient_id, {})
-        for col in nutrient_cols:
-            ingredients.at[idx, col] = avg.get(col)
+    # Rebuild ingredients.csv from meta so dropped vocabulary entries disappear.
+    rows = []
+    for item in meta:
+        ingredient_id = item["ingredient_id"]
+        sources = item.get("sources") or []
+        top_sim = None
+        if sources:
+            try:
+                top_sim = max(float(s.get("similarity") or 0.0) for s in sources)
+            except (TypeError, ValueError):
+                top_sim = None
+        avg = averages.get(ingredient_id, {col: None for col in nutrient_cols})
+        rows.append(
+            {
+                "ingredient_id": ingredient_id,
+                "display_name": item.get("display_name", ingredient_id),
+                "source_count": len(sources),
+                "top_similarity": top_sim,
+                **{col: avg.get(col) for col in nutrient_cols},
+            }
+        )
 
-    ingredients.to_csv(ingredients_path, index=False)
+    out_df = pd.DataFrame(rows, columns=["ingredient_id", "display_name", "source_count", "top_similarity", *nutrient_cols])
+    out_df.to_csv(ingredients_path, index=False)
     print(f"Updated nutrient stats for {updated}/{len(meta)} ingredients")
+    print(f"Wrote {len(out_df)} ingredients to {ingredients_path.name}")
     return 0
 
 

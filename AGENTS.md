@@ -1,7 +1,7 @@
 # Pyfooda — Agent Instructions
 
 Pyfooda builds and serves a nutritional ingredient database by matching a curated
-vocabulary of ~1790 food ingredients to USDA FoodData Central entries.
+vocabulary of ~1310 food ingredients to USDA FoodData Central entries.
 
 ---
 
@@ -10,7 +10,8 @@ vocabulary of ~1790 food ingredients to USDA FoodData Central entries.
 ```
 pyfooda/
   data/
-    epicure_vocabulary.json   Canonical ingredient list (~1790 entries, id + display name)
+    epicure_vocabulary.json   Canonical ingredient list (~1310 entries, id + display name)
+    dropped_unmatched.json    Specialty names removed (no credible USDA match)
     fooddata.csv.gz           Bundled USDA FoodData Central export (decompress before use)
     fooddata.csv              Decompressed USDA data (295 K rows, generated)
     ingredients.csv           Final averaged nutrient table (generated)
@@ -92,14 +93,11 @@ The system prompt instructs the LLM to:
 - Prefer sr_legacy_food / foundation_food / survey_fndds_food data types
 - Return **only** a JSON array of 0-based indices: `[0, 2]`
 
-### Scaling to 1790 ingredients
+### Scaling to ~1310 ingredients
 
-| Method | Time | Cost (gpt-4o-mini) |
-|--------|------|---------------------|
-| Sequential (default) | ~29 min | ~$0.24 |
-| 20 async workers (`--workers 20`) | ~1 min | ~$0.24 |
-
-Both are practical. Use `--workers 20` for a full rebuild.
+Curation triages first: strong headword matches auto-accept, no-USDA names
+skip the LLM, and only ambiguous cases hit the model (batched). A full rebuild
+with `--workers 15 --batch-size 20` should finish in minutes for well under €1.
 
 ### TF-IDF limitations and workarounds
 
