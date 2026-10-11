@@ -16,19 +16,25 @@ import pyfooda as pf
 pf.find_ingredients("hazelnut")
 pf.get_nutrients("chocolate_hazelnut_spread")
 pf.get_matches("chocolate_hazelnut_spread")
+pf.list_clusters()           # food families for browsing
+pf.get_cluster("vegetables")
 pf.get_nutrient_coverage()   # database-wide: which nutrients are measured
 pf.get_coverage("almond")    # per-ingredient: measured vs missing
 ```
 
-**Web UI:** [jeromevde.github.io/Pyfooda](https://jeromevde.github.io/Pyfooda/)
+**Web UI:** [jeromevde.github.io/Pyfooda](https://jeromevde.github.io/Pyfooda/) — search the catalog, or open a food family and click through to nutrients and the USDA rows behind them.
 
 ## Rebuild from source
 
+One command reproduces the published table from the stored USDA matches and `fooddata.csv.gz`. It does not call an embedding model or a language model.
+
 ```bash
-pip install -e ".[build]"
-pyfooda-download-usda          # decompress USDA fooddata.csv.gz
-pyfooda-build                  # full embedding rebuild (~2 min)
-pyfooda-export-web             # refresh docs/data/ingredients.json
+pip install -e .
+pyfooda-rebuild
 ```
+
+That aligns each ingredient's USDA rows, recomputes nutrients, and refreshes `docs/data/ingredients.json`.
+
+`pyfooda-build` is the older full rematch. It needs the `build` extra (`sentence-transformers`) and replaces the stored matches.
 
 Data: Epicure vocabulary (CC BY 4.0) + USDA FoodData Central (public domain).

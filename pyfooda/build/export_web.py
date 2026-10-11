@@ -10,6 +10,7 @@ import pandas as pd
 
 from pyfooda.build.coverage import compute_nutrient_coverage, write_coverage_report
 from pyfooda.build.paths import INGREDIENTS_CSV, META_JSON, NUTRIENTS_CSV, VERSION_FILE, WEB_JSON, COVERAGE_JSON
+from pyfooda.clusters import assign_cluster, cluster_label, list_cluster_summaries
 
 
 def package_version() -> str:
@@ -35,10 +36,13 @@ def export_web_data(output: Path = WEB_JSON) -> Path:
 
         meta = meta_by_id.get(ingredient_id, {})
         top_sim = row.get("top_similarity")
+        cluster_id = assign_cluster(str(ingredient_id))
         foods.append(
             {
                 "ingredient_id": ingredient_id,
                 "display_name": row["display_name"],
+                "cluster": cluster_id,
+                "cluster_label": cluster_label(cluster_id),
                 "source_count": int(row["source_count"]),
                 "top_similarity": None if pd.isna(top_sim) else float(top_sim),
                 "nutrients": nutrients,
@@ -54,6 +58,7 @@ def export_web_data(output: Path = WEB_JSON) -> Path:
             "vocabulary": "epicure",
             "version": package_version(),
             "coverage": coverage,
+            "clusters": list_cluster_summaries([food["ingredient_id"] for food in foods]),
         },
         "foods": foods,
     }

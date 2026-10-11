@@ -53,6 +53,41 @@
   #search:focus { border-color: var(--accent); }
   #search::placeholder { color: var(--muted); }
 
+  .cluster-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+    margin-bottom: 1rem;
+  }
+  .cluster-chip {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    border-radius: 999px;
+    padding: .32rem .7rem;
+    font-size: .8rem;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .cluster-chip:hover { border-color: var(--accent); }
+  .cluster-chip.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .cluster-chip .count { opacity: .75; margin-left: .25rem; }
+  .cluster-link {
+    border: none;
+    background: var(--accent-light);
+    color: var(--accent);
+    border-radius: 999px;
+    padding: .15rem .55rem;
+    font-size: .75rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
   /* Catalog layout */
   .app-layout {
     display: grid;
@@ -387,9 +422,10 @@
         <path stroke-linecap="round" stroke-linejoin="round"
               d="M21 21l-5.2-5.2m0 0A7.5 7.5 0 105.8 15.8a7.5 7.5 0 0010 0z"/>
       </svg>
-      <input id="search" type="text" placeholder="Filter ingredients… e.g. cheddar, hazelnut, rice"
+      <input id="search" type="text" placeholder="Search foods… e.g. cheddar, hazelnut, rice"
              autocomplete="off" spellcheck="false">
     </div>
+    <div id="cluster-bar" class="cluster-bar" hidden></div>
 
     <div class="app-layout">
       <aside class="catalog">
@@ -445,6 +481,7 @@ let foodNames = [];
 let foodNamesLower = [];
 let sortedIndices = [];
 let selectedIdx = -1;
+let activeCluster = '';
 let idf = {};
 
 /* Source-name → food-index reverse map (for brand-name search) */
@@ -452,7 +489,7 @@ let sourceNameIndex = {};  // token -> Set of food indices
 let sourceNameKeys = [];   // sorted keys for binary-search prefix lookup
 
 const dataBase = './data/';
-const DATA_VERSION = '0.2.10';
+const DATA_VERSION = '0.2.14';
 
 function setModalOpen(open) {
   document.body.style.overflow = open ? 'hidden' : '';
@@ -487,6 +524,7 @@ async function init() {
 
     document.getElementById('loading').style.display = 'none';
     document.getElementById('app').style.display = '';
+    renderClusterBar();
     renderCatalog();
     document.getElementById('search').focus();
   } catch (e) {
@@ -548,8 +586,43 @@ function buildIndex() {
   sourceNameKeys = Object.keys(sourceNameIndex).sort();
 }
 
+function renderClusterBar() {
+  const bar = document.getElementById('cluster-bar');
+  const clusters = (dbMeta.clusters || []).filter(c => c.count);
+  if (!clusters.length) {
+    bar.hidden = true;
+    return;
+  }
+  bar.hidden = false;
+  bar.innerHTML = '';
+  const all = document.createElement('button');
+  all.type = 'button';
+  all.className = 'cluster-chip' + (activeCluster ? '' : ' active');
+  all.textContent = 'All foods';
+  all.addEventListener('click', () => selectCluster(''));
+  bar.appendChild(all);
+  for (const cluster of clusters) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'cluster-chip' + (cluster.id === activeCluster ? ' active' : '');
+    btn.innerHTML = `${esc(cluster.label)}<span class="count">${cluster.count}</span>`;
+    btn.addEventListener('click', () => selectCluster(cluster.id === activeCluster ? '' : cluster.id));
+    bar.appendChild(btn);
+  }
+}
+
+function selectCluster(clusterId) {
+  activeCluster = clusterId;
+  searchInput.value = '';
+  renderClusterBar();
+  renderCatalog();
+}
+
 function filterFoods(query) {
   const q = query.toLowerCase().trim();
+  if (!q && activeCluster) {
+    return sortedIndices.filter(i => foods[i].cluster === activeCluster);
+  }
   if (!q) return sortedIndices;
 
   const ranked = search(q, foods.length);
@@ -698,9 +771,14 @@ function renderCatalog() {
 
   const total = foods.length;
   const shown = catalogIndices.length;
+  const clusterName = activeCluster
+    ? ((dbMeta.clusters || []).find(c => c.id === activeCluster) || {}).label || activeCluster
+    : '';
   catalogCount.textContent = q
     ? `${shown.toLocaleString()} of ${total.toLocaleString()} ingredients`
-    : `${total.toLocaleString()} ingredients`;
+    : clusterName
+      ? `${shown.toLocaleString()} in ${clusterName}`
+      : `${total.toLocaleString()} ingredients`;
 
   if (!shown) {
     catalogList.innerHTML = '<div class="catalog-empty">No ingredients match your filter</div>';
@@ -722,7 +800,7 @@ function renderCatalog() {
         ${preview ? `<span class="energy">${esc(preview)}</span>` : ''}
       </div>
       <div class="row-bottom">
-        <span class="id">${esc(f.ingredient_id)}</span>
+        <span class="id">${esc(f.cluster_label || f.ingredient_id)}</span>
         <span class="meta">${f.source_count || 0} src · ${sim}</span>
       </div>`;
     btn.addEventListener('click', () => selectFood(idx));
@@ -862,6 +940,7 @@ function renderDetail(food) {
     <div class="food-header-top">
       <h2>${esc(food.display_name)}</h2>
       <span class="badge">${esc(food.ingredient_id)}</span>
+      ${food.cluster ? `<button type="button" class="cluster-link" data-cluster="${esc(food.cluster)}">${esc(food.cluster_label || food.cluster)}</button>` : ''}
     </div>
     <div class="food-meta">
       <span>Averaged from <strong>${food.source_count}</strong> USDA match${food.source_count === 1 ? '' : 'es'}</span>
@@ -893,6 +972,11 @@ function renderDetail(food) {
   detailPanel.innerHTML = html;
   detailPanel.classList.remove('empty');
   detailPanel.onclick = (e) => {
+    const clusterBtn = e.target.closest('[data-cluster]');
+    if (clusterBtn) {
+      selectCluster(clusterBtn.dataset.cluster);
+      return;
+    }
     const row = e.target.closest('[data-nutrient-idx]');
     if (!row || !currentFood) return;
     const idx = Number(row.dataset.nutrientIdx);

@@ -37,24 +37,16 @@ docs/
 ## Key commands
 
 ```bash
-# Decompress USDA data (required before any build step)
+# Reproducible rebuild from stored matches + USDA export (no API key, no embeddings):
+python -m pyfooda.build.rebuild
+
+# Decompress USDA data on its own (rebuild does this too):
 python -m pyfooda.build.download_usda
 
-# Fix or rebuild specific ingredients with LLM curation (recommended):
+# Optional: ask an LLM to pick new USDA rows, then rebuild.
+# Set OPENAI_API_KEY or pass --base-url for an OpenAI-compatible endpoint.
 python -m pyfooda.build.curate --ids fennel,lard,potato --model gpt-4o-mini
-python -m pyfooda.build.curate --ids fennel --dry-run          # preview candidates only
-
-# Rebuild the entire database with LLM curation (~$0.24, ~1 min with workers):
-python -m pyfooda.build.curate --all --model gpt-4o-mini --workers 20
-
-# After any curate run, recompute averages and write ingredients.csv:
-python -m pyfooda.build.recompute
-
-# Full embedding-based rebuild (rarely needed, requires sentence-transformers + GPU):
-python -m pyfooda.build.build_database
-
-# Regenerate web export after a recompute:
-python -m pyfooda.build.export_web
+python -m pyfooda.build.rebuild
 ```
 
 **Environment**: set `OPENAI_API_KEY` before running `curate.py`.
@@ -148,20 +140,13 @@ Red flags to investigate:
 ## Data pipeline architecture
 
 ```
-epicure_vocabulary.json
+ingredients_meta.json  (stored USDA matches; curate.py or build_database.py can replace them)
         │
         ▼
-curate.py (TF-IDF candidate retrieval + LLM selection)
-        │
-        ▼
-ingredients_meta.json   ◄─── also updated by build_database.py (embedding pipeline)
-        │
-        ▼
-recompute.py  (averages nutrients, runs outlier stats)
-        │
-        ├──► ingredients.csv      (used by api.py)
-        ├──► nutrient_coverage.json
-        └──► export_web.py ──► docs/data/ingredients.json
+rebuild.py
+        ├── align.py      keep rows whose name and calories are the ingredient
+        ├── recompute.py  resolve nutrient columns, write ingredients.csv
+        └── export_web.py ──► docs/data/ingredients.json
 ```
 
 ### Outlier detection (nutrient_stats.py)

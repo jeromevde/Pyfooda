@@ -15,6 +15,7 @@ from tqdm import tqdm
 
 from pyfooda.build.coverage import write_coverage_report
 from pyfooda.build.download_usda import ensure_fooddata
+from pyfooda.build.compose import resolve_nutrient_frame, unique_nutrient_names
 from pyfooda.build.nutrient_stats import (
     average_nutrients,
     coerce_usda_nutrients,
@@ -33,7 +34,7 @@ def load_vocabulary(path: Path) -> list[dict]:
 
 
 def load_nutrient_columns(path: Path) -> list[str]:
-    return pd.read_csv(path)["nutrientName"].tolist()
+    return unique_nutrient_names(pd.read_csv(path)["nutrientName"].tolist())
 
 
 def nutrient_coverage(row: pd.Series, nutrient_cols: list[str]) -> int:
@@ -161,7 +162,7 @@ def build_database(
             max_similarity_drop=max_similarity_drop,
             min_macro_agreement=min_macro_agreement,
         )
-        normalized = coerce_usda_nutrients(selected, nutrient_cols)
+        normalized = resolve_nutrient_frame(coerce_usda_nutrients(selected, nutrient_cols))
         avg = average_nutrients(normalized, nutrient_cols)
         stats = nutrient_stats(normalized, nutrient_cols, len(selected))
 

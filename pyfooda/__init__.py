@@ -2,6 +2,7 @@ from pathlib import Path
 
 from .api import (
     find_ingredients,
+    get_cluster,
     get_coverage,
     get_display_name,
     get_drv_df,
@@ -11,6 +12,7 @@ from .api import (
     get_nutrients,
     get_sources,
     get_vocabulary,
+    list_clusters,
     list_ingredients,
 )
 
@@ -19,6 +21,7 @@ __version__ = (Path(__file__).parent / "VERSION").read_text().strip()
 __all__ = [
     "__version__",
     "find_ingredients",
+    "get_cluster",
     "get_coverage",
     "get_display_name",
     "get_drv_df",
@@ -28,5 +31,6 @@ __all__ = [
     "get_nutrients",
     "get_sources",
     "get_vocabulary",
+    "list_clusters",
     "list_ingredients",
 ]

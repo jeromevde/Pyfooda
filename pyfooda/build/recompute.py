@@ -12,6 +12,7 @@ import pandas as pd
 
 from pyfooda.build.coverage import write_coverage_report
 from pyfooda.build.download_usda import ensure_fooddata
+from pyfooda.build.compose import resolve_nutrient_frame, unique_nutrient_names, unique_sources
 from pyfooda.build.nutrient_stats import (
     average_nutrients,
     coerce_usda_nutrients,
@@ -26,12 +27,15 @@ def recompute(
     usda_path: Path = USDA_CSV,
     ingredients_path: Path = INGREDIENTS_CSV,
 ) -> int:
-    nutrient_cols = pd.read_csv(NUTRIENTS_CSV)["nutrientName"].tolist()
+    nutrient_cols = unique_nutrient_names(pd.read_csv(NUTRIENTS_CSV)["nutrientName"].tolist())
     meta = json.loads(meta_path.read_text())
 
     print(f"Loading USDA data from {usda_path}")
     usda = pd.read_csv(usda_path)
     usda["_key"] = usda["foodName"].astype(str).str.lower()
+    # Branded foods reuse generic names ("Vinegar") with label values.
+    # Keep the curated data type when several rows share a name.
+    _AUTHORITATIVE = ("sr_legacy_food", "foundation_food", "survey_fndds_food")
     usda_by_name = usda.groupby("_key", sort=False)
 
     updated = 0
@@ -39,7 +43,8 @@ def recompute(
 
     for item in meta:
         ingredient_id = item["ingredient_id"]
-        sources = item.get("sources") or []
+        sources = unique_sources(item.get("sources") or [])
+        item["sources"] = sources
         source_count = len(sources)
 
         if source_count == 0:
@@ -48,23 +53,41 @@ def recompute(
             continue
 
         rows = []
+        matched_sources = []
         for src in sources:
             key = str(src.get("foodName", "")).lower()
             if key not in usda_by_name.groups:
                 src["nutrients"] = {}
                 continue
-            row = usda_by_name.get_group(key).iloc[0]
-            src["nutrients"] = row_nutrients(row, nutrient_cols)
+            group = usda_by_name.get_group(key)
+            wanted = str(src.get("data_type") or "")
+            typed = group[group["data_type"] == wanted] if wanted else group.iloc[0:0]
+            if not typed.empty:
+                row = typed.iloc[0]
+            else:
+                authoritative = group[group["data_type"].isin(_AUTHORITATIVE)]
+                row = authoritative.iloc[0] if not authoritative.empty else group.iloc[0]
             rows.append(row)
+            matched_sources.append(src)
 
         if not rows:
             item["nutrient_stats"] = {}
             averages[ingredient_id] = {col: None for col in nutrient_cols}
             continue
 
-        selected = coerce_usda_nutrients(pd.DataFrame(rows), nutrient_cols)
+        selected = resolve_nutrient_frame(coerce_usda_nutrients(pd.DataFrame(rows), nutrient_cols))
+        for src, (_, row) in zip(matched_sources, selected.iterrows()):
+            src["nutrients"] = row_nutrients(row, nutrient_cols)
         item["nutrient_stats"] = nutrient_stats(selected, nutrient_cols, source_count)
-        averages[ingredient_id] = average_nutrients(selected, nutrient_cols)
+        # The published profile has to obey the same rules as each source row.
+        # Averaging a dried mushroom with a fresh one can otherwise produce
+        # a fiber value the carbohydrate cannot hold.
+        averaged = average_nutrients(selected, nutrient_cols)
+        resolved = resolve_nutrient_frame(pd.DataFrame([averaged])).iloc[0]
+        averages[ingredient_id] = {
+            col: None if pd.isna(resolved.get(col)) else float(resolved[col])
+            for col in nutrient_cols
+        }
         updated += 1
 
     meta_path.write_text(json.dumps(meta, indent=2))

@@ -33,6 +33,7 @@ build = [
 
 [project.scripts]
 pyfooda-build = "pyfooda.build.build_database:main"
+pyfooda-rebuild = "pyfooda.build.rebuild:main"
 pyfooda-recompute = "pyfooda.build.recompute:main"
 pyfooda-export-web = "pyfooda.build.export_web:main"
 pyfooda-download-usda = "pyfooda.build.download_usda:main"

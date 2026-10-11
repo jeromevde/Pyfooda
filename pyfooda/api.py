@@ -74,6 +74,20 @@ def list_ingredients() -> list[str]:
     return _ingredients_df["ingredient_id"].tolist()
 
 
+def list_clusters() -> list[dict]:
+    """Return food-family clusters with id, label, and ingredient count."""
+    from pyfooda.clusters import list_cluster_summaries
+
+    return list_cluster_summaries(list_ingredients())
+
+
+def get_cluster(cluster_id: str) -> list[str]:
+    """Return ingredient ids in one food-family cluster."""
+    from pyfooda.clusters import ingredients_in_cluster
+
+    return ingredients_in_cluster(list_ingredients(), cluster_id)
+
+
 def get_display_name(ingredient_id: str) -> Optional[str]:
     """Return the human-readable ingredient name."""
     ensure_data_loaded()
